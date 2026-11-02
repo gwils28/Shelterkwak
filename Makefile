@@ -1,5 +1,5 @@
 # Shelterkwak : commandes locales
-.PHONY: install dev backend frontend build run test check check-fast lint format generate
+.PHONY: install dev backend frontend build run test check check-fast lint format generate e2e
 
 install:            ## Installe les dépendances Python et Node
 	cd backend && uv sync
@@ -28,6 +28,9 @@ check-fast:         ## Lint et tests backend
 
 check: check-fast   ## Tout : backend, typecheck, tests et build du front
 	cd frontend && npm run typecheck && npm test && npm run build
+
+e2e: build          ## Scénario téléphone + PC hors ligne (Playwright requis, serveur lancé avec `make run`)
+	node frontend/e2e/offline-sync.cjs
 
 format:
 	cd backend && uv run ruff format . && uv run ruff check --fix .

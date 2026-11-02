@@ -28,7 +28,23 @@
 - Les validations issues de l'interview sont datées du jour de l'interview : une
   revalidation périodique les fera expirer comme les autres.
 
+## v2 (hors ligne)
+- **Onboarding = une seule opération** portant le foyer, les acquis et les stocks estimés,
+  pour un journal lisible et un seul calcul de niveau (la spec prévoyait des opérations
+  ordinaires suivies d'un marqueur).
+- **Aperçu avant enregistrement** : l'écran de résultat de l'interview est calculé sans rien
+  écrire ; l'opération est enregistrée au clic sur « Voir ma colonne ».
+- **Section passée sans réponse** : « Suivant » enregistre « rien » pour les questions à choix
+  multiples de la section (sinon le bilan des compétences n'était jamais validé).
+- **Date des opérations** : l'historique place une opération au jour de son horodatage UTC ;
+  une action faite juste après minuit (heure de Paris) peut apparaître la veille.
+- **Remise à zéro propagée** : `reset` est une opération ; elle efface le foyer sur tous les
+  appareils synchronisés. Une sauvegarde JSON permet de revenir en arrière (import).
+- **Base v1** : l'ancien schéma (tables foyer, validations…) n'est pas migré ; il est ignoré.
+  Seule la table `op` est utilisée.
+- **`npm audit`** signale des vulnérabilités modérées dans des dépendances de build de
+  workbox (ejs, jake) : elles ne sont pas livrées dans l'application.
+
 ## Hors v1 / pistes
-Objectifs personnalisés, PWA hors ligne, export/import JSON, notifications de
-revalidation, interview conversationnelle (LLM local), multi-foyers, backend Rust,
+Notifications de revalidation, interview conversationnelle (LLM local), multi-foyers, backend Rust,
 déploiement sur Raspberry Pi.

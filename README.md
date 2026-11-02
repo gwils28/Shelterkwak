@@ -15,7 +15,13 @@ représenté par une **colonne romaine de 8 tambours**, du socle (vulnérable) a
   pour les membres du foyer.
 - **Checklist** personnalisée, niveau par axe (maillon faible), historique du niveau.
 
-Tout tourne en local, sans réseau. Les données restent dans `data/shelterkwak.db`.
+- **Hors ligne sur téléphone** : application installable (PWA) ; les données vivent sur
+  l'appareil et se synchronisent avec le serveur du PC quand il est joignable (Tailscale).
+- **Objectifs perso** : à toi de les ajouter, requis (bloquent leur palier) ou bonus.
+
+Tout tourne en local, sans service tiers. Chaque appareil garde son journal d'opérations
+(IndexedDB) ; le serveur en garde la copie partagée dans `data/shelterkwak.db`.
+Installation sur Android : [docs/telephone.md](docs/telephone.md).
 
 ## Démarrer
 
@@ -36,7 +42,7 @@ Puis ouvrir http://127.0.0.1:8000. Pour développer avec rechargement à chaud
 make dev
 ```
 
-Vérifications (lint, tests backend, typecheck, tests et build du front) :
+Vérifications (lint, tests backend, parité des moteurs, typecheck, tests et build du front) :
 
 ```bash
 make check
@@ -47,8 +53,9 @@ make check
 | Dossier | Contenu |
 |---|---|
 | `catalog/` | Le référentiel en YAML : niveaux, axes, objectifs par axe, besoins journaliers, interview |
-| `backend/` | API FastAPI + SQLite ; `engine.py` est le moteur pur (niveaux, statuts, checklist) |
-| `frontend/` | React + TypeScript + Vite ; la colonne est dans `src/components/Column.tsx` |
+| `backend/` | FastAPI + SQLite : sert la PWA, stocke le journal partagé (`/api/sync`) ; `engine.py` et `replay.py` sont le moteur de référence |
+| `frontend/` | PWA React + TypeScript + Vite ; moteur porté dans `src/engine/`, journal local dans `src/store/` |
+| `fixtures/` | Cas calculés par le moteur Python et rejoués par le moteur TypeScript (parité) |
 | `SPEC.md` | Spécification v1 issue de l'interview |
 | `docs/implementation-notes.md` | Écarts et choix faits pendant l'implémentation |
 
@@ -68,5 +75,18 @@ Ajouter un objectif = ajouter une entrée dans `catalog/objectives/<axe>.yaml` :
     why: …
 ```
 
+Puis régénérer le catalogue embarqué dans l'app et les cas de parité :
+
+```bash
+make generate
+```
+
 Le catalogue est validé au démarrage (références, niveaux, catégories) et par
-`backend/tests/test_catalog.py`.
+`backend/tests/test_catalog.py` ; un test échoue si `make generate` a été oublié.
+
+Scénario de bout en bout téléphone + PC avec passage en mode avion (Playwright requis,
+serveur lancé avec `make run` sur une base vide) :
+
+```bash
+make e2e
+```

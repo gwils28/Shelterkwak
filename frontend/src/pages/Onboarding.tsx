@@ -33,7 +33,20 @@ export function OnboardingPage() {
   const membersOk = members.some((m) => m.type !== "animal") && members.every((m) => m.name.trim());
   const section = sections[Math.min(sectionIndex, sections.length - 1)];
 
+  /** Une section passée sans rien cocher vaut réponse « rien » (sinon la question compte comme non posée). */
+  const withSkipped = (): Record<string, Answer> => {
+    const next = { ...answers };
+    for (const q of section?.questions ?? []) if (q.type === "multi" && next[q.id] === undefined) next[q.id] = [];
+    return next;
+  };
+  const nextSection = () => {
+    setAnswers(withSkipped());
+    setSectionIndex(sectionIndex + 1);
+  };
+
   const finish = () => {
+    const answers = withSkipped();
+    setAnswers(answers);
     const payload = buildOnboarding(
       {
         name: name.trim() || "Mon foyer",
@@ -144,7 +157,7 @@ export function OnboardingPage() {
           <div className="actions">
             <button onClick={() => (sectionIndex === 0 ? setStep("contexte") : setSectionIndex(sectionIndex - 1))}>Retour</button>
             {sectionIndex < sections.length - 1 ? (
-              <button className="primary" onClick={() => setSectionIndex(sectionIndex + 1)}>
+              <button className="primary" onClick={nextSection}>
                 Suivant
               </button>
             ) : (

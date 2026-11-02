@@ -919,3 +919,18 @@ tr.expiring td {
   text-decoration: none;
   font-weight: 600;
 }
+@media (max-width: 640px) {
+  .topbar {
+    gap: 8px;
+    padding-top: max(8px, env(safe-area-inset-top, 0px));
+  }
+  .topbar nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    scrollbar-width: none;
+  }
+  .topbar nav a {
+    white-space: nowrap;
+  }
+}
