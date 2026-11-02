@@ -1,5 +1,5 @@
 # Shelterkwak : commandes locales
-.PHONY: install dev backend frontend build run test check check-fast lint format
+.PHONY: install dev backend frontend build run test check check-fast lint format generate
 
 install:            ## Installe les dépendances Python et Node
 	cd backend && uv sync
@@ -19,6 +19,9 @@ build:              ## Compile le front dans frontend/dist
 
 run: build          ## Un seul processus : API + front compilé sur http://127.0.0.1:8000
 	cd backend && uv run shelterkwak
+
+generate:           ## Régénère catalog.json du front et les cas de parité (fixtures/) depuis le YAML
+	cd backend && uv run python -m shelterkwak.export
 
 check-fast:         ## Lint et tests backend
 	cd backend && uv run ruff check . && uv run ruff format --check . && uv run pytest -q

@@ -6,7 +6,7 @@ baisser le niveau passe par `evaluate`.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from datetime import date, timedelta
 from typing import Literal
 
@@ -51,7 +51,7 @@ class Validation:
 
 @dataclass(frozen=True)
 class StockLine:
-    id: int
+    id: str
     name: str
     category: str
     total: float  # en unité de base de la catégorie
@@ -97,7 +97,7 @@ class ChecklistItem:
     title: str
     detail: str = ""
     objective_id: str | None = None
-    stock_id: int | None = None
+    stock_id: str | None = None
     axis: str | None = None
     level: int | None = None
 
@@ -110,6 +110,26 @@ class Evaluation:
     statuses: dict[str, ObjectiveStatus]
     autonomy: dict[str, CategoryAutonomy]
     checklist: list[ChecklistItem]
+
+
+def evaluation_to_dict(ev: Evaluation) -> dict:
+    """Forme JSON commune aux moteurs Python et TypeScript (voir fixtures/)."""
+    return {
+        "level": ev.level,
+        "tiers": [{**asdict(t), "progress": t.progress} for t in ev.tiers],
+        "axis_levels": ev.axis_levels,
+        "statuses": {
+            k: {
+                "status": v.status,
+                "progress": v.progress,
+                "validated_at": v.validated_at.isoformat() if v.validated_at else None,
+                "expires_on": v.expires_on.isoformat() if v.expires_on else None,
+            }
+            for k, v in ev.statuses.items()
+        },
+        "autonomy": {k: asdict(v) for k, v in ev.autonomy.items()},
+        "checklist": [asdict(i) for i in ev.checklist],
+    }
 
 
 def is_applicable(obj: Objective, state: HouseholdState, tags: set[str], context: str | None = None) -> bool:

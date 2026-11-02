@@ -54,6 +54,7 @@ class Objective(BaseModel):
     requires_tags: list[str] = Field(default_factory=list)
     revalidate_days: int | None = None
     stock: StockRule | None = None
+    custom: bool = False  # objectif perso créé par le foyer
 
     @model_validator(mode="after")
     def _stock_consistency(self) -> Objective:
@@ -124,6 +125,23 @@ class Catalog(BaseModel):
     @property
     def categories_by_id(self) -> dict[str, Category]:
         return {c.id: c for c in self.categories}
+
+    def with_custom(self, customs: list[dict]) -> Catalog:
+        """Catalogue augmenté des objectifs perso du foyer (ignorés s'ils sont invalides)."""
+        extra: list[Objective] = []
+        axis_ids = {a.id for a in self.axes}
+        for c in customs:
+            try:
+                obj = Objective.model_validate(
+                    {**c, "contexts": list(ALL_CONTEXTS), "requires_tags": [], "custom": True}
+                )
+            except ValueError:
+                continue
+            if obj.axis in axis_ids and obj.kind != "stock":
+                extra.append(obj)
+        if not extra:
+            return self
+        return self.model_copy(update={"objectives": [*self.objectives, *extra]})
 
     def level(self, n: int) -> Level:
         return next(lv for lv in self.levels if lv.n == n)

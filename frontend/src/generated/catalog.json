@@ -1,0 +1,3885 @@
+{
+ "levels": [
+  {
+   "n": 1,
+   "name": "Vulnérable",
+   "horizon": "0",
+   "summary": "Dépend entièrement des flux quotidiens (eau courante, électricité, courses)."
+  },
+  {
+   "n": 2,
+   "name": "Éveillé",
+   "horizon": "Bases",
+   "summary": "Connaît ses risques, a ses papiers, ses contacts et un premier plan."
+  },
+  {
+   "n": 3,
+   "name": "72 heures",
+   "horizon": "3 jours",
+   "summary": "Tient 3 jours sans eau courante, électricité ni ravitaillement."
+  },
+  {
+   "n": 4,
+   "name": "Deux semaines",
+   "horizon": "14 jours",
+   "summary": "Tient 14 jours confiné ou coupé du réseau."
+  },
+  {
+   "n": 5,
+   "name": "Trois mois",
+   "horizon": "90 jours",
+   "summary": "Traverse 3 mois de rupture partielle ; épargne de précaution."
+  },
+  {
+   "n": 6,
+   "name": "Six mois & savoir-faire",
+   "horizon": "180 jours",
+   "summary": "Six mois de réserves et des compétences pratiques entretenues."
+  },
+  {
+   "n": 7,
+   "name": "Semi-autonome",
+   "horizon": "Production",
+   "summary": "Produit une partie de son eau, de sa nourriture et de son énergie."
+  },
+  {
+   "n": 8,
+   "name": "Autonome & résilient",
+   "horizon": "Durable",
+   "summary": "Autonomie forte, intégré à une communauté d'entraide, transmet."
+  }
+ ],
+ "axes": [
+  {
+   "id": "eau",
+   "name": "Eau",
+   "icon": "💧"
+  },
+  {
+   "id": "alimentation",
+   "name": "Alimentation",
+   "icon": "🥫"
+  },
+  {
+   "id": "energie",
+   "name": "Énergie",
+   "icon": "🔋"
+  },
+  {
+   "id": "sante",
+   "name": "Santé & hygiène",
+   "icon": "⛑️"
+  },
+  {
+   "id": "abri",
+   "name": "Habitat & chauffage",
+   "icon": "🏠"
+  },
+  {
+   "id": "securite",
+   "name": "Sécurité & protection",
+   "icon": "🛡️"
+  },
+  {
+   "id": "communication",
+   "name": "Information & communication",
+   "icon": "📻"
+  },
+  {
+   "id": "mobilite",
+   "name": "Mobilité & évacuation",
+   "icon": "🧭"
+  },
+  {
+   "id": "competences",
+   "name": "Savoirs & compétences",
+   "icon": "🛠️"
+  },
+  {
+   "id": "finances",
+   "name": "Finances & administratif",
+   "icon": "📁"
+  },
+  {
+   "id": "communaute",
+   "name": "Réseau & entraide",
+   "icon": "🤝"
+  }
+ ],
+ "contexts": [
+  {
+   "id": "appartement",
+   "name": "Appartement en ville"
+  },
+  {
+   "id": "periurbain",
+   "name": "Maison périurbaine"
+  },
+  {
+   "id": "rural",
+   "name": "Rural / ferme"
+  }
+ ],
+ "member_types": [
+  {
+   "id": "adulte",
+   "name": "Adulte"
+  },
+  {
+   "id": "senior",
+   "name": "Senior (70 ans et +)"
+  },
+  {
+   "id": "enfant",
+   "name": "Enfant (3-12 ans)"
+  },
+  {
+   "id": "bebe",
+   "name": "Bébé (moins de 3 ans)"
+  },
+  {
+   "id": "animal",
+   "name": "Animal"
+  }
+ ],
+ "member_tags": {
+  "enfant": "enfants",
+  "bebe": "bebe",
+  "senior": "seniors",
+  "animal": "animaux"
+ },
+ "categories": [
+  {
+   "id": "eau",
+   "name": "Eau potable",
+   "unit": "L",
+   "daily_need": {
+    "adulte": 3.0,
+    "senior": 3.0,
+    "enfant": 2.0,
+    "bebe": 1.5,
+    "animal": 1.0
+   },
+   "per_household": null,
+   "applies_if": null
+  },
+  {
+   "id": "alimentation",
+   "name": "Nourriture",
+   "unit": "kcal",
+   "daily_need": {
+    "adulte": 2200.0,
+    "senior": 1900.0,
+    "enfant": 1700.0,
+    "bebe": 900.0
+   },
+   "per_household": null,
+   "applies_if": null
+  },
+  {
+   "id": "traitements",
+   "name": "Traitements médicaux",
+   "unit": "jour",
+   "daily_need": {},
+   "per_household": 1.0,
+   "applies_if": "traitement_medical"
+  },
+  {
+   "id": "cuisson",
+   "name": "Combustible de cuisson hors réseau",
+   "unit": "jour",
+   "daily_need": {},
+   "per_household": 1.0,
+   "applies_if": null
+  }
+ ],
+ "objectives": [
+  {
+   "id": "eau.robinet_arret",
+   "axis": "eau",
+   "level": 2,
+   "title": "Savoir couper l'eau au robinet d'arrêt général",
+   "description": "",
+   "why": "Une canalisation qui casse pendant une crise peut inonder le logement et vider la réserve du ballon.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.pastilles",
+   "axis": "eau",
+   "level": 2,
+   "title": "Avoir des pastilles de purification ou de l'eau de Javel non parfumée",
+   "description": "",
+   "why": "Rendre potable une eau douteuse coûte quelques euros et tient dans un tiroir.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 1095,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.inventaire",
+   "axis": "alimentation",
+   "level": 2,
+   "title": "Faire l'inventaire de ce que contiennent déjà les placards",
+   "description": "",
+   "why": "On a souvent plus de réserves qu'on ne croit ; c'est le point de départ de l'inventaire.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.lampes",
+   "axis": "energie",
+   "level": 2,
+   "title": "Une lampe frontale ou torche par personne, avec piles de rechange",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.trousse",
+   "axis": "sante",
+   "level": 2,
+   "title": "Trousse de premiers secours complète et à jour",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.fiches",
+   "axis": "sante",
+   "level": 2,
+   "title": "Fiche médicale par membre (groupe sanguin, allergies, traitements, contacts)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.coupures",
+   "axis": "abri",
+   "level": 2,
+   "title": "Savoir couper le gaz et l'électricité (vanne, tableau électrique)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.risques",
+   "axis": "securite",
+   "level": 2,
+   "title": "Connaître les risques de sa commune (DICRIM, Géorisques)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 1095,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.alertes",
+   "axis": "securite",
+   "level": 2,
+   "title": "Recevoir les alertes officielles (FR-Alert activé, alertes de la préfecture)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.contacts_papier",
+   "axis": "communication",
+   "level": 2,
+   "title": "Contacts essentiels notés sur papier",
+   "description": "",
+   "why": "Sans batterie ni réseau, personne ne connaît plus les numéros par cœur.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.itineraires",
+   "axis": "mobilite",
+   "level": 2,
+   "title": "Deux itinéraires d'évacuation et un lieu de rassemblement connus",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.bilan",
+   "axis": "competences",
+   "level": 2,
+   "title": "Faire le bilan des compétences du foyer",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.papiers",
+   "axis": "finances",
+   "level": 2,
+   "title": "Copies des papiers importants (papier et clé USB chiffrée)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 730,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.voisins",
+   "axis": "communaute",
+   "level": 2,
+   "title": "Connaître au moins deux voisins par leur nom",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.stock_3j",
+   "axis": "eau",
+   "level": 3,
+   "title": "Stock d'eau potable pour 3 jours",
+   "description": "",
+   "why": "Recommandation officielle de base (kit d'urgence 72 h) ; l'eau est le besoin le plus urgent.",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "eau",
+    "min_days": 3.0
+   },
+   "custom": false
+  },
+  {
+   "id": "eau.contenants",
+   "axis": "eau",
+   "level": 3,
+   "title": "Bidons alimentaires vides prêts à remplir dès une alerte",
+   "description": "",
+   "why": "Entre l'alerte et la coupure, on peut souvent stocker des dizaines de litres en plus.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.stock_3j",
+   "axis": "alimentation",
+   "level": 3,
+   "title": "Nourriture pour 3 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "alimentation",
+    "min_days": 3.0
+   },
+   "custom": false
+  },
+  {
+   "id": "alimentation.sans_cuisson",
+   "axis": "alimentation",
+   "level": 3,
+   "title": "Aliments consommables sans cuisson pour 3 jours",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.ouvre_boite",
+   "axis": "alimentation",
+   "level": 3,
+   "title": "Ouvre-boîte manuel",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.cuisson_3j",
+   "axis": "energie",
+   "level": 3,
+   "title": "Moyen de cuisson hors réseau et combustible pour 3 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "cuisson",
+    "min_days": 3.0
+   },
+   "custom": false
+  },
+  {
+   "id": "energie.batterie",
+   "axis": "energie",
+   "level": 3,
+   "title": "Batteries externes chargées pour les téléphones",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 90,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.psc1",
+   "axis": "sante",
+   "level": 3,
+   "title": "Au moins un adulte formé aux premiers secours (PSC1 ou équivalent)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 1095,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.hygiene_3j",
+   "axis": "sante",
+   "level": 3,
+   "title": "Kit d'hygiène pour 3 jours (savon, gel, papier, sacs, protections)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.traitements_7j",
+   "axis": "sante",
+   "level": 3,
+   "title": "Traitements médicaux d'avance pour 7 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "traitement_medical"
+   ],
+   "revalidate_days": null,
+   "stock": {
+    "category": "traitements",
+    "min_days": 7.0
+   },
+   "custom": false
+  },
+  {
+   "id": "abri.chaleur",
+   "axis": "abri",
+   "level": 3,
+   "title": "Couvertures de survie, sacs de couchage ou vêtements chauds pour chacun",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.detecteurs",
+   "axis": "abri",
+   "level": 3,
+   "title": "Détecteurs de fumée (et de CO si combustion) installés et testés",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.extincteur",
+   "axis": "abri",
+   "level": 3,
+   "title": "Extincteur et couverture anti-feu",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.plan_familial",
+   "axis": "securite",
+   "level": 3,
+   "title": "Plan familial d'urgence écrit (qui fait quoi, points de rendez-vous)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.cles",
+   "axis": "securite",
+   "level": 3,
+   "title": "Doubles des clés et cache sûre pour les objets essentiels",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.radio",
+   "axis": "communication",
+   "level": 3,
+   "title": "Radio à piles ou à dynamo (FM et grandes ondes), testée",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.contact_externe",
+   "axis": "communication",
+   "level": 3,
+   "title": "Contact référent hors de la région, connu de tous les membres",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.sac",
+   "axis": "mobilite",
+   "level": 3,
+   "title": "Sac d'évacuation 72 h prêt pour chaque membre",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 180,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.feu",
+   "axis": "competences",
+   "level": 3,
+   "title": "Allumer et entretenir un feu en sécurité",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.especes",
+   "axis": "finances",
+   "level": 3,
+   "title": "Espèces en petites coupures (une semaine de dépenses)",
+   "description": "",
+   "why": "Sans électricité, les paiements par carte s'arrêtent.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.assurances",
+   "axis": "finances",
+   "level": 3,
+   "title": "Assurances vérifiées (habitation, catastrophes naturelles, responsabilité)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.fragiles",
+   "axis": "communaute",
+   "level": 3,
+   "title": "Repérer les personnes fragiles autour de soi",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.stock_14j",
+   "axis": "eau",
+   "level": 4,
+   "title": "Stock d'eau potable pour 14 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "eau",
+    "min_days": 14.0
+   },
+   "custom": false
+  },
+  {
+   "id": "eau.filtre",
+   "axis": "eau",
+   "level": 4,
+   "title": "Filtre à eau portable (paille ou gravitaire) avec cartouche valide",
+   "description": "",
+   "why": "Prend le relais quand le stock s'épuise.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.savoir_traiter",
+   "axis": "eau",
+   "level": 4,
+   "title": "Savoir rendre une eau potable (ébullition, dosage de chlore, filtration)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 730,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.stock_14j",
+   "axis": "alimentation",
+   "level": 4,
+   "title": "Nourriture pour 14 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "alimentation",
+    "min_days": 14.0
+   },
+   "custom": false
+  },
+  {
+   "id": "alimentation.rotation",
+   "axis": "alimentation",
+   "level": 4,
+   "title": "Rotation des stocks en place (premier entré, premier sorti)",
+   "description": "",
+   "why": "Un stock qu'on ne consomme pas finit à la poubelle.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 180,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.bebe",
+   "axis": "alimentation",
+   "level": 4,
+   "title": "Lait infantile, petits pots et couches pour 14 jours",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "bebe"
+   ],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.animaux",
+   "axis": "alimentation",
+   "level": 4,
+   "title": "Nourriture et litière des animaux pour 14 jours",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "animaux"
+   ],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.regimes",
+   "axis": "alimentation",
+   "level": 4,
+   "title": "Réserves adaptées aux régimes particuliers (diabète, allergies, sans gluten)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "traitement_medical"
+   ],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.cuisson_14j",
+   "axis": "energie",
+   "level": 4,
+   "title": "Combustible de cuisson pour 14 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "cuisson",
+    "min_days": 14.0
+   },
+   "custom": false
+  },
+  {
+   "id": "energie.solaire_portable",
+   "axis": "energie",
+   "level": 4,
+   "title": "Panneau solaire portable pour recharger les petits appareils, testé",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.traitements_30j",
+   "axis": "sante",
+   "level": 4,
+   "title": "Traitements médicaux d'avance pour 30 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "traitement_medical"
+   ],
+   "revalidate_days": null,
+   "stock": {
+    "category": "traitements",
+    "min_days": 30.0
+   },
+   "custom": false
+  },
+  {
+   "id": "sante.toilettes",
+   "axis": "sante",
+   "level": 4,
+   "title": "Toilettes de secours (seau, sacs, sciure ou litière)",
+   "description": "",
+   "why": "Sans eau courante, l'hygiène devient le premier risque sanitaire.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.masques",
+   "axis": "sante",
+   "level": 4,
+   "title": "Masques FFP2 et gants pour la durée d'une épidémie",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 1825,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.calfeutrage",
+   "axis": "abri",
+   "level": 4,
+   "title": "Kit de confinement (bâches, ruban adhésif, film plastique)",
+   "description": "",
+   "why": "En cas d'accident industriel, la consigne est de se confiner en calfeutrant.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.chauffage_appoint",
+   "axis": "abri",
+   "level": 4,
+   "title": "Chauffage d'appoint sûr hors réseau, avec ventilation et détecteur de CO",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_froid"
+   ],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.exercice",
+   "axis": "securite",
+   "level": 4,
+   "title": "Exercice familial (24 h sans réseau ou évacuation chronométrée)",
+   "description": "",
+   "why": "Un plan jamais testé est une hypothèse.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.discretion",
+   "axis": "securite",
+   "level": 4,
+   "title": "Règle familiale de discrétion sur les réserves",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.cartes",
+   "axis": "communication",
+   "level": 4,
+   "title": "Cartes papier de la région et itinéraires",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.talkies",
+   "axis": "communication",
+   "level": 4,
+   "title": "Talkies-walkies PMR446 pour le foyer",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.vehicule",
+   "axis": "mobilite",
+   "level": 4,
+   "title": "Réservoir jamais sous la moitié et kit véhicule (couverture, eau, câbles)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "vehicule"
+   ],
+   "revalidate_days": 180,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.velo",
+   "axis": "mobilite",
+   "level": 4,
+   "title": "Vélo en état et kit de réparation",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.cuisine_stock",
+   "axis": "competences",
+   "level": 4,
+   "title": "Cuisiner une semaine uniquement avec ses réserves (testé)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.epargne_1m",
+   "axis": "finances",
+   "level": 4,
+   "title": "Épargne de précaution d'un mois de dépenses",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.binome",
+   "axis": "communaute",
+   "level": 4,
+   "title": "Accord d'entraide réciproque avec un autre foyer (foyer binôme)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.stock_30j",
+   "axis": "eau",
+   "level": 5,
+   "title": "Stock d'eau potable pour 30 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "eau",
+    "min_days": 30.0
+   },
+   "custom": false
+  },
+  {
+   "id": "eau.sources_identifiees",
+   "axis": "eau",
+   "level": 5,
+   "title": "Identifier deux sources d'eau brute accessibles (rivière, source, fontaine, citerne)",
+   "description": "",
+   "why": "Au-delà d'un mois, l'eau se puise et se traite plus qu'elle ne se stocke.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.filtre_gravitaire",
+   "axis": "eau",
+   "level": 5,
+   "title": "Filtre gravitaire grande capacité (plusieurs milliers de litres)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 730,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.stock_90j",
+   "axis": "alimentation",
+   "level": 5,
+   "title": "Nourriture pour 90 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "alimentation",
+    "min_days": 90.0
+   },
+   "custom": false
+  },
+  {
+   "id": "alimentation.conservation",
+   "axis": "alimentation",
+   "level": 5,
+   "title": "Savoir conserver (stérilisation en bocaux, lacto-fermentation, déshydratation)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 730,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.station",
+   "axis": "energie",
+   "level": 5,
+   "title": "Station électrique portable (500 Wh ou plus) rechargeable au solaire, testée",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 180,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.cuisson_90j",
+   "axis": "energie",
+   "level": 5,
+   "title": "Combustible de cuisson pour 90 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "cuisson",
+    "min_days": 90.0
+   },
+   "custom": false
+  },
+  {
+   "id": "sante.traitements_90j",
+   "axis": "sante",
+   "level": 5,
+   "title": "Traitements médicaux d'avance pour 90 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "traitement_medical"
+   ],
+   "revalidate_days": null,
+   "stock": {
+    "category": "traitements",
+    "min_days": 90.0
+   },
+   "custom": false
+  },
+  {
+   "id": "sante.pharmacie",
+   "axis": "sante",
+   "level": 5,
+   "title": "Pharmacie étendue (antalgiques, antidiarrhéiques, désinfectants, sutures adhésives)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.reparations",
+   "axis": "abri",
+   "level": 5,
+   "title": "Outillage de base et petites réparations (plomberie, électricité, menuiserie)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 730,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.inondation",
+   "axis": "abri",
+   "level": 5,
+   "title": "Plan anti-inondation (batardeaux, objets de valeur surélevés)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_inondation"
+   ],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.logement",
+   "axis": "securite",
+   "level": 5,
+   "title": "Logement sécurisé (porte renforcée, serrures, éclairage extérieur)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.incendie_ext",
+   "axis": "securite",
+   "level": 5,
+   "title": "Débroussaillement réglementaire et plan de défense incendie",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_incendie"
+   ],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.sources",
+   "axis": "communication",
+   "level": 5,
+   "title": "Liste de sources d'information fiables et réflexe de vérification",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.accueil",
+   "axis": "mobilite",
+   "level": 5,
+   "title": "Lieu d'accueil convenu hors de la zone (famille, amis)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.carburant",
+   "axis": "mobilite",
+   "level": 5,
+   "title": "Réserve de carburant stockée en sécurité et renouvelée",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "vehicule"
+   ],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.bibliotheque",
+   "axis": "competences",
+   "level": 5,
+   "title": "Bibliothèque papier de référence (secourisme, jardinage, réparations)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.couture",
+   "axis": "competences",
+   "level": 5,
+   "title": "Réparer vêtements et textiles",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 1095,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.epargne_3m",
+   "axis": "finances",
+   "level": 5,
+   "title": "Épargne de précaution de trois mois de dépenses",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.sans_credit_conso",
+   "axis": "finances",
+   "level": 5,
+   "title": "Aucun crédit à la consommation en cours",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.projet",
+   "axis": "finances",
+   "level": 5,
+   "title": "Plan de financement du projet de vie (par exemple un terrain)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.annuaire",
+   "axis": "communaute",
+   "level": 5,
+   "title": "Annuaire des compétences et ressources de son réseau",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.engagement",
+   "axis": "communaute",
+   "level": 5,
+   "title": "Engagement local (réserve communale de sécurité civile, pompiers volontaires, association)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.plan_appro",
+   "axis": "eau",
+   "level": 6,
+   "title": "Plan d'approvisionnement à pied (trajet, chariot, bidons) vers une source identifiée",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.recuperateur",
+   "axis": "eau",
+   "level": 6,
+   "title": "Récupérateur d'eau de pluie d'au moins 500 L",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.stock_60j",
+   "axis": "eau",
+   "level": 6,
+   "title": "Stock d'eau potable pour 60 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "eau",
+    "min_days": 60.0
+   },
+   "custom": false
+  },
+  {
+   "id": "alimentation.stock_180j",
+   "axis": "alimentation",
+   "level": 6,
+   "title": "Nourriture pour 180 jours",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": {
+    "category": "alimentation",
+    "min_days": 180.0
+   },
+   "custom": false
+  },
+  {
+   "id": "alimentation.potager_savoir",
+   "axis": "alimentation",
+   "level": 6,
+   "title": "Savoir cultiver au moins cinq légumes de base (stage, jardin partagé)",
+   "description": "",
+   "why": "Compétence transférable si tu prévois de changer de lieu de vie.",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 730,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.semences",
+   "axis": "alimentation",
+   "level": 6,
+   "title": "Semences reproductibles (non hybrides) en stock",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 1095,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.bilan_wh",
+   "axis": "energie",
+   "level": 6,
+   "title": "Besoins électriques prioritaires chiffrés en Wh par jour",
+   "description": "",
+   "why": "On ne dimensionne pas une installation de secours sans savoir ce qu'elle doit alimenter.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.secours",
+   "axis": "energie",
+   "level": 6,
+   "title": "Groupe électrogène ou solaire de secours, carburant stocké, testé",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 180,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.condition",
+   "axis": "sante",
+   "level": 6,
+   "title": "Condition physique - marcher 15 km avec un sac de 10 kg",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.secourisme_avance",
+   "axis": "sante",
+   "level": 6,
+   "title": "Secourisme avancé ou en milieu isolé (PSE1, WFA)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 1095,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.plantes",
+   "axis": "sante",
+   "level": 6,
+   "title": "Connaître les plantes médicinales courantes de sa région",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 1095,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.piece_refuge",
+   "axis": "abri",
+   "level": 6,
+   "title": "Pièce refuge aménagée (confinement, chaleur, réserves à portée)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.desescalade",
+   "axis": "securite",
+   "level": 6,
+   "title": "Gestion de conflit et désescalade",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 730,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.radio_emission",
+   "axis": "communication",
+   "level": 6,
+   "title": "Poste CB ou radioamateur opérationnel",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.licence",
+   "axis": "communication",
+   "level": 6,
+   "title": "Licence radioamateur",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.orientation",
+   "axis": "mobilite",
+   "level": 6,
+   "title": "S'orienter avec carte et boussole",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 730,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.pratique",
+   "axis": "competences",
+   "level": 6,
+   "title": "Chaque adulte entretient au moins un savoir-faire pratique",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.epargne_6m",
+   "axis": "finances",
+   "level": 6,
+   "title": "Épargne de précaution de six mois de dépenses",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.charges",
+   "axis": "finances",
+   "level": 6,
+   "title": "Charges fixes réduites (abonnements, énergie, transport)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.groupe",
+   "axis": "communaute",
+   "level": 6,
+   "title": "Groupe d'entraide d'au moins trois foyers avec un plan commun",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.source_autonome",
+   "axis": "eau",
+   "level": 7,
+   "title": "Source d'eau autonome (puits, forage ou citerne d'au moins 5 m³)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.pompe_manuelle",
+   "axis": "eau",
+   "level": 7,
+   "title": "Pompe manuelle ou alimentée hors réseau sur la source",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.circuit_court",
+   "axis": "alimentation",
+   "level": 7,
+   "title": "Lien direct avec au moins deux producteurs locaux",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.balcon",
+   "axis": "alimentation",
+   "level": 7,
+   "title": "Production d'appoint (balcon, jardin partagé, parcelle familiale)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.potager",
+   "axis": "alimentation",
+   "level": 7,
+   "title": "Potager produisant au moins 20 % des légumes du foyer",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.kit_balcon",
+   "axis": "energie",
+   "level": 7,
+   "title": "Kit solaire de balcon avec batterie couvrant éclairage et communications",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.solaire_fixe",
+   "axis": "energie",
+   "level": 7,
+   "title": "Installation solaire avec stockage couvrant les besoins prioritaires",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.bois",
+   "axis": "energie",
+   "level": 7,
+   "title": "Chauffage et cuisson au bois, un hiver de bois stocké",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.assainissement",
+   "axis": "sante",
+   "level": 7,
+   "title": "Assainissement autonome (toilettes sèches, compost)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.isolation",
+   "axis": "abri",
+   "level": 7,
+   "title": "Logement isolé et chauffable avec une source autonome",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.veille",
+   "axis": "securite",
+   "level": 7,
+   "title": "Veille de voisinage organisée",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.reseau_local",
+   "axis": "communication",
+   "level": 7,
+   "title": "Plan de communication local (fréquences, horaires convenus avec les proches)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.repli",
+   "axis": "mobilite",
+   "level": 7,
+   "title": "Lieu de repli préparé et pré-approvisionné",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.echangeable",
+   "axis": "competences",
+   "level": 7,
+   "title": "Un savoir-faire échangeable (artisanat, soin, mécanique, menuiserie)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 730,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.revenus",
+   "axis": "finances",
+   "level": 7,
+   "title": "Revenus diversifiés ou métier résilient",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.mutualisation",
+   "axis": "communaute",
+   "level": 7,
+   "title": "Ressources mutualisées (outils, stocks, jardin)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.troc",
+   "axis": "communaute",
+   "level": 7,
+   "title": "Réseau d'échange local (SEL, troc, monnaie locale)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.autonomie_annuelle",
+   "axis": "eau",
+   "level": 8,
+   "title": "Eau couvrant les besoins annuels du foyer, traitement compris",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.production_50",
+   "axis": "alimentation",
+   "level": 8,
+   "title": "Production d'au moins 50 % des besoins (légumes, fruits, œufs, conserves)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.elevage",
+   "axis": "alimentation",
+   "level": 8,
+   "title": "Petit élevage (poules, lapins)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.autonomie",
+   "axis": "energie",
+   "level": 8,
+   "title": "Autonomie électrique sur l'année (production et stockage)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.soignant",
+   "axis": "sante",
+   "level": 8,
+   "title": "Un soignant dans le réseau proche, joignable hors réseau",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.resilient",
+   "axis": "abri",
+   "level": 8,
+   "title": "Habitat résilient - autonomie thermique et matériaux de réparation stockés",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.plan_commun",
+   "axis": "securite",
+   "level": 8,
+   "title": "Plan de sécurité partagé avec le réseau local",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.relais",
+   "axis": "communication",
+   "level": 8,
+   "title": "Le foyer peut relayer l'information pour sa communauté",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.sans_fossile",
+   "axis": "mobilite",
+   "level": 8,
+   "title": "Mobilité sans carburant fossile (vélo cargo, VAE rechargé au solaire)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.transmettre",
+   "axis": "competences",
+   "level": 8,
+   "title": "Transmettre - animer un atelier ou former d'autres personnes",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.actifs",
+   "axis": "finances",
+   "level": 8,
+   "title": "Actifs tangibles utiles (outils, terre, matériel d'échange)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.resilience_locale",
+   "axis": "communaute",
+   "level": 8,
+   "title": "Contribuer à un projet de résilience locale (jardin partagé, réserve communale)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "revalidate_days": 365,
+   "stock": null,
+   "custom": false
+  }
+ ],
+ "questions": [
+  {
+   "id": "risques",
+   "section": "Ton environnement",
+   "type": "multi",
+   "text": "Quels risques concernent ta commune ?",
+   "help": "Si tu ne sais pas, consulte georisques.gouv.fr ou le DICRIM de ta mairie ; tu pourras compléter plus tard.",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "inondation",
+     "label": "Inondation",
+     "validates": [
+      "securite.risques"
+     ],
+     "tags": [
+      "risque_inondation"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "froid",
+     "label": "Hivers rigoureux",
+     "validates": [
+      "securite.risques"
+     ],
+     "tags": [
+      "risque_froid"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "industriel",
+     "label": "Site industriel ou nucléaire proche",
+     "validates": [
+      "securite.risques"
+     ],
+     "tags": [
+      "risque_industriel"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "seisme",
+     "label": "Séisme",
+     "validates": [
+      "securite.risques"
+     ],
+     "tags": [
+      "risque_seisme"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "incendie",
+     "label": "Feux de forêt",
+     "validates": [
+      "securite.risques"
+     ],
+     "tags": [
+      "risque_incendie"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "canicule",
+     "label": "Canicules",
+     "validates": [
+      "securite.risques"
+     ],
+     "tags": [
+      "risque_canicule"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "inconnu",
+     "label": "Je ne sais pas encore",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "inquietudes",
+   "section": "Ton environnement",
+   "type": "multi",
+   "text": "Quelles situations t'inquiètent le plus ?",
+   "help": "",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "coupures",
+     "label": "Coupures d'eau ou d'électricité longues",
+     "validates": [],
+     "tags": [
+      "inquietude_coupures"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "eco",
+     "label": "Crise économique",
+     "validates": [],
+     "tags": [
+      "inquietude_economie"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "climat",
+     "label": "Événements climatiques extrêmes",
+     "validates": [],
+     "tags": [
+      "inquietude_climat"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "pandemie",
+     "label": "Pandémie",
+     "validates": [],
+     "tags": [
+      "inquietude_pandemie"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "penuries",
+     "label": "Pénuries et ruptures d'approvisionnement",
+     "validates": [],
+     "tags": [
+      "inquietude_penuries"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "troubles",
+     "label": "Troubles civils ou conflit",
+     "validates": [],
+     "tags": [
+      "inquietude_troubles"
+     ],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "vehicule",
+   "section": "Ton environnement",
+   "type": "single",
+   "text": "Le foyer dispose-t-il d'un véhicule à moteur ?",
+   "help": "",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "oui",
+     "label": "Oui",
+     "validates": [],
+     "tags": [
+      "vehicule"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "non",
+     "label": "Non",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "eau_litres",
+   "section": "Tes réserves",
+   "type": "number",
+   "text": "Combien de litres d'eau en bouteille as-tu aujourd'hui chez toi ?",
+   "help": "Compte large (packs, bidons). Tu affineras ensuite dans l'inventaire.",
+   "unit": "litres",
+   "show_if": null,
+   "options": [],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": {
+    "category": "eau",
+    "name": "Eau stockée (estimation de l'interview)",
+    "unit_label": "L",
+    "amount_per_unit": 1.0
+   },
+   "answered_validates": []
+  },
+  {
+   "id": "vivres_jours",
+   "section": "Tes réserves",
+   "type": "number",
+   "text": "Combien de jours pourrais-tu nourrir tout le foyer sans faire de courses ?",
+   "help": "",
+   "unit": "jours",
+   "show_if": null,
+   "options": [],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": {
+    "category": "alimentation",
+    "name": "Placards (estimation de l'interview)",
+    "unit_label": "jour foyer",
+    "amount_per_unit": "household_day"
+   },
+   "answered_validates": []
+  },
+  {
+   "id": "cuisson_jours",
+   "section": "Tes réserves",
+   "type": "number",
+   "text": "Pendant combien de jours pourrais-tu cuisiner sans gaz ni électricité du réseau (réchaud, cartouches, bois) ?",
+   "help": "",
+   "unit": "jours",
+   "show_if": null,
+   "options": [],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": {
+    "category": "cuisson",
+    "name": "Combustible de cuisson (estimation de l'interview)",
+    "unit_label": "jour",
+    "amount_per_unit": 1.0
+   },
+   "answered_validates": []
+  },
+  {
+   "id": "traitements_jours",
+   "section": "Tes réserves",
+   "type": "number",
+   "text": "Combien de jours de traitement médical as-tu d'avance ?",
+   "help": "",
+   "unit": "jours",
+   "show_if": {
+    "context_in": null,
+    "tags_any": [
+     "traitement_medical"
+    ],
+    "answer": null
+   },
+   "options": [],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": {
+    "category": "traitements",
+    "name": "Traitements (estimation de l'interview)",
+    "unit_label": "jour",
+    "amount_per_unit": 1.0
+   },
+   "answered_validates": []
+  },
+  {
+   "id": "equipement",
+   "section": "Ton équipement",
+   "type": "multi",
+   "text": "Qu'as-tu déjà chez toi, en état de marche ?",
+   "help": "",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "lampes",
+     "label": "Lampes frontales ou torches et piles",
+     "validates": [
+      "energie.lampes"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "trousse",
+     "label": "Trousse de premiers secours à jour",
+     "validates": [
+      "sante.trousse"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "radio",
+     "label": "Radio à piles ou dynamo",
+     "validates": [
+      "communication.radio"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "pastilles",
+     "label": "Pastilles de purification d'eau",
+     "validates": [
+      "eau.pastilles"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "bidons",
+     "label": "Bidons alimentaires vides",
+     "validates": [
+      "eau.contenants"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "filtre",
+     "label": "Filtre à eau portable",
+     "validates": [
+      "eau.filtre"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "ouvre_boite",
+     "label": "Ouvre-boîte manuel",
+     "validates": [
+      "alimentation.ouvre_boite"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "sans_cuisson",
+     "label": "3 jours d'aliments sans cuisson",
+     "validates": [
+      "alimentation.sans_cuisson"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "batterie",
+     "label": "Batteries externes chargées",
+     "validates": [
+      "energie.batterie"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "solaire",
+     "label": "Panneau solaire portable",
+     "validates": [
+      "energie.solaire_portable"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "station",
+     "label": "Station électrique portable",
+     "validates": [
+      "energie.station"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "couvertures",
+     "label": "Couvertures de survie ou duvets pour tous",
+     "validates": [
+      "abri.chaleur"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "detecteurs",
+     "label": "Détecteurs de fumée testés",
+     "validates": [
+      "abri.detecteurs"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "extincteur",
+     "label": "Extincteur",
+     "validates": [
+      "abri.extincteur"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "hygiene",
+     "label": "Kit d'hygiène de 3 jours",
+     "validates": [
+      "sante.hygiene_3j"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "toilettes",
+     "label": "Toilettes de secours",
+     "validates": [
+      "sante.toilettes"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "masques",
+     "label": "Stock de masques FFP2",
+     "validates": [
+      "sante.masques"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "sac",
+     "label": "Sacs d'évacuation prêts",
+     "validates": [
+      "mobilite.sac"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "talkies",
+     "label": "Talkies-walkies",
+     "validates": [
+      "communication.talkies"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "cartes",
+     "label": "Cartes papier de la région",
+     "validates": [
+      "communication.cartes"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "confinement",
+     "label": "Kit de confinement (bâches",
+     "validates": [
+      "abri.calfeutrage"
+     ],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "organisation",
+   "section": "Ton organisation",
+   "type": "multi",
+   "text": "Qu'est-ce qui est déjà en place dans le foyer ?",
+   "help": "",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "coupures",
+     "label": "On sait couper eau",
+     "validates": [
+      "eau.robinet_arret",
+      "abri.coupures"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "alertes",
+     "label": "FR-Alert et alertes préfecture activés",
+     "validates": [
+      "securite.alertes"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "plan",
+     "label": "Un plan familial d'urgence écrit",
+     "validates": [
+      "securite.plan_familial"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "exercice",
+     "label": "Un exercice familial dans l'année",
+     "validates": [
+      "securite.exercice"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "contacts",
+     "label": "Contacts essentiels sur papier",
+     "validates": [
+      "communication.contacts_papier"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "contact_externe",
+     "label": "Un contact référent hors région",
+     "validates": [
+      "communication.contact_externe"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "itineraires",
+     "label": "Itinéraires d'évacuation connus",
+     "validates": [
+      "mobilite.itineraires"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "accueil",
+     "label": "Un lieu d'accueil convenu hors zone",
+     "validates": [
+      "mobilite.accueil"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "papiers",
+     "label": "Copies des papiers importants",
+     "validates": [
+      "finances.papiers"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "especes",
+     "label": "Des espèces d'avance",
+     "validates": [
+      "finances.especes"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "assurances",
+     "label": "Assurances vérifiées récemment",
+     "validates": [
+      "finances.assurances"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "fiches",
+     "label": "Fiches médicales des membres",
+     "validates": [
+      "sante.fiches"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "inventaire",
+     "label": "Inventaire des placards fait",
+     "validates": [
+      "alimentation.inventaire"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "rotation",
+     "label": "Rotation des stocks alimentaires",
+     "validates": [
+      "alimentation.rotation"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "cles",
+     "label": "Doubles des clés en lieu sûr",
+     "validates": [
+      "securite.cles"
+     ],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "competences",
+   "section": "Tes compétences",
+   "type": "multi",
+   "text": "Quelles compétences sont présentes dans le foyer (pratiquées ces deux dernières années) ?",
+   "help": "Répondre à cette question vaut bilan des compétences du foyer, même si tu ne coches rien.",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "psc1",
+     "label": "Premiers secours (PSC1)",
+     "validates": [
+      "sante.psc1"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "secourisme",
+     "label": "Secourisme avancé (PSE1",
+     "validates": [
+      "sante.secourisme_avance"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "feu",
+     "label": "Faire un feu en sécurité",
+     "validates": [
+      "competences.feu"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "eau",
+     "label": "Traiter une eau douteuse",
+     "validates": [
+      "eau.savoir_traiter"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "conserves",
+     "label": "Conserves",
+     "validates": [
+      "alimentation.conservation"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "potager",
+     "label": "Cultiver un potager",
+     "validates": [
+      "alimentation.potager_savoir"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "cuisine_stock",
+     "label": "Cuisiner avec ses seules réserves",
+     "validates": [
+      "competences.cuisine_stock"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "bricolage",
+     "label": "Petites réparations du logement",
+     "validates": [
+      "abri.reparations"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "orientation",
+     "label": "Orientation carte et boussole",
+     "validates": [
+      "mobilite.orientation"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "desescalade",
+     "label": "Gestion de conflit",
+     "validates": [
+      "securite.desescalade"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "radio",
+     "label": "Radioamateur",
+     "validates": [
+      "communication.licence"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "condition",
+     "label": "Marcher 15 km avec un sac",
+     "validates": [
+      "sante.condition"
+     ],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": [
+    "competences.bilan"
+   ]
+  },
+  {
+   "id": "epargne",
+   "section": "Tes finances",
+   "type": "single",
+   "text": "Combien de mois de dépenses courantes couvre ton épargne de précaution ?",
+   "help": "",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "0",
+     "label": "Aucune",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "lt1",
+     "label": "Moins d'un mois",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "1",
+     "label": "1 à 3 mois",
+     "validates": [
+      "finances.epargne_1m"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "3",
+     "label": "3 à 6 mois",
+     "validates": [
+      "finances.epargne_1m",
+      "finances.epargne_3m"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "6",
+     "label": "6 mois ou plus",
+     "validates": [
+      "finances.epargne_1m",
+      "finances.epargne_3m",
+      "finances.epargne_6m"
+     ],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "credit",
+   "section": "Tes finances",
+   "type": "single",
+   "text": "As-tu un crédit à la consommation en cours (hors immobilier) ?",
+   "help": "",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "oui",
+     "label": "Oui",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "non",
+     "label": "Non",
+     "validates": [
+      "finances.sans_credit_conso"
+     ],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "production",
+   "section": "Ton autonomie",
+   "type": "multi",
+   "text": "Qu'as-tu déjà sur ton terrain ?",
+   "help": "",
+   "unit": "",
+   "show_if": {
+    "context_in": [
+     "periurbain",
+     "rural"
+    ],
+    "tags_any": null,
+    "answer": null
+   },
+   "options": [
+    {
+     "value": "recuperateur",
+     "label": "Récupérateur d'eau de pluie (500 L ou plus)",
+     "validates": [
+      "eau.recuperateur"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "puits",
+     "label": "Puits",
+     "validates": [
+      "eau.source_autonome"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "potager",
+     "label": "Potager qui couvre au moins 20 % des légumes",
+     "validates": [
+      "alimentation.potager"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "groupe",
+     "label": "Groupe électrogène ou solaire de secours",
+     "validates": [
+      "energie.secours"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "solaire",
+     "label": "Installation solaire avec batteries",
+     "validates": [
+      "energie.solaire_fixe"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "bois",
+     "label": "Poêle à bois et un hiver de bois",
+     "validates": [
+      "energie.bois"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "toilettes_seches",
+     "label": "Toilettes sèches et compost",
+     "validates": [
+      "sante.assainissement"
+     ],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "reseau",
+   "section": "Ton réseau",
+   "type": "multi",
+   "text": "Et côté entourage ?",
+   "help": "",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "voisins",
+     "label": "Je connais au moins deux voisins par leur nom",
+     "validates": [
+      "communaute.voisins"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "fragiles",
+     "label": "Je sais qui est fragile autour de moi",
+     "validates": [
+      "communaute.fragiles"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "binome",
+     "label": "Un foyer ami avec qui on s'entraide",
+     "validates": [
+      "communaute.binome"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "groupe",
+     "label": "Un groupe d'entraide de plusieurs foyers",
+     "validates": [
+      "communaute.groupe"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "producteurs",
+     "label": "Je connais des producteurs locaux en direct",
+     "validates": [
+      "alimentation.circuit_court"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "engagement",
+     "label": "Je suis engagé localement (réserve",
+     "validates": [
+      "communaute.engagement"
+     ],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "objectif_niveau",
+   "section": "Tes objectifs",
+   "type": "single",
+   "text": "Quel palier veux-tu atteindre en priorité ?",
+   "help": "",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "3",
+     "label": "72 heures : faire face à une coupure courte",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_level": 3
+     }
+    },
+    {
+     "value": "4",
+     "label": "Deux semaines : tenir un confinement ou une crise locale",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_level": 4
+     }
+    },
+    {
+     "value": "5",
+     "label": "Trois mois : traverser une crise longue",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_level": 5
+     }
+    },
+    {
+     "value": "6",
+     "label": "Six mois et savoir-faire",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_level": 6
+     }
+    },
+    {
+     "value": "7",
+     "label": "Semi-autonomie : produire une partie de mes besoins",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_level": 7
+     }
+    },
+    {
+     "value": "8",
+     "label": "Autonomie complète et communauté",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_level": 8
+     }
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "horizon",
+   "section": "Tes objectifs",
+   "type": "single",
+   "text": "En combien de temps ?",
+   "help": "",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "3",
+     "label": "3 mois",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_horizon_months": 3
+     }
+    },
+    {
+     "value": "6",
+     "label": "6 mois",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_horizon_months": 6
+     }
+    },
+    {
+     "value": "12",
+     "label": "1 an",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_horizon_months": 12
+     }
+    },
+    {
+     "value": "24",
+     "label": "2 ans",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_horizon_months": 24
+     }
+    },
+    {
+     "value": "60",
+     "label": "5 ans",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_horizon_months": 60
+     }
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "axes_prioritaires",
+   "section": "Tes objectifs",
+   "type": "multi",
+   "text": "Sur quels axes veux-tu progresser en premier ?",
+   "help": "Ils remonteront en tête de ta checklist.",
+   "unit": "",
+   "show_if": null,
+   "options": [],
+   "options_from": "axes",
+   "sets_list": "priority_axes",
+   "creates_stock": null,
+   "answered_validates": []
+  }
+ ]
+}

@@ -33,7 +33,7 @@ def required_ids(catalog: Catalog, st: HouseholdState, upto: int) -> list[str]:
 
 def full_stock(st: HouseholdState, catalog: Catalog, days: float, expires_on: date | None = None) -> list[StockLine]:
     return [
-        StockLine(i, c.id, c.id, daily_need(catalog, c.id, st) * days, expires_on)
+        StockLine(str(i), c.id, c.id, daily_need(catalog, c.id, st) * days, expires_on)
         for i, c in enumerate(catalog.categories)
     ]
 
@@ -148,7 +148,7 @@ def test_priority_axes_come_first(catalog: Catalog) -> None:
 
 def test_autonomy_uses_household_needs(catalog: Catalog) -> None:
     st = state(members=[Member("adulte"), Member("enfant"), Member("animal")])
-    auto = compute_autonomy(catalog, st, [StockLine(1, "eau", "eau", 60)], TODAY)
+    auto = compute_autonomy(catalog, st, [StockLine("1", "eau", "eau", 60)], TODAY)
     assert auto["eau"].need_per_day == 3 + 2 + 1
     assert auto["eau"].days == 10
     assert auto["traitements"].days is None  # personne sous traitement
