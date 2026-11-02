@@ -1,0 +1,40 @@
+axis: finances
+objectives:
+  - id: finances.papiers
+    level: 2
+    title: Copies des papiers importants (papier et clé USB chiffrée)
+    revalidate_days: 730
+  - id: finances.especes
+    level: 3
+    title: Espèces en petites coupures (une semaine de dépenses)
+    why: Sans électricité, les paiements par carte s'arrêtent.
+    revalidate_days: 365
+  - id: finances.assurances
+    level: 3
+    title: Assurances vérifiées (habitation, catastrophes naturelles, responsabilité)
+    revalidate_days: 365
+  - id: finances.epargne_1m
+    level: 4
+    title: Épargne de précaution d'un mois de dépenses
+  - id: finances.epargne_3m
+    level: 5
+    title: Épargne de précaution de trois mois de dépenses
+  - id: finances.sans_credit_conso
+    level: 5
+    title: Aucun crédit à la consommation en cours
+  - id: finances.projet
+    level: 5
+    required: false
+    title: Plan de financement du projet de vie (par exemple un terrain)
+  - id: finances.epargne_6m
+    level: 6
+    title: Épargne de précaution de six mois de dépenses
+  - id: finances.charges
+    level: 6
+    title: Charges fixes réduites (abonnements, énergie, transport)
+  - id: finances.revenus
+    level: 7
+    title: Revenus diversifiés ou métier résilient
+  - id: finances.actifs
+    level: 8
+    title: Actifs tangibles utiles (outils, terre, matériel d'échange)

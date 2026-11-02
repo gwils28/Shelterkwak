@@ -1,0 +1,46 @@
+axis: securite
+objectives:
+  - id: securite.risques
+    level: 2
+    title: Connaître les risques de sa commune (DICRIM, Géorisques)
+    revalidate_days: 1095
+  - id: securite.alertes
+    level: 2
+    title: Recevoir les alertes officielles (FR-Alert activé, alertes de la préfecture)
+  - id: securite.plan_familial
+    level: 3
+    title: Plan familial d'urgence écrit (qui fait quoi, points de rendez-vous)
+    revalidate_days: 365
+  - id: securite.cles
+    level: 3
+    title: Doubles des clés et cache sûre pour les objets essentiels
+  - id: securite.exercice
+    level: 4
+    title: Exercice familial (24 h sans réseau ou évacuation chronométrée)
+    why: Un plan jamais testé est une hypothèse.
+    revalidate_days: 365
+  - id: securite.discretion
+    level: 4
+    required: false
+    title: Règle familiale de discrétion sur les réserves
+  - id: securite.logement
+    level: 5
+    title: Logement sécurisé (porte renforcée, serrures, éclairage extérieur)
+  - id: securite.incendie_ext
+    level: 5
+    requires_tags: [risque_incendie]
+    contexts: [periurbain, rural]
+    title: Débroussaillement réglementaire et plan de défense incendie
+    revalidate_days: 365
+  - id: securite.desescalade
+    level: 6
+    kind: skill
+    title: Gestion de conflit et désescalade
+    revalidate_days: 730
+  - id: securite.veille
+    level: 7
+    title: Veille de voisinage organisée
+  - id: securite.plan_commun
+    level: 8
+    title: Plan de sécurité partagé avec le réseau local
+    revalidate_days: 365

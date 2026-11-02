@@ -1,0 +1,36 @@
+# Les 8 tambours de la colonne, du socle au chapiteau.
+# Le niveau N+1 n'est atteint que si tous les objectifs requis applicables
+# des niveaux 2..N+1 sont validés (paliers bloquants).
+levels:
+  - n: 1
+    name: Vulnérable
+    horizon: "0"
+    summary: Dépend entièrement des flux quotidiens (eau courante, électricité, courses).
+  - n: 2
+    name: Éveillé
+    horizon: Bases
+    summary: Connaît ses risques, a ses papiers, ses contacts et un premier plan.
+  - n: 3
+    name: 72 heures
+    horizon: 3 jours
+    summary: Tient 3 jours sans eau courante, électricité ni ravitaillement.
+  - n: 4
+    name: Deux semaines
+    horizon: 14 jours
+    summary: Tient 14 jours confiné ou coupé du réseau.
+  - n: 5
+    name: Trois mois
+    horizon: 90 jours
+    summary: Traverse 3 mois de rupture partielle ; épargne de précaution.
+  - n: 6
+    name: Six mois & savoir-faire
+    horizon: 180 jours
+    summary: Six mois de réserves et des compétences pratiques entretenues.
+  - n: 7
+    name: Semi-autonome
+    horizon: Production
+    summary: Produit une partie de son eau, de sa nourriture et de son énergie.
+  - n: 8
+    name: Autonome & résilient
+    horizon: Durable
+    summary: Autonomie forte, intégré à une communauté d'entraide, transmet.

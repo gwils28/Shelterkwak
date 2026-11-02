@@ -1,0 +1,31 @@
+axes:
+  - {id: eau, name: Eau, icon: "💧"}
+  - {id: alimentation, name: Alimentation, icon: "🥫"}
+  - {id: energie, name: Énergie, icon: "🔋"}
+  - {id: sante, name: Santé & hygiène, icon: "⛑️"}
+  - {id: abri, name: Habitat & chauffage, icon: "🏠"}
+  - {id: securite, name: Sécurité & protection, icon: "🛡️"}
+  - {id: communication, name: Information & communication, icon: "📻"}
+  - {id: mobilite, name: Mobilité & évacuation, icon: "🧭"}
+  - {id: competences, name: Savoirs & compétences, icon: "🛠️"}
+  - {id: finances, name: Finances & administratif, icon: "📁"}
+  - {id: communaute, name: Réseau & entraide, icon: "🤝"}
+
+contexts:
+  - {id: appartement, name: Appartement en ville}
+  - {id: periurbain, name: Maison périurbaine}
+  - {id: rural, name: Rural / ferme}
+
+member_types:
+  - {id: adulte, name: Adulte}
+  - {id: senior, name: Senior (70 ans et +)}
+  - {id: enfant, name: Enfant (3-12 ans)}
+  - {id: bebe, name: Bébé (moins de 3 ans)}
+  - {id: animal, name: Animal}
+
+# Tags déduits automatiquement des membres du foyer
+member_tags:
+  enfant: enfants
+  bebe: bebe
+  senior: seniors
+  animal: animaux

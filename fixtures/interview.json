@@ -1,0 +1,177 @@
+[
+ {
+  "name": "appartement, réponses complètes",
+  "context": "appartement",
+  "members": [
+   {
+    "name": "Alex",
+    "type": "adulte",
+    "medical": false
+   },
+   {
+    "name": "Sam",
+    "type": "adulte",
+    "medical": false
+   }
+  ],
+  "answers": {
+   "risques": [
+    "inondation",
+    "froid"
+   ],
+   "vehicule": "oui",
+   "eau_litres": 18,
+   "vivres_jours": 7,
+   "cuisson_jours": 0,
+   "equipement": [
+    "lampes",
+    "trousse",
+    "pastilles"
+   ],
+   "organisation": [
+    "coupures",
+    "alertes"
+   ],
+   "competences": [],
+   "epargne": "3",
+   "credit": "non",
+   "production": [
+    "puits"
+   ],
+   "objectif_niveau": "5",
+   "horizon": "24",
+   "axes_prioritaires": [
+    "eau",
+    "inconnu",
+    "sante"
+   ]
+  },
+  "expected": {
+   "tags": [
+    "risque_froid",
+    "risque_inondation",
+    "vehicule"
+   ],
+   "validates": [
+    "abri.coupures",
+    "competences.bilan",
+    "eau.pastilles",
+    "eau.robinet_arret",
+    "energie.lampes",
+    "finances.epargne_1m",
+    "finances.epargne_3m",
+    "finances.sans_credit_conso",
+    "sante.trousse",
+    "securite.alertes",
+    "securite.risques"
+   ],
+   "sets": {
+    "goal_level": 5,
+    "goal_horizon_months": 24
+   },
+   "lists": {
+    "priority_axes": [
+     "eau",
+     "sante"
+    ]
+   },
+   "stock": [
+    {
+     "name": "Eau stockée (estimation de l'interview)",
+     "category": "eau",
+     "quantity": 18.0,
+     "unit_label": "L",
+     "amount_per_unit": 1.0
+    },
+    {
+     "name": "Placards (estimation de l'interview)",
+     "category": "alimentation",
+     "quantity": 7.0,
+     "unit_label": "jour foyer",
+     "amount_per_unit": 4400.0
+    }
+   ]
+  }
+ },
+ {
+  "name": "rural avec traitement et bébé",
+  "context": "rural",
+  "members": [
+   {
+    "name": "A",
+    "type": "adulte",
+    "medical": true
+   },
+   {
+    "name": "B",
+    "type": "bebe",
+    "medical": false
+   }
+  ],
+  "answers": {
+   "vivres_jours": 2.5,
+   "traitements_jours": 45,
+   "production": [
+    "puits",
+    "potager"
+   ],
+   "reseau": [
+    "voisins"
+   ]
+  },
+  "expected": {
+   "tags": [],
+   "validates": [
+    "alimentation.potager",
+    "communaute.voisins",
+    "eau.source_autonome"
+   ],
+   "sets": {},
+   "lists": {},
+   "stock": [
+    {
+     "name": "Placards (estimation de l'interview)",
+     "category": "alimentation",
+     "quantity": 2.5,
+     "unit_label": "jour foyer",
+     "amount_per_unit": 3100.0
+    },
+    {
+     "name": "Traitements (estimation de l'interview)",
+     "category": "traitements",
+     "quantity": 45.0,
+     "unit_label": "jour",
+     "amount_per_unit": 1.0
+    }
+   ]
+  }
+ },
+ {
+  "name": "réponses vides",
+  "context": "periurbain",
+  "members": [
+   {
+    "name": "Alex",
+    "type": "adulte",
+    "medical": false
+   },
+   {
+    "name": "Sam",
+    "type": "adulte",
+    "medical": false
+   }
+  ],
+  "answers": {
+   "risques": [],
+   "eau_litres": null,
+   "traitements_jours": 10
+  },
+  "expected": {
+   "tags": [],
+   "validates": [],
+   "sets": {},
+   "lists": {},
+   "stock": []
+  }
+ }
+]

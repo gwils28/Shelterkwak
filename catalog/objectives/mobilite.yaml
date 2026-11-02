@@ -1,0 +1,40 @@
+axis: mobilite
+objectives:
+  - id: mobilite.itineraires
+    level: 2
+    title: Deux itinéraires d'évacuation et un lieu de rassemblement connus
+  - id: mobilite.sac
+    level: 3
+    title: Sac d'évacuation 72 h prêt pour chaque membre
+    revalidate_days: 180
+  - id: mobilite.vehicule
+    level: 4
+    requires_tags: [vehicule]
+    title: Réservoir jamais sous la moitié et kit véhicule (couverture, eau, câbles)
+    revalidate_days: 180
+  - id: mobilite.velo
+    level: 4
+    required: false
+    title: Vélo en état et kit de réparation
+  - id: mobilite.accueil
+    level: 5
+    title: Lieu d'accueil convenu hors de la zone (famille, amis)
+    revalidate_days: 365
+  - id: mobilite.carburant
+    level: 5
+    requires_tags: [vehicule]
+    title: Réserve de carburant stockée en sécurité et renouvelée
+    revalidate_days: 365
+  - id: mobilite.orientation
+    level: 6
+    kind: skill
+    title: S'orienter avec carte et boussole
+    revalidate_days: 730
+  - id: mobilite.repli
+    level: 7
+    contexts: [appartement, periurbain]
+    title: Lieu de repli préparé et pré-approvisionné
+  - id: mobilite.sans_fossile
+    level: 8
+    required: false
+    title: Mobilité sans carburant fossile (vélo cargo, VAE rechargé au solaire)

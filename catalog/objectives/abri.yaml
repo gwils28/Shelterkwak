@@ -1,0 +1,44 @@
+axis: abri
+objectives:
+  - id: abri.coupures
+    level: 2
+    title: Savoir couper le gaz et l'électricité (vanne, tableau électrique)
+  - id: abri.chaleur
+    level: 3
+    title: Couvertures de survie, sacs de couchage ou vêtements chauds pour chacun
+  - id: abri.detecteurs
+    level: 3
+    title: Détecteurs de fumée (et de CO si combustion) installés et testés
+    revalidate_days: 365
+  - id: abri.extincteur
+    level: 3
+    title: Extincteur et couverture anti-feu
+    revalidate_days: 365
+  - id: abri.calfeutrage
+    level: 4
+    title: Kit de confinement (bâches, ruban adhésif, film plastique)
+    why: En cas d'accident industriel, la consigne est de se confiner en calfeutrant.
+  - id: abri.chauffage_appoint
+    level: 4
+    requires_tags: [risque_froid]
+    title: Chauffage d'appoint sûr hors réseau, avec ventilation et détecteur de CO
+  - id: abri.reparations
+    level: 5
+    kind: skill
+    title: Outillage de base et petites réparations (plomberie, électricité, menuiserie)
+    revalidate_days: 730
+  - id: abri.inondation
+    level: 5
+    requires_tags: [risque_inondation]
+    title: Plan anti-inondation (batardeaux, objets de valeur surélevés)
+  - id: abri.piece_refuge
+    level: 6
+    title: Pièce refuge aménagée (confinement, chaleur, réserves à portée)
+  - id: abri.isolation
+    level: 7
+    contexts: [periurbain, rural]
+    title: Logement isolé et chauffable avec une source autonome
+  - id: abri.resilient
+    level: 8
+    contexts: [periurbain, rural]
+    title: Habitat résilient - autonomie thermique et matériaux de réparation stockés
