@@ -1,12 +1,12 @@
 import { NavLink, Navigate, Route, Routes } from "react-router-dom";
-import { ApiError } from "./api";
-import { useDashboard } from "./hooks";
+import { SyncBadge } from "./components/SyncBadge";
 import { DashboardPage } from "./pages/Dashboard";
 import { HistoryPage } from "./pages/History";
 import { HouseholdPage } from "./pages/Household";
 import { InventoryPage } from "./pages/Inventory";
 import { ObjectivesPage } from "./pages/Objectives";
 import { OnboardingPage } from "./pages/Onboarding";
+import { useFoyer } from "./store/hooks";
 
 const NAV = [
   { to: "/", label: "Colonne" },
@@ -17,20 +17,9 @@ const NAV = [
 ];
 
 export function App() {
-  const dashboard = useDashboard();
-  const noHousehold = dashboard.error instanceof ApiError && dashboard.error.status === 404;
+  const foyer = useFoyer();
 
-  if (dashboard.isLoading) return <div className="splash">Chargement…</div>;
-  if (dashboard.error && !noHousehold)
-    return (
-      <div className="splash error">
-        Impossible de joindre le serveur : {dashboard.error.message}
-        <br />
-        Lance le backend avec <code>make dev</code>.
-      </div>
-    );
-
-  if (noHousehold)
+  if (!foyer.dashboard)
     return (
       <Routes>
         <Route path="/bienvenue" element={<OnboardingPage />} />
@@ -46,8 +35,9 @@ export function App() {
             ▥
           </span>
           Shelterkwak
-          <span className="brand-household">{dashboard.data?.household.name}</span>
+          <span className="brand-household">{foyer.dashboard.household.name}</span>
         </div>
+        <SyncBadge sync={foyer.sync} />
         <nav>
           {NAV.map((n) => (
             <NavLink key={n.to} to={n.to} end={n.to === "/"}>

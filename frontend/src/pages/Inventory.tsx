@@ -1,9 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { type StockIn, type StockItem, api } from "../api";
 import { AutonomyCards } from "../components/AutonomyCards";
-import { useAction, useCatalog, useDashboard } from "../hooks";
-import { formatDate, formatNumber, today, unitLabel } from "../lib/format";
+import { addDays } from "../engine/dates";
+import { formatDate, formatNumber, unitLabel } from "../lib/format";
+import type { StockData } from "../model";
+import { actions, useFoyer } from "../store/hooks";
+
+type StockIn = Omit<StockData, "id">;
 
 const EMPTY: StockIn = { name: "", category: "eau", quantity: 1, unit_label: "", amount_per_unit: 1, expires_on: null };
 
@@ -16,29 +18,24 @@ const HINTS: Record<string, string> = {
 };
 
 export function InventoryPage() {
-  const catalog = useCatalog();
-  const dashboard = useDashboard();
-  const stock = useQuery({ queryKey: ["stock"], queryFn: api.stock });
+  const { catalog, dashboard, state, today: now } = useFoyer();
   const [form, setForm] = useState<StockIn>(EMPTY);
-  const [editing, setEditing] = useState<number | null>(null);
-  const save = useAction((body: StockIn) => (editing ? api.updateStock(editing, body) : api.addStock(body)));
-  const remove = useAction((id: number) => api.deleteStock(id));
+  const [editing, setEditing] = useState<string | null>(null);
 
-  if (!catalog.data || !stock.data || !dashboard.data) return null;
-  const categories = Object.fromEntries(catalog.data.categories.map((c) => [c.id, c]));
-  const now = today();
-  const soon = new Date(Date.now() + 30 * 86400_000).toISOString().slice(0, 10);
+  if (!dashboard) return null;
+  const categories = Object.fromEntries(catalog.categories.map((c) => [c.id, c]));
+  const soon = addDays(now, 30);
+  const stock = [...state.stock.values()].sort(
+    (a, b) => a.category.localeCompare(b.category) || (a.expires_on ?? "9999").localeCompare(b.expires_on ?? "9999"),
+  );
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    save.mutate(form, {
-      onSuccess: () => {
-        setForm({ ...EMPTY, category: form.category });
-        setEditing(null);
-      },
-    });
+    void actions.upsertStock({ ...form, id: editing ?? undefined });
+    setForm({ ...EMPTY, category: form.category });
+    setEditing(null);
   };
-  const edit = (s: StockItem) => {
+  const edit = (s: StockData) => {
     setEditing(s.id);
     setForm({ name: s.name, category: s.category, quantity: s.quantity, unit_label: s.unit_label, amount_per_unit: s.amount_per_unit, expires_on: s.expires_on });
   };
@@ -49,7 +46,7 @@ export function InventoryPage() {
       <section className="panel">
         <h2>Autonomie du foyer</h2>
         <p className="hint">Calculée sur les articles non périmés et les besoins journaliers de chaque membre. Repères : 3 j, 14 j, 3 mois, 6 mois.</p>
-        <AutonomyCards autonomy={dashboard.data.autonomy} />
+        <AutonomyCards autonomy={dashboard.autonomy} />
       </section>
 
       <section className="panel">
@@ -58,7 +55,7 @@ export function InventoryPage() {
           <label className="field">
             Catégorie
             <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>
-              {catalog.data.categories.map((c) => (
+              {catalog.categories.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.name}
                 </option>
@@ -91,18 +88,17 @@ export function InventoryPage() {
                 Annuler
               </button>
             )}
-            <button className="primary" disabled={save.isPending}>
+            <button className="primary">
               {editing ? "Enregistrer" : "Ajouter"}
             </button>
           </div>
         </form>
         <p className="hint">{HINTS[form.category]}</p>
-        {save.error && <p className="warn-text">{save.error.message}</p>}
       </section>
 
       <section className="panel">
-        <h2>Articles ({stock.data.length})</h2>
-        {stock.data.length === 0 ? (
+        <h2>Articles ({stock.length})</h2>
+        {stock.length === 0 ? (
           <p className="empty">Inventaire vide.</p>
         ) : (
           <div className="table-wrap">
@@ -118,7 +114,7 @@ export function InventoryPage() {
                 </tr>
               </thead>
               <tbody>
-                {stock.data.map((s) => {
+                {stock.map((s) => {
                   const state = s.expires_on && s.expires_on < now ? "expired" : s.expires_on && s.expires_on <= soon ? "expiring" : "";
                   const cat = categories[s.category];
                   return (
@@ -140,7 +136,7 @@ export function InventoryPage() {
                         <button className="link" onClick={() => edit(s)}>
                           Modifier
                         </button>
-                        <button className="link danger" onClick={() => remove.mutate(s.id)}>
+                        <button className="link danger" onClick={() => void actions.deleteStock(s.id)}>
                           Retirer
                         </button>
                       </td>

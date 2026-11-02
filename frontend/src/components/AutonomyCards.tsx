@@ -1,4 +1,4 @@
-import type { Autonomy } from "../api";
+import type { Autonomy } from "../model";
 import { MILESTONES, formatDays, formatNumber, gaugePosition, unitLabel } from "../lib/format";
 
 export function AutonomyCards({ autonomy }: { autonomy: Autonomy[] }) {

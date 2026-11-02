@@ -1,10 +1,12 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
-import { type Answer, type ContextId, type Dashboard, type MemberIn, type Question, api } from "../api";
 import { Column, romanNumeral } from "../components/Column";
 import { MembersEditor } from "../components/MembersEditor";
-import { useCatalog } from "../hooks";
+import { CATALOG } from "../engine/catalog";
+import { type Answer, questionOptions } from "../engine/interview";
+import type { ContextId, Question } from "../engine/types";
 import { visibleSections } from "../lib/interview";
+import type { Dashboard, MemberIn } from "../model";
+import { actions, buildOnboarding, type OnboardingPayload, previewOnboarding } from "../store/hooks";
 
 type Step = "foyer" | "contexte" | "interview" | "resultat";
 
@@ -15,8 +17,7 @@ const CONTEXT_HELP: Record<ContextId, string> = {
 };
 
 export function OnboardingPage() {
-  const catalog = useCatalog();
-  const interview = useQuery({ queryKey: ["interview"], queryFn: api.interview, staleTime: Infinity });
+  const catalog = CATALOG;
   const [step, setStep] = useState<Step>("foyer");
   const [name, setName] = useState("Mon foyer");
   const [members, setMembers] = useState<MemberIn[]>([{ name: "", type: "adulte", medical: false }]);
@@ -25,43 +26,29 @@ export function OnboardingPage() {
   const [targetDate, setTargetDate] = useState("");
   const [answers, setAnswers] = useState<Record<string, Answer>>({});
   const [sectionIndex, setSectionIndex] = useState(0);
-  const [result, setResult] = useState<Dashboard | null>(null);
-  const [pending, setPending] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const queryClient = useQueryClient();
+  const [result, setResult] = useState<{ payload: OnboardingPayload; dashboard: Dashboard } | null>(null);
 
-  const sections = useMemo(
-    () => visibleSections(interview.data ?? [], answers, context, members),
-    [interview.data, answers, context, members],
-  );
-
-  if (!catalog.data || !interview.data) return <div className="splash">Chargement…</div>;
+  const sections = useMemo(() => visibleSections(catalog, answers, context, members), [catalog, answers, context, members]);
 
   const membersOk = members.some((m) => m.type !== "animal") && members.every((m) => m.name.trim());
   const section = sections[Math.min(sectionIndex, sections.length - 1)];
 
-  const finish = async () => {
-    setPending(true);
-    setError(null);
-    try {
-      const dashboard = await api.onboarding({
+  const finish = () => {
+    const payload = buildOnboarding(
+      {
         name: name.trim() || "Mon foyer",
         context,
         target_context: target || null,
         target_date: target && targetDate ? targetDate : null,
         members: members.map((m) => ({ ...m, name: m.name.trim() })),
-        answers,
-      });
-      setResult(dashboard);
-      setStep("resultat");
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setPending(false);
-    }
+      },
+      answers,
+    );
+    setResult({ payload, dashboard: previewOnboarding(payload) });
+    setStep("resultat");
   };
-  // Rafraîchir les données fait basculer l'application sur le tableau de bord.
-  const openDashboard = () => queryClient.invalidateQueries();
+  // Enregistrer l'interview fait basculer l'application sur la colonne.
+  const openDashboard = () => result && void actions.commitOnboarding(result.payload);
 
   return (
     <div className="onboarding">
@@ -87,7 +74,7 @@ export function OnboardingPage() {
             Nom du foyer
             <input value={name} onChange={(e) => setName(e.target.value)} />
           </label>
-          <MembersEditor members={members} onChange={setMembers} types={catalog.data.member_types} />
+          <MembersEditor members={members} onChange={setMembers} types={catalog.member_types} />
           <div className="actions">
             <button className="primary" disabled={!membersOk} onClick={() => setStep("contexte")}>
               Continuer
@@ -100,7 +87,7 @@ export function OnboardingPage() {
         <section className="panel">
           <h2>Où vis-tu aujourd'hui ?</h2>
           <div className="cards">
-            {catalog.data.contexts.map((c) => (
+            {catalog.contexts.map((c) => (
               <button
                 key={c.id}
                 className={`card-choice${context === c.id ? " selected" : ""}`}
@@ -121,7 +108,7 @@ export function OnboardingPage() {
               Contexte visé
               <select value={target} onChange={(e) => setTarget(e.target.value as ContextId | "")}>
                 <option value="">Pas de projet</option>
-                {catalog.data.contexts
+                {catalog.contexts
                   .filter((c) => c.id !== context)
                   .map((c) => (
                     <option key={c.id} value={c.id}>
@@ -152,7 +139,7 @@ export function OnboardingPage() {
             Étape {Math.min(sectionIndex, sections.length - 1) + 1} sur {sections.length} · {section.section}
           </div>
           {section.questions.map((q) => (
-            <QuestionField key={q.id} q={q} value={answers[q.id] ?? null} onChange={(v) => setAnswers({ ...answers, [q.id]: v })} />
+            <QuestionField key={q.id} q={q} options={questionOptions(catalog, q)} value={answers[q.id] ?? null} onChange={(v) => setAnswers({ ...answers, [q.id]: v })} />
           ))}
           <div className="actions">
             <button onClick={() => (sectionIndex === 0 ? setStep("contexte") : setSectionIndex(sectionIndex - 1))}>Retour</button>
@@ -161,30 +148,31 @@ export function OnboardingPage() {
                 Suivant
               </button>
             ) : (
-              <button className="primary" disabled={pending} onClick={finish}>
+              <button className="primary" onClick={finish}>
                 Estimer mon niveau
               </button>
             )}
           </div>
-          {error && <p className="warn-text">{error}</p>}
         </section>
       )}
 
-      {step === "resultat" && result && (
+      {step === "resultat" && result && (() => {
+        const r = result.dashboard;
+        return (
         <section className="panel result">
           <div className="result-column">
-            <Column tiers={result.tiers} level={result.level} goalLevel={result.household.goal_level} />
+            <Column tiers={r.tiers} level={r.level} goalLevel={r.household.goal_level} />
           </div>
           <div>
-            <div className="level-badge big">{romanNumeral(result.level)}</div>
+            <div className="level-badge big">{romanNumeral(r.level)}</div>
             <h2>
-              Niveau {result.level} : {result.level_info.name}
+              Niveau {r.level} : {r.level_info.name}
             </h2>
-            <p>{result.level_info.summary}</p>
-            {result.next_level_info && (
+            <p>{r.level_info.summary}</p>
+            {r.next_level_info && (
               <p>
-                Pour poser le tambour suivant (<strong>{result.next_level_info.name}</strong>), il te reste{" "}
-                {result.checklist.filter((i) => i.kind === "blocking").length} objectif(s) à valider. Ils t'attendent dans ta
+                Pour poser le tambour suivant (<strong>{r.next_level_info.name}</strong>), il te reste{" "}
+                {r.checklist.filter((i) => i.kind === "blocking").length} objectif(s) à valider. Ils t'attendent dans ta
                 checklist.
               </p>
             )}
@@ -196,12 +184,23 @@ export function OnboardingPage() {
             </div>
           </div>
         </section>
-      )}
+        );
+      })()}
     </div>
   );
 }
 
-function QuestionField({ q, value, onChange }: { q: Question; value: Answer; onChange: (v: Answer) => void }) {
+function QuestionField({
+  q,
+  options,
+  value,
+  onChange,
+}: {
+  q: Question;
+  options: { value: string; label: string }[];
+  value: Answer;
+  onChange: (v: Answer) => void;
+}) {
   const list = Array.isArray(value) ? value : [];
   return (
     <fieldset className="question">
@@ -220,7 +219,7 @@ function QuestionField({ q, value, onChange }: { q: Question; value: Answer; onC
       )}
       {q.type !== "number" && (
         <div className={`options ${q.type}`}>
-          {q.options.map((o) => {
+          {options.map((o) => {
             const checked = q.type === "multi" ? list.includes(o.value) : value === o.value;
             return (
               <label key={o.value} className={`option${checked ? " checked" : ""}`}>

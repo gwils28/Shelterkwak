@@ -1,7 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { type Snapshot, api } from "../api";
-import { useCatalog } from "../hooks";
+import { useMemo } from "react";
+import { CATALOG } from "../engine/catalog";
+import { history as buildHistory, type Snapshot } from "../engine/replay";
 import { formatDate } from "../lib/format";
+import { useFoyer } from "../store/hooks";
 
 const EVENT_ICON: Record<string, string> = {
   level_changed: "▥",
@@ -12,25 +13,33 @@ const EVENT_ICON: Record<string, string> = {
   stock_removed: "−",
   household_updated: "⌂",
   context_changed: "⇄",
-  onboarding_completed: "★",
+  onboarding: "★",
+  reset: "⟲",
+  "household.set": "⌂",
+  "validation.set": "✓",
+  "validation.delete": "✕",
+  "stock.upsert": "+",
+  "stock.delete": "−",
+  "custom.upsert": "✎",
+  "custom.delete": "✕",
 };
 
 export function HistoryPage() {
-  const catalog = useCatalog();
-  const history = useQuery({ queryKey: ["history"], queryFn: api.history });
-  if (!history.data || !catalog.data) return null;
+  const { ops, today } = useFoyer();
+  const h = useMemo(() => buildHistory(CATALOG, ops, today), [ops, today]);
+  const journal = useMemo(() => [...h.journal].reverse(), [h]);
   return (
     <div className="page">
       <h1>Historique</h1>
       <section className="panel">
         <h2>Évolution du niveau</h2>
-        <LevelChart snapshots={history.data.snapshots} names={catalog.data.levels.map((l) => l.name)} />
+        <LevelChart snapshots={h.snapshots} names={CATALOG.levels.map((l) => l.name)} />
       </section>
       <section className="panel">
         <h2>Journal</h2>
         <ul className="journal">
-          {history.data.events.map((e) => (
-            <li key={e.id} className={e.type}>
+          {journal.map((e, i) => (
+            <li key={`${e.op_id ?? e.at}-${i}`} className={e.type}>
               <span className="journal-icon">{EVENT_ICON[e.type] ?? "•"}</span>
               <span className="journal-date">{new Date(e.at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}</span>
               <span>{e.message}</span>
@@ -70,7 +79,7 @@ export function LevelChart({ snapshots, names }: { snapshots: Snapshot[]; names:
       ))}
       <path d={d} className="line" />
       {snapshots.map((s) => (
-        <circle key={s.id} cx={x(new Date(s.at).getTime())} cy={y(s.level)} r={4} className="dot">
+        <circle key={`${s.at}-${s.level}`} cx={x(new Date(s.at).getTime())} cy={y(s.level)} r={4} className="dot">
           <title>{`${formatDate(s.at)} : niveau ${s.level} — ${s.cause}`}</title>
         </circle>
       ))}

@@ -1,4 +1,4 @@
-import type { Tier } from "../api";
+import type { Tier } from "../model";
 import { COLUMN, columnHeight, crackPath, drumGeometry } from "../lib/column";
 
 interface Props {

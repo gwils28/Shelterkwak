@@ -1,4 +1,4 @@
-import type { Dashboard } from "../api";
+import type { Dashboard } from "../model";
 
 export function AxisLevels({ axes, level }: { axes: Dashboard["axis_levels"]; level: number }) {
   const weakest = Math.min(...axes.map((a) => a.level));

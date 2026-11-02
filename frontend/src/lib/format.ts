@@ -1,4 +1,4 @@
-import type { Status } from "../api";
+import type { Status } from "../engine/types";
 
 export const STATUS_LABEL: Record<Status, string> = {
   na: "Non applicable",

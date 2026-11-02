@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import type { Axis, ChecklistItem, ChecklistKind } from "../api";
-import { useToggleObjective } from "../hooks";
+import type { Axis, ChecklistItem, ChecklistKind } from "../model";
+import { actions } from "../store/hooks";
 
 const GROUPS: { kinds: ChecklistKind[]; title: string; tone: string }[] = [
   { kinds: ["revalidate"], title: "À revalider", tone: "warn" },
@@ -18,7 +18,6 @@ interface Props {
 }
 
 export function Checklist({ items, axes, nextLevelName, limit = 8 }: Props) {
-  const toggle = useToggleObjective();
   const axisById = Object.fromEntries(axes.map((a) => [a.id, a]));
 
   if (items.length === 0) return <p className="empty">Rien à faire pour l'instant : la colonne est solide.</p>;
@@ -45,8 +44,7 @@ export function Checklist({ items, axes, nextLevelName, limit = 8 }: Props) {
                       <button
                         className="tick"
                         title={i.kind === "revalidate" ? "Revalider aujourd'hui" : "Marquer comme fait"}
-                        disabled={toggle.isPending}
-                        onClick={() => toggle.mutate({ id: i.objective_id!, done: false })}
+                        onClick={() => void actions.validate(i.objective_id!)}
                       >
                         {i.kind === "revalidate" ? "↻" : "✓"}
                       </button>

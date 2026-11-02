@@ -3,13 +3,12 @@ import { AutonomyCards } from "../components/AutonomyCards";
 import { AxisLevels } from "../components/AxisLevels";
 import { Checklist } from "../components/Checklist";
 import { Column, romanNumeral } from "../components/Column";
-import { useCatalog, useDashboard } from "../hooks";
+import { useFoyer } from "../store/hooks";
 
 export function DashboardPage() {
-  const { data } = useDashboard();
-  const catalog = useCatalog();
+  const { dashboard: data, catalog } = useFoyer();
   const navigate = useNavigate();
-  if (!data || !catalog.data) return null;
+  if (!data) return null;
 
   const h = data.household;
   const current = data.tiers.find((t) => t.state === "current");
@@ -40,7 +39,7 @@ export function DashboardPage() {
               <p className="goal">
                 {data.level >= goal
                   ? `🎯 Objectif atteint : niveau ${goal}. Vise plus haut depuis l'onglet Foyer.`
-                  : `🎯 Objectif : niveau ${goal} (${catalog.data.levels[goal - 1].name})${h.goal_horizon_months ? ` d'ici ${h.goal_horizon_months} mois` : ""} — encore ${goal - data.level} palier(s).`}
+                  : `🎯 Objectif : niveau ${goal} (${catalog.levels[goal - 1].name})${h.goal_horizon_months ? ` d'ici ${h.goal_horizon_months} mois` : ""} — encore ${goal - data.level} palier(s).`}
               </p>
             )}
             {alerts > 0 && <p className="warn-text">⚠ {alerts} élément(s) expiré(s) ou périmé(s) fragilisent la colonne.</p>}
@@ -49,7 +48,7 @@ export function DashboardPage() {
 
         <section className="panel">
           <h2>Ta checklist</h2>
-          <Checklist items={data.checklist} axes={catalog.data.axes} nextLevelName={data.next_level_info?.name} />
+          <Checklist items={data.checklist} axes={catalog.axes} nextLevelName={data.next_level_info?.name} />
         </section>
 
         <section className="panel">

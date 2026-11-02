@@ -851,3 +851,71 @@ tr.expiring td {
     grid-column: 2;
   }
 }
+
+/* ---------- v2 : synchro, objectifs perso, sauvegarde ---------- */
+.sync-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: var(--muted);
+  background: var(--bg);
+}
+.sync-badge .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ghost);
+}
+.sync-badge.ok .dot {
+  background: var(--ok);
+}
+.sync-badge.warn {
+  color: var(--warn);
+}
+.sync-badge.warn .dot {
+  background: var(--warn);
+}
+.topbar .sync-badge {
+  margin-right: auto;
+}
+@media (max-width: 640px) {
+  .topbar .sync-badge {
+    margin-right: 0;
+  }
+}
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.page-head h1 {
+  margin: 0;
+}
+.badge.perso {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.custom-form {
+  border-color: var(--accent);
+}
+.custom-form .options {
+  margin-top: 4px;
+}
+.actions.start {
+  justify-content: flex-start;
+}
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 7px 14px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}

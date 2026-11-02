@@ -1,4 +1,4 @@
-import type { MemberIn, NamedId } from "../api";
+import type { MemberIn, NamedId } from "../model";
 
 interface Props {
   members: MemberIn[];

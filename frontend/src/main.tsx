@@ -1,20 +1,26 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
+import { store } from "./store/store";
 import "./styles.css";
 
-const queryClient = new QueryClient({
-  defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
-});
+const root = createRoot(document.getElementById("root")!);
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </QueryClientProvider>
-  </StrictMode>,
-);
+store
+  .init()
+  .then(() => {
+    // Demande à Android de ne pas effacer les données de l'app en cas de manque d'espace.
+    void navigator.storage?.persist?.();
+    store.startAutoSync();
+    root.render(
+      <StrictMode>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </StrictMode>,
+    );
+  })
+  .catch((e: Error) => {
+    root.render(<div className="splash error">Stockage local indisponible sur ce navigateur : {e.message}</div>);
+  });

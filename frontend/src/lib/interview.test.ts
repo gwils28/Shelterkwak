@@ -1,42 +1,28 @@
 import { describe, expect, it } from "vitest";
-import type { Question } from "../api";
-import { isVisible, tagsFromMembers, visibleSections } from "./interview";
+import { CATALOG } from "../engine/catalog";
+import { visibleSections } from "./interview";
 
-const q = (id: string, section: string, show_if: Question["show_if"] = null, options: Question["options"] = []): Question => ({
-  id,
-  section,
-  type: "multi",
-  text: id,
-  help: "",
-  unit: "",
-  show_if,
-  options,
-});
+const ids = (s: ReturnType<typeof visibleSections>) => s.flatMap((x) => x.questions.map((q) => q.id));
 
-describe("interview", () => {
-  it("dérive les tags des membres", () => {
-    const tags = tagsFromMembers([
-      { name: "a", type: "adulte", medical: true },
-      { name: "b", type: "bebe", medical: false },
-    ]);
-    expect([...tags].sort()).toEqual(["bebe", "traitement_medical"]);
+describe("interview : questions visibles", () => {
+  it("masque les questions de terrain en appartement", () => {
+    const flat = ids(visibleSections(CATALOG, {}, "appartement", [{ name: "a", type: "adulte", medical: false }]));
+    expect(flat).not.toContain("production");
+    expect(ids(visibleSections(CATALOG, {}, "rural", [{ name: "a", type: "adulte", medical: false }]))).toContain("production");
   });
 
-  it("filtre par contexte, tags et réponse", () => {
-    expect(isVisible(q("x", "s", { context_in: ["rural"] }), {}, "appartement", new Set())).toBe(false);
-    expect(isVisible(q("x", "s", { tags_any: ["vehicule"] }), {}, "rural", new Set(["vehicule"]))).toBe(true);
-    expect(isVisible(q("x", "s", { answer: { question: "a", includes: "oui" } }), { a: ["oui"] }, "rural", new Set())).toBe(true);
+  it("pose la question des traitements seulement si un membre est sous traitement", () => {
+    expect(ids(visibleSections(CATALOG, {}, "appartement", [{ name: "a", type: "adulte", medical: false }]))).not.toContain(
+      "traitements_jours",
+    );
+    expect(ids(visibleSections(CATALOG, {}, "appartement", [{ name: "a", type: "adulte", medical: true }]))).toContain(
+      "traitements_jours",
+    );
   });
 
-  it("regroupe par section et applique les tags issus des réponses", () => {
-    const questions = [
-      q("vehicule", "Env", null, [{ value: "oui", label: "Oui", tags: ["vehicule"] }]),
-      q("carburant", "Env", { tags_any: ["vehicule"] }),
-      q("eau", "Réserves"),
-    ];
-    const without = visibleSections(questions, {}, "appartement", []);
-    expect(without.map((s) => s.questions.length)).toEqual([1, 1]);
-    const withCar = visibleSections(questions, { vehicule: "oui" }, "appartement", []);
-    expect(withCar[0].questions.map((x) => x.id)).toEqual(["vehicule", "carburant"]);
+  it("regroupe par section dans l'ordre du questionnaire", () => {
+    const sections = visibleSections(CATALOG, {}, "appartement", [{ name: "a", type: "adulte", medical: false }]);
+    expect(sections[0].section).toBe("Ton environnement");
+    expect(new Set(sections.map((s) => s.section)).size).toBe(sections.length);
   });
 });
