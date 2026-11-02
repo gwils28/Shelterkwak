@@ -124,6 +124,7 @@ def _replace_members(session: Session, members: list[MemberIn]) -> None:
 
 def _dashboard(catalog: Catalog, loaded: service.Loaded, ev: Evaluation) -> dict[str, Any]:
     axes = {a.id: a for a in catalog.axes}
+    objectives = catalog.objectives_by_id
     counts: dict[str, int] = {}
     for st in ev.statuses.values():
         counts[st.status] = counts.get(st.status, 0) + 1
@@ -153,7 +154,10 @@ def _dashboard(catalog: Catalog, loaded: service.Loaded, ev: Evaluation) -> dict
             }
             for a in ev.autonomy.values()
         ],
-        "checklist": [asdict(i) for i in ev.checklist],
+        "checklist": [
+            {**asdict(i), "objective_kind": objectives[i.objective_id].kind if i.objective_id else None}
+            for i in ev.checklist
+        ],
         "counts": counts,
     }
 

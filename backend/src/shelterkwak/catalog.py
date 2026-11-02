@@ -175,11 +175,14 @@ def _read(path: Path) -> dict:
 def load_catalog(directory: Path | None = None) -> Catalog:
     directory = directory or Path(os.environ.get("SHELTERKWAK_CATALOG", DEFAULT_CATALOG_DIR))
     axes = _read(directory / "axes.yaml")
+    axis_rank = {a["id"]: i for i, a in enumerate(axes["axes"])}
     objectives: list[dict] = []
     for path in sorted((directory / "objectives").glob("*.yaml")):
         data = _read(path)
         for o in data.get("objectives", []):
             objectives.append({"axis": data["axis"], **o})
+    # Ordre stable : niveau, puis ordre des axes déclaré dans axes.yaml, puis ordre du fichier.
+    objectives.sort(key=lambda o: (o.get("level", 0), axis_rank.get(o["axis"], len(axis_rank))))
     return Catalog(
         levels=_read(directory / "levels.yaml")["levels"],
         axes=axes["axes"],
