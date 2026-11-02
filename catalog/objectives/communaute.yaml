@@ -1,0 +1,35 @@
+axis: communaute
+objectives:
+  - id: communaute.voisins
+    level: 2
+    title: Connaître au moins deux voisins par leur nom
+  - id: communaute.fragiles
+    level: 3
+    title: Repérer les personnes fragiles autour de soi
+  - id: communaute.binome
+    level: 4
+    title: Accord d'entraide réciproque avec un autre foyer (foyer binôme)
+    revalidate_days: 365
+  - id: communaute.annuaire
+    level: 5
+    title: Annuaire des compétences et ressources de son réseau
+    revalidate_days: 365
+  - id: communaute.engagement
+    level: 5
+    required: false
+    title: Engagement local (réserve communale de sécurité civile, pompiers volontaires, association)
+  - id: communaute.groupe
+    level: 6
+    title: Groupe d'entraide d'au moins trois foyers avec un plan commun
+    revalidate_days: 365
+  - id: communaute.mutualisation
+    level: 7
+    title: Ressources mutualisées (outils, stocks, jardin)
+  - id: communaute.troc
+    level: 7
+    required: false
+    title: Réseau d'échange local (SEL, troc, monnaie locale)
+  - id: communaute.resilience_locale
+    level: 8
+    title: Contribuer à un projet de résilience locale (jardin partagé, réserve communale)
+    revalidate_days: 365

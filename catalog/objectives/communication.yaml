@@ -1,0 +1,42 @@
+axis: communication
+objectives:
+  - id: communication.contacts_papier
+    level: 2
+    title: Contacts essentiels notés sur papier
+    why: Sans batterie ni réseau, personne ne connaît plus les numéros par cœur.
+    revalidate_days: 365
+  - id: communication.radio
+    level: 3
+    title: Radio à piles ou à dynamo (FM et grandes ondes), testée
+    revalidate_days: 365
+  - id: communication.contact_externe
+    level: 3
+    title: Contact référent hors de la région, connu de tous les membres
+  - id: communication.cartes
+    level: 4
+    title: Cartes papier de la région et itinéraires
+  - id: communication.talkies
+    level: 4
+    title: Talkies-walkies PMR446 pour le foyer
+  - id: communication.sources
+    level: 5
+    kind: skill
+    required: false
+    title: Liste de sources d'information fiables et réflexe de vérification
+  - id: communication.radio_emission
+    level: 6
+    title: Poste CB ou radioamateur opérationnel
+    revalidate_days: 365
+  - id: communication.licence
+    level: 6
+    kind: skill
+    required: false
+    title: Licence radioamateur
+  - id: communication.reseau_local
+    level: 7
+    title: Plan de communication local (fréquences, horaires convenus avec les proches)
+    revalidate_days: 365
+  - id: communication.relais
+    level: 8
+    required: false
+    title: Le foyer peut relayer l'information pour sa communauté

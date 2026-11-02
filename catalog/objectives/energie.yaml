@@ -1,0 +1,57 @@
+axis: energie
+objectives:
+  - id: energie.lampes
+    level: 2
+    title: Une lampe frontale ou torche par personne, avec piles de rechange
+  - id: energie.cuisson_3j
+    level: 3
+    kind: stock
+    title: Moyen de cuisson hors réseau et combustible pour 3 jours
+    stock: {category: cuisson, min_days: 3}
+  - id: energie.batterie
+    level: 3
+    title: Batteries externes chargées pour les téléphones
+    revalidate_days: 90
+  - id: energie.cuisson_14j
+    level: 4
+    kind: stock
+    title: Combustible de cuisson pour 14 jours
+    stock: {category: cuisson, min_days: 14}
+  - id: energie.solaire_portable
+    level: 4
+    title: Panneau solaire portable pour recharger les petits appareils, testé
+    revalidate_days: 365
+  - id: energie.station
+    level: 5
+    title: Station électrique portable (500 Wh ou plus) rechargeable au solaire, testée
+    revalidate_days: 180
+  - id: energie.cuisson_90j
+    level: 5
+    kind: stock
+    title: Combustible de cuisson pour 90 jours
+    stock: {category: cuisson, min_days: 90}
+  - id: energie.bilan_wh
+    level: 6
+    title: Besoins électriques prioritaires chiffrés en Wh par jour
+    why: On ne dimensionne pas une installation de secours sans savoir ce qu'elle doit alimenter.
+  - id: energie.secours
+    level: 6
+    contexts: [periurbain, rural]
+    title: Groupe électrogène ou solaire de secours, carburant stocké, testé
+    revalidate_days: 180
+  - id: energie.kit_balcon
+    level: 7
+    contexts: [appartement]
+    title: Kit solaire de balcon avec batterie couvrant éclairage et communications
+  - id: energie.solaire_fixe
+    level: 7
+    contexts: [periurbain, rural]
+    title: Installation solaire avec stockage couvrant les besoins prioritaires
+  - id: energie.bois
+    level: 7
+    contexts: [periurbain, rural]
+    title: Chauffage et cuisson au bois, un hiver de bois stocké
+  - id: energie.autonomie
+    level: 8
+    contexts: [periurbain, rural]
+    title: Autonomie électrique sur l'année (production et stockage)

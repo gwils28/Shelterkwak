@@ -1,0 +1,71 @@
+axis: sante
+objectives:
+  - id: sante.trousse
+    level: 2
+    title: Trousse de premiers secours complète et à jour
+    revalidate_days: 365
+  - id: sante.fiches
+    level: 2
+    title: Fiche médicale par membre (groupe sanguin, allergies, traitements, contacts)
+    revalidate_days: 365
+  - id: sante.psc1
+    level: 3
+    kind: skill
+    title: Au moins un adulte formé aux premiers secours (PSC1 ou équivalent)
+    revalidate_days: 1095
+  - id: sante.hygiene_3j
+    level: 3
+    title: Kit d'hygiène pour 3 jours (savon, gel, papier, sacs, protections)
+  - id: sante.traitements_7j
+    level: 3
+    kind: stock
+    requires_tags: [traitement_medical]
+    title: Traitements médicaux d'avance pour 7 jours
+    stock: {category: traitements, min_days: 7}
+  - id: sante.traitements_30j
+    level: 4
+    kind: stock
+    requires_tags: [traitement_medical]
+    title: Traitements médicaux d'avance pour 30 jours
+    stock: {category: traitements, min_days: 30}
+  - id: sante.toilettes
+    level: 4
+    title: Toilettes de secours (seau, sacs, sciure ou litière)
+    why: Sans eau courante, l'hygiène devient le premier risque sanitaire.
+  - id: sante.masques
+    level: 4
+    title: Masques FFP2 et gants pour la durée d'une épidémie
+    revalidate_days: 1825
+  - id: sante.traitements_90j
+    level: 5
+    kind: stock
+    requires_tags: [traitement_medical]
+    title: Traitements médicaux d'avance pour 90 jours
+    stock: {category: traitements, min_days: 90}
+  - id: sante.pharmacie
+    level: 5
+    title: Pharmacie étendue (antalgiques, antidiarrhéiques, désinfectants, sutures adhésives)
+    revalidate_days: 365
+  - id: sante.condition
+    level: 6
+    kind: skill
+    title: Condition physique - marcher 15 km avec un sac de 10 kg
+    revalidate_days: 365
+  - id: sante.secourisme_avance
+    level: 6
+    kind: skill
+    title: Secourisme avancé ou en milieu isolé (PSE1, WFA)
+    revalidate_days: 1095
+  - id: sante.plantes
+    level: 6
+    kind: skill
+    required: false
+    title: Connaître les plantes médicinales courantes de sa région
+    revalidate_days: 1095
+  - id: sante.assainissement
+    level: 7
+    contexts: [periurbain, rural]
+    title: Assainissement autonome (toilettes sèches, compost)
+  - id: sante.soignant
+    level: 8
+    title: Un soignant dans le réseau proche, joignable hors réseau

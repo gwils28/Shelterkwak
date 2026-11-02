@@ -1,0 +1,14 @@
+# Données locales du foyer (jamais versionnées)
+data/
+*.db
+
+# Python
+__pycache__/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Front
+node_modules/
+frontend/dist/
+*.tsbuildinfo

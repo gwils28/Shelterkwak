@@ -1,0 +1,75 @@
+axis: eau
+objectives:
+  - id: eau.robinet_arret
+    level: 2
+    title: Savoir couper l'eau au robinet d'arrêt général
+    why: Une canalisation qui casse pendant une crise peut inonder le logement et vider la réserve du ballon.
+  - id: eau.pastilles
+    level: 2
+    title: Avoir des pastilles de purification ou de l'eau de Javel non parfumée
+    why: Rendre potable une eau douteuse coûte quelques euros et tient dans un tiroir.
+    revalidate_days: 1095
+  - id: eau.stock_3j
+    level: 3
+    kind: stock
+    title: Stock d'eau potable pour 3 jours
+    why: Recommandation officielle de base (kit d'urgence 72 h) ; l'eau est le besoin le plus urgent.
+    stock: {category: eau, min_days: 3}
+  - id: eau.contenants
+    level: 3
+    title: Bidons alimentaires vides prêts à remplir dès une alerte
+    why: Entre l'alerte et la coupure, on peut souvent stocker des dizaines de litres en plus.
+  - id: eau.stock_14j
+    level: 4
+    kind: stock
+    title: Stock d'eau potable pour 14 jours
+    stock: {category: eau, min_days: 14}
+  - id: eau.filtre
+    level: 4
+    title: Filtre à eau portable (paille ou gravitaire) avec cartouche valide
+    why: Prend le relais quand le stock s'épuise.
+    revalidate_days: 365
+  - id: eau.savoir_traiter
+    level: 4
+    kind: skill
+    title: Savoir rendre une eau potable (ébullition, dosage de chlore, filtration)
+    revalidate_days: 730
+  - id: eau.stock_30j
+    level: 5
+    kind: stock
+    title: Stock d'eau potable pour 30 jours
+    stock: {category: eau, min_days: 30}
+  - id: eau.sources_identifiees
+    level: 5
+    title: Identifier deux sources d'eau brute accessibles (rivière, source, fontaine, citerne)
+    why: Au-delà d'un mois, l'eau se puise et se traite plus qu'elle ne se stocke.
+  - id: eau.filtre_gravitaire
+    level: 5
+    title: Filtre gravitaire grande capacité (plusieurs milliers de litres)
+    revalidate_days: 730
+  - id: eau.plan_appro
+    level: 6
+    contexts: [appartement]
+    title: Plan d'approvisionnement à pied (trajet, chariot, bidons) vers une source identifiée
+  - id: eau.recuperateur
+    level: 6
+    contexts: [periurbain, rural]
+    title: Récupérateur d'eau de pluie d'au moins 500 L
+  - id: eau.stock_60j
+    level: 6
+    kind: stock
+    required: false
+    title: Stock d'eau potable pour 60 jours
+    stock: {category: eau, min_days: 60}
+  - id: eau.source_autonome
+    level: 7
+    contexts: [periurbain, rural]
+    title: Source d'eau autonome (puits, forage ou citerne d'au moins 5 m³)
+  - id: eau.pompe_manuelle
+    level: 7
+    contexts: [rural]
+    title: Pompe manuelle ou alimentée hors réseau sur la source
+  - id: eau.autonomie_annuelle
+    level: 8
+    contexts: [periurbain, rural]
+    title: Eau couvrant les besoins annuels du foyer, traitement compris

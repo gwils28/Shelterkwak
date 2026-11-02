@@ -1,0 +1,214 @@
+# Interview d'inscription : questions posées dans l'ordre, filtrées par `show_if`.
+# Effets d'une option : `validates` (objectifs déjà acquis), `tags` (tags du foyer),
+# `sets` (champs du foyer). Une question `number` peut créer un article
+# d'inventaire initial via `creates_stock` ; `amount_per_unit: household_day`
+# convertit des « jours pour le foyer » en unité de base (kcal par exemple).
+# `show_if` accepte `context_in`, `tags_any` et `answer: {question, includes}`.
+questions:
+  - id: risques
+    section: Ton environnement
+    type: multi
+    text: Quels risques concernent ta commune ?
+    help: Si tu ne sais pas, consulte georisques.gouv.fr ou le DICRIM de ta mairie ; tu pourras compléter plus tard.
+    options:
+      - {value: inondation, label: Inondation, tags: [risque_inondation], validates: [securite.risques]}
+      - {value: froid, label: Hivers rigoureux, tags: [risque_froid], validates: [securite.risques]}
+      - {value: industriel, label: Site industriel ou nucléaire proche, tags: [risque_industriel], validates: [securite.risques]}
+      - {value: seisme, label: Séisme, tags: [risque_seisme], validates: [securite.risques]}
+      - {value: incendie, label: Feux de forêt, tags: [risque_incendie], validates: [securite.risques]}
+      - {value: canicule, label: Canicules, tags: [risque_canicule], validates: [securite.risques]}
+      - {value: inconnu, label: Je ne sais pas encore}
+
+  - id: inquietudes
+    section: Ton environnement
+    type: multi
+    text: Quelles situations t'inquiètent le plus ?
+    options:
+      - {value: coupures, label: Coupures d'eau ou d'électricité longues, tags: [inquietude_coupures]}
+      - {value: eco, label: Crise économique, perte d'emploi, tags: [inquietude_economie]}
+      - {value: climat, label: Événements climatiques extrêmes, tags: [inquietude_climat]}
+      - {value: pandemie, label: Pandémie, tags: [inquietude_pandemie]}
+      - {value: penuries, label: Pénuries et ruptures d'approvisionnement, tags: [inquietude_penuries]}
+      - {value: troubles, label: Troubles civils ou conflit, tags: [inquietude_troubles]}
+
+  - id: vehicule
+    section: Ton environnement
+    type: single
+    text: Le foyer dispose-t-il d'un véhicule à moteur ?
+    options:
+      - {value: oui, label: Oui, tags: [vehicule]}
+      - {value: non, label: Non}
+
+  - id: eau_litres
+    section: Tes réserves
+    type: number
+    text: Combien de litres d'eau en bouteille as-tu aujourd'hui chez toi ?
+    help: Compte large (packs, bidons). Tu affineras ensuite dans l'inventaire.
+    unit: litres
+    creates_stock: {category: eau, name: Eau stockée (estimation de l'interview), unit_label: L, amount_per_unit: 1}
+
+  - id: vivres_jours
+    section: Tes réserves
+    type: number
+    text: Combien de jours pourrais-tu nourrir tout le foyer sans faire de courses ?
+    unit: jours
+    creates_stock: {category: alimentation, name: Placards (estimation de l'interview), unit_label: jour foyer, amount_per_unit: household_day}
+
+  - id: cuisson_jours
+    section: Tes réserves
+    type: number
+    text: Pendant combien de jours pourrais-tu cuisiner sans gaz ni électricité du réseau (réchaud, cartouches, bois) ?
+    unit: jours
+    creates_stock: {category: cuisson, name: Combustible de cuisson (estimation de l'interview), unit_label: jour, amount_per_unit: 1}
+
+  - id: traitements_jours
+    section: Tes réserves
+    type: number
+    show_if: {tags_any: [traitement_medical]}
+    text: Combien de jours de traitement médical as-tu d'avance ?
+    unit: jours
+    creates_stock: {category: traitements, name: Traitements (estimation de l'interview), unit_label: jour, amount_per_unit: 1}
+
+  - id: equipement
+    section: Ton équipement
+    type: multi
+    text: Qu'as-tu déjà chez toi, en état de marche ?
+    options:
+      - {value: lampes, label: Lampes frontales ou torches et piles, validates: [energie.lampes]}
+      - {value: trousse, label: Trousse de premiers secours à jour, validates: [sante.trousse]}
+      - {value: radio, label: Radio à piles ou dynamo, validates: [communication.radio]}
+      - {value: pastilles, label: Pastilles de purification d'eau, validates: [eau.pastilles]}
+      - {value: bidons, label: Bidons alimentaires vides, validates: [eau.contenants]}
+      - {value: filtre, label: Filtre à eau portable, validates: [eau.filtre]}
+      - {value: ouvre_boite, label: Ouvre-boîte manuel, validates: [alimentation.ouvre_boite]}
+      - {value: sans_cuisson, label: 3 jours d'aliments sans cuisson, validates: [alimentation.sans_cuisson]}
+      - {value: batterie, label: Batteries externes chargées, validates: [energie.batterie]}
+      - {value: solaire, label: Panneau solaire portable, validates: [energie.solaire_portable]}
+      - {value: station, label: Station électrique portable, validates: [energie.station]}
+      - {value: couvertures, label: Couvertures de survie ou duvets pour tous, validates: [abri.chaleur]}
+      - {value: detecteurs, label: Détecteurs de fumée testés, validates: [abri.detecteurs]}
+      - {value: extincteur, label: Extincteur, validates: [abri.extincteur]}
+      - {value: hygiene, label: Kit d'hygiène de 3 jours, validates: [sante.hygiene_3j]}
+      - {value: toilettes, label: Toilettes de secours, validates: [sante.toilettes]}
+      - {value: masques, label: Stock de masques FFP2, validates: [sante.masques]}
+      - {value: sac, label: Sacs d'évacuation prêts, validates: [mobilite.sac]}
+      - {value: talkies, label: Talkies-walkies, validates: [communication.talkies]}
+      - {value: cartes, label: Cartes papier de la région, validates: [communication.cartes]}
+      - {value: confinement, label: Kit de confinement (bâches, adhésif), validates: [abri.calfeutrage]}
+
+  - id: organisation
+    section: Ton organisation
+    type: multi
+    text: Qu'est-ce qui est déjà en place dans le foyer ?
+    options:
+      - {value: coupures, label: On sait couper eau, gaz et électricité, validates: [eau.robinet_arret, abri.coupures]}
+      - {value: alertes, label: FR-Alert et alertes préfecture activés, validates: [securite.alertes]}
+      - {value: plan, label: Un plan familial d'urgence écrit, validates: [securite.plan_familial]}
+      - {value: exercice, label: Un exercice familial dans l'année, validates: [securite.exercice]}
+      - {value: contacts, label: Contacts essentiels sur papier, validates: [communication.contacts_papier]}
+      - {value: contact_externe, label: Un contact référent hors région, validates: [communication.contact_externe]}
+      - {value: itineraires, label: Itinéraires d'évacuation connus, validates: [mobilite.itineraires]}
+      - {value: accueil, label: Un lieu d'accueil convenu hors zone, validates: [mobilite.accueil]}
+      - {value: papiers, label: Copies des papiers importants, validates: [finances.papiers]}
+      - {value: especes, label: Des espèces d'avance, validates: [finances.especes]}
+      - {value: assurances, label: Assurances vérifiées récemment, validates: [finances.assurances]}
+      - {value: fiches, label: Fiches médicales des membres, validates: [sante.fiches]}
+      - {value: inventaire, label: Inventaire des placards fait, validates: [alimentation.inventaire]}
+      - {value: rotation, label: Rotation des stocks alimentaires, validates: [alimentation.rotation]}
+      - {value: cles, label: Doubles des clés en lieu sûr, validates: [securite.cles]}
+
+  - id: competences
+    section: Tes compétences
+    type: multi
+    text: Quelles compétences sont présentes dans le foyer (pratiquées ces deux dernières années) ?
+    help: Répondre à cette question vaut bilan des compétences du foyer, même si tu ne coches rien.
+    answered_validates: [competences.bilan]
+    options:
+      - {value: psc1, label: Premiers secours (PSC1), validates: [sante.psc1]}
+      - {value: secourisme, label: Secourisme avancé (PSE1, WFA), validates: [sante.secourisme_avance]}
+      - {value: feu, label: Faire un feu en sécurité, validates: [competences.feu]}
+      - {value: eau, label: Traiter une eau douteuse, validates: [eau.savoir_traiter]}
+      - {value: conserves, label: Conserves, fermentation ou séchage, validates: [alimentation.conservation]}
+      - {value: potager, label: Cultiver un potager, validates: [alimentation.potager_savoir]}
+      - {value: cuisine_stock, label: Cuisiner avec ses seules réserves, validates: [competences.cuisine_stock]}
+      - {value: bricolage, label: Petites réparations du logement, validates: [abri.reparations]}
+      - {value: orientation, label: Orientation carte et boussole, validates: [mobilite.orientation]}
+      - {value: desescalade, label: Gestion de conflit, désescalade, validates: [securite.desescalade]}
+      - {value: radio, label: Radioamateur, validates: [communication.licence]}
+      - {value: condition, label: Marcher 15 km avec un sac, validates: [sante.condition]}
+
+  - id: epargne
+    section: Tes finances
+    type: single
+    text: Combien de mois de dépenses courantes couvre ton épargne de précaution ?
+    options:
+      - {value: "0", label: Aucune}
+      - {value: "lt1", label: Moins d'un mois}
+      - {value: "1", label: 1 à 3 mois, validates: [finances.epargne_1m]}
+      - {value: "3", label: 3 à 6 mois, validates: [finances.epargne_1m, finances.epargne_3m]}
+      - {value: "6", label: 6 mois ou plus, validates: [finances.epargne_1m, finances.epargne_3m, finances.epargne_6m]}
+
+  - id: credit
+    section: Tes finances
+    type: single
+    text: As-tu un crédit à la consommation en cours (hors immobilier) ?
+    options:
+      - {value: oui, label: Oui}
+      - {value: non, label: Non, validates: [finances.sans_credit_conso]}
+
+  - id: production
+    section: Ton autonomie
+    type: multi
+    show_if: {context_in: [periurbain, rural]}
+    text: Qu'as-tu déjà sur ton terrain ?
+    options:
+      - {value: recuperateur, label: Récupérateur d'eau de pluie (500 L ou plus), validates: [eau.recuperateur]}
+      - {value: puits, label: Puits, forage ou citerne de 5 m³ ou plus, validates: [eau.source_autonome]}
+      - {value: potager, label: Potager qui couvre au moins 20 % des légumes, validates: [alimentation.potager]}
+      - {value: groupe, label: Groupe électrogène ou solaire de secours, validates: [energie.secours]}
+      - {value: solaire, label: Installation solaire avec batteries, validates: [energie.solaire_fixe]}
+      - {value: bois, label: Poêle à bois et un hiver de bois, validates: [energie.bois]}
+      - {value: toilettes_seches, label: Toilettes sèches et compost, validates: [sante.assainissement]}
+
+  - id: reseau
+    section: Ton réseau
+    type: multi
+    text: Et côté entourage ?
+    options:
+      - {value: voisins, label: Je connais au moins deux voisins par leur nom, validates: [communaute.voisins]}
+      - {value: fragiles, label: Je sais qui est fragile autour de moi, validates: [communaute.fragiles]}
+      - {value: binome, label: Un foyer ami avec qui on s'entraide, validates: [communaute.binome]}
+      - {value: groupe, label: Un groupe d'entraide de plusieurs foyers, validates: [communaute.groupe]}
+      - {value: producteurs, label: Je connais des producteurs locaux en direct, validates: [alimentation.circuit_court]}
+      - {value: engagement, label: Je suis engagé localement (réserve, pompiers, association), validates: [communaute.engagement]}
+
+  - id: objectif_niveau
+    section: Tes objectifs
+    type: single
+    text: Quel palier veux-tu atteindre en priorité ?
+    options:
+      - {value: "3", label: "72 heures : faire face à une coupure courte", sets: {goal_level: 3}}
+      - {value: "4", label: "Deux semaines : tenir un confinement ou une crise locale", sets: {goal_level: 4}}
+      - {value: "5", label: "Trois mois : traverser une crise longue", sets: {goal_level: 5}}
+      - {value: "6", label: "Six mois et savoir-faire", sets: {goal_level: 6}}
+      - {value: "7", label: "Semi-autonomie : produire une partie de mes besoins", sets: {goal_level: 7}}
+      - {value: "8", label: "Autonomie complète et communauté", sets: {goal_level: 8}}
+
+  - id: horizon
+    section: Tes objectifs
+    type: single
+    text: En combien de temps ?
+    options:
+      - {value: "3", label: 3 mois, sets: {goal_horizon_months: 3}}
+      - {value: "6", label: 6 mois, sets: {goal_horizon_months: 6}}
+      - {value: "12", label: 1 an, sets: {goal_horizon_months: 12}}
+      - {value: "24", label: 2 ans, sets: {goal_horizon_months: 24}}
+      - {value: "60", label: 5 ans, sets: {goal_horizon_months: 60}}
+
+  - id: axes_prioritaires
+    section: Tes objectifs
+    type: multi
+    text: Sur quels axes veux-tu progresser en premier ?
+    help: Ils remonteront en tête de ta checklist.
+    options_from: axes
+    sets_list: priority_axes

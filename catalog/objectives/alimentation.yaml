@@ -1,0 +1,86 @@
+axis: alimentation
+objectives:
+  - id: alimentation.inventaire
+    level: 2
+    title: Faire l'inventaire de ce que contiennent déjà les placards
+    why: On a souvent plus de réserves qu'on ne croit ; c'est le point de départ de l'inventaire.
+  - id: alimentation.stock_3j
+    level: 3
+    kind: stock
+    title: Nourriture pour 3 jours
+    stock: {category: alimentation, min_days: 3}
+  - id: alimentation.sans_cuisson
+    level: 3
+    title: Aliments consommables sans cuisson pour 3 jours
+  - id: alimentation.ouvre_boite
+    level: 3
+    title: Ouvre-boîte manuel
+  - id: alimentation.stock_14j
+    level: 4
+    kind: stock
+    title: Nourriture pour 14 jours
+    stock: {category: alimentation, min_days: 14}
+  - id: alimentation.rotation
+    level: 4
+    title: Rotation des stocks en place (premier entré, premier sorti)
+    why: Un stock qu'on ne consomme pas finit à la poubelle.
+    revalidate_days: 180
+  - id: alimentation.bebe
+    level: 4
+    requires_tags: [bebe]
+    title: Lait infantile, petits pots et couches pour 14 jours
+  - id: alimentation.animaux
+    level: 4
+    requires_tags: [animaux]
+    title: Nourriture et litière des animaux pour 14 jours
+  - id: alimentation.regimes
+    level: 4
+    requires_tags: [traitement_medical]
+    required: false
+    title: Réserves adaptées aux régimes particuliers (diabète, allergies, sans gluten)
+  - id: alimentation.stock_90j
+    level: 5
+    kind: stock
+    title: Nourriture pour 90 jours
+    stock: {category: alimentation, min_days: 90}
+  - id: alimentation.conservation
+    level: 5
+    kind: skill
+    title: Savoir conserver (stérilisation en bocaux, lacto-fermentation, déshydratation)
+    revalidate_days: 730
+  - id: alimentation.stock_180j
+    level: 6
+    kind: stock
+    title: Nourriture pour 180 jours
+    stock: {category: alimentation, min_days: 180}
+  - id: alimentation.potager_savoir
+    level: 6
+    kind: skill
+    title: Savoir cultiver au moins cinq légumes de base (stage, jardin partagé)
+    why: Compétence transférable si tu prévois de changer de lieu de vie.
+    revalidate_days: 730
+  - id: alimentation.semences
+    level: 6
+    required: false
+    title: Semences reproductibles (non hybrides) en stock
+    revalidate_days: 1095
+  - id: alimentation.circuit_court
+    level: 7
+    title: Lien direct avec au moins deux producteurs locaux
+  - id: alimentation.balcon
+    level: 7
+    contexts: [appartement]
+    title: Production d'appoint (balcon, jardin partagé, parcelle familiale)
+  - id: alimentation.potager
+    level: 7
+    contexts: [periurbain, rural]
+    title: Potager produisant au moins 20 % des légumes du foyer
+  - id: alimentation.production_50
+    level: 8
+    contexts: [periurbain, rural]
+    title: Production d'au moins 50 % des besoins (légumes, fruits, œufs, conserves)
+  - id: alimentation.elevage
+    level: 8
+    contexts: [rural]
+    required: false
+    title: Petit élevage (poules, lapins)

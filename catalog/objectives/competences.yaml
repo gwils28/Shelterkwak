@@ -1,0 +1,38 @@
+axis: competences
+objectives:
+  - id: competences.bilan
+    level: 2
+    title: Faire le bilan des compétences du foyer
+  - id: competences.feu
+    level: 3
+    kind: skill
+    title: Allumer et entretenir un feu en sécurité
+    revalidate_days: 365
+  - id: competences.cuisine_stock
+    level: 4
+    kind: skill
+    title: Cuisiner une semaine uniquement avec ses réserves (testé)
+    revalidate_days: 365
+  - id: competences.bibliotheque
+    level: 5
+    title: Bibliothèque papier de référence (secourisme, jardinage, réparations)
+  - id: competences.couture
+    level: 5
+    kind: skill
+    required: false
+    title: Réparer vêtements et textiles
+    revalidate_days: 1095
+  - id: competences.pratique
+    level: 6
+    kind: skill
+    title: Chaque adulte entretient au moins un savoir-faire pratique
+    revalidate_days: 365
+  - id: competences.echangeable
+    level: 7
+    kind: skill
+    title: Un savoir-faire échangeable (artisanat, soin, mécanique, menuiserie)
+    revalidate_days: 730
+  - id: competences.transmettre
+    level: 8
+    title: Transmettre - animer un atelier ou former d'autres personnes
+    revalidate_days: 365

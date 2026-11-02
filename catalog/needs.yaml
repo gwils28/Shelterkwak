@@ -1,0 +1,22 @@
+# Catégories d'inventaire suivies en jours d'autonomie.
+# daily_need : besoin journalier par type de membre, dans l'unité de base.
+# per_household : besoin forfaitaire par jour pour tout le foyer (si le foyer compte
+# au moins un humain, ou au moins un membre sous traitement pour `traitements`).
+categories:
+  - id: eau
+    name: Eau potable
+    unit: L
+    daily_need: {adulte: 3, senior: 3, enfant: 2, bebe: 1.5, animal: 1}
+  - id: alimentation
+    name: Nourriture
+    unit: kcal
+    daily_need: {adulte: 2200, senior: 1900, enfant: 1700, bebe: 900}
+  - id: traitements
+    name: Traitements médicaux
+    unit: jour
+    per_household: 1
+    applies_if: traitement_medical
+  - id: cuisson
+    name: Combustible de cuisson hors réseau
+    unit: jour
+    per_household: 1
