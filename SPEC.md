@@ -181,3 +181,54 @@ déploiement sur Raspberry Pi.
   changement de foyer, contexte), tests d'API, typecheck et build du front.
 - Un foyer créé via l'onboarding voit un niveau initial cohérent avec ses réponses.
 - Ajouter un membre peut faire baisser le niveau ; laisser périmer un stock aussi.
+
+---
+
+# v2 — Application hors ligne sur téléphone
+
+> Issue de l'interview du 2 novembre 2026 (deuxième série).
+
+## 15. Décisions
+
+| Sujet | Décision |
+|---|---|
+| Hors ligne | **PWA autonome** installable sur Android : moteur, catalogue et données sur le téléphone |
+| Appareils | Téléphone + PC, synchronisés via le serveur du PC (qui sert aussi de sauvegarde) |
+| Accès au PC | Tailscale (`tailscale serve`) : HTTPS valide, à la maison comme dehors, rien d'exposé sur Internet |
+| Moteur | Porté en TypeScript ; le moteur Python reste la référence. Des cas de test générés par Python (`fixtures/`) sont rejoués par les deux implémentations |
+| Objectifs perso | Créés par l'utilisateur : axe, palier, requis ou bonus, action ou compétence, revalidation facultative. Ils comptent dans le niveau comme ceux du catalogue |
+| Relecture du catalogue | Page commentable publiée à part ; les commentaires sont reportés dans `catalog/*.yaml` |
+
+## 16. Modèle de données : journal d'opérations
+
+Toute modification est une **opération** immuable : `{id (uuid), device, at (horodatage ISO), type, payload}`.
+L'état se reconstruit en rejouant les opérations triées par `(at, device, id)` ; à égalité de
+cible, **la dernière écrite gagne**.
+
+| Type | Effet |
+|---|---|
+| `household.set` | Remplace le foyer (nom, contextes, membres, tags, axes prioritaires, objectifs) |
+| `validation.set` / `validation.delete` | Valide (avec date) / décoche un objectif |
+| `stock.upsert` / `stock.delete` | Ajoute ou modifie / retire un article (id stable) |
+| `custom.upsert` / `custom.delete` | Crée ou modifie / supprime un objectif perso (`perso.<uuid>`) |
+| `onboarding` | Marque la fin de l'interview (les effets sont des opérations ordinaires émises juste avant) |
+| `reset` | Efface tout ce qui précède |
+
+L'historique est **dérivé** : le niveau est recalculé après chaque opération et à chaque date où
+une validation ou un stock expire (les seuls moments où le niveau change sans action).
+
+## 17. Synchronisation
+
+- Le téléphone (et le navigateur du PC) gardent le journal dans IndexedDB et un curseur `server_seq`.
+- `POST /api/sync {device, cursor, ops}` : le serveur enregistre les opérations inconnues (dédoublonnage
+  par `id`), attribue un numéro croissant et renvoie celles postérieures au curseur.
+- Déclenchement : au démarrage, au retour du réseau, après chaque modification (différé de 2 s) et
+  toutes les minutes quand l'app est ouverte. Un indicateur affiche l'état (synchronisé, en attente, hors ligne).
+- Sauvegarde sans serveur : export / import du journal en JSON depuis l'onglet Foyer.
+- `GET /api/dashboard` (Python, lecture seule) recalcule le tableau de bord depuis le journal du serveur.
+
+## 18. Critères d'acceptation v2
+
+- En mode avion, l'app installée s'ouvre, l'onboarding, les validations et l'inventaire fonctionnent.
+- Une modification faite hors ligne apparaît sur le PC après la synchronisation, et inversement.
+- Les moteurs Python et TypeScript donnent le même résultat sur tous les cas de `fixtures/`.
