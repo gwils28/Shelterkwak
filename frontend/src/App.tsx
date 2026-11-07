@@ -45,10 +45,10 @@ export function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <span className="brand-mark" aria-hidden>
-            ▥
+          <img className="brand-mark" src="/icon.svg" alt="" width={28} height={28} />
+          <span className="brand-name">
+            Shelter<span className="brand-kwak">kwak</span>
           </span>
-          <span className="brand-name">Shelterkwak</span>
           <span className="brand-household">{foyer.dashboard.household.name}</span>
         </div>
         <SyncBadge sync={foyer.sync} />
