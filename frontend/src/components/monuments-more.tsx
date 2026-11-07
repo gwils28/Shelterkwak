@@ -1,7 +1,7 @@
 // Pagode, bouddha assis et fusée. Même contrat que les autres monuments (voir monuments.tsx).
 
 import { CX, GROUND, HEIGHT, LAYOUT, seeded, tierBottom, tierTop, tone } from "../lib/monument";
-import { type Renderer, Shade } from "./monuments";
+import { type Renderer, Shade, Sparkle } from "./monuments";
 
 const GOLD = tone("#d4a531");
 const W = LAYOUT.width;
@@ -11,8 +11,35 @@ const W = LAYOUT.width;
 const pbw = (n: number) => 112 - (n - 1) * 8; // largeur du corps
 const prw = (n: number) => pbw(n) + 58; // largeur du toit, avant-toits compris
 
+const PETALS = (() => {
+  const rnd = seeded(808);
+  return Array.from({ length: 9 }, () => ({ x: 20 + rnd() * 220, y: 70 + rnd() * 90 }));
+})();
+
 const pagode: Renderer = {
   crackX: (n) => CX + pbw(n) / 2 - 12,
+  ambient: (_uid, level) => ({
+    front: (
+      <>
+        {Array.from({ length: LAYOUT.levels }, (_, i) => i + 1).flatMap((n) =>
+          [-1, 1].map((sd) => {
+            const x = CX + sd * (prw(n) / 2 + 2);
+            const y = tierTop(n) + 7;
+            const lit = n <= level;
+            return (
+              <g key={`${n}${sd}`} className="anim-bell" style={{ transformOrigin: `${x}px ${y}px` }}>
+                <line x1={x} x2={x} y1={y} y2={y + 6} stroke={lit ? "#8f6f12" : "#9c968b"} strokeWidth={0.8} />
+                <path d={`M${x - 2.6},${y + 10} Q${x},${y + 3} ${x + 2.6},${y + 10} Z`} fill={lit ? "#d4a531" : "#b9b5ad"} />
+              </g>
+            );
+          }),
+        )}
+        {PETALS.map((pt, i) => (
+          <ellipse key={i} className="anim-petal" data-fall={GROUND - pt.y} cx={pt.x} cy={pt.y} rx={3} ry={1.8} fill="#f4b6c8" opacity={0} />
+        ))}
+      </>
+    ),
+  }),
   tier: (n, t, _built, uid) => {
     const top = tierTop(n);
     const bottom = tierBottom(n);
@@ -71,6 +98,31 @@ const pagode: Renderer = {
 
 const bouddha: Renderer = {
   crackX: () => CX + 40,
+  ambient: () => ({
+    front: (
+      <>
+        {[CX - 112, CX + 112].map((x) => (
+          <g key={x}>
+            <path d={`M${x - 7},${GROUND + 2} L${x + 7},${GROUND + 2} L${x + 5},${GROUND + 10} L${x - 5},${GROUND + 10} Z`} fill="#8f6a35" />
+            <line x1={x} x2={x} y1={GROUND + 2} y2={GROUND - 14} stroke="#a0522d" strokeWidth={1.2} />
+            <circle cx={x} cy={GROUND - 14} r={1.4} fill="#f0a43a" />
+            {[0, 1, 2].map((i) => (
+              <path
+                key={i}
+                className="anim-incense"
+                d={`M${x},${GROUND - 15} c-4,-8 4,-12 0,-20 c-4,-8 4,-12 0,-20`}
+                fill="none"
+                stroke="#cfc8bd"
+                strokeWidth={1.4}
+                strokeLinecap="round"
+                opacity={0}
+              />
+            ))}
+          </g>
+        ))}
+      </>
+    ),
+  }),
   tier: (n, t, _built, uid) => {
     const id = `${uid}-bou-${n}`;
     const petals = Array.from({ length: 11 }, (_, i) => CX - 95 + (190 * i) / 10);
@@ -82,7 +134,7 @@ const bouddha: Renderer = {
           <Shade id={id} t={t} />
         </defs>
         {/* halo derrière la tête */}
-        <circle cx={CX} cy={150} r={64} fill={t.light} opacity={0.35} stroke={t.light} strokeWidth={2} />
+        <circle className="anim-halo" cx={CX} cy={150} r={64} fill={t.light} opacity={0.35} stroke={t.light} strokeWidth={2} />
         {/* trône et fleur de lotus */}
         <rect x={CX - 92} y={470} width={184} height={GROUND - 470} fill={`url(#${id})`} stroke={t.dark} strokeWidth={0.8} />
         <line x1={CX - 92} x2={CX + 92} y1={490} y2={490} stroke={t.dark} strokeWidth={1} opacity={0.5} />
@@ -132,7 +184,7 @@ const bouddha: Renderer = {
     const t = built ? GOLD : grey;
     return (
       <g className={built ? "crown built" : "crown"}>
-        {built && <circle cx={CX} cy={150} r={72} fill="none" stroke={GOLD.light} strokeWidth={4} opacity={0.7} />}
+        {built && <circle className="anim-halo" cx={CX} cy={150} r={72} fill="none" stroke={GOLD.light} strokeWidth={4} opacity={0.7} />}
         <path d={`M${CX},64 C${CX + 9},78 ${CX + 8},88 ${CX + 4},95 L${CX - 4},95 C${CX - 8},88 ${CX - 9},78 ${CX},64 Z`} fill={t.fill} stroke={t.dark} strokeWidth={0.8} />
       </g>
     );
@@ -155,6 +207,28 @@ const STAGES: { y0: number; y1: number; w: number }[] = [
 
 const fusee: Renderer = {
   crackX: () => CX + 12,
+  ambient: () => ({
+    back: (
+      <>
+        {[
+          [30, 90],
+          [222, 140],
+          [52, 260],
+          [214, 330],
+          [26, 400],
+        ].map(([x, y]) => (
+          <Sparkle key={`${x}-${y}`} className="anim-star" x={x} y={y} size={3.5} fill="#e9d48a" />
+        ))}
+      </>
+    ),
+    front: (
+      <>
+        {[-1, 1, -1, 1, -1, 1].map((sd, i) => (
+          <circle key={i} className="anim-steam" data-dir={sd} cx={CX + sd * 34} cy={GROUND - 4} r={7} fill="#f1f1ef" opacity={0} />
+        ))}
+      </>
+    ),
+  }),
   tier: (n, t, _built, uid) => {
     const id = `${uid}-fus-${n}`;
     const [s1, s2, s3] = STAGES;
@@ -211,10 +285,12 @@ const fusee: Renderer = {
           [30, 200],
           [230, 180],
         ].map(([x, y]) => (
-          <path key={`${x}-${y}`} d={`M${x},${y - 7} L${x + 2},${y - 2} L${x + 7},${y} L${x + 2},${y + 2} L${x},${y + 7} L${x - 2},${y + 2} L${x - 7},${y} L${x - 2},${y - 2} Z`} fill={GOLD.light} />
+          <path key={`${x}-${y}`} className="anim-star" d={`M${x},${y - 7} L${x + 2},${y - 2} L${x + 7},${y} L${x + 2},${y + 2} L${x},${y + 7} L${x - 2},${y + 2} L${x - 7},${y} L${x - 2},${y - 2} Z`} fill={GOLD.light} />
         ))}
+        <g className="anim-thrust" style={{ transformOrigin: `${CX}px ${GROUND}px` }}>
         <path d={`M${CX - 30},${GROUND} Q${CX - 26},${GROUND + 22} ${CX},${HEIGHT} Q${CX + 26},${GROUND + 22} ${CX + 30},${GROUND} Z`} fill="#f0a43a" opacity={0.9} />
         <path d={`M${CX - 16},${GROUND} Q${CX - 12},${GROUND + 14} ${CX},${HEIGHT - 6} Q${CX + 12},${GROUND + 14} ${CX + 16},${GROUND} Z`} fill="#fde58a" />
+        </g>
       </g>
     ) : null,
   base: () => (
@@ -234,6 +310,16 @@ const twX = (y: number) => CX + 12 * Math.sin((GROUND - y) / 70);
 
 const tornade: Renderer = {
   crackX: () => CX + 4,
+  ambient: () => ({
+    front: (
+      <>
+        <ellipse className="anim-cloudflash" cx={CX} cy={34} rx={120} ry={30} fill="#ffffff" opacity={0} />
+        {Array.from({ length: 7 }, (_, i) => (
+          <rect key={i} className="anim-debris" data-i={i} x={twX(GROUND) - 2} y={GROUND - 30 - i * 14} width={3 + (i % 3)} height={2 + (i % 2)} fill="#5e4d36" />
+        ))}
+      </>
+    ),
+  }),
   tier: (n, t, _built, uid) => {
     const id = `${uid}-tor-${n}`;
     const ys: number[] = [];
@@ -255,11 +341,13 @@ const tornade: Renderer = {
             <stop offset="1" stopColor={t.dark} />
           </linearGradient>
         </defs>
+        <g className="anim-funnel">
         <path d={`M${left.join(" L")} L${right.join(" L")} Z`} fill={`url(#${id})`} opacity={0.92} />
         <g fill="none" strokeLinecap="round">
           {swirls.map((d, i) => (
-            <path key={i} d={d} stroke={i % 2 ? t.dark : t.light} strokeWidth={i % 2 ? 1.6 : 2.2} opacity={i % 2 ? 0.5 : 0.75} />
+            <path key={i} className="anim-swirl" d={d} stroke={i % 2 ? t.dark : t.light} strokeWidth={i % 2 ? 1.6 : 2.2} opacity={i % 2 ? 0.5 : 0.75} />
           ))}
+        </g>
         </g>
       </>
     );
@@ -282,7 +370,7 @@ const tornade: Renderer = {
         {blobs.slice(0, 5).map(([x, y, r], i) => (
           <circle key={`h${i}`} cx={x - r * 0.25} cy={y - r * 0.3} r={r * 0.55} fill={c.light} opacity={0.35} />
         ))}
-        {built && <path d="M206,52 L196,76 L206,76 L192,106 L218,70 L208,70 L218,52 Z" fill={GOLD.light} stroke={GOLD.dark} strokeWidth={1} />}
+        {built && <path className="anim-bolt" d="M206,52 L196,76 L206,76 L192,106 L218,70 L208,70 L218,52 Z" fill={GOLD.light} stroke={GOLD.dark} strokeWidth={1} />}
       </g>
     );
   },
@@ -372,6 +460,22 @@ const FISH: [number, number, number][] = [
 
 const tamu: Renderer = {
   crackX: () => CX + 22,
+  ambient: () => ({
+    front: (
+      <>
+        {[
+          [18, 1.6],
+          [30, 2.4],
+          [236, 1.8],
+          [246, 2.6],
+          [224, 1.4],
+          [12, 2],
+        ].map(([x, r], i) => (
+          <circle key={i} className="anim-bubble" data-rise={GROUND - 70} cx={x} cy={GROUND - 4} r={r} fill="none" stroke="#e8f7ff" strokeWidth={0.9} opacity={0} />
+        ))}
+      </>
+    ),
+  }),
   defs: (uid) => (
     <>
       <linearGradient id={`${uid}-tamu-water`} gradientUnits="userSpaceOnUse" x1="0" x2="0" y1={LAYOUT.crown} y2={GROUND}>
@@ -401,7 +505,7 @@ const tamu: Renderer = {
         {/* l'océan, ses rais de lumière et sa neige marine */}
         <rect x={0} y={LAYOUT.crown} width={W} height={GROUND - LAYOUT.crown} fill={water} opacity={built ? 1 : 0.55} />
         {RAYS.map(([a, b, c, d], i) => (
-          <path key={i} d={`M${a},${LAYOUT.crown} L${b},${LAYOUT.crown} L${d - (c - a) * 0.3},${GROUND} L${c - 30},${GROUND} Z`} fill={glow} opacity={built ? 0.07 : 0.12} />
+          <path key={i} className="anim-ray" d={`M${a},${LAYOUT.crown} L${b},${LAYOUT.crown} L${d - (c - a) * 0.3},${GROUND} L${c - 30},${GROUND} Z`} fill={glow} opacity={built ? 0.07 : 0.12} />
         ))}
         {SNOW.map((p, i) => (
           <circle key={i} cx={p.x} cy={p.y} r={p.r} fill={glow} opacity={built ? 0.55 : 0.5} />
@@ -439,6 +543,7 @@ const tamu: Renderer = {
           </g>
         ))}
         {/* banc de poissons et méduse */}
+        <g className="anim-fish">
         {FISH.map(([x, y, s], i) => (
           <path
             key={i}
@@ -447,7 +552,8 @@ const tamu: Renderer = {
             opacity={built ? 0.85 : 0.45}
           />
         ))}
-        <g opacity={built ? 0.75 : 0.45}>
+        </g>
+        <g className="anim-jelly" opacity={built ? 0.75 : 0.45} style={{ transformOrigin: "46px 168px" }}>
           <path d="M36,168 q10,-14 20,0 Z" fill={built ? "#e7b6e0" : t.dark} />
           {[39, 43, 47, 51].map((x, i) => (
             <path key={x} d={`M${x},168 q${i % 2 ? 2 : -2},6 0,12 q${i % 2 ? -2 : 2},5 0,9`} fill="none" stroke={built ? "#e7b6e0" : t.dark} strokeWidth={0.9} />

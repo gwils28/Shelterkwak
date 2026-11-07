@@ -18,9 +18,44 @@ export interface Renderer {
   bandTop?: (n: number) => number;
   /** Le chiffre romain se lit sur le fond de la carte (monument ajouré) plutôt que sur la pierre. */
   numeralOnPanel?: boolean;
+  /** Décor animé (page Monument seulement) : derrière le monument et devant lui. */
+  ambient?: (uid: string, level: number) => { back?: ReactNode; front?: ReactNode };
 }
 
 const GOLD = tone("#d4a531");
+
+/** Oiseau stylisé ; son vol est animé par GSAP autour de (x, y). */
+export function Bird({ x, y, scale = 1, color = "#3b3f46" }: { x: number; y: number; scale?: number; color?: string }) {
+  return (
+    <g className="anim-bird" transform={`translate(${x},${y})`}>
+      <path className="anim-wing" d={`M${-6 * scale},0 q${3 * scale},${-4 * scale} ${6 * scale},0 q${3 * scale},${-4 * scale} ${6 * scale},0`} fill="none" stroke={color} strokeWidth={1.4} strokeLinecap="round" />
+    </g>
+  );
+}
+
+/** Petit nuage qui dérive. */
+export function Cloud({ x, y, s = 1, fill = "#ffffff", opacity = 0.8 }: { x: number; y: number; s?: number; fill?: string; opacity?: number }) {
+  return (
+    <g className="anim-cloud" opacity={opacity}>
+      <ellipse cx={x} cy={y} rx={22 * s} ry={8 * s} fill={fill} />
+      <circle cx={x - 8 * s} cy={y - 5 * s} r={8 * s} fill={fill} />
+      <circle cx={x + 6 * s} cy={y - 7 * s} r={10 * s} fill={fill} />
+    </g>
+  );
+}
+
+/** Étoile à quatre branches (éclat, scintillement). */
+export function Sparkle({ x, y, size, className, fill = "#fff8d6" }: { x: number; y: number; size: number; className?: string; fill?: string }) {
+  const k = size * 0.26;
+  return (
+    <path
+      className={className}
+      d={`M${x},${y - size} L${x + k},${y - k} L${x + size},${y} L${x + k},${y + k} L${x},${y + size} L${x - k},${y + k} L${x - size},${y} L${x - k},${y - k} Z`}
+      fill={fill}
+      opacity={className ? 0 : 1}
+    />
+  );
+}
 
 /** Dégradé horizontal qui donne du volume : ombre, reflet, teinte, ombre. */
 export function Shade({ id, t }: { id: string; t: Tone }) {
@@ -38,8 +73,40 @@ export function Shade({ id, t }: { id: string; t: Tone }) {
 
 const colW = (n: number) => 150 - ((n - 1) / (LAYOUT.levels - 1)) * 28;
 
+function mote(i: number) {
+  const r = seeded(300 + i);
+  return { x: 50 + r() * 160, y: 180 + r() * 300, r: 0.8 + r() * 1.4 };
+}
+
 const colonne: Renderer = {
   crackX: () => CX + 18,
+  ambient: (uid, level) => ({
+    front: (
+      <>
+        <defs>
+          <clipPath id={`${uid}-shaft`}>
+            {Array.from({ length: LAYOUT.levels }, (_, i) => {
+              const n = i + 1;
+              return <rect key={n} x={CX - colW(n) / 2} y={tierTop(n) + 4} width={colW(n)} height={LAYOUT.tier - 6} />;
+            })}
+          </clipPath>
+          <linearGradient id={`${uid}-sheen`} x1="0" x2="1">
+            <stop offset="0" stopColor="#ffffff" stopOpacity={0} />
+            <stop offset="0.5" stopColor="#ffffff" stopOpacity={0.55} />
+            <stop offset="1" stopColor="#ffffff" stopOpacity={0} />
+          </linearGradient>
+        </defs>
+        <g clipPath={`url(#${uid}-shaft)`}>
+          <rect className="anim-sheen" x={CX - 20} y={LAYOUT.crown} width={40} height={GROUND - LAYOUT.crown} fill={`url(#${uid}-sheen)`} transform={`skewX(-12)`} />
+        </g>
+        {Array.from({ length: 10 }, (_, i) => {
+          const m = mote(i);
+          return <circle key={i} className="anim-mote" cx={m.x} cy={m.y} r={m.r} fill="#fff6d8" opacity={0} />;
+        })}
+        {level >= LAYOUT.levels && <Sparkle className="anim-glint" x={CX + 52} y={14} size={9} />}
+      </>
+    ),
+  }),
   tier: (n, t, _built, uid) => {
     const w = colW(n);
     const x = CX - w / 2;
@@ -129,6 +196,16 @@ const SPLIT = CX + 30; // arête vue légèrement de côté : deux faces, l'une 
 
 const pyramide: Renderer = {
   crackX: () => CX + 5,
+  ambient: () => ({
+    front: (
+      <>
+        {[6, 13, 20, 26, 31].map((dy, i) => (
+          <line key={dy} className="anim-sand" x1={0} x2={18 + (i % 3) * 8} y1={GROUND + dy} y2={GROUND + dy} stroke="#fff4d6" strokeWidth={1.2} strokeLinecap="round" opacity={0} />
+        ))}
+        <Sparkle className="anim-glint" x={CX} y={APEX + 6} size={10} />
+      </>
+    ),
+  }),
   defs: (uid) => (
     <clipPath id={`${uid}-pyr`}>
       <path d={`M${CX},${APEX} L4,${GROUND} L256,${GROUND} Z`} />
@@ -164,7 +241,7 @@ const pyramide: Renderer = {
       <g className={built ? "crown built" : "crown"}>
         {built && (
           <g>
-            <circle cx={212} cy={36} r={30} fill={GOLD.light} opacity={0.25} />
+            <circle className="anim-sun" cx={212} cy={36} r={30} fill={GOLD.light} opacity={0.25} />
             <circle cx={212} cy={36} r={17} fill={GOLD.light} />
           </g>
         )}
@@ -234,6 +311,26 @@ const BARK_TONE = tone("#7d5633");
 
 const arbre: Renderer = {
   crackX: () => CX + 6,
+  ambient: (_uid, level) => ({
+    front: (
+      <>
+        {[
+          [66, 318],
+          [196, 300],
+          [118, 348],
+        ].map(([x, y], i) => (
+          <path
+            key={i}
+            className="anim-leaf"
+            data-fall={GROUND + 6 - y}
+            d={`M${x},${y} q5,-6 10,0 q-5,6 -10,0 Z`}
+            fill={level >= 4 ? ["#7cb342", "#c9a227", "#d0742c"][i] : "#b9b5ad"}
+            opacity={0}
+          />
+        ))}
+      </>
+    ),
+  }),
   bandTop: (n) => (n === LAYOUT.levels ? 0 : tierTop(n)),
   tier: (n, t, built, uid) => {
     const bark = n <= 3 ? t : built ? BARK_TONE : t;
@@ -256,7 +353,7 @@ const arbre: Renderer = {
           <path key={i} d={d} fill="none" stroke={bark.fill} strokeWidth={i === 2 ? 7 : 10} strokeLinecap="round" />
         ))}
         {n >= 3 && (
-          <>
+          <g className="anim-sway">
             {CANOPY.map(([cx, cy, r], i) => (
               <circle key={`o${i}`} cx={cx} cy={cy} r={r + 1.5} fill={leaf.dark} />
             ))}
@@ -267,7 +364,7 @@ const arbre: Renderer = {
               <circle key={`s${i}`} cx={s.x} cy={s.y} r={s.r} fill={s.light ? leaf.light : leaf.dark} opacity={s.light ? 0.4 : 0.3} />
             ))}
             {built && n >= 6 && FRUITS.map((f, i) => <circle key={`r${i}`} cx={f.x} cy={f.y} r={4} fill={n === LAYOUT.levels ? "#e0a526" : "#c8452f"} stroke="#7a2418" strokeWidth={0.6} />)}
-          </>
+          </g>
         )}
       </g>
     );
@@ -300,6 +397,23 @@ const aztW = (n: number) => 238 - (n - 1) * 17;
 
 const azteque: Renderer = {
   crackX: () => CX + 34,
+  ambient: (_uid, level) => ({
+    back: (
+      <g className="anim-rays" opacity={level >= LAYOUT.levels ? 0.28 : 0.12}>
+        {Array.from({ length: 16 }, (_, i) => {
+          const a = (i / 16) * Math.PI * 2;
+          return <line key={i} x1={CX} y1={30} x2={CX + Math.cos(a) * 170} y2={30 + Math.sin(a) * 170} stroke="#e0a526" strokeWidth={6} />;
+        })}
+      </g>
+    ),
+    front: (
+      <>
+        {[0, 1, 2, 3].map((i) => (
+          <circle key={i} className="anim-smoke" cx={CX + (i % 2 ? 4 : -4)} cy={4} r={6} fill="#d9d4cc" opacity={0} />
+        ))}
+      </>
+    ),
+  }),
   tier: (n, t, _built, uid) => {
     const w = aztW(n);
     const top = tierTop(n);

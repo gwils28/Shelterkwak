@@ -195,16 +195,25 @@ instantanés.
 
 ## 11. Écrans
 
+Cinq onglets : barre en bas de l'écran sur téléphone, rail à gauche sur grand écran. La Crise
+n'est pas un onglet : un bouton rouge toujours visible dans l'en-tête. Changer d'onglet ramène en
+haut de page.
+
 1. **Onboarding** (si aucun foyer).
-2. **Colonne** (accueil) : monument SVG de 9 paliers (acquis en couleur, en cours en gris avec
-   barre de progression, à venir en gris clair ; fissure sur un palier acquis contenant une
-   validation expirée), niveau par axe,
-   checklist, alertes.
+2. **Monument** (accueil, `/`) : le monument SVG de 9 paliers en grand, dans une scène teintée
+   selon le monument (acquis en couleur, en cours en gris avec barre de progression, à venir en
+   gris clair ; fissure sur un palier acquis contenant une validation expirée), niveau et barre
+   vers le palier suivant ; puis « Prochaine étape » (3 actions), alertes, autonomie, checklist
+   complète et niveau par axe repliables. Animations d'ambiance propres à chaque monument (GSAP,
+   `frontend/src/lib/animations.ts`) : décor vivant, palier en cours qui pulse, palier tout juste
+   acquis qui se colore avec un éclat. Coupées si l'appareil demande moins d'animations ou via
+   l'interrupteur de l'onglet Foyer (réglage propre à l'appareil, non synchronisé).
 3. **Objectifs** : filtres par niveau / axe / statut, cocher, décocher, revalider.
-4. **Inventaire** : articles, autonomie par catégorie face aux paliers 3 j, 14 j, 90 j, 180 j.
-5. **Foyer** : membres, contexte actuel et cible, objectifs déclarés.
-6. **Historique** : courbe du niveau et journal.
-7. **Crise** (accessible depuis l'en-tête) : écran du jour J, hors ligne et imprimable.
+4. **Réserves** (`/inventaire`) : articles, autonomie par catégorie face aux paliers 3 j, 14 j,
+   90 j, 180 j.
+5. **Parcours** (`/historique`) : courbe du niveau et journal.
+6. **Foyer** : membres, monument, contexte actuel et cible, objectifs déclarés, synchronisation.
+7. **Crise** (`/crise`, bouton de l'en-tête) : écran du jour J, hors ligne et imprimable.
    Autonomie actuelle, fiches du foyer saisies librement (contacts, rendez-vous, qui fait quoi,
    fiches médicales, lieu d'accueil, fréquences, emplacements) et fiches réflexes par scénario
    (`catalog/crisis.yaml`), filtrées selon les risques et les membres du foyer.
