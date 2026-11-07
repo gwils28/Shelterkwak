@@ -177,6 +177,29 @@ questions:
       - {value: radio, label: Radioamateur, validates: [communication.licence]}
       - {value: condition, label: Marcher 15 km avec un sac, validates: [sante.condition]}
 
+  - id: armes
+    section: Ta défense
+    type: single
+    text: Le foyer détient-il des armes à feu (chasse ou tir sportif) ?
+    help: Sert seulement à te proposer les règles de détention ; rien ne sort de ton appareil.
+    options:
+      - {value: non, label: Non}
+      - {value: oui, label: Oui, tags: [armes]}
+
+  - id: defense
+    section: Ta défense
+    type: multi
+    text: Qu'est-ce qui est déjà vrai pour te défendre en cas d'agression ?
+    help: Dans le cadre de la loi française. Fuir et alerter reste toujours la première défense.
+    options:
+      - {value: fuir, label: "Règle du foyer : on fuit et on alerte d'abord", validates: [defense.fuir_alerter]}
+      - {value: legitime, label: Les adultes connaissent les conditions de la légitime défense, validates: [defense.legitime_defense]}
+      - {value: apres, label: "On sait quoi faire après une agression (17, certificat médical, plainte)", validates: [defense.apres_agression]}
+      - {value: intrusion, label: Plan intrusion au domicile avec pièce refuge, validates: [defense.intrusion]}
+      - {value: initiation, label: Un adulte a suivi une initiation à la self-défense, validates: [defense.initiation, defense.initiation_adaptee]}
+      - {value: pratique, label: Un adulte pratique un sport de combat en club depuis un an ou plus, validates: [defense.pratique, defense.pratique_adaptee]}
+      - {value: armes_regle, label: "Armes rangées en règle (SIA, coffre, munitions à part)", validates: [defense.armes_regle]}
+
   - id: epargne
     section: Tes finances
     type: single

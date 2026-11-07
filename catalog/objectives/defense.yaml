@@ -1,0 +1,98 @@
+# Défense personnelle : se protéger d'une agression dans le cadre du droit français.
+# Différent de `securite` (risques, alertes, logement, voisinage) : ici, la personne face à un agresseur.
+# Principe : fuir et alerter d'abord ; la riposte n'est légitime que nécessaire, simultanée et proportionnée
+# (Code pénal, art. 122-5 et 122-6). Une arme à feu ne se détient pas pour se défendre en France :
+# les objectifs sur les armes sont facultatifs, sauf la détention en règle pour un foyer qui en possède.
+axis: defense
+objectives:
+  - id: defense.fuir_alerter
+    level: 1
+    title: "Règle du foyer : face à une agression, on fuit et on alerte d'abord (17 ou 112, SMS au 114) ; aucun bien ne vaut un risque"
+    why: La première défense est de ne pas être là. Rien n'oblige à affronter, et un objet volé se remplace.
+
+  - id: defense.legitime_defense
+    level: 2
+    title: "Chaque adulte connaît les conditions de la légitime défense : attaque injuste et actuelle, riposte nécessaire, immédiate et proportionnée"
+    why: "Code pénal, art. 122-5 et 122-6. Défendre un bien seul ne justifie jamais un geste qui peut tuer ; frapper un agresseur qui fuit n'est plus de la légitime défense."
+  - id: defense.apres_agression
+    level: 2
+    title: "Conduite après une agression connue : se mettre en sûreté, appeler le 17, ne pas poursuivre, noter les témoins, certificat médical, plainte, France Victimes (116 006)"
+    why: Le certificat médical et les témoins comptent autant pour la victime que pour prouver la légitime défense.
+  - id: defense.armes_regle
+    level: 2
+    requires_tags: [armes]
+    title: "Armes du foyer détenues en règle : catégorie et titre connus (permis de chasser ou licence de tir), compte SIA à jour, rangement sous clé, munitions à part, hors de portée des enfants"
+    why: Une arme mal rangée est d'abord un danger pour le foyer (accident, vol, suicide).
+
+  - id: defense.evitement
+    level: 4
+    kind: skill
+    title: "Vigilance et évitement pratiqués par chaque adulte : repérer les signaux, garder la distance, ne pas s'isoler, poser sa voix pour dissuader"
+    why: La plupart des agressions s'évitent avant le premier contact.
+  - id: defense.intrusion
+    level: 3
+    title: "Plan intrusion au domicile : pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, éclairage, consigne de ne pas aller au contact"
+    why: De nuit chez soi, la loi présume la légitime défense (art. 122-6), mais le plus sûr reste de s'enfermer et d'appeler.
+  - id: defense.enfants
+    level: 4
+    requires_tags: [enfants]
+    title: "Consignes de sécurité apprises par les enfants : mot de passe familial, à qui demander de l'aide, crier et fuir, ne jamais suivre un inconnu"
+
+  - id: defense.initiation
+    level: 5
+    kind: skill
+    title: Au moins un adulte a suivi une initiation à la self-défense (stage encadré, dégagements, chutes, protection)
+    revalidate_days: 1095
+    excludes_tags: [mobilite_reduite]
+  - id: defense.initiation_adaptee
+    level: 5
+    kind: skill
+    requires_tags: [mobilite_reduite]
+    title: "Initiation à une self-défense adaptée (défense assise, canne, techniques sans déplacement) suivie par un adulte du foyer"
+    revalidate_days: 1095
+  - id: defense.aerosol
+    level: 5
+    required: false
+    title: "Bombe lacrymogène de 100 ml au plus (catégorie D, majeurs seulement) au domicile, avec la règle connue : pas de port dehors sans motif légitime"
+    why: "Code de la sécurité intérieure, art. L315-1 : porter ou transporter une arme de catégorie D sans motif légitime est un délit, même si l'achat est libre."
+
+  - id: defense.pratique
+    level: 6
+    kind: skill
+    title: Un adulte pratique un sport de combat ou de self-défense en club depuis au moins un an (boxe, krav-maga, judo, self-défense)
+    revalidate_days: 365
+    excludes_tags: [mobilite_reduite]
+    why: Un geste appris une fois s'oublie sous le stress ; seule la pratique régulière tient.
+  - id: defense.pratique_adaptee
+    level: 6
+    kind: skill
+    requires_tags: [mobilite_reduite]
+    title: Pratique régulière d'une self-défense adaptée (au moins un an), ou un autre adulte du foyer pratique en club
+    revalidate_days: 365
+
+  - id: defense.exercice_intrusion
+    level: 7
+    title: "Exercice d'intrusion de nuit répété en famille : chacun sait où aller, qui appelle, qui allume et ferme"
+    revalidate_days: 365
+  - id: defense.tir_sportif
+    level: 7
+    required: false
+    title: "Licence de tir en club et pratique encadrée, en sachant qu'en France l'arme à feu sert au tir sportif ou à la chasse, jamais à la défense"
+
+  - id: defense.transmission
+    level: 8
+    kind: skill
+    title: Un adulte sait transmettre les bases (évitement, dégagements, règles de la légitime défense) et l'a fait avec le reste du foyer
+
+  - id: defense.mise_en_situation
+    level: 9
+    kind: skill
+    title: "Mise en situation réaliste sous stress, encadrée (plastrons, plusieurs agresseurs, au sol), avec débriefing sur ce que la loi aurait permis"
+    revalidate_days: 365
+    excludes_tags: [mobilite_reduite]
+  - id: defense.mise_en_situation_adaptee
+    level: 9
+    kind: skill
+    requires_tags: [mobilite_reduite]
+    title: "Mise en situation encadrée adaptée (agression simulée au domicile ou en fauteuil), avec débriefing juridique"
+    revalidate_days: 365

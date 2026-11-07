@@ -117,3 +117,20 @@ scenarios:
       - "Si la maison est débroussaillée, s'y confiner plutôt que fuir dans la fumée."
       - "Fermer volets et ouvertures, boucher les aérations avec des linges mouillés."
       - "Ouvrir le portail pour les pompiers ; garder les sacs prêts."
+  - id: agression
+    name: Agression
+    icon: "🥋"
+    steps:
+      - "Fuir si c'est possible ; donner sac, téléphone ou clés plutôt que résister."
+      - "Mettre de la distance et parler fort pour attirer l'attention (« Reculez ! »)."
+      - "Ne se défendre que si on ne peut pas fuir, juste le temps de se dégager, puis partir."
+      - "Appeler le 17 ou le 112 (SMS au 114) dès qu'on est en sûreté ; ne pas poursuivre l'agresseur."
+      - "Noter les témoins et le signalement, faire établir un certificat médical, porter plainte. France Victimes : 116 006."
+  - id: intrusion
+    name: Intrusion au domicile
+    icon: "🚪"
+    steps:
+      - "Ne pas aller au contact : regrouper le foyer dans la pièce refuge et fermer à clé."
+      - "Appeler le 17 à voix basse (ou SMS au 114) : adresse, nombre d'intrus, où vous êtes."
+      - "Allumer les lumières peut faire fuir ; laisser partir les intrus, ne pas leur barrer la sortie."
+      - "Ne rien toucher ensuite avant l'arrivée de la police."

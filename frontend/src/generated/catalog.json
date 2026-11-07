@@ -121,6 +121,11 @@
    "id": "moral",
    "name": "Moral & cohésion",
    "icon": "🧠"
+  },
+  {
+   "id": "defense",
+   "name": "Défense personnelle",
+   "icon": "🥋"
   }
  ],
  "contexts": [
@@ -662,6 +667,27 @@
    "title": "Un proche à moins de 30 minutes, prévenu qu'il est ton contact d'urgence",
    "description": "",
    "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.fuir_alerter",
+   "axis": "defense",
+   "level": 1,
+   "title": "Règle du foyer : face à une agression, on fuit et on alerte d'abord (17 ou 112, SMS au 114) ; aucun bien ne vaut un risque",
+   "description": "",
+   "why": "La première défense est de ne pas être là. Rien n'oblige à affronter, et un objet volé se remplace.",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -1240,6 +1266,71 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.legitime_defense",
+   "axis": "defense",
+   "level": 2,
+   "title": "Chaque adulte connaît les conditions de la légitime défense : attaque injuste et actuelle, riposte nécessaire, immédiate et proportionnée",
+   "description": "",
+   "why": "Code pénal, art. 122-5 et 122-6. Défendre un bien seul ne justifie jamais un geste qui peut tuer ; frapper un agresseur qui fuit n'est plus de la légitime défense.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.apres_agression",
+   "axis": "defense",
+   "level": 2,
+   "title": "Conduite après une agression connue : se mettre en sûreté, appeler le 17, ne pas poursuivre, noter les témoins, certificat médical, plainte, France Victimes (116 006)",
+   "description": "",
+   "why": "Le certificat médical et les témoins comptent autant pour la victime que pour prouver la légitime défense.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.armes_regle",
+   "axis": "defense",
+   "level": 2,
+   "title": "Armes du foyer détenues en règle : catégorie et titre connus (permis de chasser ou licence de tir), compte SIA à jour, rangement sous clé, munitions à part, hors de portée des enfants",
+   "description": "",
+   "why": "Une arme mal rangée est d'abord un danger pour le foyer (accident, vol, suicide).",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "armes"
+   ],
    "excludes_tags": [],
    "revalidate_days": null,
    "due_month": null,
@@ -2215,6 +2306,27 @@
    "custom": false
   },
   {
+   "id": "defense.intrusion",
+   "axis": "defense",
+   "level": 3,
+   "title": "Plan intrusion au domicile : pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, éclairage, consigne de ne pas aller au contact",
+   "description": "",
+   "why": "De nuit chez soi, la loi présume la légitime défense (art. 122-6), mais le plus sûr reste de s'enfermer et d'appeler.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.stock_14j",
    "axis": "eau",
    "level": 4,
@@ -2965,6 +3077,50 @@
    "custom": false
   },
   {
+   "id": "defense.evitement",
+   "axis": "defense",
+   "level": 4,
+   "title": "Vigilance et évitement pratiqués par chaque adulte : repérer les signaux, garder la distance, ne pas s'isoler, poser sa voix pour dissuader",
+   "description": "",
+   "why": "La plupart des agressions s'évitent avant le premier contact.",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.enfants",
+   "axis": "defense",
+   "level": 4,
+   "title": "Consignes de sécurité apprises par les enfants : mot de passe familial, à qui demander de l'aide, crier et fuir, ne jamais suivre un inconnu",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "enfants"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.stock_30j",
    "axis": "eau",
    "level": 5,
@@ -3554,6 +3710,73 @@
    "custom": false
   },
   {
+   "id": "defense.initiation",
+   "axis": "defense",
+   "level": 5,
+   "title": "Au moins un adulte a suivi une initiation à la self-défense (stage encadré, dégagements, chutes, protection)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [
+    "mobilite_reduite"
+   ],
+   "revalidate_days": 1095,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.initiation_adaptee",
+   "axis": "defense",
+   "level": 5,
+   "title": "Initiation à une self-défense adaptée (défense assise, canne, techniques sans déplacement) suivie par un adulte du foyer",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "mobilite_reduite"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 1095,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.aerosol",
+   "axis": "defense",
+   "level": 5,
+   "title": "Bombe lacrymogène de 100 ml au plus (catégorie D, majeurs seulement) au domicile, avec la règle connue : pas de port dehors sans motif légitime",
+   "description": "",
+   "why": "Code de la sécurité intérieure, art. L315-1 : porter ou transporter une arme de catégorie D sans motif légitime est un délit, même si l'achat est libre.",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.recuperateur",
    "axis": "eau",
    "level": 6,
@@ -4047,6 +4270,52 @@
    "custom": false
   },
   {
+   "id": "defense.pratique",
+   "axis": "defense",
+   "level": 6,
+   "title": "Un adulte pratique un sport de combat ou de self-défense en club depuis au moins un an (boxe, krav-maga, judo, self-défense)",
+   "description": "",
+   "why": "Un geste appris une fois s'oublie sous le stress ; seule la pratique régulière tient.",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [
+    "mobilite_reduite"
+   ],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.pratique_adaptee",
+   "axis": "defense",
+   "level": 6,
+   "title": "Pratique régulière d'une self-défense adaptée (au moins un an), ou un autre adulte du foyer pratique en club",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "mobilite_reduite"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.source_autonome",
    "axis": "eau",
    "level": 7,
@@ -4452,6 +4721,48 @@
    "custom": false
   },
   {
+   "id": "defense.exercice_intrusion",
+   "axis": "defense",
+   "level": 7,
+   "title": "Exercice d'intrusion de nuit répété en famille : chacun sait où aller, qui appelle, qui allume et ferme",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.tir_sportif",
+   "axis": "defense",
+   "level": 7,
+   "title": "Licence de tir en club et pratique encadrée, en sachant qu'en France l'arme à feu sert au tir sportif ou à la chasse, jamais à la défense",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.autonomie_annuelle",
    "axis": "eau",
    "level": 8,
@@ -4816,6 +5127,27 @@
    "custom": false
   },
   {
+   "id": "defense.transmission",
+   "axis": "defense",
+   "level": 8,
+   "title": "Un adulte sait transmettre les bases (évitement, dégagements, règles de la légitime défense) et l'a fait avec le reste du foyer",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.epreuve_7j",
    "axis": "eau",
    "level": 9,
@@ -5109,6 +5441,52 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.mise_en_situation",
+   "axis": "defense",
+   "level": 9,
+   "title": "Mise en situation réaliste sous stress, encadrée (plastrons, plusieurs agresseurs, au sol), avec débriefing sur ce que la loi aurait permis",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [
+    "mobilite_reduite"
+   ],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.mise_en_situation_adaptee",
+   "axis": "defense",
+   "level": 9,
+   "title": "Mise en situation encadrée adaptée (agression simulée au domicile ou en fauteuil), avec débriefing juridique",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "mobilite_reduite"
+   ],
    "excludes_tags": [],
    "revalidate_days": 365,
    "due_month": null,
@@ -6090,6 +6468,117 @@
    ]
   },
   {
+   "id": "armes",
+   "section": "Ta défense",
+   "type": "single",
+   "text": "Le foyer détient-il des armes à feu (chasse ou tir sportif) ?",
+   "help": "Sert seulement à te proposer les règles de détention ; rien ne sort de ton appareil.",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "non",
+     "label": "Non",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "oui",
+     "label": "Oui",
+     "validates": [],
+     "tags": [
+      "armes"
+     ],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "defense",
+   "section": "Ta défense",
+   "type": "multi",
+   "text": "Qu'est-ce qui est déjà vrai pour te défendre en cas d'agression ?",
+   "help": "Dans le cadre de la loi française. Fuir et alerter reste toujours la première défense.",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "fuir",
+     "label": "Règle du foyer : on fuit et on alerte d'abord",
+     "validates": [
+      "defense.fuir_alerter"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "legitime",
+     "label": "Les adultes connaissent les conditions de la légitime défense",
+     "validates": [
+      "defense.legitime_defense"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "apres",
+     "label": "On sait quoi faire après une agression (17, certificat médical, plainte)",
+     "validates": [
+      "defense.apres_agression"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "intrusion",
+     "label": "Plan intrusion au domicile avec pièce refuge",
+     "validates": [
+      "defense.intrusion"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "initiation",
+     "label": "Un adulte a suivi une initiation à la self-défense",
+     "validates": [
+      "defense.initiation",
+      "defense.initiation_adaptee"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "pratique",
+     "label": "Un adulte pratique un sport de combat en club depuis un an ou plus",
+     "validates": [
+      "defense.pratique",
+      "defense.pratique_adaptee"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "armes_regle",
+     "label": "Armes rangées en règle (SIA, coffre, munitions à part)",
+     "validates": [
+      "defense.armes_regle"
+     ],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
    "id": "epargne",
    "section": "Tes finances",
    "type": "single",
@@ -6701,6 +7190,31 @@
     "Si la maison est débroussaillée, s'y confiner plutôt que fuir dans la fumée.",
     "Fermer volets et ouvertures, boucher les aérations avec des linges mouillés.",
     "Ouvrir le portail pour les pompiers ; garder les sacs prêts."
+   ]
+  },
+  {
+   "id": "agression",
+   "name": "Agression",
+   "icon": "🥋",
+   "tags_any": [],
+   "steps": [
+    "Fuir si c'est possible ; donner sac, téléphone ou clés plutôt que résister.",
+    "Mettre de la distance et parler fort pour attirer l'attention (« Reculez ! »).",
+    "Ne se défendre que si on ne peut pas fuir, juste le temps de se dégager, puis partir.",
+    "Appeler le 17 ou le 112 (SMS au 114) dès qu'on est en sûreté ; ne pas poursuivre l'agresseur.",
+    "Noter les témoins et le signalement, faire établir un certificat médical, porter plainte. France Victimes : 116 006."
+   ]
+  },
+  {
+   "id": "intrusion",
+   "name": "Intrusion au domicile",
+   "icon": "🚪",
+   "tags_any": [],
+   "steps": [
+    "Ne pas aller au contact : regrouper le foyer dans la pièce refuge et fermer à clé.",
+    "Appeler le 17 à voix basse (ou SMS au 114) : adresse, nombre d'intrus, où vous êtes.",
+    "Allumer les lumières peut faire fuir ; laisser partir les intrus, ne pas leur barrer la sortie.",
+    "Ne rien toucher ensuite avant l'arrivée de la police."
    ]
   }
  ]

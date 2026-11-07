@@ -23,7 +23,7 @@ async function onboarding(page) {
   await page.click('button:has-text("Commencer l\'interview")');
   const WANT = ["Une lampe sans réseau", "numéros d'urgence", "Antalgique, pansements", "Issues de secours",
     "réflexes en cas d'alerte", "Fréquence de la radio", "Papiers d'identité rangés", "Clés, papiers et chaussures",
-    "guide officiel", "Un proche à moins de 30 min", "Numéros d'écoute notés", "Coupures d'eau", "Lampes frontales", "Trousse de premiers secours", "Pastilles", "On sait couper",
+    "guide officiel", "Un proche à moins de 30 min", "Numéros d'écoute notés", "on fuit et on alerte", "conditions de la légitime défense", "On sait quoi faire après", "Coupures d'eau", "Lampes frontales", "Trousse de premiers secours", "Pastilles", "On sait couper",
     "FR-Alert", "Contacts essentiels", "Itinéraires d'évacuation", "Copies des papiers", "Fiches médicales",
     "Inventaire des placards", "Je connais au moins deux voisins", "Deux semaines", "1 an", "💧 Eau", "Inondation"];
   for (;;) {
@@ -33,7 +33,7 @@ async function onboarding(page) {
     }
     for (const fs of await page.locator("fieldset").all()) {
       const legend = await fs.locator("legend").innerText();
-      if (/véhicule|crédit/.test(legend)) await fs.locator('label.option:has-text("Non")').click();
+      if (/véhicule|crédit|armes à feu/.test(legend)) await fs.locator('label.option:has-text("Non")').click();
     }
     const nums = page.locator(".question input[type=number]");
     for (let i = 0; i < (await nums.count()); i++) await nums.nth(i).fill(["12", "5", "2"][i] ?? "0");

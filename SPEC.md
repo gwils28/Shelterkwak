@@ -67,7 +67,10 @@ retour d'expérience et la radio). Le niveau est donc perdu dès qu'on cesse de 
 `securite` (sécurité & protection), `communication` (information & communication),
 `mobilite` (mobilité & évacuation), `competences` (savoirs & compétences),
 `finances` (finances & administratif), `communaute` (réseau & entraide),
-`moral` (moral & cohésion : écoute, sommeil, routine de crise, gestion du stress, enfants).
+`moral` (moral & cohésion : écoute, sommeil, routine de crise, gestion du stress, enfants),
+`defense` (défense personnelle dans le cadre de la loi française : fuir et alerter, légitime
+défense, plan intrusion, self-défense ; les armes sont facultatives, sauf la détention en règle
+quand le foyer en déclare).
 
 Chaque axe a aussi son niveau propre (le plus haut palier dont tous les objectifs requis de
 l'axe sont validés), affiché pour repérer le maillon faible.
