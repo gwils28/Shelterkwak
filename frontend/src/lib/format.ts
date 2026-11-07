@@ -5,8 +5,11 @@ export const STATUS_LABEL: Record<Status, string> = {
   todo: "À faire",
   done: "Validé",
   expiring: "À revalider bientôt",
+  grace: "En sursis",
   expired: "Expiré",
 };
+
+export const MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
 
 export function formatDays(days: number | null): string {
   if (days === null) return "—";

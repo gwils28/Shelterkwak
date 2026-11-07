@@ -4,6 +4,7 @@ objectives:
     level: 2
     title: Deux itinéraires d'évacuation et un lieu de rassemblement connus
   - id: mobilite.sac
+    why: "Par personne : eau (2 L) et aliments pour 72 h, lampe, radio ou batterie, trousse, copies des papiers, espèces, vêtements chauds et de pluie, médicaments, lunettes, sifflet, contacts sur papier."
     level: 3
     title: Sac d'évacuation 72 h prêt pour chaque membre
     revalidate_days: 180
@@ -17,10 +18,12 @@ objectives:
     required: false
     title: Vélo en état et kit de réparation
   - id: mobilite.accueil
-    level: 5
+    level: 3
     title: Lieu d'accueil convenu hors de la zone (famille, amis)
     revalidate_days: 365
   - id: mobilite.carburant
+    why: Stocker du carburant en cave d'immeuble est interdit et dangereux ; l'essence se dégrade en six mois.
+    contexts: [periurbain, rural]
     level: 5
     requires_tags: [vehicule]
     title: Réserve de carburant stockée en sécurité et renouvelée
@@ -38,3 +41,41 @@ objectives:
     level: 8
     required: false
     title: Mobilité sans carburant fossile (vélo cargo, VAE rechargé au solaire)
+  - id: mobilite.evacuation_reelle
+    excludes_tags: [mobilite_reduite, appareil_electrique]
+    level: 9
+    title: Évacuation inopinée de nuit vers le lieu de repli, chronométrée, avec tout le foyer
+    why: Tester l'évacuation en conditions réelles révèle les oublis et les goulots d'étranglement.
+    revalidate_days: 365
+  - id: mobilite.depart_rapide
+    level: 1
+    title: Clés, papiers, téléphone et chaussures toujours au même endroit près de la sortie
+  - id: mobilite.repli_sans_voiture
+    level: 8
+    title: Itinéraire vers le lieu de repli reconnu en entier à pied ou à vélo, sans voiture
+  - id: mobilite.evacuation_pmr
+    level: 2
+    requires_tags: [mobilite_reduite]
+    title: Plan d'évacuation de la personne à mobilité réduite (qui l'aide, par où, sans ascenseur), connu de tous
+  - id: mobilite.aide_technique
+    level: 3
+    requires_tags: [mobilite_reduite]
+    title: Aide technique de secours (canne pliante, fauteuil manuel si le fauteuil habituel est électrique)
+  - id: mobilite.evacuation_pmr_testee
+    level: 4
+    requires_tags: [mobilite_reduite]
+    title: Évacuation testée avec la personne à mobilité réduite, chronométrée, sans ascenseur
+    revalidate_days: 365
+  - id: mobilite.animaux_transport
+    level: 3
+    requires_tags: [animaux]
+    title: Caisse de transport, laisse et gamelle pour chaque animal, près de la sortie
+  - id: mobilite.animaux_repli
+    level: 5
+    requires_tags: [animaux]
+    title: Hébergement de repli qui accepte les animaux (beaucoup de centres d'accueil les refusent)
+  - id: mobilite.evacuation_reelle_adaptee
+    level: 9
+    requires_tags: [mobilite_reduite, appareil_electrique]
+    title: Évacuation inopinée de nuit selon le plan adapté (aides, matériel, appareil sur batterie), chronométrée
+    revalidate_days: 365

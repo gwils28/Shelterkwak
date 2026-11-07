@@ -2,14 +2,26 @@
 // deux fichiers ; les cas de fixtures/engine.json vérifient qu'ils calculent pareil.
 
 import { addDays, DATE_MAX, type IsoDate } from "./dates";
-import { type Catalog, levelOf, MAX_LEVEL, type Objective, type Status } from "./types";
+import { type Catalog, isAnimal, levelOf, MAX_LEVEL, type Objective, type Status } from "./types";
 
 export const EXPIRY_WARNING_DAYS = 30;
-const DONE: ReadonlySet<Status> = new Set(["done", "expiring"]);
+export const GRACE_DAYS = 30; // une validation expirée fissure le tambour pendant ce délai avant de le faire tomber
+const DONE: ReadonlySet<Status> = new Set(["done", "expiring", "grace"]);
 
 export interface Member {
   type: string;
-  medical: boolean;
+  conditions: string[]; // ids de catalog.member_conditions
+}
+
+/** Membre tel que stocké dans le journal. L'ancien `medical: true` vaut la condition `traitement`. */
+export function memberOf(m: { type: string; medical?: boolean; conditions?: string[] | null }): Member {
+  return { type: m.type, conditions: memberConditions(m) };
+}
+
+export function memberConditions(m: { medical?: boolean; conditions?: string[] | null }): string[] {
+  const set = new Set(m.conditions ?? []);
+  if (m.medical) set.add("traitement");
+  return [...set];
 }
 export interface HouseholdState {
   context: string;
@@ -74,10 +86,11 @@ export interface Evaluation {
 
 export function householdTags(catalog: Catalog, state: HouseholdState): Set<string> {
   const tags = new Set(state.declared_tags);
+  const conditionTags = new Map(catalog.member_conditions.map((c) => [c.id, c.tags]));
   for (const m of state.members) {
     const t = catalog.member_tags[m.type];
     if (t) tags.add(t);
-    if (m.medical) tags.add("traitement_medical");
+    for (const c of m.conditions) for (const ct of conditionTags.get(c) ?? []) tags.add(ct);
   }
   return tags;
 }
@@ -85,14 +98,27 @@ export function householdTags(catalog: Catalog, state: HouseholdState): Set<stri
 export function isApplicable(obj: Objective, state: HouseholdState, tags: Set<string>, context?: string): boolean {
   const ctx = context ?? state.context;
   if (!(obj.contexts as string[]).includes(ctx)) return false;
+  if (obj.excludes_tags.some((t) => tags.has(t))) return false;
   return obj.requires_tags.length === 0 || obj.requires_tags.some((t) => tags.has(t));
+}
+
+/** Équivalent de `validation_expiry` : date à laquelle une validation cesse d'être à jour. */
+export function validationExpiry(obj: Objective, validatedAt: IsoDate): IsoDate | null {
+  if (obj.revalidate_days) return addDays(validatedAt, obj.revalidate_days);
+  if (obj.due_month) {
+    const m = String(obj.due_month).padStart(2, "0");
+    let year = Number(validatedAt.slice(0, 4));
+    if (`${year}-${m}-01` < validatedAt) year += 1;
+    return `${year + 1}-${m}-01`;
+  }
+  return null;
 }
 
 export function dailyNeed(catalog: Catalog, categoryId: string, state: HouseholdState): number {
   const cat = catalog.categories.find((c) => c.id === categoryId)!;
   if (cat.applies_if && !householdTags(catalog, state).has(cat.applies_if)) return 0;
   if (cat.per_household !== null) {
-    return state.members.some((m) => m.type !== "animal") ? cat.per_household : 0;
+    return state.members.some((m) => !isAnimal(catalog, m.type)) ? cat.per_household : 0;
   }
   return state.members.reduce((sum, m) => sum + (cat.daily_need[m.type] ?? 0), 0);
 }
@@ -142,18 +168,18 @@ export function objectiveStatus(
     return status("done", 1);
   }
   if (!validation) return status("todo", 0);
-  let expires: IsoDate | null = null;
-  if (obj.revalidate_days) {
-    expires = addDays(validation.validated_at, obj.revalidate_days);
-    if (today >= expires) return status("expired", 0, validation.validated_at, expires);
+  const expires = validationExpiry(obj, validation.validated_at);
+  if (expires) {
+    if (today >= addDays(expires, GRACE_DAYS)) return status("expired", 0, validation.validated_at, expires);
+    if (today >= expires) return status("grace", 1, validation.validated_at, expires);
     if (today >= addDays(expires, -EXPIRY_WARNING_DAYS)) return status("expiring", 1, validation.validated_at, expires);
   }
   return status("done", 1, validation.validated_at, expires);
 }
 
 function climb(objectives: Objective[], statuses: Record<string, ObjectiveStatus>): number {
-  let level = 1;
-  for (let n = 2; n <= MAX_LEVEL; n++) {
+  let level = 0;
+  for (let n = 1; n <= MAX_LEVEL; n++) {
     const blocking = objectives.some(
       (o) => o.level === n && o.required && statuses[o.id].status !== "na" && !DONE.has(statuses[o.id].status),
     );
@@ -195,7 +221,10 @@ export function evaluate(
     const cracked =
       built &&
       atLevel.some(
-        (o) => statuses[o.id].status === "expiring" || (!o.required && statuses[o.id].status === "expired"),
+        (o) =>
+          statuses[o.id].status === "expiring" ||
+          statuses[o.id].status === "grace" ||
+          (!o.required && statuses[o.id].status === "expired"),
       );
     const required_done = req.filter((o) => DONE.has(statuses[o.id].status)).length;
     tiers.push({
@@ -248,14 +277,19 @@ export function buildChecklist(
   const items: ChecklistItem[] = [];
 
   const revalidations: [Status, string][] = [
-    ["expired", "Validation expirée : à refaire pour garder ton niveau."],
+    ["grace", "En sursis : à refaire pour que le tambour ne tombe pas."],
+    ["expired", "Validation expirée : à refaire pour retrouver ton niveau."],
     ["expiring", "Expire bientôt : pense à revalider."],
   ];
   for (const [wanted, detail] of revalidations) {
     for (const o of objs) {
       const st = statuses[o.id];
       if (st.status === wanted && o.kind !== "stock") {
-        const when = st.expires_on ? ` (échéance ${st.expires_on})` : "";
+        const when = !st.expires_on
+          ? ""
+          : wanted === "grace"
+            ? ` (le tambour tombe le ${addDays(st.expires_on, GRACE_DAYS)})`
+            : ` (échéance ${st.expires_on})`;
         items.push(item("revalidate", o.title, detail + when, o.id, null, o.axis, o.level));
       }
     }

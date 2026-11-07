@@ -68,7 +68,21 @@ def validation(oid: str, on: str, source: str = "manual") -> dict[str, Any]:
     return {"objective_id": oid, "validated_at": on, "note": "", "source": source}
 
 
+# Objectifs « check » à valider pour chaque palier (les stocks viennent de l'inventaire).
+LEVEL1 = [
+    "energie.lumiere",
+    "sante.numeros_urgence",
+    "sante.pharmacie_base",
+    "abri.issues",
+    "securite.reflexes",
+    "communication.frequence",
+    "finances.papiers_ranges",
+    "mobilite.depart_rapide",
+    "competences.guide",
+    "communaute.proche_joignable",
+]
 LEVEL2 = [
+    *LEVEL1,
     "eau.robinet_arret",
     "eau.pastilles",
     "alimentation.inventaire",
@@ -83,6 +97,7 @@ LEVEL2 = [
     "competences.bilan",
     "finances.papiers",
     "communaute.voisins",
+    "moral.ecoute",
 ]
 LEVEL3 = [
     "eau.contenants",
@@ -103,6 +118,12 @@ LEVEL3 = [
     "finances.especes",
     "finances.assurances",
     "communaute.fragiles",
+    "alimentation.rotation",
+    "mobilite.accueil",
+    "sante.toilettes",
+    "abri.calfeutrage",
+    "competences.rechaud",
+    "moral.kit_occupation",
 ]
 
 
@@ -237,6 +258,33 @@ def engine_cases() -> list[dict[str, Any]]:
             ],
         },
         {
+            "name": "sursis, saisons, variante adaptée, animaux et fiches de crise",
+            "today": "2027-11-20",
+            "ops": [
+                onboarding(
+                    1,
+                    t0,
+                    household(
+                        context="periurbain",
+                        members=[
+                            {"name": "A", "type": "adulte", "conditions": ["mobilite_reduite"]},
+                            {"name": "B", "type": "adulte", "conditions": []},
+                            {"name": "Rex", "type": "animal_grand", "conditions": []},
+                        ],
+                    ),
+                    LEVEL2 + LEVEL3,
+                    base_stock,
+                    d0,
+                ),
+                op(2, "2026-09-01T08:00:00.000Z", "validation.set", validation("energie.bois", "2026-09-01")),
+                op(3, "2026-10-25T08:00:00.000Z", "validation.set", validation("sante.trousse", "2026-10-25")),
+                op(4, "2026-11-05T08:00:00.000Z", "notes.set", {"key": "contacts", "text": "Voisine : 06 00 00 00 00"}),
+                op(
+                    5, "2026-11-06T08:00:00.000Z", "validation.set", validation("sante.condition_adaptee", "2026-11-06")
+                ),
+            ],
+        },
+        {
             "name": "remise à zéro puis nouveau foyer rural",
             "today": "2026-11-10",
             "ops": [
@@ -250,7 +298,7 @@ def engine_cases() -> list[dict[str, Any]]:
                         context="rural",
                         members=[
                             {"name": "A", "type": "senior", "medical": True},
-                            {"name": "B", "type": "enfant", "medical": False},
+                            {"name": "B", "type": "enfant", "conditions": ["vue", "allergie_severe"]},
                             {"name": "Rex", "type": "animal", "medical": False},
                         ],
                     ),
@@ -319,6 +367,15 @@ def interview_cases() -> list[dict[str, Any]]:
             },
         },
         {
+            "name": "particularités de santé : insuline et lunettes",
+            "context": "appartement",
+            "members": [
+                {"name": "A", "type": "adulte", "conditions": ["insuline", "vue"]},
+                {"name": "B", "type": "adulte", "conditions": []},
+            ],
+            "answers": {"risques": ["inondation"], "traitements_jours": 20},
+        },
+        {
             "name": "réponses vides",
             "context": "periurbain",
             "members": ADULTES,
@@ -327,7 +384,7 @@ def interview_cases() -> list[dict[str, Any]]:
     ]
     out = []
     for c in cases:
-        state = HouseholdState(context=c["context"], members=[Member(m["type"], m["medical"]) for m in c["members"]])
+        state = HouseholdState(context=c["context"], members=[Member.from_dict(m) for m in c["members"]])
         r = apply_answers(catalog, state, c["answers"])
         out.append(
             {

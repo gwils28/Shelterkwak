@@ -1,6 +1,7 @@
 axis: sante
 objectives:
   - id: sante.trousse
+    why: "Liste minimale : pansements de tailles variées, compresses stériles, bande, sparadrap, désinfectant, sérum physiologique, antalgique, pince à épiler, ciseaux, gants, couverture de survie, thermomètre."
     level: 2
     title: Trousse de premiers secours complète et à jour
     revalidate_days: 365
@@ -29,7 +30,7 @@ objectives:
     title: Traitements médicaux d'avance pour 30 jours
     stock: {category: traitements, min_days: 30}
   - id: sante.toilettes
-    level: 4
+    level: 3
     title: Toilettes de secours (seau, sacs, sciure ou litière)
     why: Sans eau courante, l'hygiène devient le premier risque sanitaire.
   - id: sante.masques
@@ -47,9 +48,10 @@ objectives:
     title: Pharmacie étendue (antalgiques, antidiarrhéiques, désinfectants, sutures adhésives)
     revalidate_days: 365
   - id: sante.condition
+    excludes_tags: [mobilite_reduite, appareil_electrique]
     level: 6
     kind: skill
-    title: Condition physique - marcher 15 km avec un sac de 10 kg
+    title: Condition physique - les adultes valides marchent 15 km avec un sac de 10 kg
     revalidate_days: 365
   - id: sante.secourisme_avance
     level: 6
@@ -69,3 +71,140 @@ objectives:
   - id: sante.soignant
     level: 8
     title: Un soignant dans le réseau proche, joignable hors réseau
+  - id: sante.mise_en_situation
+    level: 9
+    title: Mise en situation annuelle - prendre en charge un blessé pendant 72 h sans secours extérieur
+    why: Savoir les gestes ne suffit pas ; il faut avoir tenu dans la durée, avec le matériel du foyer.
+    revalidate_days: 365
+  - id: sante.numeros_urgence
+    level: 1
+    title: Chaque membre en âge de le faire connaît les numéros d'urgence (15, 17, 18, 112, 114 par SMS)
+  - id: sante.pharmacie_base
+    level: 1
+    title: Antalgique, pansements et désinfectant à la maison
+
+  # --- Particularités des membres (voir member_conditions dans axes.yaml)
+  - id: sante.lunettes_secours
+    level: 2
+    requires_tags: [correction_vue]
+    title: Une paire de lunettes de secours à la vue actuelle pour chaque porteur
+    why: Sans correction, un myope ne peut ni conduire, ni lire une carte, ni repérer un danger ; une monture se casse vite.
+    revalidate_days: 730
+  - id: sante.ordonnance_vue
+    level: 2
+    requires_tags: [correction_vue]
+    title: Ordonnance de correction visuelle récente copiée avec les papiers importants
+    why: Elle permet de refaire des verres n'importe où, même loin de son opticien.
+    revalidate_days: 730
+  - id: sante.lunettes_sac
+    level: 3
+    requires_tags: [correction_vue]
+    title: Dans chaque sac d'évacuation, des lunettes en étui rigide (et de quoi entretenir des lentilles 3 jours)
+    why: Les lentilles demandent des mains propres et de l'eau saine ; en crise, on repasse aux lunettes.
+  - id: sante.lunettes_reserve
+    level: 5
+    requires_tags: [correction_vue]
+    title: Deux paires de rechange à la vue actuelle et un kit de réparation (tournevis, vis, cordon)
+    revalidate_days: 730
+  - id: sante.auditif_piles
+    level: 3
+    requires_tags: [appareil_auditif]
+    title: Piles ou batterie de secours de l'appareil auditif pour 14 jours, dans une boîte étanche
+  - id: sante.auditif_alerte
+    level: 3
+    requires_tags: [appareil_auditif]
+    title: Alerte adaptée aux malentendants (détecteur de fumée à flash ou vibreur, réveil vibrant)
+    why: Un détecteur sonore ne réveille pas une personne qui a retiré son appareil pour dormir.
+  - id: sante.auditif_reserve
+    level: 5
+    requires_tags: [appareil_auditif]
+    title: Piles de l'appareil auditif pour 90 jours ou chargeur alimenté hors réseau
+  - id: sante.registre_vulnerables
+    level: 2
+    requires_tags: [mobilite_reduite, appareil_electrique, seniors]
+    title: Inscription au registre communal des personnes vulnérables (mairie, CCAS)
+    why: En canicule ou en crise, la mairie appelle et visite en priorité les personnes inscrites.
+  - id: sante.phrv
+    level: 1
+    requires_tags: [appareil_electrique]
+    title: Patient déclaré à haut risque vital (PHRV) auprès du médecin et du fournisseur d'électricité
+    why: Le gestionnaire du réseau prévient alors des coupures programmées et l'ARS connaît la situation.
+  - id: sante.appareil_batterie
+    level: 3
+    requires_tags: [appareil_electrique]
+    title: Batterie de secours de l'appareil médical couvrant 72 h, testée (ou bouteille d'oxygène de relais)
+  - id: sante.appareil_prestataire
+    level: 4
+    requires_tags: [appareil_electrique]
+    title: Numéro d'astreinte 24 h/24 du prestataire de santé à domicile et conduite à tenir en coupure, affichés
+  - id: sante.appareil_autonome
+    level: 6
+    requires_tags: [appareil_electrique]
+    title: Recharge hors réseau (solaire ou groupe) dimensionnée pour faire fonctionner l'appareil médical
+  - id: sante.hypo
+    level: 1
+    requires_tags: [diabete_insuline]
+    title: Sucre rapide et glucagon toujours à portée, et l'entourage sait reconnaître une hypoglycémie
+  - id: sante.insuline_froid
+    level: 3
+    requires_tags: [diabete_insuline]
+    title: Pochettes ou glacière réfrigérantes sans électricité pour conserver l'insuline
+    why: L'insuline se dégrade à la chaleur ; une coupure en été suffit à la perdre.
+  - id: sante.diabete_materiel
+    level: 4
+    requires_tags: [diabete_insuline]
+    title: Matériel de diabète (bandelettes, aiguilles, capteurs, lecteur et piles) pour 30 jours d'avance
+  - id: sante.adrenaline
+    level: 1
+    requires_tags: [allergie_severe]
+    title: Deux stylos d'adrénaline non périmés toujours avec la personne allergique
+    revalidate_days: 365
+  - id: sante.adrenaline_formation
+    level: 2
+    requires_tags: [allergie_severe]
+    title: Tous les adultes du foyer savent reconnaître une anaphylaxie et utiliser le stylo d'adrénaline
+  - id: sante.inhalateur
+    level: 1
+    requires_tags: [respiratoire]
+    title: Inhalateur de secours en double (un sur soi, un à la maison), non périmé
+    revalidate_days: 365
+  - id: sante.plan_asthme
+    level: 3
+    requires_tags: [respiratoire]
+    title: Plan d'action écrit en cas de crise, validé par le médecin, et pièce abritée des fumées (incendie, pollution)
+  - id: sante.grossesse
+    level: 2
+    requires_tags: [grossesse]
+    title: Dossier de grossesse copié et deux maternités accessibles identifiées (dont une hors de la zone à risque)
+  - id: sante.sac_maternite
+    level: 3
+    requires_tags: [grossesse]
+    title: Sac de maternité prêt dès le 7e mois et trajet vers la maternité prévu sans voiture personnelle
+  - id: sante.identification
+    level: 1
+    requires_tags: [accompagnement]
+    title: Carte ou bracelet d'identification sur la personne (nom, contact, besoins particuliers)
+    why: Une personne désorientée ou séparée du foyer doit pouvoir être ramenée et prise en charge.
+  - id: sante.reassurance
+    level: 3
+    requires_tags: [accompagnement]
+    title: Kit de réassurance prêt (casque anti-bruit, objet familier, pictogrammes, routine de crise expliquée)
+  - id: sante.medicaments_chaleur
+    level: 3
+    requires_tags: [traitement_medical]
+    title: Médicaments sensibles à la chaleur repérés avec le pharmacien, et conservation prévue en canicule
+  - id: sante.masques_pandemie
+    level: 3
+    requires_tags: [inquietude_pandemie]
+    title: Masques FFP2, gel et thermomètre pour 14 jours de confinement
+  - id: sante.condition_adaptee
+    level: 6
+    kind: skill
+    requires_tags: [mobilite_reduite, appareil_electrique]
+    title: Capacité physique entretenue selon l'avis du médecin (activité régulière, kiné), aide prévue pour les longs déplacements
+    revalidate_days: 365
+  - id: sante.fosse_relevage
+    level: 6
+    contexts: [periurbain, rural]
+    required: false
+    title: "Assainissement individuel : savoir quoi faire si la pompe de relevage s'arrête (réserve, usage réduit des WC)"

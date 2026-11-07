@@ -1,36 +1,45 @@
-# Les 8 tambours de la colonne, du socle au chapiteau.
-# Le niveau N+1 n'est atteint que si tous les objectifs requis applicables
-# des niveaux 2..N+1 sont validés (paliers bloquants).
+# Les 9 tambours de la colonne, du socle au chapiteau.
+# Le niveau N n'est atteint que si tous les objectifs requis applicables
+# des niveaux 1..N sont validés (paliers bloquants). Le niveau 0 est le socle nu :
+# il n'a pas d'objectifs, c'est l'état d'un foyer qui n'a encore rien validé.
 levels:
-  - n: 1
-    name: Vulnérable
+  - n: 0
+    name: Débutant
     horizon: "0"
-    summary: Dépend entièrement des flux quotidiens (eau courante, électricité, courses).
+    summary: Point de départ - les premiers réflexes et les premières réserves restent à mettre en place.
+  - n: 1
+    name: Initié
+    horizon: Quelques heures
+    summary: A le strict minimum pour passer quelques heures de coupure, mais dépend encore des flux quotidiens (eau courante, électricité, courses).
   - n: 2
     name: Éveillé
     horizon: Bases
     summary: Connaît ses risques, a ses papiers, ses contacts et un premier plan.
   - n: 3
-    name: 72 heures
+    name: Paré
     horizon: 3 jours
     summary: Tient 3 jours sans eau courante, électricité ni ravitaillement.
   - n: 4
-    name: Deux semaines
+    name: Prévoyant
     horizon: 14 jours
     summary: Tient 14 jours confiné ou coupé du réseau.
   - n: 5
-    name: Trois mois
+    name: Endurant
     horizon: 90 jours
     summary: Traverse 3 mois de rupture partielle ; épargne de précaution.
   - n: 6
-    name: Six mois & savoir-faire
+    name: Aguerri
     horizon: 180 jours
     summary: Six mois de réserves et des compétences pratiques entretenues.
   - n: 7
-    name: Semi-autonome
+    name: Autonome
     horizon: Production
     summary: Produit une partie de son eau, de sa nourriture et de son énergie.
   - n: 8
-    name: Autonome & résilient
+    name: Résilient
     horizon: Durable
     summary: Autonomie forte, intégré à une communauté d'entraide, transmet.
+  - n: 9
+    name: Anti-fragile
+    horizon: Renforcé par les chocs
+    summary: Tout est éprouvé chaque année en conditions réelles, chaque crise rend le foyer plus fort, et il a de la marge pour absorber les chocs des autres.

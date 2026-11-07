@@ -15,7 +15,7 @@ DEFAULT_CATALOG_DIR = REPO_ROOT / "catalog"
 
 ContextId = Literal["appartement", "periurbain", "rural"]
 ALL_CONTEXTS: tuple[ContextId, ...] = ("appartement", "periurbain", "rural")
-MAX_LEVEL = 8
+MAX_LEVEL = 9
 
 
 class Level(BaseModel):
@@ -36,6 +36,32 @@ class NamedId(BaseModel):
     name: str
 
 
+class MemberCondition(BaseModel):
+    """Particularité de santé ou physique d'un membre ; ajoute ses tags au foyer."""
+
+    id: str
+    name: str
+    tags: list[str]
+
+
+class CrisisNote(BaseModel):
+    """Fiche de l'écran Crise, saisie librement par le foyer (opération notes.set)."""
+
+    id: str
+    name: str
+    hint: str = ""
+
+
+class Scenario(BaseModel):
+    """Fiche réflexe : affichée si le foyer porte l'un des tags (toujours si la liste est vide)."""
+
+    id: str
+    name: str
+    icon: str = ""
+    tags_any: list[str] = Field(default_factory=list)
+    steps: list[str]
+
+
 class StockRule(BaseModel):
     category: str
     min_days: float
@@ -44,7 +70,7 @@ class StockRule(BaseModel):
 class Objective(BaseModel):
     id: str
     axis: str
-    level: int = Field(ge=2, le=MAX_LEVEL)
+    level: int = Field(ge=1, le=MAX_LEVEL)
     title: str
     description: str = ""
     why: str = ""
@@ -52,7 +78,9 @@ class Objective(BaseModel):
     required: bool = True
     contexts: list[ContextId] = Field(default_factory=lambda: list(ALL_CONTEXTS))
     requires_tags: list[str] = Field(default_factory=list)
+    excludes_tags: list[str] = Field(default_factory=list)  # non applicable si le foyer porte l'un de ces tags
     revalidate_days: int | None = None
+    due_month: int | None = Field(default=None, ge=1, le=12)  # à refaire chaque année avant le 1er de ce mois
     stock: StockRule | None = None
     custom: bool = False  # objectif perso créé par le foyer
 
@@ -60,6 +88,8 @@ class Objective(BaseModel):
     def _stock_consistency(self) -> Objective:
         if (self.kind == "stock") != (self.stock is not None):
             raise ValueError(f"{self.id}: `stock` est requis si et seulement si kind == 'stock'")
+        if self.revalidate_days is not None and self.due_month is not None:
+            raise ValueError(f"{self.id}: `revalidate_days` et `due_month` sont exclusifs")
         return self
 
 
@@ -114,9 +144,15 @@ class Catalog(BaseModel):
     contexts: list[NamedId]
     member_types: list[NamedId]
     member_tags: dict[str, str]
+    member_conditions: list[MemberCondition] = Field(default_factory=list)
     categories: list[Category]
     objectives: list[Objective]
     questions: list[Question]
+    crisis_notes: list[CrisisNote] = Field(default_factory=list)
+    scenarios: list[Scenario] = Field(default_factory=list)
+
+    def is_animal(self, member_type: str) -> bool:
+        return self.member_tags.get(member_type) == "animaux"
 
     @property
     def objectives_by_id(self) -> dict[str, Objective]:
@@ -149,8 +185,8 @@ class Catalog(BaseModel):
     @model_validator(mode="after")
     def _check_references(self) -> Catalog:
         errors: list[str] = []
-        if [lv.n for lv in self.levels] != list(range(1, MAX_LEVEL + 1)):
-            errors.append("les niveaux doivent être numérotés de 1 à 8 dans l'ordre")
+        if [lv.n for lv in self.levels] != list(range(0, MAX_LEVEL + 1)):
+            errors.append(f"les niveaux doivent être numérotés de 0 à {MAX_LEVEL} dans l'ordre")
         axis_ids = {a.id for a in self.axes}
         cat_ids = {c.id for c in self.categories}
         member_type_ids = {m.id for m in self.member_types}
@@ -207,9 +243,12 @@ def load_catalog(directory: Path | None = None) -> Catalog:
         contexts=axes["contexts"],
         member_types=axes["member_types"],
         member_tags=axes.get("member_tags", {}),
+        member_conditions=axes.get("member_conditions", []),
         categories=_read(directory / "needs.yaml")["categories"],
         objectives=objectives,
         questions=_read(directory / "interview.yaml")["questions"],
+        crisis_notes=_read(directory / "crisis.yaml").get("notes", []),
+        scenarios=_read(directory / "crisis.yaml").get("scenarios", []),
     )
 
 

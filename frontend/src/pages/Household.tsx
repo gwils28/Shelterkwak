@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { MembersEditor } from "../components/MembersEditor";
 import { syncLabel } from "../components/SyncBadge";
+import { memberConditions } from "../engine/engine";
+import { isAnimal } from "../engine/types";
 import type { ContextId, HouseholdData } from "../model";
 import { actions, useFoyer } from "../store/hooks";
 import { store } from "../store/store";
@@ -31,11 +33,11 @@ export function HouseholdPage() {
     setForm({ ...form, ...patch });
   };
   const toggleIn = (list: string[], v: string) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
-  const valid = form.name.trim() && form.members.some((m) => m.type !== "animal") && form.members.every((m) => m.name.trim());
+  const valid = form.name.trim() && form.members.some((m) => !isAnimal(catalog, m.type)) && form.members.every((m) => m.name.trim());
   const derived = new Set<string>();
   for (const m of form.members) {
     if (catalog.member_tags[m.type]) derived.add(catalog.member_tags[m.type]);
-    if (m.medical) derived.add("traitement_medical");
+    for (const c of memberConditions(m)) for (const t of catalog.member_conditions.find((x) => x.id === c)?.tags ?? []) derived.add(t);
   }
 
   const exportJournal = () => {
@@ -61,7 +63,12 @@ export function HouseholdPage() {
           Nom du foyer
           <input id="household-name" value={form.name} onChange={(e) => set({ name: e.target.value })} />
         </label>
-        <MembersEditor members={form.members} types={catalog.member_types} onChange={(members) => set({ members })} />
+        <MembersEditor
+          members={form.members}
+          types={catalog.member_types}
+          conditions={catalog.member_conditions}
+          onChange={(members) => set({ members })}
+        />
         <p className="hint">Ajouter un membre augmente les besoins : ton niveau peut baisser si les réserves ne suivent pas.</p>
       </section>
 
@@ -117,7 +124,7 @@ export function HouseholdPage() {
             Palier visé
             <select id="household-goal" value={form.goal_level ?? ""} onChange={(e) => set({ goal_level: e.target.value ? Number(e.target.value) : null })}>
               <option value="">Aucun</option>
-              {catalog.levels.slice(1).map((l) => (
+              {catalog.levels.filter((l) => l.n >= 1).map((l) => (
                 <option key={l.n} value={l.n}>
                   {l.n} · {l.name}
                 </option>

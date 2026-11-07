@@ -1,7 +1,7 @@
 // Port TypeScript de backend/src/shelterkwak/replay.py : rejeu du journal et historique dérivé.
 
 import { addDays, type IsoDate } from "./dates";
-import { type Evaluation, evaluate, type HouseholdState, type StockLine, type Validation } from "./engine";
+import { type Evaluation, evaluate, GRACE_DAYS, type HouseholdState, memberOf, type StockLine, type Validation, validationExpiry } from "./engine";
 import { type Catalog, type ContextId, type CustomObjective, levelOf, withCustom } from "./types";
 
 export type OpType =
@@ -13,6 +13,7 @@ export type OpType =
   | "stock.delete"
   | "custom.upsert"
   | "custom.delete"
+  | "notes.set"
   | "reset";
 
 export interface Op {
@@ -27,7 +28,8 @@ export interface Op {
 export interface MemberData {
   name: string;
   type: string;
-  medical: boolean;
+  conditions?: string[]; // absent des opérations écrites avant les particularités
+  medical?: boolean; // ancien champ, équivaut à la condition « traitement »
 }
 export interface HouseholdData {
   name: string;
@@ -54,6 +56,7 @@ export interface StockData {
   unit_label: string;
   amount_per_unit: number;
   expires_on: IsoDate | null;
+  location?: string | null; // où il est rangé (absent des opérations anciennes)
 }
 
 export interface State {
@@ -61,11 +64,12 @@ export interface State {
   validations: Map<string, ValidationData>;
   stock: Map<string, StockData>;
   custom: Map<string, CustomObjective>;
+  notes: Map<string, string>; // fiches de l'écran Crise
   onboarded_at: string | null;
 }
 
 export function emptyState(): State {
-  return { household: null, validations: new Map(), stock: new Map(), custom: new Map(), onboarded_at: null };
+  return { household: null, validations: new Map(), stock: new Map(), custom: new Map(), notes: new Map(), onboarded_at: null };
 }
 
 export function compareOps(a: Op, b: Op): number {
@@ -100,6 +104,7 @@ export function apply(catalog: Catalog, state: State, op: Op): [string, string] 
       state.validations.clear();
       state.stock.clear();
       state.custom.clear();
+      state.notes.clear();
       return ["Remise à zéro du foyer", "remise à zéro"];
     case "onboarding": {
       state.household = { ...p.household };
@@ -165,6 +170,11 @@ export function apply(catalog: Catalog, state: State, op: Op): [string, string] 
       const title = item ? item.title : p.id;
       return [`Objectif perso supprimé : ${title}`, `objectif perso supprimé « ${title} »`];
     }
+    case "notes.set": {
+      state.notes.set(p.key, String(p.text ?? ""));
+      const name = catalog.crisis_notes.find((n) => n.id === p.key)?.name ?? p.key;
+      return [`Fiche de crise mise à jour : ${name}`, `fiche de crise « ${name} »`];
+    }
     default:
       throw new Error(`type d'opération inconnu : ${(op as Op).type}`);
   }
@@ -190,7 +200,7 @@ export function inputs(catalog: Catalog, state: State): Inputs | null {
     catalog: withCustom(catalog, [...state.custom.values()]),
     household: {
       context: h.context,
-      members: (h.members ?? []).map((m) => ({ type: m.type, medical: Boolean(m.medical) })),
+      members: (h.members ?? []).map(memberOf),
       declared_tags: [...(h.tags ?? [])],
       target_context: h.target_context ?? null,
       priority_axes: [...(h.priority_axes ?? [])],
@@ -222,8 +232,9 @@ function expirations(catalog: Catalog, state: State, after: IsoDate, until: IsoD
   const add = (d: IsoDate, cause: string) => found.set(d, [...(found.get(d) ?? []), cause]);
   for (const [id, v] of state.validations) {
     const obj = byId.get(id);
-    if (obj?.revalidate_days) {
-      const d = addDays(v.validated_at, obj.revalidate_days);
+    const expiry = obj ? validationExpiry(obj, v.validated_at) : null;
+    if (obj && expiry) {
+      const d = addDays(expiry, GRACE_DAYS); // le tambour tombe à la fin du sursis
       if (after < d && d <= until) add(d, `revalidation dépassée « ${obj.title} »`);
     }
   }

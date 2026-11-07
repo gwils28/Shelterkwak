@@ -2,7 +2,7 @@
 
 export type ContextId = "appartement" | "periurbain" | "rural";
 export type Kind = "check" | "skill" | "stock";
-export type Status = "na" | "todo" | "done" | "expiring" | "expired";
+export type Status = "na" | "todo" | "done" | "expiring" | "grace" | "expired";
 
 export interface Level {
   n: number;
@@ -38,7 +38,9 @@ export interface Objective {
   required: boolean;
   contexts: ContextId[];
   requires_tags: string[];
+  excludes_tags: string[];
   revalidate_days: number | null;
+  due_month: number | null;
   stock: { category: string; min_days: number } | null;
   custom: boolean;
 }
@@ -72,18 +74,42 @@ export interface Question {
   } | null;
   answered_validates: string[];
 }
+export interface MemberCondition {
+  id: string;
+  name: string;
+  tags: string[];
+}
+export interface CrisisNote {
+  id: string;
+  name: string;
+  hint: string;
+}
+export interface Scenario {
+  id: string;
+  name: string;
+  icon: string;
+  tags_any: string[];
+  steps: string[];
+}
 export interface Catalog {
   levels: Level[];
   axes: Axis[];
   contexts: NamedId[];
   member_types: NamedId[];
   member_tags: Record<string, string>;
+  member_conditions: MemberCondition[];
   categories: Category[];
   objectives: Objective[];
   questions: Question[];
+  crisis_notes: CrisisNote[];
+  scenarios: Scenario[];
 }
 
-export const MAX_LEVEL = 8;
+export function isAnimal(catalog: Catalog, memberType: string): boolean {
+  return catalog.member_tags[memberType] === "animaux";
+}
+
+export const MAX_LEVEL = 9;
 export const ALL_CONTEXTS: ContextId[] = ["appartement", "periurbain", "rural"];
 
 export function levelOf(catalog: Catalog, n: number): Level {
@@ -112,7 +138,7 @@ export function withCustom(catalog: Catalog, customs: CustomObjective[]): Catalo
       typeof c.id === "string" &&
       typeof c.title === "string" &&
       Number.isInteger(c.level) &&
-      c.level >= 2 &&
+      c.level >= 1 &&
       c.level <= MAX_LEVEL &&
       axes.has(c.axis) &&
       (kind === "check" || kind === "skill");
@@ -128,7 +154,9 @@ export function withCustom(catalog: Catalog, customs: CustomObjective[]): Catalo
       required: c.required ?? true,
       contexts: [...ALL_CONTEXTS],
       requires_tags: [],
+      excludes_tags: [],
       revalidate_days: c.revalidate_days ?? null,
+      due_month: null,
       stock: null,
       custom: true,
     });

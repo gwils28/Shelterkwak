@@ -7,7 +7,12 @@ from shelterkwak.export import LEVEL2, household, onboarding, op, stock
 
 def onboard_op() -> dict:
     return onboarding(
-        1, "2026-11-02T10:00:00.000Z", household(), LEVEL2, [stock("s1", "Eau", "eau", 6, 1)], "2026-11-02"
+        1,
+        "2026-11-02T10:00:00.000Z",
+        household(),
+        LEVEL2,
+        [stock("s1", "Eau", "eau", 8, 1), stock("s2", "Vivres", "alimentation", 2, 2200)],
+        "2026-11-02",
     )
 
 

@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import engineCases from "../../../fixtures/engine.json";
 import interviewCases from "../../../fixtures/interview.json";
 import { CATALOG } from "./catalog";
+import { memberOf } from "./engine";
 import { applyAnswers, type Answer } from "./interview";
 import { evaluateState, history, type Op, replay } from "./replay";
 
@@ -34,7 +35,7 @@ describe("parité du moteur avec Python", () => {
 interface InterviewCase {
   name: string;
   context: string;
-  members: { type: string; medical: boolean }[];
+  members: { type: string; medical?: boolean; conditions?: string[] }[];
   answers: Record<string, Answer>;
   expected: unknown;
 }
@@ -46,7 +47,7 @@ describe("parité de l'interview avec Python", () => {
         CATALOG,
         {
           context: c.context,
-          members: c.members.map((m) => ({ type: m.type, medical: m.medical })),
+          members: c.members.map(memberOf),
           declared_tags: [],
           target_context: null,
           priority_axes: [],

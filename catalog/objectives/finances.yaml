@@ -6,7 +6,7 @@ objectives:
     revalidate_days: 730
   - id: finances.especes
     level: 3
-    title: Espèces en petites coupures (une semaine de dépenses)
+    title: Espèces en petites coupures - au moins 150 € par adulte
     why: Sans électricité, les paiements par carte s'arrêtent.
     revalidate_days: 365
   - id: finances.assurances
@@ -38,3 +38,15 @@ objectives:
   - id: finances.actifs
     level: 8
     title: Actifs tangibles utiles (outils, terre, matériel d'échange)
+  - id: finances.optionalite
+    level: 9
+    title: Au moins deux sources de revenus indépendantes et douze mois de dépenses en épargne
+    why: Plusieurs options de revenus permettent de rebondir, voire de profiter d'un choc économique.
+    revalidate_days: 365
+  - id: finances.papiers_ranges
+    level: 1
+    title: Papiers d'identité, cartes Vitale et carnets de santé rangés au même endroit
+  - id: finances.animaux_papiers
+    level: 2
+    requires_tags: [animaux]
+    title: Identification (puce) et carnet de vaccination des animaux copiés avec les papiers importants

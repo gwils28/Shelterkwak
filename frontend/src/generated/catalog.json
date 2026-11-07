@@ -1,10 +1,16 @@
 {
  "levels": [
   {
-   "n": 1,
-   "name": "Vulnérable",
+   "n": 0,
+   "name": "Débutant",
    "horizon": "0",
-   "summary": "Dépend entièrement des flux quotidiens (eau courante, électricité, courses)."
+   "summary": "Point de départ - les premiers réflexes et les premières réserves restent à mettre en place."
+  },
+  {
+   "n": 1,
+   "name": "Initié",
+   "horizon": "Quelques heures",
+   "summary": "A le strict minimum pour passer quelques heures de coupure, mais dépend encore des flux quotidiens (eau courante, électricité, courses)."
   },
   {
    "n": 2,
@@ -14,39 +20,45 @@
   },
   {
    "n": 3,
-   "name": "72 heures",
+   "name": "Paré",
    "horizon": "3 jours",
    "summary": "Tient 3 jours sans eau courante, électricité ni ravitaillement."
   },
   {
    "n": 4,
-   "name": "Deux semaines",
+   "name": "Prévoyant",
    "horizon": "14 jours",
    "summary": "Tient 14 jours confiné ou coupé du réseau."
   },
   {
    "n": 5,
-   "name": "Trois mois",
+   "name": "Endurant",
    "horizon": "90 jours",
    "summary": "Traverse 3 mois de rupture partielle ; épargne de précaution."
   },
   {
    "n": 6,
-   "name": "Six mois & savoir-faire",
+   "name": "Aguerri",
    "horizon": "180 jours",
    "summary": "Six mois de réserves et des compétences pratiques entretenues."
   },
   {
    "n": 7,
-   "name": "Semi-autonome",
+   "name": "Autonome",
    "horizon": "Production",
    "summary": "Produit une partie de son eau, de sa nourriture et de son énergie."
   },
   {
    "n": 8,
-   "name": "Autonome & résilient",
+   "name": "Résilient",
    "horizon": "Durable",
    "summary": "Autonomie forte, intégré à une communauté d'entraide, transmet."
+  },
+  {
+   "n": 9,
+   "name": "Anti-fragile",
+   "horizon": "Renforcé par les chocs",
+   "summary": "Tout est éprouvé chaque année en conditions réelles, chaque crise rend le foyer plus fort, et il a de la marge pour absorber les chocs des autres."
   }
  ],
  "axes": [
@@ -104,6 +116,11 @@
    "id": "communaute",
    "name": "Réseau & entraide",
    "icon": "🤝"
+  },
+  {
+   "id": "moral",
+   "name": "Moral & cohésion",
+   "icon": "🧠"
   }
  ],
  "contexts": [
@@ -138,27 +155,119 @@
    "name": "Bébé (moins de 3 ans)"
   },
   {
+   "id": "animal_petit",
+   "name": "Petit animal (chat, petit chien)"
+  },
+  {
+   "id": "animal_grand",
+   "name": "Grand chien"
+  },
+  {
    "id": "animal",
-   "name": "Animal"
+   "name": "Autre animal"
   }
  ],
  "member_tags": {
   "enfant": "enfants",
   "bebe": "bebe",
   "senior": "seniors",
-  "animal": "animaux"
+  "animal": "animaux",
+  "animal_petit": "animaux",
+  "animal_grand": "animaux"
  },
+ "member_conditions": [
+  {
+   "id": "traitement",
+   "name": "Traitement médical régulier",
+   "tags": [
+    "traitement_medical"
+   ]
+  },
+  {
+   "id": "vue",
+   "name": "Lunettes ou lentilles de correction",
+   "tags": [
+    "correction_vue"
+   ]
+  },
+  {
+   "id": "audition",
+   "name": "Appareil auditif",
+   "tags": [
+    "appareil_auditif"
+   ]
+  },
+  {
+   "id": "mobilite_reduite",
+   "name": "Mobilité réduite (canne, déambulateur, fauteuil)",
+   "tags": [
+    "mobilite_reduite"
+   ]
+  },
+  {
+   "id": "appareil_electrique",
+   "name": "Appareil médical électrique (respirateur, PPC, concentrateur d'oxygène)",
+   "tags": [
+    "appareil_electrique"
+   ]
+  },
+  {
+   "id": "insuline",
+   "name": "Diabète traité par insuline",
+   "tags": [
+    "diabete_insuline",
+    "traitement_medical"
+   ]
+  },
+  {
+   "id": "allergie_severe",
+   "name": "Allergie sévère avec stylo d'adrénaline",
+   "tags": [
+    "allergie_severe"
+   ]
+  },
+  {
+   "id": "respiratoire",
+   "name": "Asthme ou maladie respiratoire",
+   "tags": [
+    "respiratoire"
+   ]
+  },
+  {
+   "id": "regime",
+   "name": "Régime alimentaire strict (cœliaquie, allergie alimentaire)",
+   "tags": [
+    "regime_special"
+   ]
+  },
+  {
+   "id": "grossesse",
+   "name": "Grossesse en cours",
+   "tags": [
+    "grossesse"
+   ]
+  },
+  {
+   "id": "accompagnement",
+   "name": "Besoin d'accompagnement (troubles cognitifs, autisme, Alzheimer)",
+   "tags": [
+    "accompagnement"
+   ]
+  }
+ ],
  "categories": [
   {
    "id": "eau",
    "name": "Eau potable",
    "unit": "L",
    "daily_need": {
-    "adulte": 3.0,
-    "senior": 3.0,
-    "enfant": 2.0,
-    "bebe": 1.5,
-    "animal": 1.0
+    "adulte": 4.0,
+    "senior": 4.0,
+    "enfant": 2.5,
+    "bebe": 2.0,
+    "animal": 1.0,
+    "animal_petit": 0.3,
+    "animal_grand": 2.0
    },
    "per_household": null,
    "applies_if": null
@@ -195,6 +304,379 @@
  ],
  "objectives": [
   {
+   "id": "eau.stock_24h",
+   "axis": "eau",
+   "level": 1,
+   "title": "Stock d'eau potable pour 24 heures",
+   "description": "",
+   "why": "Une coupure d'eau de quelques heures est courante (travaux, fuite, gel) ; 4 litres par adulte suffisent à la passer.",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": {
+    "category": "eau",
+    "min_days": 1.0
+   },
+   "custom": false
+  },
+  {
+   "id": "alimentation.stock_24h",
+   "axis": "alimentation",
+   "level": 1,
+   "title": "Nourriture pour 24 heures sans faire de courses",
+   "description": "",
+   "why": "",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": {
+    "category": "alimentation",
+    "min_days": 1.0
+   },
+   "custom": false
+  },
+  {
+   "id": "energie.lumiere",
+   "axis": "energie",
+   "level": 1,
+   "title": "Une source de lumière sans réseau rangée à un endroit connu de tous",
+   "description": "",
+   "why": "En cas de coupure de nuit, on doit pouvoir la trouver à tâtons, sans téléphone.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.numeros_urgence",
+   "axis": "sante",
+   "level": 1,
+   "title": "Chaque membre en âge de le faire connaît les numéros d'urgence (15, 17, 18, 112, 114 par SMS)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.pharmacie_base",
+   "axis": "sante",
+   "level": 1,
+   "title": "Antalgique, pansements et désinfectant à la maison",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.phrv",
+   "axis": "sante",
+   "level": 1,
+   "title": "Patient déclaré à haut risque vital (PHRV) auprès du médecin et du fournisseur d'électricité",
+   "description": "",
+   "why": "Le gestionnaire du réseau prévient alors des coupures programmées et l'ARS connaît la situation.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "appareil_electrique"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.hypo",
+   "axis": "sante",
+   "level": 1,
+   "title": "Sucre rapide et glucagon toujours à portée, et l'entourage sait reconnaître une hypoglycémie",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "diabete_insuline"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.adrenaline",
+   "axis": "sante",
+   "level": 1,
+   "title": "Deux stylos d'adrénaline non périmés toujours avec la personne allergique",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "allergie_severe"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.inhalateur",
+   "axis": "sante",
+   "level": 1,
+   "title": "Inhalateur de secours en double (un sur soi, un à la maison), non périmé",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "respiratoire"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.identification",
+   "axis": "sante",
+   "level": 1,
+   "title": "Carte ou bracelet d'identification sur la personne (nom, contact, besoins particuliers)",
+   "description": "",
+   "why": "Une personne désorientée ou séparée du foyer doit pouvoir être ramenée et prise en charge.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "accompagnement"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.issues",
+   "axis": "abri",
+   "level": 1,
+   "title": "Issues de secours du logement et de l'immeuble repérées par tous",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.reflexes",
+   "axis": "securite",
+   "level": 1,
+   "title": "Connaître les réflexes officiels en cas d'alerte (se mettre à l'abri, s'informer, ne pas aller chercher les enfants à l'école)",
+   "description": "",
+   "why": "Ce sont les consignes diffusées par les sirènes et FR-Alert ; les connaître évite les mauvais réflexes.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.frequence",
+   "axis": "communication",
+   "level": 1,
+   "title": "Fréquence FM locale de la radio publique notée sur papier",
+   "description": "",
+   "why": "En cas d'alerte, c'est la radio publique qui relaie les consignes des autorités.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.depart_rapide",
+   "axis": "mobilite",
+   "level": 1,
+   "title": "Clés, papiers, téléphone et chaussures toujours au même endroit près de la sortie",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.guide",
+   "axis": "competences",
+   "level": 1,
+   "title": "Avoir lu un guide officiel de préparation aux situations d'urgence (gouvernement, Croix-Rouge)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.papiers_ranges",
+   "axis": "finances",
+   "level": 1,
+   "title": "Papiers d'identité, cartes Vitale et carnets de santé rangés au même endroit",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.proche_joignable",
+   "axis": "communaute",
+   "level": 1,
+   "title": "Un proche à moins de 30 minutes, prévenu qu'il est ton contact d'urgence",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.robinet_arret",
    "axis": "eau",
    "level": 2,
@@ -209,7 +691,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -228,7 +712,30 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 1095,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.immeuble",
+   "axis": "eau",
+   "level": 2,
+   "title": "Savoir si l'immeuble a un surpresseur et où la commune distribue l'eau en cas de coupure",
+   "description": "",
+   "why": "Sans électricité, le surpresseur s'arrête et les étages n'ont plus d'eau, même si le réseau en a.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [
+    "etage"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -247,7 +754,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -266,7 +775,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -276,7 +787,7 @@
    "level": 2,
    "title": "Trousse de premiers secours complète et à jour",
    "description": "",
-   "why": "",
+   "why": "Liste minimale : pansements de tailles variées, compresses stériles, bande, sparadrap, désinfectant, sérum physiologique, antalgique, pince à épiler, ciseaux, gants, couverture de survie, thermomètre.",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -285,7 +796,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -304,7 +817,126 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.lunettes_secours",
+   "axis": "sante",
+   "level": 2,
+   "title": "Une paire de lunettes de secours à la vue actuelle pour chaque porteur",
+   "description": "",
+   "why": "Sans correction, un myope ne peut ni conduire, ni lire une carte, ni repérer un danger ; une monture se casse vite.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "correction_vue"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 730,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.ordonnance_vue",
+   "axis": "sante",
+   "level": 2,
+   "title": "Ordonnance de correction visuelle récente copiée avec les papiers importants",
+   "description": "",
+   "why": "Elle permet de refaire des verres n'importe où, même loin de son opticien.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "correction_vue"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 730,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.registre_vulnerables",
+   "axis": "sante",
+   "level": 2,
+   "title": "Inscription au registre communal des personnes vulnérables (mairie, CCAS)",
+   "description": "",
+   "why": "En canicule ou en crise, la mairie appelle et visite en priorité les personnes inscrites.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "mobilite_reduite",
+    "appareil_electrique",
+    "seniors"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.adrenaline_formation",
+   "axis": "sante",
+   "level": 2,
+   "title": "Tous les adultes du foyer savent reconnaître une anaphylaxie et utiliser le stylo d'adrénaline",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "allergie_severe"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.grossesse",
+   "axis": "sante",
+   "level": 2,
+   "title": "Dossier de grossesse copié et deux maternités accessibles identifiées (dont une hors de la zone à risque)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "grossesse"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -323,7 +955,34 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.plan_canicule",
+   "axis": "abri",
+   "level": 2,
+   "title": "Plan canicule revu avant l'été et connu de tous (boire régulièrement, volets fermés le jour, aérer la nuit, appeler les proches isolés)",
+   "description": "",
+   "why": "La chaleur est le risque climatique qui tue le plus en France, d'abord les seniors et les bébés.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_canicule",
+    "seniors",
+    "bebe"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": 6,
    "stock": null,
    "custom": false
   },
@@ -342,7 +1001,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 1095,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -361,7 +1022,55 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.iode",
+   "axis": "securite",
+   "level": 2,
+   "title": "Comprimés d'iode retirés en pharmacie pour chaque membre si le foyer est dans le périmètre d'une centrale nucléaire",
+   "description": "",
+   "why": "Pris sur consigne de la préfecture, ils protègent la thyroïde, surtout celle des enfants.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_industriel"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.ecole",
+   "axis": "securite",
+   "level": 2,
+   "title": "Personnes autorisées à récupérer les enfants déclarées à l'école, et consignes du plan de mise en sûreté (PPMS) connues",
+   "description": "",
+   "why": "En alerte, l'école garde les enfants à l'abri ; aller les chercher expose tout le monde.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "enfants"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -380,7 +1089,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -399,7 +1110,32 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.evacuation_pmr",
+   "axis": "mobilite",
+   "level": 2,
+   "title": "Plan d'évacuation de la personne à mobilité réduite (qui l'aide, par où, sans ascenseur), connu de tous",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "mobilite_reduite"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -418,7 +1154,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -437,7 +1175,32 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 730,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.animaux_papiers",
+   "axis": "finances",
+   "level": 2,
+   "title": "Identification (puce) et carnet de vaccination des animaux copiés avec les papiers importants",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "animaux"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -456,7 +1219,30 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "moral.ecoute",
+   "axis": "moral",
+   "level": 2,
+   "title": "Numéros d'écoute notés sur papier (3114 prévention du suicide, SOS Amitié)",
+   "description": "",
+   "why": "En crise longue, c'est souvent le moral qui cède avant les réserves.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -475,7 +1261,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "eau",
     "min_days": 3.0
@@ -497,7 +1285,30 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.portage",
+   "axis": "eau",
+   "level": 3,
+   "title": "Chariot ou diable de portage, et bidons de 10 L maximum pour monter l'eau à pied",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [
+    "etage"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -516,7 +1327,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "alimentation",
     "min_days": 3.0
@@ -538,7 +1351,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -557,7 +1372,30 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.rotation",
+   "axis": "alimentation",
+   "level": 3,
+   "title": "Rotation des stocks en place (premier entré, premier sorti)",
+   "description": "",
+   "why": "Un stock qu'on ne consomme pas finit à la poubelle.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 180,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -576,7 +1414,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "cuisson",
     "min_days": 3.0
@@ -598,7 +1438,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 90,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -617,7 +1459,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 1095,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -636,7 +1480,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -657,11 +1503,264 @@
    "requires_tags": [
     "traitement_medical"
    ],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "traitements",
     "min_days": 7.0
    },
+   "custom": false
+  },
+  {
+   "id": "sante.toilettes",
+   "axis": "sante",
+   "level": 3,
+   "title": "Toilettes de secours (seau, sacs, sciure ou litière)",
+   "description": "",
+   "why": "Sans eau courante, l'hygiène devient le premier risque sanitaire.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.lunettes_sac",
+   "axis": "sante",
+   "level": 3,
+   "title": "Dans chaque sac d'évacuation, des lunettes en étui rigide (et de quoi entretenir des lentilles 3 jours)",
+   "description": "",
+   "why": "Les lentilles demandent des mains propres et de l'eau saine ; en crise, on repasse aux lunettes.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "correction_vue"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.auditif_piles",
+   "axis": "sante",
+   "level": 3,
+   "title": "Piles ou batterie de secours de l'appareil auditif pour 14 jours, dans une boîte étanche",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "appareil_auditif"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.auditif_alerte",
+   "axis": "sante",
+   "level": 3,
+   "title": "Alerte adaptée aux malentendants (détecteur de fumée à flash ou vibreur, réveil vibrant)",
+   "description": "",
+   "why": "Un détecteur sonore ne réveille pas une personne qui a retiré son appareil pour dormir.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "appareil_auditif"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.appareil_batterie",
+   "axis": "sante",
+   "level": 3,
+   "title": "Batterie de secours de l'appareil médical couvrant 72 h, testée (ou bouteille d'oxygène de relais)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "appareil_electrique"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.insuline_froid",
+   "axis": "sante",
+   "level": 3,
+   "title": "Pochettes ou glacière réfrigérantes sans électricité pour conserver l'insuline",
+   "description": "",
+   "why": "L'insuline se dégrade à la chaleur ; une coupure en été suffit à la perdre.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "diabete_insuline"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.plan_asthme",
+   "axis": "sante",
+   "level": 3,
+   "title": "Plan d'action écrit en cas de crise, validé par le médecin, et pièce abritée des fumées (incendie, pollution)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "respiratoire"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.sac_maternite",
+   "axis": "sante",
+   "level": 3,
+   "title": "Sac de maternité prêt dès le 7e mois et trajet vers la maternité prévu sans voiture personnelle",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "grossesse"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.reassurance",
+   "axis": "sante",
+   "level": 3,
+   "title": "Kit de réassurance prêt (casque anti-bruit, objet familier, pictogrammes, routine de crise expliquée)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "accompagnement"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.medicaments_chaleur",
+   "axis": "sante",
+   "level": 3,
+   "title": "Médicaments sensibles à la chaleur repérés avec le pharmacien, et conservation prévue en canicule",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "traitement_medical"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.masques_pandemie",
+   "axis": "sante",
+   "level": 3,
+   "title": "Masques FFP2, gel et thermomètre pour 14 jours de confinement",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "inquietude_pandemie"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
    "custom": false
   },
   {
@@ -679,7 +1778,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -698,7 +1799,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -717,7 +1820,78 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.calfeutrage",
+   "axis": "abri",
+   "level": 3,
+   "title": "Kit de confinement (bâches, ruban adhésif, film plastique)",
+   "description": "",
+   "why": "En cas d'accident industriel, la consigne est de se confiner en calfeutrant.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.piece_fraiche",
+   "axis": "abri",
+   "level": 3,
+   "title": "Pièce la plus fraîche identifiée, thermomètre intérieur, brumisateur ou linges humides prêts",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_canicule",
+    "seniors",
+    "bebe"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.seisme",
+   "axis": "abri",
+   "level": 3,
+   "title": "Meubles hauts et chauffe-eau fixés au mur, chaussures et lampe au pied de chaque lit",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_seisme"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -736,7 +1910,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -755,7 +1931,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -763,7 +1941,7 @@
    "id": "communication.radio",
    "axis": "communication",
    "level": 3,
-   "title": "Radio à piles ou à dynamo (FM et grandes ondes), testée",
+   "title": "Radio à piles ou à dynamo (FM), testée, avec piles de rechange",
    "description": "",
    "why": "",
    "kind": "check",
@@ -774,7 +1952,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -793,7 +1973,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -802,6 +1984,27 @@
    "axis": "mobilite",
    "level": 3,
    "title": "Sac d'évacuation 72 h prêt pour chaque membre",
+   "description": "",
+   "why": "Par personne : eau (2 L) et aliments pour 72 h, lampe, radio ou batterie, trousse, copies des papiers, espèces, vêtements chauds et de pluie, médicaments, lunettes, sifflet, contacts sur papier.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 180,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.accueil",
+   "axis": "mobilite",
+   "level": 3,
+   "title": "Lieu d'accueil convenu hors de la zone (famille, amis)",
    "description": "",
    "why": "",
    "kind": "check",
@@ -812,7 +2015,55 @@
     "rural"
    ],
    "requires_tags": [],
-   "revalidate_days": 180,
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.aide_technique",
+   "axis": "mobilite",
+   "level": 3,
+   "title": "Aide technique de secours (canne pliante, fauteuil manuel si le fauteuil habituel est électrique)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "mobilite_reduite"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.animaux_transport",
+   "axis": "mobilite",
+   "level": 3,
+   "title": "Caisse de transport, laisse et gamelle pour chaque animal, près de la sortie",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "animaux"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -826,12 +2077,32 @@
    "kind": "skill",
    "required": true,
    "contexts": [
-    "appartement",
     "periurbain",
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.rechaud",
+   "axis": "competences",
+   "level": 3,
+   "title": "Utiliser un réchaud en sécurité (jamais en pièce close, fenêtre entrouverte, détecteur de CO)",
+   "description": "",
+   "why": "En ville, le danger n'est pas de ne pas savoir faire du feu, mais de s'intoxiquer en cuisinant à l'intérieur.",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -839,7 +2110,7 @@
    "id": "finances.especes",
    "axis": "finances",
    "level": 3,
-   "title": "Espèces en petites coupures (une semaine de dépenses)",
+   "title": "Espèces en petites coupures - au moins 150 € par adulte",
    "description": "",
    "why": "Sans électricité, les paiements par carte s'arrêtent.",
    "kind": "check",
@@ -850,7 +2121,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -869,7 +2142,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -888,7 +2163,54 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "moral.kit_occupation",
+   "axis": "moral",
+   "level": 3,
+   "title": "Kit sommeil et occupation sans écran pour chacun (bouchons d'oreille, masque, livres, jeux de cartes)",
+   "description": "",
+   "why": "Bien dormir et s'occuper sans électricité limite l'angoisse et les tensions.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "moral.kit_enfant",
+   "axis": "moral",
+   "level": 3,
+   "title": "Kit de réconfort par enfant dans le sac (doudou, jeu, photo de famille, carte avec contacts)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "enfants",
+    "bebe"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -907,7 +2229,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "eau",
     "min_days": 14.0
@@ -929,7 +2253,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -948,7 +2274,28 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 730,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.plan_appro",
+   "axis": "eau",
+   "level": 4,
+   "title": "Plan d'approvisionnement à pied (trajet, chariot, bidons) vers une source identifiée",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -967,30 +2314,13 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "alimentation",
     "min_days": 14.0
    },
-   "custom": false
-  },
-  {
-   "id": "alimentation.rotation",
-   "axis": "alimentation",
-   "level": 4,
-   "title": "Rotation des stocks en place (premier entré, premier sorti)",
-   "description": "",
-   "why": "Un stock qu'on ne consomme pas finit à la poubelle.",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "revalidate_days": 180,
-   "stock": null,
    "custom": false
   },
   {
@@ -1010,7 +2340,9 @@
    "requires_tags": [
     "bebe"
    ],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1031,7 +2363,9 @@
    "requires_tags": [
     "animaux"
    ],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1039,20 +2373,66 @@
    "id": "alimentation.regimes",
    "axis": "alimentation",
    "level": 4,
-   "title": "Réserves adaptées aux régimes particuliers (diabète, allergies, sans gluten)",
+   "title": "Réserves adaptées aux régimes particuliers (diabète, allergies, sans gluten), étiquettes vérifiées",
    "description": "",
-   "why": "",
+   "why": "En pénurie, on mange ce qu'on trouve ; un stock sûr évite une crise d'allergie ou une hypoglycémie.",
    "kind": "check",
-   "required": false,
+   "required": true,
    "contexts": [
     "appartement",
     "periurbain",
     "rural"
    ],
    "requires_tags": [
-    "traitement_medical"
+    "regime_special",
+    "allergie_severe",
+    "diabete_insuline"
    ],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.potager_savoir",
+   "axis": "alimentation",
+   "level": 4,
+   "title": "Savoir cultiver au moins cinq légumes de base (stage, jardin partagé)",
+   "description": "",
+   "why": "Compétence transférable si tu prévois de changer de lieu de vie.",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 730,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.circuit_court",
+   "axis": "alimentation",
+   "level": 4,
+   "title": "Lien direct avec au moins deux producteurs locaux",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1071,7 +2451,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "cuisson",
     "min_days": 14.0
@@ -1093,7 +2475,51 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.bilan_wh",
+   "axis": "energie",
+   "level": 4,
+   "title": "Besoins électriques prioritaires chiffrés en Wh par jour",
+   "description": "",
+   "why": "On ne choisit ni panneau ni station sans savoir ce qu'ils doivent alimenter.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.cuisson_sobre",
+   "axis": "energie",
+   "level": 4,
+   "title": "Cuisson sobre pratiquée (marmite norvégienne, cuisson à l'étouffée, autocuiseur)",
+   "description": "",
+   "why": "Elle divise le combustible à stocker par deux ou trois.",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 730,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1114,30 +2540,13 @@
    "requires_tags": [
     "traitement_medical"
    ],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "traitements",
     "min_days": 30.0
    },
-   "custom": false
-  },
-  {
-   "id": "sante.toilettes",
-   "axis": "sante",
-   "level": 4,
-   "title": "Toilettes de secours (seau, sacs, sciure ou litière)",
-   "description": "",
-   "why": "Sans eau courante, l'hygiène devient le premier risque sanitaire.",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "revalidate_days": null,
-   "stock": null,
    "custom": false
   },
   {
@@ -1155,17 +2564,19 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 1825,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
   {
-   "id": "abri.calfeutrage",
-   "axis": "abri",
+   "id": "sante.appareil_prestataire",
+   "axis": "sante",
    "level": 4,
-   "title": "Kit de confinement (bâches, ruban adhésif, film plastique)",
+   "title": "Numéro d'astreinte 24 h/24 du prestataire de santé à domicile et conduite à tenir en coupure, affichés",
    "description": "",
-   "why": "En cas d'accident industriel, la consigne est de se confiner en calfeutrant.",
+   "why": "",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -1173,8 +2584,35 @@
     "periurbain",
     "rural"
    ],
-   "requires_tags": [],
+   "requires_tags": [
+    "appareil_electrique"
+   ],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.diabete_materiel",
+   "axis": "sante",
+   "level": 4,
+   "title": "Matériel de diabète (bandelettes, aiguilles, capteurs, lecteur et piles) pour 30 jours d'avance",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "diabete_insuline"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1192,10 +2630,56 @@
     "periurbain",
     "rural"
    ],
-   "requires_tags": [
-    "risque_froid"
-   ],
+   "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.rafraichir_sans_reseau",
+   "axis": "abri",
+   "level": 4,
+   "title": "Rafraîchissement sans réseau (ventilateur sur batterie, protections solaires extérieures, rideaux occultants)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_canicule"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.neige",
+   "axis": "abri",
+   "level": 4,
+   "title": "Équipements neige (pneus ou chaînes, pelle, sel) et réserves pour une semaine bloqué par la neige",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "climat_montagne"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": 11,
    "stock": null,
    "custom": false
   },
@@ -1203,7 +2687,7 @@
    "id": "securite.exercice",
    "axis": "securite",
    "level": 4,
-   "title": "Exercice familial (24 h sans réseau ou évacuation chronométrée)",
+   "title": "Exercice d'évacuation chronométré - tout le foyer dehors en moins de 15 min, sacs pris",
    "description": "",
    "why": "Un plan jamais testé est une hypothèse.",
    "kind": "check",
@@ -1214,7 +2698,11 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [
+    "mobilite_reduite"
+   ],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1233,7 +2721,30 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.exercice_24h",
+   "axis": "securite",
+   "level": 4,
+   "title": "Exercice de 24 h sans réseau (eau, électricité et téléphone coupés volontairement)",
+   "description": "",
+   "why": "L'évacuation et la coupure ne testent pas les mêmes choses ; il faut faire les deux.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1252,7 +2763,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1271,7 +2784,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1292,7 +2807,9 @@
    "requires_tags": [
     "vehicule"
    ],
+   "excludes_tags": [],
    "revalidate_days": 180,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1311,7 +2828,32 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.evacuation_pmr_testee",
+   "axis": "mobilite",
+   "level": 4,
+   "title": "Évacuation testée avec la personne à mobilité réduite, chronométrée, sans ascenseur",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "mobilite_reduite"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1330,7 +2872,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1349,7 +2893,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1368,7 +2914,53 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "moral.routine",
+   "axis": "moral",
+   "level": 4,
+   "title": "Routine de crise écrite (horaires, tâches de chacun, un temps d'échange quotidien)",
+   "description": "",
+   "why": "Une journée structurée garde le foyer actif et soudé pendant un confinement.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "moral.explication_enfants",
+   "axis": "moral",
+   "level": 4,
+   "title": "Explication des crises adaptée à l'âge des enfants, faite en famille, sans dramatiser",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "enfants"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1387,7 +2979,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "eau",
     "min_days": 30.0
@@ -1409,7 +3003,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1419,7 +3015,7 @@
    "level": 5,
    "title": "Filtre gravitaire grande capacité (plusieurs milliers de litres)",
    "description": "",
-   "why": "",
+   "why": "Il retire bactéries et particules, mais ni les nitrates ni les pesticides.",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -1428,7 +3024,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 730,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1447,7 +3045,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "alimentation",
     "min_days": 90.0
@@ -1469,7 +3069,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 730,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1488,7 +3090,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 180,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1507,7 +3111,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "cuisson",
     "min_days": 90.0
@@ -1531,7 +3137,9 @@
    "requires_tags": [
     "traitement_medical"
    ],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "traitements",
     "min_days": 90.0
@@ -1553,7 +3161,55 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.lunettes_reserve",
+   "axis": "sante",
+   "level": 5,
+   "title": "Deux paires de rechange à la vue actuelle et un kit de réparation (tournevis, vis, cordon)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "correction_vue"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 730,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.auditif_reserve",
+   "axis": "sante",
+   "level": 5,
+   "title": "Piles de l'appareil auditif pour 90 jours ou chargeur alimenté hors réseau",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "appareil_auditif"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1572,7 +3228,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 730,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1593,7 +3251,28 @@
    "requires_tags": [
     "risque_inondation"
    ],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.isolement_7j",
+   "axis": "abri",
+   "level": 5,
+   "title": "Tenir 7 jours route coupée (neige, crue, arbres) sans ravitaillement ni secours rapides",
+   "description": "",
+   "why": "À la campagne, les secours peuvent mettre des jours à arriver ; l'isolement est le vrai scénario.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1612,7 +3291,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1620,7 +3301,7 @@
    "id": "securite.incendie_ext",
    "axis": "securite",
    "level": 5,
-   "title": "Débroussaillement réglementaire et plan de défense incendie",
+   "title": "Débroussaillement réglementaire fait avant l'été et plan de défense incendie",
    "description": "",
    "why": "",
    "kind": "check",
@@ -1632,7 +3313,9 @@
    "requires_tags": [
     "risque_incendie"
    ],
-   "revalidate_days": 365,
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": 6,
    "stock": null,
    "custom": false
   },
@@ -1651,26 +3334,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "mobilite.accueil",
-   "axis": "mobilite",
-   "level": 5,
-   "title": "Lieu d'accueil convenu hors de la zone (famille, amis)",
-   "description": "",
-   "why": "",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1679,6 +3345,28 @@
    "axis": "mobilite",
    "level": 5,
    "title": "Réserve de carburant stockée en sécurité et renouvelée",
+   "description": "",
+   "why": "Stocker du carburant en cave d'immeuble est interdit et dangereux ; l'essence se dégrade en six mois.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "vehicule"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.animaux_repli",
+   "axis": "mobilite",
+   "level": 5,
+   "title": "Hébergement de repli qui accepte les animaux (beaucoup de centres d'accueil les refusent)",
    "description": "",
    "why": "",
    "kind": "check",
@@ -1689,9 +3377,11 @@
     "rural"
    ],
    "requires_tags": [
-    "vehicule"
+    "animaux"
    ],
-   "revalidate_days": 365,
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1710,7 +3400,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1729,7 +3421,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 1095,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1748,7 +3442,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1767,7 +3463,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1786,7 +3484,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1805,7 +3505,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1824,24 +3526,30 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
   {
-   "id": "eau.plan_appro",
-   "axis": "eau",
-   "level": 6,
-   "title": "Plan d'approvisionnement à pied (trajet, chariot, bidons) vers une source identifiée",
+   "id": "moral.stress",
+   "axis": "moral",
+   "level": 5,
+   "title": "Chaque adulte pratique une technique de gestion du stress (respiration, cohérence cardiaque)",
    "description": "",
    "why": "",
-   "kind": "check",
+   "kind": "skill",
    "required": true,
    "contexts": [
-    "appartement"
+    "appartement",
+    "periurbain",
+    "rural"
    ],
    "requires_tags": [],
-   "revalidate_days": null,
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1849,9 +3557,9 @@
    "id": "eau.recuperateur",
    "axis": "eau",
    "level": 6,
-   "title": "Récupérateur d'eau de pluie d'au moins 500 L",
+   "title": "Récupérateur d'eau de pluie d'au moins 500 L, vérifié et nettoyé avant l'été (hygiène, WC, arrosage)",
    "description": "",
-   "why": "",
+   "why": "L'eau de pluie n'est pas potable sans filtration puis désinfection.",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -1859,7 +3567,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": 5,
    "stock": null,
    "custom": false
   },
@@ -1878,11 +3588,35 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "eau",
     "min_days": 60.0
    },
+   "custom": false
+  },
+  {
+   "id": "eau.secheresse",
+   "axis": "eau",
+   "level": 6,
+   "title": "Plan sécheresse (réserve d'arrosage, paillage, potager économe, arrêtés de restriction suivis)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_secheresse"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
    "custom": false
   },
   {
@@ -1891,39 +3625,22 @@
    "level": 6,
    "title": "Nourriture pour 180 jours",
    "description": "",
-   "why": "",
+   "why": "Au-delà de trois mois, un stock périme et se perd à l'évacuation ; mieux vaut produire et s'approvisionner en direct.",
    "kind": "stock",
-   "required": true,
+   "required": false,
    "contexts": [
     "appartement",
     "periurbain",
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": {
     "category": "alimentation",
     "min_days": 180.0
    },
-   "custom": false
-  },
-  {
-   "id": "alimentation.potager_savoir",
-   "axis": "alimentation",
-   "level": 6,
-   "title": "Savoir cultiver au moins cinq légumes de base (stage, jardin partagé)",
-   "description": "",
-   "why": "Compétence transférable si tu prévois de changer de lieu de vie.",
-   "kind": "skill",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "revalidate_days": 730,
-   "stock": null,
    "custom": false
   },
   {
@@ -1941,26 +3658,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 1095,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "energie.bilan_wh",
-   "axis": "energie",
-   "level": 6,
-   "title": "Besoins électriques prioritaires chiffrés en Wh par jour",
-   "description": "",
-   "why": "On ne dimensionne pas une installation de secours sans savoir ce qu'elle doit alimenter.",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1978,7 +3678,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 180,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -1986,7 +3688,7 @@
    "id": "sante.condition",
    "axis": "sante",
    "level": 6,
-   "title": "Condition physique - marcher 15 km avec un sac de 10 kg",
+   "title": "Condition physique - les adultes valides marchent 15 km avec un sac de 10 kg",
    "description": "",
    "why": "",
    "kind": "skill",
@@ -1997,7 +3699,12 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [
+    "mobilite_reduite",
+    "appareil_electrique"
+   ],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2016,7 +3723,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 1095,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2035,7 +3744,76 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 1095,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.appareil_autonome",
+   "axis": "sante",
+   "level": 6,
+   "title": "Recharge hors réseau (solaire ou groupe) dimensionnée pour faire fonctionner l'appareil médical",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "appareil_electrique"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.condition_adaptee",
+   "axis": "sante",
+   "level": 6,
+   "title": "Capacité physique entretenue selon l'avis du médecin (activité régulière, kiné), aide prévue pour les longs déplacements",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "mobilite_reduite",
+    "appareil_electrique"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.fosse_relevage",
+   "axis": "sante",
+   "level": 6,
+   "title": "Assainissement individuel : savoir quoi faire si la pompe de relevage s'arrête (réserve, usage réduit des WC)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2054,7 +3832,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2073,7 +3853,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 730,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2092,7 +3874,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2111,7 +3895,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2130,7 +3916,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 730,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2149,7 +3937,28 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.tronconneuse",
+   "axis": "competences",
+   "level": 6,
+   "title": "Dégager un arbre tombé à la tronçonneuse avec l'équipement de protection (formation suivie)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 730,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2168,7 +3977,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2187,7 +3998,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2206,7 +4019,30 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "moral.pssm",
+   "axis": "moral",
+   "level": 6,
+   "title": "Un adulte formé aux premiers secours en santé mentale (PSSM)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 1095,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2224,7 +4060,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2234,33 +4072,37 @@
    "level": 7,
    "title": "Pompe manuelle ou alimentée hors réseau sur la source",
    "description": "",
-   "why": "",
+   "why": "Une pompe immergée électrique s'arrête avec le réseau.",
    "kind": "check",
    "required": true,
    "contexts": [
-    "rural"
-   ],
-   "requires_tags": [],
-   "revalidate_days": null,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "alimentation.circuit_court",
-   "axis": "alimentation",
-   "level": 7,
-   "title": "Lien direct avec au moins deux producteurs locaux",
-   "description": "",
-   "why": "",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
     "periurbain",
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.analyse",
+   "axis": "eau",
+   "level": 7,
+   "title": "Eau du puits ou de la source analysée par un laboratoire agréé (bactéries, nitrates, pesticides)",
+   "description": "",
+   "why": "Aucun filtre domestique ne retire les nitrates ; seule une analyse dit si l'eau est potable.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 730,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2277,7 +4119,9 @@
     "appartement"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2285,7 +4129,7 @@
    "id": "alimentation.potager",
    "axis": "alimentation",
    "level": 7,
-   "title": "Potager produisant au moins 20 % des légumes du foyer",
+   "title": "Potager qui met des légumes à table au moins quatre mois par an",
    "description": "",
    "why": "",
    "kind": "check",
@@ -2295,7 +4139,29 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.semences_autoproduites",
+   "axis": "alimentation",
+   "level": 7,
+   "title": "Produire ses propres semences pour au moins trois légumes",
+   "description": "",
+   "why": "Des semences achetées sont un stock ; savoir les reproduire est un flux.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2312,7 +4178,9 @@
     "appartement"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2330,7 +4198,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2338,9 +4208,9 @@
    "id": "energie.bois",
    "axis": "energie",
    "level": 7,
-   "title": "Chauffage et cuisson au bois, un hiver de bois stocké",
+   "title": "Chauffage et cuisson au bois, deux hivers de bois d'avance rentrés avant novembre (un sec, un en séchage)",
    "description": "",
-   "why": "",
+   "why": "Du bois coupé dans l'année brûle mal et encrasse le conduit ; on brûle du bois sous 20 % d'humidité.",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -2348,7 +4218,29 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": 11,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.ramonage",
+   "axis": "energie",
+   "level": 7,
+   "title": "Conduits de cheminée ou de poêle ramonés avant la saison de chauffe (certificat de l'année)",
+   "description": "",
+   "why": "Obligatoire, il évite le feu de cheminée et l'intoxication au CO, et conditionne l'assurance.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": 10,
    "stock": null,
    "custom": false
   },
@@ -2366,7 +4258,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2384,7 +4278,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2403,7 +4299,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2422,7 +4320,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2440,7 +4340,9 @@
     "periurbain"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2459,7 +4361,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 730,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2478,7 +4382,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2497,7 +4403,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2516,7 +4424,30 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "moral.rituels",
+   "axis": "moral",
+   "level": 7,
+   "title": "Rituels du foyer qui tiennent sans réseau (repas partagé, veillée, activité commune chaque semaine)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2534,7 +4465,28 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.acces_hors_reseau",
+   "axis": "eau",
+   "level": 8,
+   "title": "Accès convenu à une eau hors réseau (puits, citerne ou source d'un proche ou de la commune), avec transport et traitement",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2552,7 +4504,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2569,7 +4523,28 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.circuit_25",
+   "axis": "alimentation",
+   "level": 8,
+   "title": "Au moins 25 % de l'alimentation autoproduite ou en circuit court (jardin partagé, parcelle, AMAP)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2587,7 +4562,28 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.station_1kwh",
+   "axis": "energie",
+   "level": 8,
+   "title": "Station électrique d'au moins 1 kWh rechargée au solaire, couvrant une semaine de besoins prioritaires",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2606,7 +4602,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2624,7 +4622,28 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.hiver_sans_chauffage",
+   "axis": "abri",
+   "level": 8,
+   "title": "Logement tenable une semaine d'hiver sans chauffage du réseau (pièce refuge isolée, textiles, appoint sûr)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2643,7 +4662,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2662,7 +4683,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2681,7 +4704,30 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.repli_sans_voiture",
+   "axis": "mobilite",
+   "level": 8,
+   "title": "Itinéraire vers le lieu de repli reconnu en entier à pied ou à vélo, sans voiture",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2700,7 +4746,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2719,7 +4767,9 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
    "stock": null,
    "custom": false
   },
@@ -2738,7 +4788,330 @@
     "rural"
    ],
    "requires_tags": [],
+   "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "moral.soutien_reseau",
+   "axis": "moral",
+   "level": 8,
+   "title": "Temps de parole et de soutien mutuel organisé avec le groupe d'entraide",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.epreuve_7j",
+   "axis": "eau",
+   "level": 9,
+   "title": "Épreuve annuelle - 7 jours sans eau du réseau, sur ses seules ressources",
+   "description": "",
+   "why": "Une réserve jamais éprouvée est une hypothèse. L'épreuve révèle les failles avant la vraie crise.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "alimentation.epreuve_mois",
+   "axis": "alimentation",
+   "level": 9,
+   "title": "Épreuve annuelle - un mois sans faire de courses, sur réserves et production",
+   "description": "",
+   "why": "Vivre réellement sur ses réserves force la rotation, corrige les manques et entraîne la cuisine de crise.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "energie.blackout",
+   "axis": "energie",
+   "level": 9,
+   "title": "Épreuve annuelle - 72 h disjoncteur général coupé, sans dommage ni improvisation",
+   "description": "",
+   "why": "Couper volontairement le courant transforme une panne subie en exercice maîtrisé.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.mise_en_situation",
+   "axis": "sante",
+   "level": 9,
+   "title": "Mise en situation annuelle - prendre en charge un blessé pendant 72 h sans secours extérieur",
+   "description": "",
+   "why": "Savoir les gestes ne suffit pas ; il faut avoir tenu dans la durée, avec le matériel du foyer.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.accueil",
+   "axis": "abri",
+   "level": 9,
+   "title": "Capacité d'accueillir un foyer sinistré pendant un mois (couchages, réserves dimensionnées)",
+   "description": "",
+   "why": "Pouvoir absorber le choc des autres est la marque d'une marge réelle, pas d'une autonomie au plus juste.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.retex",
+   "axis": "securite",
+   "level": 9,
+   "title": "Retour d'expérience écrit après chaque incident ou exercice, et plan amélioré en conséquence",
+   "description": "",
+   "why": "C'est le cœur de l'anti-fragilité - chaque choc, même petit, laisse le foyer plus solide qu'avant.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 180,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communication.reseau_teste",
+   "axis": "communication",
+   "level": 9,
+   "title": "Réseau radio de secours avec le groupe d'entraide, testé au moins tous les six mois",
+   "description": "",
+   "why": "Un moyen de communication qu'on n'utilise jamais ne marchera pas le jour où il faudra.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 180,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.evacuation_reelle",
+   "axis": "mobilite",
+   "level": 9,
+   "title": "Évacuation inopinée de nuit vers le lieu de repli, chronométrée, avec tout le foyer",
+   "description": "",
+   "why": "Tester l'évacuation en conditions réelles révèle les oublis et les goulots d'étranglement.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [
+    "mobilite_reduite",
+    "appareil_electrique"
+   ],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.evacuation_reelle_adaptee",
+   "axis": "mobilite",
+   "level": 9,
+   "title": "Évacuation inopinée de nuit selon le plan adapté (aides, matériel, appareil sur batterie), chronométrée",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "mobilite_reduite",
+    "appareil_electrique"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "competences.redondance",
+   "axis": "competences",
+   "level": 9,
+   "title": "Chaque compétence critique maîtrisée par au moins deux personnes (foyer ou réseau)",
+   "description": "",
+   "why": "Aucun savoir ne doit reposer sur une seule tête - la perte d'une personne ne doit pas être une perte de capacité.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "finances.optionalite",
+   "axis": "finances",
+   "level": 9,
+   "title": "Au moins deux sources de revenus indépendantes et douze mois de dépenses en épargne",
+   "description": "",
+   "why": "Plusieurs options de revenus permettent de rebondir, voire de profiter d'un choc économique.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.exercice_inopine",
+   "axis": "communaute",
+   "level": 9,
+   "title": "Exercice de crise inopiné mené avec le groupe d'entraide (scénario tiré au sort)",
+   "description": "",
+   "why": "La coordination ne s'improvise pas - seul l'exercice sans préavis montre ce que le groupe vaut.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "communaute.parrainage",
+   "axis": "communaute",
+   "level": 9,
+   "title": "Parrainer un autre foyer jusqu'au niveau Paré",
+   "description": "",
+   "why": "Renforcer les autres renforce le réseau dont tu dépends.",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "moral.debriefing",
+   "axis": "moral",
+   "level": 9,
+   "title": "Après chaque exercice ou incident, un débriefing émotionnel avec tout le foyer",
+   "description": "",
+   "why": "On ressort plus fort d'un choc qu'on a mis en mots, pas d'un choc qu'on a enfoui.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
    "stock": null,
    "custom": false
   }
@@ -2820,10 +5193,72 @@
      "sets": {}
     },
     {
+     "value": "secheresse",
+     "label": "Sécheresse et restrictions d'eau",
+     "validates": [
+      "securite.risques"
+     ],
+     "tags": [
+      "risque_secheresse"
+     ],
+     "sets": {}
+    },
+    {
      "value": "inconnu",
      "label": "Je ne sais pas encore",
      "validates": [],
      "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "climat",
+   "section": "Ton environnement",
+   "type": "single",
+   "text": "Quel climat a ta région ?",
+   "help": "",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "oceanique",
+     "label": "Océanique (hivers doux",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "continental",
+     "label": "Continental (hivers froids)",
+     "validates": [],
+     "tags": [
+      "risque_froid"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "mediterraneen",
+     "label": "Méditerranéen (étés chauds et secs)",
+     "validates": [],
+     "tags": [
+      "risque_canicule",
+      "risque_secheresse"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "montagne",
+     "label": "Montagne",
+     "validates": [],
+     "tags": [
+      "climat_montagne",
+      "risque_froid"
+     ],
      "sets": {}
     }
    ],
@@ -2933,6 +5368,43 @@
    "answered_validates": []
   },
   {
+   "id": "etage",
+   "section": "Ton environnement",
+   "type": "single",
+   "text": "À quel étage vis-tu ?",
+   "help": "Au-dessus du premier, l'eau et les courses se montent à pied quand l'ascenseur et le surpresseur s'arrêtent.",
+   "unit": "",
+   "show_if": {
+    "context_in": [
+     "appartement"
+    ],
+    "tags_any": null,
+    "answer": null
+   },
+   "options": [
+    {
+     "value": "bas",
+     "label": "Rez-de-chaussée ou premier étage",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "haut",
+     "label": "Deuxième étage ou plus",
+     "validates": [],
+     "tags": [
+      "etage"
+     ],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
    "id": "eau_litres",
    "section": "Tes réserves",
    "type": "number",
@@ -3012,6 +5484,111 @@
     "unit_label": "jour",
     "amount_per_unit": 1.0
    },
+   "answered_validates": []
+  },
+  {
+   "id": "bases",
+   "section": "Tes bases",
+   "type": "multi",
+   "text": "Qu'est-ce qui est déjà vrai chez toi ?",
+   "help": "Le strict minimum pour passer quelques heures de coupure.",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "lumiere",
+     "label": "Une lampe sans réseau à un endroit connu de tous",
+     "validates": [
+      "energie.lumiere"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "numeros",
+     "label": "Tout le monde connaît les numéros d'urgence",
+     "validates": [
+      "sante.numeros_urgence"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "pharmacie",
+     "label": "Antalgique",
+     "validates": [
+      "sante.pharmacie_base"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "issues",
+     "label": "Issues de secours repérées",
+     "validates": [
+      "abri.issues"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "reflexes",
+     "label": "On connaît les réflexes en cas d'alerte",
+     "validates": [
+      "securite.reflexes"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "frequence",
+     "label": "Fréquence de la radio publique notée",
+     "validates": [
+      "communication.frequence"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "papiers_ranges",
+     "label": "Papiers d'identité rangés au même endroit",
+     "validates": [
+      "finances.papiers_ranges"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "depart",
+     "label": "Clés",
+     "validates": [
+      "mobilite.depart_rapide"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "guide",
+     "label": "J'ai lu un guide officiel de préparation",
+     "validates": [
+      "competences.guide"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "proche",
+     "label": "Un proche à moins de 30 min prévenu",
+     "validates": [
+      "communaute.proche_joignable"
+     ],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
    "answered_validates": []
   },
   {
@@ -3257,9 +5834,18 @@
     },
     {
      "value": "exercice",
-     "label": "Un exercice familial dans l'année",
+     "label": "Un exercice d'évacuation chronométré dans l'année",
      "validates": [
       "securite.exercice"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "exercice_24h",
+     "label": "Un exercice de 24 h sans réseau dans l'année",
+     "validates": [
+      "securite.exercice_24h"
      ],
      "tags": [],
      "sets": {}
@@ -3359,6 +5945,15 @@
      "label": "Doubles des clés en lieu sûr",
      "validates": [
       "securite.cles"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "ecoute",
+     "label": "Numéros d'écoute notés",
+     "validates": [
+      "moral.ecoute"
      ],
      "tags": [],
      "sets": {}
@@ -3620,7 +6215,7 @@
     },
     {
      "value": "potager",
-     "label": "Potager qui couvre au moins 20 % des légumes",
+     "label": "Des légumes du jardin à table au moins quatre mois par an",
      "validates": [
       "alimentation.potager"
      ],
@@ -3647,7 +6242,7 @@
     },
     {
      "value": "bois",
-     "label": "Poêle à bois et un hiver de bois",
+     "label": "Poêle à bois et deux hivers de bois d'avance",
      "validates": [
       "energie.bois"
      ],
@@ -3659,6 +6254,45 @@
      "label": "Toilettes sèches et compost",
      "validates": [
       "sante.assainissement"
+     ],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "production_ville",
+   "section": "Ton autonomie",
+   "type": "multi",
+   "text": "Qu'as-tu déjà, même sans terrain ?",
+   "help": "",
+   "unit": "",
+   "show_if": {
+    "context_in": [
+     "appartement"
+    ],
+    "tags_any": null,
+    "answer": null
+   },
+   "options": [
+    {
+     "value": "jardin",
+     "label": "Un balcon cultivé",
+     "validates": [
+      "alimentation.balcon"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "kit_balcon",
+     "label": "Un kit solaire de balcon avec batterie",
+     "validates": [
+      "energie.kit_balcon"
      ],
      "tags": [],
      "sets": {}
@@ -3800,6 +6434,15 @@
      "sets": {
       "goal_level": 8
      }
+    },
+    {
+     "value": "9",
+     "label": "Anti-fragilité : ressortir plus fort de chaque crise",
+     "validates": [],
+     "tags": [],
+     "sets": {
+      "goal_level": 9
+     }
     }
    ],
    "options_from": null,
@@ -3880,6 +6523,185 @@
    "sets_list": "priority_axes",
    "creates_stock": null,
    "answered_validates": []
+  }
+ ],
+ "crisis_notes": [
+  {
+   "id": "contacts",
+   "name": "Contacts essentiels",
+   "hint": "Famille, voisins, médecin, employeur, école, contact référent hors région (nom et numéro)."
+  },
+  {
+   "id": "rendez_vous",
+   "name": "Points de rendez-vous et itinéraires",
+   "hint": "Point de rassemblement près du logement, point plus éloigné, deux itinéraires d'évacuation."
+  },
+  {
+   "id": "plan",
+   "name": "Qui fait quoi",
+   "hint": "Qui coupe le gaz et l'électricité, qui récupère les enfants, qui prend les animaux, qui prévient qui."
+  },
+  {
+   "id": "medical",
+   "name": "Fiches médicales",
+   "hint": "Pour chaque membre : groupe sanguin, allergies, traitements et posologies, médecin, particularités."
+  },
+  {
+   "id": "repli",
+   "name": "Lieu d'accueil hors zone",
+   "hint": "Adresse, contact, trajet, ce qui y est déjà stocké."
+  },
+  {
+   "id": "radio",
+   "name": "Fréquences et canaux",
+   "hint": "Fréquence FM locale de la radio publique, canal convenu des talkies, horaires de vacation radio."
+  },
+  {
+   "id": "sacs",
+   "name": "Sacs et emplacements",
+   "hint": "Où sont les sacs d'évacuation, l'eau, la trousse, les papiers, les lampes, le robinet d'arrêt."
+  }
+ ],
+ "scenarios": [
+  {
+   "id": "coupure_electricite",
+   "name": "Coupure d'électricité",
+   "icon": "🔌",
+   "tags_any": [],
+   "steps": [
+    "Vérifier si la coupure touche le quartier (voisins, radio) ou seulement le logement (tableau électrique).",
+    "Débrancher les appareils sensibles pour le retour du courant.",
+    "Garder le congélateur fermé : il tient le froid 24 à 48 h.",
+    "S'éclairer à la lampe ; pas de bougie sans surveillance.",
+    "Jamais de groupe électrogène, de barbecue ni de réchaud en pièce fermée (monoxyde de carbone).",
+    "Économiser le téléphone : mode avion, luminosité au minimum, appels courts."
+   ]
+  },
+  {
+   "id": "coupure_eau",
+   "name": "Coupure d'eau",
+   "icon": "🚱",
+   "tags_any": [],
+   "steps": [
+    "En cas de fuite, fermer le robinet d'arrêt général.",
+    "Réserver l'eau stockée à la boisson et à la cuisine.",
+    "WC : eau de récupération versée d'un coup, ou toilettes de secours (seau, sac, sciure).",
+    "Hygiène des mains au gel ; vaisselle dans un bac, eau réutilisée pour les WC.",
+    "Au retour de l'eau, laisser couler quelques minutes et suivre les avis de la mairie."
+   ]
+  },
+  {
+   "id": "alerte",
+   "name": "Alerte, sirène, confinement",
+   "icon": "📢",
+   "tags_any": [],
+   "steps": [
+    "Se mettre à l'abri dans le bâtiment le plus proche.",
+    "Fermer portes et fenêtres, arrêter ventilation et climatisation.",
+    "Ne pas aller chercher les enfants à l'école : ils y sont protégés.",
+    "Écouter la radio publique et suivre FR-Alert.",
+    "Ne téléphoner qu'en cas d'urgence pour laisser le réseau aux secours.",
+    "Ne sortir qu'à la fin de l'alerte annoncée par les autorités."
+   ]
+  },
+  {
+   "id": "evacuation",
+   "name": "Évacuation",
+   "icon": "🧭",
+   "tags_any": [],
+   "steps": [
+    "Couper gaz, électricité et eau.",
+    "Prendre les sacs, les papiers, les médicaments, les lunettes, les animaux.",
+    "Fermer à clé et signaler son départ (mot sur la porte si les autorités le demandent).",
+    "Suivre les itinéraires indiqués par les autorités, pas forcément les siens.",
+    "Prévenir le contact référent hors région, puis rejoindre le lieu d'accueil."
+   ]
+  },
+  {
+   "id": "inondation",
+   "name": "Inondation",
+   "icon": "🌊",
+   "tags_any": [
+    "risque_inondation"
+   ],
+   "steps": [
+    "Monter à l'étage avec les sacs, l'eau et la lampe ; ne jamais descendre au sous-sol ni au parking.",
+    "Couper l'électricité et le gaz.",
+    "Ne pas prendre la voiture : 30 cm d'eau suffisent à l'emporter.",
+    "Ne jamais traverser une zone inondée à pied."
+   ]
+  },
+  {
+   "id": "canicule",
+   "name": "Canicule",
+   "icon": "🌡️",
+   "tags_any": [
+    "risque_canicule",
+    "seniors",
+    "bebe"
+   ],
+   "steps": [
+    "Boire régulièrement sans attendre d'avoir soif ; donner à boire aux enfants et aux seniors.",
+    "Volets fermés le jour, aérer la nuit.",
+    "Se rafraîchir : douche, linges humides, brumisateur ; passer du temps dans la pièce la plus fraîche.",
+    "Éviter l'effort aux heures chaudes.",
+    "Appeler chaque jour les proches isolés. Canicule info service : 0 800 06 66 66."
+   ]
+  },
+  {
+   "id": "froid",
+   "name": "Grand froid sans chauffage",
+   "icon": "❄️",
+   "tags_any": [
+    "risque_froid",
+    "seniors",
+    "bebe"
+   ],
+   "steps": [
+    "Vivre dans une seule pièce, porte fermée, fenêtres calfeutrées.",
+    "Chauffage d'appoint uniquement s'il est prévu pour l'intérieur, avec aération et détecteur de CO.",
+    "Plusieurs couches de vêtements, bonnet, boissons chaudes.",
+    "Surveiller les bébés et les seniors (mains froides, somnolence)."
+   ]
+  },
+  {
+   "id": "seisme",
+   "name": "Séisme",
+   "icon": "🏚️",
+   "tags_any": [
+    "risque_seisme"
+   ],
+   "steps": [
+    "Pendant : s'abriter sous une table solide, loin des vitres.",
+    "Après : couper gaz et électricité, ne pas prendre l'ascenseur.",
+    "Sortir avec précaution et s'éloigner des bâtiments."
+   ]
+  },
+  {
+   "id": "industriel",
+   "name": "Accident industriel ou nucléaire",
+   "icon": "☢️",
+   "tags_any": [
+    "risque_industriel"
+   ],
+   "steps": [
+    "Se confiner : fermer, calfeutrer portes et fenêtres, couper la ventilation.",
+    "Prendre les comprimés d'iode seulement sur consigne de la préfecture.",
+    "Écouter la radio publique et attendre la fin de l'alerte."
+   ]
+  },
+  {
+   "id": "incendie",
+   "name": "Feu de forêt",
+   "icon": "🔥",
+   "tags_any": [
+    "risque_incendie"
+   ],
+   "steps": [
+    "Si la maison est débroussaillée, s'y confiner plutôt que fuir dans la fumée.",
+    "Fermer volets et ouvertures, boucher les aérations avec des linges mouillés.",
+    "Ouvrir le portail pour les pompiers ; garder les sacs prêts."
+   ]
   }
  ]
 }

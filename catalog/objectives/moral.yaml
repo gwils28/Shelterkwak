@@ -1,0 +1,43 @@
+axis: moral
+objectives:
+  - id: moral.ecoute
+    level: 2
+    title: Numéros d'écoute notés sur papier (3114 prévention du suicide, SOS Amitié)
+    why: En crise longue, c'est souvent le moral qui cède avant les réserves.
+  - id: moral.kit_occupation
+    level: 3
+    title: Kit sommeil et occupation sans écran pour chacun (bouchons d'oreille, masque, livres, jeux de cartes)
+    why: Bien dormir et s'occuper sans électricité limite l'angoisse et les tensions.
+  - id: moral.kit_enfant
+    level: 3
+    requires_tags: [enfants, bebe]
+    title: Kit de réconfort par enfant dans le sac (doudou, jeu, photo de famille, carte avec contacts)
+  - id: moral.routine
+    level: 4
+    title: Routine de crise écrite (horaires, tâches de chacun, un temps d'échange quotidien)
+    why: Une journée structurée garde le foyer actif et soudé pendant un confinement.
+  - id: moral.explication_enfants
+    level: 4
+    requires_tags: [enfants]
+    title: Explication des crises adaptée à l'âge des enfants, faite en famille, sans dramatiser
+  - id: moral.stress
+    level: 5
+    kind: skill
+    title: Chaque adulte pratique une technique de gestion du stress (respiration, cohérence cardiaque)
+    revalidate_days: 365
+  - id: moral.pssm
+    level: 6
+    kind: skill
+    title: Un adulte formé aux premiers secours en santé mentale (PSSM)
+    revalidate_days: 1095
+  - id: moral.rituels
+    level: 7
+    title: Rituels du foyer qui tiennent sans réseau (repas partagé, veillée, activité commune chaque semaine)
+  - id: moral.soutien_reseau
+    level: 8
+    title: Temps de parole et de soutien mutuel organisé avec le groupe d'entraide
+  - id: moral.debriefing
+    level: 9
+    title: Après chaque exercice ou incident, un débriefing émotionnel avec tout le foyer
+    why: On ressort plus fort d'un choc qu'on a mis en mots, pas d'un choc qu'on a enfoui.
+    revalidate_days: 365

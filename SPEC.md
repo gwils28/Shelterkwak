@@ -9,8 +9,8 @@ Application locale (navigateur + serveur sur la machine de l'utilisateur) pour q
 suive sa préparation et son autonomie face aux crises civiles : coupure d'eau ou d'électricité,
 intempéries, pandémie, évacuation, rupture d'approvisionnement, crise économique.
 
-Le niveau du foyer est représenté par une **colonne romaine de 8 tambours**, du socle
-(vulnérable) au chapiteau (autonome). Le niveau monte quand on valide des objectifs, et
+Le niveau du foyer est représenté par une **colonne romaine de 9 tambours**, du socle
+(vulnérable) au chapiteau (anti-fragile). Le niveau monte quand on valide des objectifs, et
 redescend quand des stocks périment, qu'une compétence ou un équipement n'est pas revalidé,
 qu'on décoche un objectif ou que le foyer s'agrandit.
 
@@ -27,25 +27,47 @@ qu'on décoche un objectif ou que le foyer s'agrandit.
 | Moteur | Module Python pur (`engine.py`), sans I/O, entièrement testé |
 | Hors ligne | Aucune dépendance réseau à l'exécution |
 
-## 3. Les 8 niveaux (horizon de résilience)
+## 3. Les 9 niveaux (horizon de résilience)
 
 | N | Nom | Sens |
 |---|---|---|
-| 1 | Vulnérable | Dépend entièrement des flux quotidiens. Point de départ, aucun prérequis |
+| 0 | Débutant | Point de départ, sans tambour : premiers réflexes et premières réserves à mettre en place |
+| 1 | Initié | Le strict minimum pour passer quelques heures de coupure, mais dépend encore des flux quotidiens |
 | 2 | Éveillé | Connaît ses risques, a ses papiers, ses contacts et un plan de base |
-| 3 | 72 heures | Tient 3 jours sans eau courante, électricité ni ravitaillement |
-| 4 | Deux semaines | Tient 14 jours confiné ou coupé du réseau |
-| 5 | Trois mois | Tient 3 mois de rupture partielle ; épargne de précaution |
-| 6 | Six mois & savoir-faire | 6 mois de réserves et compétences pratiques entretenues |
-| 7 | Semi-autonome | Produit une partie de son eau, de sa nourriture et de son énergie |
-| 8 | Autonome & résilient | Autonomie forte, intégré à une communauté d'entraide, transmet |
+| 3 | Paré | Tient 3 jours sans eau courante, électricité ni ravitaillement |
+| 4 | Prévoyant | Tient 14 jours confiné ou coupé du réseau |
+| 5 | Endurant | Tient 3 mois de rupture partielle ; épargne de précaution |
+| 6 | Aguerri | 6 mois de réserves et compétences pratiques entretenues |
+| 7 | Autonome | Produit une partie de son eau, de sa nourriture et de son énergie |
+| 8 | Résilient | Autonomie forte, intégré à une communauté d'entraide, transmet |
+| 9 | Anti-fragile | Sort renforcé de chaque choc : tout est éprouvé en conditions réelles, chaque crise améliore le plan, marge pour absorber les chocs des autres |
+
+Chaque niveau, du 1 au 9, a ses critères précis (au moins un par axe, voir `catalog/objectives/`).
+Le niveau 1 se mérite : 24 h d'eau et de vivres, une lumière sans réseau à un endroit connu,
+les numéros d'urgence, une pharmacie de base, les issues de secours repérées, les réflexes
+d'alerte, la fréquence de la radio publique notée, les papiers rangés ensemble, un départ
+rapide possible, un guide officiel lu et un proche prévenu.
+
+Le niveau 9 ne s'obtient pas en accumulant du matériel, mais en **éprouvant** le foyer.
+Un objectif requis par axe, presque tous à revalider (tous les ans, tous les six mois pour le
+retour d'expérience et la radio). Le niveau est donc perdu dès qu'on cesse de s'éprouver :
+
+- 💧 7 jours sans eau du réseau ; 🥫 un mois sans courses ; 🔋 72 h disjoncteur coupé ;
+  🧭 évacuation réelle chronométrée (moins de 15 min) ;
+- ⛑️ un secouriste avancé (PSE1 ou équivalent) à jour ; 🛠️ chaque compétence critique
+  maîtrisée par au moins deux personnes ;
+- 🛡️ retour d'expérience écrit après chaque incident ou exercice, plan amélioré ;
+- 📻 réseau radio avec le groupe, testé ; 🤝 exercice de crise inopiné avec le groupe ;
+- 🏠 capacité d'accueillir un foyer sinistré un mois ; 📁 deux sources de revenus
+  indépendantes et douze mois d'épargne.
 
 ## 4. Les axes
 
 `eau`, `alimentation`, `energie`, `sante` (santé & hygiène), `abri` (habitat & chauffage),
 `securite` (sécurité & protection), `communication` (information & communication),
 `mobilite` (mobilité & évacuation), `competences` (savoirs & compétences),
-`finances` (finances & administratif), `communaute` (réseau & entraide).
+`finances` (finances & administratif), `communaute` (réseau & entraide),
+`moral` (moral & cohésion : écoute, sommeil, routine de crise, gestion du stress, enfants).
 
 Chaque axe a aussi son niveau propre (le plus haut palier dont tous les objectifs requis de
 l'axe sont validés), affiché pour repérer le maillon faible.
@@ -63,20 +85,31 @@ Un objectif appartient à un axe et à un niveau. Champs :
 - `requires_tags` : l'objectif ne s'applique que si le foyer porte l'un de ces tags
   (`enfants`, `bebe`, `seniors`, `animaux`, `traitement_medical`, `vehicule`,
   risques déclarés : `risque_inondation`, `risque_froid`, `risque_industriel`…) ;
+- `excludes_tags` : l'objectif ne s'applique pas si le foyer porte l'un de ces tags. Sert
+  aux épreuves physiques, remplacées par une variante adaptée (`requires_tags`) quand un
+  membre a une mobilité réduite ou un appareil médical électrique ;
 - `revalidate_days` : durée de validité d'une validation (compétence à pratiquer,
   équipement à tester, stock à faire tourner) ;
+- `due_month` (exclusif de `revalidate_days`) : objectif saisonnier, à refaire chaque année
+  avant le 1er de ce mois (bois rentré avant novembre, ramonage avant octobre, débroussaillement
+  et plan canicule avant juin). Une validation couvre la prochaine échéance et expire à la
+  suivante ;
 - pour `kind: stock` : `stock: {category, min_days}`.
 
 ### Statut d'un objectif
 
-`na` (non applicable au foyer), `todo`, `done`, `expired` (validation trop ancienne),
-`expiring` (expire dans les 30 jours, encore valide), et pour les stocks `done`/`todo`
-calculés en temps réel.
+`na` (non applicable au foyer), `todo`, `done`, `expiring` (expire dans les 30 jours,
+encore valide), `grace` (en sursis : expirée depuis moins de 30 jours, compte encore mais
+fissure le tambour), `expired` (sursis dépassé), et pour les stocks `done`/`todo` calculés en
+temps réel.
 
 ### Régression (ce qui fait baisser le niveau)
 
 1. **Péremption des stocks** : un article périmé ne compte plus dans l'autonomie.
-2. **Revalidation périodique** : une validation plus vieille que `revalidate_days` expire.
+2. **Revalidation périodique** : une validation plus vieille que `revalidate_days` (ou dont
+   l'échéance saisonnière est passée) entre en **sursis** pendant 30 jours : le tambour est
+   fissuré mais reste bâti. Le niveau ne baisse qu'à la fin du sursis. Les stocks périmés,
+   eux, cessent de compter immédiatement.
 3. **Compétences** : les `skill` ont une `revalidate_days` ; non pratiquées, elles expirent.
 4. **Décochage manuel**.
 5. **Changement du foyer** : un membre de plus augmente les besoins journaliers, un tag
@@ -87,8 +120,16 @@ Le niveau est recalculé à chaque lecture ; s'il a changé depuis le dernier in
 
 ## 6. Foyer et contexte
 
-- Membres : nom, type (`adulte`, `senior`, `enfant`, `bebe`, `animal`), traitement médical
-  (oui/non).
+- Membres : nom, type (`adulte`, `senior`, `enfant`, `bebe`, `animal`) et, pour les humains,
+  des **particularités de santé ou physiques** (`conditions`, liste d'ids de
+  `member_conditions` dans `catalog/axes.yaml`) : traitement régulier, lunettes ou lentilles,
+  appareil auditif, mobilité réduite, appareil médical électrique, diabète sous insuline,
+  allergie sévère, maladie respiratoire, régime strict, grossesse, besoin d'accompagnement.
+  Chaque particularité ajoute ses tags au foyer, qui rendent applicables les objectifs
+  correspondants (`requires_tags`) à plusieurs paliers. Exemple pour les lunettes : paire de
+  secours et ordonnance copiée (2), lunettes dans le sac d'évacuation (3), deux paires de
+  rechange et kit de réparation (5). Les opérations écrites avant cet ajout portent
+  `medical: true|false` ; `medical: true` est relu comme la condition `traitement`.
 - Contexte actuel (`appartement`, `periurbain`, `rural`) et **contexte cible** facultatif
   avec date visée (ex. « maison avec terrain dans 2 ans »). Le contexte se change à tout
   moment (déménagement) ; le niveau est recalculé.
@@ -101,13 +142,14 @@ Catégories suivies en jours d'autonomie (`catalog/needs.yaml`) :
 
 | Catégorie | Unité de base | Besoin journalier |
 |---|---|---|
-| `eau` | litre | adulte/senior 3 L, enfant 2 L, bébé 1,5 L, animal 1 L |
+| `eau` | litre | adulte/senior 4 L (boisson, cuisine, hygiène minimale), enfant 2,5 L, bébé 2 L, petit animal 0,3 L, grand chien 2 L, autre animal 1 L |
 | `alimentation` | kcal | adulte 2200, senior 1900, enfant 1700, bébé 900 (animaux exclus) |
 | `traitements` | jour | 1 par jour si au moins un membre a un traitement |
 | `cuisson` | jour | 1 par jour (combustible pour cuire hors réseau) |
 
 Un article : nom, catégorie, quantité, libellé d'unité, quantité de base par unité
-(ex. 6 × bouteille de 1,5 L), date de péremption facultative.
+(ex. 6 × bouteille de 1,5 L), date de péremption facultative, emplacement facultatif
+(« cellier », « sous l'évier »). Un bouton retire une unité consommée.
 Autonomie = somme des articles non périmés ÷ besoin journalier du foyer.
 Articles périmant sous 30 jours signalés.
 
@@ -145,13 +187,20 @@ instantanés.
 ## 11. Écrans
 
 1. **Onboarding** (si aucun foyer).
-2. **Colonne** (accueil) : colonne SVG 8 tambours (bâtis, en cours avec % de progression,
+2. **Colonne** (accueil) : colonne SVG 9 tambours (bâtis, en cours avec % de progression,
    à venir ; fissure sur un tambour bâti contenant une validation expirée), niveau par axe,
    checklist, alertes.
 3. **Objectifs** : filtres par niveau / axe / statut, cocher, décocher, revalider.
 4. **Inventaire** : articles, autonomie par catégorie face aux paliers 3 j, 14 j, 90 j, 180 j.
 5. **Foyer** : membres, contexte actuel et cible, objectifs déclarés.
 6. **Historique** : courbe du niveau et journal.
+7. **Crise** (accessible depuis l'en-tête) : écran du jour J, hors ligne et imprimable.
+   Autonomie actuelle, fiches du foyer saisies librement (contacts, rendez-vous, qui fait quoi,
+   fiches médicales, lieu d'accueil, fréquences, emplacements) et fiches réflexes par scénario
+   (`catalog/crisis.yaml`), filtrées selon les risques et les membres du foyer.
+
+L'accueil affiche aussi le **meilleur niveau atteint** et le nombre d'actions pour le
+retrouver quand le niveau a baissé.
 
 ## 12. API (préfixe `/api`)
 
@@ -211,11 +260,12 @@ cible, **la dernière écrite gagne**.
 | `validation.set` / `validation.delete` | Valide (avec date) / décoche un objectif |
 | `stock.upsert` / `stock.delete` | Ajoute ou modifie / retire un article (id stable) |
 | `custom.upsert` / `custom.delete` | Crée ou modifie / supprime un objectif perso (`perso.<uuid>`) |
+| `notes.set` | Remplace le texte d'une fiche de l'écran Crise (`key` = id de `crisis.yaml`) |
 | `onboarding` | Marque la fin de l'interview (les effets sont des opérations ordinaires émises juste avant) |
 | `reset` | Efface tout ce qui précède |
 
 L'historique est **dérivé** : le niveau est recalculé après chaque opération et à chaque date où
-une validation ou un stock expire (les seuls moments où le niveau change sans action).
+un stock expire ou un sursis se termine (les seuls moments où le niveau change sans action).
 
 ## 17. Synchronisation
 

@@ -23,6 +23,7 @@ OP_TYPES = frozenset(
         "stock.delete",
         "custom.upsert",
         "custom.delete",
+        "notes.set",
         "reset",
     }
 )
@@ -51,6 +52,7 @@ class State:
     validations: dict[str, dict[str, Any]] = field(default_factory=dict)
     stock: dict[str, dict[str, Any]] = field(default_factory=dict)
     custom: dict[str, dict[str, Any]] = field(default_factory=dict)
+    notes: dict[str, str] = field(default_factory=dict)  # fiches de l'écran Crise
     onboarded_at: str | None = None
 
 
@@ -80,6 +82,7 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
         state.validations.clear()
         state.stock.clear()
         state.custom.clear()
+        state.notes.clear()
         return "Remise à zéro du foyer", "remise à zéro"
     if t == "onboarding":
         state.household = dict(p["household"])
@@ -139,6 +142,10 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
         state.validations.pop(p["id"], None)
         title = item["title"] if item else p["id"]
         return f"Objectif perso supprimé : {title}", f"objectif perso supprimé « {title} »"
+    if t == "notes.set":
+        state.notes[p["key"]] = str(p.get("text", ""))
+        name = next((n.name for n in catalog.crisis_notes if n.id == p["key"]), p["key"])
+        return f"Fiche de crise mise à jour : {name}", f"fiche de crise « {name} »"
     raise ValueError(f"type d'opération inconnu : {t}")
 
 
@@ -164,7 +171,7 @@ def inputs(catalog: Catalog, state: State) -> Inputs | None:
     full = catalog.with_custom(list(state.custom.values()))
     household = eng.HouseholdState(
         context=h["context"],
-        members=[eng.Member(m["type"], bool(m.get("medical", False))) for m in h.get("members", [])],
+        members=[eng.Member.from_dict(m) for m in h.get("members", [])],
         declared_tags=set(h.get("tags", [])),
         target_context=h.get("target_context"),
         priority_axes=list(h.get("priority_axes", [])),
@@ -200,8 +207,9 @@ def _expirations(catalog: Catalog, state: State, after: date, until: date) -> li
     found: dict[date, list[str]] = {}
     for oid, v in state.validations.items():
         obj = by_id.get(oid)
-        if obj and obj.revalidate_days:
-            d = date.fromisoformat(v["validated_at"]) + timedelta(days=obj.revalidate_days)
+        expiry = eng.validation_expiry(obj, date.fromisoformat(v["validated_at"])) if obj else None
+        if obj and expiry:
+            d = expiry + timedelta(days=eng.GRACE_DAYS)  # le tambour tombe à la fin du sursis
             if after < d <= until:
                 found.setdefault(d, []).append(f"revalidation dépassée « {obj.title} »")
     for s in state.stock.values():

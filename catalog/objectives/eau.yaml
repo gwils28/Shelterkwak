@@ -44,17 +44,20 @@ objectives:
     title: Identifier deux sources d'eau brute accessibles (rivière, source, fontaine, citerne)
     why: Au-delà d'un mois, l'eau se puise et se traite plus qu'elle ne se stocke.
   - id: eau.filtre_gravitaire
+    why: Il retire bactéries et particules, mais ni les nitrates ni les pesticides.
     level: 5
     title: Filtre gravitaire grande capacité (plusieurs milliers de litres)
     revalidate_days: 730
   - id: eau.plan_appro
-    level: 6
+    level: 4
     contexts: [appartement]
     title: Plan d'approvisionnement à pied (trajet, chariot, bidons) vers une source identifiée
   - id: eau.recuperateur
+    due_month: 5
+    why: L'eau de pluie n'est pas potable sans filtration puis désinfection.
     level: 6
     contexts: [periurbain, rural]
-    title: Récupérateur d'eau de pluie d'au moins 500 L
+    title: Récupérateur d'eau de pluie d'au moins 500 L, vérifié et nettoyé avant l'été (hygiène, WC, arrosage)
   - id: eau.stock_60j
     level: 6
     kind: stock
@@ -66,10 +69,48 @@ objectives:
     contexts: [periurbain, rural]
     title: Source d'eau autonome (puits, forage ou citerne d'au moins 5 m³)
   - id: eau.pompe_manuelle
+    why: Une pompe immergée électrique s'arrête avec le réseau.
     level: 7
-    contexts: [rural]
+    contexts: [periurbain, rural]
     title: Pompe manuelle ou alimentée hors réseau sur la source
   - id: eau.autonomie_annuelle
     level: 8
     contexts: [periurbain, rural]
     title: Eau couvrant les besoins annuels du foyer, traitement compris
+  - id: eau.epreuve_7j
+    level: 9
+    title: Épreuve annuelle - 7 jours sans eau du réseau, sur ses seules ressources
+    why: Une réserve jamais éprouvée est une hypothèse. L'épreuve révèle les failles avant la vraie crise.
+    revalidate_days: 365
+  - id: eau.stock_24h
+    level: 1
+    kind: stock
+    stock: {category: eau, min_days: 1}
+    title: Stock d'eau potable pour 24 heures
+    why: Une coupure d'eau de quelques heures est courante (travaux, fuite, gel) ; 4 litres par adulte suffisent à la passer.
+  - id: eau.acces_hors_reseau
+    level: 8
+    contexts: [appartement]
+    title: Accès convenu à une eau hors réseau (puits, citerne ou source d'un proche ou de la commune), avec transport et traitement
+  - id: eau.immeuble
+    level: 2
+    contexts: [appartement]
+    requires_tags: [etage]
+    title: Savoir si l'immeuble a un surpresseur et où la commune distribue l'eau en cas de coupure
+    why: Sans électricité, le surpresseur s'arrête et les étages n'ont plus d'eau, même si le réseau en a.
+  - id: eau.portage
+    level: 3
+    contexts: [appartement]
+    requires_tags: [etage]
+    title: Chariot ou diable de portage, et bidons de 10 L maximum pour monter l'eau à pied
+  - id: eau.analyse
+    level: 7
+    contexts: [periurbain, rural]
+    title: Eau du puits ou de la source analysée par un laboratoire agréé (bactéries, nitrates, pesticides)
+    why: Aucun filtre domestique ne retire les nitrates ; seule une analyse dit si l'eau est potable.
+    revalidate_days: 730
+  - id: eau.secheresse
+    level: 6
+    contexts: [periurbain, rural]
+    requires_tags: [risque_secheresse]
+    title: Plan sécheresse (réserve d'arrosage, paillage, potager économe, arrêtés de restriction suivis)

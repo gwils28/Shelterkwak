@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { CATALOG } from "../engine/catalog";
+import { memberOf } from "../engine/engine";
 import { localToday } from "../engine/dates";
 import type { Answer } from "../engine/interview";
 import { applyAnswers } from "../engine/interview";
@@ -54,6 +55,7 @@ export const actions = {
   upsertCustom: (c: Omit<CustomObjective, "id"> & { id?: string }) =>
     store.append("custom.upsert", { ...c, id: c.id ?? `perso.${newId()}` }),
   deleteCustom: (id: string) => store.append("custom.delete", { id }),
+  setNote: (key: string, text: string) => store.append("notes.set", { key, text }),
   reset: () => store.append("reset", {}),
 
   /** Enregistre l'interview : une seule opération porte le foyer, les acquis et les stocks estimés. */
@@ -77,7 +79,7 @@ export function buildOnboarding(
     CATALOG,
     {
       context: household.context,
-      members: household.members.map((m) => ({ type: m.type, medical: m.medical })),
+      members: household.members.map(memberOf),
       declared_tags: [],
       target_context: household.target_context,
       priority_axes: [],

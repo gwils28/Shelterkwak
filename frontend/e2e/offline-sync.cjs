@@ -21,7 +21,9 @@ async function onboarding(page) {
   await page.fill('input[aria-label="Nom"]', "Wilson");
   await page.click('button:has-text("Continuer")');
   await page.click('button:has-text("Commencer l\'interview")');
-  const WANT = ["Coupures d'eau", "Lampes frontales", "Trousse de premiers secours", "Pastilles", "On sait couper",
+  const WANT = ["Une lampe sans réseau", "numéros d'urgence", "Antalgique, pansements", "Issues de secours",
+    "réflexes en cas d'alerte", "Fréquence de la radio", "Papiers d'identité rangés", "Clés, papiers et chaussures",
+    "guide officiel", "Un proche à moins de 30 min", "Numéros d'écoute notés", "Coupures d'eau", "Lampes frontales", "Trousse de premiers secours", "Pastilles", "On sait couper",
     "FR-Alert", "Contacts essentiels", "Itinéraires d'évacuation", "Copies des papiers", "Fiches médicales",
     "Inventaire des placards", "Je connais au moins deux voisins", "Deux semaines", "1 an", "💧 Eau", "Inondation"];
   for (;;) {
@@ -58,7 +60,7 @@ const syncText = async (page) => (await page.locator(".sync-badge").innerText())
 
   // 1. Onboarding sur le téléphone, en ligne
   await onboarding(p);
-  check((await levelText(p)) === "Niveau 2 sur 8", `le téléphone est au niveau 2 après l'interview (${await levelText(p)})`);
+  check((await levelText(p)) === "Niveau 2 sur 9", `le téléphone est au niveau 2 après l'interview (${await levelText(p)})`);
   await p.waitForFunction(() => navigator.serviceWorker?.controller !== null || false, null, { timeout: 15000 }).catch(() => {});
   await p.evaluate(() => navigator.serviceWorker.ready);
   await p.locator(".sync-badge").click();
@@ -120,7 +122,7 @@ const syncText = async (page) => (await page.locator(".sync-badge").innerText())
 
   // 6. Le moteur Python du serveur trouve le même niveau que le moteur TypeScript
   const api = await (await fetch(`${BASE}/api/dashboard`)).json();
-  check(`Niveau ${api.level} sur 8` === offlineLevel, `le serveur (Python) calcule aussi le niveau ${api.level}`);
+  check(`Niveau ${api.level} sur 9` === offlineLevel, `le serveur (Python) calcule aussi le niveau ${api.level}`);
 
   check(errors.length === 0, `aucune erreur JavaScript (${errors.join(" | ")})`);
   await browser.close();

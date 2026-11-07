@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
 import { Column, romanNumeral } from "../components/Column";
+import { LevelInfo } from "../components/LevelInfo";
 import { MembersEditor } from "../components/MembersEditor";
 import { CATALOG } from "../engine/catalog";
 import { type Answer, questionOptions } from "../engine/interview";
-import type { ContextId, Question } from "../engine/types";
+import { type ContextId, isAnimal, type Question } from "../engine/types";
 import { visibleSections } from "../lib/interview";
 import type { Dashboard, MemberIn } from "../model";
 import { actions, buildOnboarding, type OnboardingPayload, previewOnboarding } from "../store/hooks";
@@ -20,7 +21,7 @@ export function OnboardingPage() {
   const catalog = CATALOG;
   const [step, setStep] = useState<Step>("foyer");
   const [name, setName] = useState("Mon foyer");
-  const [members, setMembers] = useState<MemberIn[]>([{ name: "", type: "adulte", medical: false }]);
+  const [members, setMembers] = useState<MemberIn[]>([{ name: "", type: "adulte", conditions: [], medical: false }]);
   const [context, setContext] = useState<ContextId>("appartement");
   const [target, setTarget] = useState<ContextId | "">("");
   const [targetDate, setTargetDate] = useState("");
@@ -30,7 +31,7 @@ export function OnboardingPage() {
 
   const sections = useMemo(() => visibleSections(catalog, answers, context, members), [catalog, answers, context, members]);
 
-  const membersOk = members.some((m) => m.type !== "animal") && members.every((m) => m.name.trim());
+  const membersOk = members.some((m) => !isAnimal(catalog, m.type)) && members.every((m) => m.name.trim());
   const section = sections[Math.min(sectionIndex, sections.length - 1)];
 
   /** Une section passée sans rien cocher vaut réponse « rien » (sinon la question compte comme non posée). */
@@ -87,7 +88,7 @@ export function OnboardingPage() {
             Nom du foyer
             <input value={name} onChange={(e) => setName(e.target.value)} />
           </label>
-          <MembersEditor members={members} onChange={setMembers} types={catalog.member_types} />
+          <MembersEditor members={members} onChange={setMembers} types={catalog.member_types} conditions={catalog.member_conditions} />
           <div className="actions">
             <button className="primary" disabled={!membersOk} onClick={() => setStep("contexte")}>
               Continuer
@@ -184,7 +185,8 @@ export function OnboardingPage() {
             <p>{r.level_info.summary}</p>
             {r.next_level_info && (
               <p>
-                Pour poser le tambour suivant (<strong>{r.next_level_info.name}</strong>), il te reste{" "}
+                Pour poser le tambour suivant (<strong>{r.next_level_info.name}</strong>
+                <LevelInfo level={r.next_level_info} />), il te reste{" "}
                 {r.checklist.filter((i) => i.kind === "blocking").length} objectif(s) à valider. Ils t'attendent dans ta
                 checklist.
               </p>

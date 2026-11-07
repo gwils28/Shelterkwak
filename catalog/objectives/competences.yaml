@@ -4,6 +4,7 @@ objectives:
     level: 2
     title: Faire le bilan des compétences du foyer
   - id: competences.feu
+    contexts: [periurbain, rural]
     level: 3
     kind: skill
     title: Allumer et entretenir un feu en sécurité
@@ -36,3 +37,24 @@ objectives:
     level: 8
     title: Transmettre - animer un atelier ou former d'autres personnes
     revalidate_days: 365
+  - id: competences.redondance
+    level: 9
+    title: Chaque compétence critique maîtrisée par au moins deux personnes (foyer ou réseau)
+    why: Aucun savoir ne doit reposer sur une seule tête - la perte d'une personne ne doit pas être une perte de capacité.
+    revalidate_days: 365
+  - id: competences.guide
+    level: 1
+    title: Avoir lu un guide officiel de préparation aux situations d'urgence (gouvernement, Croix-Rouge)
+  - id: competences.rechaud
+    level: 3
+    contexts: [appartement]
+    kind: skill
+    title: Utiliser un réchaud en sécurité (jamais en pièce close, fenêtre entrouverte, détecteur de CO)
+    why: En ville, le danger n'est pas de ne pas savoir faire du feu, mais de s'intoxiquer en cuisinant à l'intérieur.
+    revalidate_days: 365
+  - id: competences.tronconneuse
+    level: 6
+    contexts: [rural]
+    kind: skill
+    title: Dégager un arbre tombé à la tronçonneuse avec l'équipement de protection (formation suivie)
+    revalidate_days: 730
