@@ -133,8 +133,8 @@ Le niveau est recalculé à chaque lecture ; s'il a changé depuis le dernier in
   des **particularités de santé ou physiques** (`conditions`, liste d'ids de
   `member_conditions` dans `catalog/axes.yaml`) : traitement régulier, lunettes ou lentilles,
   appareil auditif, mobilité réduite, appareil médical électrique, diabète sous insuline,
-  allergie sévère, maladie respiratoire, régime strict, grossesse, besoin d'accompagnement.
-  Chaque particularité ajoute ses tags au foyer, qui rendent applicables les objectifs
+  allergie sévère, maladie respiratoire, régime strict, grossesse, besoin d'accompagnement,
+  traitement à délivrance limitée (stupéfiant, froid strict). Chaque particularité ajoute ses tags au foyer, qui rendent applicables les objectifs
   correspondants (`requires_tags`) à plusieurs paliers. Exemple pour les lunettes : paire de
   secours et ordonnance copiée (2), lunettes dans le sac d'évacuation (3), deux paires de
   rechange et kit de réparation (5). Les opérations écrites avant cet ajout portent
@@ -153,13 +153,15 @@ Catégories suivies en jours d'autonomie (`catalog/needs.yaml`) :
 |---|---|---|
 | `eau` | litre | adulte/senior 4 L (boisson, cuisine, hygiène minimale), enfant 2,5 L, bébé 2 L, petit animal 0,3 L, grand chien 2 L, autre animal 1 L |
 | `alimentation` | kcal | adulte 2200, senior 1900, enfant 1700, bébé 900 (animaux exclus) |
-| `traitements` | jour | 1 par jour si au moins un membre a un traitement |
-| `cuisson` | jour | 1 par jour (combustible pour cuire hors réseau) |
+| `traitements` | jour | 1 par jour pour chaque membre sous traitement (`per_member_tag`) |
+| `cuisson` | jour-personne | adulte/senior 1, enfant 0,7, bébé 0,3 (une cartouche de gaz de 250 g ≈ 3 jours-personne) |
 
 Un article : nom, catégorie, quantité, libellé d'unité, quantité de base par unité
 (ex. 6 × bouteille de 1,5 L), date de péremption facultative, emplacement facultatif
 (« cellier », « sous l'évier »). Un bouton retire une unité consommée.
 Autonomie = somme des articles non périmés ÷ besoin journalier du foyer.
+Les stocks estimés pendant l'interview périment au bout de 6 mois : une estimation déclarée doit
+être confirmée ou détaillée dans les Réserves pour continuer à compter.
 Articles périmant sous 30 jours signalés.
 
 ## 8. Interview d'inscription
@@ -213,10 +215,14 @@ haut de page.
    90 j, 180 j.
 5. **Parcours** (`/historique`) : courbe du niveau et journal.
 6. **Foyer** : membres, monument, contexte actuel et cible, objectifs déclarés, synchronisation.
-7. **Crise** (`/crise`, bouton de l'en-tête) : écran du jour J, hors ligne et imprimable.
-   Autonomie actuelle, fiches du foyer saisies librement (contacts, rendez-vous, qui fait quoi,
-   fiches médicales, lieu d'accueil, fréquences, emplacements) et fiches réflexes par scénario
-   (`catalog/crisis.yaml`), filtrées selon les risques et les membres du foyer.
+7. **Crise** (`/crise`, bouton de l'en-tête) : écran du jour J, hors ligne et imprimable, pensé
+   pour une personne sous stress. Dans l'ordre : boutons d'appel (15, 112, 18, 17, SMS 114) et
+   rappel de respiration ; fiches réflexes repliées, « Premiers secours » puis « Situations »
+   (`catalog/crisis.yaml`, `group`), filtrées selon les risques et les membres du foyer, avec des
+   étapes réservées à certains foyers (`{text, tags_any}`) ; fiches du foyer (contacts,
+   rendez-vous, qui fait quoi, fiches médicales…) en lecture avec numéros cliquables, modifiables
+   derrière un bouton ; réserves avec l'eau « boisson seule » (2 L par personne) et les
+   emplacements tirés de l'inventaire.
 
 L'accueil affiche aussi le **meilleur niveau atteint** et le nombre d'actions pour le
 retrouver quand le niveau a baissé.
