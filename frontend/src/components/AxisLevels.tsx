@@ -8,7 +8,7 @@ export function AxisLevels({ axes, level }: { axes: Dashboard["axis_levels"]; le
       {axes.map((a) => (
         <li key={a.axis} className={a.level === weakest && a.level <= level ? "weak" : ""}>
           <span className="axis-name">
-            {a.icon} {a.name}
+            <span aria-hidden>{a.icon}</span> {a.name}
           </span>
           <span className="bar" aria-label={`niveau ${a.level} sur ${MAX_LEVEL}`}>
             {Array.from({ length: MAX_LEVEL }, (_, i) => (

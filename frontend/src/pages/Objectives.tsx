@@ -64,7 +64,7 @@ export function ObjectivesPage() {
           <option value="">Tous les axes</option>
           {catalog.axes.map((a) => (
             <option key={a.id} value={a.id}>
-              {a.icon} {a.name}
+              {a.name}
             </option>
           ))}
         </select>
@@ -111,7 +111,7 @@ export function ObjectivesPage() {
                   )}
                   <div className="objective-body">
                     <div className="item-title">
-                      {axes[o.axis]?.icon} {o.title}
+                      <span aria-hidden>{axes[o.axis]?.icon}</span> {o.title}
                     </div>
                     {o.why && <div className="item-detail">{o.why}</div>}
                     <div className="badges">
@@ -203,7 +203,7 @@ function CustomForm({
             <select id="custom-axis" value={axis} onChange={(e) => setAxis(e.target.value)}>
               {catalog.axes.map((a) => (
                 <option key={a.id} value={a.id}>
-                  {a.icon} {a.name}
+                  {a.name}
                 </option>
               ))}
             </select>

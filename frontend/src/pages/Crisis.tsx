@@ -1,17 +1,45 @@
-import { useState } from "react";
+import { Fragment, type ReactNode, useEffect, useState } from "react";
 import { householdTags } from "../engine/engine";
 import { inputs } from "../engine/replay";
-import type { CrisisNote } from "../engine/types";
+import { type CrisisNote, isAnimal, type Scenario, scenarioSteps } from "../engine/types";
 import { formatDays } from "../lib/format";
 import { actions, useFoyer } from "../store/hooks";
 
-/** Écran du jour J : sobre, hors ligne, imprimable. Fiches réflexes du catalogue + fiches du foyer. */
+/** Litres d'eau par personne et par jour pour la seule boisson, en restriction. */
+const DRINK_ONLY_L = 2;
+
+const CALLS = [
+  { href: "tel:15", label: "15", sub: "SAMU", tone: "danger" },
+  { href: "tel:112", label: "112", sub: "Urgences", tone: "danger" },
+  { href: "tel:18", label: "18", sub: "Pompiers", tone: "" },
+  { href: "tel:17", label: "17", sub: "Police", tone: "" },
+  { href: "sms:114", label: "114", sub: "SMS si parler est impossible", tone: "" },
+];
+
+/**
+ * Écran du jour J, pensé pour quelqu'un sous stress : appeler d'abord, choisir sa situation,
+ * puis retrouver contacts et réserves. Hors ligne et imprimable.
+ */
 export function CrisisPage() {
   const { catalog, state, dashboard } = useFoyer();
+
+  // À l'impression, toutes les fiches s'ouvrent.
+  useEffect(() => {
+    const open = () => document.querySelectorAll<HTMLDetailsElement>(".crisis details").forEach((d) => (d.open = true));
+    window.addEventListener("beforeprint", open);
+    return () => window.removeEventListener("beforeprint", open);
+  }, []);
+
   if (!dashboard) return null;
   const inp = inputs(catalog, state);
   const tags = inp ? householdTags(inp.catalog, inp.household) : new Set<string>();
-  const scenarios = catalog.scenarios.filter((s) => s.tags_any.length === 0 || s.tags_any.some((t) => tags.has(t)));
+  const shown = catalog.scenarios.filter((s) => s.tags_any.length === 0 || s.tags_any.some((t) => tags.has(t)));
+  const firstAid = shown.filter((s) => s.group === "secours");
+  const situations = shown.filter((s) => s.group !== "secours");
+
+  const humans = (dashboard.household.members ?? []).filter((m) => !isAnimal(catalog, m.type)).length;
+  const locations = (category: string) =>
+    [...new Set([...state.stock.values()].filter((s) => s.category === category && s.location).map((s) => s.location as string))];
   const autonomy = dashboard.autonomy.filter((a) => a.days !== null);
 
   return (
@@ -19,83 +47,141 @@ export function CrisisPage() {
       <div className="page-head">
         <h1>🚨 Crise</h1>
         <button className="no-print" onClick={() => window.print()}>
-          Imprimer la version papier
+          Imprimer
         </button>
       </div>
-      <p className="hint no-print">
-        Tout est sur ce téléphone, même sans réseau. Imprime cette page et range-la avec les papiers importants : le jour où la
-        batterie est vide, c'est elle qui sert.
+
+      <nav className="crisis-calls" aria-label="Appels d'urgence">
+        {CALLS.map((c) => (
+          <a key={c.href} href={c.href} className={`call ${c.tone}`}>
+            <strong>{c.label}</strong>
+            <span>{c.sub}</span>
+          </a>
+        ))}
+      </nav>
+      <p className="breathe">
+        <strong>Respire.</strong> Inspire 4 secondes, expire 6 secondes, trois fois. Puis choisis ta situation.
       </p>
 
-      <section className="panel crisis-autonomy">
-        <h2>Autonomie actuelle</h2>
-        <ul>
-          {autonomy.map((a) => (
-            <li key={a.category}>
-              <strong>{a.name}</strong> : {formatDays(a.days)}
-            </li>
-          ))}
-        </ul>
+      <section className="panel">
+        <h2>Premiers secours</h2>
+        <ScenarioGrid scenarios={firstAid} tags={tags} />
+      </section>
+
+      <section className="panel">
+        <h2>Situations</h2>
+        <ScenarioGrid scenarios={situations} tags={tags} />
       </section>
 
       <section className="panel">
         <h2>Fiches du foyer</h2>
         <div className="crisis-notes">
           {catalog.crisis_notes.map((n) => (
-            <NoteEditor key={n.id} note={n} text={state.notes.get(n.id) ?? ""} />
+            <NoteCard key={n.id} note={n} text={state.notes.get(n.id) ?? ""} />
           ))}
         </div>
       </section>
 
-      <section className="panel">
-        <h2>Réflexes</h2>
-        <div className="crisis-scenarios">
-          {scenarios.map((s) => (
-            <article key={s.id} className="scenario">
-              <h3>
-                {s.icon} {s.name}
-              </h3>
-              <ol>
-                {s.steps.map((step) => (
-                  <li key={step}>{step}</li>
-                ))}
-              </ol>
-            </article>
-          ))}
-        </div>
+      <section className="panel crisis-autonomy">
+        <h2>Réserves</h2>
+        <ul>
+          {autonomy.map((a) => {
+            const where = locations(a.category);
+            const drinkOnly = a.category === "eau" && humans > 0 ? a.total / (DRINK_ONLY_L * humans) : null;
+            return (
+              <li key={a.category}>
+                <strong>{a.name}</strong> : {formatDays(a.days)}
+                {drinkOnly !== null && <> · {formatDays(drinkOnly)} en ne gardant l'eau que pour boire</>}
+                {where.length > 0 && <div className="where">📍 {where.join(", ")}</div>}
+              </li>
+            );
+          })}
+        </ul>
       </section>
     </div>
   );
 }
 
-function NoteEditor({ note, text }: { note: CrisisNote; text: string }) {
+function ScenarioGrid({ scenarios, tags }: { scenarios: Scenario[]; tags: Set<string> }) {
+  return (
+    <div className="crisis-scenarios">
+      {scenarios.map((s) => (
+        <details key={s.id} className="scenario">
+          <summary>
+            <span className="scenario-icon" aria-hidden>
+              {s.icon}
+            </span>
+            {s.name}
+          </summary>
+          <ol>
+            {scenarioSteps(s, tags).map((step) => (
+              <li key={step}>{linkify(step)}</li>
+            ))}
+          </ol>
+        </details>
+      ))}
+    </div>
+  );
+}
+
+/** Numéros de téléphone français (fixes, mobiles, 0 800, numéros courts d'urgence) rendus cliquables. */
+const PHONE = /(\+33\s?[1-9](?:[\s.]?\d{2}){4}|0\s?[1-9](?:[\s.]?\d{2}){4}|0 ?800(?:[\s.]?\d{2}){3}|\b(?:3919|3114|119|112|114|15|17|18)\b)/g;
+
+function linkify(text: string): ReactNode {
+  const parts = text.split(PHONE);
+  return parts.map((part, i) => {
+    if (i % 2 === 0) return <Fragment key={i}>{part}</Fragment>;
+    const digits = part.replace(/[\s.]/g, "");
+    const scheme = digits === "114" ? "sms" : "tel";
+    return (
+      <a key={i} href={`${scheme}:${digits}`} className="phone">
+        {part}
+      </a>
+    );
+  });
+}
+
+/** Fiche du foyer : lue par défaut (numéros cliquables), modifiable derrière un bouton. */
+function NoteCard({ note, text }: { note: CrisisNote; text: string }) {
   const [draft, setDraft] = useState<string | null>(null);
-  const value = draft ?? text;
-  const dirty = draft !== null && draft !== text;
+  const editing = draft !== null;
   return (
     <div className="crisis-note">
-      <h3>{note.name}</h3>
-      <textarea
-        className="no-print"
-        rows={Math.max(3, value.split("\n").length + 1)}
-        value={value}
-        placeholder={note.hint}
-        aria-label={note.name}
-        onChange={(e) => setDraft(e.target.value)}
-      />
-      <div className="print-only note-text">{value || "—"}</div>
-      {dirty && (
-        <div className="actions no-print">
-          <button onClick={() => setDraft(null)}>Annuler</button>
-          <button
-            className="primary"
-            onClick={() => {
-              void actions.setNote(note.id, draft);
-              setDraft(null);
-            }}
-          >
-            Enregistrer
+      <div className="note-head">
+        <h3>{note.name}</h3>
+        {!editing && (
+          <button className="link no-print" onClick={() => setDraft(text)}>
+            Modifier
           </button>
+        )}
+      </div>
+      {editing ? (
+        <>
+          <textarea
+            className="no-print"
+            rows={Math.max(4, draft.split("\n").length + 1)}
+            value={draft}
+            placeholder={note.hint}
+            aria-label={note.name}
+            onChange={(e) => setDraft(e.target.value)}
+            autoFocus
+          />
+          <div className="actions no-print">
+            <button onClick={() => setDraft(null)}>Annuler</button>
+            <button
+              className="primary"
+              onClick={() => {
+                if (draft !== text) void actions.setNote(note.id, draft);
+                setDraft(null);
+              }}
+            >
+              Enregistrer
+            </button>
+          </div>
+        </>
+      ) : (
+        <div className={`note-text${text ? "" : " empty"}`}>
+          {text ? text.split("\n").map((line, i) => <div key={i}>{linkify(line) || " "}</div>) : <span>{note.hint}</span>}
         </div>
       )}
     </div>

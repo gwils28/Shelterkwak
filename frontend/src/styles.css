@@ -1281,17 +1281,109 @@ button.info-button[aria-expanded="true"] {
   background: var(--bg);
   resize: vertical;
 }
+.crisis-calls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+}
+.crisis-calls .call {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 74px;
+  padding: 10px 8px;
+  border-radius: 16px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  text-decoration: none;
+  text-align: center;
+}
+.crisis-calls .call strong {
+  font-size: 1.7rem;
+  line-height: 1;
+}
+.crisis-calls .call span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.crisis-calls .call.danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+.crisis-calls .call.danger span {
+  color: #fff;
+  opacity: 0.9;
+}
+.breathe {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--panel));
+  font-size: 1.02rem;
+}
 .scenario {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 12px 14px;
   background: var(--bg);
+}
+.scenario > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+.scenario > summary::-webkit-details-marker {
+  display: none;
+}
+.scenario > summary::after {
+  content: "▾";
+  margin-left: auto;
+  color: var(--muted);
+}
+.scenario[open] > summary::after {
+  content: "▴";
+}
+.scenario-icon {
+  font-size: 1.4rem;
 }
 .scenario ol {
   margin: 0;
-  padding-left: 20px;
-  font-size: 1rem;
-  line-height: 1.45;
+  padding: 0 14px 14px 34px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.scenario li + li {
+  margin-top: 4px;
+}
+a.phone {
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.note-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.note-text.empty {
+  color: var(--muted);
+  font-style: italic;
+}
+.crisis-autonomy li {
+  min-width: 220px;
+}
+.crisis-autonomy .where {
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 .print-only {
   display: none;
@@ -1324,6 +1416,26 @@ button.info-button[aria-expanded="true"] {
   .scenario,
   .crisis-note {
     break-inside: avoid;
+  }
+  .crisis-calls .call {
+    border: 1px solid #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+    min-height: 0;
+  }
+  .scenario > summary::after {
+    content: none;
+  }
+}
+/* Moins d'animations demandées par l'appareil : aucune transition non plus */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }
 .check-line {

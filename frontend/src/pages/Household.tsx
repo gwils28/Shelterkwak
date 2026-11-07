@@ -161,7 +161,7 @@ export function HouseholdPage() {
           {catalog.axes.map((a) => (
             <label key={a.id} className={`option${form.priority_axes.includes(a.id) ? " checked" : ""}`}>
               <input type="checkbox" checked={form.priority_axes.includes(a.id)} onChange={() => set({ priority_axes: toggleIn(form.priority_axes, a.id) })} />
-              {a.icon} {a.name}
+              <span aria-hidden>{a.icon}</span> {a.name}
             </label>
           ))}
         </div>

@@ -106,7 +106,7 @@ export function DashboardPage() {
             {inGrace > 0 && (
               <p className="warn-text">⏳ {inGrace} validation(s) en sursis : le palier est fissuré mais tient encore. Refais-les avant qu'il ne tombe.</p>
             )}
-            {alerts > 0 && <p className="warn-text">⚠ {alerts} élément(s) expiré(s) ou périmé(s) font baisser le monument.</p>}
+            {alerts > 0 && <p className="warn-text">⚠ {alerts} élément(s) à renouveler pour garder ton palier.</p>}
           </section>
         )}
 
