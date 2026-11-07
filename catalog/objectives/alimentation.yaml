@@ -21,7 +21,7 @@ objectives:
     title: Nourriture pour 14 jours
     stock: {category: alimentation, min_days: 14}
   - id: alimentation.rotation
-    level: 4
+    level: 3
     title: Rotation des stocks en place (premier entré, premier sorti)
     why: Un stock qu'on ne consomme pas finit à la poubelle.
     revalidate_days: 180
@@ -35,9 +35,9 @@ objectives:
     title: Nourriture et litière des animaux pour 14 jours
   - id: alimentation.regimes
     level: 4
-    requires_tags: [traitement_medical]
-    required: false
-    title: Réserves adaptées aux régimes particuliers (diabète, allergies, sans gluten)
+    requires_tags: [regime_special, allergie_severe, diabete_insuline]
+    title: Réserves adaptées aux régimes particuliers (diabète, allergies, sans gluten), étiquettes vérifiées
+    why: En pénurie, on mange ce qu'on trouve ; un stock sûr évite une crise d'allergie ou une hypoglycémie.
   - id: alimentation.stock_90j
     level: 5
     kind: stock
@@ -49,12 +49,14 @@ objectives:
     title: Savoir conserver (stérilisation en bocaux, lacto-fermentation, déshydratation)
     revalidate_days: 730
   - id: alimentation.stock_180j
+    why: Au-delà de trois mois, un stock périme et se perd à l'évacuation ; mieux vaut produire et s'approvisionner en direct.
+    required: false
     level: 6
     kind: stock
     title: Nourriture pour 180 jours
     stock: {category: alimentation, min_days: 180}
   - id: alimentation.potager_savoir
-    level: 6
+    level: 4
     kind: skill
     title: Savoir cultiver au moins cinq légumes de base (stage, jardin partagé)
     why: Compétence transférable si tu prévois de changer de lieu de vie.
@@ -65,7 +67,7 @@ objectives:
     title: Semences reproductibles (non hybrides) en stock
     revalidate_days: 1095
   - id: alimentation.circuit_court
-    level: 7
+    level: 4
     title: Lien direct avec au moins deux producteurs locaux
   - id: alimentation.balcon
     level: 7
@@ -74,7 +76,7 @@ objectives:
   - id: alimentation.potager
     level: 7
     contexts: [periurbain, rural]
-    title: Potager produisant au moins 20 % des légumes du foyer
+    title: Potager qui met des légumes à table au moins quatre mois par an
   - id: alimentation.production_50
     level: 8
     contexts: [periurbain, rural]
@@ -84,3 +86,22 @@ objectives:
     contexts: [rural]
     required: false
     title: Petit élevage (poules, lapins)
+  - id: alimentation.epreuve_mois
+    level: 9
+    title: Épreuve annuelle - un mois sans faire de courses, sur réserves et production
+    why: Vivre réellement sur ses réserves force la rotation, corrige les manques et entraîne la cuisine de crise.
+    revalidate_days: 365
+  - id: alimentation.stock_24h
+    level: 1
+    kind: stock
+    stock: {category: alimentation, min_days: 1}
+    title: Nourriture pour 24 heures sans faire de courses
+  - id: alimentation.circuit_25
+    level: 8
+    contexts: [appartement]
+    title: Au moins 25 % de l'alimentation autoproduite ou en circuit court (jardin partagé, parcelle, AMAP)
+  - id: alimentation.semences_autoproduites
+    level: 7
+    contexts: [periurbain, rural]
+    title: Produire ses propres semences pour au moins trois légumes
+    why: Des semences achetées sont un stock ; savoir les reproduire est un flux.

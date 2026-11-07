@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field, field_validator
 from sqlmodel import Session, col, func, select
 
 from . import replay
-from .catalog import Catalog, get_catalog
+from .catalog import MAX_LEVEL, Catalog, get_catalog
 from .db import get_session
 from .engine import Evaluation
 from .models import StoredOp
@@ -103,7 +103,7 @@ def export_ops(session: SessionDep) -> list[dict[str, Any]]:
 def dashboard_dict(catalog: Catalog, state: replay.State, ev: Evaluation) -> dict[str, Any]:
     full = catalog.with_custom(list(state.custom.values()))
     axes = {a.id: a for a in full.axes}
-    nxt = ev.level + 1 if ev.level < 8 else None
+    nxt = ev.level + 1 if ev.level < MAX_LEVEL else None
     return {
         "household": state.household,
         "level": ev.level,

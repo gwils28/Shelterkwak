@@ -147,6 +147,50 @@
   }
  },
  {
+  "name": "particularités de santé : insuline et lunettes",
+  "context": "appartement",
+  "members": [
+   {
+    "name": "A",
+    "type": "adulte",
+    "conditions": [
+     "insuline",
+     "vue"
+    ]
+   },
+   {
+    "name": "B",
+    "type": "adulte",
+    "conditions": []
+   }
+  ],
+  "answers": {
+   "risques": [
+    "inondation"
+   ],
+   "traitements_jours": 20
+  },
+  "expected": {
+   "tags": [
+    "risque_inondation"
+   ],
+   "validates": [
+    "securite.risques"
+   ],
+   "sets": {},
+   "lists": {},
+   "stock": [
+    {
+     "name": "Traitements (estimation de l'interview)",
+     "category": "traitements",
+     "quantity": 20.0,
+     "unit_label": "jour",
+     "amount_per_unit": 1.0
+    }
+   ]
+  }
+ },
+ {
   "name": "réponses vides",
   "context": "periurbain",
   "members": [

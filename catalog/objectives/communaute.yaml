@@ -33,3 +33,16 @@ objectives:
     level: 8
     title: Contribuer à un projet de résilience locale (jardin partagé, réserve communale)
     revalidate_days: 365
+  - id: communaute.exercice_inopine
+    level: 9
+    title: Exercice de crise inopiné mené avec le groupe d'entraide (scénario tiré au sort)
+    why: La coordination ne s'improvise pas - seul l'exercice sans préavis montre ce que le groupe vaut.
+    revalidate_days: 365
+  - id: communaute.parrainage
+    level: 9
+    required: false
+    title: Parrainer un autre foyer jusqu'au niveau Paré
+    why: Renforcer les autres renforce le réseau dont tu dépends.
+  - id: communaute.proche_joignable
+    level: 1
+    title: Un proche à moins de 30 minutes, prévenu qu'il est ton contact d'urgence

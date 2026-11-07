@@ -1,0 +1,119 @@
+# Écran Crise : ce dont on a besoin le jour J, lisible hors ligne et imprimable.
+# `notes` : fiches que le foyer remplit en texte libre (opération notes.set, clé = id).
+#   Un id se garde : il est stocké dans le journal.
+# `scenarios` : fiches réflexes. Affichées si le foyer porte l'un des `tags_any`
+#   (toujours si la liste est vide).
+notes:
+  - id: contacts
+    name: Contacts essentiels
+    hint: "Famille, voisins, médecin, employeur, école, contact référent hors région (nom et numéro)."
+  - id: rendez_vous
+    name: Points de rendez-vous et itinéraires
+    hint: "Point de rassemblement près du logement, point plus éloigné, deux itinéraires d'évacuation."
+  - id: plan
+    name: Qui fait quoi
+    hint: "Qui coupe le gaz et l'électricité, qui récupère les enfants, qui prend les animaux, qui prévient qui."
+  - id: medical
+    name: Fiches médicales
+    hint: "Pour chaque membre : groupe sanguin, allergies, traitements et posologies, médecin, particularités."
+  - id: repli
+    name: Lieu d'accueil hors zone
+    hint: "Adresse, contact, trajet, ce qui y est déjà stocké."
+  - id: radio
+    name: Fréquences et canaux
+    hint: "Fréquence FM locale de la radio publique, canal convenu des talkies, horaires de vacation radio."
+  - id: sacs
+    name: Sacs et emplacements
+    hint: "Où sont les sacs d'évacuation, l'eau, la trousse, les papiers, les lampes, le robinet d'arrêt."
+
+scenarios:
+  - id: coupure_electricite
+    name: Coupure d'électricité
+    icon: "🔌"
+    steps:
+      - "Vérifier si la coupure touche le quartier (voisins, radio) ou seulement le logement (tableau électrique)."
+      - "Débrancher les appareils sensibles pour le retour du courant."
+      - "Garder le congélateur fermé : il tient le froid 24 à 48 h."
+      - "S'éclairer à la lampe ; pas de bougie sans surveillance."
+      - "Jamais de groupe électrogène, de barbecue ni de réchaud en pièce fermée (monoxyde de carbone)."
+      - "Économiser le téléphone : mode avion, luminosité au minimum, appels courts."
+  - id: coupure_eau
+    name: Coupure d'eau
+    icon: "🚱"
+    steps:
+      - "En cas de fuite, fermer le robinet d'arrêt général."
+      - "Réserver l'eau stockée à la boisson et à la cuisine."
+      - "WC : eau de récupération versée d'un coup, ou toilettes de secours (seau, sac, sciure)."
+      - "Hygiène des mains au gel ; vaisselle dans un bac, eau réutilisée pour les WC."
+      - "Au retour de l'eau, laisser couler quelques minutes et suivre les avis de la mairie."
+  - id: alerte
+    name: Alerte, sirène, confinement
+    icon: "📢"
+    steps:
+      - "Se mettre à l'abri dans le bâtiment le plus proche."
+      - "Fermer portes et fenêtres, arrêter ventilation et climatisation."
+      - "Ne pas aller chercher les enfants à l'école : ils y sont protégés."
+      - "Écouter la radio publique et suivre FR-Alert."
+      - "Ne téléphoner qu'en cas d'urgence pour laisser le réseau aux secours."
+      - "Ne sortir qu'à la fin de l'alerte annoncée par les autorités."
+  - id: evacuation
+    name: Évacuation
+    icon: "🧭"
+    steps:
+      - "Couper gaz, électricité et eau."
+      - "Prendre les sacs, les papiers, les médicaments, les lunettes, les animaux."
+      - "Fermer à clé et signaler son départ (mot sur la porte si les autorités le demandent)."
+      - "Suivre les itinéraires indiqués par les autorités, pas forcément les siens."
+      - "Prévenir le contact référent hors région, puis rejoindre le lieu d'accueil."
+  - id: inondation
+    name: Inondation
+    icon: "🌊"
+    tags_any: [risque_inondation]
+    steps:
+      - "Monter à l'étage avec les sacs, l'eau et la lampe ; ne jamais descendre au sous-sol ni au parking."
+      - "Couper l'électricité et le gaz."
+      - "Ne pas prendre la voiture : 30 cm d'eau suffisent à l'emporter."
+      - "Ne jamais traverser une zone inondée à pied."
+  - id: canicule
+    name: Canicule
+    icon: "🌡️"
+    tags_any: [risque_canicule, seniors, bebe]
+    steps:
+      - "Boire régulièrement sans attendre d'avoir soif ; donner à boire aux enfants et aux seniors."
+      - "Volets fermés le jour, aérer la nuit."
+      - "Se rafraîchir : douche, linges humides, brumisateur ; passer du temps dans la pièce la plus fraîche."
+      - "Éviter l'effort aux heures chaudes."
+      - "Appeler chaque jour les proches isolés. Canicule info service : 0 800 06 66 66."
+  - id: froid
+    name: Grand froid sans chauffage
+    icon: "❄️"
+    tags_any: [risque_froid, seniors, bebe]
+    steps:
+      - "Vivre dans une seule pièce, porte fermée, fenêtres calfeutrées."
+      - "Chauffage d'appoint uniquement s'il est prévu pour l'intérieur, avec aération et détecteur de CO."
+      - "Plusieurs couches de vêtements, bonnet, boissons chaudes."
+      - "Surveiller les bébés et les seniors (mains froides, somnolence)."
+  - id: seisme
+    name: Séisme
+    icon: "🏚️"
+    tags_any: [risque_seisme]
+    steps:
+      - "Pendant : s'abriter sous une table solide, loin des vitres."
+      - "Après : couper gaz et électricité, ne pas prendre l'ascenseur."
+      - "Sortir avec précaution et s'éloigner des bâtiments."
+  - id: industriel
+    name: Accident industriel ou nucléaire
+    icon: "☢️"
+    tags_any: [risque_industriel]
+    steps:
+      - "Se confiner : fermer, calfeutrer portes et fenêtres, couper la ventilation."
+      - "Prendre les comprimés d'iode seulement sur consigne de la préfecture."
+      - "Écouter la radio publique et attendre la fin de l'alerte."
+  - id: incendie
+    name: Feu de forêt
+    icon: "🔥"
+    tags_any: [risque_incendie]
+    steps:
+      - "Si la maison est débroussaillée, s'y confiner plutôt que fuir dans la fumée."
+      - "Fermer volets et ouvertures, boucher les aérations avec des linges mouillés."
+      - "Ouvrir le portail pour les pompiers ; garder les sacs prêts."

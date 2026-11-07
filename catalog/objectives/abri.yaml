@@ -15,12 +15,11 @@ objectives:
     title: Extincteur et couverture anti-feu
     revalidate_days: 365
   - id: abri.calfeutrage
-    level: 4
+    level: 3
     title: Kit de confinement (bâches, ruban adhésif, film plastique)
     why: En cas d'accident industriel, la consigne est de se confiner en calfeutrant.
   - id: abri.chauffage_appoint
     level: 4
-    requires_tags: [risque_froid]
     title: Chauffage d'appoint sûr hors réseau, avec ventilation et détecteur de CO
   - id: abri.reparations
     level: 5
@@ -42,3 +41,42 @@ objectives:
     level: 8
     contexts: [periurbain, rural]
     title: Habitat résilient - autonomie thermique et matériaux de réparation stockés
+  - id: abri.accueil
+    level: 9
+    title: Capacité d'accueillir un foyer sinistré pendant un mois (couchages, réserves dimensionnées)
+    why: Pouvoir absorber le choc des autres est la marque d'une marge réelle, pas d'une autonomie au plus juste.
+  - id: abri.issues
+    level: 1
+    title: Issues de secours du logement et de l'immeuble repérées par tous
+  - id: abri.hiver_sans_chauffage
+    level: 8
+    contexts: [appartement]
+    title: Logement tenable une semaine d'hiver sans chauffage du réseau (pièce refuge isolée, textiles, appoint sûr)
+  - id: abri.plan_canicule
+    due_month: 6
+    level: 2
+    requires_tags: [risque_canicule, seniors, bebe]
+    title: Plan canicule revu avant l'été et connu de tous (boire régulièrement, volets fermés le jour, aérer la nuit, appeler les proches isolés)
+    why: La chaleur est le risque climatique qui tue le plus en France, d'abord les seniors et les bébés.
+  - id: abri.piece_fraiche
+    level: 3
+    requires_tags: [risque_canicule, seniors, bebe]
+    title: Pièce la plus fraîche identifiée, thermomètre intérieur, brumisateur ou linges humides prêts
+  - id: abri.rafraichir_sans_reseau
+    level: 4
+    requires_tags: [risque_canicule]
+    title: Rafraîchissement sans réseau (ventilateur sur batterie, protections solaires extérieures, rideaux occultants)
+  - id: abri.seisme
+    level: 3
+    requires_tags: [risque_seisme]
+    title: Meubles hauts et chauffe-eau fixés au mur, chaussures et lampe au pied de chaque lit
+  - id: abri.isolement_7j
+    level: 5
+    contexts: [rural]
+    title: Tenir 7 jours route coupée (neige, crue, arbres) sans ravitaillement ni secours rapides
+    why: À la campagne, les secours peuvent mettre des jours à arriver ; l'isolement est le vrai scénario.
+  - id: abri.neige
+    level: 4
+    requires_tags: [climat_montagne]
+    title: Équipements neige (pneus ou chaînes, pelle, sel) et réserves pour une semaine bloqué par la neige
+    due_month: 11

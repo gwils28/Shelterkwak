@@ -14,7 +14,8 @@ def ops(*items: dict) -> list[replay.Op]:
 
 
 def onboard() -> dict:
-    return onboarding(1, "2026-11-02T10:00:00.000Z", household(), LEVEL2, [], D0)
+    day = [stock("s-eau", "Eau", "eau", 8, 1), stock("s-vivres", "Vivres", "alimentation", 2, 2200)]
+    return onboarding(1, "2026-11-02T10:00:00.000Z", household(), LEVEL2, day, D0)
 
 
 def test_onboarding_reaches_level_2(catalog: Catalog) -> None:
@@ -52,9 +53,10 @@ def test_invalid_custom_objective_is_ignored(catalog: Catalog) -> None:
 
 
 def test_history_records_time_based_drop(catalog: Catalog) -> None:
-    h = replay.history(catalog, ops(onboard()), date(2027, 12, 1))  # la trousse (365 j) expire le 2027-11-02
+    # La trousse (365 j) expire le 2027-11-02 ; le tambour tombe à la fin du sursis de 30 jours.
+    h = replay.history(catalog, ops(onboard()), date(2027, 12, 15))
     assert [s["level"] for s in h.snapshots] == [2, 1]
-    assert h.snapshots[1]["at"].startswith("2027-11-02")
+    assert h.snapshots[1]["at"].startswith("2027-12-02")
     assert "trousse" in h.snapshots[1]["cause"].lower()
     assert h.journal[-1]["type"] == "level_changed"
 
@@ -62,3 +64,10 @@ def test_history_records_time_based_drop(catalog: Catalog) -> None:
 def test_reset_clears_everything(catalog: Catalog) -> None:
     state = replay.replay(catalog, ops(onboard(), op(2, "2026-11-03T00:00:00.000Z", "reset", {})))
     assert state.household is None and not state.validations
+
+
+def test_crisis_notes_are_replayed(catalog: Catalog) -> None:
+    note = op(2, "2026-11-03T00:00:00.000Z", "notes.set", {"key": "contacts", "text": "Maman 06…"})
+    h = replay.history(catalog, ops(onboard(), note), date(2026, 11, 3))
+    assert replay.replay(catalog, ops(onboard(), note)).notes == {"contacts": "Maman 06…"}
+    assert h.journal[-1]["message"] == "Fiche de crise mise à jour : Contacts essentiels"

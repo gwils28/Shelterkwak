@@ -17,7 +17,18 @@ questions:
       - {value: seisme, label: Séisme, tags: [risque_seisme], validates: [securite.risques]}
       - {value: incendie, label: Feux de forêt, tags: [risque_incendie], validates: [securite.risques]}
       - {value: canicule, label: Canicules, tags: [risque_canicule], validates: [securite.risques]}
+      - {value: secheresse, label: Sécheresse et restrictions d'eau, tags: [risque_secheresse], validates: [securite.risques]}
       - {value: inconnu, label: Je ne sais pas encore}
+
+  - id: climat
+    section: Ton environnement
+    type: single
+    text: Quel climat a ta région ?
+    options:
+      - {value: oceanique, label: Océanique (hivers doux, pluie)}
+      - {value: continental, label: Continental (hivers froids), tags: [risque_froid]}
+      - {value: mediterraneen, label: Méditerranéen (étés chauds et secs), tags: [risque_canicule, risque_secheresse]}
+      - {value: montagne, label: Montagne, tags: [climat_montagne, risque_froid]}
 
   - id: inquietudes
     section: Ton environnement
@@ -38,6 +49,16 @@ questions:
     options:
       - {value: oui, label: Oui, tags: [vehicule]}
       - {value: non, label: Non}
+
+  - id: etage
+    section: Ton environnement
+    type: single
+    show_if: {context_in: [appartement]}
+    text: À quel étage vis-tu ?
+    help: Au-dessus du premier, l'eau et les courses se montent à pied quand l'ascenseur et le surpresseur s'arrêtent.
+    options:
+      - {value: bas, label: Rez-de-chaussée ou premier étage}
+      - {value: haut, label: Deuxième étage ou plus, tags: [etage]}
 
   - id: eau_litres
     section: Tes réserves
@@ -68,6 +89,23 @@ questions:
     text: Combien de jours de traitement médical as-tu d'avance ?
     unit: jours
     creates_stock: {category: traitements, name: Traitements (estimation de l'interview), unit_label: jour, amount_per_unit: 1}
+
+  - id: bases
+    section: Tes bases
+    type: multi
+    text: Qu'est-ce qui est déjà vrai chez toi ?
+    help: Le strict minimum pour passer quelques heures de coupure.
+    options:
+      - {value: lumiere, label: Une lampe sans réseau à un endroit connu de tous, validates: [energie.lumiere]}
+      - {value: numeros, label: Tout le monde connaît les numéros d'urgence, validates: [sante.numeros_urgence]}
+      - {value: pharmacie, label: Antalgique, pansements et désinfectant, validates: [sante.pharmacie_base]}
+      - {value: issues, label: Issues de secours repérées, validates: [abri.issues]}
+      - {value: reflexes, label: On connaît les réflexes en cas d'alerte, validates: [securite.reflexes]}
+      - {value: frequence, label: Fréquence de la radio publique notée, validates: [communication.frequence]}
+      - {value: papiers_ranges, label: Papiers d'identité rangés au même endroit, validates: [finances.papiers_ranges]}
+      - {value: depart, label: Clés, papiers et chaussures près de la sortie, validates: [mobilite.depart_rapide]}
+      - {value: guide, label: J'ai lu un guide officiel de préparation, validates: [competences.guide]}
+      - {value: proche, label: Un proche à moins de 30 min prévenu, validates: [communaute.proche_joignable]}
 
   - id: equipement
     section: Ton équipement
@@ -104,7 +142,8 @@ questions:
       - {value: coupures, label: On sait couper eau, gaz et électricité, validates: [eau.robinet_arret, abri.coupures]}
       - {value: alertes, label: FR-Alert et alertes préfecture activés, validates: [securite.alertes]}
       - {value: plan, label: Un plan familial d'urgence écrit, validates: [securite.plan_familial]}
-      - {value: exercice, label: Un exercice familial dans l'année, validates: [securite.exercice]}
+      - {value: exercice, label: Un exercice d'évacuation chronométré dans l'année, validates: [securite.exercice]}
+      - {value: exercice_24h, label: Un exercice de 24 h sans réseau dans l'année, validates: [securite.exercice_24h]}
       - {value: contacts, label: Contacts essentiels sur papier, validates: [communication.contacts_papier]}
       - {value: contact_externe, label: Un contact référent hors région, validates: [communication.contact_externe]}
       - {value: itineraires, label: Itinéraires d'évacuation connus, validates: [mobilite.itineraires]}
@@ -116,6 +155,7 @@ questions:
       - {value: inventaire, label: Inventaire des placards fait, validates: [alimentation.inventaire]}
       - {value: rotation, label: Rotation des stocks alimentaires, validates: [alimentation.rotation]}
       - {value: cles, label: Doubles des clés en lieu sûr, validates: [securite.cles]}
+      - {value: ecoute, label: Numéros d'écoute notés, validates: [moral.ecoute]}
 
   - id: competences
     section: Tes compétences
@@ -164,11 +204,20 @@ questions:
     options:
       - {value: recuperateur, label: Récupérateur d'eau de pluie (500 L ou plus), validates: [eau.recuperateur]}
       - {value: puits, label: Puits, forage ou citerne de 5 m³ ou plus, validates: [eau.source_autonome]}
-      - {value: potager, label: Potager qui couvre au moins 20 % des légumes, validates: [alimentation.potager]}
+      - {value: potager, label: Des légumes du jardin à table au moins quatre mois par an, validates: [alimentation.potager]}
       - {value: groupe, label: Groupe électrogène ou solaire de secours, validates: [energie.secours]}
       - {value: solaire, label: Installation solaire avec batteries, validates: [energie.solaire_fixe]}
-      - {value: bois, label: Poêle à bois et un hiver de bois, validates: [energie.bois]}
+      - {value: bois, label: Poêle à bois et deux hivers de bois d'avance, validates: [energie.bois]}
       - {value: toilettes_seches, label: Toilettes sèches et compost, validates: [sante.assainissement]}
+
+  - id: production_ville
+    section: Ton autonomie
+    type: multi
+    show_if: {context_in: [appartement]}
+    text: Qu'as-tu déjà, même sans terrain ?
+    options:
+      - {value: jardin, label: Un balcon cultivé, un jardin partagé ou une parcelle, validates: [alimentation.balcon]}
+      - {value: kit_balcon, label: Un kit solaire de balcon avec batterie, validates: [energie.kit_balcon]}
 
   - id: reseau
     section: Ton réseau
@@ -193,6 +242,7 @@ questions:
       - {value: "6", label: "Six mois et savoir-faire", sets: {goal_level: 6}}
       - {value: "7", label: "Semi-autonomie : produire une partie de mes besoins", sets: {goal_level: 7}}
       - {value: "8", label: "Autonomie complète et communauté", sets: {goal_level: 8}}
+      - {value: "9", label: "Anti-fragilité : ressortir plus fort de chaque crise", sets: {goal_level: 9}}
 
   - id: horizon
     section: Tes objectifs

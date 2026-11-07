@@ -15,8 +15,9 @@ objectives:
     level: 3
     title: Doubles des clés et cache sûre pour les objets essentiels
   - id: securite.exercice
+    excludes_tags: [mobilite_reduite]
     level: 4
-    title: Exercice familial (24 h sans réseau ou évacuation chronométrée)
+    title: Exercice d'évacuation chronométré - tout le foyer dehors en moins de 15 min, sacs pris
     why: Un plan jamais testé est une hypothèse.
     revalidate_days: 365
   - id: securite.discretion
@@ -27,11 +28,11 @@ objectives:
     level: 5
     title: Logement sécurisé (porte renforcée, serrures, éclairage extérieur)
   - id: securite.incendie_ext
+    due_month: 6
     level: 5
     requires_tags: [risque_incendie]
     contexts: [periurbain, rural]
-    title: Débroussaillement réglementaire et plan de défense incendie
-    revalidate_days: 365
+    title: Débroussaillement réglementaire fait avant l'été et plan de défense incendie
   - id: securite.desescalade
     level: 6
     kind: skill
@@ -44,3 +45,27 @@ objectives:
     level: 8
     title: Plan de sécurité partagé avec le réseau local
     revalidate_days: 365
+  - id: securite.retex
+    level: 9
+    title: Retour d'expérience écrit après chaque incident ou exercice, et plan amélioré en conséquence
+    why: C'est le cœur de l'anti-fragilité - chaque choc, même petit, laisse le foyer plus solide qu'avant.
+    revalidate_days: 180
+  - id: securite.reflexes
+    level: 1
+    title: Connaître les réflexes officiels en cas d'alerte (se mettre à l'abri, s'informer, ne pas aller chercher les enfants à l'école)
+    why: Ce sont les consignes diffusées par les sirènes et FR-Alert ; les connaître évite les mauvais réflexes.
+  - id: securite.exercice_24h
+    level: 4
+    title: Exercice de 24 h sans réseau (eau, électricité et téléphone coupés volontairement)
+    why: L'évacuation et la coupure ne testent pas les mêmes choses ; il faut faire les deux.
+    revalidate_days: 365
+  - id: securite.iode
+    level: 2
+    requires_tags: [risque_industriel]
+    title: Comprimés d'iode retirés en pharmacie pour chaque membre si le foyer est dans le périmètre d'une centrale nucléaire
+    why: Pris sur consigne de la préfecture, ils protègent la thyroïde, surtout celle des enfants.
+  - id: securite.ecole
+    level: 2
+    requires_tags: [enfants]
+    title: Personnes autorisées à récupérer les enfants déclarées à l'école, et consignes du plan de mise en sûreté (PPMS) connues
+    why: En alerte, l'école garde les enfants à l'abri ; aller les chercher expose tout le monde.

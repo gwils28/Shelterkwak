@@ -6,7 +6,7 @@ categories:
   - id: eau
     name: Eau potable
     unit: L
-    daily_need: {adulte: 3, senior: 3, enfant: 2, bebe: 1.5, animal: 1}
+    daily_need: {adulte: 4, senior: 4, enfant: 2.5, bebe: 2, animal: 1, animal_petit: 0.3, animal_grand: 2}
   - id: alimentation
     name: Nourriture
     unit: kcal

@@ -7,7 +7,7 @@ objectives:
     revalidate_days: 365
   - id: communication.radio
     level: 3
-    title: Radio à piles ou à dynamo (FM et grandes ondes), testée
+    title: Radio à piles ou à dynamo (FM), testée, avec piles de rechange
     revalidate_days: 365
   - id: communication.contact_externe
     level: 3
@@ -40,3 +40,12 @@ objectives:
     level: 8
     required: false
     title: Le foyer peut relayer l'information pour sa communauté
+  - id: communication.reseau_teste
+    level: 9
+    title: Réseau radio de secours avec le groupe d'entraide, testé au moins tous les six mois
+    why: Un moyen de communication qu'on n'utilise jamais ne marchera pas le jour où il faudra.
+    revalidate_days: 180
+  - id: communication.frequence
+    level: 1
+    title: Fréquence FM locale de la radio publique notée sur papier
+    why: En cas d'alerte, c'est la radio publique qui relaie les consignes des autorités.

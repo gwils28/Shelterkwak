@@ -10,6 +10,7 @@ axes:
   - {id: competences, name: Savoirs & compétences, icon: "🛠️"}
   - {id: finances, name: Finances & administratif, icon: "📁"}
   - {id: communaute, name: Réseau & entraide, icon: "🤝"}
+  - {id: moral, name: Moral & cohésion, icon: "🧠"}
 
 contexts:
   - {id: appartement, name: Appartement en ville}
@@ -21,7 +22,9 @@ member_types:
   - {id: senior, name: Senior (70 ans et +)}
   - {id: enfant, name: Enfant (3-12 ans)}
   - {id: bebe, name: Bébé (moins de 3 ans)}
-  - {id: animal, name: Animal}
+  - {id: animal_petit, name: "Petit animal (chat, petit chien)"}
+  - {id: animal_grand, name: Grand chien}
+  - {id: animal, name: Autre animal}
 
 # Tags déduits automatiquement des membres du foyer
 member_tags:
@@ -29,3 +32,43 @@ member_tags:
   bebe: bebe
   senior: seniors
   animal: animaux
+  animal_petit: animaux
+  animal_grand: animaux
+
+# Particularités de santé ou physiques d'un membre (humain). Chacune ajoute ses tags
+# au foyer, ce qui rend applicables les objectifs qui les demandent (`requires_tags`).
+# Un id se garde : il est stocké dans le journal (membre.conditions).
+member_conditions:
+  - id: traitement
+    name: Traitement médical régulier
+    tags: [traitement_medical]
+  - id: vue
+    name: Lunettes ou lentilles de correction
+    tags: [correction_vue]
+  - id: audition
+    name: Appareil auditif
+    tags: [appareil_auditif]
+  - id: mobilite_reduite
+    name: Mobilité réduite (canne, déambulateur, fauteuil)
+    tags: [mobilite_reduite]
+  - id: appareil_electrique
+    name: Appareil médical électrique (respirateur, PPC, concentrateur d'oxygène)
+    tags: [appareil_electrique]
+  - id: insuline
+    name: Diabète traité par insuline
+    tags: [diabete_insuline, traitement_medical]
+  - id: allergie_severe
+    name: Allergie sévère avec stylo d'adrénaline
+    tags: [allergie_severe]
+  - id: respiratoire
+    name: Asthme ou maladie respiratoire
+    tags: [respiratoire]
+  - id: regime
+    name: Régime alimentaire strict (cœliaquie, allergie alimentaire)
+    tags: [regime_special]
+  - id: grossesse
+    name: Grossesse en cours
+    tags: [grossesse]
+  - id: accompagnement
+    name: Besoin d'accompagnement (troubles cognitifs, autisme, Alzheimer)
+    tags: [accompagnement]

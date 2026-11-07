@@ -13,15 +13,24 @@ from typing import Literal
 from .catalog import MAX_LEVEL, Catalog, Objective
 
 EXPIRY_WARNING_DAYS = 30
+GRACE_DAYS = 30  # une validation expirée fissure le tambour pendant ce délai avant de le faire tomber
 
-Status = Literal["na", "todo", "done", "expiring", "expired"]
-DONE_STATUSES: frozenset[str] = frozenset({"done", "expiring"})
+Status = Literal["na", "todo", "done", "expiring", "grace", "expired"]
+DONE_STATUSES: frozenset[str] = frozenset({"done", "expiring", "grace"})
 
 
 @dataclass(frozen=True)
 class Member:
     type: str
-    medical: bool = False
+    conditions: frozenset[str] = frozenset()  # ids de catalog.member_conditions
+
+    @classmethod
+    def from_dict(cls, m: dict) -> Member:
+        """Membre tel que stocké dans le journal. L'ancien `medical: true` vaut la condition `traitement`."""
+        conditions = set(m.get("conditions") or [])
+        if m.get("medical"):
+            conditions.add("traitement")
+        return cls(m["type"], frozenset(conditions))
 
 
 @dataclass
@@ -35,11 +44,12 @@ class HouseholdState:
 
     def tags(self, catalog: Catalog) -> set[str]:
         tags = set(self.declared_tags)
+        condition_tags = {c.id: c.tags for c in catalog.member_conditions}
         for m in self.members:
             if m.type in catalog.member_tags:
                 tags.add(catalog.member_tags[m.type])
-            if m.medical:
-                tags.add("traitement_medical")
+            for c in m.conditions:
+                tags.update(condition_tags.get(c, []))
         return tags
 
 
@@ -136,7 +146,25 @@ def is_applicable(obj: Objective, state: HouseholdState, tags: set[str], context
     ctx = context or state.context
     if ctx not in obj.contexts:
         return False
+    if obj.excludes_tags and tags & set(obj.excludes_tags):
+        return False
     return not obj.requires_tags or bool(tags & set(obj.requires_tags))
+
+
+def validation_expiry(obj: Objective, validated_at: date) -> date | None:
+    """Date à laquelle une validation cesse d'être à jour (le sursis commence alors).
+
+    `due_month` : la validation couvre la prochaine échéance (1er du mois, au plus tôt le jour
+    même) et expire à l'échéance suivante, un an plus tard.
+    """
+    if obj.revalidate_days:
+        return validated_at + timedelta(days=obj.revalidate_days)
+    if obj.due_month:
+        due = date(validated_at.year, obj.due_month, 1)
+        if due < validated_at:
+            due = date(validated_at.year + 1, obj.due_month, 1)
+        return date(due.year + 1, obj.due_month, 1)
+    return None
 
 
 def daily_need(catalog: Catalog, category_id: str, state: HouseholdState) -> float:
@@ -144,7 +172,7 @@ def daily_need(catalog: Catalog, category_id: str, state: HouseholdState) -> flo
     if cat.applies_if and cat.applies_if not in state.tags(catalog):
         return 0.0
     if cat.per_household is not None:
-        has_human = any(m.type != "animal" for m in state.members)
+        has_human = any(not catalog.is_animal(m.type) for m in state.members)
         return cat.per_household if has_human else 0.0
     return sum(cat.daily_need.get(m.type, 0.0) for m in state.members)
 
@@ -190,20 +218,21 @@ def objective_status(
         return ObjectiveStatus(obj.id, "done", 1.0)
     if validation is None:
         return ObjectiveStatus(obj.id, "todo", 0.0)
-    expires_on = None
-    if obj.revalidate_days:
-        expires_on = validation.validated_at + timedelta(days=obj.revalidate_days)
-        if today >= expires_on:
+    expires_on = validation_expiry(obj, validation.validated_at)
+    if expires_on is not None:
+        if today >= expires_on + timedelta(days=GRACE_DAYS):
             return ObjectiveStatus(obj.id, "expired", 0.0, validation.validated_at, expires_on)
+        if today >= expires_on:
+            return ObjectiveStatus(obj.id, "grace", 1.0, validation.validated_at, expires_on)
         if today >= expires_on - timedelta(days=EXPIRY_WARNING_DAYS):
             return ObjectiveStatus(obj.id, "expiring", 1.0, validation.validated_at, expires_on)
     return ObjectiveStatus(obj.id, "done", 1.0, validation.validated_at, expires_on)
 
 
 def _climb(objectives: list[Objective], statuses: dict[str, ObjectiveStatus]) -> int:
-    """Plus haut niveau N tel que tous les objectifs requis applicables des niveaux 2..N sont validés."""
-    level = 1
-    for n in range(2, MAX_LEVEL + 1):
+    """Plus haut niveau N tel que tous les objectifs requis applicables des niveaux 1..N sont validés (0 sinon)."""
+    level = 0
+    for n in range(1, MAX_LEVEL + 1):
         blocking = [
             o
             for o in objectives
@@ -242,7 +271,7 @@ def evaluate(
         opt = [o for o in at_level if not o.required]
         built = n <= level
         cracked = built and any(
-            statuses[o.id].status == "expiring" or (not o.required and statuses[o.id].status == "expired")
+            statuses[o.id].status in ("expiring", "grace") or (not o.required and statuses[o.id].status == "expired")
             for o in at_level
         )
         tiers.append(
@@ -280,13 +309,18 @@ def build_checklist(
     objs = sorted(catalog.objectives, key=order)
 
     for wanted, detail in (
-        ("expired", "Validation expirée : à refaire pour garder ton niveau."),
+        ("grace", "En sursis : à refaire pour que le tambour ne tombe pas."),
+        ("expired", "Validation expirée : à refaire pour retrouver ton niveau."),
         ("expiring", "Expire bientôt : pense à revalider."),
     ):
         for o in objs:
             st = statuses[o.id]
             if st.status == wanted and o.kind != "stock":
-                when = f" (échéance {st.expires_on.isoformat()})" if st.expires_on else ""
+                when = ""
+                if st.expires_on and wanted == "grace":
+                    when = f" (le tambour tombe le {(st.expires_on + timedelta(days=GRACE_DAYS)).isoformat()})"
+                elif st.expires_on:
+                    when = f" (échéance {st.expires_on.isoformat()})"
                 items.append(ChecklistItem("revalidate", o.title, detail + when, o.id, None, o.axis, o.level))
 
     horizon = today + timedelta(days=EXPIRY_WARNING_DAYS)

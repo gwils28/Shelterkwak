@@ -31,9 +31,9 @@ objectives:
     title: Combustible de cuisson pour 90 jours
     stock: {category: cuisson, min_days: 90}
   - id: energie.bilan_wh
-    level: 6
+    level: 4
     title: Besoins électriques prioritaires chiffrés en Wh par jour
-    why: On ne dimensionne pas une installation de secours sans savoir ce qu'elle doit alimenter.
+    why: On ne choisit ni panneau ni station sans savoir ce qu'ils doivent alimenter.
   - id: energie.secours
     level: 6
     contexts: [periurbain, rural]
@@ -48,10 +48,37 @@ objectives:
     contexts: [periurbain, rural]
     title: Installation solaire avec stockage couvrant les besoins prioritaires
   - id: energie.bois
+    due_month: 11
+    why: Du bois coupé dans l'année brûle mal et encrasse le conduit ; on brûle du bois sous 20 % d'humidité.
     level: 7
     contexts: [periurbain, rural]
-    title: Chauffage et cuisson au bois, un hiver de bois stocké
+    title: Chauffage et cuisson au bois, deux hivers de bois d'avance rentrés avant novembre (un sec, un en séchage)
   - id: energie.autonomie
     level: 8
     contexts: [periurbain, rural]
     title: Autonomie électrique sur l'année (production et stockage)
+  - id: energie.blackout
+    level: 9
+    title: Épreuve annuelle - 72 h disjoncteur général coupé, sans dommage ni improvisation
+    why: Couper volontairement le courant transforme une panne subie en exercice maîtrisé.
+    revalidate_days: 365
+  - id: energie.lumiere
+    level: 1
+    title: Une source de lumière sans réseau rangée à un endroit connu de tous
+    why: En cas de coupure de nuit, on doit pouvoir la trouver à tâtons, sans téléphone.
+  - id: energie.station_1kwh
+    level: 8
+    contexts: [appartement]
+    title: Station électrique d'au moins 1 kWh rechargée au solaire, couvrant une semaine de besoins prioritaires
+  - id: energie.cuisson_sobre
+    level: 4
+    kind: skill
+    title: Cuisson sobre pratiquée (marmite norvégienne, cuisson à l'étouffée, autocuiseur)
+    why: Elle divise le combustible à stocker par deux ou trois.
+    revalidate_days: 730
+  - id: energie.ramonage
+    due_month: 10
+    level: 7
+    contexts: [periurbain, rural]
+    title: Conduits de cheminée ou de poêle ramonés avant la saison de chauffe (certificat de l'année)
+    why: Obligatoire, il évite le feu de cheminée et l'intoxication au CO, et conditionne l'assurance.

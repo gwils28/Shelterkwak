@@ -2,8 +2,9 @@ from __future__ import annotations
 
 from datetime import date, timedelta
 
-from shelterkwak.catalog import Catalog
+from shelterkwak.catalog import MAX_LEVEL, Catalog
 from shelterkwak.engine import (
+    GRACE_DAYS,
     HouseholdState,
     Member,
     StockLine,
@@ -12,6 +13,7 @@ from shelterkwak.engine import (
     daily_need,
     evaluate,
     is_applicable,
+    validation_expiry,
 )
 
 TODAY = date(2026, 11, 2)
@@ -38,18 +40,24 @@ def full_stock(st: HouseholdState, catalog: Catalog, days: float, expires_on: da
     ]
 
 
-def test_new_household_is_vulnerable(catalog: Catalog) -> None:
+def test_new_household_starts_exposed(catalog: Catalog) -> None:
     ev = evaluate(catalog, state(), [], [], TODAY)
-    assert ev.level == 1
-    assert ev.tiers[0].state == "built"
-    assert ev.tiers[1].state == "current"
-    assert all(item.kind == "blocking" and item.level == 2 for item in ev.checklist)
+    assert ev.level == 0
+    assert ev.tiers[0].state == "current"
+    assert all(item.kind == "blocking" and item.level == 1 for item in ev.checklist)
+
+
+def test_level_1_needs_its_own_criteria(catalog: Catalog) -> None:
+    st = state()
+    vals = [Validation(i, TODAY) for i in required_ids(catalog, st, 1)]
+    assert evaluate(catalog, st, vals, [], TODAY).level == 0  # ni eau ni vivres pour 24 h
+    assert evaluate(catalog, st, vals, full_stock(st, catalog, 1), TODAY).level == 1
 
 
 def test_level_2_when_all_level_2_required_done(catalog: Catalog) -> None:
     st = state()
     vals = [Validation(i, TODAY) for i in required_ids(catalog, st, 2)]
-    assert evaluate(catalog, st, vals, [], TODAY).level == 2
+    assert evaluate(catalog, st, vals, full_stock(st, catalog, 1), TODAY).level == 2
 
 
 def test_tiers_are_blocking(catalog: Catalog) -> None:
@@ -74,7 +82,7 @@ def test_expired_stock_no_longer_counts(catalog: Catalog) -> None:
     vals = [Validation(i, TODAY) for i in required_ids(catalog, st, 3)]
     stock = full_stock(st, catalog, 5, expires_on=TODAY - timedelta(days=1))
     ev = evaluate(catalog, st, vals, stock, TODAY)
-    assert ev.level == 2
+    assert ev.level == 0  # plus d'eau ni de vivres : même le niveau 1 tombe
     assert ev.autonomy["eau"].days == 0
     assert any(i.kind == "stock_expired" for i in ev.checklist)
 
@@ -93,7 +101,7 @@ def test_revalidation_expires_validation(catalog: Catalog) -> None:
     st = state()
     old = TODAY - timedelta(days=400)  # sante.trousse : revalidate_days 365
     vals = [Validation(i, old if i == "sante.trousse" else TODAY) for i in required_ids(catalog, st, 2)]
-    ev = evaluate(catalog, st, vals, [], TODAY)
+    ev = evaluate(catalog, st, vals, full_stock(st, catalog, 1), TODAY)
     assert ev.statuses["sante.trousse"].status == "expired"
     assert ev.level == 1
     assert ev.checklist[0].kind == "revalidate"
@@ -102,10 +110,47 @@ def test_revalidation_expires_validation(catalog: Catalog) -> None:
 
 def test_skill_erodes_over_time(catalog: Catalog) -> None:
     st = state()
-    v = [Validation("competences.feu", TODAY - timedelta(days=340))]
-    assert evaluate(catalog, st, v, [], TODAY).statuses["competences.feu"].status == "expiring"
-    v = [Validation("competences.feu", TODAY - timedelta(days=366))]
-    assert evaluate(catalog, st, v, [], TODAY).statuses["competences.feu"].status == "expired"
+    v = [Validation("competences.rechaud", TODAY - timedelta(days=340))]
+    assert evaluate(catalog, st, v, [], TODAY).statuses["competences.rechaud"].status == "expiring"
+    v = [Validation("competences.rechaud", TODAY - timedelta(days=366))]
+    assert evaluate(catalog, st, v, [], TODAY).statuses["competences.rechaud"].status == "grace"
+    v = [Validation("competences.rechaud", TODAY - timedelta(days=366 + GRACE_DAYS))]
+    assert evaluate(catalog, st, v, [], TODAY).statuses["competences.rechaud"].status == "expired"
+
+
+def test_grace_cracks_the_tier_without_dropping_it(catalog: Catalog) -> None:
+    st = state()
+    old = TODAY - timedelta(days=370)  # sante.trousse : revalidate_days 365, sursis en cours
+    vals = [Validation(i, old if i == "sante.trousse" else TODAY) for i in required_ids(catalog, st, 2)]
+    ev = evaluate(catalog, st, vals, full_stock(st, catalog, 1), TODAY)
+    assert ev.statuses["sante.trousse"].status == "grace"
+    assert ev.level == 2
+    assert ev.tiers[1].cracked
+    assert ev.checklist[0].objective_id == "sante.trousse" and "tombe le" in ev.checklist[0].detail
+
+
+def test_seasonal_objective_expires_at_next_due_date(catalog: Catalog) -> None:
+    bois = catalog.objectives_by_id["energie.bois"]  # due_month 11
+    assert validation_expiry(bois, date(2026, 9, 15)) == date(2027, 11, 1)
+    assert validation_expiry(bois, date(2026, 11, 1)) == date(2027, 11, 1)
+    assert validation_expiry(bois, date(2026, 12, 5)) == date(2028, 11, 1)
+
+
+def test_adapted_variant_replaces_physical_test(catalog: Catalog) -> None:
+    ev = evaluate(catalog, state(), [], [], TODAY)
+    assert ev.statuses["sante.condition"].status == "todo"
+    assert ev.statuses["sante.condition_adaptee"].status == "na"
+    pmr = state(members=[Member("adulte", frozenset({"mobilite_reduite"})), Member("adulte")])
+    ev = evaluate(catalog, pmr, [], [], TODAY)
+    assert ev.statuses["sante.condition"].status == "na"
+    assert ev.statuses["sante.condition_adaptee"].status == "todo"
+
+
+def test_animal_sizes_change_water_needs(catalog: Catalog) -> None:
+    st = state(members=[Member("adulte"), Member("animal_petit"), Member("animal_grand")])
+    assert daily_need(catalog, "eau", st) == 4 + 0.3 + 2
+    only_pets = state(members=[Member("animal_grand")])
+    assert daily_need(catalog, "cuisson", only_pets) == 0
 
 
 def test_new_member_raises_needs_and_can_drop_level(catalog: Catalog) -> None:
@@ -113,7 +158,7 @@ def test_new_member_raises_needs_and_can_drop_level(catalog: Catalog) -> None:
     vals = [Validation(i, TODAY) for i in required_ids(catalog, st, 3)]
     stock = full_stock(st, catalog, 3)
     assert evaluate(catalog, st, vals, stock, TODAY).level == 3
-    bigger = state(members=[*ADULTS, Member("enfant")])
+    bigger = state(members=[*ADULTS, Member("adulte")])
     assert evaluate(catalog, bigger, vals, stock, TODAY).level == 2
 
 
@@ -122,8 +167,27 @@ def test_new_tag_makes_objectives_applicable(catalog: Catalog) -> None:
     assert evaluate(catalog, st, [], [], TODAY).statuses["alimentation.bebe"].status == "na"
     with_baby = state(members=[*ADULTS, Member("bebe")])
     assert evaluate(catalog, with_baby, [], [], TODAY).statuses["alimentation.bebe"].status == "todo"
-    medical = state(members=[Member("adulte", medical=True)])
-    assert evaluate(catalog, medical, [], [], TODAY).statuses["sante.traitements_7j"].status == "todo"
+    legacy = state(members=[Member.from_dict({"type": "adulte", "medical": True})])
+    assert evaluate(catalog, legacy, [], [], TODAY).statuses["sante.traitements_7j"].status == "todo"
+
+
+def test_member_conditions_bring_their_objectives(catalog: Catalog) -> None:
+    st = state()
+    assert evaluate(catalog, st, [], [], TODAY).statuses["sante.lunettes_secours"].status == "na"
+    myope = state(members=[Member("adulte", frozenset({"vue"})), Member("adulte")])
+    ev = evaluate(catalog, myope, [], [], TODAY)
+    assert ev.statuses["sante.lunettes_secours"].status == "todo"
+    assert ev.statuses["sante.insuline_froid"].status == "na"
+    # L'insuline implique aussi un traitement : les réserves de traitement deviennent requises.
+    diabetic = state(members=[Member("adulte", frozenset({"insuline"}))])
+    ev = evaluate(catalog, diabetic, [], [], TODAY)
+    assert ev.statuses["sante.insuline_froid"].status == "todo"
+    assert ev.statuses["sante.traitements_7j"].status == "todo"
+
+
+def test_unknown_condition_is_ignored(catalog: Catalog) -> None:
+    st = state(members=[Member("adulte", frozenset({"inexistante"}))])
+    assert evaluate(catalog, st, [], [], TODAY).level == 0
 
 
 def test_context_filters_objectives(catalog: Catalog) -> None:
@@ -149,8 +213,8 @@ def test_priority_axes_come_first(catalog: Catalog) -> None:
 def test_autonomy_uses_household_needs(catalog: Catalog) -> None:
     st = state(members=[Member("adulte"), Member("enfant"), Member("animal")])
     auto = compute_autonomy(catalog, st, [StockLine("1", "eau", "eau", 60)], TODAY)
-    assert auto["eau"].need_per_day == 3 + 2 + 1
-    assert auto["eau"].days == 10
+    assert auto["eau"].need_per_day == 4 + 2.5 + 1
+    assert auto["eau"].days == 8
     assert auto["traitements"].days is None  # personne sous traitement
 
 
@@ -158,6 +222,6 @@ def test_axis_levels_spot_weak_link(catalog: Catalog) -> None:
     st = state()
     vals = [Validation(o.id, TODAY) for o in catalog.objectives if o.axis == "communaute"]
     ev = evaluate(catalog, st, vals, [], TODAY)
-    assert ev.axis_levels["communaute"] == 8
-    assert ev.axis_levels["eau"] == 1
-    assert ev.level == 1
+    assert ev.axis_levels["communaute"] == MAX_LEVEL
+    assert ev.axis_levels["eau"] == 0
+    assert ev.level == 0
