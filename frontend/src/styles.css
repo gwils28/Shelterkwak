@@ -12,6 +12,7 @@
   --gold: #c9a227;
   --gold-light: #f0d77a;
   --gold-dark: #8f6f12;
+  --brand-kwak: #8f6f12;
   --ok: #3d7a4a;
   --warn: #b5651d;
   --danger: #a33a2a;
@@ -38,6 +39,7 @@
     --line: #3a352e;
     --accent: #d3955f;
     --accent-ink: #1b1916;
+    --brand-kwak: #e3c25a;
     --stone: #a99d86;
     --stone-light: #d8cdb6;
     --stone-dark: #6f6552;
@@ -188,7 +190,13 @@ input[type="radio"] {
   gap: 8px;
 }
 .brand-mark {
-  color: var(--gold);
+  align-self: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+}
+.brand-kwak {
+  color: var(--brand-kwak);
 }
 .brand-household {
   font-family: system-ui, sans-serif;
