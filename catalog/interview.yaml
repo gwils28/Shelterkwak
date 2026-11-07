@@ -25,7 +25,7 @@ questions:
     type: single
     text: Quel climat a ta région ?
     options:
-      - {value: oceanique, label: Océanique (hivers doux, pluie)}
+      - {value: oceanique, label: "Océanique (hivers doux, pluie)"}
       - {value: continental, label: Continental (hivers froids), tags: [risque_froid]}
       - {value: mediterraneen, label: Méditerranéen (étés chauds et secs), tags: [risque_canicule, risque_secheresse]}
       - {value: montagne, label: Montagne, tags: [climat_montagne, risque_froid]}
@@ -36,7 +36,7 @@ questions:
     text: Quelles situations t'inquiètent le plus ?
     options:
       - {value: coupures, label: Coupures d'eau ou d'électricité longues, tags: [inquietude_coupures]}
-      - {value: eco, label: Crise économique, perte d'emploi, tags: [inquietude_economie]}
+      - {value: eco, label: "Crise économique, perte d'emploi", tags: [inquietude_economie]}
       - {value: climat, label: Événements climatiques extrêmes, tags: [inquietude_climat]}
       - {value: pandemie, label: Pandémie, tags: [inquietude_pandemie]}
       - {value: penuries, label: Pénuries et ruptures d'approvisionnement, tags: [inquietude_penuries]}
@@ -98,12 +98,12 @@ questions:
     options:
       - {value: lumiere, label: Une lampe sans réseau à un endroit connu de tous, validates: [energie.lumiere]}
       - {value: numeros, label: Tout le monde connaît les numéros d'urgence, validates: [sante.numeros_urgence]}
-      - {value: pharmacie, label: Antalgique, pansements et désinfectant, validates: [sante.pharmacie_base]}
+      - {value: pharmacie, label: "Antalgique, pansements et désinfectant", validates: [sante.pharmacie_base]}
       - {value: issues, label: Issues de secours repérées, validates: [abri.issues]}
       - {value: reflexes, label: On connaît les réflexes en cas d'alerte, validates: [securite.reflexes]}
       - {value: frequence, label: Fréquence de la radio publique notée, validates: [communication.frequence]}
       - {value: papiers_ranges, label: Papiers d'identité rangés au même endroit, validates: [finances.papiers_ranges]}
-      - {value: depart, label: Clés, papiers et chaussures près de la sortie, validates: [mobilite.depart_rapide]}
+      - {value: depart, label: "Clés, papiers et chaussures près de la sortie", validates: [mobilite.depart_rapide]}
       - {value: guide, label: J'ai lu un guide officiel de préparation, validates: [competences.guide]}
       - {value: proche, label: Un proche à moins de 30 min prévenu, validates: [communaute.proche_joignable]}
 
@@ -132,14 +132,14 @@ questions:
       - {value: sac, label: Sacs d'évacuation prêts, validates: [mobilite.sac]}
       - {value: talkies, label: Talkies-walkies, validates: [communication.talkies]}
       - {value: cartes, label: Cartes papier de la région, validates: [communication.cartes]}
-      - {value: confinement, label: Kit de confinement (bâches, adhésif), validates: [abri.calfeutrage]}
+      - {value: confinement, label: "Kit de confinement (bâches, adhésif)", validates: [abri.calfeutrage]}
 
   - id: organisation
     section: Ton organisation
     type: multi
     text: Qu'est-ce qui est déjà en place dans le foyer ?
     options:
-      - {value: coupures, label: On sait couper eau, gaz et électricité, validates: [eau.robinet_arret, abri.coupures]}
+      - {value: coupures, label: "On sait couper eau, gaz et électricité", validates: [eau.robinet_arret, abri.coupures]}
       - {value: alertes, label: FR-Alert et alertes préfecture activés, validates: [securite.alertes]}
       - {value: plan, label: Un plan familial d'urgence écrit, validates: [securite.plan_familial]}
       - {value: exercice, label: Un exercice d'évacuation chronométré dans l'année, validates: [securite.exercice]}
@@ -165,15 +165,15 @@ questions:
     answered_validates: [competences.bilan]
     options:
       - {value: psc1, label: Premiers secours (PSC1), validates: [sante.psc1]}
-      - {value: secourisme, label: Secourisme avancé (PSE1, WFA), validates: [sante.secourisme_avance]}
+      - {value: secourisme, label: "Secourisme avancé (PSE1, WFA)", validates: [sante.secourisme_avance]}
       - {value: feu, label: Faire un feu en sécurité, validates: [competences.feu]}
       - {value: eau, label: Traiter une eau douteuse, validates: [eau.savoir_traiter]}
-      - {value: conserves, label: Conserves, fermentation ou séchage, validates: [alimentation.conservation]}
+      - {value: conserves, label: "Conserves, fermentation ou séchage", validates: [alimentation.conservation]}
       - {value: potager, label: Cultiver un potager, validates: [alimentation.potager_savoir]}
       - {value: cuisine_stock, label: Cuisiner avec ses seules réserves, validates: [competences.cuisine_stock]}
       - {value: bricolage, label: Petites réparations du logement, validates: [abri.reparations]}
       - {value: orientation, label: Orientation carte et boussole, validates: [mobilite.orientation]}
-      - {value: desescalade, label: Gestion de conflit, désescalade, validates: [securite.desescalade]}
+      - {value: desescalade, label: "Gestion de conflit, désescalade", validates: [securite.desescalade]}
       - {value: radio, label: Radioamateur, validates: [communication.licence]}
       - {value: condition, label: Marcher 15 km avec un sac, validates: [sante.condition]}
 
@@ -203,7 +203,7 @@ questions:
     text: Qu'as-tu déjà sur ton terrain ?
     options:
       - {value: recuperateur, label: Récupérateur d'eau de pluie (500 L ou plus), validates: [eau.recuperateur]}
-      - {value: puits, label: Puits, forage ou citerne de 5 m³ ou plus, validates: [eau.source_autonome]}
+      - {value: puits, label: "Puits, forage ou citerne de 5 m³ ou plus", validates: [eau.source_autonome]}
       - {value: potager, label: Des légumes du jardin à table au moins quatre mois par an, validates: [alimentation.potager]}
       - {value: groupe, label: Groupe électrogène ou solaire de secours, validates: [energie.secours]}
       - {value: solaire, label: Installation solaire avec batteries, validates: [energie.solaire_fixe]}
@@ -216,7 +216,7 @@ questions:
     show_if: {context_in: [appartement]}
     text: Qu'as-tu déjà, même sans terrain ?
     options:
-      - {value: jardin, label: Un balcon cultivé, un jardin partagé ou une parcelle, validates: [alimentation.balcon]}
+      - {value: jardin, label: "Un balcon cultivé, un jardin partagé ou une parcelle", validates: [alimentation.balcon]}
       - {value: kit_balcon, label: Un kit solaire de balcon avec batterie, validates: [energie.kit_balcon]}
 
   - id: reseau
@@ -229,7 +229,7 @@ questions:
       - {value: binome, label: Un foyer ami avec qui on s'entraide, validates: [communaute.binome]}
       - {value: groupe, label: Un groupe d'entraide de plusieurs foyers, validates: [communaute.groupe]}
       - {value: producteurs, label: Je connais des producteurs locaux en direct, validates: [alimentation.circuit_court]}
-      - {value: engagement, label: Je suis engagé localement (réserve, pompiers, association), validates: [communaute.engagement]}
+      - {value: engagement, label: "Je suis engagé localement (réserve, pompiers, association)", validates: [communaute.engagement]}
 
   - id: objectif_niveau
     section: Tes objectifs

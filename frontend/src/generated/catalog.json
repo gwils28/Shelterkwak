@@ -5227,7 +5227,7 @@
    "options": [
     {
      "value": "oceanique",
-     "label": "Océanique (hivers doux",
+     "label": "Océanique (hivers doux, pluie)",
      "validates": [],
      "tags": [],
      "sets": {}
@@ -5287,7 +5287,7 @@
     },
     {
      "value": "eco",
-     "label": "Crise économique",
+     "label": "Crise économique, perte d'emploi",
      "validates": [],
      "tags": [
       "inquietude_economie"
@@ -5515,7 +5515,7 @@
     },
     {
      "value": "pharmacie",
-     "label": "Antalgique",
+     "label": "Antalgique, pansements et désinfectant",
      "validates": [
       "sante.pharmacie_base"
      ],
@@ -5560,7 +5560,7 @@
     },
     {
      "value": "depart",
-     "label": "Clés",
+     "label": "Clés, papiers et chaussures près de la sortie",
      "validates": [
       "mobilite.depart_rapide"
      ],
@@ -5782,7 +5782,7 @@
     },
     {
      "value": "confinement",
-     "label": "Kit de confinement (bâches",
+     "label": "Kit de confinement (bâches, adhésif)",
      "validates": [
       "abri.calfeutrage"
      ],
@@ -5806,7 +5806,7 @@
    "options": [
     {
      "value": "coupures",
-     "label": "On sait couper eau",
+     "label": "On sait couper eau, gaz et électricité",
      "validates": [
       "eau.robinet_arret",
       "abri.coupures"
@@ -5984,7 +5984,7 @@
     },
     {
      "value": "secourisme",
-     "label": "Secourisme avancé (PSE1",
+     "label": "Secourisme avancé (PSE1, WFA)",
      "validates": [
       "sante.secourisme_avance"
      ],
@@ -6011,7 +6011,7 @@
     },
     {
      "value": "conserves",
-     "label": "Conserves",
+     "label": "Conserves, fermentation ou séchage",
      "validates": [
       "alimentation.conservation"
      ],
@@ -6056,7 +6056,7 @@
     },
     {
      "value": "desescalade",
-     "label": "Gestion de conflit",
+     "label": "Gestion de conflit, désescalade",
      "validates": [
       "securite.desescalade"
      ],
@@ -6206,7 +6206,7 @@
     },
     {
      "value": "puits",
-     "label": "Puits",
+     "label": "Puits, forage ou citerne de 5 m³ ou plus",
      "validates": [
       "eau.source_autonome"
      ],
@@ -6281,7 +6281,7 @@
    "options": [
     {
      "value": "jardin",
-     "label": "Un balcon cultivé",
+     "label": "Un balcon cultivé, un jardin partagé ou une parcelle",
      "validates": [
       "alimentation.balcon"
      ],
@@ -6359,7 +6359,7 @@
     },
     {
      "value": "engagement",
-     "label": "Je suis engagé localement (réserve",
+     "label": "Je suis engagé localement (réserve, pompiers, association)",
      "validates": [
       "communaute.engagement"
      ],
