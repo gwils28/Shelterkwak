@@ -21,7 +21,7 @@ objectives:
     title: Nourriture pour 14 jours
     stock: {category: alimentation, min_days: 14}
   - id: alimentation.rotation
-    level: 3
+    level: 4
     title: Rotation des stocks en place (premier entré, premier sorti)
     why: Un stock qu'on ne consomme pas finit à la poubelle.
     revalidate_days: 180
@@ -105,3 +105,12 @@ objectives:
     contexts: [periurbain, rural]
     title: Produire ses propres semences pour au moins trois légumes
     why: Des semences achetées sont un stock ; savoir les reproduire est un flux.
+  - id: alimentation.bebe_3j
+    level: 3
+    requires_tags: [bebe]
+    title: "Bébé : 3 jours tenus sans réseau (lait infantile, eau en bouteille adaptée aux nourrissons, biberons stérilisables hors réseau, couches)"
+    why: Un nourrisson se déshydrate en quelques heures ; les calories du foyer ne remplacent pas le lait premier âge.
+  - id: alimentation.intrants
+    level: 5
+    title: Intrants de conservation pour une saison (bocaux, joints et couvercles neufs, sel, vinaigre, sucre)
+    why: Savoir conserver ne sert à rien sans bocaux ni joints le jour où la récolte arrive.

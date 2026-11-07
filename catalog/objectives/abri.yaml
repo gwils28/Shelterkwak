@@ -15,9 +15,9 @@ objectives:
     title: Extincteur et couverture anti-feu
     revalidate_days: 365
   - id: abri.calfeutrage
-    level: 3
+    level: 4
     title: Kit de confinement (bâches, ruban adhésif, film plastique)
-    why: En cas d'accident industriel, la consigne est de se confiner en calfeutrant.
+    why: "À avoir pour tous dès le niveau 4 ; près d'un site industriel, il est exigé dès le niveau 3."
   - id: abri.chauffage_appoint
     level: 4
     title: Chauffage d'appoint sûr hors réseau, avec ventilation et détecteur de CO
@@ -80,3 +80,8 @@ objectives:
     requires_tags: [climat_montagne]
     title: Équipements neige (pneus ou chaînes, pelle, sel) et réserves pour une semaine bloqué par la neige
     due_month: 11
+  - id: abri.calfeutrage_industriel
+    level: 3
+    requires_tags: [risque_industriel]
+    title: Kit de confinement prêt (bâches, ruban adhésif, film plastique), le foyer étant proche d'un site industriel ou nucléaire
+    why: En cas d'accident industriel, la consigne est de se confiner en calfeutrant, et on n'a pas le temps d'aller acheter.

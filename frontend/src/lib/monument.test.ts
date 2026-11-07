@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { builtTone, GROUND, HEIGHT, MONUMENTS, monumentOf, tierBottom, tierTop } from "./monument";
 import { formatDays, formatPeriod, gaugePosition } from "./format";
+import { scenarioSteps } from "../engine/types";
 
 describe("monument", () => {
   it("empile les paliers du bas vers le haut, posés sur le socle", () => {
@@ -43,5 +44,13 @@ describe("format", () => {
     expect(gaugePosition(180)).toBe(100);
     expect(gaugePosition(14) - gaugePosition(3)).toBeGreaterThan(10);
     expect(gaugePosition(400)).toBe(100);
+  });
+});
+
+describe("fiches Crise", () => {
+  it("n'affiche une étape ciblée qu'aux foyers concernés", () => {
+    const s = { id: "x", name: "X", icon: "", tags_any: [], group: "situation" as const, steps: ["pour tous", { text: "insuline", tags_any: ["diabete_insuline"] }] };
+    expect(scenarioSteps(s, new Set())).toEqual(["pour tous"]);
+    expect(scenarioSteps(s, new Set(["diabete_insuline"]))).toEqual(["pour tous", "insuline"]);
   });
 });

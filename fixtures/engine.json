@@ -214,6 +214,36 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.violences",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "finances.assurances",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.cles",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.pcs",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "moral.stress",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.contenants",
        "validated_at": "2026-11-02",
        "note": "",
@@ -356,6 +386,12 @@
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
+      },
+      {
+       "objective_id": "sante.gestes_qui_sauvent",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
       }
      ],
      "stock": [
@@ -407,8 +443,8 @@
      {
       "n": 2,
       "state": "built",
-      "required_total": 17,
-      "required_done": 17,
+      "required_total": 22,
+      "required_done": 22,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
@@ -417,27 +453,27 @@
      {
       "n": 3,
       "state": "current",
-      "required_total": 27,
-      "required_done": 25,
+      "required_total": 19,
+      "required_done": 17,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9259259259259259
+      "progress": 0.8947368421052632
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 22,
-      "required_done": 0,
+      "required_total": 31,
+      "required_done": 6,
       "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.0
+      "progress": 0.1935483870967742
      },
      {
       "n": 5,
       "state": "future",
-      "required_total": 16,
+      "required_total": 18,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -449,7 +485,7 @@
       "state": "future",
       "required_total": 12,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 6,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -488,7 +524,7 @@
     "axis_levels": {
      "eau": 2,
      "alimentation": 3,
-     "energie": 3,
+     "energie": 2,
      "sante": 3,
      "abri": 3,
      "securite": 3,
@@ -498,7 +534,7 @@
      "finances": 3,
      "communaute": 3,
      "moral": 3,
-     "defense": 2
+     "defense": 3
     },
     "statuses": {
      "eau.stock_24h": {
@@ -639,6 +675,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "energie.ramonage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.trousse": {
       "status": "done",
       "progress": 1.0,
@@ -705,6 +747,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "securite.cles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "securite.iode": {
       "status": "na",
       "progress": 0.0,
@@ -715,6 +763,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "securite.pcs": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "communication.contacts_papier": {
@@ -747,6 +801,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2028-11-01"
      },
+     "finances.assurances": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "finances.animaux_papiers": {
       "status": "na",
       "progress": 0.0,
@@ -764,6 +824,12 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": null
+     },
+     "moral.stress": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
      },
      "defense.legitime_defense": {
       "status": "done",
@@ -783,6 +849,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.violences": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "eau.stock_3j": {
       "status": "todo",
       "progress": 0.375,
@@ -796,6 +868,12 @@
       "expires_on": null
      },
      "eau.portage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.analyse": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -819,15 +897,15 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "alimentation.rotation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-05-01"
+     "alimentation.bebe_3j": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
      },
      "energie.cuisson_3j": {
-      "status": "done",
-      "progress": 1.0,
+      "status": "todo",
+      "progress": 0.5,
       "validated_at": null,
       "expires_on": null
      },
@@ -836,12 +914,6 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-01-31"
-     },
-     "sante.psc1": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2029-11-01"
      },
      "sante.hygiene_3j": {
       "status": "done",
@@ -921,6 +993,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.gestes_qui_sauvent": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
+     },
      "abri.chaleur": {
       "status": "done",
       "progress": 1.0,
@@ -939,12 +1017,6 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "abri.calfeutrage": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "abri.piece_fraiche": {
       "status": "na",
       "progress": 0.0,
@@ -957,17 +1029,17 @@
       "validated_at": null,
       "expires_on": null
      },
+     "abri.calfeutrage_industriel": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "securite.plan_familial": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
-     },
-     "securite.cles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
      },
      "communication.radio": {
       "status": "done",
@@ -986,12 +1058,6 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-05-01"
-     },
-     "mobilite.accueil": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
      },
      "mobilite.aide_technique": {
       "status": "na",
@@ -1023,32 +1089,8 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "finances.assurances": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
-     "communaute.fragiles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
-     "moral.kit_occupation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "moral.kit_enfant": {
       "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "defense.intrusion": {
-      "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -1077,11 +1119,29 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.secheresse": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.rotation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_14j": {
       "status": "todo",
       "progress": 0.4383116883116883,
       "validated_at": null,
       "expires_on": null
+     },
+     "alimentation.rotation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-05-01"
      },
      "alimentation.bebe": {
       "status": "na",
@@ -1115,7 +1175,7 @@
      },
      "energie.cuisson_14j": {
       "status": "todo",
-      "progress": 0.21428571428571427,
+      "progress": 0.10714285714285714,
       "validated_at": null,
       "expires_on": null
      },
@@ -1136,6 +1196,18 @@
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "energie.bois_hiver": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.psc1": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
      },
      "sante.traitements_30j": {
       "status": "na",
@@ -1159,6 +1231,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "abri.calfeutrage": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "abri.chauffage_appoint": {
@@ -1197,6 +1275,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.dechets": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.cartes": {
       "status": "todo",
       "progress": 0.0,
@@ -1221,6 +1305,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.accueil": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -1239,10 +1329,22 @@
       "validated_at": null,
       "expires_on": null
      },
+     "communaute.fragiles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "communaute.binome": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "moral.kit_occupation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "moral.routine": {
@@ -1263,6 +1365,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "defense.enfants": {
       "status": "na",
       "progress": 0.0,
@@ -1270,8 +1378,8 @@
       "expires_on": null
      },
      "eau.stock_30j": {
-      "status": "todo",
-      "progress": 0.0375,
+      "status": "na",
+      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -1282,6 +1390,12 @@
       "expires_on": null
      },
      "eau.filtre_gravitaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.relais_ville": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -1299,6 +1413,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "alimentation.intrants": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "energie.station": {
       "status": "todo",
       "progress": 0.0,
@@ -1306,8 +1426,14 @@
       "expires_on": null
      },
      "energie.cuisson_90j": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "energie.cuisson_30j": {
       "status": "todo",
-      "progress": 0.03333333333333333,
+      "progress": 0.05,
       "validated_at": null,
       "expires_on": null
      },
@@ -1330,6 +1456,12 @@
       "expires_on": null
      },
      "sante.auditif_reserve": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.traitements_plan": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -1425,7 +1557,7 @@
       "validated_at": null,
       "expires_on": null
      },
-     "moral.stress": {
+     "moral.reperer": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -1449,6 +1581,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "na",
       "progress": 0.0,
@@ -1458,12 +1596,6 @@
      "eau.stock_60j": {
       "status": "todo",
       "progress": 0.01875,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "eau.secheresse": {
-      "status": "na",
-      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -1528,6 +1660,12 @@
       "expires_on": null
      },
      "securite.desescalade": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "securite.porte_blindee": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -1611,12 +1749,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "eau.analyse": {
-      "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "alimentation.balcon": {
       "status": "todo",
       "progress": 0.0,
@@ -1648,12 +1780,6 @@
       "expires_on": null
      },
      "energie.bois": {
-      "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "energie.ramonage": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -1719,13 +1845,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "defense.exercice_intrusion": {
+     "defense.tir_sportif": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
-     "defense.tir_sportif": {
+     "defense.voisinage": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -1966,10 +2092,10 @@
      },
      "cuisson": {
       "category": "cuisson",
-      "need_per_day": 1.0,
+      "need_per_day": 2.0,
       "total": 3.0,
-      "days": 3.0,
-      "days_after_expiring": 3.0
+      "days": 1.5,
+      "days_after_expiring": 1.5
      }
     },
     "checklist": [
@@ -1984,11 +2110,11 @@
      },
      {
       "kind": "blocking",
-      "title": "Plan intrusion au domicile : pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, éclairage, consigne de ne pas aller au contact",
-      "detail": "De nuit chez soi, la loi présume la légitime défense (art. 122-6), mais le plus sûr reste de s'enfermer et d'appeler.",
-      "objective_id": "defense.intrusion",
+      "title": "Moyen de cuisson hors réseau et combustible pour 3 jours",
+      "detail": "Bloque l'accès au niveau 3 (Paré).",
+      "objective_id": "energie.cuisson_3j",
       "stock_id": null,
-      "axis": "defense",
+      "axis": "energie",
       "level": 3
      }
     ]
@@ -2005,7 +2131,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 58 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      }
     ]
@@ -2215,6 +2341,36 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.violences",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "finances.assurances",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.cles",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.pcs",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "moral.stress",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.contenants",
        "validated_at": "2026-11-02",
        "note": "",
@@ -2357,6 +2513,12 @@
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
+      },
+      {
+       "objective_id": "sante.gestes_qui_sauvent",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
       }
      ],
      "stock": [
@@ -2420,37 +2582,37 @@
      {
       "n": 2,
       "state": "future",
-      "required_total": 17,
-      "required_done": 15,
+      "required_total": 22,
+      "required_done": 18,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.8823529411764706
+      "progress": 0.8181818181818182
      },
      {
       "n": 3,
       "state": "future",
-      "required_total": 27,
-      "required_done": 13,
+      "required_total": 19,
+      "required_done": 8,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.48148148148148145
+      "progress": 0.42105263157894735
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 22,
-      "required_done": 0,
+      "required_total": 31,
+      "required_done": 4,
       "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.0
+      "progress": 0.12903225806451613
      },
      {
       "n": 5,
       "state": "future",
-      "required_total": 16,
+      "required_total": 18,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -2462,7 +2624,7 @@
       "state": "future",
       "required_total": 12,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 6,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -2508,10 +2670,10 @@
      "communication": 1,
      "mobilite": 2,
      "competences": 2,
-     "finances": 2,
+     "finances": 1,
      "communaute": 3,
-     "moral": 3,
-     "defense": 2
+     "moral": 1,
+     "defense": 3
     },
     "statuses": {
      "eau.stock_24h": {
@@ -2652,6 +2814,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "energie.ramonage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.trousse": {
       "status": "grace",
       "progress": 1.0,
@@ -2718,6 +2886,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "securite.cles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "securite.iode": {
       "status": "na",
       "progress": 0.0,
@@ -2728,6 +2902,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "securite.pcs": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "communication.contacts_papier": {
@@ -2760,6 +2940,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2028-11-01"
      },
+     "finances.assurances": {
+      "status": "expired",
+      "progress": 0.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "finances.animaux_papiers": {
       "status": "na",
       "progress": 0.0,
@@ -2777,6 +2963,12 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": null
+     },
+     "moral.stress": {
+      "status": "expired",
+      "progress": 0.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
      },
      "defense.legitime_defense": {
       "status": "done",
@@ -2796,6 +2988,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.violences": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "eau.stock_3j": {
       "status": "todo",
       "progress": 0.375,
@@ -2809,6 +3007,12 @@
       "expires_on": null
      },
      "eau.portage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.analyse": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -2832,15 +3036,15 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "alimentation.rotation": {
-      "status": "expired",
+     "alimentation.bebe_3j": {
+      "status": "na",
       "progress": 0.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-05-01"
+      "validated_at": null,
+      "expires_on": null
      },
      "energie.cuisson_3j": {
-      "status": "done",
-      "progress": 1.0,
+      "status": "todo",
+      "progress": 0.5,
       "validated_at": null,
       "expires_on": null
      },
@@ -2849,12 +3053,6 @@
       "progress": 0.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-01-31"
-     },
-     "sante.psc1": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2029-11-01"
      },
      "sante.hygiene_3j": {
       "status": "done",
@@ -2934,6 +3132,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.gestes_qui_sauvent": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
+     },
      "abri.chaleur": {
       "status": "done",
       "progress": 1.0,
@@ -2952,12 +3156,6 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "abri.calfeutrage": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "abri.piece_fraiche": {
       "status": "na",
       "progress": 0.0,
@@ -2970,17 +3168,17 @@
       "validated_at": null,
       "expires_on": null
      },
+     "abri.calfeutrage_industriel": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "securite.plan_familial": {
       "status": "expired",
       "progress": 0.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
-     },
-     "securite.cles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
      },
      "communication.radio": {
       "status": "expired",
@@ -2999,12 +3197,6 @@
       "progress": 0.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-05-01"
-     },
-     "mobilite.accueil": {
-      "status": "expired",
-      "progress": 0.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
      },
      "mobilite.aide_technique": {
       "status": "na",
@@ -3036,32 +3228,8 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "finances.assurances": {
-      "status": "expired",
-      "progress": 0.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
-     "communaute.fragiles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
-     "moral.kit_occupation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "moral.kit_enfant": {
       "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "defense.intrusion": {
-      "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -3090,11 +3258,29 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.secheresse": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.rotation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_14j": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "alimentation.rotation": {
+      "status": "expired",
+      "progress": 0.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-05-01"
      },
      "alimentation.bebe": {
       "status": "na",
@@ -3128,7 +3314,7 @@
      },
      "energie.cuisson_14j": {
       "status": "todo",
-      "progress": 0.21428571428571427,
+      "progress": 0.10714285714285714,
       "validated_at": null,
       "expires_on": null
      },
@@ -3149,6 +3335,18 @@
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "energie.bois_hiver": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.psc1": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
      },
      "sante.traitements_30j": {
       "status": "na",
@@ -3172,6 +3370,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "abri.calfeutrage": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "abri.chauffage_appoint": {
@@ -3210,6 +3414,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.dechets": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.cartes": {
       "status": "todo",
       "progress": 0.0,
@@ -3234,6 +3444,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.accueil": {
+      "status": "expired",
+      "progress": 0.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -3252,10 +3468,22 @@
       "validated_at": null,
       "expires_on": null
      },
+     "communaute.fragiles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "communaute.binome": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "moral.kit_occupation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "moral.routine": {
@@ -3276,6 +3504,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "defense.enfants": {
       "status": "na",
       "progress": 0.0,
@@ -3283,8 +3517,8 @@
       "expires_on": null
      },
      "eau.stock_30j": {
-      "status": "todo",
-      "progress": 0.0375,
+      "status": "na",
+      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -3295,6 +3529,12 @@
       "expires_on": null
      },
      "eau.filtre_gravitaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.relais_ville": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -3312,6 +3552,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "alimentation.intrants": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "energie.station": {
       "status": "todo",
       "progress": 0.0,
@@ -3319,8 +3565,14 @@
       "expires_on": null
      },
      "energie.cuisson_90j": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "energie.cuisson_30j": {
       "status": "todo",
-      "progress": 0.03333333333333333,
+      "progress": 0.05,
       "validated_at": null,
       "expires_on": null
      },
@@ -3343,6 +3595,12 @@
       "expires_on": null
      },
      "sante.auditif_reserve": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.traitements_plan": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -3438,7 +3696,7 @@
       "validated_at": null,
       "expires_on": null
      },
-     "moral.stress": {
+     "moral.reperer": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -3462,6 +3720,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "na",
       "progress": 0.0,
@@ -3471,12 +3735,6 @@
      "eau.stock_60j": {
       "status": "todo",
       "progress": 0.01875,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "eau.secheresse": {
-      "status": "na",
-      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -3541,6 +3799,12 @@
       "expires_on": null
      },
      "securite.desescalade": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "securite.porte_blindee": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -3624,12 +3888,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "eau.analyse": {
-      "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "alimentation.balcon": {
       "status": "todo",
       "progress": 0.0,
@@ -3661,12 +3919,6 @@
       "expires_on": null
      },
      "energie.bois": {
-      "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "energie.ramonage": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -3732,13 +3984,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "defense.exercice_intrusion": {
+     "defense.tir_sportif": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
-     "defense.tir_sportif": {
+     "defense.voisinage": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -3979,10 +4231,10 @@
      },
      "cuisson": {
       "category": "cuisson",
-      "need_per_day": 1.0,
+      "need_per_day": 2.0,
       "total": 3.0,
-      "days": 3.0,
-      "days_after_expiring": 3.0
+      "days": 1.5,
+      "days_after_expiring": 1.5
      }
     },
     "checklist": [
@@ -4015,12 +4267,21 @@
      },
      {
       "kind": "revalidate",
-      "title": "Rotation des stocks en place (premier entré, premier sorti)",
-      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-05-01)",
-      "objective_id": "alimentation.rotation",
+      "title": "Assurances vérifiées (habitation, catastrophes naturelles, responsabilité)",
+      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-11-02)",
+      "objective_id": "finances.assurances",
       "stock_id": null,
-      "axis": "alimentation",
-      "level": 3
+      "axis": "finances",
+      "level": 2
+     },
+     {
+      "kind": "revalidate",
+      "title": "Au moins un adulte connaît une technique simple de gestion du stress (respiration 4 s / 6 s, cohérence cardiaque) et l'a montrée au foyer",
+      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-11-02)",
+      "objective_id": "moral.stress",
+      "stock_id": null,
+      "axis": "moral",
+      "level": 2
      },
      {
       "kind": "revalidate",
@@ -4078,15 +4339,6 @@
      },
      {
       "kind": "revalidate",
-      "title": "Lieu d'accueil convenu hors de la zone (famille, amis)",
-      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-11-02)",
-      "objective_id": "mobilite.accueil",
-      "stock_id": null,
-      "axis": "mobilite",
-      "level": 3
-     },
-     {
-      "kind": "revalidate",
       "title": "Utiliser un réchaud en sécurité (jamais en pièce close, fenêtre entrouverte, détecteur de CO)",
       "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-11-02)",
       "objective_id": "competences.rechaud",
@@ -4105,12 +4357,21 @@
      },
      {
       "kind": "revalidate",
-      "title": "Assurances vérifiées (habitation, catastrophes naturelles, responsabilité)",
-      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-11-02)",
-      "objective_id": "finances.assurances",
+      "title": "Rotation des stocks en place (premier entré, premier sorti)",
+      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-05-01)",
+      "objective_id": "alimentation.rotation",
       "stock_id": null,
-      "axis": "finances",
-      "level": 3
+      "axis": "alimentation",
+      "level": 4
+     },
+     {
+      "kind": "revalidate",
+      "title": "Lieu d'accueil convenu hors de la zone (famille, amis)",
+      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-11-02)",
+      "objective_id": "mobilite.accueil",
+      "stock_id": null,
+      "axis": "mobilite",
+      "level": 4
      },
      {
       "kind": "stock_expired",
@@ -4149,7 +4410,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 58 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -4371,6 +4632,36 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.violences",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "finances.assurances",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.cles",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.pcs",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "moral.stress",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.contenants",
        "validated_at": "2026-11-02",
        "note": "",
@@ -4513,6 +4804,12 @@
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
+      },
+      {
+       "objective_id": "sante.gestes_qui_sauvent",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
       }
      ],
      "stock": [
@@ -4636,37 +4933,37 @@
      {
       "n": 2,
       "state": "future",
-      "required_total": 18,
-      "required_done": 17,
+      "required_total": 23,
+      "required_done": 22,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9444444444444444
+      "progress": 0.9565217391304348
      },
      {
       "n": 3,
       "state": "future",
-      "required_total": 29,
-      "required_done": 25,
+      "required_total": 22,
+      "required_done": 17,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.8620689655172413
+      "progress": 0.7727272727272727
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 23,
-      "required_done": 0,
+      "required_total": 32,
+      "required_done": 6,
       "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.0
+      "progress": 0.1875
      },
      {
       "n": 5,
       "state": "future",
-      "required_total": 17,
+      "required_total": 19,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -4678,7 +4975,7 @@
       "state": "future",
       "required_total": 14,
       "required_done": 0,
-      "optional_total": 6,
+      "optional_total": 7,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -4686,7 +4983,7 @@
      {
       "n": 7,
       "state": "future",
-      "required_total": 18,
+      "required_total": 16,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -4716,8 +5013,8 @@
     ],
     "axis_levels": {
      "eau": 0,
-     "alimentation": 3,
-     "energie": 3,
+     "alimentation": 2,
+     "energie": 2,
      "sante": 3,
      "abri": 1,
      "securite": 3,
@@ -4727,7 +5024,7 @@
      "finances": 3,
      "communaute": 3,
      "moral": 2,
-     "defense": 2
+     "defense": 3
     },
     "statuses": {
      "eau.stock_24h": {
@@ -4868,6 +5165,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "energie.ramonage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.trousse": {
       "status": "done",
       "progress": 1.0,
@@ -4934,6 +5237,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "securite.cles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "securite.iode": {
       "status": "na",
       "progress": 0.0,
@@ -4944,6 +5253,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "securite.pcs": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "communication.contacts_papier": {
@@ -4976,6 +5291,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2028-11-01"
      },
+     "finances.assurances": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "finances.animaux_papiers": {
       "status": "na",
       "progress": 0.0,
@@ -4993,6 +5314,12 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": null
+     },
+     "moral.stress": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
      },
      "defense.legitime_defense": {
       "status": "done",
@@ -5012,6 +5339,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.violences": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "eau.stock_3j": {
       "status": "todo",
       "progress": 0.3,
@@ -5025,6 +5358,12 @@
       "expires_on": null
      },
      "eau.portage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.analyse": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -5048,15 +5387,15 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "alimentation.rotation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-05-01"
+     "alimentation.bebe_3j": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
      },
      "energie.cuisson_3j": {
-      "status": "done",
-      "progress": 1.0,
+      "status": "todo",
+      "progress": 0.43478260869565216,
       "validated_at": null,
       "expires_on": null
      },
@@ -5065,12 +5404,6 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-01-31"
-     },
-     "sante.psc1": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2029-11-01"
      },
      "sante.hygiene_3j": {
       "status": "done",
@@ -5150,6 +5483,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.gestes_qui_sauvent": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
+     },
      "abri.chaleur": {
       "status": "done",
       "progress": 1.0,
@@ -5168,12 +5507,6 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "abri.calfeutrage": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "abri.piece_fraiche": {
       "status": "todo",
       "progress": 0.0,
@@ -5186,17 +5519,17 @@
       "validated_at": null,
       "expires_on": null
      },
+     "abri.calfeutrage_industriel": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "securite.plan_familial": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
-     },
-     "securite.cles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
      },
      "communication.radio": {
       "status": "done",
@@ -5215,12 +5548,6 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-05-01"
-     },
-     "mobilite.accueil": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
      },
      "mobilite.aide_technique": {
       "status": "na",
@@ -5252,31 +5579,7 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "finances.assurances": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
-     "communaute.fragiles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
-     "moral.kit_occupation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "moral.kit_enfant": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "defense.intrusion": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -5306,11 +5609,29 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.secheresse": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.rotation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_14j": {
       "status": "todo",
       "progress": 0.3638814016172507,
       "validated_at": null,
       "expires_on": null
+     },
+     "alimentation.rotation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-05-01"
      },
      "alimentation.bebe": {
       "status": "todo",
@@ -5344,7 +5665,7 @@
      },
      "energie.cuisson_14j": {
       "status": "todo",
-      "progress": 0.21428571428571427,
+      "progress": 0.09316770186335403,
       "validated_at": null,
       "expires_on": null
      },
@@ -5365,6 +5686,18 @@
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "energie.bois_hiver": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.psc1": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
      },
      "sante.traitements_30j": {
       "status": "na",
@@ -5388,6 +5721,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "abri.calfeutrage": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "abri.chauffage_appoint": {
@@ -5426,6 +5765,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.dechets": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.cartes": {
       "status": "todo",
       "progress": 0.0,
@@ -5450,6 +5795,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.accueil": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -5468,10 +5819,22 @@
       "validated_at": null,
       "expires_on": null
      },
+     "communaute.fragiles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "communaute.binome": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "moral.kit_occupation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "moral.routine": {
@@ -5487,6 +5850,12 @@
       "expires_on": null
      },
      "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.intrusion": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -5516,6 +5885,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.relais_ville": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_90j": {
       "status": "todo",
       "progress": 0.05660377358490566,
@@ -5523,6 +5898,12 @@
       "expires_on": null
      },
      "alimentation.conservation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "alimentation.intrants": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -5536,7 +5917,13 @@
      },
      "energie.cuisson_90j": {
       "status": "todo",
-      "progress": 0.03333333333333333,
+      "progress": 0.014492753623188406,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "energie.cuisson_30j": {
+      "status": "na",
+      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -5559,6 +5946,12 @@
       "expires_on": null
      },
      "sante.auditif_reserve": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.traitements_plan": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -5654,7 +6047,7 @@
       "validated_at": null,
       "expires_on": null
      },
-     "moral.stress": {
+     "moral.reperer": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -5678,6 +6071,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "todo",
       "progress": 0.0,
@@ -5687,12 +6086,6 @@
      "eau.stock_60j": {
       "status": "todo",
       "progress": 0.015000000000000001,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "eau.secheresse": {
-      "status": "na",
-      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -5757,6 +6150,12 @@
       "expires_on": null
      },
      "securite.desescalade": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "securite.porte_blindee": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -5840,12 +6239,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "eau.analyse": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "alimentation.balcon": {
       "status": "na",
       "progress": 0.0,
@@ -5877,12 +6270,6 @@
       "expires_on": null
      },
      "energie.bois": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "energie.ramonage": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -5948,13 +6335,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "defense.exercice_intrusion": {
+     "defense.tir_sportif": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
-     "defense.tir_sportif": {
+     "defense.voisinage": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -6195,10 +6582,10 @@
      },
      "cuisson": {
       "category": "cuisson",
-      "need_per_day": 1.0,
+      "need_per_day": 2.3,
       "total": 3.0,
-      "days": 3.0,
-      "days_after_expiring": 3.0
+      "days": 1.3043478260869565,
+      "days_after_expiring": 1.3043478260869565
      }
     },
     "checklist": [
@@ -6248,7 +6635,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 58 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -6476,6 +6863,36 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.violences",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "finances.assurances",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.cles",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.pcs",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "moral.stress",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.contenants",
        "validated_at": "2026-11-02",
        "note": "",
@@ -6618,6 +7035,12 @@
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
+      },
+      {
+       "objective_id": "sante.gestes_qui_sauvent",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
       }
      ],
      "stock": [
@@ -6732,37 +7155,37 @@
      {
       "n": 2,
       "state": "current",
-      "required_total": 17,
-      "required_done": 16,
+      "required_total": 22,
+      "required_done": 21,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9411764705882353
+      "progress": 0.9545454545454546
      },
      {
       "n": 3,
       "state": "future",
-      "required_total": 27,
-      "required_done": 25,
+      "required_total": 19,
+      "required_done": 18,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9259259259259259
+      "progress": 0.9473684210526315
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 22,
-      "required_done": 0,
+      "required_total": 31,
+      "required_done": 6,
       "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.0
+      "progress": 0.1935483870967742
      },
      {
       "n": 5,
       "state": "future",
-      "required_total": 16,
+      "required_total": 18,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -6774,7 +7197,7 @@
       "state": "future",
       "required_total": 12,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 6,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -6823,7 +7246,7 @@
      "finances": 3,
      "communaute": 3,
      "moral": 3,
-     "defense": 2
+     "defense": 3
     },
     "statuses": {
      "eau.stock_24h": {
@@ -6964,6 +7387,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "energie.ramonage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.trousse": {
       "status": "done",
       "progress": 1.0,
@@ -7030,6 +7459,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.cles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "securite.iode": {
       "status": "na",
       "progress": 0.0,
@@ -7040,6 +7475,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "securite.pcs": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "communication.contacts_papier": {
@@ -7072,6 +7513,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2028-11-01"
      },
+     "finances.assurances": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "finances.animaux_papiers": {
       "status": "na",
       "progress": 0.0,
@@ -7089,6 +7536,12 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": null
+     },
+     "moral.stress": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
      },
      "defense.legitime_defense": {
       "status": "done",
@@ -7108,6 +7561,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.violences": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "eau.stock_3j": {
       "status": "expiring",
       "progress": 1.0,
@@ -7121,6 +7580,12 @@
       "expires_on": null
      },
      "eau.portage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.analyse": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -7144,11 +7609,11 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "alimentation.rotation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-05-01"
+     "alimentation.bebe_3j": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
      },
      "energie.cuisson_3j": {
       "status": "todo",
@@ -7161,12 +7626,6 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-01-31"
-     },
-     "sante.psc1": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2029-11-01"
      },
      "sante.hygiene_3j": {
       "status": "done",
@@ -7246,6 +7705,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.gestes_qui_sauvent": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
+     },
      "abri.chaleur": {
       "status": "done",
       "progress": 1.0,
@@ -7264,12 +7729,6 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "abri.calfeutrage": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "abri.piece_fraiche": {
       "status": "na",
       "progress": 0.0,
@@ -7282,17 +7741,17 @@
       "validated_at": null,
       "expires_on": null
      },
+     "abri.calfeutrage_industriel": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "securite.plan_familial": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
-     },
-     "securite.cles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
      },
      "communication.radio": {
       "status": "done",
@@ -7311,12 +7770,6 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-05-01"
-     },
-     "mobilite.accueil": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
      },
      "mobilite.aide_technique": {
       "status": "na",
@@ -7348,32 +7801,8 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "finances.assurances": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
-     "communaute.fragiles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
-     "moral.kit_occupation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "moral.kit_enfant": {
       "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "defense.intrusion": {
-      "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -7402,11 +7831,29 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.secheresse": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.rotation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_14j": {
       "status": "todo",
       "progress": 0.4383116883116883,
       "validated_at": null,
       "expires_on": null
+     },
+     "alimentation.rotation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-05-01"
      },
      "alimentation.bebe": {
       "status": "na",
@@ -7462,6 +7909,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "energie.bois_hiver": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.psc1": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
+     },
      "sante.traitements_30j": {
       "status": "na",
       "progress": 0.0,
@@ -7484,6 +7943,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "abri.calfeutrage": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "abri.chauffage_appoint": {
@@ -7522,6 +7987,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.dechets": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.cartes": {
       "status": "todo",
       "progress": 0.0,
@@ -7546,6 +8017,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.accueil": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -7564,10 +8041,22 @@
       "validated_at": null,
       "expires_on": null
      },
+     "communaute.fragiles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "communaute.binome": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "moral.kit_occupation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "moral.routine": {
@@ -7588,6 +8077,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "defense.enfants": {
       "status": "na",
       "progress": 0.0,
@@ -7595,8 +8090,8 @@
       "expires_on": null
      },
      "eau.stock_30j": {
-      "status": "todo",
-      "progress": 0.13125,
+      "status": "na",
+      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -7607,6 +8102,12 @@
       "expires_on": null
      },
      "eau.filtre_gravitaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.relais_ville": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -7624,6 +8125,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "alimentation.intrants": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "energie.station": {
       "status": "todo",
       "progress": 0.0,
@@ -7631,6 +8138,12 @@
       "expires_on": null
      },
      "energie.cuisson_90j": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "energie.cuisson_30j": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -7655,6 +8168,12 @@
       "expires_on": null
      },
      "sante.auditif_reserve": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.traitements_plan": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -7750,7 +8269,7 @@
       "validated_at": null,
       "expires_on": null
      },
-     "moral.stress": {
+     "moral.reperer": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -7774,6 +8293,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "na",
       "progress": 0.0,
@@ -7783,12 +8308,6 @@
      "eau.stock_60j": {
       "status": "todo",
       "progress": 0.065625,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "eau.secheresse": {
-      "status": "na",
-      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -7853,6 +8372,12 @@
       "expires_on": null
      },
      "securite.desescalade": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "securite.porte_blindee": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -7936,12 +8461,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "eau.analyse": {
-      "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "alimentation.balcon": {
       "status": "todo",
       "progress": 0.0,
@@ -7973,12 +8492,6 @@
       "expires_on": null
      },
      "energie.bois": {
-      "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "energie.ramonage": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -8044,13 +8557,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "defense.exercice_intrusion": {
+     "defense.tir_sportif": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
-     "defense.tir_sportif": {
+     "defense.voisinage": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -8291,7 +8804,7 @@
      },
      "cuisson": {
       "category": "cuisson",
-      "need_per_day": 1.0,
+      "need_per_day": 2.0,
       "total": 0,
       "days": 0.0,
       "days_after_expiring": 0.0
@@ -8318,7 +8831,7 @@
      },
      {
       "kind": "blocking",
-      "title": "Recevoir les alertes officielles (FR-Alert activé, alertes de la préfecture)",
+      "title": "Recevoir les alertes officielles (FR-Alert activé, Vigilance Météo-France, Vigicrues, alertes de la préfecture)",
       "detail": "Bloque l'accès au niveau 2 (Éveillé).",
       "objective_id": "securite.alertes",
       "stock_id": null,
@@ -8337,14 +8850,14 @@
      {
       "at": "2026-11-07T08:00:00.000Z",
       "level": 1,
-      "cause": "objectif décoché « Recevoir les alertes officielles (FR-Alert activé, alertes de la préfecture) »"
+      "cause": "objectif décoché « Recevoir les alertes officielles (FR-Alert activé, Vigilance Météo-France, Vigicrues, alertes de la préfecture) »"
      }
     ],
     "journal": [
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 58 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -8374,13 +8887,13 @@
      {
       "at": "2026-11-07T08:00:00.000Z",
       "type": "validation.delete",
-      "message": "Objectif décoché : Recevoir les alertes officielles (FR-Alert activé, alertes de la préfecture)",
+      "message": "Objectif décoché : Recevoir les alertes officielles (FR-Alert activé, Vigilance Météo-France, Vigicrues, alertes de la préfecture)",
       "op_id": "op-006"
      },
      {
       "at": "2026-11-07T08:00:00.000Z",
       "type": "level_changed",
-      "message": "Le foyer descend au niveau 1 (Initié) : objectif décoché « Recevoir les alertes officielles (FR-Alert activé, alertes de la préfecture) »",
+      "message": "Le foyer descend au niveau 1 (Initié) : objectif décoché « Recevoir les alertes officielles (FR-Alert activé, Vigilance Météo-France, Vigicrues, alertes de la préfecture) »",
       "op_id": null
      }
     ]
@@ -8590,6 +9103,36 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.violences",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "finances.assurances",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.cles",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.pcs",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "moral.stress",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.contenants",
        "validated_at": "2026-11-02",
        "note": "",
@@ -8732,6 +9275,12 @@
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
+      },
+      {
+       "objective_id": "sante.gestes_qui_sauvent",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
       }
      ],
      "stock": [
@@ -8851,8 +9400,8 @@
      {
       "n": 2,
       "state": "built",
-      "required_total": 17,
-      "required_done": 17,
+      "required_total": 22,
+      "required_done": 22,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
@@ -8861,27 +9410,27 @@
      {
       "n": 3,
       "state": "current",
-      "required_total": 28,
-      "required_done": 27,
+      "required_total": 20,
+      "required_done": 19,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9642857142857143
+      "progress": 0.95
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 22,
-      "required_done": 0,
+      "required_total": 31,
+      "required_done": 6,
       "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.0
+      "progress": 0.1935483870967742
      },
      {
       "n": 5,
       "state": "future",
-      "required_total": 16,
+      "required_total": 18,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -8893,7 +9442,7 @@
       "state": "future",
       "required_total": 12,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 6,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -8932,7 +9481,7 @@
     "axis_levels": {
      "eau": 3,
      "alimentation": 3,
-     "energie": 3,
+     "energie": 2,
      "sante": 3,
      "abri": 3,
      "securite": 3,
@@ -8942,7 +9491,7 @@
      "finances": 3,
      "communaute": 3,
      "moral": 3,
-     "defense": 2
+     "defense": 3
     },
     "statuses": {
      "eau.stock_24h": {
@@ -9083,6 +9632,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "energie.ramonage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.trousse": {
       "status": "done",
       "progress": 1.0,
@@ -9149,6 +9704,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "securite.cles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "securite.iode": {
       "status": "na",
       "progress": 0.0,
@@ -9159,6 +9720,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "securite.pcs": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "communication.contacts_papier": {
@@ -9191,6 +9758,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2028-11-01"
      },
+     "finances.assurances": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "finances.animaux_papiers": {
       "status": "na",
       "progress": 0.0,
@@ -9208,6 +9781,12 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": null
+     },
+     "moral.stress": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
      },
      "defense.legitime_defense": {
       "status": "done",
@@ -9227,6 +9806,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.violences": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "eau.stock_3j": {
       "status": "done",
       "progress": 1.0,
@@ -9240,6 +9825,12 @@
       "expires_on": null
      },
      "eau.portage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.analyse": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -9263,15 +9854,15 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "alimentation.rotation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-05-01"
+     "alimentation.bebe_3j": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
      },
      "energie.cuisson_3j": {
-      "status": "done",
-      "progress": 1.0,
+      "status": "todo",
+      "progress": 0.5,
       "validated_at": null,
       "expires_on": null
      },
@@ -9280,12 +9871,6 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-01-31"
-     },
-     "sante.psc1": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2029-11-01"
      },
      "sante.hygiene_3j": {
       "status": "done",
@@ -9365,6 +9950,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.gestes_qui_sauvent": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
+     },
      "abri.chaleur": {
       "status": "done",
       "progress": 1.0,
@@ -9383,12 +9974,6 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "abri.calfeutrage": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "abri.piece_fraiche": {
       "status": "na",
       "progress": 0.0,
@@ -9401,17 +9986,17 @@
       "validated_at": null,
       "expires_on": null
      },
+     "abri.calfeutrage_industriel": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "securite.plan_familial": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
-     },
-     "securite.cles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
      },
      "communication.radio": {
       "status": "done",
@@ -9430,12 +10015,6 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-05-01"
-     },
-     "mobilite.accueil": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
      },
      "mobilite.aide_technique": {
       "status": "na",
@@ -9467,32 +10046,8 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "finances.assurances": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
-     "communaute.fragiles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
-     "moral.kit_occupation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "moral.kit_enfant": {
       "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "defense.intrusion": {
-      "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -9521,11 +10076,29 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.secheresse": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.rotation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_14j": {
       "status": "todo",
       "progress": 0.4383116883116883,
       "validated_at": null,
       "expires_on": null
+     },
+     "alimentation.rotation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-05-01"
      },
      "alimentation.bebe": {
       "status": "na",
@@ -9559,7 +10132,7 @@
      },
      "energie.cuisson_14j": {
       "status": "todo",
-      "progress": 0.21428571428571427,
+      "progress": 0.10714285714285714,
       "validated_at": null,
       "expires_on": null
      },
@@ -9580,6 +10153,18 @@
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "energie.bois_hiver": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.psc1": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
      },
      "sante.traitements_30j": {
       "status": "na",
@@ -9603,6 +10188,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "abri.calfeutrage": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "abri.chauffage_appoint": {
@@ -9641,6 +10232,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.dechets": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.cartes": {
       "status": "todo",
       "progress": 0.0,
@@ -9665,6 +10262,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.accueil": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -9683,10 +10286,22 @@
       "validated_at": null,
       "expires_on": null
      },
+     "communaute.fragiles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "communaute.binome": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "moral.kit_occupation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "moral.routine": {
@@ -9707,6 +10322,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "defense.enfants": {
       "status": "na",
       "progress": 0.0,
@@ -9714,8 +10335,8 @@
       "expires_on": null
      },
      "eau.stock_30j": {
-      "status": "todo",
-      "progress": 0.1625,
+      "status": "na",
+      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -9726,6 +10347,12 @@
       "expires_on": null
      },
      "eau.filtre_gravitaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.relais_ville": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -9743,6 +10370,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "alimentation.intrants": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "energie.station": {
       "status": "todo",
       "progress": 0.0,
@@ -9750,8 +10383,14 @@
       "expires_on": null
      },
      "energie.cuisson_90j": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "energie.cuisson_30j": {
       "status": "todo",
-      "progress": 0.03333333333333333,
+      "progress": 0.05,
       "validated_at": null,
       "expires_on": null
      },
@@ -9774,6 +10413,12 @@
       "expires_on": null
      },
      "sante.auditif_reserve": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.traitements_plan": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -9869,7 +10514,7 @@
       "validated_at": null,
       "expires_on": null
      },
-     "moral.stress": {
+     "moral.reperer": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -9893,6 +10538,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "na",
       "progress": 0.0,
@@ -9902,12 +10553,6 @@
      "eau.stock_60j": {
       "status": "todo",
       "progress": 0.08125,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "eau.secheresse": {
-      "status": "na",
-      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -9972,6 +10617,12 @@
       "expires_on": null
      },
      "securite.desescalade": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "securite.porte_blindee": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -10055,12 +10706,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "eau.analyse": {
-      "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "alimentation.balcon": {
       "status": "todo",
       "progress": 0.0,
@@ -10092,12 +10737,6 @@
       "expires_on": null
      },
      "energie.bois": {
-      "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "energie.ramonage": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -10163,13 +10802,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "defense.exercice_intrusion": {
+     "defense.tir_sportif": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
-     "defense.tir_sportif": {
+     "defense.voisinage": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -10416,10 +11055,10 @@
      },
      "cuisson": {
       "category": "cuisson",
-      "need_per_day": 1.0,
+      "need_per_day": 2.0,
       "total": 3.0,
-      "days": 3.0,
-      "days_after_expiring": 3.0
+      "days": 1.5,
+      "days_after_expiring": 1.5
      }
     },
     "checklist": [
@@ -10434,11 +11073,11 @@
      },
      {
       "kind": "blocking",
-      "title": "Plan intrusion au domicile : pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, éclairage, consigne de ne pas aller au contact",
-      "detail": "De nuit chez soi, la loi présume la légitime défense (art. 122-6), mais le plus sûr reste de s'enfermer et d'appeler.",
-      "objective_id": "defense.intrusion",
+      "title": "Moyen de cuisson hors réseau et combustible pour 3 jours",
+      "detail": "Bloque l'accès au niveau 3 (Paré).",
+      "objective_id": "energie.cuisson_3j",
       "stock_id": null,
-      "axis": "defense",
+      "axis": "energie",
       "level": 3
      }
     ]
@@ -10455,7 +11094,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 58 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -10695,6 +11334,36 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.violences",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "finances.assurances",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.cles",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.pcs",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "moral.stress",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.contenants",
        "validated_at": "2026-11-02",
        "note": "",
@@ -10837,6 +11506,12 @@
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
+      },
+      {
+       "objective_id": "sante.gestes_qui_sauvent",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
       }
      ],
      "stock": [
@@ -10918,8 +11593,8 @@
      {
       "n": 2,
       "state": "future",
-      "required_total": 17,
-      "required_done": 17,
+      "required_total": 22,
+      "required_done": 22,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
@@ -10928,27 +11603,27 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 27,
-      "required_done": 25,
+      "required_total": 19,
+      "required_done": 17,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9259259259259259
+      "progress": 0.8947368421052632
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 22,
-      "required_done": 0,
+      "required_total": 31,
+      "required_done": 6,
       "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.0
+      "progress": 0.1935483870967742
      },
      {
       "n": 5,
       "state": "future",
-      "required_total": 16,
+      "required_total": 18,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -10960,7 +11635,7 @@
       "state": "future",
       "required_total": 12,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 6,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -10999,7 +11674,7 @@
     "axis_levels": {
      "eau": 0,
      "alimentation": 3,
-     "energie": 3,
+     "energie": 2,
      "sante": 3,
      "abri": 3,
      "securite": 3,
@@ -11009,7 +11684,7 @@
      "finances": 3,
      "communaute": 3,
      "moral": 3,
-     "defense": 2
+     "defense": 3
     },
     "statuses": {
      "eau.stock_24h": {
@@ -11150,6 +11825,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "energie.ramonage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.trousse": {
       "status": "done",
       "progress": 1.0,
@@ -11216,6 +11897,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "securite.cles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "securite.iode": {
       "status": "na",
       "progress": 0.0,
@@ -11226,6 +11913,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "securite.pcs": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "communication.contacts_papier": {
@@ -11258,6 +11951,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2028-11-01"
      },
+     "finances.assurances": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "finances.animaux_papiers": {
       "status": "na",
       "progress": 0.0,
@@ -11275,6 +11974,12 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": null
+     },
+     "moral.stress": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
      },
      "defense.legitime_defense": {
       "status": "done",
@@ -11294,6 +11999,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.violences": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "eau.stock_3j": {
       "status": "todo",
       "progress": 0.1875,
@@ -11307,6 +12018,12 @@
       "expires_on": null
      },
      "eau.portage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.analyse": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -11330,15 +12047,15 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "alimentation.rotation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-05-01"
+     "alimentation.bebe_3j": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
      },
      "energie.cuisson_3j": {
-      "status": "done",
-      "progress": 1.0,
+      "status": "todo",
+      "progress": 0.5,
       "validated_at": null,
       "expires_on": null
      },
@@ -11347,12 +12064,6 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-01-31"
-     },
-     "sante.psc1": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2029-11-01"
      },
      "sante.hygiene_3j": {
       "status": "done",
@@ -11432,6 +12143,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.gestes_qui_sauvent": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
+     },
      "abri.chaleur": {
       "status": "done",
       "progress": 1.0,
@@ -11450,12 +12167,6 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "abri.calfeutrage": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "abri.piece_fraiche": {
       "status": "na",
       "progress": 0.0,
@@ -11468,17 +12179,17 @@
       "validated_at": null,
       "expires_on": null
      },
+     "abri.calfeutrage_industriel": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "securite.plan_familial": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
-     },
-     "securite.cles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
      },
      "communication.radio": {
       "status": "done",
@@ -11497,12 +12208,6 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-05-01"
-     },
-     "mobilite.accueil": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
      },
      "mobilite.aide_technique": {
       "status": "na",
@@ -11534,32 +12239,8 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "finances.assurances": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
-     "communaute.fragiles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
-     "moral.kit_occupation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "moral.kit_enfant": {
       "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "defense.intrusion": {
-      "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -11588,11 +12269,29 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.secheresse": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.rotation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_14j": {
       "status": "todo",
       "progress": 0.4383116883116883,
       "validated_at": null,
       "expires_on": null
+     },
+     "alimentation.rotation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-05-01"
      },
      "alimentation.bebe": {
       "status": "na",
@@ -11626,7 +12325,7 @@
      },
      "energie.cuisson_14j": {
       "status": "todo",
-      "progress": 0.21428571428571427,
+      "progress": 0.10714285714285714,
       "validated_at": null,
       "expires_on": null
      },
@@ -11647,6 +12346,18 @@
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "energie.bois_hiver": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.psc1": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
      },
      "sante.traitements_30j": {
       "status": "na",
@@ -11670,6 +12381,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "abri.calfeutrage": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "abri.chauffage_appoint": {
@@ -11708,6 +12425,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.dechets": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.cartes": {
       "status": "todo",
       "progress": 0.0,
@@ -11732,6 +12455,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.accueil": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -11750,10 +12479,22 @@
       "validated_at": null,
       "expires_on": null
      },
+     "communaute.fragiles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "communaute.binome": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "moral.kit_occupation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "moral.routine": {
@@ -11774,6 +12515,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "defense.enfants": {
       "status": "na",
       "progress": 0.0,
@@ -11781,8 +12528,8 @@
       "expires_on": null
      },
      "eau.stock_30j": {
-      "status": "todo",
-      "progress": 0.01875,
+      "status": "na",
+      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -11793,6 +12540,12 @@
       "expires_on": null
      },
      "eau.filtre_gravitaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.relais_ville": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -11810,6 +12563,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "alimentation.intrants": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "energie.station": {
       "status": "todo",
       "progress": 0.0,
@@ -11817,8 +12576,14 @@
       "expires_on": null
      },
      "energie.cuisson_90j": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "energie.cuisson_30j": {
       "status": "todo",
-      "progress": 0.03333333333333333,
+      "progress": 0.05,
       "validated_at": null,
       "expires_on": null
      },
@@ -11841,6 +12606,12 @@
       "expires_on": null
      },
      "sante.auditif_reserve": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.traitements_plan": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -11936,7 +12707,7 @@
       "validated_at": null,
       "expires_on": null
      },
-     "moral.stress": {
+     "moral.reperer": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -11960,6 +12731,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "na",
       "progress": 0.0,
@@ -11969,12 +12746,6 @@
      "eau.stock_60j": {
       "status": "todo",
       "progress": 0.009375,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "eau.secheresse": {
-      "status": "na",
-      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -12039,6 +12810,12 @@
       "expires_on": null
      },
      "securite.desescalade": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "securite.porte_blindee": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -12122,12 +12899,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "eau.analyse": {
-      "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "alimentation.balcon": {
       "status": "todo",
       "progress": 0.0,
@@ -12159,12 +12930,6 @@
       "expires_on": null
      },
      "energie.bois": {
-      "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "energie.ramonage": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -12230,13 +12995,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "defense.exercice_intrusion": {
+     "defense.tir_sportif": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
-     "defense.tir_sportif": {
+     "defense.voisinage": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -12477,10 +13242,10 @@
      },
      "cuisson": {
       "category": "cuisson",
-      "need_per_day": 1.0,
+      "need_per_day": 2.0,
       "total": 3.0,
-      "days": 3.0,
-      "days_after_expiring": 3.0
+      "days": 1.5,
+      "days_after_expiring": 1.5
      }
     },
     "checklist": [
@@ -12512,7 +13277,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 58 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -12747,6 +13512,36 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.violences",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "finances.assurances",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.cles",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.pcs",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "moral.stress",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.contenants",
        "validated_at": "2026-11-02",
        "note": "",
@@ -12889,6 +13684,12 @@
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
+      },
+      {
+       "objective_id": "sante.gestes_qui_sauvent",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
       }
      ],
      "stock": [
@@ -12986,37 +13787,37 @@
      {
       "n": 2,
       "state": "future",
-      "required_total": 20,
-      "required_done": 17,
+      "required_total": 25,
+      "required_done": 22,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.85
+      "progress": 0.88
      },
      {
       "n": 3,
       "state": "future",
-      "required_total": 29,
-      "required_done": 21,
+      "required_total": 21,
+      "required_done": 14,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.7241379310344828
+      "progress": 0.6666666666666666
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 22,
-      "required_done": 0,
+      "required_total": 31,
+      "required_done": 5,
       "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.0
+      "progress": 0.16129032258064516
      },
      {
       "n": 5,
       "state": "future",
-      "required_total": 17,
+      "required_total": 19,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -13028,7 +13829,7 @@
       "state": "future",
       "required_total": 14,
       "required_done": 1,
-      "optional_total": 6,
+      "optional_total": 7,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.07142857142857142
@@ -13036,12 +13837,12 @@
      {
       "n": 7,
       "state": "future",
-      "required_total": 18,
+      "required_total": 16,
       "required_done": 1,
       "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.05555555555555555
+      "progress": 0.0625
      },
      {
       "n": 8,
@@ -13077,7 +13878,7 @@
      "finances": 1,
      "communaute": 3,
      "moral": 3,
-     "defense": 2
+     "defense": 3
     },
     "statuses": {
      "eau.stock_24h": {
@@ -13218,6 +14019,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "energie.ramonage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.trousse": {
       "status": "grace",
       "progress": 1.0,
@@ -13284,6 +14091,12 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
+     "securite.cles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "securite.iode": {
       "status": "na",
       "progress": 0.0,
@@ -13294,6 +14107,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "securite.pcs": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "communication.contacts_papier": {
@@ -13326,6 +14145,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2028-11-01"
      },
+     "finances.assurances": {
+      "status": "grace",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "finances.animaux_papiers": {
       "status": "todo",
       "progress": 0.0,
@@ -13343,6 +14168,12 @@
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": null
+     },
+     "moral.stress": {
+      "status": "grace",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
      },
      "defense.legitime_defense": {
       "status": "done",
@@ -13362,6 +14193,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.violences": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "eau.stock_3j": {
       "status": "todo",
       "progress": 0.3,
@@ -13375,6 +14212,12 @@
       "expires_on": null
      },
      "eau.portage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.analyse": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -13398,15 +14241,15 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "alimentation.rotation": {
-      "status": "expired",
+     "alimentation.bebe_3j": {
+      "status": "na",
       "progress": 0.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-05-01"
+      "validated_at": null,
+      "expires_on": null
      },
      "energie.cuisson_3j": {
-      "status": "done",
-      "progress": 1.0,
+      "status": "todo",
+      "progress": 0.5,
       "validated_at": null,
       "expires_on": null
      },
@@ -13415,12 +14258,6 @@
       "progress": 0.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-01-31"
-     },
-     "sante.psc1": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2029-11-01"
      },
      "sante.hygiene_3j": {
       "status": "done",
@@ -13500,6 +14337,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.gestes_qui_sauvent": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
+     },
      "abri.chaleur": {
       "status": "done",
       "progress": 1.0,
@@ -13518,12 +14361,6 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "abri.calfeutrage": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "abri.piece_fraiche": {
       "status": "na",
       "progress": 0.0,
@@ -13536,17 +14373,17 @@
       "validated_at": null,
       "expires_on": null
      },
+     "abri.calfeutrage_industriel": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "securite.plan_familial": {
       "status": "grace",
       "progress": 1.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
-     },
-     "securite.cles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
      },
      "communication.radio": {
       "status": "grace",
@@ -13565,12 +14402,6 @@
       "progress": 0.0,
       "validated_at": "2026-11-02",
       "expires_on": "2027-05-01"
-     },
-     "mobilite.accueil": {
-      "status": "grace",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
      },
      "mobilite.aide_technique": {
       "status": "todo",
@@ -13602,32 +14433,8 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
-     "finances.assurances": {
-      "status": "grace",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
-     "communaute.fragiles": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
-     "moral.kit_occupation": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": null
-     },
      "moral.kit_enfant": {
       "status": "na",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "defense.intrusion": {
-      "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -13656,11 +14463,29 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.secheresse": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.rotation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_14j": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "alimentation.rotation": {
+      "status": "expired",
+      "progress": 0.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-05-01"
      },
      "alimentation.bebe": {
       "status": "na",
@@ -13694,7 +14519,7 @@
      },
      "energie.cuisson_14j": {
       "status": "todo",
-      "progress": 0.21428571428571427,
+      "progress": 0.10714285714285714,
       "validated_at": null,
       "expires_on": null
      },
@@ -13715,6 +14540,18 @@
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "energie.bois_hiver": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.psc1": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2029-11-01"
      },
      "sante.traitements_30j": {
       "status": "na",
@@ -13738,6 +14575,12 @@
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "abri.calfeutrage": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "abri.chauffage_appoint": {
@@ -13776,6 +14619,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.dechets": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.cartes": {
       "status": "todo",
       "progress": 0.0,
@@ -13800,6 +14649,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.accueil": {
+      "status": "grace",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": "2027-11-02"
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "todo",
       "progress": 0.0,
@@ -13818,10 +14673,22 @@
       "validated_at": null,
       "expires_on": null
      },
+     "communaute.fragiles": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
      "communaute.binome": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
+      "expires_on": null
+     },
+     "moral.kit_occupation": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
       "expires_on": null
      },
      "moral.routine": {
@@ -13837,6 +14704,12 @@
       "expires_on": null
      },
      "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.intrusion": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -13866,6 +14739,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.relais_ville": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_90j": {
       "status": "todo",
       "progress": 0.0,
@@ -13873,6 +14752,12 @@
       "expires_on": null
      },
      "alimentation.conservation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "alimentation.intrants": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -13886,7 +14771,13 @@
      },
      "energie.cuisson_90j": {
       "status": "todo",
-      "progress": 0.03333333333333333,
+      "progress": 0.016666666666666666,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "energie.cuisson_30j": {
+      "status": "na",
+      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -13909,6 +14800,12 @@
       "expires_on": null
      },
      "sante.auditif_reserve": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.traitements_plan": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -14004,7 +14901,7 @@
       "validated_at": null,
       "expires_on": null
      },
-     "moral.stress": {
+     "moral.reperer": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -14028,6 +14925,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "todo",
       "progress": 0.0,
@@ -14037,12 +14940,6 @@
      "eau.stock_60j": {
       "status": "todo",
       "progress": 0.015000000000000001,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "eau.secheresse": {
-      "status": "na",
-      "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
@@ -14107,6 +15004,12 @@
       "expires_on": null
      },
      "securite.desescalade": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "securite.porte_blindee": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -14190,12 +15093,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "eau.analyse": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "alimentation.balcon": {
       "status": "na",
       "progress": 0.0,
@@ -14231,12 +15128,6 @@
       "progress": 1.0,
       "validated_at": "2026-09-01",
       "expires_on": "2027-11-01"
-     },
-     "energie.ramonage": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
      },
      "sante.assainissement": {
       "status": "todo",
@@ -14298,13 +15189,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "defense.exercice_intrusion": {
+     "defense.tir_sportif": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
-     "defense.tir_sportif": {
+     "defense.voisinage": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -14545,10 +15436,10 @@
      },
      "cuisson": {
       "category": "cuisson",
-      "need_per_day": 1.0,
+      "need_per_day": 2.0,
       "total": 3.0,
-      "days": 3.0,
-      "days_after_expiring": 3.0
+      "days": 1.5,
+      "days_after_expiring": 1.5
      }
     },
     "checklist": [
@@ -14577,6 +15468,24 @@
       "objective_id": "communication.contacts_papier",
       "stock_id": null,
       "axis": "communication",
+      "level": 2
+     },
+     {
+      "kind": "revalidate",
+      "title": "Assurances vérifiées (habitation, catastrophes naturelles, responsabilité)",
+      "detail": "En sursis : à refaire pour que le tambour ne tombe pas. (le tambour tombe le 2027-12-02)",
+      "objective_id": "finances.assurances",
+      "stock_id": null,
+      "axis": "finances",
+      "level": 2
+     },
+     {
+      "kind": "revalidate",
+      "title": "Au moins un adulte connaît une technique simple de gestion du stress (respiration 4 s / 6 s, cohérence cardiaque) et l'a montrée au foyer",
+      "detail": "En sursis : à refaire pour que le tambour ne tombe pas. (le tambour tombe le 2027-12-02)",
+      "objective_id": "moral.stress",
+      "stock_id": null,
+      "axis": "moral",
       "level": 2
      },
      {
@@ -14617,15 +15526,6 @@
      },
      {
       "kind": "revalidate",
-      "title": "Lieu d'accueil convenu hors de la zone (famille, amis)",
-      "detail": "En sursis : à refaire pour que le tambour ne tombe pas. (le tambour tombe le 2027-12-02)",
-      "objective_id": "mobilite.accueil",
-      "stock_id": null,
-      "axis": "mobilite",
-      "level": 3
-     },
-     {
-      "kind": "revalidate",
       "title": "Allumer et entretenir un feu en sécurité",
       "detail": "En sursis : à refaire pour que le tambour ne tombe pas. (le tambour tombe le 2027-12-02)",
       "objective_id": "competences.feu",
@@ -14644,12 +15544,12 @@
      },
      {
       "kind": "revalidate",
-      "title": "Assurances vérifiées (habitation, catastrophes naturelles, responsabilité)",
+      "title": "Lieu d'accueil convenu hors de la zone (famille, amis)",
       "detail": "En sursis : à refaire pour que le tambour ne tombe pas. (le tambour tombe le 2027-12-02)",
-      "objective_id": "finances.assurances",
+      "objective_id": "mobilite.accueil",
       "stock_id": null,
-      "axis": "finances",
-      "level": 3
+      "axis": "mobilite",
+      "level": 4
      },
      {
       "kind": "revalidate",
@@ -14671,15 +15571,6 @@
      },
      {
       "kind": "revalidate",
-      "title": "Rotation des stocks en place (premier entré, premier sorti)",
-      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-05-01)",
-      "objective_id": "alimentation.rotation",
-      "stock_id": null,
-      "axis": "alimentation",
-      "level": 3
-     },
-     {
-      "kind": "revalidate",
       "title": "Batteries externes chargées pour les téléphones",
       "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-01-31)",
       "objective_id": "energie.batterie",
@@ -14695,6 +15586,15 @@
       "stock_id": null,
       "axis": "mobilite",
       "level": 3
+     },
+     {
+      "kind": "revalidate",
+      "title": "Rotation des stocks en place (premier entré, premier sorti)",
+      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-05-01)",
+      "objective_id": "alimentation.rotation",
+      "stock_id": null,
+      "axis": "alimentation",
+      "level": 4
      },
      {
       "kind": "stock_expired",
@@ -14749,7 +15649,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 58 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -14971,6 +15871,36 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.violences",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "finances.assurances",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.cles",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "securite.pcs",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "moral.stress",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.contenants",
        "validated_at": "2026-11-02",
        "note": "",
@@ -15113,6 +16043,12 @@
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
+      },
+      {
+       "objective_id": "sante.gestes_qui_sauvent",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
       }
      ],
      "stock": [
@@ -15234,7 +16170,7 @@
      {
       "n": 2,
       "state": "future",
-      "required_total": 24,
+      "required_total": 29,
       "required_done": 0,
       "optional_total": 0,
       "optional_done": 0,
@@ -15244,39 +16180,39 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 33,
+      "required_total": 25,
       "required_done": 1,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.030303030303030304
+      "progress": 0.04
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 26,
+      "required_total": 35,
       "required_done": 1,
       "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.038461538461538464
+      "progress": 0.02857142857142857
      },
      {
       "n": 5,
       "state": "future",
-      "required_total": 20,
+      "required_total": 22,
       "required_done": 1,
       "optional_total": 5,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.05
+      "progress": 0.045454545454545456
      },
      {
       "n": 6,
       "state": "future",
       "required_total": 15,
       "required_done": 1,
-      "optional_total": 6,
+      "optional_total": 7,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.06666666666666667
@@ -15284,7 +16220,7 @@
      {
       "n": 7,
       "state": "future",
-      "required_total": 17,
+      "required_total": 15,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -15466,6 +16402,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "energie.ramonage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.trousse": {
       "status": "todo",
       "progress": 0.0,
@@ -15532,6 +16474,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.cles": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "securite.iode": {
       "status": "na",
       "progress": 0.0,
@@ -15539,6 +16487,12 @@
       "expires_on": null
      },
      "securite.ecole": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "securite.pcs": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -15574,6 +16528,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "finances.assurances": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "finances.animaux_papiers": {
       "status": "todo",
       "progress": 0.0,
@@ -15587,6 +16547,12 @@
       "expires_on": null
      },
      "moral.ecoute": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "moral.stress": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -15610,6 +16576,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.violences": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_3j": {
       "status": "todo",
       "progress": 0.0,
@@ -15623,6 +16595,12 @@
       "expires_on": null
      },
      "eau.portage": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.analyse": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -15646,8 +16624,8 @@
       "validated_at": null,
       "expires_on": null
      },
-     "alimentation.rotation": {
-      "status": "todo",
+     "alimentation.bebe_3j": {
+      "status": "na",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -15659,12 +16637,6 @@
       "expires_on": null
      },
      "energie.batterie": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "sante.psc1": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -15748,6 +16720,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.gestes_qui_sauvent": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "abri.chaleur": {
       "status": "todo",
       "progress": 0.0,
@@ -15766,12 +16744,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "abri.calfeutrage": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "abri.piece_fraiche": {
       "status": "todo",
       "progress": 0.0,
@@ -15784,13 +16756,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "securite.plan_familial": {
-      "status": "todo",
+     "abri.calfeutrage_industriel": {
+      "status": "na",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
-     "securite.cles": {
+     "securite.plan_familial": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -15809,12 +16781,6 @@
       "expires_on": null
      },
      "mobilite.sac": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "mobilite.accueil": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -15850,31 +16816,7 @@
       "validated_at": null,
       "expires_on": null
      },
-     "finances.assurances": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "communaute.fragiles": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "moral.kit_occupation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "moral.kit_enfant": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "defense.intrusion": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -15904,7 +16846,25 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.secheresse": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "eau.rotation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_14j": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "alimentation.rotation": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -15964,6 +16924,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "energie.bois_hiver": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.psc1": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.traitements_30j": {
       "status": "done",
       "progress": 1.0,
@@ -15984,6 +16956,12 @@
      },
      "sante.diabete_materiel": {
       "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "abri.calfeutrage": {
+      "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -16024,6 +17002,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.dechets": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.cartes": {
       "status": "todo",
       "progress": 0.0,
@@ -16048,6 +17032,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.accueil": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -16066,7 +17056,19 @@
       "validated_at": null,
       "expires_on": null
      },
+     "communaute.fragiles": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communaute.binome": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "moral.kit_occupation": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -16085,6 +17087,12 @@
       "expires_on": null
      },
      "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.intrusion": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -16114,6 +17122,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "eau.relais_ville": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "alimentation.stock_90j": {
       "status": "todo",
       "progress": 0.0,
@@ -16121,6 +17135,12 @@
       "expires_on": null
      },
      "alimentation.conservation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "alimentation.intrants": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -16134,6 +17154,12 @@
      },
      "energie.cuisson_90j": {
       "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "energie.cuisson_30j": {
+      "status": "na",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -16157,6 +17183,12 @@
       "expires_on": null
      },
      "sante.auditif_reserve": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.traitements_plan": {
       "status": "na",
       "progress": 0.0,
       "validated_at": null,
@@ -16252,7 +17284,7 @@
       "validated_at": null,
       "expires_on": null
      },
-     "moral.stress": {
+     "moral.reperer": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -16276,6 +17308,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "done",
       "progress": 1.0,
@@ -16284,12 +17322,6 @@
      },
      "eau.stock_60j": {
       "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "eau.secheresse": {
-      "status": "na",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -16355,6 +17387,12 @@
       "expires_on": null
      },
      "securite.desescalade": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "securite.porte_blindee": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -16438,12 +17476,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "eau.analyse": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "alimentation.balcon": {
       "status": "na",
       "progress": 0.0,
@@ -16475,12 +17507,6 @@
       "expires_on": null
      },
      "energie.bois": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "energie.ramonage": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -16546,13 +17572,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "defense.exercice_intrusion": {
+     "defense.tir_sportif": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
-     "defense.tir_sportif": {
+     "defense.voisinage": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -16793,7 +17819,7 @@
      },
      "cuisson": {
       "category": "cuisson",
-      "need_per_day": 1.0,
+      "need_per_day": 1.7,
       "total": 0,
       "days": 0.0,
       "days_after_expiring": 0.0
@@ -16945,7 +17971,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 58 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {

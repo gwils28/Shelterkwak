@@ -59,6 +59,13 @@ class CrisisNote(BaseModel):
     hint: str = ""
 
 
+class ScenarioStep(BaseModel):
+    """Étape réservée aux foyers qui portent l'un des tags."""
+
+    text: str
+    tags_any: list[str]
+
+
 class Scenario(BaseModel):
     """Fiche réflexe : affichée si le foyer porte l'un des tags (toujours si la liste est vide)."""
 
@@ -66,7 +73,8 @@ class Scenario(BaseModel):
     name: str
     icon: str = ""
     tags_any: list[str] = Field(default_factory=list)
-    steps: list[str]
+    group: Literal["secours", "situation"] = "situation"
+    steps: list[str | ScenarioStep]
 
 
 class StockRule(BaseModel):
@@ -106,6 +114,7 @@ class Category(BaseModel):
     unit: str
     daily_need: dict[str, float] = Field(default_factory=dict)
     per_household: float | None = None
+    per_member_tag: str | None = None  # besoin de 1 par jour pour chaque membre portant ce tag
     applies_if: str | None = None
 
 

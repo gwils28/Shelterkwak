@@ -10,7 +10,7 @@ objectives:
     why: Sans électricité, les paiements par carte s'arrêtent.
     revalidate_days: 365
   - id: finances.assurances
-    level: 3
+    level: 2
     title: Assurances vérifiées (habitation, catastrophes naturelles, responsabilité)
     revalidate_days: 365
   - id: finances.epargne_1m

@@ -140,7 +140,7 @@
      "name": "Traitements (estimation de l'interview)",
      "category": "traitements",
      "quantity": 45.0,
-     "unit_label": "jour",
+     "unit_label": "jour foyer",
      "amount_per_unit": 1.0
     }
    ]
@@ -184,7 +184,7 @@
      "name": "Traitements (estimation de l'interview)",
      "category": "traitements",
      "quantity": 20.0,
-     "unit_label": "jour",
+     "unit_label": "jour foyer",
      "amount_per_unit": 1.0
     }
    ]

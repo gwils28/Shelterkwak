@@ -23,7 +23,7 @@ async function onboarding(page) {
   await page.click('button:has-text("Commencer l\'interview")');
   const WANT = ["Une lampe sans réseau", "numéros d'urgence", "Antalgique, pansements", "Issues de secours",
     "réflexes en cas d'alerte", "Fréquence de la radio", "Papiers d'identité rangés", "Clés, papiers et chaussures",
-    "guide officiel", "Un proche à moins de 30 min", "Numéros d'écoute notés", "on fuit et on alerte", "conditions de la légitime défense", "On sait quoi faire après", "Coupures d'eau", "Lampes frontales", "Trousse de premiers secours", "Pastilles", "On sait couper",
+    "guide officiel", "Un proche à moins de 30 min", "Numéros d'écoute notés", "Assurances vérifiées", "Doubles des clés", "Plan communal", "gestion du stress", "violences dans le foyer", "on fuit et on alerte", "conditions de la légitime défense", "On sait quoi faire après", "Coupures d'eau", "Lampes frontales", "Trousse de premiers secours", "Pastilles", "On sait couper",
     "FR-Alert", "Contacts essentiels", "Itinéraires d'évacuation", "Copies des papiers", "Fiches médicales",
     "Inventaire des placards", "Je connais au moins deux voisins", "Deux semaines", "1 an", "💧 Eau", "Inondation"];
   for (;;) {

@@ -30,24 +30,25 @@ objectives:
     title: "Vigilance et évitement pratiqués par chaque adulte : repérer les signaux, garder la distance, ne pas s'isoler, poser sa voix pour dissuader"
     why: La plupart des agressions s'évitent avant le premier contact.
   - id: defense.intrusion
-    level: 3
+    level: 4
     title: "Plan intrusion au domicile : pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, éclairage, consigne de ne pas aller au contact"
     why: De nuit chez soi, la loi présume la légitime défense (art. 122-6), mais le plus sûr reste de s'enfermer et d'appeler.
   - id: defense.enfants
     level: 4
     requires_tags: [enfants]
-    title: "Consignes de sécurité apprises par les enfants : mot de passe familial, à qui demander de l'aide, crier et fuir, ne jamais suivre un inconnu"
+    title: "Consignes de sécurité apprises par les enfants : adultes de confiance à qui parler, « un secret qui fait peur se dit », crier et fuir, le 119"
+    why: "La plupart des violences faites aux enfants viennent de proches, pas d'inconnus."
 
   - id: defense.initiation
     level: 5
     kind: skill
     title: Au moins un adulte a suivi une initiation à la self-défense (stage encadré, dégagements, chutes, protection)
     revalidate_days: 1095
-    excludes_tags: [mobilite_reduite]
+    excludes_tags: [mobilite_reduite, grossesse]
   - id: defense.initiation_adaptee
     level: 5
     kind: skill
-    requires_tags: [mobilite_reduite]
+    requires_tags: [mobilite_reduite, grossesse]
     title: "Initiation à une self-défense adaptée (défense assise, canne, techniques sans déplacement) suivie par un adulte du foyer"
     revalidate_days: 1095
   - id: defense.aerosol
@@ -59,20 +60,20 @@ objectives:
   - id: defense.pratique
     level: 6
     kind: skill
-    title: Un adulte pratique un sport de combat ou de self-défense en club depuis au moins un an (boxe, krav-maga, judo, self-défense)
+    title: Un adulte entretient ses gestes de self-défense au moins deux fois par an (stage, séances en club, révision encadrée)
     revalidate_days: 365
-    excludes_tags: [mobilite_reduite]
-    why: Un geste appris une fois s'oublie sous le stress ; seule la pratique régulière tient.
+    excludes_tags: [mobilite_reduite, grossesse]
+    why: "Un geste appris une fois s'oublie sous le stress ; l'entretenir suffit, sans viser la performance au combat."
   - id: defense.pratique_adaptee
     level: 6
     kind: skill
-    requires_tags: [mobilite_reduite]
-    title: Pratique régulière d'une self-défense adaptée (au moins un an), ou un autre adulte du foyer pratique en club
+    requires_tags: [mobilite_reduite, grossesse]
+    title: Un adulte entretient des gestes de self-défense adaptés au moins deux fois par an, ou un autre adulte du foyer le fait
     revalidate_days: 365
 
   - id: defense.exercice_intrusion
-    level: 7
-    title: "Exercice d'intrusion de nuit répété en famille : chacun sait où aller, qui appelle, qui allume et ferme"
+    level: 5
+    title: "Exercice d'intrusion répété en famille, en jeu de rôle de jour avec les enfants : chacun sait où aller, qui appelle, qui allume et ferme"
     revalidate_days: 365
   - id: defense.tir_sportif
     level: 7
@@ -87,12 +88,20 @@ objectives:
   - id: defense.mise_en_situation
     level: 9
     kind: skill
-    title: "Mise en situation réaliste sous stress, encadrée (plastrons, plusieurs agresseurs, au sol), avec débriefing sur ce que la loi aurait permis"
+    title: "Mise en situation encadrée et consentie, à l'intensité choisie (arrêt possible à tout moment), avec débriefing sur ce que la loi aurait permis"
     revalidate_days: 365
-    excludes_tags: [mobilite_reduite]
+    excludes_tags: [mobilite_reduite, grossesse]
   - id: defense.mise_en_situation_adaptee
     level: 9
     kind: skill
-    requires_tags: [mobilite_reduite]
+    requires_tags: [mobilite_reduite, grossesse]
     title: "Mise en situation encadrée adaptée (agression simulée au domicile ou en fauteuil), avec débriefing juridique"
     revalidate_days: 365
+  - id: defense.violences
+    level: 2
+    title: "Numéros et recours contre les violences dans le foyer connus des adultes : 17 ou 112, SMS au 114, 3919, 119, « Masque 19 » en pharmacie"
+    why: Les violences au sein du foyer sont, de loin, le risque d'agression le plus fréquent.
+  - id: defense.voisinage
+    level: 7
+    title: Signal d'alerte convenu avec les voisins (appel, SMS groupé, sifflet) et entraide prévue en cas d'agression ou d'intrusion
+    why: Une intrusion vue et signalée par les voisins s'arrête souvent d'elle-même.

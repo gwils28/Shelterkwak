@@ -6,13 +6,13 @@ objectives:
     revalidate_days: 1095
   - id: securite.alertes
     level: 2
-    title: Recevoir les alertes officielles (FR-Alert activé, alertes de la préfecture)
+    title: Recevoir les alertes officielles (FR-Alert activé, Vigilance Météo-France, Vigicrues, alertes de la préfecture)
   - id: securite.plan_familial
     level: 3
     title: Plan familial d'urgence écrit (qui fait quoi, points de rendez-vous)
     revalidate_days: 365
   - id: securite.cles
-    level: 3
+    level: 2
     title: Doubles des clés et cache sûre pour les objets essentiels
   - id: securite.exercice
     excludes_tags: [mobilite_reduite]
@@ -26,7 +26,7 @@ objectives:
     title: Règle familiale de discrétion sur les réserves
   - id: securite.logement
     level: 5
-    title: Logement sécurisé (porte renforcée, serrures, éclairage extérieur)
+    title: Logement sécurisé sans gros travaux (serrure certifiée A2P, entrebâilleur, éclairage extérieur ou détecteur)
   - id: securite.incendie_ext
     due_month: 6
     level: 5
@@ -69,3 +69,14 @@ objectives:
     requires_tags: [enfants]
     title: Personnes autorisées à récupérer les enfants déclarées à l'école, et consignes du plan de mise en sûreté (PPMS) connues
     why: En alerte, l'école garde les enfants à l'abri ; aller les chercher expose tout le monde.
+  - id: securite.dechets
+    level: 4
+    title: Gestion des déchets si la collecte s'arrête (sacs résistants, bacs fermés, lieu de stockage à l'écart du logement)
+    why: En quelques jours sans collecte, les déchets attirent nuisibles et maladies.
+  - id: securite.pcs
+    level: 2
+    title: Plan communal de sauvegarde consulté (points de rassemblement, d'hébergement et de distribution d'eau de la commune)
+  - id: securite.porte_blindee
+    level: 6
+    required: false
+    title: Porte blindée ou bloc-porte certifié A2P (à voir avec le propriétaire pour un locataire)

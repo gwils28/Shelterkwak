@@ -5,7 +5,7 @@ objectives:
     title: Numéros d'écoute notés sur papier (3114 prévention du suicide, SOS Amitié)
     why: En crise longue, c'est souvent le moral qui cède avant les réserves.
   - id: moral.kit_occupation
-    level: 3
+    level: 4
     title: Kit sommeil et occupation sans écran pour chacun (bouchons d'oreille, masque, livres, jeux de cartes)
     why: Bien dormir et s'occuper sans électricité limite l'angoisse et les tensions.
   - id: moral.kit_enfant
@@ -21,9 +21,9 @@ objectives:
     requires_tags: [enfants]
     title: Explication des crises adaptée à l'âge des enfants, faite en famille, sans dramatiser
   - id: moral.stress
-    level: 5
+    level: 2
     kind: skill
-    title: Chaque adulte pratique une technique de gestion du stress (respiration, cohérence cardiaque)
+    title: Au moins un adulte connaît une technique simple de gestion du stress (respiration 4 s / 6 s, cohérence cardiaque) et l'a montrée au foyer
     revalidate_days: 365
   - id: moral.pssm
     level: 6
@@ -41,3 +41,7 @@ objectives:
     title: Après chaque exercice ou incident, un débriefing émotionnel avec tout le foyer
     why: On ressort plus fort d'un choc qu'on a mis en mots, pas d'un choc qu'on a enfoui.
     revalidate_days: 365
+  - id: moral.reperer
+    level: 5
+    title: Savoir repérer l'épuisement et le choc psychologique chez soi et ses proches, et vers qui se tourner (médecin, 3114, cellule d'urgence médico-psychologique)
+    why: Après plusieurs jours de crise, l'épuisement passe inaperçu ; le repérer tôt évite qu'il dure.

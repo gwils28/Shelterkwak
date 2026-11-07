@@ -30,6 +30,7 @@ objectives:
     kind: stock
     title: Combustible de cuisson pour 90 jours
     stock: {category: cuisson, min_days: 90}
+    contexts: [periurbain, rural]
   - id: energie.bilan_wh
     level: 4
     title: Besoins électriques prioritaires chiffrés en Wh par jour
@@ -78,7 +79,20 @@ objectives:
     revalidate_days: 730
   - id: energie.ramonage
     due_month: 10
-    level: 7
-    contexts: [periurbain, rural]
+    level: 2
     title: Conduits de cheminée ou de poêle ramonés avant la saison de chauffe (certificat de l'année)
     why: Obligatoire, il évite le feu de cheminée et l'intoxication au CO, et conditionne l'assurance.
+    requires_tags: [chauffage_bois]
+  - id: energie.bois_hiver
+    level: 4
+    due_month: 11
+    requires_tags: [chauffage_bois]
+    title: Un hiver de bois sec rentré avant novembre (moins de 20 % d'humidité)
+    why: Un foyer qui se chauffe au bois dépend de sa réserve dès le premier hiver ; les deux hivers d'avance viennent au niveau 7.
+  - id: energie.cuisson_30j
+    level: 5
+    kind: stock
+    contexts: [appartement]
+    title: Combustible de cuisson pour 30 jours, en petite quantité et stocké en sécurité (cartouches à l'abri de la chaleur, hors cave, pièce aérée)
+    why: En immeuble, des dizaines de cartouches de gaz sont un risque d'incendie ; la cuisson sobre fait durer la réserve.
+    stock: {category: cuisson, min_days: 30}

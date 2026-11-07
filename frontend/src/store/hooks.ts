@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { CATALOG } from "../engine/catalog";
 import { memberOf } from "../engine/engine";
-import { localToday } from "../engine/dates";
+import { addDays, localToday } from "../engine/dates";
 import type { Answer } from "../engine/interview";
 import { applyAnswers } from "../engine/interview";
 import { evaluateState, type HouseholdData, replay, type StockData } from "../engine/replay";
@@ -99,9 +99,13 @@ export function buildOnboarding(
     validations: [...result.validates]
       .sort()
       .map((objective_id) => ({ objective_id, validated_at: today, note: "", source: "interview" })),
-    stock: result.stock.map((s) => ({ ...s, id: newId(), expires_on: null })),
+    // Une estimation déclarée n'est pas un stock vérifié : elle périme au bout de 6 mois, ce qui
+    // invite à la confirmer ou à la détailler dans les Réserves.
+    stock: result.stock.map((s) => ({ ...s, id: newId(), expires_on: addDays(today, INTERVIEW_STOCK_DAYS) })),
   };
 }
+
+export const INTERVIEW_STOCK_DAYS = 180;
 
 /** Aperçu du tableau de bord qu'aurait le foyer après l'interview, sans rien enregistrer. */
 export function previewOnboarding(payload: OnboardingPayload, today: string = localToday()) {

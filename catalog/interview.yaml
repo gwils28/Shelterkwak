@@ -60,6 +60,25 @@ questions:
       - {value: bas, label: Rez-de-chaussée ou premier étage}
       - {value: haut, label: Deuxième étage ou plus, tags: [etage]}
 
+  - id: chauffage
+    section: Ton environnement
+    type: single
+    text: Comment ton logement est-il chauffé principalement ?
+    help: Un chauffage au bois impose le ramonage dès maintenant et une réserve de bois sec.
+    options:
+      - {value: reseau, label: "Gaz de ville, électricité ou chauffage collectif"}
+      - {value: bois, label: "Poêle, cheminée ou chaudière à bois", tags: [chauffage_bois]}
+      - {value: combustible, label: "Fioul ou gaz en citerne", tags: [chauffage_combustible]}
+
+  - id: eau_quotidienne
+    section: Ton environnement
+    type: single
+    show_if: {context_in: [periurbain, rural]}
+    text: Quelle eau bois-tu au quotidien ?
+    options:
+      - {value: reseau, label: L'eau du robinet (réseau public)}
+      - {value: puits, label: "L'eau d'un puits, d'un forage ou d'une source privée", tags: [puits]}
+
   - id: eau_litres
     section: Tes réserves
     type: number
@@ -80,7 +99,7 @@ questions:
     type: number
     text: Pendant combien de jours pourrais-tu cuisiner sans gaz ni électricité du réseau (réchaud, cartouches, bois) ?
     unit: jours
-    creates_stock: {category: cuisson, name: Combustible de cuisson (estimation de l'interview), unit_label: jour, amount_per_unit: 1}
+    creates_stock: {category: cuisson, name: Combustible de cuisson (estimation de l'interview), unit_label: jour foyer, amount_per_unit: household_day}
 
   - id: traitements_jours
     section: Tes réserves
@@ -88,7 +107,7 @@ questions:
     show_if: {tags_any: [traitement_medical]}
     text: Combien de jours de traitement médical as-tu d'avance ?
     unit: jours
-    creates_stock: {category: traitements, name: Traitements (estimation de l'interview), unit_label: jour, amount_per_unit: 1}
+    creates_stock: {category: traitements, name: Traitements (estimation de l'interview), unit_label: jour foyer, amount_per_unit: household_day}
 
   - id: bases
     section: Tes bases
@@ -156,6 +175,8 @@ questions:
       - {value: rotation, label: Rotation des stocks alimentaires, validates: [alimentation.rotation]}
       - {value: cles, label: Doubles des clés en lieu sûr, validates: [securite.cles]}
       - {value: ecoute, label: Numéros d'écoute notés, validates: [moral.ecoute]}
+      - {value: pcs, label: Plan communal de sauvegarde consulté, validates: [securite.pcs]}
+      - {value: stress, label: "Une technique de gestion du stress connue (respiration, cohérence cardiaque)", validates: [moral.stress]}
 
   - id: competences
     section: Tes compétences
@@ -164,9 +185,11 @@ questions:
     help: Répondre à cette question vaut bilan des compétences du foyer, même si tu ne coches rien.
     answered_validates: [competences.bilan]
     options:
-      - {value: psc1, label: Premiers secours (PSC1), validates: [sante.psc1]}
+      - {value: gestes, label: Formation « Gestes qui sauvent » (2 h), validates: [sante.gestes_qui_sauvent]}
+      - {value: psc1, label: Premiers secours (PSC1), validates: [sante.psc1, sante.gestes_qui_sauvent]}
       - {value: secourisme, label: "Secourisme avancé (PSE1, WFA)", validates: [sante.secourisme_avance]}
       - {value: feu, label: Faire un feu en sécurité, validates: [competences.feu]}
+      - {value: rechaud, label: "Utiliser un réchaud en sécurité (aération, jamais en pièce fermée)", validates: [competences.rechaud]}
       - {value: eau, label: Traiter une eau douteuse, validates: [eau.savoir_traiter]}
       - {value: conserves, label: "Conserves, fermentation ou séchage", validates: [alimentation.conservation]}
       - {value: potager, label: Cultiver un potager, validates: [alimentation.potager_savoir]}
@@ -181,7 +204,7 @@ questions:
     section: Ta défense
     type: single
     text: Le foyer détient-il des armes à feu (chasse ou tir sportif) ?
-    help: Sert seulement à te proposer les règles de détention ; rien ne sort de ton appareil.
+    help: "Sert seulement à te proposer les règles de détention. Comme tes autres réponses, elle est enregistrée sur tes appareils et sur ton serveur de synchronisation."
     options:
       - {value: non, label: Non}
       - {value: oui, label: Oui, tags: [armes]}
@@ -195,6 +218,7 @@ questions:
       - {value: fuir, label: "Règle du foyer : on fuit et on alerte d'abord", validates: [defense.fuir_alerter]}
       - {value: legitime, label: Les adultes connaissent les conditions de la légitime défense, validates: [defense.legitime_defense]}
       - {value: apres, label: "On sait quoi faire après une agression (17, certificat médical, plainte)", validates: [defense.apres_agression]}
+      - {value: violences, label: "Les adultes connaissent les recours contre les violences dans le foyer (3919, 119, SMS 114)", validates: [defense.violences]}
       - {value: intrusion, label: Plan intrusion au domicile avec pièce refuge, validates: [defense.intrusion]}
       - {value: initiation, label: Un adulte a suivi une initiation à la self-défense, validates: [defense.initiation, defense.initiation_adaptee]}
       - {value: pratique, label: Un adulte pratique un sport de combat en club depuis un an ou plus, validates: [defense.pratique, defense.pratique_adaptee]}

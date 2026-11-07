@@ -114,9 +114,19 @@ export function validationExpiry(obj: Objective, validatedAt: IsoDate): IsoDate 
   return null;
 }
 
+/** Tags apportés par les particularités d'un membre. */
+export function memberTags(catalog: Catalog, member: Member): Set<string> {
+  const byId = new Map(catalog.member_conditions.map((c) => [c.id, c.tags]));
+  return new Set(member.conditions.flatMap((c) => byId.get(c) ?? []));
+}
+
 export function dailyNeed(catalog: Catalog, categoryId: string, state: HouseholdState): number {
   const cat = catalog.categories.find((c) => c.id === categoryId)!;
   if (cat.applies_if && !householdTags(catalog, state).has(cat.applies_if)) return 0;
+  if (cat.per_member_tag !== null) {
+    const tag = cat.per_member_tag;
+    return state.members.filter((m) => memberTags(catalog, m).has(tag)).length;
+  }
   if (cat.per_household !== null) {
     return state.members.some((m) => !isAnimal(catalog, m.type)) ? cat.per_household : 0;
   }
