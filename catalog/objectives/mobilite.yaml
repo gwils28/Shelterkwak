@@ -17,6 +17,14 @@ objectives:
     level: 4
     required: false
     title: Vélo en état et kit de réparation
+  - id: mobilite.velo_pratique
+    excludes_tags: [mobilite_reduite, appareil_electrique]
+    level: 5
+    kind: skill
+    required: false
+    title: "Un adulte fait 20 km à vélo avec 10 kg en sacoches, casque porté, et sait réparer une crevaison"
+    why: Sans carburant ni transports, le vélo chargé reste le moyen le plus rapide de rejoindre un lieu d'accueil ou de ravitailler.
+    revalidate_days: 730
   - id: mobilite.accueil
     level: 4
     title: Lieu d'accueil convenu hors de la zone (famille, amis)

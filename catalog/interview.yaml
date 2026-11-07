@@ -126,6 +126,16 @@ questions:
       - {value: guide, label: J'ai lu un guide officiel de préparation, validates: [competences.guide]}
       - {value: proche, label: Un proche à moins de 30 min prévenu, validates: [communaute.proche_joignable]}
 
+  - id: crue
+    section: Tes bases
+    type: single
+    show_if: {tags_any: [risque_inondation]}
+    text: Tout le foyer sait-il qu'on ne traverse jamais une zone inondée, ni à pied ni en voiture ?
+    help: 30 cm d'eau suffisent à emporter une voiture.
+    options:
+      - {value: oui, label: Oui, validates: [securite.crue]}
+      - {value: non, label: Pas encore}
+
   - id: equipement
     section: Ton équipement
     type: multi
@@ -199,6 +209,11 @@ questions:
       - {value: desescalade, label: "Gestion de conflit, désescalade", validates: [securite.desescalade]}
       - {value: radio, label: Radioamateur, validates: [communication.licence]}
       - {value: condition, label: Marcher 15 km avec un sac, validates: [sante.condition]}
+      - {value: natation, label: Les adultes savent nager, validates: [sante.natation]}
+      - {value: natation_enfants, label: Les enfants ont appris ou apprennent à nager, validates: [sante.natation_enfants]}
+      - {value: force, label: "Se relever du sol, porter 2 × 10 L d'eau sur 100 m, monter 5 étages chargé", validates: [sante.force_fonctionnelle]}
+      - {value: bouger, label: "Bouger régulièrement (sport, marche, jardin, bois)", validates: [sante.activite_reguliere]}
+      - {value: velo, label: "Faire 20 km à vélo chargé et réparer une crevaison", validates: [mobilite.velo_pratique]}
 
   - id: armes
     section: Ta défense

@@ -11,6 +11,11 @@ objectives:
     level: 3
     title: Plan familial d'urgence écrit (qui fait quoi, points de rendez-vous)
     revalidate_days: 365
+  - id: securite.crue
+    level: 3
+    requires_tags: [risque_inondation]
+    title: "Règle connue de tout le foyer : ne jamais traverser une zone inondée, ni à pied ni en voiture"
+    why: "30 cm d'eau suffisent à emporter une voiture ; en crue, on meurt surtout sur la route ou en traversant une eau qui court, et savoir nager n'y change rien."
   - id: securite.cles
     level: 2
     title: Doubles des clés et cache sûre pour les objets essentiels
