@@ -3,11 +3,12 @@
 Écarts et choix pris pendant l'implémentation, par rapport à `SPEC.md`.
 
 ## Moteur
-- **Niveau 1 sans prérequis** : les objectifs commencent au niveau 2 ; un foyer qui ne valide
-  rien est « Vulnérable » (1).
+- **Niveau 0 « Débutant »** : le niveau 1 a ses propres critères ; un foyer qui ne les valide
+  pas tous est au niveau 0 (socle sans tambour). `levels.yaml` décrit donc les niveaux 0 à 9,
+  mais seuls les niveaux 1 à 9 ont des objectifs et des tambours.
 - **Palier sans objectif applicable** : il est considéré comme validé (par ex. certains
   objectifs de niveau 8 ne concernent pas un appartement). Chaque contexte garde au moins un
-  objectif requis par palier (`test_every_context_can_reach_level_8_with_objectives`).
+  objectif requis par palier (`test_every_context_can_reach_top_level_with_objectives`).
 - **Fissure** : la spec parlait d'une validation expirée sur un tambour bâti, ce qui ne peut
   pas arriver avec des paliers bloquants (le tambour tomberait). La fissure signale donc ce
   qui *va* faire tomber le tambour : validation ou stock qui expire sous 30 jours, ou bonus
@@ -48,3 +49,13 @@
 ## Hors v1 / pistes
 Notifications de revalidation, interview conversationnelle (LLM local), multi-foyers, backend Rust,
 déploiement sur Raspberry Pi.
+
+## Conseil du 2026-11-06 (voir `docs/conseil/2026-11-06.md`)
+- **Sursis** : `GRACE_DAYS = 30` dans les deux moteurs. Une validation expirée passe en `grace`
+  (compte encore, fissure le tambour) puis en `expired`. Les stocks ne bénéficient pas du sursis.
+- **Saisons** : `due_month` est exclusif de `revalidate_days` (vérifié au chargement du catalogue).
+- **Animaux** : un membre est un animal si `member_tags[type] == "animaux"` (`Catalog.is_animal`,
+  `isAnimal`). Le type `animal` existant est gardé (« Autre animal ») car il est stocké.
+- **Consommer** : le bouton −1 de l'inventaire émet un `stock.upsert` ordinaire, sans nouveau type
+  d'opération.
+- **Meilleur niveau atteint** : calculé côté app à partir de l'historique rejoué, non stocké.
