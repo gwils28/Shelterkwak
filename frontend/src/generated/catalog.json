@@ -2179,6 +2179,29 @@
    "custom": false
   },
   {
+   "id": "securite.crue",
+   "axis": "securite",
+   "level": 3,
+   "title": "Règle connue de tout le foyer : ne jamais traverser une zone inondée, ni à pied ni en voiture",
+   "description": "",
+   "why": "30 cm d'eau suffisent à emporter une voiture ; en crue, on meurt surtout sur la route ou en traversant une eau qui court, et savoir nager n'y change rien.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_inondation"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "communication.radio",
    "axis": "communication",
    "level": 3,
@@ -3665,6 +3688,100 @@
    "custom": false
   },
   {
+   "id": "sante.natation",
+   "axis": "sante",
+   "level": 5,
+   "title": "Les adultes valides savent nager (attestation du savoir-nager en sécurité ou équivalent constaté)",
+   "description": "",
+   "why": "La noyade est la première cause de mort accidentelle des moins de 25 ans en France ; savoir nager protège au quotidien, mais en crue on n'entre jamais dans l'eau.",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [
+    "mobilite_reduite",
+    "appareil_electrique"
+   ],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.natation_enfants",
+   "axis": "sante",
+   "level": 5,
+   "title": "Les enfants ont appris à nager ou sont en cours d'apprentissage",
+   "description": "",
+   "why": "L'attestation du savoir-nager se passe vers 9-11 ans ; commencer tôt, sans pression, c'est la meilleure protection.",
+   "kind": "skill",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "enfants"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.force_fonctionnelle",
+   "axis": "sante",
+   "level": 5,
+   "title": "Les adultes valides se relèvent du sol sans appui, portent 2 × 10 L d'eau sur 100 m (une charge par main) et montent 5 étages à leur rythme avec le sac d'évacuation",
+   "description": "",
+   "why": "Quand l'ascenseur et le surpresseur s'arrêtent, on monte l'eau à pied. Faire le test avec quelqu'un à côté, progresser par étapes et demander l'avis du médecin après une longue période sans activité ou en cas d'antécédent cardiaque ou de mal de dos.",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [
+    "mobilite_reduite",
+    "appareil_electrique",
+    "grossesse",
+    "respiratoire"
+   ],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.activite_reguliere",
+   "axis": "sante",
+   "level": 5,
+   "title": "Chaque membre bouge régulièrement, selon ses capacités (sport, marche, potager, bois, vélo utilitaire)",
+   "description": "",
+   "why": "Repères de l'OMS : 150 minutes d'activité modérée par semaine et du renforcement deux jours par semaine pour les adultes, de l'équilibre pour les seniors, une heure par jour pour les enfants. Bouger protège aussi du stress et de l'isolement.",
+   "kind": "skill",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "sante.lunettes_reserve",
    "axis": "sante",
    "level": 5,
@@ -3856,6 +3973,30 @@
    "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "mobilite.velo_pratique",
+   "axis": "mobilite",
+   "level": 5,
+   "title": "Un adulte fait 20 km à vélo avec 10 kg en sacoches, casque porté, et sait réparer une crevaison",
+   "description": "",
+   "why": "Sans carburant ni transports, le vélo chargé reste le moyen le plus rapide de rejoindre un lieu d'accueil ou de ravitailler.",
+   "kind": "skill",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [
+    "mobilite_reduite",
+    "appareil_electrique"
+   ],
+   "revalidate_days": 730,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -4289,7 +4430,9 @@
    "requires_tags": [],
    "excludes_tags": [
     "mobilite_reduite",
-    "appareil_electrique"
+    "appareil_electrique",
+    "grossesse",
+    "respiratoire"
    ],
    "revalidate_days": 365,
    "due_month": null,
@@ -4377,7 +4520,9 @@
    ],
    "requires_tags": [
     "mobilite_reduite",
-    "appareil_electrique"
+    "appareil_electrique",
+    "grossesse",
+    "respiratoire"
    ],
    "excludes_tags": [],
    "revalidate_days": 365,
@@ -6398,6 +6543,43 @@
    "answered_validates": []
   },
   {
+   "id": "crue",
+   "section": "Tes bases",
+   "type": "single",
+   "text": "Tout le foyer sait-il qu'on ne traverse jamais une zone inondée, ni à pied ni en voiture ?",
+   "help": "30 cm d'eau suffisent à emporter une voiture.",
+   "unit": "",
+   "show_if": {
+    "context_in": null,
+    "tags_any": [
+     "risque_inondation"
+    ],
+    "answer": null
+   },
+   "options": [
+    {
+     "value": "oui",
+     "label": "Oui",
+     "validates": [
+      "securite.crue"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "non",
+     "label": "Pas encore",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
    "id": "equipement",
    "section": "Ton équipement",
    "type": "multi",
@@ -6920,6 +7102,51 @@
      "label": "Marcher 15 km avec un sac",
      "validates": [
       "sante.condition"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "natation",
+     "label": "Les adultes savent nager",
+     "validates": [
+      "sante.natation"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "natation_enfants",
+     "label": "Les enfants ont appris ou apprennent à nager",
+     "validates": [
+      "sante.natation_enfants"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "force",
+     "label": "Se relever du sol, porter 2 × 10 L d'eau sur 100 m, monter 5 étages chargé",
+     "validates": [
+      "sante.force_fonctionnelle"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "bouger",
+     "label": "Bouger régulièrement (sport, marche, jardin, bois)",
+     "validates": [
+      "sante.activite_reguliere"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "velo",
+     "label": "Faire 20 km à vélo chargé et réparer une crevaison",
+     "validates": [
+      "mobilite.velo_pratique"
      ],
      "tags": [],
      "sets": {}

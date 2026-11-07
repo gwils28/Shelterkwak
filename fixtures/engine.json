@@ -473,9 +473,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 18,
+      "required_total": 20,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 7,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -1041,6 +1041,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "securite.crue": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.radio": {
       "status": "done",
       "progress": 1.0,
@@ -1449,6 +1455,30 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.natation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.natation_enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.force_fonctionnelle": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.activite_reguliere": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.lunettes_reserve": {
       "status": "na",
       "progress": 0.0,
@@ -1498,6 +1528,12 @@
       "expires_on": null
      },
      "communication.sources": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "mobilite.velo_pratique": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -2612,9 +2648,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 18,
+      "required_total": 20,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 7,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -3180,6 +3216,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "securite.crue": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.radio": {
       "status": "expired",
       "progress": 0.0,
@@ -3588,6 +3630,30 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.natation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.natation_enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.force_fonctionnelle": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.activite_reguliere": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.lunettes_reserve": {
       "status": "na",
       "progress": 0.0,
@@ -3637,6 +3703,12 @@
       "expires_on": null
      },
      "communication.sources": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "mobilite.velo_pratique": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -4963,9 +5035,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 19,
+      "required_total": 21,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 7,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -5531,6 +5603,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "securite.crue": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.radio": {
       "status": "done",
       "progress": 1.0,
@@ -5939,6 +6017,30 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.natation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.natation_enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.force_fonctionnelle": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.activite_reguliere": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.lunettes_reserve": {
       "status": "na",
       "progress": 0.0,
@@ -5988,6 +6090,12 @@
       "expires_on": null
      },
      "communication.sources": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "mobilite.velo_pratique": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -7185,9 +7293,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 18,
+      "required_total": 20,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 7,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -7753,6 +7861,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "securite.crue": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.radio": {
       "status": "done",
       "progress": 1.0,
@@ -8161,6 +8275,30 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.natation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.natation_enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.force_fonctionnelle": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.activite_reguliere": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.lunettes_reserve": {
       "status": "na",
       "progress": 0.0,
@@ -8210,6 +8348,12 @@
       "expires_on": null
      },
      "communication.sources": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "mobilite.velo_pratique": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -9430,9 +9574,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 18,
+      "required_total": 20,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 7,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -9998,6 +10142,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "securite.crue": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.radio": {
       "status": "done",
       "progress": 1.0,
@@ -10406,6 +10556,30 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.natation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.natation_enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.force_fonctionnelle": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.activite_reguliere": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.lunettes_reserve": {
       "status": "na",
       "progress": 0.0,
@@ -10455,6 +10629,12 @@
       "expires_on": null
      },
      "communication.sources": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "mobilite.velo_pratique": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -11623,9 +11803,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 18,
+      "required_total": 20,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 7,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -12191,6 +12371,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "securite.crue": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.radio": {
       "status": "done",
       "progress": 1.0,
@@ -12599,6 +12785,30 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.natation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.natation_enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.force_fonctionnelle": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.activite_reguliere": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.lunettes_reserve": {
       "status": "na",
       "progress": 0.0,
@@ -12648,6 +12858,12 @@
       "expires_on": null
      },
      "communication.sources": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "mobilite.velo_pratique": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -13819,7 +14035,7 @@
       "state": "future",
       "required_total": 19,
       "required_done": 0,
-      "optional_total": 5,
+      "optional_total": 6,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -14385,6 +14601,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "securite.crue": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.radio": {
       "status": "grace",
       "progress": 1.0,
@@ -14793,6 +15015,30 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.natation": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.natation_enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.force_fonctionnelle": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.activite_reguliere": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.lunettes_reserve": {
       "status": "na",
       "progress": 0.0,
@@ -14843,6 +15089,12 @@
      },
      "communication.sources": {
       "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "mobilite.velo_pratique": {
+      "status": "na",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -16200,12 +16452,12 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 22,
+      "required_total": 24,
       "required_done": 1,
-      "optional_total": 5,
+      "optional_total": 8,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.045454545454545456
+      "progress": 0.041666666666666664
      },
      {
       "n": 6,
@@ -16768,6 +17020,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "securite.crue": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "communication.radio": {
       "status": "todo",
       "progress": 0.0,
@@ -17176,6 +17434,30 @@
       "validated_at": null,
       "expires_on": null
      },
+     "sante.natation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.natation_enfants": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.force_fonctionnelle": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "sante.activite_reguliere": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "sante.lunettes_reserve": {
       "status": "todo",
       "progress": 0.0,
@@ -17225,6 +17507,12 @@
       "expires_on": null
      },
      "communication.sources": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "mobilite.velo_pratique": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,

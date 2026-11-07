@@ -49,10 +49,37 @@ objectives:
     title: Pharmacie étendue (antalgiques, antidiarrhéiques, désinfectants, sutures adhésives)
     revalidate_days: 365
   - id: sante.condition
-    excludes_tags: [mobilite_reduite, appareil_electrique]
+    excludes_tags: [mobilite_reduite, appareil_electrique, grossesse, respiratoire]
     level: 6
     kind: skill
     title: Condition physique - les adultes valides marchent 15 km avec un sac de 10 kg
+    revalidate_days: 365
+  - id: sante.natation
+    excludes_tags: [mobilite_reduite, appareil_electrique]
+    level: 5
+    kind: skill
+    title: Les adultes valides savent nager (attestation du savoir-nager en sécurité ou équivalent constaté)
+    why: "La noyade est la première cause de mort accidentelle des moins de 25 ans en France ; savoir nager protège au quotidien, mais en crue on n'entre jamais dans l'eau."
+  - id: sante.natation_enfants
+    level: 5
+    kind: skill
+    required: false
+    requires_tags: [enfants]
+    title: Les enfants ont appris à nager ou sont en cours d'apprentissage
+    why: L'attestation du savoir-nager se passe vers 9-11 ans ; commencer tôt, sans pression, c'est la meilleure protection.
+  - id: sante.force_fonctionnelle
+    excludes_tags: [mobilite_reduite, appareil_electrique, grossesse, respiratoire]
+    level: 5
+    kind: skill
+    title: "Les adultes valides se relèvent du sol sans appui, portent 2 × 10 L d'eau sur 100 m (une charge par main) et montent 5 étages à leur rythme avec le sac d'évacuation"
+    why: "Quand l'ascenseur et le surpresseur s'arrêtent, on monte l'eau à pied. Faire le test avec quelqu'un à côté, progresser par étapes et demander l'avis du médecin après une longue période sans activité ou en cas d'antécédent cardiaque ou de mal de dos."
+    revalidate_days: 365
+  - id: sante.activite_reguliere
+    level: 5
+    kind: skill
+    required: false
+    title: Chaque membre bouge régulièrement, selon ses capacités (sport, marche, potager, bois, vélo utilitaire)
+    why: "Repères de l'OMS : 150 minutes d'activité modérée par semaine et du renforcement deux jours par semaine pour les adultes, de l'équilibre pour les seniors, une heure par jour pour les enfants. Bouger protège aussi du stress et de l'isolement."
     revalidate_days: 365
   - id: sante.secourisme_avance
     level: 6
@@ -201,7 +228,7 @@ objectives:
   - id: sante.condition_adaptee
     level: 6
     kind: skill
-    requires_tags: [mobilite_reduite, appareil_electrique]
+    requires_tags: [mobilite_reduite, appareil_electrique, grossesse, respiratoire]
     title: Capacité physique entretenue selon l'avis du médecin (activité régulière, kiné), aide prévue pour les longs déplacements
     revalidate_days: 365
   - id: sante.fosse_relevage
