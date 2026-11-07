@@ -41,6 +41,7 @@ export interface HouseholdData {
   priority_axes: string[];
   goal_level: number | null;
   goal_horizon_months: number | null;
+  monument?: string; // forme du monument de progression (absent des opérations anciennes)
 }
 export interface ValidationData {
   objective_id: string;

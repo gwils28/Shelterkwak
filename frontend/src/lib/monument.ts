@@ -1,0 +1,158 @@
+// Monuments de progression : quatre silhouettes découpées en 9 paliers empilés.
+// Un palier acquis prend sa couleur, le palier en cours et les suivants restent gris.
+
+import { MAX_LEVEL } from "../engine/types";
+
+export type MonumentStyle = "colonne" | "pyramide" | "arbre" | "azteque" | "eiffel" | "liberte" | "glace" | "djenne" | "moai" | "pagode" | "bouddha" | "fusee" | "tornade" | "tamu";
+
+export const MONUMENTS: { id: MonumentStyle; name: string; hint: string }[] = [
+  { id: "colonne", name: "Colonne romaine", hint: "Tambour après tambour, jusqu'au chapiteau doré." },
+  { id: "pyramide", name: "Pyramide d'Égypte", hint: "Assise après assise, jusqu'au pyramidion d'or." },
+  { id: "arbre", name: "Arbre", hint: "Des racines au feuillage, jusqu'aux fruits." },
+  { id: "azteque", name: "Pyramide aztèque", hint: "Terrasse après terrasse, jusqu'au temple." },
+  { id: "eiffel", name: "Tour Eiffel", hint: "Étage après étage, jusqu'au phare du sommet." },
+  { id: "liberte", name: "Statue de la Liberté", hint: "Du piédestal de granit à la flamme." },
+  { id: "glace", name: "Stalactites de glace", hint: "Goutte après goutte, jusqu'à l'aurore boréale." },
+  { id: "djenne", name: "Mosquée de Djenné (Mali)", hint: "Banco et bois de palmier, jusqu'aux œufs d'autruche." },
+  { id: "moai", name: "Moaï (île de Pâques)", hint: "De l'ahu de pierre au pukao rouge." },
+  { id: "pagode", name: "Pagode", hint: "Neuf toits relevés, jusqu'à la flèche dorée." },
+  { id: "bouddha", name: "Bouddha", hint: "Du trône de lotus au halo de lumière." },
+  { id: "fusee", name: "Fusée", hint: "Étage après étage, jusqu'au décollage." },
+  { id: "tornade", name: "Tornade", hint: "Du tourbillon au sol jusqu'à l'orage qui gronde." },
+  { id: "tamu", name: "Massif Tamu (volcan sous-marin)", hint: "Volcan bouclier géant, du plancher du Pacifique à la surface." },
+];
+
+export function monumentOf(value: unknown): MonumentStyle {
+  return MONUMENTS.some((m) => m.id === value) ? (value as MonumentStyle) : "colonne";
+}
+
+/** Mise en page commune : couronne en haut, 9 paliers de même hauteur, socle en bas. */
+export const LAYOUT = {
+  width: 260,
+  crown: 60,
+  tier: 50,
+  base: 34,
+  levels: MAX_LEVEL,
+} as const;
+
+export const CX = LAYOUT.width / 2;
+
+export function tierTop(n: number): number {
+  return LAYOUT.crown + (LAYOUT.levels - n) * LAYOUT.tier;
+}
+export function tierBottom(n: number): number {
+  return tierTop(n) + LAYOUT.tier;
+}
+export const GROUND = tierBottom(1);
+export const HEIGHT = GROUND + LAYOUT.base;
+
+// ---------- Couleurs ----------
+
+export interface Tone {
+  fill: string;
+  light: string;
+  dark: string;
+  ink: string; // couleur du chiffre romain posé dessus
+}
+
+function hex(c: string): [number, number, number] {
+  const v = parseInt(c.slice(1), 16);
+  return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+}
+function toHex([r, g, b]: [number, number, number]): string {
+  return `#${[r, g, b].map((x) => Math.round(Math.max(0, Math.min(255, x))).toString(16).padStart(2, "0")).join("")}`;
+}
+export function mix(a: string, b: string, t: number): string {
+  const [x, y] = [hex(a), hex(b)];
+  return toHex([x[0] + (y[0] - x[0]) * t, x[1] + (y[1] - x[1]) * t, x[2] + (y[2] - x[2]) * t]);
+}
+function luminance(c: string): number {
+  const [r, g, b] = hex(c);
+  return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+}
+export function tone(fill: string): Tone {
+  return {
+    fill,
+    light: mix(fill, "#ffffff", 0.38),
+    dark: mix(fill, "#000000", 0.32),
+    ink: luminance(fill) < 0.5 ? "#fdf8ec" : "#3b2f1f",
+  };
+}
+
+/** Rampe de couleurs : plusieurs jalons, interpolés sur les 9 paliers. */
+function ramp(stops: string[], n: number): string {
+  const t = ((n - 1) / (LAYOUT.levels - 1)) * (stops.length - 1);
+  const i = Math.min(Math.floor(t), stops.length - 2);
+  return mix(stops[i], stops[i + 1], t - i);
+}
+
+const RAMPS: Record<MonumentStyle, string[]> = {
+  // marbres antiques : rouge porphyre, ocre, jaune antique, jusqu'à l'or
+  colonne: ["#a4503c", "#c47a45", "#d6a64e", "#e2c463"],
+  // grès des assises basses au calcaire clair du sommet
+  pyramide: ["#a8682f", "#c98d45", "#ddb35f", "#efd28a"],
+  // vert profond des premières branches au vert tendre de la cime
+  arbre: ["#2f6b3a", "#3f8a43", "#62a845", "#9cc94f"],
+  // terre rouge, ocre, puis jade et turquoise vers le temple
+  azteque: ["#9c3d2a", "#c0703a", "#c9a046", "#3f9a7f", "#2a8c9d"],
+  // fer puddlé « brun Tour Eiffel », éclairci vers le doré du sommet
+  eiffel: ["#5a3b24", "#7d5532", "#a8743a", "#d4a046"],
+  // cuivre patiné : du vert-de-gris sombre au turquoise clair
+  liberte: ["#2c6f62", "#3f8f7f", "#5aab98", "#86cdb7"],
+  // glace : du bleu profond des pointes au blanc givré du rebord
+  glace: ["#24557f", "#2f78a8", "#4fa3cf", "#8fd0ea", "#d8f2fb"],
+  // banco : de la terre rouge au sable doré
+  djenne: ["#8a4b2c", "#a8613a", "#c27e48", "#dcaa66"],
+  // basalte de l'ahu puis tuf volcanique ocre
+  moai: ["#4f4842", "#76624f", "#9d7a55", "#c49c63"],
+  // laque rouge sombre jusqu'à l'ocre doré
+  pagode: ["#7d2620", "#a8352a", "#c4612f", "#d9a03c"],
+  // bronze patiné jusqu'à l'or
+  bouddha: ["#6b4a2a", "#8f6a35", "#b78f3e", "#e3c158"],
+  // du rouge des propulseurs au bleu du ciel
+  fusee: ["#b3392f", "#d9732f", "#e8b23a", "#cfd6de", "#4f8fc0", "#2f5f9e"],
+  // ciel d'orage : gris ardoise, bleu nuit, violet, jusqu'au cyan électrique
+  tornade: ["#3e4a5c", "#4f6a91", "#6a5aa8", "#3aa6c9"],
+  // basalte des coulées profondes, oxydé en rouge, jusqu'aux sédiments ocre du sommet
+  tamu: ["#2e2a3a", "#47354a", "#6b3f45", "#94523f", "#b8763f", "#d6a65c"],
+};
+
+const GRANITE = ["#6f6a63", "#8a847a", "#a39c90"];
+
+const BARK = ["#5e3f26", "#6e4a2c", "#7d5633"];
+
+export function builtTone(style: MonumentStyle, n: number): Tone {
+  if (style === "arbre" && n <= 3) return tone(BARK[n - 1]);
+  if (style === "liberte" && n <= 3) return tone(GRANITE[n - 1]);
+  if (style === "liberte") return tone(ramp(RAMPS.liberte, ((n - 4) / 5) * 8 + 1));
+  if (style === "arbre") return tone(ramp(RAMPS.arbre, ((n - 4) / 5) * 8 + 1));
+  return tone(ramp(RAMPS[style], n));
+}
+
+/** Gris : palier en cours (plus soutenu) ou à venir (pâle). Variables CSS pour suivre le thème. */
+export const GREY: Record<"current" | "future", Tone> = {
+  current: { fill: "var(--tier-grey)", light: "var(--tier-grey-light)", dark: "var(--tier-grey-dark)", ink: "var(--tier-grey-ink)" },
+  future: { fill: "var(--tier-ghost)", light: "var(--tier-ghost-light)", dark: "var(--tier-ghost-dark)", ink: "var(--tier-ghost-ink)" },
+};
+
+/** Petit générateur déterministe pour les textures (joints, feuilles, fruits). */
+export function seeded(seed: number): () => number {
+  let s = seed % 2147483647 || 1;
+  return () => {
+    s = (s * 16807) % 2147483647;
+    return (s - 1) / 2147483646;
+  };
+}
+
+/** Zigzag de fissure au milieu d'un palier. */
+export function crackPath(n: number, x0: number): string {
+  const top = tierTop(n);
+  const steps = 6;
+  const pts: string[] = [];
+  for (let i = 0; i <= steps; i++) {
+    const y = top + 4 + ((LAYOUT.tier - 8) * i) / steps;
+    const x = x0 + (i % 2 === 0 ? -1 : 1) * (3 + ((n * 7 + i * 3) % 4));
+    pts.push(`${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`);
+  }
+  return pts.join(" ");
+}
