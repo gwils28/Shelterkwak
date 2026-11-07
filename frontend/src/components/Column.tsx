@@ -1,8 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { Tier } from "../model";
 import { LevelInfoText } from "./LevelInfo";
+import { CLASSIC, type Renderer } from "./monuments";
+import { MORE } from "./monuments-more";
+import { WORLD } from "./monuments-world";
 import { MAX_LEVEL } from "../engine/types";
-import { COLUMN, columnHeight, crackPath, drumGeometry } from "../lib/column";
+import { builtTone, GREY, HEIGHT, LAYOUT, type MonumentStyle, MONUMENTS, crackPath, tierBottom, tierTop } from "../lib/monument";
+
+const RENDERERS: Record<MonumentStyle, Renderer> = { ...CLASSIC, ...WORLD, ...MORE };
 
 interface Props {
   tiers: Tier[];
@@ -10,20 +15,21 @@ interface Props {
   goalLevel?: number | null;
   onSelect?: (n: number) => void;
   compact?: boolean;
+  monument?: MonumentStyle;
 }
 
-/** Colonne romaine : socle, 9 tambours (bâtis, en chantier, à venir), chapiteau doré au dernier niveau. */
-export function Column({ tiers, level, goalLevel, onSelect, compact }: Props) {
-  const H = columnHeight();
-  const W = COLUMN.width;
+/** Monument de résilience : 9 paliers empilés. Acquis en couleur, en cours et à venir en gris. */
+export function Column({ tiers, level, goalLevel, onSelect, compact, monument = "colonne" }: Props) {
+  const r = RENDERERS[monument];
+  const W = LAYOUT.width;
   const labelX = W + 8;
-  const top = drumGeometry(MAX_LEVEL);
-  const bottom = drumGeometry(1);
-  const capitalBuilt = level >= MAX_LEVEL;
+  const uid = `m${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
+  const crownBuilt = level >= MAX_LEVEL;
   const [info, setInfo] = useState<number | null>(null);
   const wrap = useRef<HTMLDivElement>(null);
   const infoTier = tiers.find((t) => t.n === info);
   const toggleInfo = (n: number) => setInfo((cur) => (cur === n ? null : n));
+  const name = MONUMENTS.find((m) => m.id === monument)?.name ?? "Monument";
 
   useEffect(() => {
     if (info === null) return;
@@ -42,40 +48,29 @@ export function Column({ tiers, level, goalLevel, onSelect, compact }: Props) {
   return (
     <div className="column-wrap" ref={wrap}>
       <svg
-        className="column-svg"
-        viewBox={`0 0 ${compact ? W : W + 170} ${H}`}
+        className={`column-svg monument-${monument}`}
+        viewBox={`0 0 ${compact ? W : W + 170} ${HEIGHT}`}
         role="img"
-        aria-label={`Colonne de résilience : niveau ${level} sur ${MAX_LEVEL}`}
+        aria-label={`${name} : niveau ${level} sur ${MAX_LEVEL}`}
       >
         <defs>
-          <linearGradient id="stone" x1="0" x2="1">
-            <stop offset="0" stopColor="var(--stone-dark)" />
-            <stop offset="0.35" stopColor="var(--stone-light)" />
-            <stop offset="0.7" stopColor="var(--stone)" />
-            <stop offset="1" stopColor="var(--stone-dark)" />
-          </linearGradient>
-          <linearGradient id="gold" x1="0" x2="1">
-            <stop offset="0" stopColor="var(--gold-dark)" />
-            <stop offset="0.45" stopColor="var(--gold-light)" />
-            <stop offset="1" stopColor="var(--gold-dark)" />
-          </linearGradient>
+          {r.defs?.(uid)}
+          {tiers.map((t) => {
+            const top = r.bandTop?.(t.n) ?? tierTop(t.n);
+            return (
+              <clipPath key={t.n} id={`${uid}-band-${t.n}`}>
+                <rect x={-20} y={top} width={W + 40} height={tierBottom(t.n) - top} />
+              </clipPath>
+            );
+          })}
         </defs>
-
-        {/* Chapiteau */}
-        <g className={capitalBuilt ? "capital built" : "capital"}>
-          <rect x={top.x - 18} y={6} width={top.width + 36} height={12} rx={3} fill={capitalBuilt ? "url(#gold)" : "none"} />
-          <path
-            d={`M${top.x - 6},${COLUMN.capitalHeight} L${top.x + top.width + 6},${COLUMN.capitalHeight} L${top.x + top.width + 14},18 L${top.x - 14},18 Z`}
-            fill={capitalBuilt ? "url(#gold)" : "none"}
-          />
-          <circle cx={top.x - 10} cy={28} r={9} fill={capitalBuilt ? "url(#gold)" : "none"} />
-          <circle cx={top.x + top.width + 10} cy={28} r={9} fill={capitalBuilt ? "url(#gold)" : "none"} />
-        </g>
+        {r.base(uid)}
 
         {tiers.map((t) => {
-          const d = drumGeometry(t.n);
-          const fillH = t.state === "built" ? d.height : t.state === "current" ? d.height * t.progress : 0;
-          const clipId = `clip-${t.n}`;
+          const built = t.state === "built";
+          const tn = built ? builtTone(monument, t.n) : t.state === "current" ? GREY.current : GREY.future;
+          const top = tierTop(t.n);
+          const mid = top + LAYOUT.tier / 2;
           const isGoal = goalLevel === t.n;
           return (
             <g
@@ -89,28 +84,19 @@ export function Column({ tiers, level, goalLevel, onSelect, compact }: Props) {
                 {`Niveau ${t.n} · ${t.name} — ${t.required_done}/${t.required_total} objectifs requis`}
                 {t.cracked ? " — des validations expirent bientôt" : ""}
               </title>
-              <clipPath id={clipId}>
-                <rect x={d.x} y={d.y + d.height - fillH} width={d.width} height={fillH} />
-              </clipPath>
-              <rect className="drum-outline" x={d.x} y={d.y + 1} width={d.width} height={d.height - 2} rx={3} />
-              <rect
-                className="drum-fill"
-                x={d.x}
-                y={d.y + 1}
-                width={d.width}
-                height={d.height - 2}
-                rx={3}
-                clipPath={`url(#${clipId})`}
-                fill="url(#stone)"
-              />
-              {/* Cannelures */}
-              {[0.2, 0.35, 0.5, 0.65, 0.8].map((f) => (
-                <line key={f} className="flute" x1={d.x + d.width * f} x2={d.x + d.width * f} y1={d.y + 5} y2={d.y + d.height - 5} />
-              ))}
-              {t.cracked && <path className="crack" d={crackPath(d)} />}
-              <text className="drum-number" x={d.x + d.width / 2} y={d.y + d.height / 2 + 6} textAnchor="middle">
+              <g clipPath={`url(#${uid}-band-${t.n})`}>{r.tier(t.n, tn, built, uid)}</g>
+              {t.cracked && <path className="crack" d={crackPath(t.n, r.crackX(t.n))} />}
+              <text
+                className="drum-number"
+                x={LAYOUT.width / 2}
+                y={mid + 5}
+                textAnchor="middle"
+                fill={r.numeralOnPanel ? (built ? "var(--ink)" : "var(--muted)") : tn.ink}
+                fontSize={monument === "pyramide" && t.n >= 8 ? 11 : 15}
+              >
                 {romanNumeral(t.n)}
               </text>
+              <rect className="tier-hit" x={0} y={top} width={W} height={LAYOUT.tier} />
               {!compact && (
                 <g className="drum-label">
                   <g
@@ -130,45 +116,46 @@ export function Column({ tiers, level, goalLevel, onSelect, compact }: Props) {
                       toggleInfo(t.n);
                     }}
                   >
-                    <circle cx={labelX + 7} cy={d.y + d.height / 2 - 7} r={7} />
-                    <text x={labelX + 7} y={d.y + d.height / 2 - 3} textAnchor="middle">
+                    <circle cx={labelX + 7} cy={mid - 7} r={7} />
+                    <text x={labelX + 7} y={mid - 3} textAnchor="middle">
                       i
                     </text>
                   </g>
-                  <text x={labelX + 20} y={d.y + d.height / 2 - 2}>
+                  {built && <circle className="built-dot" cx={labelX + 20} cy={mid - 6} r={4} fill={builtTone(monument, t.n).fill} />}
+                  <text x={labelX + (built ? 28 : 20)} y={mid - 2}>
                     {t.name}
                     {isGoal ? "  ◎" : ""}
                   </text>
-                  <text className="sub" x={labelX + 20} y={d.y + d.height / 2 + 14}>
-                    {t.state === "built"
+                  <text className="sub" x={labelX + 20} y={mid + 14}>
+                    {built
                       ? t.cracked
-                        ? "bâti · fissuré"
-                        : "bâti"
+                        ? "acquis · fissuré"
+                        : "acquis"
                       : t.required_total === 0
                         ? "rien d'applicable"
                         : `${t.required_done}/${t.required_total} · ${Math.round(t.progress * 100)} %`}
                   </text>
+                  {t.state === "current" && t.required_total > 0 && (
+                    <g className="tier-progress">
+                      <rect x={labelX + 20} y={mid + 19} width={120} height={4} rx={2} />
+                      <rect className="done" x={labelX + 20} y={mid + 19} width={120 * t.progress} height={4} rx={2} />
+                    </g>
+                  )}
                 </g>
               )}
             </g>
           );
         })}
 
-        {/* Socle */}
-        <rect className="plinth" x={bottom.x - 22} y={bottom.y + bottom.height + 2} width={bottom.width + 44} height={COLUMN.plinthHeight - 4} rx={2} fill="url(#stone)" />
+        {r.crown(crownBuilt, uid, GREY.future)}
       </svg>
       {infoTier && (
-        <div className="level-info-pop column-info-pop" role="note" style={{ top: `${(drumBottom(infoTier.n) / H) * 100}%` }}>
+        <div className="level-info-pop column-info-pop" role="note" style={{ top: `${(tierBottom(infoTier.n) / HEIGHT) * 100}%` }}>
           <LevelInfoText level={infoTier} />
         </div>
       )}
     </div>
   );
-}
-
-function drumBottom(n: number): number {
-  const d = drumGeometry(n);
-  return d.y + d.height;
 }
 
 export function romanNumeral(n: number): string {

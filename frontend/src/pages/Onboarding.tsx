@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import { Column, romanNumeral } from "../components/Column";
 import { LevelInfo } from "../components/LevelInfo";
 import { MembersEditor } from "../components/MembersEditor";
+import { MonumentPicker } from "../components/MonumentPicker";
+import type { MonumentStyle } from "../lib/monument";
 import { CATALOG } from "../engine/catalog";
 import { type Answer, questionOptions } from "../engine/interview";
 import { type ContextId, isAnimal, type Question } from "../engine/types";
@@ -21,6 +23,7 @@ export function OnboardingPage() {
   const catalog = CATALOG;
   const [step, setStep] = useState<Step>("foyer");
   const [name, setName] = useState("Mon foyer");
+  const [monument, setMonument] = useState<MonumentStyle>("colonne");
   const [members, setMembers] = useState<MemberIn[]>([{ name: "", type: "adulte", conditions: [], medical: false }]);
   const [context, setContext] = useState<ContextId>("appartement");
   const [target, setTarget] = useState<ContextId | "">("");
@@ -55,6 +58,7 @@ export function OnboardingPage() {
         target_context: target || null,
         target_date: target && targetDate ? targetDate : null,
         members: members.map((m) => ({ ...m, name: m.name.trim() })),
+        monument,
       },
       answers,
     );
@@ -70,7 +74,7 @@ export function OnboardingPage() {
         <h1>
           <span className="brand-mark">▥</span> Shelterkwak
         </h1>
-        <p>Bâtis la colonne de résilience de ton foyer, tambour après tambour.</p>
+        <p>Bâtis le monument de résilience de ton foyer, palier après palier.</p>
         <ol className="steps">
           {(["foyer", "contexte", "interview", "resultat"] as Step[]).map((s, i) => (
             <li key={s} className={s === step ? "active" : ""}>
@@ -89,6 +93,9 @@ export function OnboardingPage() {
             <input value={name} onChange={(e) => setName(e.target.value)} />
           </label>
           <MembersEditor members={members} onChange={setMembers} types={catalog.member_types} conditions={catalog.member_conditions} />
+          <h2>Ton monument</h2>
+          <p className="hint">Chaque palier acquis se colore ; ceux qui restent à bâtir sont gris. Modifiable ensuite dans l'onglet Foyer.</p>
+          <MonumentPicker value={monument} onChange={setMonument} />
           <div className="actions">
             <button className="primary" disabled={!membersOk} onClick={() => setStep("contexte")}>
               Continuer
@@ -175,7 +182,7 @@ export function OnboardingPage() {
         return (
         <section className="panel result">
           <div className="result-column">
-            <Column tiers={r.tiers} level={r.level} goalLevel={r.household.goal_level} />
+            <Column tiers={r.tiers} level={r.level} goalLevel={r.household.goal_level} monument={monument} />
           </div>
           <div>
             <div className="level-badge big">{romanNumeral(r.level)}</div>

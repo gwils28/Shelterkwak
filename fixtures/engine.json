@@ -106,6 +106,12 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.fuir_alerter",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.robinet_arret",
        "validated_at": "2026-11-02",
        "note": "",
@@ -191,6 +197,18 @@
       },
       {
        "objective_id": "moral.ecoute",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.legitime_defense",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.apres_agression",
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
@@ -379,8 +397,8 @@
      {
       "n": 1,
       "state": "built",
-      "required_total": 12,
-      "required_done": 12,
+      "required_total": 13,
+      "required_done": 13,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
@@ -389,8 +407,8 @@
      {
       "n": 2,
       "state": "built",
-      "required_total": 15,
-      "required_done": 15,
+      "required_total": 17,
+      "required_done": 17,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
@@ -399,17 +417,17 @@
      {
       "n": 3,
       "state": "current",
-      "required_total": 26,
+      "required_total": 27,
       "required_done": 25,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9615384615384616
+      "progress": 0.9259259259259259
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 21,
+      "required_total": 22,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -419,9 +437,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 15,
+      "required_total": 16,
       "required_done": 0,
-      "optional_total": 4,
+      "optional_total": 5,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -429,7 +447,7 @@
      {
       "n": 6,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -439,9 +457,9 @@
      {
       "n": 7,
       "state": "future",
-      "required_total": 9,
+      "required_total": 10,
       "required_done": 0,
-      "optional_total": 1,
+      "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -449,7 +467,7 @@
      {
       "n": 8,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -459,7 +477,7 @@
      {
       "n": 9,
       "state": "future",
-      "required_total": 12,
+      "required_total": 13,
       "required_done": 0,
       "optional_total": 1,
       "optional_done": 0,
@@ -479,7 +497,8 @@
      "competences": 3,
      "finances": 3,
      "communaute": 3,
-     "moral": 3
+     "moral": 3,
+     "defense": 2
     },
     "statuses": {
      "eau.stock_24h": {
@@ -579,6 +598,12 @@
       "expires_on": null
      },
      "communaute.proche_joignable": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.fuir_alerter": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
@@ -738,6 +763,24 @@
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.legitime_defense": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.apres_agression": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.armes_regle": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
       "expires_on": null
      },
      "eau.stock_3j": {
@@ -1000,6 +1043,12 @@
      },
      "moral.kit_enfant": {
       "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.intrusion": {
+      "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -1208,6 +1257,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_30j": {
       "status": "todo",
       "progress": 0.0375,
@@ -1370,6 +1431,24 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.initiation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.initiation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.aerosol": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "na",
       "progress": 0.0,
@@ -1508,6 +1587,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.pratique": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.pratique_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.source_autonome": {
       "status": "na",
       "progress": 0.0,
@@ -1628,6 +1719,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.tir_sportif": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.autonomie_annuelle": {
       "status": "na",
       "progress": 0.0,
@@ -1736,6 +1839,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.transmission": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.epreuve_7j": {
       "status": "todo",
       "progress": 0.0,
@@ -1819,6 +1928,18 @@
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "defense.mise_en_situation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
      }
     },
     "autonomy": {
@@ -1860,6 +1981,15 @@
       "stock_id": null,
       "axis": "eau",
       "level": 3
+     },
+     {
+      "kind": "blocking",
+      "title": "Plan intrusion au domicile : pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, éclairage, consigne de ne pas aller au contact",
+      "detail": "De nuit chez soi, la loi présume la légitime défense (art. 122-6), mais le plus sûr reste de s'enfermer et d'appeler.",
+      "objective_id": "defense.intrusion",
+      "stock_id": null,
+      "axis": "defense",
+      "level": 3
      }
     ]
    },
@@ -1875,7 +2005,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 49 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      }
     ]
@@ -1977,6 +2107,12 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.fuir_alerter",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.robinet_arret",
        "validated_at": "2026-11-02",
        "note": "",
@@ -2062,6 +2198,18 @@
       },
       {
        "objective_id": "moral.ecoute",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.legitime_defense",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.apres_agression",
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
@@ -2262,37 +2410,37 @@
      {
       "n": 1,
       "state": "current",
-      "required_total": 12,
-      "required_done": 11,
+      "required_total": 13,
+      "required_done": 12,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9166666666666666
+      "progress": 0.9230769230769231
      },
      {
       "n": 2,
       "state": "future",
-      "required_total": 15,
-      "required_done": 13,
+      "required_total": 17,
+      "required_done": 15,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.8666666666666667
+      "progress": 0.8823529411764706
      },
      {
       "n": 3,
       "state": "future",
-      "required_total": 26,
+      "required_total": 27,
       "required_done": 13,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.5
+      "progress": 0.48148148148148145
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 21,
+      "required_total": 22,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -2302,9 +2450,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 15,
+      "required_total": 16,
       "required_done": 0,
-      "optional_total": 4,
+      "optional_total": 5,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -2312,7 +2460,7 @@
      {
       "n": 6,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -2322,9 +2470,9 @@
      {
       "n": 7,
       "state": "future",
-      "required_total": 9,
+      "required_total": 10,
       "required_done": 0,
-      "optional_total": 1,
+      "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -2332,7 +2480,7 @@
      {
       "n": 8,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -2342,7 +2490,7 @@
      {
       "n": 9,
       "state": "future",
-      "required_total": 12,
+      "required_total": 13,
       "required_done": 0,
       "optional_total": 1,
       "optional_done": 0,
@@ -2362,7 +2510,8 @@
      "competences": 2,
      "finances": 2,
      "communaute": 3,
-     "moral": 3
+     "moral": 3,
+     "defense": 2
     },
     "statuses": {
      "eau.stock_24h": {
@@ -2462,6 +2611,12 @@
       "expires_on": null
      },
      "communaute.proche_joignable": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.fuir_alerter": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
@@ -2621,6 +2776,24 @@
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.legitime_defense": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.apres_agression": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.armes_regle": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
       "expires_on": null
      },
      "eau.stock_3j": {
@@ -2887,6 +3060,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_14j": {
       "status": "todo",
       "progress": 0.08035714285714286,
@@ -3091,6 +3270,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_30j": {
       "status": "todo",
       "progress": 0.0375,
@@ -3253,6 +3444,24 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.initiation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.initiation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.aerosol": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "na",
       "progress": 0.0,
@@ -3391,6 +3600,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.pratique": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.pratique_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.source_autonome": {
       "status": "na",
       "progress": 0.0,
@@ -3511,6 +3732,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.tir_sportif": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.autonomie_annuelle": {
       "status": "na",
       "progress": 0.0,
@@ -3619,6 +3852,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.transmission": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.epreuve_7j": {
       "status": "todo",
       "progress": 0.0,
@@ -3699,6 +3938,18 @@
      },
      "moral.debriefing": {
       "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation_adaptee": {
+      "status": "na",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -3898,7 +4149,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 49 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -4012,6 +4263,12 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.fuir_alerter",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.robinet_arret",
        "validated_at": "2026-11-02",
        "note": "",
@@ -4097,6 +4354,18 @@
       },
       {
        "objective_id": "moral.ecoute",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.legitime_defense",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.apres_agression",
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
@@ -4357,37 +4626,37 @@
      {
       "n": 1,
       "state": "current",
-      "required_total": 12,
-      "required_done": 11,
+      "required_total": 13,
+      "required_done": 12,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9166666666666666
+      "progress": 0.9230769230769231
      },
      {
       "n": 2,
       "state": "future",
-      "required_total": 16,
-      "required_done": 15,
+      "required_total": 18,
+      "required_done": 17,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9375
+      "progress": 0.9444444444444444
      },
      {
       "n": 3,
       "state": "future",
-      "required_total": 28,
+      "required_total": 29,
       "required_done": 25,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.8928571428571429
+      "progress": 0.8620689655172413
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 22,
+      "required_total": 23,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -4397,9 +4666,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 16,
+      "required_total": 17,
       "required_done": 0,
-      "optional_total": 4,
+      "optional_total": 5,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -4407,7 +4676,7 @@
      {
       "n": 6,
       "state": "future",
-      "required_total": 13,
+      "required_total": 14,
       "required_done": 0,
       "optional_total": 6,
       "optional_done": 0,
@@ -4417,9 +4686,9 @@
      {
       "n": 7,
       "state": "future",
-      "required_total": 17,
+      "required_total": 18,
       "required_done": 0,
-      "optional_total": 1,
+      "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -4427,7 +4696,7 @@
      {
       "n": 8,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -4437,7 +4706,7 @@
      {
       "n": 9,
       "state": "future",
-      "required_total": 12,
+      "required_total": 13,
       "required_done": 0,
       "optional_total": 1,
       "optional_done": 0,
@@ -4457,7 +4726,8 @@
      "competences": 3,
      "finances": 3,
      "communaute": 3,
-     "moral": 2
+     "moral": 2,
+     "defense": 2
     },
     "statuses": {
      "eau.stock_24h": {
@@ -4557,6 +4827,12 @@
       "expires_on": null
      },
      "communaute.proche_joignable": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.fuir_alerter": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
@@ -4716,6 +4992,24 @@
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.legitime_defense": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.apres_agression": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.armes_regle": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
       "expires_on": null
      },
      "eau.stock_3j": {
@@ -4982,6 +5276,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_14j": {
       "status": "todo",
       "progress": 0.0642857142857143,
@@ -5186,6 +5486,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_30j": {
       "status": "todo",
       "progress": 0.030000000000000002,
@@ -5348,6 +5660,24 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.initiation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.initiation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.aerosol": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "todo",
       "progress": 0.0,
@@ -5486,6 +5816,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.pratique": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.pratique_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.source_autonome": {
       "status": "todo",
       "progress": 0.0,
@@ -5606,6 +5948,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.tir_sportif": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.autonomie_annuelle": {
       "status": "todo",
       "progress": 0.0,
@@ -5714,6 +6068,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.transmission": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.epreuve_7j": {
       "status": "todo",
       "progress": 0.0,
@@ -5797,6 +6157,18 @@
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "defense.mise_en_situation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
      }
     },
     "autonomy": {
@@ -5876,7 +6248,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 49 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -5996,6 +6368,12 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.fuir_alerter",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.robinet_arret",
        "validated_at": "2026-11-02",
        "note": "",
@@ -6081,6 +6459,18 @@
       },
       {
        "objective_id": "moral.ecoute",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.legitime_defense",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.apres_agression",
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
@@ -6332,8 +6722,8 @@
      {
       "n": 1,
       "state": "built",
-      "required_total": 12,
-      "required_done": 12,
+      "required_total": 13,
+      "required_done": 13,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
@@ -6342,27 +6732,27 @@
      {
       "n": 2,
       "state": "current",
-      "required_total": 15,
-      "required_done": 14,
+      "required_total": 17,
+      "required_done": 16,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9333333333333333
+      "progress": 0.9411764705882353
      },
      {
       "n": 3,
       "state": "future",
-      "required_total": 26,
+      "required_total": 27,
       "required_done": 25,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9615384615384616
+      "progress": 0.9259259259259259
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 21,
+      "required_total": 22,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -6372,9 +6762,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 15,
+      "required_total": 16,
       "required_done": 0,
-      "optional_total": 4,
+      "optional_total": 5,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -6382,7 +6772,7 @@
      {
       "n": 6,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -6392,9 +6782,9 @@
      {
       "n": 7,
       "state": "future",
-      "required_total": 9,
+      "required_total": 10,
       "required_done": 0,
-      "optional_total": 1,
+      "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -6402,7 +6792,7 @@
      {
       "n": 8,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -6412,7 +6802,7 @@
      {
       "n": 9,
       "state": "future",
-      "required_total": 12,
+      "required_total": 13,
       "required_done": 0,
       "optional_total": 1,
       "optional_done": 0,
@@ -6432,7 +6822,8 @@
      "competences": 3,
      "finances": 3,
      "communaute": 3,
-     "moral": 3
+     "moral": 3,
+     "defense": 2
     },
     "statuses": {
      "eau.stock_24h": {
@@ -6532,6 +6923,12 @@
       "expires_on": null
      },
      "communaute.proche_joignable": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.fuir_alerter": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
@@ -6691,6 +7088,24 @@
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.legitime_defense": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.apres_agression": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.armes_regle": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
       "expires_on": null
      },
      "eau.stock_3j": {
@@ -6957,6 +7372,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_14j": {
       "status": "todo",
       "progress": 0.28125,
@@ -7161,6 +7582,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_30j": {
       "status": "todo",
       "progress": 0.13125,
@@ -7323,6 +7756,24 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.initiation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.initiation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.aerosol": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "na",
       "progress": 0.0,
@@ -7461,6 +7912,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.pratique": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.pratique_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.source_autonome": {
       "status": "na",
       "progress": 0.0,
@@ -7581,6 +8044,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.tir_sportif": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.autonomie_annuelle": {
       "status": "na",
       "progress": 0.0,
@@ -7689,6 +8164,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.transmission": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.epreuve_7j": {
       "status": "todo",
       "progress": 0.0,
@@ -7772,6 +8253,18 @@
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "defense.mise_en_situation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
      }
     },
     "autonomy": {
@@ -7842,16 +8335,6 @@
       "cause": "interview initiale"
      },
      {
-      "at": "2026-11-03T08:00:00.000Z",
-      "level": 3,
-      "cause": "ajout de stock « Packs »"
-     },
-     {
-      "at": "2026-11-06T08:00:00.000Z",
-      "level": 2,
-      "cause": "retrait du stock « Cartouches »"
-     },
-     {
       "at": "2026-11-07T08:00:00.000Z",
       "level": 1,
       "cause": "objectif décoché « Recevoir les alertes officielles (FR-Alert activé, alertes de la préfecture) »"
@@ -7861,7 +8344,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 49 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -7869,12 +8352,6 @@
       "type": "stock.upsert",
       "message": "Stock ajouté : 4 × Packs",
       "op_id": "op-002"
-     },
-     {
-      "at": "2026-11-03T08:00:00.000Z",
-      "type": "level_changed",
-      "message": "Le foyer monte au niveau 3 (Paré) : ajout de stock « Packs »",
-      "op_id": null
      },
      {
       "at": "2026-11-04T08:00:00.000Z",
@@ -7893,12 +8370,6 @@
       "type": "stock.delete",
       "message": "Stock retiré : Cartouches",
       "op_id": "op-005"
-     },
-     {
-      "at": "2026-11-06T08:00:00.000Z",
-      "type": "level_changed",
-      "message": "Le foyer descend au niveau 2 (Éveillé) : retrait du stock « Cartouches »",
-      "op_id": null
      },
      {
       "at": "2026-11-07T08:00:00.000Z",
@@ -8011,6 +8482,12 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.fuir_alerter",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.robinet_arret",
        "validated_at": "2026-11-02",
        "note": "",
@@ -8096,6 +8573,18 @@
       },
       {
        "objective_id": "moral.ecoute",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.legitime_defense",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.apres_agression",
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
@@ -8347,13 +8836,13 @@
   ],
   "expected": {
    "evaluation": {
-    "level": 3,
+    "level": 2,
     "tiers": [
      {
       "n": 1,
       "state": "built",
-      "required_total": 12,
-      "required_done": 12,
+      "required_total": 13,
+      "required_done": 13,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
@@ -8362,8 +8851,8 @@
      {
       "n": 2,
       "state": "built",
-      "required_total": 15,
-      "required_done": 15,
+      "required_total": 17,
+      "required_done": 17,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
@@ -8371,18 +8860,18 @@
      },
      {
       "n": 3,
-      "state": "built",
-      "required_total": 27,
+      "state": "current",
+      "required_total": 28,
       "required_done": 27,
       "optional_total": 0,
       "optional_done": 0,
-      "cracked": true,
-      "progress": 1.0
+      "cracked": false,
+      "progress": 0.9642857142857143
      },
      {
       "n": 4,
-      "state": "current",
-      "required_total": 21,
+      "state": "future",
+      "required_total": 22,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -8392,9 +8881,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 15,
+      "required_total": 16,
       "required_done": 0,
-      "optional_total": 4,
+      "optional_total": 5,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -8402,7 +8891,7 @@
      {
       "n": 6,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -8412,9 +8901,9 @@
      {
       "n": 7,
       "state": "future",
-      "required_total": 9,
+      "required_total": 10,
       "required_done": 0,
-      "optional_total": 1,
+      "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -8422,7 +8911,7 @@
      {
       "n": 8,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -8432,7 +8921,7 @@
      {
       "n": 9,
       "state": "future",
-      "required_total": 12,
+      "required_total": 13,
       "required_done": 0,
       "optional_total": 1,
       "optional_done": 0,
@@ -8452,7 +8941,8 @@
      "competences": 3,
      "finances": 3,
      "communaute": 3,
-     "moral": 3
+     "moral": 3,
+     "defense": 2
     },
     "statuses": {
      "eau.stock_24h": {
@@ -8552,6 +9042,12 @@
       "expires_on": null
      },
      "communaute.proche_joignable": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.fuir_alerter": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
@@ -8711,6 +9207,24 @@
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.legitime_defense": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.apres_agression": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.armes_regle": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
       "expires_on": null
      },
      "eau.stock_3j": {
@@ -8977,6 +9491,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_14j": {
       "status": "todo",
       "progress": 0.3482142857142857,
@@ -9181,6 +9701,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_30j": {
       "status": "todo",
       "progress": 0.1625,
@@ -9343,6 +9875,24 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.initiation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.initiation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.aerosol": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "na",
       "progress": 0.0,
@@ -9481,6 +10031,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.pratique": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.pratique_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.source_autonome": {
       "status": "na",
       "progress": 0.0,
@@ -9601,6 +10163,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.tir_sportif": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.autonomie_annuelle": {
       "status": "na",
       "progress": 0.0,
@@ -9709,6 +10283,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.transmission": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.epreuve_7j": {
       "status": "todo",
       "progress": 0.0,
@@ -9793,6 +10373,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.mise_en_situation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "perso.chien": {
       "status": "grace",
       "progress": 1.0,
@@ -9842,210 +10434,12 @@
      },
      {
       "kind": "blocking",
-      "title": "Stock d'eau potable pour 14 jours",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "eau.stock_14j",
+      "title": "Plan intrusion au domicile : pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, éclairage, consigne de ne pas aller au contact",
+      "detail": "De nuit chez soi, la loi présume la légitime défense (art. 122-6), mais le plus sûr reste de s'enfermer et d'appeler.",
+      "objective_id": "defense.intrusion",
       "stock_id": null,
-      "axis": "eau",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Filtre à eau portable (paille ou gravitaire) avec cartouche valide",
-      "detail": "Prend le relais quand le stock s'épuise.",
-      "objective_id": "eau.filtre",
-      "stock_id": null,
-      "axis": "eau",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Savoir rendre une eau potable (ébullition, dosage de chlore, filtration)",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "eau.savoir_traiter",
-      "stock_id": null,
-      "axis": "eau",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Plan d'approvisionnement à pied (trajet, chariot, bidons) vers une source identifiée",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "eau.plan_appro",
-      "stock_id": null,
-      "axis": "eau",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Nourriture pour 14 jours",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "alimentation.stock_14j",
-      "stock_id": null,
-      "axis": "alimentation",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Savoir cultiver au moins cinq légumes de base (stage, jardin partagé)",
-      "detail": "Compétence transférable si tu prévois de changer de lieu de vie.",
-      "objective_id": "alimentation.potager_savoir",
-      "stock_id": null,
-      "axis": "alimentation",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Lien direct avec au moins deux producteurs locaux",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "alimentation.circuit_court",
-      "stock_id": null,
-      "axis": "alimentation",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Combustible de cuisson pour 14 jours",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "energie.cuisson_14j",
-      "stock_id": null,
-      "axis": "energie",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Panneau solaire portable pour recharger les petits appareils, testé",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "energie.solaire_portable",
-      "stock_id": null,
-      "axis": "energie",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Besoins électriques prioritaires chiffrés en Wh par jour",
-      "detail": "On ne choisit ni panneau ni station sans savoir ce qu'ils doivent alimenter.",
-      "objective_id": "energie.bilan_wh",
-      "stock_id": null,
-      "axis": "energie",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Cuisson sobre pratiquée (marmite norvégienne, cuisson à l'étouffée, autocuiseur)",
-      "detail": "Elle divise le combustible à stocker par deux ou trois.",
-      "objective_id": "energie.cuisson_sobre",
-      "stock_id": null,
-      "axis": "energie",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Masques FFP2 et gants pour la durée d'une épidémie",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "sante.masques",
-      "stock_id": null,
-      "axis": "sante",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Chauffage d'appoint sûr hors réseau, avec ventilation et détecteur de CO",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "abri.chauffage_appoint",
-      "stock_id": null,
-      "axis": "abri",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Exercice d'évacuation chronométré - tout le foyer dehors en moins de 15 min, sacs pris",
-      "detail": "Un plan jamais testé est une hypothèse.",
-      "objective_id": "securite.exercice",
-      "stock_id": null,
-      "axis": "securite",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Exercice de 24 h sans réseau (eau, électricité et téléphone coupés volontairement)",
-      "detail": "L'évacuation et la coupure ne testent pas les mêmes choses ; il faut faire les deux.",
-      "objective_id": "securite.exercice_24h",
-      "stock_id": null,
-      "axis": "securite",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Cartes papier de la région et itinéraires",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "communication.cartes",
-      "stock_id": null,
-      "axis": "communication",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Talkies-walkies PMR446 pour le foyer",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "communication.talkies",
-      "stock_id": null,
-      "axis": "communication",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Cuisiner une semaine uniquement avec ses réserves (testé)",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "competences.cuisine_stock",
-      "stock_id": null,
-      "axis": "competences",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Épargne de précaution d'un mois de dépenses",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "finances.epargne_1m",
-      "stock_id": null,
-      "axis": "finances",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Accord d'entraide réciproque avec un autre foyer (foyer binôme)",
-      "detail": "Bloque l'accès au niveau 4 (Prévoyant).",
-      "objective_id": "communaute.binome",
-      "stock_id": null,
-      "axis": "communaute",
-      "level": 4
-     },
-     {
-      "kind": "blocking",
-      "title": "Routine de crise écrite (horaires, tâches de chacun, un temps d'échange quotidien)",
-      "detail": "Une journée structurée garde le foyer actif et soudé pendant un confinement.",
-      "objective_id": "moral.routine",
-      "stock_id": null,
-      "axis": "moral",
-      "level": 4
-     },
-     {
-      "kind": "optional",
-      "title": "Règle familiale de discrétion sur les réserves",
-      "detail": "Bonus recommandé.",
-      "objective_id": "securite.discretion",
-      "stock_id": null,
-      "axis": "securite",
-      "level": 4
-     },
-     {
-      "kind": "optional",
-      "title": "Vélo en état et kit de réparation",
-      "detail": "Bonus recommandé.",
-      "objective_id": "mobilite.velo",
-      "stock_id": null,
-      "axis": "mobilite",
-      "level": 4
+      "axis": "defense",
+      "level": 3
      }
     ]
    },
@@ -10055,28 +10449,13 @@
       "at": "2026-11-02T10:00:00.000Z",
       "level": 2,
       "cause": "interview initiale"
-     },
-     {
-      "at": "2026-11-02T11:00:00.000Z",
-      "level": 3,
-      "cause": "ajout de stock « Bidons »"
-     },
-     {
-      "at": "2026-11-03T08:00:00.000Z",
-      "level": 2,
-      "cause": "objectif perso créé « Croquettes du chien pour 2 semaines »"
-     },
-     {
-      "at": "2026-11-05T08:00:00.000Z",
-      "level": 3,
-      "cause": "objectif validé « Croquettes du chien pour 2 semaines »"
      }
     ],
     "journal": [
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 49 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -10086,22 +10465,10 @@
       "op_id": "op-009"
      },
      {
-      "at": "2026-11-02T11:00:00.000Z",
-      "type": "level_changed",
-      "message": "Le foyer monte au niveau 3 (Paré) : ajout de stock « Bidons »",
-      "op_id": null
-     },
-     {
       "at": "2026-11-03T08:00:00.000Z",
       "type": "custom.upsert",
       "message": "Objectif perso créé : Croquettes du chien pour 2 semaines",
       "op_id": "op-002"
-     },
-     {
-      "at": "2026-11-03T08:00:00.000Z",
-      "type": "level_changed",
-      "message": "Le foyer descend au niveau 2 (Éveillé) : objectif perso créé « Croquettes du chien pour 2 semaines »",
-      "op_id": null
      },
      {
       "at": "2026-11-04T08:00:00.000Z",
@@ -10114,12 +10481,6 @@
       "type": "validation.set",
       "message": "Objectif validé : Croquettes du chien pour 2 semaines",
       "op_id": "op-004"
-     },
-     {
-      "at": "2026-11-05T08:00:00.000Z",
-      "type": "level_changed",
-      "message": "Le foyer monte au niveau 3 (Paré) : objectif validé « Croquettes du chien pour 2 semaines »",
-      "op_id": null
      },
      {
       "at": "2026-11-06T08:00:00.000Z",
@@ -10226,6 +10587,12 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.fuir_alerter",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.robinet_arret",
        "validated_at": "2026-11-02",
        "note": "",
@@ -10311,6 +10678,18 @@
       },
       {
        "objective_id": "moral.ecoute",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.legitime_defense",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.apres_agression",
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
@@ -10529,18 +10908,18 @@
      {
       "n": 1,
       "state": "current",
-      "required_total": 12,
-      "required_done": 11,
+      "required_total": 13,
+      "required_done": 12,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9166666666666666
+      "progress": 0.9230769230769231
      },
      {
       "n": 2,
       "state": "future",
-      "required_total": 15,
-      "required_done": 15,
+      "required_total": 17,
+      "required_done": 17,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
@@ -10549,17 +10928,17 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 26,
+      "required_total": 27,
       "required_done": 25,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9615384615384616
+      "progress": 0.9259259259259259
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 21,
+      "required_total": 22,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -10569,9 +10948,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 15,
+      "required_total": 16,
       "required_done": 0,
-      "optional_total": 4,
+      "optional_total": 5,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -10579,7 +10958,7 @@
      {
       "n": 6,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 5,
       "optional_done": 0,
@@ -10589,9 +10968,9 @@
      {
       "n": 7,
       "state": "future",
-      "required_total": 9,
+      "required_total": 10,
       "required_done": 0,
-      "optional_total": 1,
+      "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -10599,7 +10978,7 @@
      {
       "n": 8,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -10609,7 +10988,7 @@
      {
       "n": 9,
       "state": "future",
-      "required_total": 12,
+      "required_total": 13,
       "required_done": 0,
       "optional_total": 1,
       "optional_done": 0,
@@ -10629,7 +11008,8 @@
      "competences": 3,
      "finances": 3,
      "communaute": 3,
-     "moral": 3
+     "moral": 3,
+     "defense": 2
     },
     "statuses": {
      "eau.stock_24h": {
@@ -10729,6 +11109,12 @@
       "expires_on": null
      },
      "communaute.proche_joignable": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.fuir_alerter": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
@@ -10888,6 +11274,24 @@
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.legitime_defense": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.apres_agression": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.armes_regle": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
       "expires_on": null
      },
      "eau.stock_3j": {
@@ -11154,6 +11558,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_14j": {
       "status": "todo",
       "progress": 0.04017857142857143,
@@ -11358,6 +11768,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_30j": {
       "status": "todo",
       "progress": 0.01875,
@@ -11520,6 +11942,24 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.initiation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.initiation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.aerosol": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "na",
       "progress": 0.0,
@@ -11658,6 +12098,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.pratique": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.pratique_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.source_autonome": {
       "status": "na",
       "progress": 0.0,
@@ -11778,6 +12230,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.tir_sportif": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.autonomie_annuelle": {
       "status": "na",
       "progress": 0.0,
@@ -11886,6 +12350,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.transmission": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.epreuve_7j": {
       "status": "todo",
       "progress": 0.0,
@@ -11969,6 +12439,18 @@
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
+     },
+     "defense.mise_en_situation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
      }
     },
     "autonomy": {
@@ -12030,7 +12512,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 49 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -12157,6 +12639,12 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.fuir_alerter",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.robinet_arret",
        "validated_at": "2026-11-02",
        "note": "",
@@ -12242,6 +12730,18 @@
       },
       {
        "objective_id": "moral.ecoute",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.legitime_defense",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.apres_agression",
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
@@ -12476,37 +12976,37 @@
      {
       "n": 1,
       "state": "current",
-      "required_total": 12,
-      "required_done": 10,
+      "required_total": 13,
+      "required_done": 11,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.8333333333333334
+      "progress": 0.8461538461538461
      },
      {
       "n": 2,
       "state": "future",
-      "required_total": 18,
-      "required_done": 15,
+      "required_total": 20,
+      "required_done": 17,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.8333333333333334
+      "progress": 0.85
      },
      {
       "n": 3,
       "state": "future",
-      "required_total": 28,
+      "required_total": 29,
       "required_done": 21,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.75
+      "progress": 0.7241379310344828
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 21,
+      "required_total": 22,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -12516,9 +13016,9 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 16,
+      "required_total": 17,
       "required_done": 0,
-      "optional_total": 4,
+      "optional_total": 5,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -12526,27 +13026,27 @@
      {
       "n": 6,
       "state": "future",
-      "required_total": 13,
+      "required_total": 14,
       "required_done": 1,
       "optional_total": 6,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.07692307692307693
+      "progress": 0.07142857142857142
      },
      {
       "n": 7,
       "state": "future",
-      "required_total": 17,
+      "required_total": 18,
       "required_done": 1,
-      "optional_total": 1,
+      "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.058823529411764705
+      "progress": 0.05555555555555555
      },
      {
       "n": 8,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 2,
       "optional_done": 0,
@@ -12556,7 +13056,7 @@
      {
       "n": 9,
       "state": "future",
-      "required_total": 12,
+      "required_total": 13,
       "required_done": 0,
       "optional_total": 1,
       "optional_done": 0,
@@ -12576,7 +13076,8 @@
      "competences": 3,
      "finances": 1,
      "communaute": 3,
-     "moral": 3
+     "moral": 3,
+     "defense": 2
     },
     "statuses": {
      "eau.stock_24h": {
@@ -12676,6 +13177,12 @@
       "expires_on": null
      },
      "communaute.proche_joignable": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.fuir_alerter": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
@@ -12835,6 +13342,24 @@
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.legitime_defense": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.apres_agression": {
+      "status": "done",
+      "progress": 1.0,
+      "validated_at": "2026-11-02",
+      "expires_on": null
+     },
+     "defense.armes_regle": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
       "expires_on": null
      },
      "eau.stock_3j": {
@@ -13101,6 +13626,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_14j": {
       "status": "todo",
       "progress": 0.0642857142857143,
@@ -13305,6 +13836,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.enfants": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_30j": {
       "status": "todo",
       "progress": 0.030000000000000002,
@@ -13467,6 +14010,24 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.initiation": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.initiation_adaptee": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.aerosol": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "todo",
       "progress": 0.0,
@@ -13605,6 +14166,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.pratique": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.pratique_adaptee": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.source_autonome": {
       "status": "todo",
       "progress": 0.0,
@@ -13725,6 +14298,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.tir_sportif": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.autonomie_annuelle": {
       "status": "todo",
       "progress": 0.0,
@@ -13833,6 +14418,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.transmission": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.epreuve_7j": {
       "status": "todo",
       "progress": 0.0,
@@ -13912,6 +14503,18 @@
       "expires_on": null
      },
      "moral.debriefing": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation_adaptee": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -14146,7 +14749,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 49 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -14260,6 +14863,12 @@
        "source": "interview"
       },
       {
+       "objective_id": "defense.fuir_alerter",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
        "objective_id": "eau.robinet_arret",
        "validated_at": "2026-11-02",
        "note": "",
@@ -14345,6 +14954,18 @@
       },
       {
        "objective_id": "moral.ecoute",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.legitime_defense",
+       "validated_at": "2026-11-02",
+       "note": "",
+       "source": "interview"
+      },
+      {
+       "objective_id": "defense.apres_agression",
        "validated_at": "2026-11-02",
        "note": "",
        "source": "interview"
@@ -14603,7 +15224,7 @@
      {
       "n": 1,
       "state": "current",
-      "required_total": 13,
+      "required_total": 14,
       "required_done": 0,
       "optional_total": 0,
       "optional_done": 0,
@@ -14613,7 +15234,7 @@
      {
       "n": 2,
       "state": "future",
-      "required_total": 22,
+      "required_total": 24,
       "required_done": 0,
       "optional_total": 0,
       "optional_done": 0,
@@ -14623,49 +15244,49 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 32,
+      "required_total": 33,
       "required_done": 1,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.03125
+      "progress": 0.030303030303030304
      },
      {
       "n": 4,
       "state": "future",
-      "required_total": 24,
+      "required_total": 26,
       "required_done": 1,
       "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.041666666666666664
+      "progress": 0.038461538461538464
      },
      {
       "n": 5,
       "state": "future",
-      "required_total": 19,
+      "required_total": 20,
       "required_done": 1,
-      "optional_total": 4,
+      "optional_total": 5,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.05263157894736842
+      "progress": 0.05
      },
      {
       "n": 6,
       "state": "future",
-      "required_total": 14,
+      "required_total": 15,
       "required_done": 1,
       "optional_total": 6,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.07142857142857142
+      "progress": 0.06666666666666667
      },
      {
       "n": 7,
       "state": "future",
-      "required_total": 16,
+      "required_total": 17,
       "required_done": 0,
-      "optional_total": 1,
+      "optional_total": 2,
       "optional_done": 0,
       "cracked": false,
       "progress": 0.0
@@ -14673,7 +15294,7 @@
      {
       "n": 8,
       "state": "future",
-      "required_total": 11,
+      "required_total": 12,
       "required_done": 0,
       "optional_total": 3,
       "optional_done": 0,
@@ -14683,7 +15304,7 @@
      {
       "n": 9,
       "state": "future",
-      "required_total": 12,
+      "required_total": 13,
       "required_done": 0,
       "optional_total": 1,
       "optional_done": 0,
@@ -14703,7 +15324,8 @@
      "competences": 0,
      "finances": 0,
      "communaute": 0,
-     "moral": 1
+     "moral": 1,
+     "defense": 0
     },
     "statuses": {
      "eau.stock_24h": {
@@ -14803,6 +15425,12 @@
       "expires_on": null
      },
      "communaute.proche_joignable": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.fuir_alerter": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -14960,6 +15588,24 @@
      },
      "moral.ecoute": {
       "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.legitime_defense": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.apres_agression": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.armes_regle": {
+      "status": "na",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -15228,6 +15874,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_14j": {
       "status": "todo",
       "progress": 0.0,
@@ -15432,6 +16084,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.evitement": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.enfants": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.stock_30j": {
       "status": "todo",
       "progress": 0.0,
@@ -15594,6 +16258,24 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.initiation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.initiation_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.aerosol": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.recuperateur": {
       "status": "done",
       "progress": 1.0,
@@ -15732,6 +16414,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.pratique": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.pratique_adaptee": {
+      "status": "na",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.source_autonome": {
       "status": "todo",
       "progress": 0.0,
@@ -15852,6 +16546,18 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.tir_sportif": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.autonomie_annuelle": {
       "status": "todo",
       "progress": 0.0,
@@ -15960,6 +16666,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "defense.transmission": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "eau.epreuve_7j": {
       "status": "todo",
       "progress": 0.0,
@@ -16040,6 +16752,18 @@
      },
      "moral.debriefing": {
       "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "defense.mise_en_situation_adaptee": {
+      "status": "na",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
@@ -16192,6 +16916,15 @@
       "stock_id": null,
       "axis": "communaute",
       "level": 1
+     },
+     {
+      "kind": "blocking",
+      "title": "Règle du foyer : face à une agression, on fuit et on alerte d'abord (17 ou 112, SMS au 114) ; aucun bien ne vaut un risque",
+      "detail": "La première défense est de ne pas être là. Rien n'oblige à affronter, et un objet volé se remplace.",
+      "objective_id": "defense.fuir_alerter",
+      "stock_id": null,
+      "axis": "defense",
+      "level": 1
      }
     ]
    },
@@ -16212,7 +16945,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 49 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 52 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {

@@ -11,6 +11,7 @@ axes:
   - {id: finances, name: Finances & administratif, icon: "📁"}
   - {id: communaute, name: Réseau & entraide, icon: "🤝"}
   - {id: moral, name: Moral & cohésion, icon: "🧠"}
+  - {id: defense, name: Défense personnelle, icon: "🥋"}
 
 contexts:
   - {id: appartement, name: Appartement en ville}

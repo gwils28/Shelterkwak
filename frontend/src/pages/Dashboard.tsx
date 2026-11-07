@@ -5,6 +5,7 @@ import { AutonomyCards } from "../components/AutonomyCards";
 import { AxisLevels } from "../components/AxisLevels";
 import { Checklist } from "../components/Checklist";
 import { Column, romanNumeral } from "../components/Column";
+import { monumentOf } from "../lib/monument";
 import { CATALOG } from "../engine/catalog";
 import { history } from "../engine/replay";
 import { levelOf, MAX_LEVEL } from "../engine/types";
@@ -29,8 +30,14 @@ export function DashboardPage() {
   return (
     <div className="dashboard">
       <section className="panel column-panel">
-        <Column tiers={data.tiers} level={data.level} goalLevel={goal} onSelect={(n) => navigate(`/objectifs?niveau=${n}`)} />
-        <p className="hint">Clique un tambour pour voir ses objectifs. ◎ = palier visé.</p>
+        <Column
+          tiers={data.tiers}
+          level={data.level}
+          goalLevel={goal}
+          monument={monumentOf(h.monument)}
+          onSelect={(n) => navigate(`/objectifs?niveau=${n}`)}
+        />
+        <p className="hint">Clique un palier pour voir ses objectifs. ◎ = palier visé.</p>
       </section>
 
       <div className="dashboard-side">

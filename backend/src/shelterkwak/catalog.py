@@ -8,7 +8,8 @@ from pathlib import Path
 from typing import Literal
 
 import yaml
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel as _BaseModel
+from pydantic import ConfigDict, Field, model_validator
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_CATALOG_DIR = REPO_ROOT / "catalog"
@@ -16,6 +17,12 @@ DEFAULT_CATALOG_DIR = REPO_ROOT / "catalog"
 ContextId = Literal["appartement", "periurbain", "rural"]
 ALL_CONTEXTS: tuple[ContextId, ...] = ("appartement", "periurbain", "rural")
 MAX_LEVEL = 9
+
+
+class BaseModel(_BaseModel):
+    """Refuse les clés inconnues : en YAML, une virgule non protégée dans `{label: a, b}` crée une clé `b`."""
+
+    model_config = ConfigDict(extra="forbid")
 
 
 class Level(BaseModel):

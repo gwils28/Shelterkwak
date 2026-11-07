@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { MonumentPicker } from "../components/MonumentPicker";
+import { monumentOf } from "../lib/monument";
 import { MembersEditor } from "../components/MembersEditor";
 import { syncLabel } from "../components/SyncBadge";
 import { memberConditions } from "../engine/engine";
@@ -70,6 +72,12 @@ export function HouseholdPage() {
           onChange={(members) => set({ members })}
         />
         <p className="hint">Ajouter un membre augmente les besoins : ton niveau peut baisser si les réserves ne suivent pas.</p>
+      </section>
+
+      <section className="panel">
+        <h2>Monument</h2>
+        <p className="hint">La forme de ta progression. Changer de monument ne change rien au niveau.</p>
+        <MonumentPicker value={monumentOf(form.monument)} onChange={(monument) => set({ monument })} />
       </section>
 
       <section className="panel">

@@ -9,8 +9,14 @@ Application locale (navigateur + serveur sur la machine de l'utilisateur) pour q
 suive sa préparation et son autonomie face aux crises civiles : coupure d'eau ou d'électricité,
 intempéries, pandémie, évacuation, rupture d'approvisionnement, crise économique.
 
-Le niveau du foyer est représenté par une **colonne romaine de 9 tambours**, du socle
-(vulnérable) au chapiteau (anti-fragile). Le niveau monte quand on valide des objectifs, et
+Le niveau du foyer est représenté par un **monument de 9 paliers**, choisi à l'accueil et
+modifiable dans l'onglet Foyer (champ `monument` du foyer) : colonne romaine (par défaut),
+pyramide d'Égypte, arbre, pyramide aztèque, tour Eiffel, statue de la Liberté, stalactites de
+glace, Grande Mosquée de Djenné (Mali), moaï, pagode, bouddha, fusée,
+tornade ou massif Tamu (volcan sous-marin). Les paliers acquis prennent chacun leur
+couleur, le palier en cours et les suivants restent gris ; le couronnement (chapiteau, pyramidion,
+étoile, temple, phare, flamme, aurore boréale, œufs d'autruche, pukao, flèche, flamme du bouddha, décollage, éclair
+d'orage, surface de l'océan et navire de forage) s'illumine au niveau 9. Le niveau monte quand on valide des objectifs, et
 redescend quand des stocks périment, qu'une compétence ou un équipement n'est pas revalidé,
 qu'on décoche un objectif ou que le foyer s'agrandit.
 
@@ -67,7 +73,10 @@ retour d'expérience et la radio). Le niveau est donc perdu dès qu'on cesse de 
 `securite` (sécurité & protection), `communication` (information & communication),
 `mobilite` (mobilité & évacuation), `competences` (savoirs & compétences),
 `finances` (finances & administratif), `communaute` (réseau & entraide),
-`moral` (moral & cohésion : écoute, sommeil, routine de crise, gestion du stress, enfants).
+`moral` (moral & cohésion : écoute, sommeil, routine de crise, gestion du stress, enfants),
+`defense` (défense personnelle dans le cadre de la loi française : fuir et alerter, légitime
+défense, plan intrusion, self-défense ; les armes sont facultatives, sauf la détention en règle
+quand le foyer en déclare).
 
 Chaque axe a aussi son niveau propre (le plus haut palier dont tous les objectifs requis de
 l'axe sont validés), affiché pour repérer le maillon faible.
@@ -187,8 +196,9 @@ instantanés.
 ## 11. Écrans
 
 1. **Onboarding** (si aucun foyer).
-2. **Colonne** (accueil) : colonne SVG 9 tambours (bâtis, en cours avec % de progression,
-   à venir ; fissure sur un tambour bâti contenant une validation expirée), niveau par axe,
+2. **Colonne** (accueil) : monument SVG de 9 paliers (acquis en couleur, en cours en gris avec
+   barre de progression, à venir en gris clair ; fissure sur un palier acquis contenant une
+   validation expirée), niveau par axe,
    checklist, alertes.
 3. **Objectifs** : filtres par niveau / axe / statut, cocher, décocher, revalider.
 4. **Inventaire** : articles, autonomie par catégorie face aux paliers 3 j, 14 j, 90 j, 180 j.

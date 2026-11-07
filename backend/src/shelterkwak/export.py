@@ -80,6 +80,7 @@ LEVEL1 = [
     "mobilite.depart_rapide",
     "competences.guide",
     "communaute.proche_joignable",
+    "defense.fuir_alerter",
 ]
 LEVEL2 = [
     *LEVEL1,
@@ -98,6 +99,8 @@ LEVEL2 = [
     "finances.papiers",
     "communaute.voisins",
     "moral.ecoute",
+    "defense.legitime_defense",
+    "defense.apres_agression",
 ]
 LEVEL3 = [
     "eau.contenants",
