@@ -18,7 +18,7 @@ objectives:
     required: false
     title: Vélo en état et kit de réparation
   - id: mobilite.accueil
-    level: 3
+    level: 4
     title: Lieu d'accueil convenu hors de la zone (famille, amis)
     revalidate_days: 365
   - id: mobilite.carburant

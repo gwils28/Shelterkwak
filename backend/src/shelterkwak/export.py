@@ -101,6 +101,11 @@ LEVEL2 = [
     "moral.ecoute",
     "defense.legitime_defense",
     "defense.apres_agression",
+    "defense.violences",
+    "finances.assurances",
+    "securite.cles",
+    "securite.pcs",
+    "moral.stress",
 ]
 LEVEL3 = [
     "eau.contenants",
@@ -127,6 +132,7 @@ LEVEL3 = [
     "abri.calfeutrage",
     "competences.rechaud",
     "moral.kit_occupation",
+    "sante.gestes_qui_sauvent",
 ]
 
 

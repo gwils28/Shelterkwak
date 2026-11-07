@@ -25,6 +25,7 @@ export interface Category {
   unit: string;
   daily_need: Record<string, number>;
   per_household: number | null;
+  per_member_tag: string | null; // 1 par jour pour chaque membre portant ce tag
   applies_if: string | null;
 }
 export interface Objective {
@@ -84,12 +85,22 @@ export interface CrisisNote {
   name: string;
   hint: string;
 }
+export interface ScenarioStep {
+  text: string;
+  tags_any: string[];
+}
 export interface Scenario {
   id: string;
   name: string;
   icon: string;
   tags_any: string[];
-  steps: string[];
+  group: "secours" | "situation";
+  steps: (string | ScenarioStep)[];
+}
+
+/** Étapes d'une fiche qui concernent ce foyer (une étape ciblée ne s'affiche qu'aux foyers concernés). */
+export function scenarioSteps(s: Scenario, tags: Set<string>): string[] {
+  return s.steps.flatMap((step) => (typeof step === "string" ? [step] : step.tags_any.some((t) => tags.has(t)) ? [step.text] : []));
 }
 export interface Catalog {
   levels: Level[];

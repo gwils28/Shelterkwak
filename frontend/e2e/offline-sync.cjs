@@ -23,7 +23,7 @@ async function onboarding(page) {
   await page.click('button:has-text("Commencer l\'interview")');
   const WANT = ["Une lampe sans réseau", "numéros d'urgence", "Antalgique, pansements", "Issues de secours",
     "réflexes en cas d'alerte", "Fréquence de la radio", "Papiers d'identité rangés", "Clés, papiers et chaussures",
-    "guide officiel", "Un proche à moins de 30 min", "Numéros d'écoute notés", "on fuit et on alerte", "conditions de la légitime défense", "On sait quoi faire après", "Coupures d'eau", "Lampes frontales", "Trousse de premiers secours", "Pastilles", "On sait couper",
+    "guide officiel", "Un proche à moins de 30 min", "Numéros d'écoute notés", "Assurances vérifiées", "Doubles des clés", "Plan communal", "gestion du stress", "violences dans le foyer", "on fuit et on alerte", "conditions de la légitime défense", "On sait quoi faire après", "Coupures d'eau", "Lampes frontales", "Trousse de premiers secours", "Pastilles", "On sait couper",
     "FR-Alert", "Contacts essentiels", "Itinéraires d'évacuation", "Copies des papiers", "Fiches médicales",
     "Inventaire des placards", "Je connais au moins deux voisins", "Deux semaines", "1 an", "💧 Eau", "Inondation"];
   for (;;) {
@@ -44,10 +44,10 @@ async function onboarding(page) {
   await page.waitForSelector("text=Voir ma colonne");
   await shot(page, "1-resultat");
   await page.click("text=Voir ma colonne");
-  await page.waitForSelector("text=Ta checklist");
+  await page.waitForSelector("text=Prochaine étape");
 }
 
-const levelText = async (page) => (await page.locator(".level-panel .eyebrow").textContent()).trim();
+const levelText = async (page) => (await page.locator(".hero .eyebrow").textContent()).trim();
 const syncText = async (page) => (await page.locator(".sync-badge").innerText()).trim();
 
 (async () => {
@@ -83,7 +83,7 @@ const syncText = async (page) => (await page.locator(".sync-badge").innerText())
   await p.reload();
   await p.waitForSelector('.objective:has-text("Croquettes du chien")', { timeout: 15000 });
   check(true, "l'app se recharge en mode avion (service worker)");
-  await p.click('nav >> text=Inventaire');
+  await p.click('nav >> text=Réserves');
   await p.fill('input[placeholder^="Packs"]', "Bidons d'eau");
   await p.locator(".stock-form input[type=number]").nth(0).fill("10");
   await p.locator(".stock-form input[type=number]").nth(1).fill("5");
@@ -92,16 +92,16 @@ const syncText = async (page) => (await page.locator(".sync-badge").innerText())
   await p.locator(".sync-badge").click();
   await p.waitForFunction(() => document.querySelector(".sync-badge")?.textContent?.includes("Hors ligne"));
   check((await syncText(p)).includes("1 modif. en attente"), `badge hors ligne : « ${await syncText(p)} »`);
-  await p.click('nav >> text=Colonne');
+  await p.click('nav >> text=Monument');
   const offlineLevel = await levelText(p);
   await shot(p, "2-telephone-hors-ligne");
 
   // 4. Le PC récupère ce qui a été synchronisé, mais pas encore le stock hors ligne
   const c = await pc.newPage();
   await c.goto(BASE);
-  await c.waitForSelector("text=Ta checklist", { timeout: 15000 });
+  await c.waitForSelector("text=Prochaine étape", { timeout: 15000 });
   check((await c.locator(".brand-household").innerText()) === "Mon foyer", "le PC affiche le foyer créé sur le téléphone");
-  await c.click('nav >> text=Inventaire');
+  await c.click('nav >> text=Réserves');
   check((await c.locator('td:has-text("Bidons d\'eau")').count()) === 0, "le stock saisi hors ligne n'est pas encore sur le PC");
 
   // 5. Retour du réseau : le téléphone envoie, le PC reçoit
@@ -115,8 +115,8 @@ const syncText = async (page) => (await page.locator(".sync-badge").innerText())
   await c.click('nav >> text=Objectifs');
   await c.waitForSelector('.objective:has-text("Croquettes du chien")', { timeout: 5000 });
   check(true, "le PC voit l'objectif perso");
-  await c.click('nav >> text=Colonne');
-  await c.waitForSelector(".level-panel");
+  await c.click('nav >> text=Monument');
+  await c.waitForSelector(".hero");
   check((await levelText(c)) === offlineLevel, `même niveau sur les deux appareils (${offlineLevel})`);
   await shot(c, "3-pc");
 

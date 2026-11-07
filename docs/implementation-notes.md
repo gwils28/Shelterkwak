@@ -59,3 +59,18 @@ déploiement sur Raspberry Pi.
 - **Consommer** : le bouton −1 de l'inventaire émet un `stock.upsert` ordinaire, sans nouveau type
   d'opération.
 - **Meilleur niveau atteint** : calculé côté app à partir de l'historique rejoué, non stocké.
+
+## Conseil du 2026-11-07 (voir `docs/conseil/2026-11-07.md`)
+- **Besoins par membre** : `per_member_tag` (catégorie `traitements`) compte 1 par jour pour chaque
+  membre dont les particularités portent le tag ; `member_tags` / `memberTags` dans les deux moteurs.
+  La cuisson passe en jours-personne (`daily_need`). Les stocks de cuisson saisis avant ce
+  changement (en jours foyer) sont relus en jours-personne : l'autonomie affichée baisse pour les
+  foyers de plusieurs personnes, ce qui est volontairement prudent.
+- **Stocks de l'interview** : `expires_on` = jour de l'interview + 180 jours, posé par l'app
+  (`buildOnboarding`). Les interviews déjà enregistrées ne changent pas (journal immuable).
+- **Fiches Crise** : une étape est un texte ou `{text, tags_any}` (`ScenarioStep`), filtrée par
+  `scenarioSteps` ; `group` vaut `secours` ou `situation`.
+- **Accessibilité** : `prefers-reduced-motion: reduce` coupe aussi les transitions CSS ; les
+  icônes d'axe sont masquées aux lecteurs d'écran (sauf dans les `<option>`, où une balise est
+  interdite).
+

@@ -55,7 +55,7 @@ export function Checklist({ items, axes, nextLevelName, limit = 8 }: Props) {
                     )}
                     <div>
                       <div className="item-title">
-                        {axis && <span title={axis.name}>{axis.icon} </span>}
+                        {axis && <span title={axis.name} aria-hidden>{axis.icon} </span>}
                         {i.title}
                         {i.level && <span className="lvl">niv. {i.level}</span>}
                       </div>

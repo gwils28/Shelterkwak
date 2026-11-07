@@ -171,10 +171,18 @@ def daily_need(catalog: Catalog, category_id: str, state: HouseholdState) -> flo
     cat = catalog.categories_by_id[category_id]
     if cat.applies_if and cat.applies_if not in state.tags(catalog):
         return 0.0
+    if cat.per_member_tag is not None:
+        return float(sum(1 for m in state.members if cat.per_member_tag in member_tags(catalog, m)))
     if cat.per_household is not None:
         has_human = any(not catalog.is_animal(m.type) for m in state.members)
         return cat.per_household if has_human else 0.0
     return sum(cat.daily_need.get(m.type, 0.0) for m in state.members)
+
+
+def member_tags(catalog: Catalog, member: Member) -> set[str]:
+    """Tags apportés par les particularités d'un membre."""
+    by_id = {c.id: c.tags for c in catalog.member_conditions}
+    return {t for c in member.conditions for t in by_id.get(c, [])}
 
 
 def compute_autonomy(

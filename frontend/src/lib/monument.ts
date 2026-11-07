@@ -22,6 +22,24 @@ export const MONUMENTS: { id: MonumentStyle; name: string; hint: string }[] = [
   { id: "tamu", name: "Massif Tamu (volcan sous-marin)", hint: "Volcan bouclier géant, du plancher du Pacifique à la surface." },
 ];
 
+/** Teinte de la scène derrière le monument (page Monument), mêlée au fond de carte. */
+export const SCENE: Record<MonumentStyle, string> = {
+  colonne: "#f1d9b5",
+  pyramide: "#f6cf8f",
+  arbre: "#cfe6c1",
+  azteque: "#efc79d",
+  eiffel: "#c9d9ee",
+  liberte: "#bfe0ef",
+  glace: "#cde6f4",
+  djenne: "#f3cf9f",
+  moai: "#cfe5d6",
+  pagode: "#f6d2d6",
+  bouddha: "#f1dfb5",
+  fusee: "#cfd4ec",
+  tornade: "#cdd4df",
+  tamu: "#b7e0ee",
+};
+
 export function monumentOf(value: unknown): MonumentStyle {
   return MONUMENTS.some((m) => m.id === value) ? (value as MonumentStyle) : "colonne";
 }

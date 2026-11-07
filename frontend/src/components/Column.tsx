@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { animateMonument } from "../lib/animations";
 import type { Tier } from "../model";
 import { LevelInfoText } from "./LevelInfo";
 import { CLASSIC, type Renderer } from "./monuments";
@@ -16,10 +17,12 @@ interface Props {
   onSelect?: (n: number) => void;
   compact?: boolean;
   monument?: MonumentStyle;
+  /** Décor et animations d'ambiance (page Monument). */
+  animated?: boolean;
 }
 
 /** Monument de résilience : 9 paliers empilés. Acquis en couleur, en cours et à venir en gris. */
-export function Column({ tiers, level, goalLevel, onSelect, compact, monument = "colonne" }: Props) {
+export function Column({ tiers, level, goalLevel, onSelect, compact, monument = "colonne", animated = false }: Props) {
   const r = RENDERERS[monument];
   const W = LAYOUT.width;
   const labelX = W + 8;
@@ -30,6 +33,13 @@ export function Column({ tiers, level, goalLevel, onSelect, compact, monument = 
   const infoTier = tiers.find((t) => t.n === info);
   const toggleInfo = (n: number) => setInfo((cur) => (cur === n ? null : n));
   const name = MONUMENTS.find((m) => m.id === monument)?.name ?? "Monument";
+  const svgRef = useRef<SVGSVGElement>(null);
+  const ambient = animated ? r.ambient?.(uid, level) : undefined;
+
+  useLayoutEffect(() => {
+    if (!animated || !svgRef.current) return;
+    return animateMonument(svgRef.current, monument, level);
+  }, [animated, monument, level]);
 
   useEffect(() => {
     if (info === null) return;
@@ -48,7 +58,8 @@ export function Column({ tiers, level, goalLevel, onSelect, compact, monument = 
   return (
     <div className="column-wrap" ref={wrap}>
       <svg
-        className={`column-svg monument-${monument}`}
+        ref={svgRef}
+        className={`column-svg monument-${monument}${animated ? " animated" : ""}`}
         viewBox={`0 0 ${compact ? W : W + 170} ${HEIGHT}`}
         role="img"
         aria-label={`${name} : niveau ${level} sur ${MAX_LEVEL}`}
@@ -65,6 +76,7 @@ export function Column({ tiers, level, goalLevel, onSelect, compact, monument = 
           })}
         </defs>
         {r.base(uid)}
+        {ambient?.back && <g className="ambient ambient-back">{ambient.back}</g>}
 
         {tiers.map((t) => {
           const built = t.state === "built";
@@ -76,6 +88,7 @@ export function Column({ tiers, level, goalLevel, onSelect, compact, monument = 
             <g
               key={t.n}
               className={`drum ${t.state}${onSelect ? " clickable" : ""}`}
+              data-n={t.n}
               onClick={onSelect ? () => onSelect(t.n) : undefined}
               role={onSelect ? "button" : undefined}
               aria-label={`Niveau ${t.n} ${t.name}`}
@@ -84,7 +97,9 @@ export function Column({ tiers, level, goalLevel, onSelect, compact, monument = 
                 {`Niveau ${t.n} · ${t.name} — ${t.required_done}/${t.required_total} objectifs requis`}
                 {t.cracked ? " — des validations expirent bientôt" : ""}
               </title>
-              <g clipPath={`url(#${uid}-band-${t.n})`}>{r.tier(t.n, tn, built, uid)}</g>
+              <g className="tier-art" clipPath={`url(#${uid}-band-${t.n})`}>
+                {r.tier(t.n, tn, built, uid)}
+              </g>
               {t.cracked && <path className="crack" d={crackPath(t.n, r.crackX(t.n))} />}
               <text
                 className="drum-number"
@@ -148,6 +163,7 @@ export function Column({ tiers, level, goalLevel, onSelect, compact, monument = 
         })}
 
         {r.crown(crownBuilt, uid, GREY.future)}
+        {ambient?.front && <g className="ambient ambient-front">{ambient.front}</g>}
       </svg>
       {infoTier && (
         <div className="level-info-pop column-info-pop" role="note" style={{ top: `${(tierBottom(infoTier.n) / HEIGHT) * 100}%` }}>

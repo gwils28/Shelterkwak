@@ -55,6 +55,9 @@ member_conditions:
   - id: appareil_electrique
     name: Appareil médical électrique (respirateur, PPC, concentrateur d'oxygène)
     tags: [appareil_electrique]
+  - id: traitement_limite
+    name: Traitement à délivrance limitée (stupéfiant, froid strict, délivrance mensuelle)
+    tags: [traitement_medical, traitement_limite]
   - id: insuline
     name: Diabète traité par insuline
     tags: [diabete_insuline, traitement_medical]

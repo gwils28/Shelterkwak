@@ -1,7 +1,7 @@
 axis: sante
 objectives:
   - id: sante.trousse
-    why: "Liste minimale : pansements de tailles variées, compresses stériles, bande, sparadrap, désinfectant, sérum physiologique, antalgique, pince à épiler, ciseaux, gants, couverture de survie, thermomètre."
+    why: "Liste minimale : pansements de tailles variées, compresses stériles, bande, sparadrap, désinfectant, sérum physiologique, antalgique, solutés de réhydratation orale (SRO), pince à épiler, ciseaux, gants, couverture de survie, thermomètre."
     level: 2
     title: Trousse de premiers secours complète et à jour
     revalidate_days: 365
@@ -10,7 +10,7 @@ objectives:
     title: Fiche médicale par membre (groupe sanguin, allergies, traitements, contacts)
     revalidate_days: 365
   - id: sante.psc1
-    level: 3
+    level: 4
     kind: skill
     title: Au moins un adulte formé aux premiers secours (PSC1 ou équivalent)
     revalidate_days: 1095
@@ -43,6 +43,7 @@ objectives:
     requires_tags: [traitement_medical]
     title: Traitements médicaux d'avance pour 90 jours
     stock: {category: traitements, min_days: 90}
+    excludes_tags: [traitement_limite]
   - id: sante.pharmacie
     level: 5
     title: Pharmacie étendue (antalgiques, antidiarrhéiques, désinfectants, sutures adhésives)
@@ -208,3 +209,14 @@ objectives:
     contexts: [periurbain, rural]
     required: false
     title: "Assainissement individuel : savoir quoi faire si la pompe de relevage s'arrête (réserve, usage réduit des WC)"
+  - id: sante.gestes_qui_sauvent
+    level: 3
+    kind: skill
+    title: Au moins un adulte a suivi la formation « Gestes qui sauvent » (2 h, gratuite) ou mieux
+    why: Arrêt cardiaque, hémorragie, inconscience - ce sont les minutes avant les secours qui comptent. Le PSC1 complet suit au niveau 4.
+    revalidate_days: 1095
+  - id: sante.traitements_plan
+    level: 5
+    requires_tags: [traitement_limite]
+    title: Plan d'avance de traitement validé avec le médecin et le pharmacien (avance maximale autorisée, ordonnance de renouvellement, pharmacie de garde repérée)
+    why: Certains traitements ne se stockent pas (stupéfiants limités à 28 jours, froid strict) ; ce qui se prépare, c'est la continuité.

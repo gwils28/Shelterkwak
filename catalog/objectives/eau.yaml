@@ -39,6 +39,7 @@ objectives:
     kind: stock
     title: Stock d'eau potable pour 30 jours
     stock: {category: eau, min_days: 30}
+    contexts: [periurbain, rural]
   - id: eau.sources_identifiees
     level: 5
     title: Identifier deux sources d'eau brute accessibles (rivière, source, fontaine, citerne)
@@ -67,7 +68,7 @@ objectives:
   - id: eau.source_autonome
     level: 7
     contexts: [periurbain, rural]
-    title: Source d'eau autonome (puits, forage ou citerne d'au moins 5 m³)
+    title: "Source d'eau autonome (puits, forage ou citerne d'au moins 5 m³), eau analysée avant d'être bue"
   - id: eau.pompe_manuelle
     why: Une pompe immergée électrique s'arrête avec le réseau.
     level: 7
@@ -104,13 +105,23 @@ objectives:
     requires_tags: [etage]
     title: Chariot ou diable de portage, et bidons de 10 L maximum pour monter l'eau à pied
   - id: eau.analyse
-    level: 7
+    level: 3
     contexts: [periurbain, rural]
     title: Eau du puits ou de la source analysée par un laboratoire agréé (bactéries, nitrates, pesticides)
     why: Aucun filtre domestique ne retire les nitrates ; seule une analyse dit si l'eau est potable.
     revalidate_days: 730
+    requires_tags: [puits]
   - id: eau.secheresse
-    level: 6
+    level: 4
     contexts: [periurbain, rural]
     requires_tags: [risque_secheresse]
     title: Plan sécheresse (réserve d'arrosage, paillage, potager économe, arrêtés de restriction suivis)
+  - id: eau.relais_ville
+    level: 5
+    contexts: [appartement]
+    title: Point d'eau accessible à pied repéré et testé (fontaine, source, point de distribution de la commune), avec contenants de portage et moyen de traiter l'eau
+    why: En ville, au-delà de 14 jours, on renouvelle l'eau plutôt que d'en stocker une demi-tonne à l'étage.
+  - id: eau.rotation
+    level: 4
+    title: Eau stockée renouvelée tous les 6 mois (bidons remplis au robinet) ou avant la date des bouteilles
+    revalidate_days: 180

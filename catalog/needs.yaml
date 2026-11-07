@@ -1,7 +1,9 @@
 # Catégories d'inventaire suivies en jours d'autonomie.
 # daily_need : besoin journalier par type de membre, dans l'unité de base.
-# per_household : besoin forfaitaire par jour pour tout le foyer (si le foyer compte
-# au moins un humain, ou au moins un membre sous traitement pour `traitements`).
+# per_household : besoin forfaitaire par jour pour tout le foyer (si le foyer compte un humain).
+# per_member_tag : 1 par jour pour chaque membre qui porte ce tag (traitements : un jour de
+#   traitement par membre traité).
+# Cuisson : en jours-personne ; une cartouche de gaz de 250 g fait environ 3 jours-personne.
 categories:
   - id: eau
     name: Eau potable
@@ -14,9 +16,9 @@ categories:
   - id: traitements
     name: Traitements médicaux
     unit: jour
-    per_household: 1
+    per_member_tag: traitement_medical
     applies_if: traitement_medical
   - id: cuisson
     name: Combustible de cuisson hors réseau
-    unit: jour
-    per_household: 1
+    unit: jour-personne
+    daily_need: {adulte: 1, senior: 1, enfant: 0.7, bebe: 0.3}

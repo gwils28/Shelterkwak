@@ -3,7 +3,7 @@
 
 import type { ReactNode } from "react";
 import { CX, GROUND, HEIGHT, LAYOUT, seeded, tone } from "../lib/monument";
-import { type Renderer, Shade } from "./monuments";
+import { Bird, Cloud, type Renderer, Shade } from "./monuments";
 
 const GOLD = tone("#d4a531");
 const W = LAYOUT.width;
@@ -27,8 +27,40 @@ const eh = (y: number) => 4 + 111 * Math.pow(Math.max(0, y - E_TOP) / (GROUND - 
 /** Bord intérieur des piliers, qui se rejoignent au deuxième étage. */
 const ein = (y: number) => (y <= P2 ? 0 : eh(y) * 0.64 * ((y - P2) / (GROUND - P2)));
 
+const TWINKLES = (() => {
+  const rnd = seeded(404);
+  return Array.from({ length: 46 }, () => {
+    const y = E_TOP + 20 + rnd() * (GROUND - E_TOP - 30);
+    return { x: CX + (rnd() * 2 - 1) * eh(y) * 0.95, y };
+  });
+})();
+
 const eiffel: Renderer = {
   crackX: () => CX + 8,
+  ambient: (uid, level) => ({
+    back: (
+      <>
+        <Cloud x={50} y={130} s={1.1} />
+        <Cloud x={210} y={210} s={0.9} opacity={0.65} />
+      </>
+    ),
+    front: (
+      <>
+        <defs>
+          <linearGradient id={`${uid}-beam`} x1="0" x2="1">
+            <stop offset="0" stopColor="#fff3b0" stopOpacity={0.75} />
+            <stop offset="1" stopColor="#fff3b0" stopOpacity={0} />
+          </linearGradient>
+        </defs>
+        <g className="anim-beam">
+          <path d={`M${CX},${E_TOP - 11} L${CX + 150},${E_TOP - 26} L${CX + 150},${E_TOP + 4} Z`} fill={`url(#${uid}-beam)`} />
+          <path d={`M${CX},${E_TOP - 11} L${CX - 150},${E_TOP - 26} L${CX - 150},${E_TOP + 4} Z`} fill={`url(#${uid}-beam)`} opacity={0.45} />
+        </g>
+        {level >= LAYOUT.levels &&
+          TWINKLES.map((p, i) => <circle key={i} className="anim-twinkle" cx={p.x} cy={p.y} r={1.6} fill="#fff6c8" opacity={0} />)}
+      </>
+    ),
+  }),
   numeralOnPanel: true,
   tier: (_n, t) => {
     const ys = range(GROUND, E_TOP, -6);
@@ -102,6 +134,14 @@ const eiffel: Renderer = {
 
 const liberte: Renderer = {
   crackX: () => CX - 12,
+  ambient: () => ({
+    front: (
+      <>
+        <Bird x={40} y={150} scale={1.1} color="#5b6470" />
+        <Bird x={215} y={240} color="#5b6470" />
+      </>
+    ),
+  }),
   tier: (n, t, _built, uid) => {
     const id = `${uid}-lib-${n}`;
     const rays = [-160, -135, -112, -90, -68, -45, -20].map((deg) => {
@@ -151,8 +191,10 @@ const liberte: Renderer = {
     return (
       <g className={built ? "crown built" : "crown"}>
         {built && <circle cx={CX + 38} cy={42} r={22} fill={GOLD.light} opacity={0.35} />}
+        <g className="anim-flame" style={{ transformOrigin: `${CX + 38}px 58px` }}>
         <path d={`M${CX + 38},22 C${CX + 50},38 ${CX + 48},52 ${CX + 44},58 L${CX + 32},58 C${CX + 28},50 ${CX + 30},36 ${CX + 38},22 Z`} fill={t.fill} stroke={built ? GOLD.dark : t.dark} strokeWidth={0.8} />
         <path d={`M${CX + 38},34 C${CX + 43},44 ${CX + 42},52 ${CX + 40},56 L${CX + 36},56 C${CX + 34},50 ${CX + 34},42 ${CX + 38},34 Z`} fill={built ? GOLD.light : t.light} />
+        </g>
       </g>
     );
   },
@@ -160,7 +202,7 @@ const liberte: Renderer = {
     <g>
       <rect x={0} y={GROUND} width={W} height={HEIGHT - GROUND} fill="#4f86a8" />
       {range(GROUND + 9, HEIGHT - 4, 9).map((y, i) => (
-        <path key={y} d={`M${(i % 2) * 14},${y} q10,-4 20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0`} fill="none" stroke="#a9cfe0" strokeWidth={1} opacity={0.7} />
+        <path key={y} className="anim-wave" d={`M${(i % 2) * 14 - 20},${y} q10,-4 20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0`} fill="none" stroke="#a9cfe0" strokeWidth={1} opacity={0.7} />
       ))}
       <rect x={10} y={GROUND} width={W - 20} height={5} fill="#7a8a5a" />
     </g>
@@ -209,8 +251,26 @@ const ICE_BUBBLES = (() => {
   );
 })();
 
+const DRIPS: [number, number][] = [
+  [CX, 498],
+  [170, 432],
+  [92, 404],
+];
+
 const glace: Renderer = {
   crackX: () => CX + 10,
+  ambient: () => ({
+    front: (
+      <>
+        {DRIPS.map(([x, y], i) => (
+          <g key={i}>
+            <ellipse className="anim-splash" data-i={i} cx={x} cy={GROUND + 8} rx={10} ry={2.5} fill="none" stroke="#e8f7ff" strokeWidth={1.2} opacity={0} />
+            <path className="anim-drop" data-i={i} data-fall={GROUND + 6 - y} d={`M${x},${y} q3.2,5 0,8 q-3.2,-3 0,-8 Z`} fill="#bfe6f7" stroke="#7fb3d1" strokeWidth={0.5} opacity={0} />
+          </g>
+        ))}
+      </>
+    ),
+  }),
   tier: (n, t, built, uid) => {
     const id = `${uid}-ice-${n}`;
     return (
@@ -246,7 +306,7 @@ const glace: Renderer = {
               [96, 360],
               [132, 440],
             ].map(([x, y]) => (
-              <path key={`${x}-${y}`} d={`M${x},${y - 5} L${x + 1.3},${y - 1.3} L${x + 5},${y} L${x + 1.3},${y + 1.3} L${x},${y + 5} L${x - 1.3},${y + 1.3} L${x - 5},${y} L${x - 1.3},${y - 1.3} Z`} opacity={0.9} />
+              <path key={`${x}-${y}`} className="anim-sparkle" d={`M${x},${y - 5} L${x + 1.3},${y - 1.3} L${x + 5},${y} L${x + 1.3},${y + 1.3} L${x},${y + 5} L${x - 1.3},${y + 1.3} L${x - 5},${y} L${x - 1.3},${y - 1.3} Z`} opacity={0.9} />
             ))}
           </g>
         )}
@@ -268,7 +328,7 @@ const glace: Renderer = {
               </linearGradient>
             </defs>
             <rect x={0} y={0} width={W} height={LEDGE} fill="#132640" />
-            <path d={`M0,30 C50,6 90,40 140,18 S220,8 ${W},26 L${W},48 C210,30 170,52 120,38 S40,30 0,50 Z`} fill={`url(#${uid}-aurora)`} />
+            <path className="anim-aurora" d={`M-20,30 C50,6 90,40 140,18 S220,8 ${W + 20},26 L${W + 20},48 C210,30 170,52 120,38 S40,30 -20,50 Z`} fill={`url(#${uid}-aurora)`} />
             {[
               [24, 10],
               [180, 6],
@@ -320,6 +380,15 @@ function towerEdges(tw: { x: number; w: number; top: number }, y: number): [numb
 
 const djenne: Renderer = {
   crackX: () => CX + 50,
+  ambient: () => ({
+    front: (
+      <>
+        <Bird x={CX} y={60} scale={1.1} />
+        <Bird x={70} y={92} />
+        <Bird x={196} y={84} scale={0.9} />
+      </>
+    ),
+  }),
   tier: (n, t, _built, uid) => {
     const id = `${uid}-dje-${n}`;
     const pilasters = range(24, W - 24, 15).filter((x) => !inTower(x, 4));
@@ -428,6 +497,21 @@ const AHU_STONES = (() => {
 
 const moai: Renderer = {
   crackX: () => CX + 34,
+  ambient: () => ({
+    back: (
+      <>
+        <Cloud x={44} y={120} />
+        <Cloud x={214} y={70} s={0.8} opacity={0.7} />
+      </>
+    ),
+    front: (
+      <>
+        <Bird x={210} y={170} color="#4a4f57" />
+        <Bird x={40} y={210} scale={0.85} color="#4a4f57" />
+        <rect className="anim-sea" x={-30} y={HEIGHT - 8} width={W + 60} height={2} fill="#bfe1f0" opacity={0.8} />
+      </>
+    ),
+  }),
   tier: (n, t, _built, uid) => {
     const id = `${uid}-moa-${n}`;
     return (

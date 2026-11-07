@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { MonumentPicker } from "../components/MonumentPicker";
 import { monumentOf } from "../lib/monument";
+import { useAnimationsPref } from "../lib/prefs";
 import { MembersEditor } from "../components/MembersEditor";
 import { syncLabel } from "../components/SyncBadge";
 import { memberConditions } from "../engine/engine";
@@ -23,6 +24,7 @@ const DECLARABLE_TAGS: { id: string; label: string }[] = [
 export function HouseholdPage() {
   const { catalog, dashboard, sync, ops } = useFoyer();
   const [form, setForm] = useState<HouseholdData | null>(dashboard ? structuredClone(dashboard.household) : null);
+  const [animations, setAnimations] = useAnimationsPref();
   const [saved, setSaved] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
   const [backupMsg, setBackupMsg] = useState<string | null>(null);
@@ -78,6 +80,10 @@ export function HouseholdPage() {
         <h2>Monument</h2>
         <p className="hint">La forme de ta progression. Changer de monument ne change rien au niveau.</p>
         <MonumentPicker value={monumentOf(form.monument)} onChange={(monument) => set({ monument })} />
+        <label className="check-line">
+          <input type="checkbox" checked={animations} onChange={(e) => setAnimations(e.target.checked)} />
+          Animer le monument sur cet appareil (coupé d'office si le téléphone demande moins d'animations)
+        </label>
       </section>
 
       <section className="panel">
@@ -155,7 +161,7 @@ export function HouseholdPage() {
           {catalog.axes.map((a) => (
             <label key={a.id} className={`option${form.priority_axes.includes(a.id) ? " checked" : ""}`}>
               <input type="checkbox" checked={form.priority_axes.includes(a.id)} onChange={() => set({ priority_axes: toggleIn(form.priority_axes, a.id) })} />
-              {a.icon} {a.name}
+              <span aria-hidden>{a.icon}</span> {a.name}
             </label>
           ))}
         </div>

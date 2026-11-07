@@ -153,6 +153,27 @@ def test_animal_sizes_change_water_needs(catalog: Catalog) -> None:
     assert daily_need(catalog, "cuisson", only_pets) == 0
 
 
+def test_needs_scale_with_people_and_treated_members(catalog: Catalog) -> None:
+    family = state(members=[Member("adulte"), Member("adulte"), Member("enfant")])
+    assert daily_need(catalog, "cuisson", family) == 2.7  # jours-personne
+    treated = state(
+        members=[
+            Member("adulte", frozenset({"traitement"})),
+            Member("senior", frozenset({"insuline"})),
+            Member("enfant"),
+        ]
+    )
+    assert daily_need(catalog, "traitements", treated) == 2  # un jour de traitement par membre traité
+    assert daily_need(catalog, "traitements", family) == 0
+
+
+def test_non_storable_treatment_swaps_the_90_day_stock_for_a_plan(catalog: Catalog) -> None:
+    limited = state(members=[Member("adulte", frozenset({"traitement_limite"})), Member("adulte")])
+    ev = evaluate(catalog, limited, [], [], TODAY)
+    assert ev.statuses["sante.traitements_90j"].status == "na"
+    assert ev.statuses["sante.traitements_plan"].status == "todo"
+
+
 def test_new_member_raises_needs_and_can_drop_level(catalog: Catalog) -> None:
     st = state()
     vals = [Validation(i, TODAY) for i in required_ids(catalog, st, 3)]

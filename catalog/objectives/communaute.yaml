@@ -4,7 +4,7 @@ objectives:
     level: 2
     title: Connaître au moins deux voisins par leur nom
   - id: communaute.fragiles
-    level: 3
+    level: 4
     title: Repérer les personnes fragiles autour de soi
   - id: communaute.binome
     level: 4

@@ -2,7 +2,9 @@
 # `notes` : fiches que le foyer remplit en texte libre (opération notes.set, clé = id).
 #   Un id se garde : il est stocké dans le journal.
 # `scenarios` : fiches réflexes. Affichées si le foyer porte l'un des `tags_any`
-#   (toujours si la liste est vide).
+#   (toujours si la liste est vide). `group` : `secours` (gestes de premiers secours) ou
+#   `situation` (par défaut). Une étape peut être un texte, ou {text, tags_any} pour ne
+#   s'afficher qu'aux foyers concernés.
 notes:
   - id: contacts
     name: Contacts essentiels
@@ -37,6 +39,12 @@ scenarios:
       - "S'éclairer à la lampe ; pas de bougie sans surveillance."
       - "Jamais de groupe électrogène, de barbecue ni de réchaud en pièce fermée (monoxyde de carbone)."
       - "Économiser le téléphone : mode avion, luminosité au minimum, appels courts."
+      - "Congélateur plein au-delà de 48 h : cuisiner, saler ou partager avec les voisins plutôt que perdre la récolte."
+      - {text: "Appareil médical électrique : passer sur la batterie de secours, noter l'heure, prévenir le prestataire de santé à domicile.", tags_any: [appareil_electrique]}
+      - {text: "Insuline : la garder au frais dans un sac isotherme, jamais au contact direct de la glace.", tags_any: [diabete_insuline]}
+      - {text: "Pompe du puits arrêtée : passer sur la réserve d'eau et puiser au seau si le puits le permet.", tags_any: [puits]}
+      - {text: "Chaudière à commande électrique arrêtée : une seule pièce chauffée, chauffage d'appoint prévu pour l'intérieur, aération.", tags_any: [chauffage_combustible, chauffage_bois]}
+      - {text: "Animaux : prévoir l'abreuvement à la main si la pompe ou l'abreuvoir automatique s'arrête.", tags_any: [animaux]}
   - id: coupure_eau
     name: Coupure d'eau
     icon: "🚱"
@@ -84,6 +92,8 @@ scenarios:
       - "Se rafraîchir : douche, linges humides, brumisateur ; passer du temps dans la pièce la plus fraîche."
       - "Éviter l'effort aux heures chaudes."
       - "Appeler chaque jour les proches isolés. Canicule info service : 0 800 06 66 66."
+      - "Appeler le 15 si confusion, malaise, peau chaude et sèche ou forte fièvre : c'est un coup de chaleur."
+      - {text: "Médicaments sensibles à la chaleur : les garder dans la pièce la plus fraîche, l'insuline au réfrigérateur.", tags_any: [traitement_medical]}
   - id: froid
     name: Grand froid sans chauffage
     icon: "❄️"
@@ -93,6 +103,7 @@ scenarios:
       - "Chauffage d'appoint uniquement s'il est prévu pour l'intérieur, avec aération et détecteur de CO."
       - "Plusieurs couches de vêtements, bonnet, boissons chaudes."
       - "Surveiller les bébés et les seniors (mains froides, somnolence)."
+      - "Appeler le 15 si somnolence, confusion ou si la personne ne frissonne plus : c'est une hypothermie."
   - id: seisme
     name: Séisme
     icon: "🏚️"
@@ -134,3 +145,191 @@ scenarios:
       - "Appeler le 17 à voix basse (ou SMS au 114) : adresse, nombre d'intrus, où vous êtes."
       - "Allumer les lumières peut faire fuir ; laisser partir les intrus, ne pas leur barrer la sortie."
       - "Ne rien toucher ensuite avant l'arrivée de la police."
+
+  # ---------- Situations ----------
+  - id: pre_alerte
+    name: Vigilance rouge ou alerte annoncée
+    icon: "🟠"
+    steps:
+      - "Remplir bidons, casseroles et baignoire (l'eau de la baignoire sert aux WC)."
+      - "Charger téléphones, batteries externes et lampes."
+      - "Rentrer ou attacher ce qui peut s'envoler (balcon, jardin)."
+      - "Retirer des espèces, faire le plein si c'est possible."
+      - "Vérifier les traitements pour une semaine et préparer les sacs."
+      - "Appeler les proches fragiles et convenir d'un appel après l'événement."
+  - id: incendie_immeuble
+    name: Incendie dans le logement ou l'immeuble
+    icon: "🧯"
+    steps:
+      - "Feu chez soi : sortir tout de suite, fermer la porte derrière soi, appeler le 18 ou le 112."
+      - "Feu ailleurs et escalier enfumé : rester chez soi, porte fermée, bas de porte calfeutré avec des linges mouillés."
+      - "Se signaler à la fenêtre ; ne jamais prendre l'ascenseur."
+      - "Dans la fumée : se baisser, l'air respirable est près du sol."
+  - id: gaz
+    name: Odeur de gaz
+    icon: "💨"
+    steps:
+      - "Ne rien allumer ni éteindre : lumière, interrupteur, sonnette, flamme, téléphone dans la pièce."
+      - "Ouvrir les fenêtres et fermer le robinet de gaz si c'est possible."
+      - "Sortir, puis appeler depuis l'extérieur : Urgence sécurité gaz 0 800 47 33 33, ou le 18."
+  - id: reseau_coupe
+    name: Téléphone et internet coupés
+    icon: "📵"
+    steps:
+      - "Essayer le 112 : il passe par tous les réseaux disponibles."
+      - "Écouter la radio publique sur piles pour les consignes."
+      - "Urgence sans téléphone : aller à pied à la caserne de pompiers, à la gendarmerie ou à la mairie."
+      - "Laisser un mot sur la porte pour dire où vous êtes, rejoindre le point de rendez-vous convenu."
+  - id: tempete
+    name: Tempête, route coupée
+    icon: "🌬️"
+    steps:
+      - "Rester à l'intérieur, loin des fenêtres ; ne pas aller en forêt ni prendre la route."
+      - "Ne jamais toucher un câble électrique tombé ; le signaler au 18."
+      - "Route coupée : vivre sur ses réserves, signaler sa situation à la mairie, s'organiser avec les voisins."
+      - "Après : photographier les dégâts et les déclarer rapidement à l'assureur."
+  - id: eau_non_potable
+    name: Eau du robinet non potable
+    icon: "🚰"
+    steps:
+      - "Suivre les consignes de la mairie et de l'agence régionale de santé : eau en bouteille, ou à faire bouillir seulement si c'est indiqué."
+      - "Bouillir à gros bouillons au moins une minute pour boire, cuisiner et se brosser les dents, si l'avis le permet."
+      - "Biberons : uniquement de l'eau en bouteille adaptée aux nourrissons."
+      - "L'eau reste utilisable pour la douche et les WC, sauf consigne contraire."
+  - id: neige
+    name: Neige et verglas
+    icon: "🌨️"
+    tags_any: [climat_montagne, risque_froid]
+    steps:
+      - "Limiter les déplacements ; sinon équipements d'hiver, plein fait, couverture et eau dans la voiture."
+      - "Prévoir la coupure de courant : bois, lampes, eau."
+      - "Bloqué en voiture : rester dans le véhicule, dégager le pot d'échappement, aérer régulièrement (monoxyde de carbone)."
+  - id: violences
+    name: Violences dans le foyer
+    icon: "🤝"
+    steps:
+      - "Danger immédiat : 17 ou 112 ; si parler est impossible, SMS au 114."
+      - "En pharmacie : demander « Masque 19 » pour que l'alerte soit donnée discrètement."
+      - "Écoute anonyme et gratuite : 3919 (violences faites aux femmes), 119 (enfance en danger)."
+      - "Mettre un sac et des copies des papiers en lieu sûr, chez une personne de confiance."
+
+  # ---------- Premiers secours ----------
+  - id: arret_cardiaque
+    name: Arrêt cardiaque
+    icon: "❤️"
+    group: secours
+    steps:
+      - "Ne répond pas et ne respire pas (ou respire anormalement) : appeler le 15 ou le 112, haut-parleur activé."
+      - "Masser tout de suite : talon de la main au centre de la poitrine, bras tendus, enfoncer de 5 à 6 cm, 100 à 120 fois par minute."
+      - "Faire chercher un défibrillateur et l'utiliser dès qu'il arrive : il guide à la voix."
+      - "Ne pas s'arrêter avant le relais des secours ou le retour d'une respiration normale."
+  - id: hemorragie
+    name: Hémorragie
+    icon: "🩸"
+    group: secours
+    steps:
+      - "Appuyer fort et directement sur la plaie (main protégée par un gant, un sac ou un tissu propre)."
+      - "Allonger la victime et appeler le 15 ou le 112."
+      - "Pour se libérer les mains : pansement compressif bien serré."
+      - "Garrot seulement si la compression est impossible ou inefficace sur un membre : quelques centimètres au-dessus de la plaie, noter l'heure."
+      - "Couvrir la victime et lui parler pour surveiller qu'elle reste consciente."
+  - id: inconscience
+    name: Personne inconsciente qui respire
+    icon: "😶"
+    group: secours
+    steps:
+      - "Elle ne répond pas mais respire : la mettre sur le côté (position latérale de sécurité), bouche vers le sol."
+      - "Appeler le 15 ou le 112."
+      - "Couvrir et vérifier la respiration en continu ; si elle s'arrête : massage cardiaque."
+  - id: etouffement
+    name: Étouffement
+    icon: "😮"
+    group: secours
+    steps:
+      - "Elle tousse : l'encourager à tousser, ne rien faire d'autre."
+      - "Elle ne peut ni parler, ni tousser, ni respirer : jusqu'à 5 claques vigoureuses dans le dos, penchée en avant."
+      - "Sans effet : jusqu'à 5 compressions abdominales (poing au creux de l'estomac, tirer vers soi et vers le haut). Alterner."
+      - {text: "Bébé : à plat ventre sur l'avant-bras, 5 claques dans le dos, puis 5 compressions de la poitrine à deux doigts.", tags_any: [bebe]}
+      - "Perte de connaissance : 15 ou 112 et massage cardiaque."
+  - id: brulure
+    name: Brûlure
+    icon: "♨️"
+    group: secours
+    steps:
+      - "Refroidir tout de suite sous l'eau tempérée pendant 20 minutes."
+      - "Retirer vêtements et bijoux qui ne collent pas à la peau."
+      - "Appeler le 15 si la brûlure est plus grande que la moitié de la paume de la victime, sur le visage, les mains, les articulations ou le cou, ou chez un enfant."
+      - "Ne pas percer les cloques, ne rien appliquer d'autre que l'eau."
+  - id: monoxyde
+    name: Intoxication au monoxyde de carbone
+    icon: "☁️"
+    group: secours
+    steps:
+      - "Maux de tête, nausées, vertiges ou somnolence chez plusieurs personnes au même endroit : penser au monoxyde de carbone."
+      - "Ouvrir portes et fenêtres, arrêter l'appareil en cause (chauffage, groupe électrogène, brasero)."
+      - "Sortir tout le monde, animaux compris, et appeler le 15, le 18 ou le 112 depuis l'extérieur."
+      - "Ne pas rentrer avant le passage d'un professionnel."
+  - id: coup_chaleur
+    name: Coup de chaleur
+    icon: "🥵"
+    group: secours
+    steps:
+      - "Peau chaude et sèche ou très rouge, fièvre, confusion, propos incohérents : appeler le 15, c'est une urgence vitale."
+      - "Mettre au frais, déshabiller, asperger d'eau fraîche et ventiler."
+      - "Faire boire de l'eau fraîche par petites gorgées, seulement si la personne est bien consciente."
+  - id: hypothermie
+    name: Hypothermie
+    icon: "🥶"
+    group: secours
+    steps:
+      - "Frissons intenses puis somnolence, confusion, gestes maladroits."
+      - "Mettre à l'abri, retirer les vêtements mouillés, envelopper (couvertures, couverture de survie)."
+      - "Réchauffer le tronc progressivement ; boisson chaude et sucrée seulement si la personne est bien consciente. Pas de bain chaud ni de frictions."
+      - "Appeler le 15 si confusion, somnolence ou si la personne ne frissonne plus."
+  - id: hypoglycemie
+    name: Hypoglycémie
+    icon: "🍬"
+    group: secours
+    tags_any: [diabete_insuline]
+    steps:
+      - "Sueurs, tremblements, pâleur, faim, comportement inhabituel."
+      - "Consciente : 15 g de sucre rapide (3 morceaux de sucre ou un verre de jus), contrôle après 15 minutes, recommencer si besoin, puis une collation."
+      - "Inconsciente : rien dans la bouche, position latérale de sécurité, glucagon si prescrit, appeler le 15."
+  - id: anaphylaxie
+    name: Choc allergique
+    icon: "💉"
+    group: secours
+    tags_any: [allergie_severe]
+    steps:
+      - "Gonflement du visage ou de la gorge, gêne pour respirer, malaise après contact avec l'allergène."
+      - "Injecter le stylo d'adrénaline sans attendre, face externe de la cuisse, même à travers le vêtement."
+      - "Appeler le 15 et dire « choc anaphylactique »."
+      - "Allonger jambes surélevées (assis si la respiration est gênée) ; second stylo après 5 à 15 minutes sans amélioration."
+  - id: asthme
+    name: Crise d'asthme
+    icon: "🫁"
+    group: secours
+    tags_any: [respiratoire]
+    steps:
+      - "Asseoir, légèrement penché en avant, et rassurer."
+      - "Bronchodilatateur de secours selon le plan d'action, avec la chambre d'inhalation si elle est prescrite."
+      - "Appeler le 15 si pas d'amélioration rapide, si la personne ne peut plus parler ou si ses lèvres bleuissent."
+  - id: appareil_panne
+    name: Panne de l'appareil médical
+    icon: "🔋"
+    group: secours
+    tags_any: [appareil_electrique]
+    steps:
+      - "Passer sur la batterie de secours et noter l'heure : connaître l'autonomie restante."
+      - "Appeler le prestataire de santé à domicile (numéro sur l'appareil)."
+      - "Si l'autonomie ne suffit pas : rejoindre l'hôpital ou le lieu de repli prévu avant la fin de la batterie."
+      - "Détresse respiratoire : 15."
+  - id: desorientation
+    name: Personne désorientée ou disparue
+    icon: "🫂"
+    group: secours
+    tags_any: [accompagnement]
+    steps:
+      - "En crise, ne jamais la laisser seule : désigner un accompagnant."
+      - "Parler doucement, phrases courtes, sans la contredire."
+      - "Disparue : chercher d'abord dans les lieux familiers proches, puis appeler le 17 sans attendre, avec une photo récente."

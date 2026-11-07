@@ -217,6 +217,14 @@
    ]
   },
   {
+   "id": "traitement_limite",
+   "name": "Traitement à délivrance limitée (stupéfiant, froid strict, délivrance mensuelle)",
+   "tags": [
+    "traitement_medical",
+    "traitement_limite"
+   ]
+  },
+  {
    "id": "insuline",
    "name": "Diabète traité par insuline",
    "tags": [
@@ -275,6 +283,7 @@
     "animal_grand": 2.0
    },
    "per_household": null,
+   "per_member_tag": null,
    "applies_if": null
   },
   {
@@ -288,6 +297,7 @@
     "bebe": 900.0
    },
    "per_household": null,
+   "per_member_tag": null,
    "applies_if": null
   },
   {
@@ -295,15 +305,22 @@
    "name": "Traitements médicaux",
    "unit": "jour",
    "daily_need": {},
-   "per_household": 1.0,
+   "per_household": null,
+   "per_member_tag": "traitement_medical",
    "applies_if": "traitement_medical"
   },
   {
    "id": "cuisson",
    "name": "Combustible de cuisson hors réseau",
-   "unit": "jour",
-   "daily_need": {},
-   "per_household": 1.0,
+   "unit": "jour-personne",
+   "daily_need": {
+    "adulte": 1.0,
+    "senior": 1.0,
+    "enfant": 0.7,
+    "bebe": 0.3
+   },
+   "per_household": null,
+   "per_member_tag": null,
    "applies_if": null
   }
  ],
@@ -808,12 +825,35 @@
    "custom": false
   },
   {
+   "id": "energie.ramonage",
+   "axis": "energie",
+   "level": 2,
+   "title": "Conduits de cheminée ou de poêle ramonés avant la saison de chauffe (certificat de l'année)",
+   "description": "",
+   "why": "Obligatoire, il évite le feu de cheminée et l'intoxication au CO, et conditionne l'assurance.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "chauffage_bois"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": 10,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "sante.trousse",
    "axis": "sante",
    "level": 2,
    "title": "Trousse de premiers secours complète et à jour",
    "description": "",
-   "why": "Liste minimale : pansements de tailles variées, compresses stériles, bande, sparadrap, désinfectant, sérum physiologique, antalgique, pince à épiler, ciseaux, gants, couverture de survie, thermomètre.",
+   "why": "Liste minimale : pansements de tailles variées, compresses stériles, bande, sparadrap, désinfectant, sérum physiologique, antalgique, solutés de réhydratation orale (SRO), pince à épiler, ciseaux, gants, couverture de survie, thermomètre.",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -1037,7 +1077,28 @@
    "id": "securite.alertes",
    "axis": "securite",
    "level": 2,
-   "title": "Recevoir les alertes officielles (FR-Alert activé, alertes de la préfecture)",
+   "title": "Recevoir les alertes officielles (FR-Alert activé, Vigilance Météo-France, Vigicrues, alertes de la préfecture)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.cles",
+   "axis": "securite",
+   "level": 2,
+   "title": "Doubles des clés et cache sûre pour les objets essentiels",
    "description": "",
    "why": "",
    "kind": "check",
@@ -1094,6 +1155,27 @@
    "requires_tags": [
     "enfants"
    ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "securite.pcs",
+   "axis": "securite",
+   "level": 2,
+   "title": "Plan communal de sauvegarde consulté (points de rassemblement, d'hébergement et de distribution d'eau de la commune)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": null,
    "due_month": null,
@@ -1208,6 +1290,27 @@
    "custom": false
   },
   {
+   "id": "finances.assurances",
+   "axis": "finances",
+   "level": 2,
+   "title": "Assurances vérifiées (habitation, catastrophes naturelles, responsabilité)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "finances.animaux_papiers",
    "axis": "finances",
    "level": 2,
@@ -1273,6 +1376,27 @@
    "custom": false
   },
   {
+   "id": "moral.stress",
+   "axis": "moral",
+   "level": 2,
+   "title": "Au moins un adulte connaît une technique simple de gestion du stress (respiration 4 s / 6 s, cohérence cardiaque) et l'a montrée au foyer",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "defense.legitime_defense",
    "axis": "defense",
    "level": 2,
@@ -1331,6 +1455,27 @@
    "requires_tags": [
     "armes"
    ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.violences",
+   "axis": "defense",
+   "level": 2,
+   "title": "Numéros et recours contre les violences dans le foyer connus des adultes : 17 ou 112, SMS au 114, 3919, 119, « Masque 19 » en pharmacie",
+   "description": "",
+   "why": "Les violences au sein du foyer sont, de loin, le risque d'agression le plus fréquent.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": null,
    "due_month": null,
@@ -1404,6 +1549,28 @@
    "custom": false
   },
   {
+   "id": "eau.analyse",
+   "axis": "eau",
+   "level": 3,
+   "title": "Eau du puits ou de la source analysée par un laboratoire agréé (bactéries, nitrates, pesticides)",
+   "description": "",
+   "why": "Aucun filtre domestique ne retire les nitrates ; seule une analyse dit si l'eau est potable.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "puits"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": 730,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "alimentation.stock_3j",
    "axis": "alimentation",
    "level": 3,
@@ -1470,12 +1637,12 @@
    "custom": false
   },
   {
-   "id": "alimentation.rotation",
+   "id": "alimentation.bebe_3j",
    "axis": "alimentation",
    "level": 3,
-   "title": "Rotation des stocks en place (premier entré, premier sorti)",
+   "title": "Bébé : 3 jours tenus sans réseau (lait infantile, eau en bouteille adaptée aux nourrissons, biberons stérilisables hors réseau, couches)",
    "description": "",
-   "why": "Un stock qu'on ne consomme pas finit à la poubelle.",
+   "why": "Un nourrisson se déshydrate en quelques heures ; les calories du foyer ne remplacent pas le lait premier âge.",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -1483,9 +1650,11 @@
     "periurbain",
     "rural"
    ],
-   "requires_tags": [],
+   "requires_tags": [
+    "bebe"
+   ],
    "excludes_tags": [],
-   "revalidate_days": 180,
+   "revalidate_days": null,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -1531,27 +1700,6 @@
    "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": 90,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "sante.psc1",
-   "axis": "sante",
-   "level": 3,
-   "title": "Au moins un adulte formé aux premiers secours (PSC1 ou équivalent)",
-   "description": "",
-   "why": "",
-   "kind": "skill",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -1855,6 +2003,27 @@
    "custom": false
   },
   {
+   "id": "sante.gestes_qui_sauvent",
+   "axis": "sante",
+   "level": 3,
+   "title": "Au moins un adulte a suivi la formation « Gestes qui sauvent » (2 h, gratuite) ou mieux",
+   "description": "",
+   "why": "Arrêt cardiaque, hémorragie, inconscience - ce sont les minutes avant les secours qui comptent. Le PSC1 complet suit au niveau 4.",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 1095,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "abri.chaleur",
    "axis": "abri",
    "level": 3,
@@ -1918,27 +2087,6 @@
    "custom": false
   },
   {
-   "id": "abri.calfeutrage",
-   "axis": "abri",
-   "level": 3,
-   "title": "Kit de confinement (bâches, ruban adhésif, film plastique)",
-   "description": "",
-   "why": "En cas d'accident industriel, la consigne est de se confiner en calfeutrant.",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": null,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
    "id": "abri.piece_fraiche",
    "axis": "abri",
    "level": 3,
@@ -1987,6 +2135,29 @@
    "custom": false
   },
   {
+   "id": "abri.calfeutrage_industriel",
+   "axis": "abri",
+   "level": 3,
+   "title": "Kit de confinement prêt (bâches, ruban adhésif, film plastique), le foyer étant proche d'un site industriel ou nucléaire",
+   "description": "",
+   "why": "En cas d'accident industriel, la consigne est de se confiner en calfeutrant, et on n'a pas le temps d'aller acheter.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_industriel"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "securite.plan_familial",
    "axis": "securite",
    "level": 3,
@@ -2003,27 +2174,6 @@
    "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": 365,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "securite.cles",
-   "axis": "securite",
-   "level": 3,
-   "title": "Doubles des clés et cache sûre pour les objets essentiels",
-   "description": "",
-   "why": "",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": null,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -2087,27 +2237,6 @@
    "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": 180,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "mobilite.accueil",
-   "axis": "mobilite",
-   "level": 3,
-   "title": "Lieu d'accueil convenu hors de la zone (famille, amis)",
-   "description": "",
-   "why": "",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": 365,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -2219,69 +2348,6 @@
    "custom": false
   },
   {
-   "id": "finances.assurances",
-   "axis": "finances",
-   "level": 3,
-   "title": "Assurances vérifiées (habitation, catastrophes naturelles, responsabilité)",
-   "description": "",
-   "why": "",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": 365,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "communaute.fragiles",
-   "axis": "communaute",
-   "level": 3,
-   "title": "Repérer les personnes fragiles autour de soi",
-   "description": "",
-   "why": "",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": null,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "moral.kit_occupation",
-   "axis": "moral",
-   "level": 3,
-   "title": "Kit sommeil et occupation sans écran pour chacun (bouchons d'oreille, masque, livres, jeux de cartes)",
-   "description": "",
-   "why": "Bien dormir et s'occuper sans électricité limite l'angoisse et les tensions.",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": null,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
    "id": "moral.kit_enfant",
    "axis": "moral",
    "level": 3,
@@ -2299,27 +2365,6 @@
     "enfants",
     "bebe"
    ],
-   "excludes_tags": [],
-   "revalidate_days": null,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "defense.intrusion",
-   "axis": "defense",
-   "level": 3,
-   "title": "Plan intrusion au domicile : pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, éclairage, consigne de ne pas aller au contact",
-   "description": "",
-   "why": "De nuit chez soi, la loi présume la légitime défense (art. 122-6), mais le plus sûr reste de s'enfermer et d'appeler.",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": null,
    "due_month": null,
@@ -2412,6 +2457,49 @@
    "custom": false
   },
   {
+   "id": "eau.secheresse",
+   "axis": "eau",
+   "level": 4,
+   "title": "Plan sécheresse (réserve d'arrosage, paillage, potager économe, arrêtés de restriction suivis)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "risque_secheresse"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "eau.rotation",
+   "axis": "eau",
+   "level": 4,
+   "title": "Eau stockée renouvelée tous les 6 mois (bidons remplis au robinet) ou avant la date des bouteilles",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 180,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "alimentation.stock_14j",
    "axis": "alimentation",
    "level": 4,
@@ -2433,6 +2521,27 @@
     "category": "alimentation",
     "min_days": 14.0
    },
+   "custom": false
+  },
+  {
+   "id": "alimentation.rotation",
+   "axis": "alimentation",
+   "level": 4,
+   "title": "Rotation des stocks en place (premier entré, premier sorti)",
+   "description": "",
+   "why": "Un stock qu'on ne consomme pas finit à la poubelle.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 180,
+   "due_month": null,
+   "stock": null,
    "custom": false
   },
   {
@@ -2636,6 +2745,50 @@
    "custom": false
   },
   {
+   "id": "energie.bois_hiver",
+   "axis": "energie",
+   "level": 4,
+   "title": "Un hiver de bois sec rentré avant novembre (moins de 20 % d'humidité)",
+   "description": "",
+   "why": "Un foyer qui se chauffe au bois dépend de sa réserve dès le premier hiver ; les deux hivers d'avance viennent au niveau 7.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "chauffage_bois"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": 11,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "sante.psc1",
+   "axis": "sante",
+   "level": 4,
+   "title": "Au moins un adulte formé aux premiers secours (PSC1 ou équivalent)",
+   "description": "",
+   "why": "",
+   "kind": "skill",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 1095,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "sante.traitements_30j",
    "axis": "sante",
    "level": 4,
@@ -2722,6 +2875,27 @@
    "requires_tags": [
     "diabete_insuline"
    ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "abri.calfeutrage",
+   "axis": "abri",
+   "level": 4,
+   "title": "Kit de confinement (bâches, ruban adhésif, film plastique)",
+   "description": "",
+   "why": "À avoir pour tous dès le niveau 4 ; près d'un site industriel, il est exigé dès le niveau 3.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": null,
    "due_month": null,
@@ -2861,6 +3035,27 @@
    "custom": false
   },
   {
+   "id": "securite.dechets",
+   "axis": "securite",
+   "level": 4,
+   "title": "Gestion des déchets si la collecte s'arrête (sacs résistants, bacs fermés, lieu de stockage à l'écart du logement)",
+   "description": "",
+   "why": "En quelques jours sans collecte, les déchets attirent nuisibles et maladies.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "communication.cartes",
    "axis": "communication",
    "level": 4,
@@ -2947,6 +3142,27 @@
    "custom": false
   },
   {
+   "id": "mobilite.accueil",
+   "axis": "mobilite",
+   "level": 4,
+   "title": "Lieu d'accueil convenu hors de la zone (famille, amis)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "mobilite.evacuation_pmr_testee",
    "axis": "mobilite",
    "level": 4,
@@ -3012,6 +3228,27 @@
    "custom": false
   },
   {
+   "id": "communaute.fragiles",
+   "axis": "communaute",
+   "level": 4,
+   "title": "Repérer les personnes fragiles autour de soi",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "communaute.binome",
    "axis": "communaute",
    "level": 4,
@@ -3028,6 +3265,27 @@
    "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "moral.kit_occupation",
+   "axis": "moral",
+   "level": 4,
+   "title": "Kit sommeil et occupation sans écran pour chacun (bouchons d'oreille, masque, livres, jeux de cartes)",
+   "description": "",
+   "why": "Bien dormir et s'occuper sans électricité limite l'angoisse et les tensions.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -3098,12 +3356,33 @@
    "custom": false
   },
   {
+   "id": "defense.intrusion",
+   "axis": "defense",
+   "level": 4,
+   "title": "Plan intrusion au domicile : pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, éclairage, consigne de ne pas aller au contact",
+   "description": "",
+   "why": "De nuit chez soi, la loi présume la légitime défense (art. 122-6), mais le plus sûr reste de s'enfermer et d'appeler.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "defense.enfants",
    "axis": "defense",
    "level": 4,
-   "title": "Consignes de sécurité apprises par les enfants : mot de passe familial, à qui demander de l'aide, crier et fuir, ne jamais suivre un inconnu",
+   "title": "Consignes de sécurité apprises par les enfants : adultes de confiance à qui parler, « un secret qui fait peur se dit », crier et fuir, le 119",
    "description": "",
-   "why": "",
+   "why": "La plupart des violences faites aux enfants viennent de proches, pas d'inconnus.",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -3130,7 +3409,6 @@
    "kind": "stock",
    "required": true,
    "contexts": [
-    "appartement",
     "periurbain",
     "rural"
    ],
@@ -3187,6 +3465,25 @@
    "custom": false
   },
   {
+   "id": "eau.relais_ville",
+   "axis": "eau",
+   "level": 5,
+   "title": "Point d'eau accessible à pied repéré et testé (fontaine, source, point de distribution de la commune), avec contenants de portage et moyen de traiter l'eau",
+   "description": "",
+   "why": "En ville, au-delà de 14 jours, on renouvelle l'eau plutôt que d'en stocker une demi-tonne à l'étage.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "alimentation.stock_90j",
    "axis": "alimentation",
    "level": 5,
@@ -3232,6 +3529,27 @@
    "custom": false
   },
   {
+   "id": "alimentation.intrants",
+   "axis": "alimentation",
+   "level": 5,
+   "title": "Intrants de conservation pour une saison (bocaux, joints et couvercles neufs, sel, vinaigre, sucre)",
+   "description": "",
+   "why": "Savoir conserver ne sert à rien sans bocaux ni joints le jour où la récolte arrive.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "energie.station",
    "axis": "energie",
    "level": 5,
@@ -3262,7 +3580,6 @@
    "kind": "stock",
    "required": true,
    "contexts": [
-    "appartement",
     "periurbain",
     "rural"
    ],
@@ -3273,6 +3590,28 @@
    "stock": {
     "category": "cuisson",
     "min_days": 90.0
+   },
+   "custom": false
+  },
+  {
+   "id": "energie.cuisson_30j",
+   "axis": "energie",
+   "level": 5,
+   "title": "Combustible de cuisson pour 30 jours, en petite quantité et stocké en sécurité (cartouches à l'abri de la chaleur, hors cave, pièce aérée)",
+   "description": "",
+   "why": "En immeuble, des dizaines de cartouches de gaz sont un risque d'incendie ; la cuisson sobre fait durer la réserve.",
+   "kind": "stock",
+   "required": true,
+   "contexts": [
+    "appartement"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": {
+    "category": "cuisson",
+    "min_days": 30.0
    },
    "custom": false
   },
@@ -3293,7 +3632,9 @@
    "requires_tags": [
     "traitement_medical"
    ],
-   "excludes_tags": [],
+   "excludes_tags": [
+    "traitement_limite"
+   ],
    "revalidate_days": null,
    "due_month": null,
    "stock": {
@@ -3370,6 +3711,29 @@
    "custom": false
   },
   {
+   "id": "sante.traitements_plan",
+   "axis": "sante",
+   "level": 5,
+   "title": "Plan d'avance de traitement validé avec le médecin et le pharmacien (avance maximale autorisée, ordonnance de renouvellement, pharmacie de garde repérée)",
+   "description": "",
+   "why": "Certains traitements ne se stockent pas (stupéfiants limités à 28 jours, froid strict) ; ce qui se prépare, c'est la continuité.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "traitement_limite"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "abri.reparations",
    "axis": "abri",
    "level": 5,
@@ -3436,7 +3800,7 @@
    "id": "securite.logement",
    "axis": "securite",
    "level": 5,
-   "title": "Logement sécurisé (porte renforcée, serrures, éclairage extérieur)",
+   "title": "Logement sécurisé sans gros travaux (serrure certifiée A2P, entrebâilleur, éclairage extérieur ou détecteur)",
    "description": "",
    "why": "",
    "kind": "check",
@@ -3689,13 +4053,13 @@
    "custom": false
   },
   {
-   "id": "moral.stress",
+   "id": "moral.reperer",
    "axis": "moral",
    "level": 5,
-   "title": "Chaque adulte pratique une technique de gestion du stress (respiration, cohérence cardiaque)",
+   "title": "Savoir repérer l'épuisement et le choc psychologique chez soi et ses proches, et vers qui se tourner (médecin, 3114, cellule d'urgence médico-psychologique)",
    "description": "",
-   "why": "",
-   "kind": "skill",
+   "why": "Après plusieurs jours de crise, l'épuisement passe inaperçu ; le repérer tôt évite qu'il dure.",
+   "kind": "check",
    "required": true,
    "contexts": [
     "appartement",
@@ -3704,7 +4068,7 @@
    ],
    "requires_tags": [],
    "excludes_tags": [],
-   "revalidate_days": 365,
+   "revalidate_days": null,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -3725,7 +4089,8 @@
    ],
    "requires_tags": [],
    "excludes_tags": [
-    "mobilite_reduite"
+    "mobilite_reduite",
+    "grossesse"
    ],
    "revalidate_days": 1095,
    "due_month": null,
@@ -3747,7 +4112,8 @@
     "rural"
    ],
    "requires_tags": [
-    "mobilite_reduite"
+    "mobilite_reduite",
+    "grossesse"
    ],
    "excludes_tags": [],
    "revalidate_days": 1095,
@@ -3772,6 +4138,27 @@
    "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.exercice_intrusion",
+   "axis": "defense",
+   "level": 5,
+   "title": "Exercice d'intrusion répété en famille, en jeu de rôle de jour avec les enfants : chacun sait où aller, qui appelle, qui allume et ferme",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -3818,28 +4205,6 @@
     "category": "eau",
     "min_days": 60.0
    },
-   "custom": false
-  },
-  {
-   "id": "eau.secheresse",
-   "axis": "eau",
-   "level": 6,
-   "title": "Plan sécheresse (réserve d'arrosage, paillage, potager économe, arrêtés de restriction suivis)",
-   "description": "",
-   "why": "",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [
-    "risque_secheresse"
-   ],
-   "excludes_tags": [],
-   "revalidate_days": null,
-   "due_month": null,
-   "stock": null,
    "custom": false
   },
   {
@@ -4083,6 +4448,27 @@
    "custom": false
   },
   {
+   "id": "securite.porte_blindee",
+   "axis": "securite",
+   "level": 6,
+   "title": "Porte blindée ou bloc-porte certifié A2P (à voir avec le propriétaire pour un locataire)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "communication.radio_emission",
    "axis": "communication",
    "level": 6,
@@ -4273,9 +4659,9 @@
    "id": "defense.pratique",
    "axis": "defense",
    "level": 6,
-   "title": "Un adulte pratique un sport de combat ou de self-défense en club depuis au moins un an (boxe, krav-maga, judo, self-défense)",
+   "title": "Un adulte entretient ses gestes de self-défense au moins deux fois par an (stage, séances en club, révision encadrée)",
    "description": "",
-   "why": "Un geste appris une fois s'oublie sous le stress ; seule la pratique régulière tient.",
+   "why": "Un geste appris une fois s'oublie sous le stress ; l'entretenir suffit, sans viser la performance au combat.",
    "kind": "skill",
    "required": true,
    "contexts": [
@@ -4285,7 +4671,8 @@
    ],
    "requires_tags": [],
    "excludes_tags": [
-    "mobilite_reduite"
+    "mobilite_reduite",
+    "grossesse"
    ],
    "revalidate_days": 365,
    "due_month": null,
@@ -4296,7 +4683,7 @@
    "id": "defense.pratique_adaptee",
    "axis": "defense",
    "level": 6,
-   "title": "Pratique régulière d'une self-défense adaptée (au moins un an), ou un autre adulte du foyer pratique en club",
+   "title": "Un adulte entretient des gestes de self-défense adaptés au moins deux fois par an, ou un autre adulte du foyer le fait",
    "description": "",
    "why": "",
    "kind": "skill",
@@ -4307,7 +4694,8 @@
     "rural"
    ],
    "requires_tags": [
-    "mobilite_reduite"
+    "mobilite_reduite",
+    "grossesse"
    ],
    "excludes_tags": [],
    "revalidate_days": 365,
@@ -4319,7 +4707,7 @@
    "id": "eau.source_autonome",
    "axis": "eau",
    "level": 7,
-   "title": "Source d'eau autonome (puits, forage ou citerne d'au moins 5 m³)",
+   "title": "Source d'eau autonome (puits, forage ou citerne d'au moins 5 m³), eau analysée avant d'être bue",
    "description": "",
    "why": "",
    "kind": "check",
@@ -4351,26 +4739,6 @@
    "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": null,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "eau.analyse",
-   "axis": "eau",
-   "level": 7,
-   "title": "Eau du puits ou de la source analysée par un laboratoire agréé (bactéries, nitrates, pesticides)",
-   "description": "",
-   "why": "Aucun filtre domestique ne retire les nitrates ; seule une analyse dit si l'eau est potable.",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": 730,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -4490,26 +4858,6 @@
    "excludes_tags": [],
    "revalidate_days": null,
    "due_month": 11,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "energie.ramonage",
-   "axis": "energie",
-   "level": 7,
-   "title": "Conduits de cheminée ou de poêle ramonés avant la saison de chauffe (certificat de l'année)",
-   "description": "",
-   "why": "Obligatoire, il évite le feu de cheminée et l'intoxication au CO, et conditionne l'assurance.",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": null,
-   "due_month": 10,
    "stock": null,
    "custom": false
   },
@@ -4721,27 +5069,6 @@
    "custom": false
   },
   {
-   "id": "defense.exercice_intrusion",
-   "axis": "defense",
-   "level": 7,
-   "title": "Exercice d'intrusion de nuit répété en famille : chacun sait où aller, qui appelle, qui allume et ferme",
-   "description": "",
-   "why": "",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": 365,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
    "id": "defense.tir_sportif",
    "axis": "defense",
    "level": 7,
@@ -4750,6 +5077,27 @@
    "why": "",
    "kind": "check",
    "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "defense.voisinage",
+   "axis": "defense",
+   "level": 7,
+   "title": "Signal d'alerte convenu avec les voisins (appel, SMS groupé, sifflet) et entraide prévue en cas d'agression ou d'intrusion",
+   "description": "",
+   "why": "Une intrusion vue et signalée par les voisins s'arrête souvent d'elle-même.",
+   "kind": "check",
+   "required": true,
    "contexts": [
     "appartement",
     "periurbain",
@@ -5451,7 +5799,7 @@
    "id": "defense.mise_en_situation",
    "axis": "defense",
    "level": 9,
-   "title": "Mise en situation réaliste sous stress, encadrée (plastrons, plusieurs agresseurs, au sol), avec débriefing sur ce que la loi aurait permis",
+   "title": "Mise en situation encadrée et consentie, à l'intensité choisie (arrêt possible à tout moment), avec débriefing sur ce que la loi aurait permis",
    "description": "",
    "why": "",
    "kind": "skill",
@@ -5463,7 +5811,8 @@
    ],
    "requires_tags": [],
    "excludes_tags": [
-    "mobilite_reduite"
+    "mobilite_reduite",
+    "grossesse"
    ],
    "revalidate_days": 365,
    "due_month": null,
@@ -5485,7 +5834,8 @@
     "rural"
    ],
    "requires_tags": [
-    "mobilite_reduite"
+    "mobilite_reduite",
+    "grossesse"
    ],
    "excludes_tags": [],
    "revalidate_days": 365,
@@ -5783,6 +6133,84 @@
    "answered_validates": []
   },
   {
+   "id": "chauffage",
+   "section": "Ton environnement",
+   "type": "single",
+   "text": "Comment ton logement est-il chauffé principalement ?",
+   "help": "Un chauffage au bois impose le ramonage dès maintenant et une réserve de bois sec.",
+   "unit": "",
+   "show_if": null,
+   "options": [
+    {
+     "value": "reseau",
+     "label": "Gaz de ville, électricité ou chauffage collectif",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "bois",
+     "label": "Poêle, cheminée ou chaudière à bois",
+     "validates": [],
+     "tags": [
+      "chauffage_bois"
+     ],
+     "sets": {}
+    },
+    {
+     "value": "combustible",
+     "label": "Fioul ou gaz en citerne",
+     "validates": [],
+     "tags": [
+      "chauffage_combustible"
+     ],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
+   "id": "eau_quotidienne",
+   "section": "Ton environnement",
+   "type": "single",
+   "text": "Quelle eau bois-tu au quotidien ?",
+   "help": "",
+   "unit": "",
+   "show_if": {
+    "context_in": [
+     "periurbain",
+     "rural"
+    ],
+    "tags_any": null,
+    "answer": null
+   },
+   "options": [
+    {
+     "value": "reseau",
+     "label": "L'eau du robinet (réseau public)",
+     "validates": [],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "puits",
+     "label": "L'eau d'un puits, d'un forage ou d'une source privée",
+     "validates": [],
+     "tags": [
+      "puits"
+     ],
+     "sets": {}
+    }
+   ],
+   "options_from": null,
+   "sets_list": null,
+   "creates_stock": null,
+   "answered_validates": []
+  },
+  {
    "id": "eau_litres",
    "section": "Tes réserves",
    "type": "number",
@@ -5834,8 +6262,8 @@
    "creates_stock": {
     "category": "cuisson",
     "name": "Combustible de cuisson (estimation de l'interview)",
-    "unit_label": "jour",
-    "amount_per_unit": 1.0
+    "unit_label": "jour foyer",
+    "amount_per_unit": "household_day"
    },
    "answered_validates": []
   },
@@ -5859,8 +6287,8 @@
    "creates_stock": {
     "category": "traitements",
     "name": "Traitements (estimation de l'interview)",
-    "unit_label": "jour",
-    "amount_per_unit": 1.0
+    "unit_label": "jour foyer",
+    "amount_per_unit": "household_day"
    },
    "answered_validates": []
   },
@@ -6335,6 +6763,24 @@
      ],
      "tags": [],
      "sets": {}
+    },
+    {
+     "value": "pcs",
+     "label": "Plan communal de sauvegarde consulté",
+     "validates": [
+      "securite.pcs"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "stress",
+     "label": "Une technique de gestion du stress connue (respiration, cohérence cardiaque)",
+     "validates": [
+      "moral.stress"
+     ],
+     "tags": [],
+     "sets": {}
     }
    ],
    "options_from": null,
@@ -6352,10 +6798,20 @@
    "show_if": null,
    "options": [
     {
+     "value": "gestes",
+     "label": "Formation « Gestes qui sauvent » (2 h)",
+     "validates": [
+      "sante.gestes_qui_sauvent"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
      "value": "psc1",
      "label": "Premiers secours (PSC1)",
      "validates": [
-      "sante.psc1"
+      "sante.psc1",
+      "sante.gestes_qui_sauvent"
      ],
      "tags": [],
      "sets": {}
@@ -6374,6 +6830,15 @@
      "label": "Faire un feu en sécurité",
      "validates": [
       "competences.feu"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "rechaud",
+     "label": "Utiliser un réchaud en sécurité (aération, jamais en pièce fermée)",
+     "validates": [
+      "competences.rechaud"
      ],
      "tags": [],
      "sets": {}
@@ -6472,7 +6937,7 @@
    "section": "Ta défense",
    "type": "single",
    "text": "Le foyer détient-il des armes à feu (chasse ou tir sportif) ?",
-   "help": "Sert seulement à te proposer les règles de détention ; rien ne sort de ton appareil.",
+   "help": "Sert seulement à te proposer les règles de détention. Comme tes autres réponses, elle est enregistrée sur tes appareils et sur ton serveur de synchronisation.",
    "unit": "",
    "show_if": null,
    "options": [
@@ -6530,6 +6995,15 @@
      "label": "On sait quoi faire après une agression (17, certificat médical, plainte)",
      "validates": [
       "defense.apres_agression"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "violences",
+     "label": "Les adultes connaissent les recours contre les violences dans le foyer (3919, 119, SMS 114)",
+     "validates": [
+      "defense.violences"
      ],
      "tags": [],
      "sets": {}
@@ -7057,13 +7531,46 @@
    "name": "Coupure d'électricité",
    "icon": "🔌",
    "tags_any": [],
+   "group": "situation",
    "steps": [
     "Vérifier si la coupure touche le quartier (voisins, radio) ou seulement le logement (tableau électrique).",
     "Débrancher les appareils sensibles pour le retour du courant.",
     "Garder le congélateur fermé : il tient le froid 24 à 48 h.",
     "S'éclairer à la lampe ; pas de bougie sans surveillance.",
     "Jamais de groupe électrogène, de barbecue ni de réchaud en pièce fermée (monoxyde de carbone).",
-    "Économiser le téléphone : mode avion, luminosité au minimum, appels courts."
+    "Économiser le téléphone : mode avion, luminosité au minimum, appels courts.",
+    "Congélateur plein au-delà de 48 h : cuisiner, saler ou partager avec les voisins plutôt que perdre la récolte.",
+    {
+     "text": "Appareil médical électrique : passer sur la batterie de secours, noter l'heure, prévenir le prestataire de santé à domicile.",
+     "tags_any": [
+      "appareil_electrique"
+     ]
+    },
+    {
+     "text": "Insuline : la garder au frais dans un sac isotherme, jamais au contact direct de la glace.",
+     "tags_any": [
+      "diabete_insuline"
+     ]
+    },
+    {
+     "text": "Pompe du puits arrêtée : passer sur la réserve d'eau et puiser au seau si le puits le permet.",
+     "tags_any": [
+      "puits"
+     ]
+    },
+    {
+     "text": "Chaudière à commande électrique arrêtée : une seule pièce chauffée, chauffage d'appoint prévu pour l'intérieur, aération.",
+     "tags_any": [
+      "chauffage_combustible",
+      "chauffage_bois"
+     ]
+    },
+    {
+     "text": "Animaux : prévoir l'abreuvement à la main si la pompe ou l'abreuvoir automatique s'arrête.",
+     "tags_any": [
+      "animaux"
+     ]
+    }
    ]
   },
   {
@@ -7071,6 +7578,7 @@
    "name": "Coupure d'eau",
    "icon": "🚱",
    "tags_any": [],
+   "group": "situation",
    "steps": [
     "En cas de fuite, fermer le robinet d'arrêt général.",
     "Réserver l'eau stockée à la boisson et à la cuisine.",
@@ -7084,6 +7592,7 @@
    "name": "Alerte, sirène, confinement",
    "icon": "📢",
    "tags_any": [],
+   "group": "situation",
    "steps": [
     "Se mettre à l'abri dans le bâtiment le plus proche.",
     "Fermer portes et fenêtres, arrêter ventilation et climatisation.",
@@ -7098,6 +7607,7 @@
    "name": "Évacuation",
    "icon": "🧭",
    "tags_any": [],
+   "group": "situation",
    "steps": [
     "Couper gaz, électricité et eau.",
     "Prendre les sacs, les papiers, les médicaments, les lunettes, les animaux.",
@@ -7113,6 +7623,7 @@
    "tags_any": [
     "risque_inondation"
    ],
+   "group": "situation",
    "steps": [
     "Monter à l'étage avec les sacs, l'eau et la lampe ; ne jamais descendre au sous-sol ni au parking.",
     "Couper l'électricité et le gaz.",
@@ -7129,12 +7640,20 @@
     "seniors",
     "bebe"
    ],
+   "group": "situation",
    "steps": [
     "Boire régulièrement sans attendre d'avoir soif ; donner à boire aux enfants et aux seniors.",
     "Volets fermés le jour, aérer la nuit.",
     "Se rafraîchir : douche, linges humides, brumisateur ; passer du temps dans la pièce la plus fraîche.",
     "Éviter l'effort aux heures chaudes.",
-    "Appeler chaque jour les proches isolés. Canicule info service : 0 800 06 66 66."
+    "Appeler chaque jour les proches isolés. Canicule info service : 0 800 06 66 66.",
+    "Appeler le 15 si confusion, malaise, peau chaude et sèche ou forte fièvre : c'est un coup de chaleur.",
+    {
+     "text": "Médicaments sensibles à la chaleur : les garder dans la pièce la plus fraîche, l'insuline au réfrigérateur.",
+     "tags_any": [
+      "traitement_medical"
+     ]
+    }
    ]
   },
   {
@@ -7146,11 +7665,13 @@
     "seniors",
     "bebe"
    ],
+   "group": "situation",
    "steps": [
     "Vivre dans une seule pièce, porte fermée, fenêtres calfeutrées.",
     "Chauffage d'appoint uniquement s'il est prévu pour l'intérieur, avec aération et détecteur de CO.",
     "Plusieurs couches de vêtements, bonnet, boissons chaudes.",
-    "Surveiller les bébés et les seniors (mains froides, somnolence)."
+    "Surveiller les bébés et les seniors (mains froides, somnolence).",
+    "Appeler le 15 si somnolence, confusion ou si la personne ne frissonne plus : c'est une hypothermie."
    ]
   },
   {
@@ -7160,6 +7681,7 @@
    "tags_any": [
     "risque_seisme"
    ],
+   "group": "situation",
    "steps": [
     "Pendant : s'abriter sous une table solide, loin des vitres.",
     "Après : couper gaz et électricité, ne pas prendre l'ascenseur.",
@@ -7173,6 +7695,7 @@
    "tags_any": [
     "risque_industriel"
    ],
+   "group": "situation",
    "steps": [
     "Se confiner : fermer, calfeutrer portes et fenêtres, couper la ventilation.",
     "Prendre les comprimés d'iode seulement sur consigne de la préfecture.",
@@ -7186,6 +7709,7 @@
    "tags_any": [
     "risque_incendie"
    ],
+   "group": "situation",
    "steps": [
     "Si la maison est débroussaillée, s'y confiner plutôt que fuir dans la fumée.",
     "Fermer volets et ouvertures, boucher les aérations avec des linges mouillés.",
@@ -7197,6 +7721,7 @@
    "name": "Agression",
    "icon": "🥋",
    "tags_any": [],
+   "group": "situation",
    "steps": [
     "Fuir si c'est possible ; donner sac, téléphone ou clés plutôt que résister.",
     "Mettre de la distance et parler fort pour attirer l'attention (« Reculez ! »).",
@@ -7210,11 +7735,300 @@
    "name": "Intrusion au domicile",
    "icon": "🚪",
    "tags_any": [],
+   "group": "situation",
    "steps": [
     "Ne pas aller au contact : regrouper le foyer dans la pièce refuge et fermer à clé.",
     "Appeler le 17 à voix basse (ou SMS au 114) : adresse, nombre d'intrus, où vous êtes.",
     "Allumer les lumières peut faire fuir ; laisser partir les intrus, ne pas leur barrer la sortie.",
     "Ne rien toucher ensuite avant l'arrivée de la police."
+   ]
+  },
+  {
+   "id": "pre_alerte",
+   "name": "Vigilance rouge ou alerte annoncée",
+   "icon": "🟠",
+   "tags_any": [],
+   "group": "situation",
+   "steps": [
+    "Remplir bidons, casseroles et baignoire (l'eau de la baignoire sert aux WC).",
+    "Charger téléphones, batteries externes et lampes.",
+    "Rentrer ou attacher ce qui peut s'envoler (balcon, jardin).",
+    "Retirer des espèces, faire le plein si c'est possible.",
+    "Vérifier les traitements pour une semaine et préparer les sacs.",
+    "Appeler les proches fragiles et convenir d'un appel après l'événement."
+   ]
+  },
+  {
+   "id": "incendie_immeuble",
+   "name": "Incendie dans le logement ou l'immeuble",
+   "icon": "🧯",
+   "tags_any": [],
+   "group": "situation",
+   "steps": [
+    "Feu chez soi : sortir tout de suite, fermer la porte derrière soi, appeler le 18 ou le 112.",
+    "Feu ailleurs et escalier enfumé : rester chez soi, porte fermée, bas de porte calfeutré avec des linges mouillés.",
+    "Se signaler à la fenêtre ; ne jamais prendre l'ascenseur.",
+    "Dans la fumée : se baisser, l'air respirable est près du sol."
+   ]
+  },
+  {
+   "id": "gaz",
+   "name": "Odeur de gaz",
+   "icon": "💨",
+   "tags_any": [],
+   "group": "situation",
+   "steps": [
+    "Ne rien allumer ni éteindre : lumière, interrupteur, sonnette, flamme, téléphone dans la pièce.",
+    "Ouvrir les fenêtres et fermer le robinet de gaz si c'est possible.",
+    "Sortir, puis appeler depuis l'extérieur : Urgence sécurité gaz 0 800 47 33 33, ou le 18."
+   ]
+  },
+  {
+   "id": "reseau_coupe",
+   "name": "Téléphone et internet coupés",
+   "icon": "📵",
+   "tags_any": [],
+   "group": "situation",
+   "steps": [
+    "Essayer le 112 : il passe par tous les réseaux disponibles.",
+    "Écouter la radio publique sur piles pour les consignes.",
+    "Urgence sans téléphone : aller à pied à la caserne de pompiers, à la gendarmerie ou à la mairie.",
+    "Laisser un mot sur la porte pour dire où vous êtes, rejoindre le point de rendez-vous convenu."
+   ]
+  },
+  {
+   "id": "tempete",
+   "name": "Tempête, route coupée",
+   "icon": "🌬️",
+   "tags_any": [],
+   "group": "situation",
+   "steps": [
+    "Rester à l'intérieur, loin des fenêtres ; ne pas aller en forêt ni prendre la route.",
+    "Ne jamais toucher un câble électrique tombé ; le signaler au 18.",
+    "Route coupée : vivre sur ses réserves, signaler sa situation à la mairie, s'organiser avec les voisins.",
+    "Après : photographier les dégâts et les déclarer rapidement à l'assureur."
+   ]
+  },
+  {
+   "id": "eau_non_potable",
+   "name": "Eau du robinet non potable",
+   "icon": "🚰",
+   "tags_any": [],
+   "group": "situation",
+   "steps": [
+    "Suivre les consignes de la mairie et de l'agence régionale de santé : eau en bouteille, ou à faire bouillir seulement si c'est indiqué.",
+    "Bouillir à gros bouillons au moins une minute pour boire, cuisiner et se brosser les dents, si l'avis le permet.",
+    "Biberons : uniquement de l'eau en bouteille adaptée aux nourrissons.",
+    "L'eau reste utilisable pour la douche et les WC, sauf consigne contraire."
+   ]
+  },
+  {
+   "id": "neige",
+   "name": "Neige et verglas",
+   "icon": "🌨️",
+   "tags_any": [
+    "climat_montagne",
+    "risque_froid"
+   ],
+   "group": "situation",
+   "steps": [
+    "Limiter les déplacements ; sinon équipements d'hiver, plein fait, couverture et eau dans la voiture.",
+    "Prévoir la coupure de courant : bois, lampes, eau.",
+    "Bloqué en voiture : rester dans le véhicule, dégager le pot d'échappement, aérer régulièrement (monoxyde de carbone)."
+   ]
+  },
+  {
+   "id": "violences",
+   "name": "Violences dans le foyer",
+   "icon": "🤝",
+   "tags_any": [],
+   "group": "situation",
+   "steps": [
+    "Danger immédiat : 17 ou 112 ; si parler est impossible, SMS au 114.",
+    "En pharmacie : demander « Masque 19 » pour que l'alerte soit donnée discrètement.",
+    "Écoute anonyme et gratuite : 3919 (violences faites aux femmes), 119 (enfance en danger).",
+    "Mettre un sac et des copies des papiers en lieu sûr, chez une personne de confiance."
+   ]
+  },
+  {
+   "id": "arret_cardiaque",
+   "name": "Arrêt cardiaque",
+   "icon": "❤️",
+   "tags_any": [],
+   "group": "secours",
+   "steps": [
+    "Ne répond pas et ne respire pas (ou respire anormalement) : appeler le 15 ou le 112, haut-parleur activé.",
+    "Masser tout de suite : talon de la main au centre de la poitrine, bras tendus, enfoncer de 5 à 6 cm, 100 à 120 fois par minute.",
+    "Faire chercher un défibrillateur et l'utiliser dès qu'il arrive : il guide à la voix.",
+    "Ne pas s'arrêter avant le relais des secours ou le retour d'une respiration normale."
+   ]
+  },
+  {
+   "id": "hemorragie",
+   "name": "Hémorragie",
+   "icon": "🩸",
+   "tags_any": [],
+   "group": "secours",
+   "steps": [
+    "Appuyer fort et directement sur la plaie (main protégée par un gant, un sac ou un tissu propre).",
+    "Allonger la victime et appeler le 15 ou le 112.",
+    "Pour se libérer les mains : pansement compressif bien serré.",
+    "Garrot seulement si la compression est impossible ou inefficace sur un membre : quelques centimètres au-dessus de la plaie, noter l'heure.",
+    "Couvrir la victime et lui parler pour surveiller qu'elle reste consciente."
+   ]
+  },
+  {
+   "id": "inconscience",
+   "name": "Personne inconsciente qui respire",
+   "icon": "😶",
+   "tags_any": [],
+   "group": "secours",
+   "steps": [
+    "Elle ne répond pas mais respire : la mettre sur le côté (position latérale de sécurité), bouche vers le sol.",
+    "Appeler le 15 ou le 112.",
+    "Couvrir et vérifier la respiration en continu ; si elle s'arrête : massage cardiaque."
+   ]
+  },
+  {
+   "id": "etouffement",
+   "name": "Étouffement",
+   "icon": "😮",
+   "tags_any": [],
+   "group": "secours",
+   "steps": [
+    "Elle tousse : l'encourager à tousser, ne rien faire d'autre.",
+    "Elle ne peut ni parler, ni tousser, ni respirer : jusqu'à 5 claques vigoureuses dans le dos, penchée en avant.",
+    "Sans effet : jusqu'à 5 compressions abdominales (poing au creux de l'estomac, tirer vers soi et vers le haut). Alterner.",
+    {
+     "text": "Bébé : à plat ventre sur l'avant-bras, 5 claques dans le dos, puis 5 compressions de la poitrine à deux doigts.",
+     "tags_any": [
+      "bebe"
+     ]
+    },
+    "Perte de connaissance : 15 ou 112 et massage cardiaque."
+   ]
+  },
+  {
+   "id": "brulure",
+   "name": "Brûlure",
+   "icon": "♨️",
+   "tags_any": [],
+   "group": "secours",
+   "steps": [
+    "Refroidir tout de suite sous l'eau tempérée pendant 20 minutes.",
+    "Retirer vêtements et bijoux qui ne collent pas à la peau.",
+    "Appeler le 15 si la brûlure est plus grande que la moitié de la paume de la victime, sur le visage, les mains, les articulations ou le cou, ou chez un enfant.",
+    "Ne pas percer les cloques, ne rien appliquer d'autre que l'eau."
+   ]
+  },
+  {
+   "id": "monoxyde",
+   "name": "Intoxication au monoxyde de carbone",
+   "icon": "☁️",
+   "tags_any": [],
+   "group": "secours",
+   "steps": [
+    "Maux de tête, nausées, vertiges ou somnolence chez plusieurs personnes au même endroit : penser au monoxyde de carbone.",
+    "Ouvrir portes et fenêtres, arrêter l'appareil en cause (chauffage, groupe électrogène, brasero).",
+    "Sortir tout le monde, animaux compris, et appeler le 15, le 18 ou le 112 depuis l'extérieur.",
+    "Ne pas rentrer avant le passage d'un professionnel."
+   ]
+  },
+  {
+   "id": "coup_chaleur",
+   "name": "Coup de chaleur",
+   "icon": "🥵",
+   "tags_any": [],
+   "group": "secours",
+   "steps": [
+    "Peau chaude et sèche ou très rouge, fièvre, confusion, propos incohérents : appeler le 15, c'est une urgence vitale.",
+    "Mettre au frais, déshabiller, asperger d'eau fraîche et ventiler.",
+    "Faire boire de l'eau fraîche par petites gorgées, seulement si la personne est bien consciente."
+   ]
+  },
+  {
+   "id": "hypothermie",
+   "name": "Hypothermie",
+   "icon": "🥶",
+   "tags_any": [],
+   "group": "secours",
+   "steps": [
+    "Frissons intenses puis somnolence, confusion, gestes maladroits.",
+    "Mettre à l'abri, retirer les vêtements mouillés, envelopper (couvertures, couverture de survie).",
+    "Réchauffer le tronc progressivement ; boisson chaude et sucrée seulement si la personne est bien consciente. Pas de bain chaud ni de frictions.",
+    "Appeler le 15 si confusion, somnolence ou si la personne ne frissonne plus."
+   ]
+  },
+  {
+   "id": "hypoglycemie",
+   "name": "Hypoglycémie",
+   "icon": "🍬",
+   "tags_any": [
+    "diabete_insuline"
+   ],
+   "group": "secours",
+   "steps": [
+    "Sueurs, tremblements, pâleur, faim, comportement inhabituel.",
+    "Consciente : 15 g de sucre rapide (3 morceaux de sucre ou un verre de jus), contrôle après 15 minutes, recommencer si besoin, puis une collation.",
+    "Inconsciente : rien dans la bouche, position latérale de sécurité, glucagon si prescrit, appeler le 15."
+   ]
+  },
+  {
+   "id": "anaphylaxie",
+   "name": "Choc allergique",
+   "icon": "💉",
+   "tags_any": [
+    "allergie_severe"
+   ],
+   "group": "secours",
+   "steps": [
+    "Gonflement du visage ou de la gorge, gêne pour respirer, malaise après contact avec l'allergène.",
+    "Injecter le stylo d'adrénaline sans attendre, face externe de la cuisse, même à travers le vêtement.",
+    "Appeler le 15 et dire « choc anaphylactique ».",
+    "Allonger jambes surélevées (assis si la respiration est gênée) ; second stylo après 5 à 15 minutes sans amélioration."
+   ]
+  },
+  {
+   "id": "asthme",
+   "name": "Crise d'asthme",
+   "icon": "🫁",
+   "tags_any": [
+    "respiratoire"
+   ],
+   "group": "secours",
+   "steps": [
+    "Asseoir, légèrement penché en avant, et rassurer.",
+    "Bronchodilatateur de secours selon le plan d'action, avec la chambre d'inhalation si elle est prescrite.",
+    "Appeler le 15 si pas d'amélioration rapide, si la personne ne peut plus parler ou si ses lèvres bleuissent."
+   ]
+  },
+  {
+   "id": "appareil_panne",
+   "name": "Panne de l'appareil médical",
+   "icon": "🔋",
+   "tags_any": [
+    "appareil_electrique"
+   ],
+   "group": "secours",
+   "steps": [
+    "Passer sur la batterie de secours et noter l'heure : connaître l'autonomie restante.",
+    "Appeler le prestataire de santé à domicile (numéro sur l'appareil).",
+    "Si l'autonomie ne suffit pas : rejoindre l'hôpital ou le lieu de repli prévu avant la fin de la batterie.",
+    "Détresse respiratoire : 15."
+   ]
+  },
+  {
+   "id": "desorientation",
+   "name": "Personne désorientée ou disparue",
+   "icon": "🫂",
+   "tags_any": [
+    "accompagnement"
+   ],
+   "group": "secours",
+   "steps": [
+    "En crise, ne jamais la laisser seule : désigner un accompagnant.",
+    "Parler doucement, phrases courtes, sans la contredire.",
+    "Disparue : chercher d'abord dans les lieux familiers proches, puis appeler le 17 sans attendre, avec une photo récente."
    ]
   }
  ]
