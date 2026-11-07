@@ -1,4 +1,4 @@
-import { householdTags } from "../engine/engine";
+import { householdTags, memberOf } from "../engine/engine";
 import { type Answer, isVisible } from "../engine/interview";
 import type { Catalog, ContextId, Question } from "../engine/types";
 import type { MemberIn } from "../model";
@@ -23,7 +23,7 @@ export function visibleSections(
 ): { section: string; questions: Question[] }[] {
   const base = householdTags(catalog, {
     context,
-    members,
+    members: members.map(memberOf),
     declared_tags: [],
     target_context: null,
     priority_axes: [],

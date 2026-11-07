@@ -1,3 +1,4 @@
+import { MAX_LEVEL } from "../engine/types";
 import type { Dashboard } from "../model";
 
 export function AxisLevels({ axes, level }: { axes: Dashboard["axis_levels"]; level: number }) {
@@ -9,8 +10,8 @@ export function AxisLevels({ axes, level }: { axes: Dashboard["axis_levels"]; le
           <span className="axis-name">
             {a.icon} {a.name}
           </span>
-          <span className="bar" aria-label={`niveau ${a.level} sur 8`}>
-            {Array.from({ length: 8 }, (_, i) => (
+          <span className="bar" aria-label={`niveau ${a.level} sur ${MAX_LEVEL}`}>
+            {Array.from({ length: MAX_LEVEL }, (_, i) => (
               <span key={i} className={i < a.level ? "on" : ""} />
             ))}
           </span>

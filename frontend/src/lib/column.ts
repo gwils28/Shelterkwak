@@ -1,4 +1,6 @@
-// Géométrie de la colonne : 8 tambours empilés, légère entasis (le fût s'affine vers le haut).
+// Géométrie de la colonne : 9 tambours empilés, légère entasis (le fût s'affine vers le haut).
+
+import { MAX_LEVEL } from "../engine/types";
 
 export interface DrumGeometry {
   n: number;
@@ -15,7 +17,7 @@ export const COLUMN = {
   topWidth: 112,
   plinthHeight: 26,
   capitalHeight: 44,
-  levels: 8,
+  levels: MAX_LEVEL,
 } as const;
 
 export function drumGeometry(n: number): DrumGeometry {

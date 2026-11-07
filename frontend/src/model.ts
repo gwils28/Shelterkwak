@@ -2,7 +2,7 @@
 
 import type { ChecklistItem as EngineItem, Evaluation, Tier as EngineTier } from "./engine/engine";
 import type { HouseholdData, State } from "./engine/replay";
-import { type Catalog, type Kind, type Level, levelOf, type Objective as CatalogObjective, type Status } from "./engine/types";
+import { type Catalog, type Kind, type Level, levelOf, MAX_LEVEL, type Objective as CatalogObjective, type Status } from "./engine/types";
 
 export type { Axis, ContextId, NamedId, Status } from "./engine/types";
 export type { HouseholdData, StockData } from "./engine/replay";
@@ -10,11 +10,13 @@ export type { HouseholdData, StockData } from "./engine/replay";
 export interface MemberIn {
   name: string;
   type: string;
-  medical: boolean;
+  conditions: string[];
+  medical: boolean; // gardé en double de la condition « traitement » pour les anciennes versions
 }
 export interface Tier extends EngineTier {
   name: string;
   horizon: string;
+  summary: string;
 }
 export interface Autonomy {
   category: string;
@@ -57,8 +59,8 @@ export function buildDashboard(catalog: Catalog, state: State, ev: Evaluation): 
     household: state.household!,
     level: ev.level,
     level_info: level(ev.level),
-    next_level_info: ev.level < 8 ? level(ev.level + 1) : null,
-    tiers: ev.tiers.map((t) => ({ ...t, name: level(t.n).name, horizon: level(t.n).horizon })),
+    next_level_info: ev.level < MAX_LEVEL ? level(ev.level + 1) : null,
+    tiers: ev.tiers.map((t) => ({ ...t, name: level(t.n).name, horizon: level(t.n).horizon, summary: level(t.n).summary })),
     axis_levels: catalog.axes.map((a) => ({ axis: a.id, name: a.name, icon: a.icon, level: ev.axis_levels[a.id] })),
     autonomy: catalog.categories.map((c) => ({ ...ev.autonomy[c.id], name: c.name, unit: c.unit })),
     checklist: ev.checklist.map((i) => ({

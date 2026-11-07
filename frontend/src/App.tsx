@@ -1,5 +1,6 @@
 import { NavLink, Navigate, Route, Routes } from "react-router-dom";
 import { SyncBadge } from "./components/SyncBadge";
+import { CrisisPage } from "./pages/Crisis";
 import { DashboardPage } from "./pages/Dashboard";
 import { HistoryPage } from "./pages/History";
 import { HouseholdPage } from "./pages/Household";
@@ -39,6 +40,9 @@ export function App() {
         </div>
         <SyncBadge sync={foyer.sync} />
         <nav>
+          <NavLink to="/crise" className="crisis-link">
+            🚨 Crise
+          </NavLink>
           {NAV.map((n) => (
             <NavLink key={n.to} to={n.to} end={n.to === "/"}>
               {n.label}
@@ -53,6 +57,7 @@ export function App() {
           <Route path="/inventaire" element={<InventoryPage />} />
           <Route path="/foyer" element={<HouseholdPage />} />
           <Route path="/historique" element={<HistoryPage />} />
+          <Route path="/crise" element={<CrisisPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

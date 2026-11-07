@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { romanNumeral } from "../components/Column";
-import type { CustomObjective, Kind } from "../engine/types";
-import { formatDate, formatPeriod, STATUS_LABEL } from "../lib/format";
+import { type CustomObjective, type Kind, levelOf } from "../engine/types";
+import { formatDate, formatPeriod, MONTHS, STATUS_LABEL } from "../lib/format";
 import type { Objective, Status } from "../model";
 import { actions, useFoyer } from "../store/hooks";
 
@@ -24,7 +24,7 @@ export function ObjectivesPage() {
           (!level || o.level === level) &&
           (!axis || o.axis === axis) &&
           (showNa || o.status !== "na") &&
-          (!status || (status === "open" ? ["todo", "expired", "expiring"].includes(o.status) : o.status === status)),
+          (!status || (status === "open" ? ["todo", "expired", "expiring", "grace"].includes(o.status) : o.status === status)),
       ),
     [objectives, level, axis, status, showNa],
   );
@@ -54,7 +54,7 @@ export function ObjectivesPage() {
       <div className="filters">
         <select aria-label="Niveau" value={level || ""} onChange={(e) => setParams(e.target.value ? { niveau: e.target.value } : {})}>
           <option value="">Tous les niveaux</option>
-          {catalog.levels.slice(1).map((l) => (
+          {catalog.levels.filter((l) => l.n >= 1).map((l) => (
             <option key={l.n} value={l.n}>
               {l.n} · {l.name}
             </option>
@@ -71,7 +71,7 @@ export function ObjectivesPage() {
         <select aria-label="Statut" value={status} onChange={(e) => setStatus(e.target.value as typeof status)}>
           <option value="">Tous les statuts</option>
           <option value="open">À traiter</option>
-          {(["todo", "done", "expiring", "expired"] as Status[]).map((s) => (
+          {(["todo", "done", "expiring", "grace", "expired"] as Status[]).map((s) => (
             <option key={s} value={s}>
               {STATUS_LABEL[s]}
             </option>
@@ -86,12 +86,12 @@ export function ObjectivesPage() {
       {levels.map((n) => (
         <section key={n} className="panel">
           <h2>
-            <span className="roman">{romanNumeral(n)}</span> {catalog.levels[n - 1].name}
-            <span className="hint"> — {catalog.levels[n - 1].summary}</span>
+            <span className="roman">{romanNumeral(n)}</span> {levelOf(catalog, n).name}
+            <span className="hint"> — {levelOf(catalog, n).summary}</span>
           </h2>
           <ul className="objectives">
             {byLevel.get(n)!.map((o) => {
-              const done = o.status === "done" || o.status === "expiring";
+              const done = o.status === "done" || o.status === "expiring" || o.status === "grace";
               return (
                 <li key={o.id} className={`objective ${o.status}`}>
                   {o.kind === "stock" ? (
@@ -120,6 +120,7 @@ export function ObjectivesPage() {
                       {o.custom && <span className="badge perso">Perso</span>}
                       {!o.required && <span className="badge soft">Bonus</span>}
                       {o.revalidate_days ? <span className="badge soft">À refaire tous les {formatPeriod(o.revalidate_days)}</span> : null}
+                      {o.due_month ? <span className="badge soft">Chaque année avant le 1er {MONTHS[o.due_month - 1]}</span> : null}
                       {o.validated_at && (
                         <span className="badge soft">
                           Validé le {formatDate(o.validated_at)}
@@ -127,7 +128,7 @@ export function ObjectivesPage() {
                         </span>
                       )}
                       {o.expires_on && <span className="badge soft">Échéance {formatDate(o.expires_on)}</span>}
-                      {o.status === "expiring" && (
+                      {(o.status === "expiring" || o.status === "grace") && (
                         <button className="link" onClick={() => void actions.validate(o.id)}>
                           Revalider maintenant
                         </button>
@@ -210,7 +211,7 @@ function CustomForm({
           <label className="field">
             Palier
             <select id="custom-level" value={level} onChange={(e) => setLevel(Number(e.target.value))}>
-              {catalog.levels.slice(1).map((l) => (
+              {catalog.levels.filter((l) => l.n >= 1).map((l) => (
                 <option key={l.n} value={l.n}>
                   {l.n} · {l.name}
                 </option>

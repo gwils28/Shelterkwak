@@ -7,7 +7,7 @@ import { actions, useFoyer } from "../store/hooks";
 
 type StockIn = Omit<StockData, "id">;
 
-const EMPTY: StockIn = { name: "", category: "eau", quantity: 1, unit_label: "", amount_per_unit: 1, expires_on: null };
+const EMPTY: StockIn = { name: "", category: "eau", quantity: 1, unit_label: "", amount_per_unit: 1, expires_on: null, location: null };
 
 const HINTS: Record<string, string> = {
   eau: "Ex. : 6 bouteilles de 1,5 L → quantité 6, contenu par unité 1,5 L.",
@@ -37,7 +37,7 @@ export function InventoryPage() {
   };
   const edit = (s: StockData) => {
     setEditing(s.id);
-    setForm({ name: s.name, category: s.category, quantity: s.quantity, unit_label: s.unit_label, amount_per_unit: s.amount_per_unit, expires_on: s.expires_on });
+    setForm({ name: s.name, category: s.category, quantity: s.quantity, unit_label: s.unit_label, amount_per_unit: s.amount_per_unit, expires_on: s.expires_on, location: s.location ?? null });
   };
 
   return (
@@ -82,6 +82,10 @@ export function InventoryPage() {
             Péremption
             <input type="date" value={form.expires_on ?? ""} onChange={(e) => setForm({ ...form, expires_on: e.target.value || null })} />
           </label>
+          <label className="field">
+            Emplacement
+            <input value={form.location ?? ""} placeholder="cellier, sous l'évier, cave…" onChange={(e) => setForm({ ...form, location: e.target.value || null })} />
+          </label>
           <div className="actions">
             {editing && (
               <button type="button" onClick={() => { setEditing(null); setForm(EMPTY); }}>
@@ -110,6 +114,7 @@ export function InventoryPage() {
                   <th>Quantité</th>
                   <th>Total</th>
                   <th>Péremption</th>
+                  <th>Emplacement</th>
                   <th />
                 </tr>
               </thead>
@@ -132,7 +137,16 @@ export function InventoryPage() {
                         {state === "expired" && " · périmé"}
                         {state === "expiring" && " · bientôt"}
                       </td>
+                      <td>{s.location ?? "—"}</td>
                       <td className="row-actions">
+                        <button
+                          className="link"
+                          title="Consommer une unité"
+                          disabled={s.quantity <= 0}
+                          onClick={() => void actions.upsertStock({ ...s, quantity: Math.max(0, s.quantity - 1) })}
+                        >
+                          −1
+                        </button>
                         <button className="link" onClick={() => edit(s)}>
                           Modifier
                         </button>
