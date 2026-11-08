@@ -45,6 +45,8 @@ def test_items_cover_every_group_and_reserve_category(catalog: Catalog) -> None:
         (lambda it: it["tiers"].reverse(), "les cinq niveaux"),
         (lambda it: it["tiers"].pop(), "les cinq niveaux"),
         (lambda it: it["tiers"][2].update(includes=[]), "includes"),
+        (lambda it: it["tiers"][4]["objectives"].append("sante.pharmacie_base"), "niveau inférieur"),
+        (lambda it: it["tiers"][4]["objectives"].append("sante.psc1"), "compétence"),
     ],
 )
 def test_invalid_item_is_rejected(catalog: Catalog, change, message: str) -> None:

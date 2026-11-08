@@ -3,18 +3,21 @@ import { Link } from "react-router-dom";
 import { AutonomyCards } from "../components/AutonomyCards";
 import { addDays } from "../engine/dates";
 import type { Catalog } from "../engine/types";
-import { formatDate, formatDays, formatNumber, gaugePosition, MONTHS } from "../lib/format";
+import { formatDate, formatDays, formatNumber, gaugePosition, MONTHS, unitLabel } from "../lib/format";
 import {
   autonomyProjection,
   buildCards,
   byLocation,
   type Card,
   DONE_STATUSES,
+  datedEntries,
+  type Dated,
   expiriesByMonth,
   nextSteps,
+  seasonal,
   type Projection,
 } from "../lib/inventory";
-import type { StockData } from "../model";
+import type { Objective } from "../model";
 import { useFoyer } from "../store/hooks";
 
 const SHORT_MONTHS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
@@ -41,8 +44,9 @@ export function InventoryReport() {
   const weakest = [...tracked].sort((a, b) => (a.days ?? 0) - (b.days ?? 0))[0];
   const linked = new Map(relevant.flatMap((c) => c.objectives).map((o) => [o.id, o]));
   const linkedDone = [...linked.values()].filter((o) => DONE_STATUSES.includes(o.status)).length;
-  const expired = stock.filter((s) => s.quantity > 0 && s.expires_on && s.expires_on < today);
-  const expiring = stock.filter((s) => s.quantity > 0 && s.expires_on && s.expires_on >= today && s.expires_on <= soon);
+  const dated = datedEntries(cards, (id) => catalog.categories.find((c) => c.id === id)?.name ?? id);
+  const expired = dated.filter((e) => e.date < today);
+  const expiring = dated.filter((e) => e.date >= today && e.date <= soon);
 
   return (
     <div className="report viz">
@@ -58,8 +62,9 @@ export function InventoryReport() {
         <Kpi
           label="À surveiller"
           value={String(expired.length + expiring.length)}
-          detail={`${expired.length} périmé${expired.length > 1 ? "s" : ""}, ${expiring.length} sous 30 jours`}
+          detail={`${expired.length} dépassé${expired.length > 1 ? "s" : ""}, ${expiring.length} sous 30 jours`}
           status={expired.length ? "critical" : expiring.length ? "warning" : "good"}
+          statusLabel={expired.length ? "Dépassé" : expiring.length ? "Bientôt" : "À jour"}
         />
       </section>
 
@@ -79,7 +84,7 @@ export function InventoryReport() {
         <section className="panel">
           <h2>Prochains achats utiles</h2>
           <p className="hint">Ce qui remplit le plus vite un objectif encore ouvert, du niveau le plus bas au plus haut.</p>
-          <NextSteps cards={cards} catalog={catalog} />
+          <NextSteps cards={cards} catalog={catalog} level={dashboard.level} />
         </section>
 
         <section className="panel">
@@ -90,12 +95,14 @@ export function InventoryReport() {
         </section>
       </div>
 
+      <Season objectives={objectives} today={today} />
+
       <div className="report-cols">
         <section className="panel">
-          <h2>Péremptions, mois par mois</h2>
-          <p className="hint">Nombre d'articles des réserves qui arrivent à leur date.</p>
-          <ExpiryChart months={expiriesByMonth(stock, today)} />
-          <ExpiryList articles={[...expired, ...expiring]} catalog={catalog} today={today} />
+          <h2>Échéances, mois par mois</h2>
+          <p className="hint">Articles qui périment et objets à vérifier ou qui périment (stylos, pastilles, extincteur, trousse…).</p>
+          <ExpiryChart months={expiriesByMonth(dated, today)} />
+          <ExpiryList entries={[...expired, ...expiring]} today={today} />
         </section>
 
         <section className="panel">
@@ -121,7 +128,21 @@ function statusOfDays(days: number): Status {
   return days < 3 ? "critical" : days < 14 ? "warning" : "good";
 }
 
-function Kpi({ label, value, detail, status = null, meter }: { label: string; value: string; detail: string; status?: Status | null; meter?: number }) {
+function Kpi({
+  label,
+  value,
+  detail,
+  status = null,
+  statusLabel,
+  meter,
+}: {
+  label: string;
+  value: string;
+  detail: string;
+  status?: Status | null;
+  statusLabel?: string;
+  meter?: number;
+}) {
   return (
     <div className="kpi">
       <span className="kpi-label">{label}</span>
@@ -134,7 +155,7 @@ function Kpi({ label, value, detail, status = null, meter }: { label: string; va
       <span className="kpi-detail">
         {status && (
           <span className={`status status-${status}`}>
-            <span aria-hidden>{STATUS[status].icon}</span> {STATUS[status].label}
+            <span aria-hidden>{STATUS[status].icon}</span> {statusLabel ?? STATUS[status].label}
           </span>
         )}
         {detail}
@@ -291,19 +312,31 @@ function addMonths(iso: string, n: number): string {
 
 // ---------- Prochains achats ----------
 
-function NextSteps({ cards, catalog }: { cards: Card[]; catalog: Catalog }) {
+function NextSteps({ cards, catalog, level }: { cards: Card[]; catalog: Catalog; level: number }) {
   const steps = nextSteps(cards).slice(0, 6);
   if (!steps.length) return <p className="empty">Rien d'urgent : chaque objectif lié à l'inventaire est rempli.</p>;
   return (
     <ol className="next-steps">
-      {steps.map(({ card, target, objective }) => (
+      {steps.map(({ card, target, objective, missing }) => (
         <li key={card.item.id}>
           <Link to={`/inventaire?objet=${card.item.id}`} className="next-step">
             <span className="inv-icon" aria-hidden>
               {card.item.icon}
             </span>
             <span>
-              <strong>{card.item.name}</strong>
+              <strong>
+                {card.item.name}
+                {objective.required && objective.level <= level + 1 && (
+                  <span className="status status-warning">
+                    <span aria-hidden>!</span> {objective.level <= level ? `Menace le niveau ${objective.level}` : `Bloque le niveau ${objective.level}`}
+                  </span>
+                )}
+              </strong>
+              {missing && missing.amount > 0 && (
+                <span className="item-detail">
+                  Il manque {formatNumber(Math.ceil(missing.amount))} {unitLabel(missing.unit, missing.amount)}
+                </span>
+              )}
               <span className="item-detail">
                 {card.owned ? "Passer au niveau " : "Acquérir au niveau "}
                 <span className={`tier-pill tier-${target.tier}`}>{catalog.item_tiers.find((t) => t.id === target.tier)?.name}</span>
@@ -371,20 +404,20 @@ function TierSpread({ catalog, cards }: { catalog: Catalog; cards: Card[] }) {
 
 // ---------- Péremptions ----------
 
-function ExpiryChart({ months }: { months: { month: string; articles: StockData[] }[] }) {
+function ExpiryChart({ months }: { months: { month: string; entries: Dated[] }[] }) {
   const [hover, setHover] = useState<number | null>(null);
   const [wrapRef, W] = useWidth<HTMLDivElement>();
-  const max = Math.max(1, ...months.map((m) => m.articles.length));
+  const max = Math.max(1, ...months.map((m) => m.entries.length));
   const h = 120;
   const slot = W / months.length;
   const bw = Math.min(24, slot * 0.6);
   return (
     <figure className="chart">
       <div className="chart-wrap" ref={wrapRef}>
-        <svg viewBox={`0 0 ${W} ${h + 24}`} role="img" aria-label="Articles qui périment par mois sur douze mois" onPointerLeave={() => setHover(null)}>
+        <svg viewBox={`0 0 ${W} ${h + 24}`} role="img" aria-label="Échéances par mois sur douze mois" onPointerLeave={() => setHover(null)}>
           <line className="axis" x1={0} x2={W} y1={h} y2={h} />
           {months.map((m, i) => {
-            const n = m.articles.length;
+            const n = m.entries.length;
             const bh = (n / max) * (h - 16);
             const cx = slot * i + slot / 2;
             return (
@@ -403,14 +436,14 @@ function ExpiryChart({ months }: { months: { month: string; articles: StockData[
             );
           })}
         </svg>
-        {hover !== null && months[hover].articles.length > 0 && (
+        {hover !== null && months[hover].entries.length > 0 && (
           <div className="tooltip" style={{ left: `${((slot * hover + slot / 2) / W) * 100}%` }}>
             <strong>
               {MONTHS[Number(months[hover].month.slice(5)) - 1]} {months[hover].month.slice(0, 4)}
             </strong>
-            {months[hover].articles.map((s) => (
-              <span key={s.id}>
-                {s.name} · {formatDate(s.expires_on)}
+            {months[hover].entries.map((e) => (
+              <span key={e.id}>
+                {e.name} · {formatDate(e.date)}
               </span>
             ))}
           </div>
@@ -425,26 +458,58 @@ function roundedTop(x: number, base: number, w: number, h: number): string {
   return `M${x},${base}V${base - h + r}Q${x},${base - h} ${x + r},${base - h}H${x + w - r}Q${x + w},${base - h} ${x + w},${base - h + r}V${base}Z`;
 }
 
-function ExpiryList({ articles, catalog, today }: { articles: StockData[]; catalog: Catalog; today: string }) {
-  if (!articles.length) return <p className="hint">Rien de périmé, rien qui périme dans les 30 jours.</p>;
-  const sorted = [...articles].sort((a, b) => (a.expires_on ?? "").localeCompare(b.expires_on ?? ""));
+const PAST_LABEL: Record<Dated["kind"], string> = { article: "Périmé", consommable: "Périmé", equipement: "À vérifier" };
+
+function ExpiryList({ entries, today }: { entries: Dated[]; today: string }) {
+  if (!entries.length) return <p className="hint">Rien de dépassé, aucune échéance dans les 30 jours.</p>;
   return (
     <ul className="expiry-list">
-      {sorted.map((s) => {
-        const past = (s.expires_on ?? "") < today;
+      {entries.map((e) => {
+        const past = e.date < today;
         return (
-          <li key={s.id}>
+          <li key={`${e.kind}-${e.id}`}>
             <span className={`status status-${past ? "critical" : "warning"}`}>
-              <span aria-hidden>{past ? "✕" : "!"}</span> {past ? "Périmé" : "Bientôt"}
+              <span aria-hidden>{past ? "✕" : "!"}</span> {past ? PAST_LABEL[e.kind] : "Bientôt"}
             </span>
             <span>
-              {s.name} <span className="hint">· {formatNumber(s.quantity)} {s.unit_label} · {catalog.categories.find((c) => c.id === s.category)?.name}</span>
+              {e.name} {e.detail && <span className="hint">· {e.detail}</span>}
             </span>
-            <span className="hint">{formatDate(s.expires_on)}</span>
+            <span className="hint">{formatDate(e.date)}</span>
           </li>
         );
       })}
     </ul>
+  );
+}
+
+// ---------- Saison ----------
+
+function Season({ objectives, today }: { objectives: Objective[]; today: string }) {
+  const items = seasonal(objectives, today);
+  if (!items.length) return null;
+  const soon = addDays(today, 60);
+  return (
+    <section className="panel">
+      <h2>Saison</h2>
+      <p className="hint">Ce qui se refait chaque année avant une date : bois rentré, ramonage, débroussaillement, plan canicule.</p>
+      <ul className="expiry-list season">
+        {items.map(({ objective: o, due }) => {
+          const done = DONE_STATUSES.includes(o.status);
+          const status = done ? "good" : due <= soon ? "critical" : "warning";
+          return (
+            <li key={o.id}>
+              <span className={`status status-${status}`}>
+                <span aria-hidden>{STATUS[status].icon}</span> {done ? "Fait" : due <= soon ? "Urgent" : "À prévoir"}
+              </span>
+              <span>
+                {o.title} <span className="hint">· niveau {o.level}</span>
+              </span>
+              <span className="hint">avant le {formatDate(due)}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
 

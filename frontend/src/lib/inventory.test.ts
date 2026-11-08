@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { CATALOG } from "../engine/catalog";
 import type { ItemData, StockData } from "../engine/replay";
 import type { Autonomy, Objective } from "../model";
-import { autonomyProjection, buildCards, byLocation, expiriesByMonth, nextSteps, reserveTier, tierObjectiveIds } from "./inventory";
+import { autonomyProjection, buildCards, byLocation, datedEntries, expiriesByMonth, nextDue, nextSteps, reserveTier, tierObjectiveIds } from "./inventory";
 
 const item = (id: string) => CATALOG.items.find((i) => i.id === id)!;
 const objective = (id: string, status: Objective["status"]): Objective =>
@@ -67,6 +67,10 @@ describe("inventaire", () => {
       ["trousse_secours", "commun"],
     ]);
     expect(byLocation(cards)).toEqual([{ location: "Cuisine", names: ["Trousse de secours"] }]);
+
+    const autonomy: Autonomy[] = [{ category: "eau", name: "Eau", unit: "L", need_per_day: 8, total: 8, days: 1, days_after_expiring: 1 }];
+    const water = nextSteps(buildCards(CATALOG, new Map(), new Map(), autonomy, [objective("eau.stock_3j", "todo")], "2026-12-01"));
+    expect(water.map((s) => [s.card.item.id, s.target.tier, s.missing])).toEqual([["reserve_eau", "commun", { amount: 16, unit: "L" }]]);
   });
 
   it("projette l'autonomie aux péremptions et compte les articles par mois", () => {
@@ -82,9 +86,26 @@ describe("inventaire", () => {
       { date: "2027-01-11", days: 1 },
       { date: "2027-12-01", days: 1 },
     ]);
-    const months = expiriesByMonth(stock, "2026-12-01");
+    const items = new Map<string, ItemData>([
+      ["adrenaline", { item_id: "adrenaline", tier: "commun", quantity: 2, location: "Sac", note: "", expires_on: "2026-12-20" }],
+    ]);
+    const cards = buildCards(CATALOG, items, new Map(stock.map((s) => [s.id, s])), autonomy, [], "2026-12-31");
+    const dated = datedEntries(cards, () => "Eau");
+    expect(dated.map((d) => [d.id, d.kind])).toEqual([
+      ["c", "article"],
+      ["adrenaline", "equipement"],
+      ["a", "article"],
+    ]);
+    expect(cards.find((c) => c.item.id === "adrenaline")!.warn).toBe(true);
+    const months = expiriesByMonth(dated, "2026-12-01");
     expect(months).toHaveLength(12);
-    expect(months[1]).toEqual({ month: "2027-01", articles: [stock[0]] });
-    expect(months[0].articles).toEqual([]);
+    expect(months[0].entries.map((e) => e.id)).toEqual(["adrenaline"]);
+    expect(months[1].entries.map((e) => e.id)).toEqual(["a"]);
+  });
+
+  it("place l'échéance saisonnière au prochain 1er du mois", () => {
+    expect(nextDue(11, "2026-11-08")).toBe("2027-11-01");
+    expect(nextDue(11, "2026-10-31")).toBe("2026-11-01");
+    expect(nextDue(6, "2026-11-08")).toBe("2027-06-01");
   });
 });

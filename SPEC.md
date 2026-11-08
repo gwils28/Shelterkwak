@@ -217,12 +217,15 @@ haut de page.
      confirmé, épique, légendaire ; le niveau dépend de la qualité, des options, de la quantité,
      du contenu (contenants : contenu minimal détaillé par niveau) ou, pour les réserves (eau,
      vivres, cuisson, traitements), de l'autonomie. Une fiche par carte : niveau, quantité,
-     rangement, objectifs servis ; celle d'une réserve porte les articles.
+     rangement, date de péremption ou de prochaine vérification, objectifs servis ; celle d'une
+     réserve porte les articles. Un niveau ne remplit que des objectifs matériels, dans l'ordre
+     des paliers ; posséder un objet ne valide rien.
    - **État des lieux** (`/inventaire/etat-des-lieux`) : chiffres clés (maillon faible, objets en
      place, objectifs servis, articles à surveiller), autonomie par catégorie face aux repères
      3 j, 14 j, 90 j, 180 j, projection de l'autonomie sur 12 mois au fil des péremptions,
-     prochains achats utiles, équipement par catégorie et par niveau, péremptions mois par mois,
-     emplacements.
+     prochains achats utiles (réserves comprises, avec ce qui manque), équipement par catégorie et
+     par niveau, saison (objectifs à échéance annuelle), échéances mois par mois (articles et
+     objets datés), emplacements.
 5. **Parcours** (`/historique`) : courbe du niveau et journal.
 6. **Foyer** : membres, monument, contexte actuel et cible, objectifs déclarés, synchronisation.
 7. **Crise** (`/crise`, bouton de l'en-tête) : écran du jour J, hors ligne et imprimable, pensé
@@ -231,8 +234,9 @@ haut de page.
    (`catalog/crisis.yaml`, `group`), filtrées selon les risques et les membres du foyer, avec des
    étapes réservées à certains foyers (`{text, tags_any}`) ; fiches du foyer (contacts,
    rendez-vous, qui fait quoi, fiches médicales…) en lecture avec numéros cliquables, modifiables
-   derrière un bouton ; réserves avec l'eau « boisson seule » (2 L par personne) et les
-   emplacements tirés de l'inventaire.
+   derrière un bouton ; « Où est le matériel » (emplacement des objets marqués `crisis` dans
+   `items.yaml`, ou rappel qu'il manque) ; réserves avec l'eau « boisson seule » (2 L par
+   personne) et les emplacements tirés de l'inventaire.
 
 L'accueil affiche aussi le **meilleur niveau atteint** et le nombre d'actions pour le
 retrouver quand le niveau a baissé.
@@ -296,7 +300,7 @@ cible, **la dernière écrite gagne**.
 | `stock.upsert` / `stock.delete` | Ajoute ou modifie / retire un article (id stable) |
 | `custom.upsert` / `custom.delete` | Crée ou modifie / supprime un objectif perso (`perso.<uuid>`) |
 | `notes.set` | Remplace le texte d'une fiche de l'écran Crise (`key` = id de `crisis.yaml`) |
-| `item.set` / `item.delete` | Déclare (palier, quantité, rangement, note) / retire une carte d'inventaire (`item_id` = id de `items.yaml`) |
+| `item.set` / `item.delete` | Déclare (niveau, quantité, rangement, note, `expires_on` facultatif) / retire une carte d'inventaire (`item_id` = id de `items.yaml`) |
 | `onboarding` | Marque la fin de l'interview (les effets sont des opérations ordinaires émises juste avant) |
 | `reset` | Efface tout ce qui précède |
 

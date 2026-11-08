@@ -16344,7 +16344,8 @@
      "tier": "commun",
      "quantity": 1,
      "location": null,
-     "note": ""
+     "note": "",
+     "expires_on": null
     }
    },
    {
@@ -16357,7 +16358,8 @@
      "tier": "epique",
      "quantity": 1,
      "location": "Cellier",
-     "note": ""
+     "note": "",
+     "expires_on": "2027-06-01"
     }
    },
    {
@@ -16370,7 +16372,8 @@
      "tier": null,
      "quantity": 12,
      "location": null,
-     "note": ""
+     "note": "",
+     "expires_on": null
     }
    },
    {
@@ -16392,7 +16395,8 @@
      "tier": null,
      "quantity": 1,
      "location": null,
-     "note": ""
+     "note": "",
+     "expires_on": null
     }
    },
    {
@@ -16440,7 +16444,8 @@
      "tier": "confirme",
      "quantity": 1,
      "location": null,
-     "note": ""
+     "note": "",
+     "expires_on": null
     }
    }
   ],
