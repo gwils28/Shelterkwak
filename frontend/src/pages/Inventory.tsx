@@ -180,6 +180,7 @@ function ItemCard({ card, catalog, onOpen }: { card: Card; catalog: Catalog; onO
             🎯 {card.done}/{card.objectives.length}
           </span>
         )}
+        {item.caution && <span className="warn-text" title="Mise en garde dans la fiche">⚠️</span>}
         {card.warn && <span className="warn-text">⏳ {item.kind === "equipement" ? "à vérifier" : "péremption"}</span>}
       </span>
     </button>
@@ -217,6 +218,11 @@ function ItemSheet({ card, catalog, today, soon, onClose }: { card: Card; catalo
           </button>
         </header>
         {item.description && <p>{item.description}</p>}
+        {item.caution && (
+          <p className="caution" role="note">
+            <strong>⚠️ Mise en garde.</strong> {item.caution}
+          </p>
+        )}
         {item.kind === "reserve" ? (
           <ReserveDetail card={card} catalog={catalog} today={today} soon={soon} />
         ) : (

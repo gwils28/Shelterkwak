@@ -16,6 +16,8 @@ export type OpType =
   | "notes.set"
   | "item.set"
   | "item.delete"
+  | "talent.set"
+  | "talent.delete"
   | "reset";
 
 export interface Op {
@@ -72,6 +74,12 @@ export interface ItemData {
   expires_on?: IsoDate | null; // péremption (consommable) ou prochaine vérification (équipement)
 }
 
+export interface TalentData {
+  talent_id: string;
+  acquired_on: IsoDate | null; // date d'acquisition, facultative
+  note: string;
+}
+
 export interface State {
   household: HouseholdData | null;
   validations: Map<string, ValidationData>;
@@ -79,11 +87,12 @@ export interface State {
   custom: Map<string, CustomObjective>;
   notes: Map<string, string>; // fiches de l'écran Crise
   items: Map<string, ItemData>; // cartes possédées, par id d'objet
+  talents: Map<string, TalentData>; // talents acquis, par id de talent
   onboarded_at: string | null;
 }
 
 export function emptyState(): State {
-  return { household: null, validations: new Map(), stock: new Map(), custom: new Map(), notes: new Map(), items: new Map(), onboarded_at: null };
+  return { household: null, validations: new Map(), stock: new Map(), custom: new Map(), notes: new Map(), items: new Map(), talents: new Map(), onboarded_at: null };
 }
 
 export function compareOps(a: Op, b: Op): number {
@@ -114,6 +123,10 @@ function itemLabel(catalog: Catalog, itemId: string, tier: string | null = null)
   return tierName ? `${name} (${tierName.toLowerCase()})` : name;
 }
 
+function talentName(catalog: Catalog, talentId: string): string {
+  return catalog.talents.find((t) => t.id === talentId)?.name ?? talentId;
+}
+
 /** Applique une opération ; renvoie [message du journal, cause d'un éventuel changement de niveau]. */
 export function apply(catalog: Catalog, state: State, op: Op): [string, string] {
   const p = op.payload;
@@ -126,6 +139,7 @@ export function apply(catalog: Catalog, state: State, op: Op): [string, string] 
       state.custom.clear();
       state.notes.clear();
       state.items.clear();
+      state.talents.clear();
       return ["Remise à zéro du foyer", "remise à zéro"];
     case "onboarding": {
       state.household = { ...p.household };
@@ -206,6 +220,17 @@ export function apply(catalog: Catalog, state: State, op: Op): [string, string] 
       state.items.delete(p.item_id);
       const label = itemLabel(catalog, p.item_id);
       return [`Retiré de l'inventaire : ${label}`, `inventaire « ${label} » retiré`];
+    }
+    case "talent.set": {
+      const prefix = state.talents.has(p.talent_id) ? "Talent mis à jour" : "Talent acquis";
+      state.talents.set(p.talent_id, { ...(p as TalentData) });
+      const name = talentName(catalog, p.talent_id);
+      return [`${prefix} : ${name}`, `talent « ${name} »`];
+    }
+    case "talent.delete": {
+      state.talents.delete(p.talent_id);
+      const name = talentName(catalog, p.talent_id);
+      return [`Talent retiré : ${name}`, `talent « ${name} » retiré`];
     }
     default:
       throw new Error(`type d'opération inconnu : ${(op as Op).type}`);

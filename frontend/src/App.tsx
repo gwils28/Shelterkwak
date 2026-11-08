@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom";
-import { IconHousehold, IconJourney, IconMonument, IconObjectives, IconStock } from "./components/NavIcons";
+import { IconHousehold, IconJourney, IconMonument, IconObjectives, IconSkills, IconStock } from "./components/NavIcons";
 import { SyncBadge } from "./components/SyncBadge";
 import { CrisisPage } from "./pages/Crisis";
 import { DashboardPage } from "./pages/Dashboard";
@@ -9,14 +9,16 @@ import { HouseholdPage } from "./pages/Household";
 import { InventoryPage } from "./pages/Inventory";
 import { ObjectivesPage } from "./pages/Objectives";
 import { OnboardingPage } from "./pages/Onboarding";
+import { SkillsPage } from "./pages/Skills";
 import { useFoyer } from "./store/hooks";
 
-// Cinq onglets : barre en bas sur téléphone, rail à gauche sur grand écran. La Crise reste hors des
+// Six onglets : barre en bas sur téléphone, rail à gauche sur grand écran. La Crise reste hors des
 // onglets, en bouton toujours visible. Les adresses ne changent pas (favoris et liens existants).
 const NAV = [
   { to: "/", label: "Monument", Icon: IconMonument },
   { to: "/objectifs", label: "Objectifs", Icon: IconObjectives },
   { to: "/inventaire", label: "Inventaire", Icon: IconStock },
+  { to: "/competences", label: "Compétences", Icon: IconSkills },
   { to: "/historique", label: "Parcours", Icon: IconJourney },
   { to: "/foyer", label: "Foyer", Icon: IconHousehold },
 ];
@@ -71,6 +73,7 @@ export function App() {
           <Route path="/" element={<DashboardPage />} />
           <Route path="/objectifs" element={<ObjectivesPage />} />
           <Route path="/inventaire/*" element={<InventoryPage />} />
+          <Route path="/competences" element={<SkillsPage />} />
           <Route path="/foyer" element={<HouseholdPage />} />
           <Route path="/historique" element={<HistoryPage />} />
           <Route path="/crise" element={<CrisisPage />} />

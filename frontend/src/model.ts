@@ -5,7 +5,7 @@ import type { HouseholdData, State } from "./engine/replay";
 import { type Catalog, type Kind, type Level, levelOf, MAX_LEVEL, type Objective as CatalogObjective, type Status } from "./engine/types";
 
 export type { Axis, ContextId, NamedId, Status } from "./engine/types";
-export type { HouseholdData, ItemData, StockData } from "./engine/replay";
+export type { HouseholdData, ItemData, StockData, TalentData } from "./engine/replay";
 
 export interface MemberIn {
   name: string;

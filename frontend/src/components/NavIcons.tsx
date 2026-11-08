@@ -48,3 +48,15 @@ export function IconHousehold() {
     </svg>
   );
 }
+
+export function IconSkills() {
+  return (
+    <svg {...common} aria-hidden>
+      <circle cx="12" cy="4.5" r="2" />
+      <circle cx="5.5" cy="12" r="2" />
+      <circle cx="18.5" cy="12" r="2" />
+      <circle cx="12" cy="19.5" r="2" />
+      <path d="M10.7 6 6.8 10.5M13.3 6l3.9 4.5M6.8 13.5l3.9 4.5M17.2 13.5 13.3 18" />
+    </svg>
+  );
+}
