@@ -102,6 +102,38 @@ export interface Scenario {
 export function scenarioSteps(s: Scenario, tags: Set<string>): string[] {
   return s.steps.flatMap((step) => (typeof step === "string" ? [step] : step.tags_any.some((t) => tags.has(t)) ? [step.text] : []));
 }
+export type ItemKind = "equipement" | "consommable" | "reserve";
+export interface ItemTierName {
+  id: string;
+  name: string;
+}
+export interface ItemGroup {
+  id: string;
+  name: string;
+  icon: string;
+}
+export interface ItemTier {
+  tier: string;
+  contents: string;
+  min_days: number | null; // jours d'autonomie, pour une réserve
+  objectives: string[];
+  includes: string[]; // contenu minimal ajouté à ce niveau (contenants)
+}
+/** Ce qui fait monter le niveau d'un objet. */
+export type ItemBasis = "qualite" | "options" | "quantite" | "contenu" | "autonomie";
+/** Carte de l'inventaire (catalog/items.yaml). */
+export interface Item {
+  id: string;
+  group: string;
+  name: string;
+  icon: string;
+  kind: ItemKind;
+  basis: ItemBasis;
+  category: string | null; // catégorie d'autonomie, pour une réserve
+  description: string;
+  objectives: string[];
+  tiers: ItemTier[];
+}
 export interface Catalog {
   levels: Level[];
   axes: Axis[];
@@ -114,6 +146,9 @@ export interface Catalog {
   questions: Question[];
   crisis_notes: CrisisNote[];
   scenarios: Scenario[];
+  item_tiers: ItemTierName[];
+  item_groups: ItemGroup[];
+  items: Item[];
 }
 
 export function isAnimal(catalog: Catalog, memberType: string): boolean {

@@ -1,0 +1,1408 @@
+# Cartes de l'inventaire : équipements, consommables et réserves du foyer.
+#
+# Un id d'objet est stocké dans le journal (opération item.set) : il ne se renomme pas.
+#
+# kind :
+#   equipement  : on l'a ou non, à un niveau ;
+#   consommable : on l'a ou non, avec une quantité qu'on décompte ;
+#   reserve     : calculée depuis les articles de la catégorie d'autonomie (`category`) ; le
+#                 niveau découle des jours d'autonomie (`min_days`), il ne se choisit pas.
+# basis : ce qui fait monter le niveau.
+#   qualite   : un meilleur objet ;
+#   options   : l'objet plus des accessoires ou des usages ;
+#   quantite  : plus d'unités ou plus de jours couverts ;
+#   contenu   : un contenant (sac, trousse, kit) ; chaque niveau liste dans `includes` ce qu'il
+#               doit contenir au minimum EN PLUS du niveau précédent ;
+#   autonomie : réserve, d'après les jours d'autonomie du foyer.
+# tiers : les cinq niveaux, de rustique à légendaire, chacun avec sa description et les objectifs
+#   qu'il permet de valider (les objectifs des niveaux inférieurs restent couverts).
+# objectives : objectifs que l'objet aide à remplir quel que soit son niveau.
+# Une carte s'affiche si l'un de ses objectifs s'applique au foyer (ou si elle n'en a aucun),
+# et toujours quand le foyer la possède.
+
+tiers:
+  - {id: rustique, name: Rustique}
+  - {id: commun, name: Commun}
+  - {id: confirme, name: Confirmé}
+  - {id: epique, name: Épique}
+  - {id: legendaire, name: Légendaire}
+
+groups:
+  - {id: eau, name: "Eau", icon: 💧}
+  - {id: vivres, name: "Vivres et cuisine", icon: 🥫}
+  - {id: sante, name: "Santé et hygiène", icon: 🩹}
+  - {id: energie, name: "Énergie et lumière", icon: 🔦}
+  - {id: abri, name: "Abri, chaleur et feu", icon: 🏠}
+  - {id: communication, name: "Information et communication", icon: 📻}
+  - {id: evacuation, name: "Évacuation et mobilité", icon: 🎒}
+  - {id: papiers, name: "Papiers et argent", icon: 🗂️}
+  - {id: moral, name: "Réconfort et occupation", icon: 🧸}
+
+items:
+  # ======================================================================
+  # Eau
+  # ======================================================================
+  - id: reserve_eau
+    group: eau
+    kind: reserve
+    basis: autonomie
+    category: eau
+    name: Réserve d'eau potable
+    icon: 🚰
+    description: "Bouteilles, packs et bidons alimentaires remplis. Compte 4 L par adulte et par jour (boisson, cuisine, hygiène minimale)."
+    objectives: [eau.rotation]
+    tiers:
+      - {tier: rustique, min_days: 1, contents: "24 heures pour tout le foyer", objectives: [eau.stock_24h]}
+      - {tier: commun, min_days: 3, contents: "Le temps que les secours s'organisent", objectives: [eau.stock_3j]}
+      - {tier: confirme, min_days: 14, contents: "Deux semaines de coupure", objectives: [eau.stock_14j]}
+      - {tier: epique, min_days: 30, contents: "Un mois sans eau du réseau", objectives: [eau.stock_30j]}
+      - {tier: legendaire, min_days: 60, contents: "Deux mois et plus", objectives: [eau.stock_60j]}
+
+  - id: pastilles_eau
+    group: eau
+    kind: consommable
+    basis: quantite
+    name: Pastilles de purification
+    icon: 💊
+    description: "Pastilles (chlore ou argent) ou eau de Javel non parfumée, pour rendre potable une eau douteuse. Vérifier la date."
+    objectives: [eau.pastilles]
+    tiers:
+      - {tier: rustique, contents: "Un flacon d'eau de Javel non parfumée (2 gouttes par litre, 30 min d'attente)"}
+      - {tier: commun, contents: "Pastilles pour 50 L"}
+      - {tier: confirme, contents: "Pastilles pour 200 L et Javel de secours"}
+      - {tier: epique, contents: "Pastilles pour 1 000 L, dans le sac et à la maison"}
+      - {tier: legendaire, contents: "Traitement pour plusieurs milliers de litres (pastilles, Javel, chlore en poudre) et bandelettes de test du chlore"}
+
+  - id: bidons
+    group: eau
+    kind: equipement
+    basis: quantite
+    name: Bidons alimentaires
+    icon: 🛢️
+    description: "Vides et propres, prêts à remplir dès une alerte de coupure. 10 L au plus si l'eau se monte à pied."
+    objectives: [eau.contenants, eau.portage]
+    tiers:
+      - {tier: rustique, contents: "Bouteilles vides lavées, gardées de côté"}
+      - {tier: commun, contents: "Deux bidons alimentaires de 10 L"}
+      - {tier: confirme, contents: "Un bidon de 10 L par personne, avec robinet"}
+      - {tier: epique, contents: "100 L de contenants pliables ou rigides, et un sac de baignoire (WaterBOB)"}
+      - {tier: legendaire, contents: "Cuve alimentaire de 500 L ou plus, remplie et renouvelée"}
+
+  - id: chariot_portage
+    group: eau
+    kind: equipement
+    basis: qualite
+    name: Chariot de portage
+    icon: 🛒
+    description: "Pour rapporter l'eau d'un point de distribution sans s'épuiser."
+    objectives: [eau.portage, eau.plan_appro]
+    tiers:
+      - {tier: rustique, contents: "Sac à dos et sangles pour porter deux bidons"}
+      - {tier: commun, contents: "Chariot de courses solide"}
+      - {tier: confirme, contents: "Diable pliant avec sangles, 50 kg et plus"}
+      - {tier: epique, contents: "Chariot monte-escalier à trois roues"}
+      - {tier: legendaire, contents: "Remorque de vélo ou charrette tout-terrain, 100 L et plus"}
+
+  - id: filtre_eau
+    group: eau
+    kind: equipement
+    basis: qualite
+    name: Filtre à eau
+    icon: 🫗
+    description: "Retient bactéries et parasites d'une eau brute (rivière, citerne). Ne retire pas les produits chimiques."
+    tiers:
+      - {tier: rustique, contents: "Paille filtrante individuelle"}
+      - {tier: commun, contents: "Gourde ou filtre portable avec cartouche valide", objectives: [eau.filtre]}
+      - {tier: confirme, contents: "Filtre gravitaire familial (10 L et plus)"}
+      - {tier: epique, contents: "Filtre gravitaire céramique grande capacité (plusieurs milliers de litres) et cartouches de rechange", objectives: [eau.filtre_gravitaire]}
+      - {tier: legendaire, contents: "Filtre grande capacité branché sur une source autonome avec pompe manuelle", objectives: [eau.pompe_manuelle]}
+
+  - id: recuperateur
+    group: eau
+    kind: equipement
+    basis: quantite
+    name: Récupérateur d'eau de pluie
+    icon: 🌧️
+    description: "Eau d'hygiène, de WC et d'arrosage ; à filtrer et traiter avant de la boire."
+    tiers:
+      - {tier: rustique, contents: "Bacs et seaux sous une gouttière"}
+      - {tier: commun, contents: "Cuve de 200 L sur une descente de gouttière"}
+      - {tier: confirme, contents: "Cuve de 500 L ou plus, nettoyée avant l'été", objectives: [eau.recuperateur]}
+      - {tier: epique, contents: "Plusieurs cuves reliées (1 m³ et plus), filtre de premier rinçage"}
+      - {tier: legendaire, contents: "Citerne enterrée de 5 m³ ou plus, eau analysée", objectives: [eau.source_autonome]}
+
+  # ======================================================================
+  # Vivres et cuisine
+  # ======================================================================
+  - id: reserve_vivres
+    group: vivres
+    kind: reserve
+    basis: autonomie
+    category: alimentation
+    name: Garde-manger
+    icon: 🥫
+    description: "Conserves, féculents, aliments secs. Les calories sont sur l'étiquette (riz 1 kg ≈ 3 600 kcal, boîte de lentilles 400 g ≈ 400 kcal)."
+    objectives: [alimentation.rotation, alimentation.sans_cuisson, alimentation.inventaire]
+    tiers:
+      - {tier: rustique, min_days: 1, contents: "24 heures pour tout le foyer", objectives: [alimentation.stock_24h]}
+      - {tier: commun, min_days: 3, contents: "Le kit d'urgence officiel", objectives: [alimentation.stock_3j]}
+      - {tier: confirme, min_days: 14, contents: "Deux semaines sans courses", objectives: [alimentation.stock_14j]}
+      - {tier: epique, min_days: 90, contents: "Un trimestre", objectives: [alimentation.stock_90j]}
+      - {tier: legendaire, min_days: 180, contents: "Six mois et plus", objectives: [alimentation.stock_180j]}
+
+  - id: reserve_cuisson
+    group: vivres
+    kind: reserve
+    basis: autonomie
+    category: cuisson
+    name: Combustible de cuisson
+    icon: 🔥
+    description: "Cartouches de gaz, alcool à brûler, bois sec. Une cartouche de 250 g fait environ 3 jours-personne."
+    tiers:
+      - {tier: rustique, min_days: 1, contents: "Une journée de repas chauds"}
+      - {tier: commun, min_days: 3, contents: "Trois jours", objectives: [energie.cuisson_3j]}
+      - {tier: confirme, min_days: 14, contents: "Deux semaines", objectives: [energie.cuisson_14j]}
+      - {tier: epique, min_days: 30, contents: "Un mois", objectives: [energie.cuisson_30j]}
+      - {tier: legendaire, min_days: 90, contents: "Trois mois et plus", objectives: [energie.cuisson_90j]}
+
+  - id: rechaud
+    group: vivres
+    kind: equipement
+    basis: qualite
+    name: Réchaud
+    icon: 🍳
+    description: "Pour cuisiner sans gaz ni électricité du réseau. Toujours à l'extérieur ou fenêtre ouverte (monoxyde de carbone)."
+    objectives: [competences.rechaud, competences.feu]
+    tiers:
+      - {tier: rustique, contents: "Réchaud à alcool ou chauffe-plat"}
+      - {tier: commun, contents: "Réchaud à cartouche de gaz, un feu"}
+      - {tier: confirme, contents: "Réchaud deux feux ou à gaz en bouteille, avec pare-vent"}
+      - {tier: epique, contents: "Réchaud multi-combustible (bois, alcool, gaz) ou rocket stove, et cuiseur solaire"}
+      - {tier: legendaire, contents: "Cuisinière ou poêle à bois qui cuisine et chauffe", objectives: [energie.bois]}
+
+  - id: ouvre_boite
+    group: vivres
+    kind: equipement
+    basis: options
+    name: Ouvre-boîte et ustensiles
+    icon: 🥄
+    description: "L'outil qu'on oublie et sans lequel les conserves restent fermées."
+    tiers:
+      - {tier: rustique, contents: "Un ouvre-boîte manuel", objectives: [alimentation.ouvre_boite]}
+      - {tier: commun, contents: "Deux ouvre-boîtes (maison et sac) et un couteau"}
+      - {tier: confirme, contents: "Couverts, gamelle et quart par personne"}
+      - {tier: epique, contents: "Batterie de camping (casserole, poêle, bouilloire) et pinces"}
+      - {tier: legendaire, contents: "Cuisine nomade complète : marmite en fonte, cuiseur à foin, ustensiles de conserve"}
+
+  - id: bebe
+    group: vivres
+    kind: consommable
+    basis: quantite
+    name: Lait infantile et couches
+    icon: 🍼
+    description: "Lait infantile, eau adaptée aux nourrissons, petits pots, couches et lingettes."
+    tiers:
+      - {tier: rustique, contents: "24 heures"}
+      - {tier: commun, contents: "3 jours", objectives: [alimentation.bebe_3j]}
+      - {tier: confirme, contents: "14 jours", objectives: [alimentation.bebe]}
+      - {tier: epique, contents: "1 mois, et biberons stérilisables à froid"}
+      - {tier: legendaire, contents: "3 mois, taille suivante comprise"}
+
+  - id: animaux_vivres
+    group: vivres
+    kind: consommable
+    basis: quantite
+    name: Nourriture des animaux
+    icon: 🦴
+    description: "Croquettes ou pâtée, litière, et le traitement habituel de l'animal."
+    tiers:
+      - {tier: rustique, contents: "3 jours"}
+      - {tier: commun, contents: "7 jours"}
+      - {tier: confirme, contents: "14 jours", objectives: [alimentation.animaux]}
+      - {tier: epique, contents: "1 mois, traitement compris"}
+      - {tier: legendaire, contents: "3 mois, traitement compris"}
+
+  - id: bocaux
+    group: vivres
+    kind: consommable
+    basis: quantite
+    name: Bocaux et conservation
+    icon: 🫙
+    description: "Bocaux, joints et couvercles neufs, sel, vinaigre, sucre pour conserver une récolte."
+    tiers:
+      - {tier: rustique, contents: "Quelques bocaux de récupération"}
+      - {tier: commun, contents: "20 bocaux et joints neufs"}
+      - {tier: confirme, contents: "50 bocaux, stérilisateur, sel et vinaigre", objectives: [alimentation.intrants]}
+      - {tier: epique, contents: "Intrants pour une saison, déshydrateur"}
+      - {tier: legendaire, contents: "Atelier de conservation : autoclave, fumoir ou cave, intrants pour une année"}
+
+  - id: semences
+    group: vivres
+    kind: consommable
+    basis: quantite
+    name: Semences reproductibles
+    icon: 🌱
+    description: "Variétés non hybrides, dont on peut garder les graines d'une année sur l'autre."
+    tiers:
+      - {tier: rustique, contents: "Aromatiques et salades pour le balcon"}
+      - {tier: commun, contents: "Dix variétés potagères"}
+      - {tier: confirme, contents: "Vingt variétés non hybrides, conservées au frais et au sec", objectives: [alimentation.semences]}
+      - {tier: epique, contents: "Semences pour une saison complète de potager, dont légumineuses et céréales"}
+      - {tier: legendaire, contents: "Grainothèque autoproduite d'au moins trois légumes", objectives: [alimentation.semences_autoproduites]}
+
+  # ======================================================================
+  # Santé et hygiène
+  # ======================================================================
+  - id: reserve_traitements
+    group: sante
+    kind: reserve
+    basis: autonomie
+    category: traitements
+    name: Traitements d'avance
+    icon: 💊
+    description: "Boîtes de traitement régulier en avance, comptées en jours pour chaque membre traité."
+    objectives: [sante.medicaments_chaleur, sante.traitements_plan]
+    tiers:
+      - {tier: rustique, min_days: 3, contents: "Trois jours d'avance"}
+      - {tier: commun, min_days: 7, contents: "Une semaine", objectives: [sante.traitements_7j]}
+      - {tier: confirme, min_days: 30, contents: "Un mois", objectives: [sante.traitements_30j]}
+      - {tier: epique, min_days: 90, contents: "Trois mois", objectives: [sante.traitements_90j]}
+      - {tier: legendaire, min_days: 180, contents: "Six mois (si le médecin l'autorise)"}
+
+  - id: trousse_secours
+    group: sante
+    kind: equipement
+    basis: contenu
+    name: Trousse de secours
+    icon: 🩹
+    description: "À vérifier une fois par an (dates, ciseaux, piles du thermomètre)."
+    tiers:
+      - tier: rustique
+        contents: "Les soins de tous les jours"
+        objectives: [sante.pharmacie_base]
+        includes:
+          - "Antalgique (paracétamol)"
+          - "Pansements de tailles variées"
+          - "Désinfectant (chlorhexidine)"
+      - tier: commun
+        contents: "La trousse complète recommandée"
+        objectives: [sante.trousse]
+        includes:
+          - "Compresses stériles et bande extensible"
+          - "Sparadrap"
+          - "Sérum physiologique en dosettes"
+          - "Solutés de réhydratation orale (SRO)"
+          - "Pince à épiler et ciseaux"
+          - "Gants jetables"
+          - "Couverture de survie"
+          - "Thermomètre"
+      - tier: confirme
+        contents: "Une trousse à la maison, une dans chaque sac"
+        includes:
+          - "Une trousse compacte dans chaque sac d'évacuation"
+          - "Pansements pour ampoules et brûlures (hydrocolloïdes, compresses gel)"
+          - "Bande cohésive et écharpe triangulaire"
+          - "Coussin hémostatique"
+          - "Fiche des gestes de premiers secours"
+      - tier: epique
+        contents: "Pharmacie étendue pour tenir sans pharmacie"
+        objectives: [sante.pharmacie]
+        includes:
+          - "Antidiarrhéique et antihistaminique"
+          - "Anti-inflammatoire (si toléré)"
+          - "Sutures adhésives (Steri-Strip)"
+          - "Collyre et dosettes de lavage oculaire"
+          - "Crème pour brûlures et pansements gras"
+          - "Réserve de désinfectant pour un mois"
+      - tier: legendaire
+        contents: "Prendre en charge un blessé plusieurs jours"
+        includes:
+          - "Garrot tourniquet et pansement compressif d'urgence"
+          - "Attelles malléables (SAM Splint)"
+          - "Pansements hémostatiques"
+          - "Oxymètre de pouls et tensiomètre"
+          - "Manuel de secourisme papier"
+
+  - id: masques
+    group: sante
+    kind: consommable
+    basis: quantite
+    name: Masques FFP2 et gants
+    icon: 😷
+    description: "Pour une épidémie, une fumée d'incendie ou un nettoyage après sinistre."
+    tiers:
+      - {tier: rustique, contents: "Quelques masques chirurgicaux et une boîte de gants"}
+      - {tier: commun, contents: "FFP2 pour 3 jours par personne"}
+      - {tier: confirme, contents: "14 jours de confinement, avec gel et thermomètre", objectives: [sante.masques_pandemie]}
+      - {tier: epique, contents: "La durée d'une épidémie (plusieurs semaines) pour chacun", objectives: [sante.masques]}
+      - {tier: legendaire, contents: "Demi-masques à cartouches, lunettes étanches, combinaisons jetables"}
+
+  - id: hygiene
+    group: sante
+    kind: consommable
+    basis: contenu
+    name: Kit d'hygiène
+    icon: 🧼
+    description: "De quoi rester propre sans eau courante : c'est la première protection contre les maladies."
+    tiers:
+      - tier: rustique
+        contents: "L'essentiel pour une journée"
+        includes:
+          - "Savon"
+          - "Brosse et dentifrice par personne"
+          - "Un rouleau de papier toilette par personne"
+      - tier: commun
+        contents: "Trois jours sans eau courante"
+        objectives: [sante.hygiene_3j]
+        includes:
+          - "Gel hydroalcoolique"
+          - "Lingettes"
+          - "Protections périodiques pour un cycle"
+          - "Sacs poubelle"
+          - "Déodorant et peigne"
+      - tier: confirme
+        contents: "Deux semaines"
+        includes:
+          - "Papier toilette et savon pour deux semaines"
+          - "Shampoing sec"
+          - "Bassine et gant de toilette"
+          - "Coupe-ongles"
+      - tier: epique
+        contents: "Trois mois, linge et ménage compris"
+        includes:
+          - "Lessive à la main et pinces à linge"
+          - "Eau de Javel et vinaigre blanc"
+          - "Protections lavables (cup, serviettes)"
+          - "Rasoirs et lames de rechange"
+      - tier: legendaire
+        contents: "Hygiène autonome et durable"
+        includes:
+          - "Douche solaire ou de camping"
+          - "Savon de Marseille pour six mois"
+          - "Tondeuse à cheveux et ciseaux de coiffure"
+          - "Lessiveuse manuelle"
+
+  - id: toilettes_secours
+    group: sante
+    kind: equipement
+    basis: contenu
+    name: Toilettes de secours
+    icon: 🪣
+    description: "Sans eau courante, l'hygiène devient le premier risque sanitaire."
+    tiers:
+      - tier: rustique
+        contents: "Le minimum pour une coupure d'eau"
+        objectives: [sante.toilettes]
+        includes:
+          - "Seau solide"
+          - "Sacs poubelle épais"
+          - "Litière ou sciure"
+      - tier: commun
+        contents: "Un vrai poste de toilettes"
+        includes:
+          - "Seau à couvercle hermétique"
+          - "Abattant adaptable"
+          - "Gants et gel hydroalcoolique à côté"
+      - tier: confirme
+        contents: "Deux semaines"
+        includes:
+          - "Réserve de sacs et de sciure pour deux semaines"
+          - "Bac fermé dehors pour stocker les sacs"
+      - tier: epique
+        contents: "Toilettes de camping chimiques ou à séparation"
+        includes:
+          - "Toilettes portables à séparation d'urine"
+          - "Produit ou matière sèche pour un mois"
+      - tier: legendaire
+        contents: "Assainissement autonome"
+        objectives: [sante.assainissement]
+        includes:
+          - "Toilettes sèches installées"
+          - "Composteur dédié"
+
+  - id: iode
+    group: sante
+    kind: consommable
+    basis: options
+    name: Comprimés d'iode
+    icon: ⚛️
+    description: "Retirés en pharmacie pour chaque membre si le foyer est dans le périmètre d'un site nucléaire. Ne se prennent que sur consigne du préfet."
+    tiers:
+      - {tier: rustique, contents: "Bon de retrait reçu, adresse de la pharmacie notée"}
+      - {tier: commun, contents: "Comprimés retirés pour chaque membre", objectives: [securite.iode]}
+      - {tier: confirme, contents: "Comprimés rangés avec la trousse, dose de chaque membre notée sur la boîte"}
+      - {tier: epique, contents: "Une boîte à la maison et une dans le sac d'évacuation"}
+      - {tier: legendaire, contents: "Kit de confinement nucléaire : iode, ruban adhésif, consignes, radio dans la pièce refuge"}
+
+  - id: lunettes
+    group: sante
+    kind: equipement
+    basis: quantite
+    name: Lunettes de secours
+    icon: 👓
+    description: "À la vue actuelle, en étui rigide."
+    tiers:
+      - {tier: rustique, contents: "Une ancienne paire gardée en secours"}
+      - {tier: commun, contents: "Une paire de secours à la vue actuelle par porteur", objectives: [sante.lunettes_secours]}
+      - {tier: confirme, contents: "Une paire à la maison et une dans chaque sac d'évacuation", objectives: [sante.lunettes_sac]}
+      - {tier: epique, contents: "Deux paires de rechange et un kit de réparation (tournevis, vis, cordon)", objectives: [sante.lunettes_reserve]}
+      - {tier: legendaire, contents: "Rechanges, lunettes de soleil à la vue, lentilles et produits pour trois mois"}
+
+  - id: piles_auditives
+    group: sante
+    kind: consommable
+    basis: quantite
+    name: Piles de l'appareil auditif
+    icon: 🦻
+    description: "Dans une boîte étanche ; ou un chargeur alimenté hors réseau."
+    tiers:
+      - {tier: rustique, contents: "7 jours"}
+      - {tier: commun, contents: "14 jours", objectives: [sante.auditif_piles]}
+      - {tier: confirme, contents: "30 jours et un étui de séchage"}
+      - {tier: epique, contents: "90 jours ou chargeur hors réseau", objectives: [sante.auditif_reserve]}
+      - {tier: legendaire, contents: "90 jours, chargeur solaire et appareil de secours"}
+
+  - id: adrenaline
+    group: sante
+    kind: equipement
+    basis: quantite
+    name: Stylos d'adrénaline
+    icon: 💉
+    description: "Toujours avec la personne allergique, jamais périmés."
+    tiers:
+      - {tier: rustique, contents: "Un stylo non périmé"}
+      - {tier: commun, contents: "Deux stylos non périmés toujours sur la personne", objectives: [sante.adrenaline]}
+      - {tier: confirme, contents: "Deux stylos sur la personne et un à la maison, rappel de péremption noté"}
+      - {tier: epique, contents: "Un stylo de plus dans chaque sac, plan d'action allergie écrit"}
+      - {tier: legendaire, contents: "Stylos à l'école ou au travail, entourage formé, antihistaminiques en réserve"}
+
+  - id: inhalateur
+    group: sante
+    kind: equipement
+    basis: quantite
+    name: Inhalateur de secours
+    icon: 🫁
+    description: "Non périmé, avec une chambre d'inhalation si besoin."
+    tiers:
+      - {tier: rustique, contents: "Un inhalateur entamé"}
+      - {tier: commun, contents: "Deux inhalateurs : un sur soi, un à la maison", objectives: [sante.inhalateur]}
+      - {tier: confirme, contents: "Un de plus dans le sac d'évacuation, et une chambre d'inhalation"}
+      - {tier: epique, contents: "Un mois de traitement de fond d'avance et un purificateur d'air sur batterie"}
+      - {tier: legendaire, contents: "Trois mois d'avance, plan d'action écrit, masques FFP2 contre les fumées"}
+
+  - id: glaciere_insuline
+    group: sante
+    kind: equipement
+    basis: qualite
+    name: Froid pour l'insuline
+    icon: 🧊
+    description: "Conserver l'insuline sans électricité, et de quoi corriger une hypoglycémie."
+    objectives: [sante.hypo]
+    tiers:
+      - {tier: rustique, contents: "Glacière souple et pains de glace"}
+      - {tier: commun, contents: "Pochette réfrigérante à évaporation (type Frio)", objectives: [sante.insuline_froid]}
+      - {tier: confirme, contents: "Deux pochettes et un thermomètre de contrôle"}
+      - {tier: epique, contents: "Mini-réfrigérateur médical sur batterie"}
+      - {tier: legendaire, contents: "Mini-réfrigérateur médical rechargé au solaire, un mois de matériel de diabète", objectives: [sante.diabete_materiel]}
+
+  - id: batterie_medicale
+    group: sante
+    kind: equipement
+    basis: quantite
+    name: Batterie de l'appareil médical
+    icon: 🔋
+    description: "Batterie de secours de l'appareil médical électrique, testée."
+    tiers:
+      - {tier: rustique, contents: "24 heures d'autonomie"}
+      - {tier: commun, contents: "72 heures d'autonomie", objectives: [sante.appareil_batterie]}
+      - {tier: confirme, contents: "72 heures et chargeur pour la voiture"}
+      - {tier: epique, contents: "Une semaine d'autonomie (station électrique dédiée)"}
+      - {tier: legendaire, contents: "Recharge hors réseau (solaire ou groupe) dimensionnée pour l'appareil", objectives: [sante.appareil_autonome]}
+
+  # ======================================================================
+  # Énergie et lumière
+  # ======================================================================
+  - id: lampes
+    group: energie
+    kind: equipement
+    basis: options
+    name: Lampes
+    icon: 🔦
+    description: "Une lumière sans réseau, rangée à un endroit connu de tous. Les bougies sont un dernier recours (incendie)."
+    tiers:
+      - {tier: rustique, contents: "Une lampe torche à un endroit connu", objectives: [energie.lumiere]}
+      - {tier: commun, contents: "Une lampe frontale par personne, avec piles de rechange", objectives: [energie.lampes]}
+      - {tier: confirme, contents: "Frontales rechargeables et une lanterne pour la pièce de vie"}
+      - {tier: epique, contents: "Frontales, lanternes solaires ou à dynamo, une lampe au pied de chaque lit"}
+      - {tier: legendaire, contents: "Éclairage de toute la maison sur batterie solaire, veilleuses de secours qui s'allument à la coupure"}
+
+  - id: piles
+    group: energie
+    kind: consommable
+    basis: quantite
+    name: Piles de rechange
+    icon: 🪫
+    description: "Aux formats des lampes, de la radio et des détecteurs (souvent AA, AAA, 9 V)."
+    objectives: [energie.lampes, communication.radio]
+    tiers:
+      - {tier: rustique, contents: "Un jeu de rechange pour la lampe principale"}
+      - {tier: commun, contents: "Un jeu de rechange pour chaque appareil"}
+      - {tier: confirme, contents: "Piles pour un mois d'usage, rangées au sec"}
+      - {tier: epique, contents: "Piles rechargeables et chargeur USB"}
+      - {tier: legendaire, contents: "Rechargeables, chargeur solaire et réserve pour trois mois"}
+
+  - id: electricite_secours
+    group: energie
+    kind: equipement
+    basis: qualite
+    name: Électricité de secours
+    icon: 🔌
+    description: "Pour garder téléphones, radio et lumière en marche pendant une coupure. Commencer par chiffrer ses besoins en Wh par jour."
+    objectives: [energie.bilan_wh]
+    tiers:
+      - {tier: rustique, contents: "Batteries externes chargées pour les téléphones", objectives: [energie.batterie]}
+      - {tier: commun, contents: "Batteries externes et panneau solaire portable testé", objectives: [energie.solaire_portable]}
+      - {tier: confirme, contents: "Station électrique portable de 500 Wh ou plus rechargeable au solaire", objectives: [energie.station]}
+      - {tier: epique, contents: "Station d'au moins 1 kWh, ou kit solaire de balcon avec batterie", objectives: [energie.station_1kwh, energie.kit_balcon]}
+      - {tier: legendaire, contents: "Installation solaire fixe avec stockage couvrant les besoins prioritaires", objectives: [energie.solaire_fixe]}
+
+  - id: groupe_electrogene
+    group: energie
+    kind: equipement
+    basis: options
+    name: Groupe électrogène
+    icon: ⚙️
+    description: "Toujours dehors, jamais dans un garage ou une cave (monoxyde de carbone). Carburant stocké et renouvelé."
+    tiers:
+      - {tier: rustique, contents: "Petit groupe de 1 kW"}
+      - {tier: commun, contents: "Groupe inverter 2 kW, rallonge extérieure"}
+      - {tier: confirme, contents: "Groupe testé tous les trois mois, carburant stocké", objectives: [energie.secours]}
+      - {tier: epique, contents: "Groupe bicarburant (essence et gaz), inverseur de source installé par un électricien"}
+      - {tier: legendaire, contents: "Groupe couplé au solaire et à des batteries, démarrage automatique"}
+
+  - id: allumettes
+    group: energie
+    kind: consommable
+    basis: quantite
+    name: Allumettes et briquets
+    icon: 🔥
+    description: "Dans une boîte étanche."
+    objectives: [competences.feu, competences.rechaud]
+    tiers:
+      - {tier: rustique, contents: "Une boîte d'allumettes"}
+      - {tier: commun, contents: "Deux briquets et allumettes dans une boîte étanche"}
+      - {tier: confirme, contents: "Allumettes tempête, briquets, allume-feux"}
+      - {tier: epique, contents: "Pierre à feu (ferrocérium) et amadou dans chaque sac"}
+      - {tier: legendaire, contents: "Kit feu complet : ferro, loupe, allume-feux pour un an, briquets tempête rechargeables"}
+
+  - id: bois
+    group: energie
+    kind: consommable
+    basis: quantite
+    name: Bois de chauffage
+    icon: 🪵
+    description: "Rentré avant novembre, à moins de 20 % d'humidité."
+    tiers:
+      - {tier: rustique, contents: "Quelques stères pour les grands froids"}
+      - {tier: commun, contents: "Un demi-hiver de bois sec"}
+      - {tier: confirme, contents: "Un hiver de bois sec", objectives: [energie.bois_hiver]}
+      - {tier: epique, contents: "Deux hivers d'avance : un sec, un qui sèche", objectives: [energie.bois]}
+      - {tier: legendaire, contents: "Deux hivers d'avance et une parcelle ou un accord d'affouage"}
+
+  # ======================================================================
+  # Abri, chaleur et feu
+  # ======================================================================
+  - id: couchage
+    group: abri
+    kind: equipement
+    basis: qualite
+    name: Couvertures et couchages
+    icon: 🛏️
+    description: "Pour tenir au chaud sans chauffage, et accueillir."
+    tiers:
+      - {tier: rustique, contents: "Couvertures de survie pour chacun", objectives: [abri.chaleur]}
+      - {tier: commun, contents: "Sac de couchage ou couette épaisse et vêtements chauds pour chacun"}
+      - {tier: confirme, contents: "Sacs de couchage grand froid, bonnets, sous-couches et bouillottes"}
+      - {tier: epique, contents: "Sacs de couchage grand froid, matelas isolants et tente d'intérieur pour la pièce refuge"}
+      - {tier: legendaire, contents: "Couchages en plus pour accueillir un foyer sinistré", objectives: [abri.accueil]}
+
+  - id: detecteurs
+    group: abri
+    kind: equipement
+    basis: options
+    name: Détecteurs de fumée et de CO
+    icon: 🚨
+    description: "Testés une fois par mois. Un détecteur de CO est indispensable dès qu'on fait du feu ou qu'on utilise un appoint."
+    tiers:
+      - {tier: rustique, contents: "Un détecteur de fumée (obligatoire)"}
+      - {tier: commun, contents: "Fumée et CO installés et testés", objectives: [abri.detecteurs]}
+      - {tier: confirme, contents: "Un détecteur par étage et dans chaque chambre"}
+      - {tier: epique, contents: "Détecteurs reliés entre eux, alerte à flash ou vibreur si besoin", objectives: [sante.auditif_alerte]}
+      - {tier: legendaire, contents: "Détecteurs reliés, détecteur de gaz et d'inondation, alertes sur le téléphone"}
+
+  - id: extincteur
+    group: abri
+    kind: equipement
+    basis: options
+    name: Extincteur et couverture anti-feu
+    icon: 🧯
+    description: "Extincteur à poudre ou à eau avec additif près de la cuisine, couverture anti-feu pour un feu de poêle."
+    tiers:
+      - {tier: rustique, contents: "Couverture anti-feu dans la cuisine"}
+      - {tier: commun, contents: "Extincteur et couverture anti-feu", objectives: [abri.extincteur]}
+      - {tier: confirme, contents: "Un extincteur par étage, vérifié chaque année"}
+      - {tier: epique, contents: "Extincteurs adaptés (eau additivée, CO2 pour l'électrique), échelle d'évacuation"}
+      - {tier: legendaire, contents: "Défense incendie extérieure : tuyau, motopompe sur la réserve d'eau, débroussaillement fait", objectives: [securite.incendie_ext]}
+
+  - id: kit_confinement
+    group: abri
+    kind: consommable
+    basis: contenu
+    name: Kit de confinement
+    icon: 🧻
+    description: "Pour calfeutrer une pièce lors d'un accident industriel ou d'une fumée toxique."
+    tiers:
+      - tier: rustique
+        contents: "De quoi boucher une porte"
+        includes:
+          - "Un rouleau de ruban adhésif large"
+          - "Serviettes à mouiller pour le bas des portes"
+      - tier: commun
+        contents: "Une pièce calfeutrable"
+        objectives: [abri.calfeutrage, abri.calfeutrage_industriel]
+        includes:
+          - "Film plastique épais prédécoupé aux fenêtres"
+          - "Deux rouleaux de ruban adhésif"
+          - "Ciseaux"
+          - "Radio à piles"
+      - tier: confirme
+        contents: "Tenir quelques heures enfermé"
+        includes:
+          - "Eau et en-cas pour toute la pièce"
+          - "Seau hygiénique"
+          - "Lampe et piles"
+          - "Fiche réflexe confinement"
+      - tier: epique
+        contents: "Pièce refuge prête"
+        objectives: [abri.piece_refuge]
+        includes:
+          - "Bâches renforcées et agrafeuse"
+          - "Couvertures et occupation pour chacun"
+          - "Trousse de secours dans la pièce"
+      - tier: legendaire
+        contents: "Pièce refuge équipée pour 48 heures"
+        includes:
+          - "Purificateur d'air HEPA sur batterie"
+          - "Détecteur de CO2"
+          - "Réserves pour 48 heures dans la pièce"
+
+  - id: chauffage_appoint
+    group: abri
+    kind: equipement
+    basis: qualite
+    name: Chauffage d'appoint
+    icon: ♨️
+    description: "Hors réseau et sûr, avec ventilation et détecteur de CO."
+    tiers:
+      - {tier: rustique, contents: "Bouillottes et vêtements chauds"}
+      - {tier: commun, contents: "Chauffage d'appoint au gaz homologué pour l'intérieur, détecteur de CO", objectives: [abri.chauffage_appoint]}
+      - {tier: confirme, contents: "Appoint et pièce refuge isolée avec textiles", objectives: [abri.hiver_sans_chauffage]}
+      - {tier: epique, contents: "Poêle à bois ou à granulés sans électricité"}
+      - {tier: legendaire, contents: "Logement chauffable de façon autonome toute la saison", objectives: [abri.isolation]}
+
+  - id: outils
+    group: abri
+    kind: equipement
+    basis: contenu
+    name: Caisse à outils
+    icon: 🧰
+    description: "Pour les petites réparations quand les artisans ne viennent plus."
+    tiers:
+      - tier: rustique
+        contents: "Les outils de base"
+        includes:
+          - "Tournevis plat et cruciforme"
+          - "Pince universelle"
+          - "Marteau"
+          - "Ruban adhésif toilé"
+      - tier: commun
+        contents: "La caisse du foyer"
+        includes:
+          - "Jeu de clés plates"
+          - "Scie à main"
+          - "Perceuse-visseuse sur batterie"
+          - "Mètre et niveau"
+          - "Colliers, vis et chevilles"
+      - tier: confirme
+        contents: "Plomberie, électricité, menuiserie"
+        objectives: [abri.reparations]
+        includes:
+          - "Clé à molette et pince multiprise"
+          - "Joints, téflon et colle époxy"
+          - "Testeur de tension et dominos"
+          - "Rabot, ciseaux à bois, serre-joints"
+      - tier: epique
+        contents: "Réparer après une tempête"
+        includes:
+          - "Bâches et planches de contreplaqué"
+          - "Visserie et clous en quantité"
+          - "Pied-de-biche et masse"
+          - "Scie sabre ou tronçonneuse"
+      - tier: legendaire
+        contents: "Atelier autonome"
+        objectives: [abri.resilient]
+        includes:
+          - "Établi et outillage stationnaire"
+          - "Matériaux de réparation stockés (bois, tôle, tuiles)"
+          - "Poste à souder ou outils manuels anciens"
+          - "Outillage mutualisé avec le voisinage"
+
+  - id: thermometre
+    group: abri
+    kind: equipement
+    basis: contenu
+    name: Kit canicule
+    icon: 🌡️
+    description: "Pour garder une pièce vivable quand il fait plus de 35 °C."
+    tiers:
+      - tier: rustique
+        contents: "Repérer la chaleur"
+        includes:
+          - "Thermomètre intérieur"
+          - "Brumisateur"
+      - tier: commun
+        contents: "La pièce fraîche"
+        objectives: [abri.piece_fraiche]
+        includes:
+          - "Linges humides et bassine"
+          - "Ventilateur"
+          - "Liste des proches isolés à appeler"
+      - tier: confirme
+        contents: "Rafraîchir sans réseau"
+        objectives: [abri.rafraichir_sans_reseau]
+        includes:
+          - "Ventilateur sur batterie"
+          - "Rideaux occultants ou film réfléchissant"
+      - tier: epique
+        contents: "Protections solaires extérieures"
+        includes:
+          - "Volets ou stores extérieurs"
+          - "Voiles d'ombrage"
+          - "Glacière et pains de glace"
+      - tier: legendaire
+        contents: "Logement qui reste frais"
+        includes:
+          - "Brasseur d'air sur solaire"
+          - "Isolation et végétalisation côté soleil"
+
+  - id: kit_neige
+    group: abri
+    kind: equipement
+    basis: options
+    name: Équipement neige
+    icon: ❄️
+    description: "Pour la route et pour rester bloqué une semaine."
+    tiers:
+      - {tier: rustique, contents: "Raclette, gants et pelle pliante"}
+      - {tier: commun, contents: "Chaînes ou chaussettes à neige, sel"}
+      - {tier: confirme, contents: "Pneus hiver, chaînes, pelle et sel, réserves pour une semaine", objectives: [abri.neige]}
+      - {tier: epique, contents: "Raquettes, crampons, luge de transport"}
+      - {tier: legendaire, contents: "Fraise à neige ou lame, accès dégagé de façon autonome"}
+
+  - id: sacs_dechets
+    group: abri
+    kind: consommable
+    basis: quantite
+    name: Sacs et bacs à déchets
+    icon: 🗑️
+    description: "Si la collecte s'arrête."
+    tiers:
+      - {tier: rustique, contents: "Un rouleau de sacs de rechange"}
+      - {tier: commun, contents: "Sacs résistants pour deux semaines"}
+      - {tier: confirme, contents: "Sacs pour un mois et bacs fermés, lieu de stockage prévu", objectives: [securite.dechets]}
+      - {tier: epique, contents: "Composteur pour les déchets organiques"}
+      - {tier: legendaire, contents: "Tri, compost et réduction : moins d'un sac par semaine"}
+
+  # ======================================================================
+  # Information et communication
+  # ======================================================================
+  - id: radio
+    group: communication
+    kind: equipement
+    basis: qualite
+    name: Radio
+    icon: 📻
+    description: "Quand le réseau mobile tombe, la radio publique diffuse les consignes."
+    tiers:
+      - {tier: rustique, contents: "Petit poste FM à piles"}
+      - {tier: commun, contents: "Radio FM à dynamo ou solaire, testée, avec piles de rechange", objectives: [communication.radio]}
+      - {tier: confirme, contents: "Radio multibande (FM, grandes ondes, ondes courtes) à dynamo"}
+      - {tier: epique, contents: "Poste CB ou radioamateur opérationnel en émission", objectives: [communication.radio_emission]}
+      - {tier: legendaire, contents: "Station radio de secours qui relaie l'information au quartier", objectives: [communication.relais]}
+
+  - id: talkies
+    group: communication
+    kind: equipement
+    basis: qualite
+    name: Talkies-walkies
+    icon: 📟
+    description: "PMR446 sans licence : quelques kilomètres en terrain dégagé."
+    tiers:
+      - {tier: rustique, contents: "Une paire de talkies jouets ou d'entrée de gamme"}
+      - {tier: commun, contents: "Un talkie PMR446 par adulte, piles de rechange", objectives: [communication.talkies]}
+      - {tier: confirme, contents: "Talkies rechargeables, canaux convenus notés dans le répertoire"}
+      - {tier: epique, contents: "Talkies et plan de communication avec les proches (fréquences, horaires)", objectives: [communication.reseau_local]}
+      - {tier: legendaire, contents: "Réseau de talkies partagé avec le groupe d'entraide, testé"}
+
+  - id: cartes
+    group: communication
+    kind: equipement
+    basis: options
+    name: Cartes papier
+    icon: 🗺️
+    description: "Sans GPS ni réseau, une carte et une boussole."
+    tiers:
+      - {tier: rustique, contents: "Plan de la ville"}
+      - {tier: commun, contents: "Carte routière de la région"}
+      - {tier: confirme, contents: "Carte de la région avec les itinéraires d'évacuation tracés", objectives: [communication.cartes, mobilite.itineraires]}
+      - {tier: epique, contents: "Cartes IGN au 1:25 000 du trajet vers le lieu de repli, boussole"}
+      - {tier: legendaire, contents: "Jeu de cartes plastifiées dans chaque sac, points d'eau et abris notés"}
+
+  - id: sifflet
+    group: communication
+    kind: equipement
+    basis: options
+    name: Sifflets et signaux
+    icon: 📯
+    description: "Pour se signaler sous des décombres ou alerter les voisins."
+    tiers:
+      - {tier: rustique, contents: "Un sifflet dans le sac"}
+      - {tier: commun, contents: "Un sifflet par membre, accroché au sac"}
+      - {tier: confirme, contents: "Sifflets et signal d'alerte convenu avec les voisins", objectives: [defense.voisinage]}
+      - {tier: epique, contents: "Sifflets, miroir de signalisation, bâtons lumineux"}
+      - {tier: legendaire, contents: "Signaux, corne de brume et code d'alerte du quartier affiché"}
+
+  - id: telephone_secours
+    group: communication
+    kind: equipement
+    basis: options
+    name: Téléphone de secours
+    icon: 📱
+    description: "Un second téléphone chargé, qui marche si le principal est perdu, cassé ou sur un réseau tombé."
+    objectives: [securite.alertes]
+    tiers:
+      - {tier: rustique, contents: "Un ancien téléphone chargé, qui appelle le 112 même sans carte SIM"}
+      - {tier: commun, contents: "Téléphone de secours avec une carte SIM d'un autre opérateur"}
+      - {tier: confirme, contents: "Téléphone robuste à grosse batterie, contacts et FR-Alert configurés"}
+      - {tier: epique, contents: "Routeur 4G de secours sur batterie pour partager une connexion"}
+      - {tier: legendaire, contents: "Téléphone satellite ou messagerie satellite (SOS hors réseau)"}
+
+  - id: chargeurs
+    group: communication
+    kind: equipement
+    basis: contenu
+    name: Câbles et chargeurs
+    icon: 🔗
+    description: "Le câble oublié rend la batterie inutile."
+    objectives: [energie.batterie]
+    tiers:
+      - tier: rustique
+        contents: "Recharger un téléphone"
+        includes:
+          - "Un câble par téléphone du foyer"
+          - "Un chargeur secteur"
+      - tier: commun
+        contents: "Recharger partout"
+        includes:
+          - "Chargeur allume-cigare"
+          - "Multiprise"
+          - "Câbles en double dans le sac"
+      - tier: confirme
+        contents: "Tous les formats"
+        includes:
+          - "Câbles USB-C, Lightning et micro-USB"
+          - "Adaptateurs et rallonge USB"
+          - "Chargeur multiport"
+      - tier: epique
+        contents: "Pochette étanche de recharge"
+        includes:
+          - "Pochette étanche avec tout le nécessaire"
+          - "Câbles renforcés"
+          - "Convertisseur 12 V vers 230 V"
+      - tier: legendaire
+        contents: "Recharger n'importe quel appareil hors réseau"
+        includes:
+          - "Câbles 12 V et Anderson pour batteries et panneaux"
+          - "Chargeur de piles USB"
+          - "Fer à souder et gaine pour réparer"
+
+  - id: sauvegarde
+    group: communication
+    kind: equipement
+    basis: qualite
+    name: Sauvegardes numériques
+    icon: 💾
+    description: "Papiers scannés, photos, contacts : à retrouver même si l'ordinateur brûle ou est volé."
+    tiers:
+      - {tier: rustique, contents: "Photos des papiers importants sur le téléphone"}
+      - {tier: commun, contents: "Clé USB chiffrée avec les papiers et contacts", objectives: [finances.papiers]}
+      - {tier: confirme, contents: "Règle 3-2-1 : trois copies, deux supports, une hors du logement"}
+      - {tier: epique, contents: "Disque chiffré chez un proche hors de la région, vérifié tous les six mois"}
+      - {tier: legendaire, contents: "Serveur domestique (NAS) répliqué hors site, restauration testée"}
+
+  - id: ordinateur_hors_ligne
+    group: communication
+    kind: equipement
+    basis: options
+    name: Bibliothèque numérique hors ligne
+    icon: 💻
+    description: "Savoir et cartes consultables sans Internet : Wikipédia hors ligne (Kiwix), cartes OpenStreetMap, guides en PDF."
+    tiers:
+      - {tier: rustique, contents: "Guides officiels en PDF sur le téléphone"}
+      - {tier: commun, contents: "Cartes hors ligne de la région sur le téléphone (OsmAnd, Organic Maps)"}
+      - {tier: confirme, contents: "Liseuse ou tablette avec guides de secourisme, jardinage, réparations"}
+      - {tier: epique, contents: "Ordinateur portable sobre avec Wikipédia hors ligne (Kiwix) et cartes"}
+      - {tier: legendaire, contents: "Serveur Kiwix local sur mini-ordinateur solaire, accessible en Wi-Fi au voisinage"}
+
+  - id: reseau_maille
+    group: communication
+    kind: equipement
+    basis: quantite
+    name: Réseau maillé LoRa
+    icon: 📡
+    description: "Messagerie texte sans opérateur (Meshtastic) : de petits boîtiers relaient les messages de proche en proche, sur plusieurs kilomètres."
+    tiers:
+      - {tier: rustique, contents: "Un boîtier pour découvrir le réseau du coin"}
+      - {tier: commun, contents: "Deux boîtiers appairés aux téléphones du foyer"}
+      - {tier: confirme, contents: "Un boîtier par adulte et un canal convenu avec les proches", objectives: [communication.reseau_local]}
+      - {tier: epique, contents: "Relais fixe sur le toit, alimenté au solaire", objectives: [communication.relais]}
+      - {tier: legendaire, contents: "Réseau de quartier testé tous les six mois avec le groupe d'entraide", objectives: [communication.reseau_teste]}
+
+  - id: onduleur
+    group: communication
+    kind: equipement
+    basis: qualite
+    name: Onduleur box et routeur
+    icon: 🖧
+    description: "Garde Internet et le Wi-Fi en marche quelques heures pendant une coupure, tant que le réseau de l'opérateur tient."
+    objectives: [energie.bilan_wh]
+    tiers:
+      - {tier: rustique, contents: "Batterie externe capable d'alimenter la box en USB-C ou 12 V"}
+      - {tier: commun, contents: "Petit onduleur pour la box : 1 à 2 heures"}
+      - {tier: confirme, contents: "Mini-onduleur 12 V pour box et routeur : 4 heures et plus"}
+      - {tier: epique, contents: "Box, routeur et ordinateur sur la station électrique"}
+      - {tier: legendaire, contents: "Réseau domestique entier sur batterie solaire, avec accès de secours 4G ou satellite"}
+
+  # ======================================================================
+  # Évacuation et mobilité
+  # ======================================================================
+  - id: sac_evacuation
+    group: evacuation
+    kind: equipement
+    basis: contenu
+    name: Sac d'évacuation
+    icon: 🎒
+    description: "Prêt près de la sortie, à revoir tous les six mois (tailles, dates, saison)."
+    tiers:
+      - tier: rustique
+        contents: "Un sac commun pour partir dans la minute"
+        includes:
+          - "Copies des papiers d'identité"
+          - "Un litre d'eau par personne"
+          - "Lampe et piles"
+          - "Chargeur et batterie externe"
+          - "50 € en espèces"
+          - "Liste des contacts sur papier"
+      - tier: commun
+        contents: "Tenir 24 heures dehors"
+        includes:
+          - "Couverture de survie"
+          - "Barres énergétiques pour 24 heures"
+          - "Trousse de secours compacte"
+          - "Médicaments du quotidien pour 3 jours"
+          - "Vêtement de pluie"
+          - "Couteau multifonction"
+      - tier: confirme
+        contents: "Un sac 72 heures par membre"
+        objectives: [mobilite.sac]
+        includes:
+          - "Un sac par personne à sa taille"
+          - "Eau pour 72 heures (ou 1 L et des pastilles)"
+          - "Vivres pour 72 heures"
+          - "Vêtements de rechange et sous-vêtements"
+          - "Kit d'hygiène de voyage"
+          - "Radio à dynamo"
+          - "Sifflet"
+          - "Masques FFP2"
+      - tier: epique
+        contents: "Sacs personnalisés selon chacun"
+        objectives: [sante.lunettes_sac]
+        includes:
+          - "Lunettes de secours en étui rigide"
+          - "Traitements pour 7 jours et ordonnances"
+          - "Kit de réconfort pour chaque enfant"
+          - "Matériel des animaux (laisse, gamelle, croquettes)"
+          - "Clé USB chiffrée des papiers"
+          - "Carte papier avec itinéraires et lieu de rassemblement"
+      - tier: legendaire
+        contents: "Sacs et lieu de repli prêts"
+        objectives: [mobilite.repli]
+        includes:
+          - "Sac de couchage léger et abri (tarp)"
+          - "Filtre à eau portable"
+          - "Réchaud compact et popote"
+          - "Lieu de repli pré-approvisionné"
+          - "Sac vérifié lors d'un exercice d'évacuation"
+
+  - id: velo
+    group: evacuation
+    kind: equipement
+    basis: options
+    name: Vélo
+    icon: 🚲
+    description: "Pour se déplacer quand le carburant manque ou que les routes sont bloquées."
+    tiers:
+      - {tier: rustique, contents: "Un vélo qui roule"}
+      - {tier: commun, contents: "Vélo en état et kit de réparation (chambre à air, démonte-pneus, pompe)", objectives: [mobilite.velo]}
+      - {tier: confirme, contents: "Un vélo par adulte, éclairage, antivol, porte-bagages"}
+      - {tier: epique, contents: "Sacoches, remorque enfant ou cargo, pièces d'usure de rechange"}
+      - {tier: legendaire, contents: "Vélo cargo ou VAE rechargé au solaire", objectives: [mobilite.sans_fossile]}
+
+  - id: kit_vehicule
+    group: evacuation
+    kind: equipement
+    basis: contenu
+    name: Kit véhicule
+    icon: 🚗
+    description: "Le réservoir ne descend jamais sous la moitié."
+    tiers:
+      - tier: rustique
+        contents: "Le minimum légal et un peu plus"
+        includes:
+          - "Gilet et triangle"
+          - "Lampe"
+          - "Couverture"
+      - tier: commun
+        contents: "Rester bloqué quelques heures"
+        objectives: [mobilite.vehicule]
+        includes:
+          - "Eau et barres énergétiques"
+          - "Câbles de démarrage"
+          - "Chargeur allume-cigare"
+          - "Trousse de secours"
+      - tier: confirme
+        contents: "Une nuit bloqué sur la route"
+        includes:
+          - "Sac de couchage ou couvertures pour chacun"
+          - "Bouteille d'eau de 5 L"
+          - "Pelle pliante et gants"
+          - "Booster de démarrage"
+      - tier: epique
+        contents: "Se dépanner seul"
+        includes:
+          - "Compresseur 12 V et kit anti-crevaison"
+          - "Sangle de remorquage"
+          - "Outils de base"
+          - "Carte routière"
+      - tier: legendaire
+        contents: "Véhicule d'évacuation"
+        objectives: [mobilite.carburant]
+        includes:
+          - "Jerrican de carburant renouvelé"
+          - "Plaques de désensablement"
+          - "Réchaud et vivres pour 72 heures"
+          - "Talkie ou CB"
+
+  - id: jerrican_carburant
+    group: evacuation
+    kind: consommable
+    basis: quantite
+    name: Jerrican de carburant
+    icon: ⛽
+    description: "Stocké dehors à l'abri, renouvelé tous les six mois (ou avec un stabilisant)."
+    objectives: [energie.secours]
+    tiers:
+      - {tier: rustique, contents: "Un jerrican de 5 L"}
+      - {tier: commun, contents: "Un jerrican de 20 L", objectives: [mobilite.carburant]}
+      - {tier: confirme, contents: "40 L et stabilisant, rotation notée"}
+      - {tier: epique, contents: "Un plein d'avance et carburant pour le groupe électrogène"}
+      - {tier: legendaire, contents: "Réserve pour un mois de déplacements essentiels, stockage conforme"}
+
+  - id: caisse_animaux
+    group: evacuation
+    kind: equipement
+    basis: options
+    name: Caisse de transport
+    icon: 🐾
+    description: "Pour partir avec chaque animal."
+    tiers:
+      - {tier: rustique, contents: "Une laisse ou un sac de transport"}
+      - {tier: commun, contents: "Caisse, laisse et gamelle pour chaque animal, près de la sortie", objectives: [mobilite.animaux_transport]}
+      - {tier: confirme, contents: "Copie du carnet de vaccination et photo de l'animal dans la caisse", objectives: [finances.animaux_papiers]}
+      - {tier: epique, contents: "Sac de l'animal : nourriture et litière pour 3 jours, traitement, jouet"}
+      - {tier: legendaire, contents: "Hébergement de repli qui accepte les animaux, trajet testé", objectives: [mobilite.animaux_repli]}
+
+  - id: aide_technique
+    group: evacuation
+    kind: equipement
+    basis: options
+    name: Aide technique de secours
+    icon: 🦯
+    description: "Pour évacuer une personne à mobilité réduite sans ascenseur ni électricité."
+    tiers:
+      - {tier: rustique, contents: "Canne pliante"}
+      - {tier: commun, contents: "Canne pliante et fauteuil manuel si le fauteuil habituel est électrique", objectives: [mobilite.aide_technique]}
+      - {tier: confirme, contents: "Chaise d'évacuation pour escaliers"}
+      - {tier: epique, contents: "Batterie de rechange du fauteuil et chargeur hors réseau"}
+      - {tier: legendaire, contents: "Matériel adapté dans le lieu de repli, évacuation testée", objectives: [mobilite.evacuation_pmr_testee]}
+
+  # ======================================================================
+  # Papiers et argent
+  # ======================================================================
+  - id: classeur_papiers
+    group: papiers
+    kind: equipement
+    basis: contenu
+    name: Classeur des papiers
+    icon: 🗂️
+    description: "Au même endroit et prêts à partir."
+    tiers:
+      - tier: rustique
+        contents: "Les originaux rassemblés"
+        objectives: [finances.papiers_ranges]
+        includes:
+          - "Pièces d'identité et passeports"
+          - "Cartes Vitale et de mutuelle"
+          - "Carnets de santé"
+          - "Livret de famille"
+      - tier: commun
+        contents: "Des copies prêtes à partir"
+        objectives: [finances.papiers]
+        includes:
+          - "Copies papier dans le sac d'évacuation"
+          - "Contrats d'assurance et de logement"
+          - "Relevé d'identité bancaire"
+      - tier: confirme
+        contents: "Santé et animaux compris"
+        objectives: [sante.fiches, sante.ordonnance_vue, finances.animaux_papiers]
+        includes:
+          - "Fiche médicale par membre"
+          - "Ordonnances en cours, dont la correction visuelle"
+          - "Carnets de vaccination des animaux"
+          - "Titres de propriété et carte grise"
+      - tier: epique
+        contents: "À l'abri de l'eau et du feu"
+        includes:
+          - "Pochette étanche et ignifugée"
+          - "Copies chez un proche hors de la région"
+          - "Inventaire photo du logement pour l'assurance"
+      - tier: legendaire
+        contents: "Dossier complet et à jour"
+        includes:
+          - "Coffre ignifugé"
+          - "Testament et procurations"
+          - "Codes et accès d'urgence chez une personne de confiance"
+          - "Mise à jour datée de l'année"
+
+  - id: especes
+    group: papiers
+    kind: consommable
+    basis: quantite
+    name: Espèces
+    icon: 💶
+    description: "En petites coupures : quand les terminaux de paiement tombent, seul le liquide passe."
+    tiers:
+      - {tier: rustique, contents: "50 € à la maison"}
+      - {tier: commun, contents: "150 € par adulte", objectives: [finances.especes]}
+      - {tier: confirme, contents: "300 € par adulte, dont une part dans le sac d'évacuation"}
+      - {tier: epique, contents: "Un mois de dépenses courantes en liquide"}
+      - {tier: legendaire, contents: "Liquide et biens d'échange (outils, petits objets utiles)"}
+
+  - id: repertoire
+    group: papiers
+    kind: equipement
+    basis: contenu
+    name: Répertoire papier
+    icon: 📒
+    description: "Sans téléphone, on ne se souvient d'aucun numéro."
+    tiers:
+      - tier: rustique
+        contents: "Les numéros vitaux"
+        objectives: [communication.frequence]
+        includes:
+          - "Numéros d'urgence (15, 17, 18, 112, 114)"
+          - "Fréquence FM de la radio publique locale"
+          - "Le proche à contacter en premier"
+      - tier: commun
+        contents: "Les contacts essentiels"
+        objectives: [communication.contacts_papier, moral.ecoute]
+        includes:
+          - "Famille, voisins, école, travail"
+          - "Médecin et pharmacie"
+          - "Numéros d'écoute (3114, SOS Amitié)"
+      - tier: confirme
+        contents: "Le plan de communication"
+        objectives: [communication.contact_externe]
+        includes:
+          - "Contact référent hors de la région"
+          - "Lieu de rassemblement"
+          - "Assurance, fournisseurs d'eau et d'électricité"
+      - tier: epique
+        contents: "Un exemplaire par personne"
+        includes:
+          - "Une carte plastifiée dans chaque portefeuille et chaque sac"
+          - "Canaux de talkie et fréquences convenues"
+      - tier: legendaire
+        contents: "L'annuaire du réseau"
+        objectives: [communaute.annuaire]
+        includes:
+          - "Compétences et ressources des proches"
+          - "Contacts du groupe d'entraide"
+          - "Mise à jour datée de l'année"
+
+  - id: doubles_cles
+    group: papiers
+    kind: equipement
+    basis: options
+    name: Doubles des clés
+    icon: 🔑
+    description: "Logement, voiture, boîte aux lettres."
+    tiers:
+      - {tier: rustique, contents: "Un double rangé à la maison"}
+      - {tier: commun, contents: "Doubles chez un proche de confiance et cache sûre", objectives: [securite.cles]}
+      - {tier: confirme, contents: "Doubles étiquetés de façon discrète, un jeu dans le sac"}
+      - {tier: epique, contents: "Doubles des lieux de repli et des proches"}
+      - {tier: legendaire, contents: "Boîte à clés sécurisée et inventaire des clés à jour"}
+
+  - id: bibliotheque
+    group: papiers
+    kind: equipement
+    basis: quantite
+    name: Bibliothèque papier
+    icon: 📚
+    description: "Guides de référence, lisibles sans écran."
+    tiers:
+      - {tier: rustique, contents: "Un guide officiel de préparation aux urgences", objectives: [competences.guide]}
+      - {tier: commun, contents: "Un manuel de premiers secours"}
+      - {tier: confirme, contents: "Secourisme, jardinage, réparations, conserves", objectives: [competences.bibliotheque]}
+      - {tier: epique, contents: "Plantes comestibles et médicinales, élevage, mécanique"}
+      - {tier: legendaire, contents: "Bibliothèque partagée avec le voisinage, fiches pratiques plastifiées"}
+
+  # ======================================================================
+  # Réconfort et occupation
+  # ======================================================================
+  - id: kit_occupation
+    group: moral
+    kind: equipement
+    basis: contenu
+    name: Kit sommeil et occupation
+    icon: 🎲
+    description: "Sans écran, le temps est long et le sommeil fragile."
+    tiers:
+      - tier: rustique
+        contents: "Dormir malgré le bruit"
+        includes:
+          - "Bouchons d'oreille"
+          - "Masque de nuit"
+      - tier: commun
+        contents: "S'occuper une soirée"
+        objectives: [moral.kit_occupation]
+        includes:
+          - "Un livre par personne"
+          - "Jeu de cartes"
+          - "Carnet et crayons"
+      - tier: confirme
+        contents: "S'occuper une semaine"
+        includes:
+          - "Jeux de société pour tout le foyer"
+          - "Livres et magazines variés"
+          - "Activité manuelle (tricot, dessin, maquette)"
+      - tier: epique
+        contents: "Tenir le moral longtemps"
+        includes:
+          - "Instrument de musique simple"
+          - "Ballon et jeux d'extérieur"
+          - "Routine de crise écrite et affichée"
+      - tier: legendaire
+        contents: "Animer le voisinage"
+        includes:
+          - "Jeux pour un groupe"
+          - "Projecteur ou lecteur sur batterie"
+          - "Programme de veillées"
+
+  - id: kit_enfant
+    group: moral
+    kind: equipement
+    basis: contenu
+    name: Kit de réconfort enfant
+    icon: 🧸
+    description: "Dans le sac de chaque enfant."
+    tiers:
+      - tier: rustique
+        contents: "Un objet rassurant"
+        includes:
+          - "Doudou ou objet familier"
+      - tier: commun
+        contents: "Le kit de réconfort"
+        objectives: [moral.kit_enfant]
+        includes:
+          - "Petit jeu"
+          - "Photo de famille"
+          - "Carte avec les contacts des parents"
+      - tier: confirme
+        contents: "Occuper et apaiser"
+        includes:
+          - "Livre ou cahier de coloriage"
+          - "Friandises"
+          - "Casque anti-bruit"
+      - tier: epique
+        contents: "Expliquer et préparer"
+        includes:
+          - "Livre qui explique les situations d'urgence à son âge"
+          - "Bracelet avec nom et contact"
+          - "Vêtement doudou de rechange"
+      - tier: legendaire
+        contents: "Tenir plusieurs jours loin de chez soi"
+        includes:
+          - "Jeux pour plusieurs jours"
+          - "Rituel du coucher transportable (veilleuse, histoire)"
+          - "Kit révisé à chaque anniversaire"
+
+  - id: kit_reassurance
+    group: moral
+    kind: equipement
+    basis: contenu
+    name: Kit de réassurance
+    icon: 🎧
+    description: "Pour une personne qui a besoin d'accompagnement (autisme, troubles cognitifs, handicap)."
+    tiers:
+      - tier: rustique
+        contents: "Pouvoir être identifié"
+        objectives: [sante.identification]
+        includes:
+          - "Carte ou bracelet d'identification (nom, contact, besoins)"
+      - tier: commun
+        contents: "Le kit de réassurance"
+        objectives: [sante.reassurance]
+        includes:
+          - "Casque anti-bruit"
+          - "Objet familier"
+          - "Pictogrammes de communication"
+      - tier: confirme
+        contents: "Garder ses repères"
+        includes:
+          - "Routine de crise illustrée"
+          - "Aliments habituels pour 3 jours"
+          - "Fiche de besoins pour les secours"
+      - tier: epique
+        contents: "Apaiser une crise"
+        includes:
+          - "Lunettes teintées et objets sensoriels"
+          - "Couverture lestée ou vêtement rassurant"
+          - "Traitement et consignes du médecin"
+      - tier: legendaire
+        contents: "Plan d'accompagnement complet"
+        includes:
+          - "Plan validé par les soignants"
+          - "Kit en double au lieu de repli"
+          - "Exercice d'évacuation fait avec la personne"

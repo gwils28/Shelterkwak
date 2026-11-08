@@ -24,6 +24,8 @@ OP_TYPES = frozenset(
         "custom.upsert",
         "custom.delete",
         "notes.set",
+        "item.set",
+        "item.delete",
         "reset",
     }
 )
@@ -53,6 +55,7 @@ class State:
     stock: dict[str, dict[str, Any]] = field(default_factory=dict)
     custom: dict[str, dict[str, Any]] = field(default_factory=dict)
     notes: dict[str, str] = field(default_factory=dict)  # fiches de l'écran Crise
+    items: dict[str, dict[str, Any]] = field(default_factory=dict)  # cartes possédées, par id d'objet
     onboarded_at: str | None = None
 
 
@@ -73,6 +76,12 @@ def _context_name(catalog: Catalog, ctx: str | None) -> str:
     return next((c.name for c in catalog.contexts if c.id == ctx), str(ctx))
 
 
+def _item_label(catalog: Catalog, item_id: str, tier: str | None = None) -> str:
+    name = next((i.name for i in catalog.items if i.id == item_id), item_id)
+    tier_name = next((t.name for t in catalog.item_tiers if t.id == tier), None)
+    return f"{name} ({tier_name.lower()})" if tier_name else name
+
+
 def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
     """Applique une opération ; renvoie (message du journal, cause d'un éventuel changement de niveau)."""
     p = op.payload
@@ -83,6 +92,7 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
         state.stock.clear()
         state.custom.clear()
         state.notes.clear()
+        state.items.clear()
         return "Remise à zéro du foyer", "remise à zéro"
     if t == "onboarding":
         state.household = dict(p["household"])
@@ -146,6 +156,15 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
         state.notes[p["key"]] = str(p.get("text", ""))
         name = next((n.name for n in catalog.crisis_notes if n.id == p["key"]), p["key"])
         return f"Fiche de crise mise à jour : {name}", f"fiche de crise « {name} »"
+    if t == "item.set":
+        prefix = "Inventaire mis à jour" if p["item_id"] in state.items else "Ajouté à l'inventaire"
+        state.items[p["item_id"]] = dict(p)
+        label = _item_label(catalog, p["item_id"], p.get("tier"))
+        return f"{prefix} : {label}", f"inventaire « {label} »"
+    if t == "item.delete":
+        state.items.pop(p["item_id"], None)
+        label = _item_label(catalog, p["item_id"])
+        return f"Retiré de l'inventaire : {label}", f"inventaire « {label} » retiré"
     raise ValueError(f"type d'opération inconnu : {t}")
 
 

@@ -74,3 +74,32 @@ déploiement sur Raspberry Pi.
   icônes d'axe sont masquées aux lecteurs d'écran (sauf dans les `<option>`, où une balise est
   interdite).
 
+
+## Inventaire en cartes (2026-11-08)
+- **Catalogue d'objets** : `catalog/items.yaml` (groupes, paliers, cartes). Un id d'objet est stocké
+  dans le journal : il ne se renomme pas. Les paliers sont communs à tous les objets
+  (`rustique` → `legendaire`), chaque objet n'en déclare que ceux qui ont un sens.
+- **Opérations `item.set` / `item.delete`** : gérées par les deux moteurs, sans effet sur le niveau.
+  Un appareil resté sur une ancienne version refuse ces opérations : mettre à jour serveur et app
+  ensemble.
+- **Pas de validation automatique** : un palier indique les objectifs qu'il remplit et propose de les
+  valider (bouton « Valider »), mais posséder un objet ne valide rien tout seul.
+- **Réserves** : quatre cartes `kind: reserve` liées aux catégories d'autonomie ; possédées dès qu'un
+  article non périmé compte, palier déduit des jours d'autonomie (`min_days`). Les articles restent
+  des `stock.upsert`.
+- **Cartes affichées** : celles dont un objectif s'applique au foyer (ou sans objectif), et toujours
+  celles qu'on possède ; les autres sont derrière « Voir aussi ».
+- **Cinq niveaux partout** (2026-11-08, suite) : chaque objet déclare les cinq niveaux dans l'ordre
+  (vérifié au chargement). `basis` dit ce qui fait monter le niveau (`qualite`, `options`,
+  `quantite`, `contenu`, `autonomie`). Un contenant (`basis: contenu`) liste à chaque niveau
+  `includes`, le contenu minimal **ajouté** au niveau précédent. Les objectifs d'un niveau
+  s'ajoutent à ceux des niveaux inférieurs (plus de répétition dans le YAML). Un objet déclaré
+  avant qu'il ait des niveaux garde `tier: null` et s'affiche « Niveau ? ».
+- **État des lieux** : calculé côté app (`lib/inventory.ts`), rien de stocké. La projection
+  d'autonomie suppose qu'on ne consomme ni ne rachète : elle ne baisse qu'aux péremptions.
+  « Prochains achats » ne retient que les objectifs remplis par un niveau, pas ceux que l'objet
+  aide seulement à remplir.
+- **Couleurs** : celles des niveaux ne passent pas le test daltonisme (confirmé et épique se
+  confondent) ; elles restent sur les cartes, toujours avec le nom du niveau écrit. Les graphiques
+  utilisent une palette validée (une couleur fixe par catégorie d'autonomie), avec étiquettes
+  directes et vue tableau.
