@@ -26,6 +26,8 @@ OP_TYPES = frozenset(
         "notes.set",
         "item.set",
         "item.delete",
+        "talent.set",
+        "talent.delete",
         "reset",
     }
 )
@@ -56,6 +58,7 @@ class State:
     custom: dict[str, dict[str, Any]] = field(default_factory=dict)
     notes: dict[str, str] = field(default_factory=dict)  # fiches de l'écran Crise
     items: dict[str, dict[str, Any]] = field(default_factory=dict)  # cartes possédées, par id d'objet
+    talents: dict[str, dict[str, Any]] = field(default_factory=dict)  # talents acquis, par id de talent
     onboarded_at: str | None = None
 
 
@@ -82,6 +85,10 @@ def _item_label(catalog: Catalog, item_id: str, tier: str | None = None) -> str:
     return f"{name} ({tier_name.lower()})" if tier_name else name
 
 
+def _talent_name(catalog: Catalog, talent_id: str) -> str:
+    return next((t.name for t in catalog.talents if t.id == talent_id), talent_id)
+
+
 def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
     """Applique une opération ; renvoie (message du journal, cause d'un éventuel changement de niveau)."""
     p = op.payload
@@ -93,6 +100,7 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
         state.custom.clear()
         state.notes.clear()
         state.items.clear()
+        state.talents.clear()
         return "Remise à zéro du foyer", "remise à zéro"
     if t == "onboarding":
         state.household = dict(p["household"])
@@ -165,6 +173,15 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
         state.items.pop(p["item_id"], None)
         label = _item_label(catalog, p["item_id"])
         return f"Retiré de l'inventaire : {label}", f"inventaire « {label} » retiré"
+    if t == "talent.set":
+        prefix = "Talent mis à jour" if p["talent_id"] in state.talents else "Talent acquis"
+        state.talents[p["talent_id"]] = dict(p)
+        name = _talent_name(catalog, p["talent_id"])
+        return f"{prefix} : {name}", f"talent « {name} »"
+    if t == "talent.delete":
+        state.talents.pop(p["talent_id"], None)
+        name = _talent_name(catalog, p["talent_id"])
+        return f"Talent retiré : {name}", f"talent « {name} » retiré"
     raise ValueError(f"type d'opération inconnu : {t}")
 
 

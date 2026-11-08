@@ -212,8 +212,8 @@ input[type="radio"] {
   right: 0;
   bottom: 0;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+  grid-template-columns: repeat(6, 1fr);
+  padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
   background: color-mix(in srgb, var(--panel) 88%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -236,6 +236,18 @@ input[type="radio"] {
 }
 .tabbar a svg {
   transition: transform 0.2s;
+}
+.tabbar a span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 420px) {
+  .tabbar a {
+    font-size: 0.64rem;
+    letter-spacing: -0.01em;
+  }
 }
 .tabbar a.active {
   color: var(--accent);
@@ -314,6 +326,13 @@ main {
   letter-spacing: 0.08em;
   font-size: 0.75rem;
   color: var(--muted);
+}
+.caution {
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  border-left: 4px solid var(--warn);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--warn) 12%, transparent);
 }
 .warn-text {
   color: var(--warn);
@@ -2334,4 +2353,622 @@ a.phone {
 }
 .check-line input {
   margin-top: 3px;
+}
+
+/* ---------- Compétences : arbres de talents ---------- */
+
+:root {
+  --spec-physique: #c94f2a;
+  --spec-stratege: #2a6fc9;
+  --spec-soin: #1f8f63;
+  --spec-brico: #a8740f;
+  --spec-cuisto: #8a4fc4;
+  --spec-protecteur: #4b5bbf;
+  --spec-rassembleur: #c2417a;
+  --spec-pisteur: #5e7d1f;
+  --spec-transmetteur: #12839a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --spec-physique: #ef7a55;
+    --spec-stratege: #6aa5ee;
+    --spec-soin: #4fc796;
+    --spec-brico: #e0a83a;
+    --spec-cuisto: #b88be6;
+    --spec-protecteur: #8e9cf0;
+    --spec-rassembleur: #ec7fb0;
+    --spec-pisteur: #a6c75a;
+    --spec-transmetteur: #4cc3d9;
+  }
+}
+.spec-physique {
+  --spec: var(--spec-physique);
+}
+.spec-stratege {
+  --spec: var(--spec-stratege);
+}
+.spec-soin {
+  --spec: var(--spec-soin);
+}
+.spec-brico {
+  --spec: var(--spec-brico);
+}
+.spec-cuisto {
+  --spec: var(--spec-cuisto);
+}
+.spec-protecteur {
+  --spec: var(--spec-protecteur);
+}
+.spec-rassembleur {
+  --spec: var(--spec-rassembleur);
+}
+.spec-pisteur {
+  --spec: var(--spec-pisteur);
+}
+.spec-transmetteur {
+  --spec: var(--spec-transmetteur);
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.skills-head h1 {
+  margin: 0;
+}
+.skills-sub {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+.skills-sub strong {
+  color: var(--ink);
+}
+.skills-ready {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Sélecteur de spécialités : les neuf toujours visibles, en grille de trois colonnes */
+.spec-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.spec-tab {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 8px 10px;
+  padding: 12px;
+  text-align: left;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  transition:
+    border-color 0.2s,
+    transform 0.2s,
+    background 0.2s;
+}
+.spec-tab:hover:not(:disabled) {
+  border-color: var(--spec);
+  transform: translateY(-1px);
+}
+.spec-tab.selected {
+  border-color: var(--spec);
+  background: color-mix(in srgb, var(--spec) 10%, var(--panel));
+  box-shadow: inset 0 0 0 1px var(--spec), var(--shadow);
+}
+.spec-tab:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--spec) 55%, transparent);
+  outline-offset: 2px;
+}
+.spec-emblem {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 1.35rem;
+  background: color-mix(in srgb, var(--spec) 16%, var(--panel));
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--spec) 45%, transparent);
+}
+.spec-emblem.large {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  font-size: 2.2rem;
+}
+.spec-tab-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.spec-tab-name {
+  font-weight: 700;
+  line-height: 1.2;
+}
+.spec-tab-title {
+  font-size: 0.78rem;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.spec-tab.selected .spec-tab-title {
+  color: var(--ink);
+}
+.spec-meter {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.spec-meter-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--spec) 14%, var(--line));
+  overflow: hidden;
+}
+.spec-meter-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--spec);
+  transition: width 0.4s ease;
+}
+.spec-meter-count {
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+/* Panneau de la spécialité */
+.spec-panel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background:
+    radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--spec) 9%, transparent), transparent 70%),
+    var(--panel);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+@media (max-width: 640px) {
+  .spec-panel {
+    padding: 16px 12px;
+    margin: 0 -4px;
+  }
+}
+.spec-banner {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.spec-banner-text {
+  min-width: 0;
+}
+.spec-banner h2 {
+  margin: 0 0 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+.spec-banner p {
+  margin: 0 0 6px;
+}
+.spec-title {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--spec) 18%, var(--panel));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--spec) 50%, transparent);
+}
+.spec-next {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* Arbre : rangs en bandes, branches en colonnes, liaisons en SVG sous les nœuds */
+.talent-tree {
+  position: relative;
+  margin-top: 14px;
+}
+.tree-branches {
+  display: grid;
+  height: 34px;
+  align-items: center;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.tree-branches span {
+  padding: 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tree-body {
+  position: relative;
+}
+.tree-rank {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed var(--line);
+}
+.tree-rank:nth-child(even) {
+  background: color-mix(in srgb, var(--ink) 2.5%, transparent);
+}
+.tree-rank span {
+  position: absolute;
+  z-index: 1; /* au-dessus des liaisons */
+  top: 4px;
+  left: 6px;
+  padding: 0 5px;
+  border-radius: 6px;
+  background: var(--panel);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  opacity: 0.8;
+}
+.tree-rank.reached span {
+  color: var(--spec);
+  opacity: 1;
+}
+.tree-links {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.tree-links path {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke 0.3s;
+}
+.tree-links path.locked {
+  stroke: var(--line);
+  stroke-dasharray: 3 5;
+}
+.tree-links path.open {
+  stroke: color-mix(in srgb, var(--spec) 55%, transparent);
+  stroke-dasharray: 6 5;
+}
+.tree-links path.acquired {
+  stroke: var(--spec);
+  stroke-width: 3;
+}
+
+.talent-node {
+  position: absolute;
+  transform: translate(-50%, -30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 12px;
+  color: var(--ink);
+}
+.talent-node.master {
+  transform: translate(-50%, -36px);
+}
+.talent-node:hover:not(:disabled) .talent-orb {
+  transform: scale(1.07);
+}
+.talent-node:focus-visible {
+  outline: none;
+}
+.talent-node:focus-visible .talent-orb {
+  outline: 3px solid color-mix(in srgb, var(--spec) 60%, transparent);
+  outline-offset: 3px;
+}
+.talent-orb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 1.65rem;
+  background: var(--panel);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+.talent-orb.master,
+.talent-node.master .talent-orb {
+  width: 72px;
+  height: 72px;
+  font-size: 2rem;
+}
+/* Les losanges du maître le distinguent sans dépendre de la couleur */
+.talent-node.master .talent-orb::before,
+.talent-orb.master::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1.5px dashed color-mix(in srgb, var(--gold) 70%, transparent);
+}
+.talent-node.acquired.master .talent-orb::before,
+.talent-orb.master.acquired::before {
+  border-style: solid;
+  border-color: var(--gold);
+}
+.talent-orb.acquired,
+.talent-node.acquired .talent-orb {
+  background: color-mix(in srgb, var(--spec) 26%, var(--panel));
+  box-shadow:
+    inset 0 0 0 3px var(--spec),
+    0 4px 14px color-mix(in srgb, var(--spec) 30%, transparent);
+}
+.talent-orb.available,
+.talent-node.available .talent-orb {
+  background: var(--panel);
+  box-shadow:
+    inset 0 0 0 2px var(--spec),
+    0 0 0 5px color-mix(in srgb, var(--spec) 14%, transparent);
+}
+.talent-node.available .talent-orb {
+  animation: talent-ready 2.6s ease-in-out infinite;
+}
+@keyframes talent-ready {
+  50% {
+    box-shadow:
+      inset 0 0 0 2px var(--spec),
+      0 0 0 9px color-mix(in srgb, var(--spec) 6%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .talent-node.available .talent-orb {
+    animation: none;
+  }
+}
+.talent-orb.locked,
+.talent-node.locked .talent-orb {
+  background: color-mix(in srgb, var(--ink) 4%, var(--panel));
+  box-shadow: inset 0 0 0 1.5px var(--line);
+}
+.talent-node.locked .talent-icon,
+.talent-orb.locked .talent-icon {
+  filter: grayscale(1);
+  opacity: 0.45;
+}
+.talent-badge {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  border: 2px solid var(--panel);
+}
+.talent-badge.ok {
+  background: var(--spec);
+  color: var(--panel);
+  font-weight: 900;
+}
+.talent-badge.lock {
+  background: var(--line);
+  font-size: 0.6rem;
+}
+.talent-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.talent-node.locked .talent-name {
+  color: var(--muted);
+  font-weight: 500;
+}
+@media (max-width: 420px) {
+  .talent-name {
+    font-size: 0.74rem;
+  }
+}
+
+.tree-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 12px 0 0;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.tree-legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tree-legend .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.tree-legend .dot.acquired {
+  background: color-mix(in srgb, var(--spec) 26%, var(--panel));
+  box-shadow: inset 0 0 0 2.5px var(--spec);
+}
+.tree-legend .dot.available {
+  box-shadow: inset 0 0 0 1.5px var(--spec), 0 0 0 3px color-mix(in srgb, var(--spec) 14%, transparent);
+}
+.tree-legend .dot.locked {
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  background: color-mix(in srgb, var(--ink) 4%, var(--panel));
+}
+
+/* Fiche d'un talent */
+.talent-sheet .sheet-head .talent-orb {
+  width: 64px;
+  height: 64px;
+  font-size: 2rem;
+}
+.talent-status {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  color: var(--muted);
+}
+.talent-status.acquired {
+  background: color-mix(in srgb, var(--spec) 18%, transparent);
+  color: var(--ink);
+}
+.talent-status.available {
+  box-shadow: inset 0 0 0 1px var(--spec);
+  background: none;
+  color: var(--ink);
+}
+.talent-criteria {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border-left: 4px solid var(--spec);
+  background: color-mix(in srgb, var(--spec) 8%, transparent);
+}
+.talent-criteria h3 {
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.talent-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.talent-chips h3 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+}
+.talent-chips ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.talent-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+.talent-chip.acquired {
+  border-color: var(--spec);
+  background: color-mix(in srgb, var(--spec) 14%, var(--panel));
+}
+.talent-chip.available {
+  border-color: color-mix(in srgb, var(--spec) 60%, var(--line));
+}
+.talent-chip.locked {
+  color: var(--muted);
+}
+.talent-learn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.talent-missing {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--gold) 14%, transparent);
+}
+.talent-missing p {
+  margin: 0;
+}
+.talent-missing .hint {
+  margin-top: 4px;
+}
+.talent-missing.danger-box {
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.talent-missing .actions {
+  justify-content: flex-end;
+}
+
+/* Sur téléphone, les neuf spécialités deviennent des tuiles compactes (icône, nom, jauge) */
+@media (max-width: 640px) {
+  .spec-picker {
+    gap: 8px;
+  }
+  .spec-tab {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 6px;
+    padding: 10px 6px 8px;
+    border-radius: 12px;
+  }
+  .spec-tab .spec-emblem {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+  .spec-tab-text {
+    align-items: center;
+  }
+  .spec-tab-name {
+    font-size: 0.76rem;
+    line-height: 1.15;
+    min-height: 2.3em;
+    display: flex;
+    align-items: center;
+  }
+  .spec-tab-title {
+    display: none;
+  }
+  .spec-meter {
+    width: 100%;
+    gap: 5px;
+  }
+  .spec-meter-bar {
+    height: 4px;
+  }
+  .spec-meter-count {
+    font-size: 0.68rem;
+  }
 }

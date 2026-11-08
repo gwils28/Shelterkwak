@@ -153,6 +153,7 @@ class Item(BaseModel):
     basis: Literal["qualite", "options", "quantite", "contenu", "autonomie"]  # ce qui fait monter le niveau
     category: str | None = None  # catégorie d'autonomie, pour une réserve
     description: str = ""
+    caution: str = ""  # mise en garde (loi, santé, sécurité), affichée en tête de la fiche
     objectives: list[str] = Field(default_factory=list)
     tiers: list[ItemTier] = Field(default_factory=list)
     crisis: bool = False  # à retrouver le jour J : emplacement affiché dans l'écran Crise
@@ -168,6 +169,32 @@ class Item(BaseModel):
         if (self.basis == "contenu") != all(t.includes for t in self.tiers):
             raise ValueError(f"{self.id}: un contenant liste `includes` à chaque niveau, et lui seul")
         return self
+
+
+class Specialty(BaseModel):
+    """Spécialité de l'onglet Compétences : un arbre de talents en colonnes (branches) et en rangs."""
+
+    id: str
+    name: str
+    icon: str = ""
+    description: str = ""
+    branches: list[str] = Field(min_length=1, max_length=4)  # nom de chaque colonne de l'arbre
+    titles: list[str] = Field(min_length=5, max_length=5)  # titre obtenu au rang le plus haut atteint
+
+
+class Talent(BaseModel):
+    """Talent d'un arbre. Son id est stocké dans le journal (opération talent.set) : il ne se renomme pas."""
+
+    id: str
+    specialty: str
+    name: str
+    icon: str = ""
+    row: int = Field(ge=1, le=5)  # rang dans l'arbre, de novice (1) à maître (5)
+    col: int = Field(ge=1)  # branche (colonne), à partir de 1
+    description: str = ""
+    criteria: str  # ce qui prouve qu'on l'a acquis
+    requires: list[str] = Field(default_factory=list)  # talents prérequis, tous exigés
+    objectives: list[str] = Field(default_factory=list)  # objectifs que ce talent aide à valider
 
 
 class ShowIf(BaseModel):
@@ -221,6 +248,9 @@ class Catalog(BaseModel):
     item_tiers: list[ItemTierName] = Field(default_factory=list)
     item_groups: list[ItemGroup] = Field(default_factory=list)
     items: list[Item] = Field(default_factory=list)
+    talent_ranks: list[str] = Field(default_factory=list)  # noms des cinq rangs des arbres
+    specialties: list[Specialty] = Field(default_factory=list)
+    talents: list[Talent] = Field(default_factory=list)
 
     def is_animal(self, member_type: str) -> bool:
         return self.member_tags.get(member_type) == "animaux"
@@ -288,6 +318,7 @@ class Catalog(BaseModel):
             if q.type != "number" and not q.options and not q.options_from:
                 errors.append(f"question {q.id}: aucune option")
         errors.extend(_item_errors(self, seen, cat_ids))
+        errors.extend(_talent_errors(self, seen))
         if errors:
             raise ValueError("Catalogue invalide :\n- " + "\n- ".join(errors))
         return self
@@ -342,6 +373,38 @@ def _tier_order_errors(catalog: Catalog, item: Item) -> list[str]:
     return errors
 
 
+def _talent_errors(catalog: Catalog, objective_ids: set[str]) -> list[str]:
+    """Arbres de talents : une place par talent, des prérequis plus bas dans le même arbre."""
+    errors: list[str] = []
+    if catalog.talents and len(catalog.talent_ranks) != 5:
+        errors.append("compétences : cinq rangs attendus (`ranks`)")
+    specs = {s.id: s for s in catalog.specialties}
+    talents = {t.id: t for t in catalog.talents}
+    if len(talents) != len(catalog.talents):
+        errors.append("talent en double")
+    places: set[tuple[str, int, int]] = set()
+    for t in catalog.talents:
+        spec = specs.get(t.specialty)
+        if spec is None:
+            errors.append(f"talent {t.id}: spécialité inconnue {t.specialty}")
+            continue
+        if t.col > len(spec.branches):
+            errors.append(f"talent {t.id}: colonne {t.col} hors des {len(spec.branches)} branches")
+        if (t.specialty, t.row, t.col) in places:
+            errors.append(f"talent {t.id}: place déjà prise (rang {t.row}, colonne {t.col})")
+        places.add((t.specialty, t.row, t.col))
+        if t.row > 1 and not t.requires:
+            errors.append(f"talent {t.id}: un talent au-delà du premier rang a au moins un prérequis")
+        for r in t.requires:
+            req = talents.get(r)
+            if req is None:
+                errors.append(f"talent {t.id}: prérequis inconnu {r}")
+            elif req.specialty != t.specialty or req.row >= t.row:
+                errors.append(f"talent {t.id}: le prérequis {r} doit être plus bas dans le même arbre")
+        errors.extend(f"talent {t.id}: objectif inconnu {o}" for o in t.objectives if o not in objective_ids)
+    return errors
+
+
 def _read(path: Path) -> dict:
     with path.open(encoding="utf-8") as f:
         return yaml.safe_load(f) or {}
@@ -358,6 +421,7 @@ def load_catalog(directory: Path | None = None) -> Catalog:
             objectives.append({"axis": data["axis"], **o})
     # Ordre stable : niveau, puis ordre des axes déclaré dans axes.yaml, puis ordre du fichier.
     items = _read(directory / "items.yaml") if (directory / "items.yaml").exists() else {}
+    skills = _read(directory / "talents.yaml") if (directory / "talents.yaml").exists() else {}
     objectives.sort(key=lambda o: (o.get("level", 0), axis_rank.get(o["axis"], len(axis_rank))))
     return Catalog(
         levels=_read(directory / "levels.yaml")["levels"],
@@ -374,6 +438,9 @@ def load_catalog(directory: Path | None = None) -> Catalog:
         item_tiers=items.get("tiers", []),
         item_groups=items.get("groups", []),
         items=items.get("items", []),
+        talent_ranks=skills.get("ranks", []),
+        specialties=skills.get("specialties", []),
+        talents=skills.get("talents", []),
     )
 
 

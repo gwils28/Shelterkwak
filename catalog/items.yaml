@@ -38,6 +38,7 @@ groups:
   - {id: evacuation, name: "Évacuation et mobilité", icon: 🎒}
   - {id: papiers, name: "Papiers et argent", icon: 🗂️}
   - {id: moral, name: "Réconfort et occupation", icon: 🧸}
+  - {id: defense, name: "Défense et sécurité", icon: 🛡️}
 
 items:
   # ======================================================================
@@ -333,6 +334,21 @@ items:
       - {tier: confirme, contents: "Composteur, goutte-à-goutte et réserve d'arrosage", objectives: [eau.secheresse]}
       - {tier: epique, contents: "Potager ou parcelle productive, serre ou tunnel", objectives: [alimentation.balcon, alimentation.potager]}
       - {tier: legendaire, contents: "De quoi produire la moitié des besoins : outillage complet, serre, poulailler", objectives: [alimentation.production_50, alimentation.circuit_25]}
+
+  - id: ration_survie
+    group: vivres
+    kind: consommable
+    basis: quantite
+    name: Rations de survie
+    icon: 🍱
+    description: "Barres ou rations compactes, prêtes sans cuisson, qui se gardent cinq ans et plus. Pour le sac, la voiture ou les premiers jours, en complément de la réserve de vivres."
+    objectives: [alimentation.sans_cuisson, mobilite.sac]
+    tiers:
+      - {tier: rustique, contents: "Une ration de 24 h dans le sac d'un adulte"}
+      - {tier: commun, contents: "Une ration de 24 h par personne du foyer"}
+      - {tier: confirme, contents: "Trois jours de rations par personne, réparties entre la maison et les sacs"}
+      - {tier: epique, contents: "Trois jours par personne dans les sacs et une réserve dans la voiture, dates notées"}
+      - {tier: legendaire, contents: "Une semaine par personne, rations variées (barres, plats lyophilisés) et adaptées aux régimes du foyer, en rotation"}
 
   # ======================================================================
   # Santé et hygiène
@@ -688,6 +704,21 @@ items:
           - "Plan écrit : qui passe, qui appelle, qui héberge"
           - "Matériel en double au lieu de repli"
 
+  - id: compteur_geiger
+    group: sante
+    kind: equipement
+    basis: qualite
+    name: Compteur Geiger
+    icon: ☢️
+    description: "Mesurer la radioactivité autour de soi et des aliments. La mesure de fond de la maison, notée en temps normal, sert de point de comparaison."
+    caution: "Mesurer n'est pas se protéger. En cas d'accident nucléaire, on suit les consignes du préfet (mise à l'abri, comprimés d'iode) quelle que soit la mesure. Un appareil d'entrée de gamme ne voit que les rayons gamma et ne dit pas si un aliment se mange."
+    tiers:
+      - {tier: rustique, contents: "Détecteur simple de rayonnement gamma avec alarme"}
+      - {tier: commun, contents: "Compteur Geiger à tube affichant le débit de dose (µSv/h), mesure de fond de la maison notée"}
+      - {tier: confirme, contents: "Compteur bêta-gamma avec seuil d'alarme réglable et piles de rechange"}
+      - {tier: epique, contents: "Compteur alpha-bêta-gamma à fenêtre mica, et un dosimètre personnel"}
+      - {tier: legendaire, contents: "Compteur étalonné, dosimètre pour chaque adulte, mesures partagées avec un réseau citoyen de surveillance"}
+
   # ======================================================================
   # Énergie et lumière
   # ======================================================================
@@ -777,6 +808,36 @@ items:
       - {tier: confirme, contents: "Un hiver de bois sec sous un bûcher ventilé, merlin et scie", objectives: [energie.bois_hiver]}
       - {tier: epique, contents: "Deux hivers d'avance : un sec, un qui sèche", objectives: [energie.bois]}
       - {tier: legendaire, contents: "Deux hivers d'avance et une parcelle ou un accord d'affouage"}
+
+  - id: kit_solaire_nomade
+    group: energie
+    kind: equipement
+    basis: options
+    name: Kit solaire nomade
+    icon: 🌞
+    description: "Recharger loin de chez soi : dans le sac, la voiture ou au lieu de repli. Un panneau ne charge bien qu'en plein soleil, orienté et sans ombre."
+    tiers:
+      - {tier: rustique, contents: "Panneau pliant de 10 à 20 W avec sortie USB, et une batterie externe chargée", objectives: [energie.batterie]}
+      - {tier: commun, contents: "Panneau de 20 à 40 W testé, batterie externe de 20 000 mAh et câbles", objectives: [energie.solaire_portable]}
+      - {tier: confirme, contents: "Panneau pliant de 60 à 100 W et petite station de 300 Wh"}
+      - {tier: epique, contents: "Station de 500 Wh, panneau de 100 à 200 W, recharge par l'allume-cigare", objectives: [energie.station]}
+      - {tier: legendaire, contents: "Système complet dans un sac (panneau, station, câbles, lampe et radio rechargeables), testé une semaine hors réseau"}
+
+  - id: bougies
+    group: energie
+    kind: consommable
+    basis: options
+    name: Bougies
+    icon: 🕯️
+    description: "Une lumière qui ne dépend d'aucune pile, et un peu de chaleur. Les bougies de longue durée (en boîte, chauffe-plats en quantité) brûlent plusieurs heures."
+    caution: "Les bougies causent chaque année des incendies mortels, surtout pendant les coupures. Jamais sans surveillance, ni près des rideaux, ni dans une chambre d'enfant ou en dormant ; toujours sur un support stable et incombustible. Préférer une lampe à piles dès qu'on en a une."
+    objectives: [energie.lumiere]
+    tiers:
+      - {tier: rustique, contents: "Quelques bougies et des allumettes, rangées ensemble"}
+      - {tier: commun, contents: "Bougies et bougeoirs stables, une boîte de chauffe-plats"}
+      - {tier: confirme, contents: "Bougies de longue durée en boîte métallique et photophores fermés"}
+      - {tier: epique, contents: "Lanterne à bougie avec verre protecteur et réserve pour deux semaines"}
+      - {tier: legendaire, contents: "Bougies pour un mois, lanternes fermées, et un extincteur ou une couverture anti-feu à portée"}
 
   # ======================================================================
   # Abri, chaleur et feu
@@ -1023,6 +1084,50 @@ items:
       - {tier: epique, contents: "Pompe vide-cave sur batterie, bottes et cuissardes"}
       - {tier: legendaire, contents: "Logement adapté : zone refuge à l'étage, prises et tableau électrique surélevés"}
 
+  - id: ruban_adhesif
+    group: abri
+    kind: consommable
+    basis: options
+    name: Ruban adhésif
+    icon: 📦
+    description: "Réparer, calfeutrer, étiqueter, fixer une bâche : le ruban toilé (duct tape) répare presque tout, au moins provisoirement."
+    objectives: [abri.calfeutrage]
+    tiers:
+      - {tier: rustique, contents: "Un rouleau de ruban adhésif toilé"}
+      - {tier: commun, contents: "Ruban toilé et ruban de masquage pour étiqueter"}
+      - {tier: confirme, contents: "Deux rouleaux de ruban toilé large, réservés au calfeutrage de la pièce refuge"}
+      - {tier: epique, contents: "Ruban toilé, ruban américain renforcé, ruban d'étanchéité pour la plomberie et ruban électrique"}
+      - {tier: legendaire, contents: "Assortiment complet (toilé, aluminium, étanchéité, électrique, réparation de bâche), un rouleau plat dans chaque sac"}
+
+  - id: bache
+    group: abri
+    kind: equipement
+    basis: options
+    name: Bâche
+    icon: ⛺
+    description: "Couvrir un toit abîmé, protéger du matériel, faire un abri ou récupérer l'eau de pluie. Œillets renforcés et cordelette font toute la différence."
+    objectives: [abri.calfeutrage]
+    tiers:
+      - {tier: rustique, contents: "Une bâche de 3 × 4 m"}
+      - {tier: commun, contents: "Bâche renforcée à œillets et 20 m de cordelette"}
+      - {tier: confirme, contents: "Deux bâches renforcées, cordelette, sardines et tendeurs"}
+      - {tier: epique, contents: "Bâche légère pour le sac en plus des grandes, montage d'un abri déjà essayé"}
+      - {tier: legendaire, contents: "Bâches lourdes de couverture de toit, liteaux et clous pour les fixer, tarp de bivouac dans chaque sac"}
+
+  - id: couverture_survie
+    group: abri
+    kind: consommable
+    basis: options
+    name: Couverture de survie
+    icon: 🧣
+    description: "Quelques grammes qui renvoient la chaleur du corps. Face dorée vers l'extérieur pour se protéger du froid ; elle se déchire facilement, d'où l'intérêt d'en avoir plusieurs."
+    tiers:
+      - {tier: rustique, contents: "Une couverture de survie dans le sac"}
+      - {tier: commun, contents: "Une couverture de survie par personne", objectives: [abri.chaleur]}
+      - {tier: confirme, contents: "Une par personne dans chaque sac et une dans la voiture"}
+      - {tier: epique, contents: "Couvertures renforcées réutilisables (bâche de survie, sac de bivouac)"}
+      - {tier: legendaire, contents: "Sac de bivouac pour chaque membre, couvertures de rechange pour aider d'autres personnes"}
+
   # ======================================================================
   # Information et communication
   # ======================================================================
@@ -1091,7 +1196,7 @@ items:
     name: Téléphone de secours
     icon: 📱
     description: "Un second téléphone chargé, qui marche si le principal est perdu, cassé ou sur un réseau tombé."
-    objectives: [securite.alertes]
+    objectives: [securite.alertes, cyber.recuperation]
     tiers:
       - {tier: rustique, contents: "Un ancien téléphone chargé, qui appelle le 112 même sans carte SIM"}
       - {tier: commun, contents: "Téléphone de secours avec une carte SIM d'un autre opérateur"}
@@ -1145,11 +1250,12 @@ items:
     name: Sauvegardes numériques
     icon: 💾
     description: "Papiers scannés, photos, contacts : à retrouver même si l'ordinateur brûle ou est volé."
+    objectives: [cyber.restauration]
     tiers:
       - {tier: rustique, contents: "Photos des papiers importants sur le téléphone"}
       - {tier: commun, contents: "Clé USB chiffrée avec les papiers et contacts", objectives: [finances.papiers]}
-      - {tier: confirme, contents: "Règle 3-2-1 : trois copies, deux supports, une hors du logement"}
-      - {tier: epique, contents: "Disque chiffré chez un proche hors de la région, vérifié tous les six mois"}
+      - {tier: confirme, contents: "Disque externe hors ligne, sauvegarde refaite tous les trois mois", objectives: [cyber.sauvegarde]}
+      - {tier: epique, contents: "Règle 3-2-1 : trois copies, deux supports, dont un disque chiffré chez un proche, vérifié tous les six mois", objectives: [cyber.regle_321]}
       - {tier: legendaire, contents: "Serveur domestique (NAS) répliqué hors site, restauration testée"}
 
   - id: ordinateur_hors_ligne
@@ -1194,6 +1300,21 @@ items:
       - {tier: confirme, contents: "Mini-onduleur 12 V pour box et routeur : 4 heures et plus"}
       - {tier: epique, contents: "Box, routeur et ordinateur sur la station électrique"}
       - {tier: legendaire, contents: "Réseau domestique entier sur batterie solaire, avec accès de secours 4G ou satellite"}
+
+  - id: boussole
+    group: communication
+    kind: equipement
+    basis: qualite
+    name: Boussole
+    icon: 🧭
+    description: "Elle ne tombe jamais en panne, mais ne sert qu'avec une carte et un peu de pratique. Tenir loin du métal et des aimants pour lire juste."
+    objectives: [mobilite.orientation]
+    tiers:
+      - {tier: rustique, contents: "Boussole simple ou porte-clés"}
+      - {tier: commun, contents: "Boussole à plaquette, utilisable sur une carte"}
+      - {tier: confirme, contents: "Boussole à plaquette avec réglage de la déclinaison et loupe"}
+      - {tier: epique, contents: "Boussole à visée pour des relevés précis, et une boussole de secours dans le sac"}
+      - {tier: legendaire, contents: "Boussole à visée, rapporteur et carte IGN de chaque trajet, une boussole par adulte"}
 
   # ======================================================================
   # Évacuation et mobilité
@@ -1397,6 +1518,79 @@ items:
           - "Lampe à détection de mouvement à la sortie"
           - "Départ en moins de 5 minutes testé de nuit"
 
+  - id: sac_edc
+    group: evacuation
+    kind: equipement
+    basis: contenu
+    name: Sac EDC (au quotidien)
+    icon: 👝
+    description: "EDC, « every day carry » : ce qu'on a toujours sur soi, pour une panne, une coupure ou un retour à pied. Léger et discret, il ne remplace pas le sac d'évacuation."
+    caution: "Une lame peut être considérée comme une arme de catégorie D : la porter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Dans l'EDC du quotidien, préférer un petit couteau pliant ou une pince multifonction ; ni lame fixe ni bombe lacrymogène."
+    tiers:
+      - tier: rustique
+        contents: "Les poches"
+        includes:
+          - "Clés, téléphone chargé, un peu d'espèces"
+          - "Mini-lampe"
+          - "Contacts d'urgence sur papier"
+      - tier: commun
+        contents: "La pochette"
+        includes:
+          - "Pochette ou petit sac"
+          - "Batterie externe et câble"
+          - "Pansements, gel hydroalcoolique, médicament habituel"
+          - "Mouchoirs, stylo"
+      - tier: confirme
+        contents: "Faire face à un imprévu"
+        includes:
+          - "Pince multifonction ou petit couteau pliant"
+          - "Gourde"
+          - "Barre énergétique"
+          - "Couverture de survie et sifflet"
+      - tier: epique
+        contents: "Rentrer à pied"
+        includes:
+          - "Carte papier du trajet maison-travail"
+          - "Coupe-vent ou poncho"
+          - "Masque FFP2"
+          - "Copie des papiers d'identité"
+      - tier: legendaire
+        contents: "Tenir une nuit dehors"
+        includes:
+          - "Lampe frontale"
+          - "Filtre à eau de poche"
+          - "Briquet et allume-feu"
+          - "Contenu adapté à chaque saison, revu tous les trois mois"
+
+  - id: couteau_survie
+    group: evacuation
+    kind: equipement
+    basis: qualite
+    name: Couteau de survie
+    icon: 🔪
+    description: "Couper, tailler, préparer du petit bois : l'outil le plus polyvalent du sac. Un bon couteau s'entretient et s'affûte."
+    caution: "Un couteau peut être considéré comme une arme de catégorie D : l'achat est libre pour un majeur, mais le port ou le transport sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Il voyage dans le sac de randonnée ou d'évacuation, pas dans la poche en ville."
+    tiers:
+      - {tier: rustique, contents: "Couteau pliant à lame verrouillable"}
+      - {tier: commun, contents: "Couteau à lame fixe de 10 cm environ, avec étui"}
+      - {tier: confirme, contents: "Couteau à lame fixe en acier de qualité, pleine soie, et pierre à affûter"}
+      - {tier: epique, contents: "Couteau fixe, pince multifonction et petite scie pliante"}
+      - {tier: legendaire, contents: "Couteau fixe, hachette et scie pliante, affûtage et entretien maîtrisés"}
+
+  - id: sacs_etanches
+    group: evacuation
+    kind: consommable
+    basis: options
+    name: Sacs étanches
+    icon: 🛍️
+    description: "Garder au sec les papiers, les vêtements et l'électronique sous la pluie, en crue ou en traversée. Sert aussi à isoler, transporter ou improviser un poncho."
+    tiers:
+      - {tier: rustique, contents: "Sacs poubelle épais pour doubler l'intérieur des sacs"}
+      - {tier: commun, contents: "Sacs de congélation à zip pour les papiers, les médicaments et le téléphone"}
+      - {tier: confirme, contents: "Sacs étanches à fermeture enroulée (roll-top) pour les vêtements et le couchage"}
+      - {tier: epique, contents: "Sac à dos étanche, pochette étanche pour le téléphone utilisable à travers la housse"}
+      - {tier: legendaire, contents: "Tout le contenu des sacs du foyer compartimenté et étanche, testé sous la douche ou à la rivière"}
+
   # ======================================================================
   # Papiers et argent
   # ======================================================================
@@ -1530,6 +1724,21 @@ items:
       - {tier: epique, contents: "Plantes comestibles et médicinales, élevage, mécanique"}
       - {tier: legendaire, contents: "Bibliothèque partagée avec le voisinage, fiches pratiques plastifiées"}
 
+  - id: pieces_metal
+    group: papiers
+    kind: consommable
+    basis: quantite
+    name: Pièces d'argent et d'or
+    icon: 🪙
+    description: "Une réserve de valeur qui ne dépend ni des banques ni du réseau. Les pièces courantes (once d'argent, 20 francs or) se reconnaissent et se revendent le plus facilement."
+    caution: "Acheter chez un négociant reconnu, avec facture : sans justificatif, la revente est taxée au forfait sur le prix de vente, et une pièce peut être fausse. En crise, l'or se fractionne mal et s'échange avec une forte décote : il ne remplace ni les espèces ni les vivres. Le garder discrètement, hors de vue."
+    tiers:
+      - {tier: rustique, contents: "Quelques pièces d'argent"}
+      - {tier: commun, contents: "Une vingtaine de pièces d'argent, factures rangées dans le classeur"}
+      - {tier: confirme, contents: "Pièces d'argent et quelques pièces d'or de petite valeur (10 ou 20 francs)"}
+      - {tier: epique, contents: "L'équivalent d'un mois de dépenses en métal, réparti entre deux cachettes"}
+      - {tier: legendaire, contents: "L'équivalent de trois mois de dépenses, une fois l'épargne de précaution constituée", objectives: [finances.actifs]}
+
   # ======================================================================
   # Réconfort et occupation
   # ======================================================================
@@ -1652,3 +1861,179 @@ items:
           - "Plan validé par les soignants"
           - "Kit en double au lieu de repli"
           - "Exercice d'évacuation fait avec la personne"
+
+  - id: chocolat
+    group: moral
+    kind: consommable
+    basis: quantite
+    name: Chocolat
+    icon: 🍫
+    description: "Un carré au bon moment fait beaucoup pour le moral, et se partage ou s'échange facilement. Le chocolat noir se garde un à deux ans au frais et au sec."
+    objectives: [communaute.troc]
+    tiers:
+      - {tier: rustique, contents: "Quelques tablettes"}
+      - {tier: commun, contents: "Une tablette par personne et par semaine, pour deux semaines"}
+      - {tier: confirme, contents: "Un mois, chocolat noir et cacao en poudre"}
+      - {tier: epique, contents: "Trois mois en rotation, quelques tablettes réservées à l'échange"}
+      - {tier: legendaire, contents: "Six mois en rotation avec les réserves, part d'échange comprise"}
+
+  - id: cafe
+    group: moral
+    kind: consommable
+    basis: quantite
+    name: Café et thé
+    icon: ☕
+    description: "Pour les buveurs du foyer, le manque de caféine donne des maux de tête plusieurs jours, au pire moment. Le café et le thé se gardent longtemps et s'échangent bien."
+    objectives: [communaute.troc]
+    tiers:
+      - {tier: rustique, contents: "Une semaine de café soluble ou de thé"}
+      - {tier: commun, contents: "Deux semaines, et de quoi le préparer sans électricité (cafetière italienne ou à piston)"}
+      - {tier: confirme, contents: "Un mois, en paquets fermés ou sous vide"}
+      - {tier: epique, contents: "Trois mois, dont du café en grains et un moulin manuel"}
+      - {tier: legendaire, contents: "Six mois en rotation, une part réservée à l'échange"}
+
+  - id: alcool
+    group: moral
+    kind: consommable
+    basis: quantite
+    name: Petites bouteilles d'alcool
+    icon: 🥃
+    description: "Des mignonettes (5 cl) pour marquer un moment, remercier un voisin ou échanger. L'alcool fort se garde des années, bouchon fermé, à l'abri de la lumière."
+    caution: "Jamais pour un mineur, ni avec un traitement qui l'interdit. L'alcool ne réchauffe pas : il accélère la perte de chaleur et aggrave l'hypothermie. Il ne remplace pas l'antiseptique de la trousse. En crise, garder les idées claires : on boit peu, et jamais avant de conduire ou de veiller."
+    objectives: [communaute.troc]
+    tiers:
+      - {tier: rustique, contents: "Une petite bouteille pour un moment à fêter"}
+      - {tier: commun, contents: "Cinq mignonettes, faciles à offrir ou à échanger"}
+      - {tier: confirme, contents: "Dix mignonettes et une bouteille pour les grandes occasions"}
+      - {tier: epique, contents: "Une vingtaine de mignonettes variées, rangées hors de portée des enfants"}
+      - {tier: legendaire, contents: "Réserve d'échange tenue à jour (mignonettes, eaux-de-vie), sous clé"}
+
+  - id: tabac
+    group: moral
+    kind: consommable
+    basis: quantite
+    name: Tabac et substituts nicotiniques
+    icon: 🚬
+    description: "Pour un fumeur du foyer, un sevrage brutal en pleine crise aggrave le stress, l'irritabilité et les troubles du sommeil. Le tabac reste aussi une monnaie d'échange recherchée."
+    caution: "Fumer nuit gravement à la santé, à celle des enfants et à celle des voisins de confinement. La revente de tabac est réservée aux buralistes ; on peut l'offrir, pas en faire commerce. Les substituts nicotiniques (patchs, gommes) sont la vraie réserve de sécurité pour un fumeur. Jamais de flamme près du carburant ni dans la pièce de confinement."
+    objectives: [communaute.troc]
+    tiers:
+      - {tier: rustique, contents: "Une semaine de substituts nicotiniques (patchs ou gommes) pour chaque fumeur"}
+      - {tier: commun, contents: "Deux semaines de consommation habituelle, substituts compris"}
+      - {tier: confirme, contents: "Un mois, au sec dans une boîte hermétique, substituts compris"}
+      - {tier: epique, contents: "Un mois pour le foyer et quelques paquets à offrir en remerciement"}
+      - {tier: legendaire, contents: "Trois mois de substituts et un plan de sevrage vu avec un médecin ou un pharmacien"}
+
+  # ======================================================================
+  # Défense et sécurité
+  # ======================================================================
+  - id: armes
+    group: defense
+    kind: equipement
+    basis: options
+    name: Armes et munitions
+    icon: 🎯
+    description: "Pour un foyer qui chasse ou pratique le tir sportif. Les niveaux mesurent la détention en règle et la sécurité, pas la puissance de feu."
+    caution: "En France, une arme à feu ne se détient pas pour se défendre : la détention exige un titre (permis de chasser validé ou licence de tir), une autorisation préfectorale pour la catégorie B, et chaque arme est enregistrée au SIA. Le port est interdit, le transport n'est permis que pour un motif légitime (stand, chasse), arme déchargée et dans une mallette fermée. Les munitions ne s'achètent que sur présentation du titre. L'arme ne va pas dans le sac d'évacuation."
+    objectives: [defense.legitime_defense]
+    tiers:
+      - {tier: rustique, contents: "Arme enregistrée au SIA avec un titre valide, rangée sous clé, munitions rangées à part", objectives: [defense.armes_regle]}
+      - {tier: commun, contents: "Coffre-fort ou armoire forte fixée au mur, verrou de pontet, clés hors de portée des enfants"}
+      - {tier: confirme, contents: "Licence de tir en club et pratique encadrée régulière", objectives: [defense.tir_sportif]}
+      - {tier: epique, contents: "Entretien et nettoyage maîtrisés, munitions stockées au sec dans les quantités permises par le titre"}
+      - {tier: legendaire, contents: "Formation à la sécurité renouvelée, transport conforme et titre, certificat médical et compte SIA toujours à jour"}
+
+  - id: porte_securisee
+    group: defense
+    kind: equipement
+    basis: options
+    name: Porte d'entrée sécurisée
+    icon: 🚪
+    description: "Retarder une intrusion le temps d'appeler et de se mettre à l'abri. La plupart des cambriolages passent par la porte ou une fenêtre facile."
+    objectives: [defense.intrusion]
+    tiers:
+      - {tier: rustique, contents: "Judas ou entrebâilleur, porte toujours fermée à clé, même quand on est là"}
+      - {tier: commun, contents: "Judas et entrebâilleur, cylindre de serrure changé à l'emménagement"}
+      - {tier: confirme, contents: "Serrure certifiée A2P, entrebâilleur, éclairage extérieur à détecteur", objectives: [securite.logement]}
+      - {tier: epique, contents: "Porte blindée ou bloc-porte certifié A2P (à voir avec le propriétaire pour un locataire)", objectives: [securite.porte_blindee]}
+      - {tier: legendaire, contents: "Porte blindée, fenêtres basses protégées (volets, barreaux ou vitrage retardateur) et pièce refuge qui ferme à clé"}
+
+  - id: alarme
+    group: defense
+    kind: equipement
+    basis: options
+    name: Alarme et détection
+    icon: 🚨
+    description: "Être prévenu tôt et faire fuir : le bruit et la lumière arrêtent la plupart des intrusions avant le premier contact."
+    caution: "Une caméra ne filme que chez soi : jamais la voie publique ni chez les voisins, et les personnes filmées (aide à domicile, nounou) doivent en être informées. Face à une intrusion, on s'enferme et on appelle le 17, on ne va pas au contact."
+    objectives: [defense.intrusion]
+    tiers:
+      - {tier: rustique, contents: "Alarme personnelle de poche (sirène à goupille) pour chaque adulte"}
+      - {tier: commun, contents: "Éclairage extérieur à détecteur de mouvement et alarmes d'ouverture sur les accès"}
+      - {tier: confirme, contents: "Alarme du logement avec sirène intérieure, sur batterie en cas de coupure"}
+      - {tier: epique, contents: "Alarme reliée au téléphone ou à un service de télésurveillance, caméra à l'entrée"}
+      - {tier: legendaire, contents: "Alarme autonome sur batterie et signal convenu avec les voisins, qui savent quoi faire quand elle sonne", objectives: [defense.voisinage]}
+
+  - id: lacrymogene
+    group: defense
+    kind: equipement
+    basis: options
+    name: Bombe lacrymogène
+    icon: 🧯
+    description: "Pour se dégager et fuir, pas pour combattre. Elle reste au domicile, à un endroit connu des adultes et hors de portée des enfants."
+    caution: "Une bombe lacrymogène de 100 ml au plus est une arme de catégorie D : achat réservé aux majeurs, et la porter ou la transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Au-delà de 100 ml, elle relève de la catégorie B, interdite sans autorisation. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée. Jamais à portée d'un enfant ; en pièce fermée, elle atteint aussi le foyer."
+    objectives: [defense.legitime_defense]
+    tiers:
+      - {tier: rustique, contents: "Une bombe de 100 ml au plus au domicile, rangée hors de portée des enfants", objectives: [defense.aerosol]}
+      - {tier: commun, contents: "Rangée dans la pièce refuge, près du téléphone chargé"}
+      - {tier: confirme, contents: "Formule en gel plutôt qu'en gaz, moins de retombées dans un lieu clos"}
+      - {tier: epique, contents: "Manipulation essayée avec une bombe d'entraînement inerte, date de péremption suivie"}
+      - {tier: legendaire, contents: "Prévue dans le plan intrusion, remplacée avant péremption, chaque adulte connaît les règles de la légitime défense"}
+
+  - id: matraque
+    group: defense
+    kind: equipement
+    basis: options
+    name: Matraque ou bâton de défense
+    icon: 🏏
+    description: "Bâton télescopique, tonfa ou matraque, gardé au domicile en dernier recours, derrière la fuite et l'appel au 17. Les niveaux mesurent la détention en règle et la formation, pas la dangerosité."
+    caution: "En France, c'est une arme de catégorie D : achat réservé aux majeurs, détention libre au domicile. La porter ou la transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1), et « pour me défendre » n'est pas un motif légitime. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée à une attaque injuste. Frapper un agresseur qui fuit ou à terre, ou viser la tête, fait basculer dans les violences volontaires."
+    objectives: [defense.legitime_defense, defense.initiation]
+    tiers:
+      - {tier: rustique, contents: "Rangée au domicile, à un endroit connu des seuls adultes ; jamais dans le sac ni la voiture"}
+      - {tier: commun, contents: "Rangée dans la pièce refuge avec le téléphone chargé, règles de la légitime défense connues"}
+      - {tier: confirme, contents: "Initiation encadrée au bâton de défense : garder la distance, se dégager, ne jamais frapper la tête"}
+      - {tier: epique, contents: "Pratique entretenue en club (bâton de défense, canne de combat) au moins deux fois par an"}
+      - {tier: legendaire, contents: "Prévue dans le plan intrusion comme dernier recours, après la fuite et l'appel, revue chaque année"}
+
+  - id: poignard
+    group: defense
+    kind: equipement
+    basis: options
+    name: Couteau-poignard
+    icon: 🗡️
+    description: "Une lame est l'objet le plus risqué à faire entrer dans une confrontation : elle blesse gravement, peut être retournée contre soi, et la riposte devient vite disproportionnée. Les niveaux mesurent un rangement sûr et la connaissance des règles, pas la dangerosité."
+    caution: "En France, le poignard et le couteau-poignard sont des armes de catégorie D : achat réservé aux majeurs, détention libre au domicile. Les porter ou les transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1), et se défendre n'est pas un motif légitime. Face à un agresseur à mains nues, une lame est rarement une riposte proportionnée : la légitime défense est alors presque toujours écartée. Hors de portée des enfants, sous clé."
+    objectives: [defense.legitime_defense]
+    tiers:
+      - {tier: rustique, contents: "Rangé au domicile dans un étui fermé, hors de portée des enfants"}
+      - {tier: commun, contents: "Rangé sous clé, facture conservée"}
+      - {tier: confirme, contents: "Chaque adulte sait qu'une lame face à un agresseur désarmé n'est pas proportionnée, et que la fuite passe d'abord"}
+      - {tier: epique, contents: "Initiation encadrée à la défense face à une arme blanche (distance, fuite, protection) suivie en club"}
+      - {tier: legendaire, contents: "Rangé sous clé, transporté seulement pour un motif légitime (chasse, collection, randonnée), dans un étui fermé au fond du sac"}
+
+  - id: arme_contondante
+    group: defense
+    kind: equipement
+    basis: options
+    name: Canne ou arme contondante
+    icon: 🦯
+    description: "Une canne solide reste la plus utile : elle aide à marcher, se porte partout, et un cours de canne de défense apprend à s'en servir pour se dégager. Les niveaux mesurent la détention en règle et la formation, pas la dangerosité."
+    caution: "Les armes contondantes (casse-tête, nunchaku, massue) sont des armes de catégorie D : achat réservé aux majeurs, détention libre au domicile, port et transport interdits sans motif légitime (Code de la sécurité intérieure, art. L315-1). Une canne de marche n'est pas une arme tant qu'elle sert à marcher, mais tout objet utilisé pour frapper en devient une. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée."
+    objectives: [defense.legitime_defense, defense.initiation, defense.initiation_adaptee]
+    tiers:
+      - {tier: rustique, contents: "Rangée au domicile, à un endroit connu des seuls adultes"}
+      - {tier: commun, contents: "Canne de marche robuste, utilisée et portée comme aide à la marche"}
+      - {tier: confirme, contents: "Initiation à la canne de défense ou à la canne de combat dans un club"}
+      - {tier: epique, contents: "Pratique entretenue au moins deux fois par an, adaptée à la mobilité de chacun"}
+      - {tier: legendaire, contents: "Prévue dans le plan intrusion comme dernier recours, après la fuite et l'appel, et connue de chaque adulte qui s'en sert"}

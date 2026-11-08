@@ -131,9 +131,30 @@ export interface Item {
   basis: ItemBasis;
   category: string | null; // catégorie d'autonomie, pour une réserve
   description: string;
+  caution: string; // mise en garde (loi, santé, sécurité), affichée en tête de la fiche
   objectives: string[];
   tiers: ItemTier[];
   crisis: boolean; // à retrouver le jour J : emplacement affiché dans l'écran Crise
+}
+export interface Specialty {
+  id: string;
+  name: string;
+  icon: string;
+  description: string;
+  branches: string[]; // nom de chaque colonne de l'arbre
+  titles: string[]; // titre obtenu au rang le plus haut atteint (5)
+}
+export interface Talent {
+  id: string;
+  specialty: string;
+  name: string;
+  icon: string;
+  row: number; // rang, de 1 (novice) à 5 (maître)
+  col: number; // branche, à partir de 1
+  description: string;
+  criteria: string; // ce qui prouve qu'on l'a acquis
+  requires: string[]; // talents prérequis, tous exigés
+  objectives: string[];
 }
 export interface Catalog {
   levels: Level[];
@@ -150,6 +171,9 @@ export interface Catalog {
   item_tiers: ItemTierName[];
   item_groups: ItemGroup[];
   items: Item[];
+  talent_ranks: string[]; // noms des cinq rangs des arbres
+  specialties: Specialty[];
+  talents: Talent[];
 }
 
 export function isAnimal(catalog: Catalog, memberType: string): boolean {

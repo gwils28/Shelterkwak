@@ -126,6 +126,11 @@
    "id": "defense",
    "name": "Défense personnelle",
    "icon": "🥋"
+  },
+  {
+   "id": "cyber",
+   "name": "Cybersécurité",
+   "icon": "🔐"
   }
  ],
  "contexts": [
@@ -1483,6 +1488,48 @@
    "custom": false
   },
   {
+   "id": "cyber.verrouillage",
+   "axis": "cyber",
+   "level": 2,
+   "title": "Téléphones et ordinateurs verrouillés par un code ou une empreinte, verrouillage automatique activé",
+   "description": "",
+   "why": "Un téléphone perdu ou volé déverrouillé donne accès à la messagerie, donc à tous les comptes.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.arnaques",
+   "axis": "cyber",
+   "level": 2,
+   "title": "Réflexes anti-arnaque connus des adultes : ni la banque, ni la police, ni un proche en détresse ne demandent un code ou un virement par message ; on raccroche et on rappelle le numéro officiel",
+   "description": "",
+   "why": "Les arnaques au faux conseiller et au « proche en détresse » explosent pendant les crises ; signalement sur 17Cyber ou cybermalveillance.gouv.fr.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.stock_3j",
    "axis": "eau",
    "level": 3,
@@ -2390,6 +2437,69 @@
    ],
    "excludes_tags": [],
    "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.double_auth",
+   "axis": "cyber",
+   "level": 3,
+   "title": "Mot de passe propre et double authentification sur la messagerie principale et la banque de chaque adulte",
+   "description": "",
+   "why": "La messagerie permet de réinitialiser tous les autres comptes ; c'est elle qu'il faut protéger en premier.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.mises_a_jour",
+   "axis": "cyber",
+   "level": 3,
+   "title": "Mises à jour automatiques activées sur les téléphones, les ordinateurs et la box",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.sauvegarde",
+   "axis": "cyber",
+   "level": 3,
+   "title": "Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de trois mois",
+   "description": "",
+   "why": "Un rançongiciel, un incendie ou un vol effacent tout ce qui n'existe qu'à un seul endroit.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 90,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -3423,6 +3533,92 @@
    "custom": false
   },
   {
+   "id": "cyber.gestionnaire",
+   "axis": "cyber",
+   "level": 4,
+   "title": "Un gestionnaire de mots de passe pour chaque adulte, et un mot de passe différent pour chaque compte important",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.recuperation",
+   "axis": "cyber",
+   "level": 4,
+   "title": "Codes de secours de la double authentification et moyens de récupération des comptes notés sur papier, rangés avec les papiers importants",
+   "description": "",
+   "why": "Sans le téléphone, impossible de recevoir les codes ; sans codes de secours, on perd l'accès à la banque et à la messagerie.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.box",
+   "axis": "cyber",
+   "level": 4,
+   "title": "Box internet sécurisée : mot de passe d'administration changé, Wi-Fi en WPA2 ou WPA3, réseau invité pour les visiteurs et les objets connectés",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.enfants",
+   "axis": "cyber",
+   "level": 4,
+   "title": "Règles numériques des enfants : contrôle parental adapté à l'âge, ne jamais donner de code ni d'information sur la maison, parler d'un message qui fait peur",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [
+    "enfants"
+   ],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.stock_30j",
    "axis": "eau",
    "level": 5,
@@ -4305,6 +4501,48 @@
    "custom": false
   },
   {
+   "id": "cyber.restauration",
+   "axis": "cyber",
+   "level": 5,
+   "title": "Restauration testée - un dossier récupéré depuis la sauvegarde hors ligne sur un autre appareil",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.plan_incident",
+   "axis": "cyber",
+   "level": 5,
+   "title": "Plan en cas de piratage ou de perte du téléphone, sur papier : opposition bancaire, blocage de la ligne chez l'opérateur, comptes à reprendre en premier, 17Cyber",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.recuperateur",
    "axis": "eau",
    "level": 6,
@@ -4849,6 +5087,48 @@
    "custom": false
   },
   {
+   "id": "cyber.chiffrement",
+   "axis": "cyber",
+   "level": 6,
+   "title": "Disques des ordinateurs et des téléphones chiffrés, clés de récupération rangées avec les papiers importants",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.discretion",
+   "axis": "cyber",
+   "level": 6,
+   "title": "Discrétion en ligne : profils en privé, pas de publication des absences, de l'adresse ni des réserves du foyer",
+   "description": "",
+   "why": "Les cambrioleurs et les escrocs exploitent ce qu'on publie.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.source_autonome",
    "axis": "eau",
    "level": 7,
@@ -5256,6 +5536,27 @@
    "custom": false
   },
   {
+   "id": "cyber.regle_321",
+   "axis": "cyber",
+   "level": 7,
+   "title": "Sauvegardes 3-2-1 : trois copies, sur deux supports, dont une hors du domicile, vérifiées tous les six mois",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 180,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.autonomie_annuelle",
    "axis": "eau",
    "level": 8,
@@ -5641,6 +5942,48 @@
    "custom": false
   },
   {
+   "id": "cyber.independance",
+   "axis": "cyber",
+   "level": 8,
+   "title": "Pas de dépendance à un seul fournisseur : seconde adresse de messagerie de secours, second moyen de paiement dans une autre banque, documents essentiels hors du cloud",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.heritage",
+   "axis": "cyber",
+   "level": 8,
+   "title": "Accès d'urgence prévu : une personne de confiance peut reprendre les comptes essentiels si un adulte est hospitalisé ou décède (procédure écrite, rangée en lieu sûr)",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "eau.epreuve_7j",
    "axis": "eau",
    "level": 9,
@@ -5984,6 +6327,48 @@
    ],
    "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.exercice",
+   "axis": "cyber",
+   "level": 9,
+   "title": "Exercice annuel - perte simulée du téléphone principal, le foyer récupère messagerie, banque et contacts en moins de 48 h avec ses seuls moyens de secours",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.transmettre",
+   "axis": "cyber",
+   "level": 9,
+   "title": "Aider des proches ou des voisins à sécuriser leurs comptes et leurs sauvegardes",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": false,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -6960,6 +7345,33 @@
      "label": "Une technique de gestion du stress connue (respiration, cohérence cardiaque)",
      "validates": [
       "moral.stress"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "verrouillage",
+     "label": "Téléphones et ordinateurs verrouillés par un code",
+     "validates": [
+      "cyber.verrouillage"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "double_auth",
+     "label": "Double authentification sur la messagerie et la banque",
+     "validates": [
+      "cyber.double_auth"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
+     "value": "sauvegarde",
+     "label": "Sauvegarde récente des fichiers sur un support hors ligne",
+     "validates": [
+      "cyber.sauvegarde"
      ],
      "tags": [],
      "sets": {}
@@ -8326,6 +8738,11 @@
    "id": "moral",
    "name": "Réconfort et occupation",
    "icon": "🧸"
+  },
+  {
+   "id": "defense",
+   "name": "Défense et sécurité",
+   "icon": "🛡️"
   }
  ],
  "items": [
@@ -8338,6 +8755,7 @@
    "basis": "autonomie",
    "category": "eau",
    "description": "Bouteilles, packs et bidons alimentaires remplis. Compte 4 L par adulte et par jour (boisson, cuisine, hygiène minimale).",
+   "caution": "",
    "objectives": [
     "eau.rotation"
    ],
@@ -8399,6 +8817,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Pastilles de chlore (NaDCC) ou de dioxyde de chlore, ou eau de Javel sans additif, pour désinfecter une eau claire (30 min d'attente). Une eau trouble se filtre d'abord. Les pastilles à l'argent conservent l'eau mais ne la purifient pas.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -8450,6 +8869,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Vides et propres, prêts à remplir dès une alerte de coupure. 10 L au plus si l'eau se monte à pied.",
+   "caution": "",
    "objectives": [
     "eau.contenants",
     "eau.portage",
@@ -8503,6 +8923,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Pour rapporter l'eau d'un point de distribution sans s'épuiser.",
+   "caution": "",
    "objectives": [
     "eau.portage",
     "eau.plan_appro",
@@ -8556,6 +8977,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Retient bactéries et parasites d'une eau brute (rivière, citerne). Ne retire pas les produits chimiques.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -8609,6 +9031,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Eau d'hygiène, de WC et d'arrosage ; à filtrer et traiter avant de la boire.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -8662,6 +9085,7 @@
    "basis": "options",
    "category": null,
    "description": "Au-delà de quelques semaines, ce n'est plus le stock qui compte mais la capacité de renouveler l'eau : une source, un puits, une fontaine. Toute eau brute se filtre puis se désinfecte.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -8722,6 +9146,7 @@
    "basis": "autonomie",
    "category": "alimentation",
    "description": "Conserves, féculents, aliments secs. Les calories sont sur l'étiquette (riz 1 kg ≈ 3 600 kcal, boîte de lentilles 400 g ≈ 400 kcal).",
+   "caution": "",
    "objectives": [
     "alimentation.rotation",
     "alimentation.sans_cuisson",
@@ -8785,6 +9210,7 @@
    "basis": "autonomie",
    "category": "cuisson",
    "description": "Cartouches de gaz, alcool à brûler, bois sec. Une cartouche de 250 g fait environ 3 jours-personne.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -8842,6 +9268,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Pour cuisiner sans gaz ni électricité du réseau. Toujours à l'extérieur ou fenêtre ouverte (monoxyde de carbone).",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -8891,6 +9318,7 @@
    "basis": "options",
    "category": null,
    "description": "L'outil qu'on oublie et sans lequel les conserves restent fermées.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -8942,6 +9370,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Lait infantile, eau adaptée aux nourrissons, petits pots, couches et lingettes.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -8995,6 +9424,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Croquettes ou pâtée, litière, et le traitement habituel de l'animal.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9046,6 +9476,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Bocaux, joints et couvercles neufs, sel, vinaigre, sucre pour conserver une récolte.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9097,6 +9528,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Variétés non hybrides, dont on peut garder les graines d'une année sur l'autre.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9150,6 +9582,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Sans gluten, sans allergène, adaptés au diabète : en crise, on ne trouve plus ces produits. Étiquettes vérifiées à chaque achat.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9201,6 +9634,7 @@
    "basis": "options",
    "category": null,
    "description": "Cuire avec deux à trois fois moins de combustible : la réserve dure plus longtemps et on respire moins de fumées.",
+   "caution": "",
    "objectives": [
     "energie.cuisson_sobre"
    ],
@@ -9252,6 +9686,7 @@
    "basis": "options",
    "category": null,
    "description": "Lors d'une coupure, c'est le contenu du frigo qu'on perd en premier. Un congélateur fermé garde le froid environ 24 à 48 heures, un réfrigérateur environ 4 heures.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9301,6 +9736,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Un stock de longue durée repose sur des céréales en grain, qui se gardent bien plus longtemps que la farine.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9350,6 +9786,7 @@
    "basis": "options",
    "category": null,
    "description": "Produire une part de ses légumes, sur un balcon, une parcelle ou un jardin.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9399,6 +9836,59 @@
    "crisis": false
   },
   {
+   "id": "ration_survie",
+   "group": "vivres",
+   "name": "Rations de survie",
+   "icon": "🍱",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Barres ou rations compactes, prêtes sans cuisson, qui se gardent cinq ans et plus. Pour le sac, la voiture ou les premiers jours, en complément de la réserve de vivres.",
+   "caution": "",
+   "objectives": [
+    "alimentation.sans_cuisson",
+    "mobilite.sac"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une ration de 24 h dans le sac d'un adulte",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Une ration de 24 h par personne du foyer",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Trois jours de rations par personne, réparties entre la maison et les sacs",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Trois jours par personne dans les sacs et une réserve dans la voiture, dates notées",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Une semaine par personne, rations variées (barres, plats lyophilisés) et adaptées aux régimes du foyer, en rotation",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
    "id": "reserve_traitements",
    "group": "sante",
    "name": "Traitements d'avance",
@@ -9407,6 +9897,7 @@
    "basis": "autonomie",
    "category": "traitements",
    "description": "Boîtes de traitement régulier en avance, comptées en jours pour chaque membre traité.",
+   "caution": "",
    "objectives": [
     "sante.medicaments_chaleur",
     "sante.traitements_plan"
@@ -9465,6 +9956,7 @@
    "basis": "contenu",
    "category": null,
    "description": "À vérifier une fois par an (dates, ciseaux, piles du thermomètre). Le matériel avancé ne sert qu'à qui a appris le geste.",
+   "caution": "",
    "objectives": [
     "sante.secourisme_avance"
    ],
@@ -9556,6 +10048,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Pour une épidémie ou un nettoyage après sinistre. Un FFP2 arrête les particules, pas le monoxyde de carbone ni les gaz : face à une fumée toxique, on se confine. Pas de taille enfant certifiée.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9609,6 +10102,7 @@
    "basis": "contenu",
    "category": null,
    "description": "De quoi rester propre sans eau courante : c'est la première protection contre les maladies.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9685,6 +10179,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Sans eau courante, l'hygiène devient le premier risque sanitaire.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9755,6 +10250,7 @@
    "basis": "options",
    "category": null,
    "description": "Retirés en pharmacie pour chaque membre si le foyer est dans le périmètre d'un site nucléaire. Ne se prennent que sur consigne du préfet.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9806,6 +10302,7 @@
    "basis": "quantite",
    "category": null,
    "description": "À la vue actuelle, en étui rigide.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9861,6 +10358,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Dans une boîte étanche ; ou un chargeur alimenté hors réseau.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9914,6 +10412,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Toujours avec la personne allergique, jamais périmés.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -9965,6 +10464,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Non périmé, avec une chambre d'inhalation si besoin.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10016,6 +10516,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Conserver l'insuline sans électricité, jamais au contact direct de la glace (une insuline gelée est perdue), et de quoi corriger une hypoglycémie.",
+   "caution": "",
    "objectives": [
     "sante.hypo"
    ],
@@ -10071,6 +10572,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Batterie de secours de l'appareil médical électrique, testée.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10124,6 +10626,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Prêt dès le 7e mois, avec un trajet vers la maternité qui ne dépend pas d'une voiture personnelle.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10195,6 +10698,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Pour garder l'autonomie d'une personne âgée quand les aides et les commerces s'arrêtent.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10255,6 +10759,56 @@
    "crisis": false
   },
   {
+   "id": "compteur_geiger",
+   "group": "sante",
+   "name": "Compteur Geiger",
+   "icon": "☢️",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Mesurer la radioactivité autour de soi et des aliments. La mesure de fond de la maison, notée en temps normal, sert de point de comparaison.",
+   "caution": "Mesurer n'est pas se protéger. En cas d'accident nucléaire, on suit les consignes du préfet (mise à l'abri, comprimés d'iode) quelle que soit la mesure. Un appareil d'entrée de gamme ne voit que les rayons gamma et ne dit pas si un aliment se mange.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Détecteur simple de rayonnement gamma avec alarme",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Compteur Geiger à tube affichant le débit de dose (µSv/h), mesure de fond de la maison notée",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Compteur bêta-gamma avec seuil d'alarme réglable et piles de rechange",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Compteur alpha-bêta-gamma à fenêtre mica, et un dosimètre personnel",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Compteur étalonné, dosimètre pour chaque adulte, mesures partagées avec un réseau citoyen de surveillance",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
    "id": "lampes",
    "group": "energie",
    "name": "Lampes",
@@ -10263,6 +10817,7 @@
    "basis": "options",
    "category": null,
    "description": "Une lumière sans réseau, rangée à un endroit connu de tous. Les bougies sont un dernier recours (incendie).",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10316,6 +10871,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Aux formats des lampes, de la radio et des détecteurs (souvent AA, AAA, 9 V).",
+   "caution": "",
    "objectives": [
     "energie.lampes",
     "communication.radio"
@@ -10368,6 +10924,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Pour garder téléphones, radio et lumière en marche pendant une coupure. Commencer par chiffrer ses besoins en Wh par jour.",
+   "caution": "",
    "objectives": [
     "energie.bilan_wh"
    ],
@@ -10431,6 +10988,7 @@
    "basis": "options",
    "category": null,
    "description": "Toujours dehors, jamais dans un garage ou une cave (monoxyde de carbone). Carburant stocké et renouvelé.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10482,6 +11040,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Dans une boîte étanche.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10531,6 +11090,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Rentré avant novembre, à moins de 20 % d'humidité.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10576,6 +11136,114 @@
    "crisis": false
   },
   {
+   "id": "kit_solaire_nomade",
+   "group": "energie",
+   "name": "Kit solaire nomade",
+   "icon": "🌞",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Recharger loin de chez soi : dans le sac, la voiture ou au lieu de repli. Un panneau ne charge bien qu'en plein soleil, orienté et sans ombre.",
+   "caution": "",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Panneau pliant de 10 à 20 W avec sortie USB, et une batterie externe chargée",
+     "min_days": null,
+     "objectives": [
+      "energie.batterie"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Panneau de 20 à 40 W testé, batterie externe de 20 000 mAh et câbles",
+     "min_days": null,
+     "objectives": [
+      "energie.solaire_portable"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Panneau pliant de 60 à 100 W et petite station de 300 Wh",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Station de 500 Wh, panneau de 100 à 200 W, recharge par l'allume-cigare",
+     "min_days": null,
+     "objectives": [
+      "energie.station"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Système complet dans un sac (panneau, station, câbles, lampe et radio rechargeables), testé une semaine hors réseau",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "bougies",
+   "group": "energie",
+   "name": "Bougies",
+   "icon": "🕯️",
+   "kind": "consommable",
+   "basis": "options",
+   "category": null,
+   "description": "Une lumière qui ne dépend d'aucune pile, et un peu de chaleur. Les bougies de longue durée (en boîte, chauffe-plats en quantité) brûlent plusieurs heures.",
+   "caution": "Les bougies causent chaque année des incendies mortels, surtout pendant les coupures. Jamais sans surveillance, ni près des rideaux, ni dans une chambre d'enfant ou en dormant ; toujours sur un support stable et incombustible. Préférer une lampe à piles dès qu'on en a une.",
+   "objectives": [
+    "energie.lumiere"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Quelques bougies et des allumettes, rangées ensemble",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Bougies et bougeoirs stables, une boîte de chauffe-plats",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Bougies de longue durée en boîte métallique et photophores fermés",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Lanterne à bougie avec verre protecteur et réserve pour deux semaines",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Bougies pour un mois, lanternes fermées, et un extincteur ou une couverture anti-feu à portée",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
    "id": "couchage",
    "group": "abri",
    "name": "Couvertures et couchages",
@@ -10584,6 +11252,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Pour tenir au chaud sans chauffage, et accueillir.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10637,6 +11306,7 @@
    "basis": "options",
    "category": null,
    "description": "Testés une fois par mois. Un détecteur de CO est indispensable dès qu'on fait du feu ou qu'on utilise un appoint.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10690,6 +11360,7 @@
    "basis": "options",
    "category": null,
    "description": "Extincteur à poudre ou à eau avec additif près de la cuisine, couverture anti-feu pour un feu de poêle.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10743,6 +11414,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Pour calfeutrer une pièce lors d'un accident industriel ou d'une fumée toxique.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10818,6 +11490,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Hors réseau et sûr, avec ventilation et détecteur de CO.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -10871,6 +11544,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Pour les petites réparations quand les artisans ne viennent plus.",
+   "caution": "",
    "objectives": [
     "abri.reparations",
     "competences.tronconneuse"
@@ -10954,6 +11628,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Pour garder une pièce vivable quand il fait plus de 35 °C.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11024,6 +11699,7 @@
    "basis": "options",
    "category": null,
    "description": "Pour la route et pour rester bloqué une semaine.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11075,6 +11751,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Si la collecte s'arrête.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11126,6 +11803,7 @@
    "basis": "options",
    "category": null,
    "description": "En séisme, on se blesse surtout sous les meubles et les objets qui tombent.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11177,6 +11855,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Ralentir l'eau le temps de mettre à l'abri ce qui compte. En crue, on ne reste jamais dans un sous-sol.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11220,6 +11899,162 @@
    "crisis": false
   },
   {
+   "id": "ruban_adhesif",
+   "group": "abri",
+   "name": "Ruban adhésif",
+   "icon": "📦",
+   "kind": "consommable",
+   "basis": "options",
+   "category": null,
+   "description": "Réparer, calfeutrer, étiqueter, fixer une bâche : le ruban toilé (duct tape) répare presque tout, au moins provisoirement.",
+   "caution": "",
+   "objectives": [
+    "abri.calfeutrage"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un rouleau de ruban adhésif toilé",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Ruban toilé et ruban de masquage pour étiqueter",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Deux rouleaux de ruban toilé large, réservés au calfeutrage de la pièce refuge",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Ruban toilé, ruban américain renforcé, ruban d'étanchéité pour la plomberie et ruban électrique",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Assortiment complet (toilé, aluminium, étanchéité, électrique, réparation de bâche), un rouleau plat dans chaque sac",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "bache",
+   "group": "abri",
+   "name": "Bâche",
+   "icon": "⛺",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Couvrir un toit abîmé, protéger du matériel, faire un abri ou récupérer l'eau de pluie. Œillets renforcés et cordelette font toute la différence.",
+   "caution": "",
+   "objectives": [
+    "abri.calfeutrage"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une bâche de 3 × 4 m",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Bâche renforcée à œillets et 20 m de cordelette",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Deux bâches renforcées, cordelette, sardines et tendeurs",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Bâche légère pour le sac en plus des grandes, montage d'un abri déjà essayé",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Bâches lourdes de couverture de toit, liteaux et clous pour les fixer, tarp de bivouac dans chaque sac",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "couverture_survie",
+   "group": "abri",
+   "name": "Couverture de survie",
+   "icon": "🧣",
+   "kind": "consommable",
+   "basis": "options",
+   "category": null,
+   "description": "Quelques grammes qui renvoient la chaleur du corps. Face dorée vers l'extérieur pour se protéger du froid ; elle se déchire facilement, d'où l'intérêt d'en avoir plusieurs.",
+   "caution": "",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une couverture de survie dans le sac",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Une couverture de survie par personne",
+     "min_days": null,
+     "objectives": [
+      "abri.chaleur"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Une par personne dans chaque sac et une dans la voiture",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Couvertures renforcées réutilisables (bâche de survie, sac de bivouac)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Sac de bivouac pour chaque membre, couvertures de rechange pour aider d'autres personnes",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
    "id": "radio",
    "group": "communication",
    "name": "Radio",
@@ -11228,6 +12063,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Quand le réseau mobile tombe, la radio publique diffuse les consignes.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11283,6 +12119,7 @@
    "basis": "qualite",
    "category": null,
    "description": "PMR446 sans licence : quelques kilomètres en terrain dégagé.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11336,6 +12173,7 @@
    "basis": "options",
    "category": null,
    "description": "Sans GPS ni réseau, une carte et une boussole.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11389,6 +12227,7 @@
    "basis": "options",
    "category": null,
    "description": "Pour se signaler sous des décombres ou alerter les voisins.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11440,8 +12279,10 @@
    "basis": "options",
    "category": null,
    "description": "Un second téléphone chargé, qui marche si le principal est perdu, cassé ou sur un réseau tombé.",
+   "caution": "",
    "objectives": [
-    "securite.alertes"
+    "securite.alertes",
+    "cyber.recuperation"
    ],
    "tiers": [
     {
@@ -11491,6 +12332,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Le câble oublié rend la batterie inutile.",
+   "caution": "",
    "objectives": [
     "energie.batterie"
    ],
@@ -11561,7 +12403,10 @@
    "basis": "qualite",
    "category": null,
    "description": "Papiers scannés, photos, contacts : à retrouver même si l'ordinateur brûle ou est volé.",
-   "objectives": [],
+   "caution": "",
+   "objectives": [
+    "cyber.restauration"
+   ],
    "tiers": [
     {
      "tier": "rustique",
@@ -11581,16 +12426,20 @@
     },
     {
      "tier": "confirme",
-     "contents": "Règle 3-2-1 : trois copies, deux supports, une hors du logement",
+     "contents": "Disque externe hors ligne, sauvegarde refaite tous les trois mois",
      "min_days": null,
-     "objectives": [],
+     "objectives": [
+      "cyber.sauvegarde"
+     ],
      "includes": []
     },
     {
      "tier": "epique",
-     "contents": "Disque chiffré chez un proche hors de la région, vérifié tous les six mois",
+     "contents": "Règle 3-2-1 : trois copies, deux supports, dont un disque chiffré chez un proche, vérifié tous les six mois",
      "min_days": null,
-     "objectives": [],
+     "objectives": [
+      "cyber.regle_321"
+     ],
      "includes": []
     },
     {
@@ -11612,6 +12461,7 @@
    "basis": "options",
    "category": null,
    "description": "Savoir et cartes consultables sans Internet : Wikipédia hors ligne (Kiwix), cartes OpenStreetMap, guides en PDF.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11661,6 +12511,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Messagerie texte sans opérateur (Meshtastic) : de petits boîtiers relaient les messages de proche en proche, sur plusieurs kilomètres.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11716,6 +12567,7 @@
    "basis": "qualite",
    "category": null,
    "description": "Garde Internet et le Wi-Fi en marche quelques heures pendant une coupure, tant que le réseau de l'opérateur tient.",
+   "caution": "",
    "objectives": [
     "energie.bilan_wh"
    ],
@@ -11759,6 +12611,58 @@
    "crisis": false
   },
   {
+   "id": "boussole",
+   "group": "communication",
+   "name": "Boussole",
+   "icon": "🧭",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Elle ne tombe jamais en panne, mais ne sert qu'avec une carte et un peu de pratique. Tenir loin du métal et des aimants pour lire juste.",
+   "caution": "",
+   "objectives": [
+    "mobilite.orientation"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Boussole simple ou porte-clés",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Boussole à plaquette, utilisable sur une carte",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Boussole à plaquette avec réglage de la déclinaison et loupe",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Boussole à visée pour des relevés précis, et une boussole de secours dans le sac",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Boussole à visée, rapporteur et carte IGN de chaque trajet, une boussole par adulte",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
    "id": "sac_evacuation",
    "group": "evacuation",
    "name": "Sac d'évacuation",
@@ -11767,6 +12671,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Prêt près de la sortie, à revoir tous les six mois (tailles, dates, saison).",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11856,6 +12761,7 @@
    "basis": "options",
    "category": null,
    "description": "Pour se déplacer quand le carburant manque ou que les routes sont bloquées.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11909,6 +12815,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Le réservoir ne descend jamais sous la moitié.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -11986,6 +12893,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Stocké dehors à l'abri, renouvelé tous les six mois (ou avec un stabilisant).",
+   "caution": "",
    "objectives": [
     "energie.secours"
    ],
@@ -12039,6 +12947,7 @@
    "basis": "options",
    "category": null,
    "description": "Pour partir avec chaque animal.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12093,6 +13002,7 @@
    "basis": "options",
    "category": null,
    "description": "Pour évacuer une personne à mobilité réduite sans ascenseur ni électricité.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12146,6 +13056,7 @@
    "basis": "contenu",
    "category": null,
    "description": "L'endroit près de la sortie où l'on prend tout en deux minutes, même de nuit.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12207,6 +13118,180 @@
    "crisis": true
   },
   {
+   "id": "sac_edc",
+   "group": "evacuation",
+   "name": "Sac EDC (au quotidien)",
+   "icon": "👝",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "EDC, « every day carry » : ce qu'on a toujours sur soi, pour une panne, une coupure ou un retour à pied. Léger et discret, il ne remplace pas le sac d'évacuation.",
+   "caution": "Une lame peut être considérée comme une arme de catégorie D : la porter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Dans l'EDC du quotidien, préférer un petit couteau pliant ou une pince multifonction ; ni lame fixe ni bombe lacrymogène.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Les poches",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Clés, téléphone chargé, un peu d'espèces",
+      "Mini-lampe",
+      "Contacts d'urgence sur papier"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "La pochette",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Pochette ou petit sac",
+      "Batterie externe et câble",
+      "Pansements, gel hydroalcoolique, médicament habituel",
+      "Mouchoirs, stylo"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Faire face à un imprévu",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Pince multifonction ou petit couteau pliant",
+      "Gourde",
+      "Barre énergétique",
+      "Couverture de survie et sifflet"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Rentrer à pied",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Carte papier du trajet maison-travail",
+      "Coupe-vent ou poncho",
+      "Masque FFP2",
+      "Copie des papiers d'identité"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Tenir une nuit dehors",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Lampe frontale",
+      "Filtre à eau de poche",
+      "Briquet et allume-feu",
+      "Contenu adapté à chaque saison, revu tous les trois mois"
+     ]
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "couteau_survie",
+   "group": "evacuation",
+   "name": "Couteau de survie",
+   "icon": "🔪",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Couper, tailler, préparer du petit bois : l'outil le plus polyvalent du sac. Un bon couteau s'entretient et s'affûte.",
+   "caution": "Un couteau peut être considéré comme une arme de catégorie D : l'achat est libre pour un majeur, mais le port ou le transport sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Il voyage dans le sac de randonnée ou d'évacuation, pas dans la poche en ville.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Couteau pliant à lame verrouillable",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Couteau à lame fixe de 10 cm environ, avec étui",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Couteau à lame fixe en acier de qualité, pleine soie, et pierre à affûter",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Couteau fixe, pince multifonction et petite scie pliante",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Couteau fixe, hachette et scie pliante, affûtage et entretien maîtrisés",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "sacs_etanches",
+   "group": "evacuation",
+   "name": "Sacs étanches",
+   "icon": "🛍️",
+   "kind": "consommable",
+   "basis": "options",
+   "category": null,
+   "description": "Garder au sec les papiers, les vêtements et l'électronique sous la pluie, en crue ou en traversée. Sert aussi à isoler, transporter ou improviser un poncho.",
+   "caution": "",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Sacs poubelle épais pour doubler l'intérieur des sacs",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Sacs de congélation à zip pour les papiers, les médicaments et le téléphone",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Sacs étanches à fermeture enroulée (roll-top) pour les vêtements et le couchage",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Sac à dos étanche, pochette étanche pour le téléphone utilisable à travers la housse",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Tout le contenu des sacs du foyer compartimenté et étanche, testé sous la douche ou à la rivière",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
    "id": "classeur_papiers",
    "group": "papiers",
    "name": "Classeur des papiers",
@@ -12215,6 +13300,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Au même endroit et prêts à partir.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12294,6 +13380,7 @@
    "basis": "quantite",
    "category": null,
    "description": "En petites coupures : quand les terminaux de paiement tombent, seul le liquide passe.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12345,6 +13432,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Sans téléphone, on ne se souvient d'aucun numéro.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12423,6 +13511,7 @@
    "basis": "options",
    "category": null,
    "description": "Logement, voiture, boîte aux lettres.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12474,6 +13563,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Guides de référence, lisibles sans écran.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12519,6 +13609,58 @@
    "crisis": false
   },
   {
+   "id": "pieces_metal",
+   "group": "papiers",
+   "name": "Pièces d'argent et d'or",
+   "icon": "🪙",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Une réserve de valeur qui ne dépend ni des banques ni du réseau. Les pièces courantes (once d'argent, 20 francs or) se reconnaissent et se revendent le plus facilement.",
+   "caution": "Acheter chez un négociant reconnu, avec facture : sans justificatif, la revente est taxée au forfait sur le prix de vente, et une pièce peut être fausse. En crise, l'or se fractionne mal et s'échange avec une forte décote : il ne remplace ni les espèces ni les vivres. Le garder discrètement, hors de vue.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Quelques pièces d'argent",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Une vingtaine de pièces d'argent, factures rangées dans le classeur",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Pièces d'argent et quelques pièces d'or de petite valeur (10 ou 20 francs)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "L'équivalent d'un mois de dépenses en métal, réparti entre deux cachettes",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "L'équivalent de trois mois de dépenses, une fois l'épargne de précaution constituée",
+     "min_days": null,
+     "objectives": [
+      "finances.actifs"
+     ],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
    "id": "kit_occupation",
    "group": "moral",
    "name": "Kit sommeil et occupation",
@@ -12527,6 +13669,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Sans écran, le temps est long et le sommeil fragile.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12600,6 +13743,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Dans le sac de chaque enfant.",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12671,6 +13815,7 @@
    "basis": "contenu",
    "category": null,
    "description": "Pour une personne qui a besoin d'accompagnement (autisme, troubles cognitifs, handicap).",
+   "caution": "",
    "objectives": [],
    "tiers": [
     {
@@ -12732,6 +13877,2544 @@
     }
    ],
    "crisis": true
+  },
+  {
+   "id": "chocolat",
+   "group": "moral",
+   "name": "Chocolat",
+   "icon": "🍫",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Un carré au bon moment fait beaucoup pour le moral, et se partage ou s'échange facilement. Le chocolat noir se garde un à deux ans au frais et au sec.",
+   "caution": "",
+   "objectives": [
+    "communaute.troc"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Quelques tablettes",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Une tablette par personne et par semaine, pour deux semaines",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un mois, chocolat noir et cacao en poudre",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Trois mois en rotation, quelques tablettes réservées à l'échange",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Six mois en rotation avec les réserves, part d'échange comprise",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "cafe",
+   "group": "moral",
+   "name": "Café et thé",
+   "icon": "☕",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Pour les buveurs du foyer, le manque de caféine donne des maux de tête plusieurs jours, au pire moment. Le café et le thé se gardent longtemps et s'échangent bien.",
+   "caution": "",
+   "objectives": [
+    "communaute.troc"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une semaine de café soluble ou de thé",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Deux semaines, et de quoi le préparer sans électricité (cafetière italienne ou à piston)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un mois, en paquets fermés ou sous vide",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Trois mois, dont du café en grains et un moulin manuel",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Six mois en rotation, une part réservée à l'échange",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "alcool",
+   "group": "moral",
+   "name": "Petites bouteilles d'alcool",
+   "icon": "🥃",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Des mignonettes (5 cl) pour marquer un moment, remercier un voisin ou échanger. L'alcool fort se garde des années, bouchon fermé, à l'abri de la lumière.",
+   "caution": "Jamais pour un mineur, ni avec un traitement qui l'interdit. L'alcool ne réchauffe pas : il accélère la perte de chaleur et aggrave l'hypothermie. Il ne remplace pas l'antiseptique de la trousse. En crise, garder les idées claires : on boit peu, et jamais avant de conduire ou de veiller.",
+   "objectives": [
+    "communaute.troc"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une petite bouteille pour un moment à fêter",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Cinq mignonettes, faciles à offrir ou à échanger",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Dix mignonettes et une bouteille pour les grandes occasions",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Une vingtaine de mignonettes variées, rangées hors de portée des enfants",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Réserve d'échange tenue à jour (mignonettes, eaux-de-vie), sous clé",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "tabac",
+   "group": "moral",
+   "name": "Tabac et substituts nicotiniques",
+   "icon": "🚬",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Pour un fumeur du foyer, un sevrage brutal en pleine crise aggrave le stress, l'irritabilité et les troubles du sommeil. Le tabac reste aussi une monnaie d'échange recherchée.",
+   "caution": "Fumer nuit gravement à la santé, à celle des enfants et à celle des voisins de confinement. La revente de tabac est réservée aux buralistes ; on peut l'offrir, pas en faire commerce. Les substituts nicotiniques (patchs, gommes) sont la vraie réserve de sécurité pour un fumeur. Jamais de flamme près du carburant ni dans la pièce de confinement.",
+   "objectives": [
+    "communaute.troc"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une semaine de substituts nicotiniques (patchs ou gommes) pour chaque fumeur",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Deux semaines de consommation habituelle, substituts compris",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un mois, au sec dans une boîte hermétique, substituts compris",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Un mois pour le foyer et quelques paquets à offrir en remerciement",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Trois mois de substituts et un plan de sevrage vu avec un médecin ou un pharmacien",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "armes",
+   "group": "defense",
+   "name": "Armes et munitions",
+   "icon": "🎯",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Pour un foyer qui chasse ou pratique le tir sportif. Les niveaux mesurent la détention en règle et la sécurité, pas la puissance de feu.",
+   "caution": "En France, une arme à feu ne se détient pas pour se défendre : la détention exige un titre (permis de chasser validé ou licence de tir), une autorisation préfectorale pour la catégorie B, et chaque arme est enregistrée au SIA. Le port est interdit, le transport n'est permis que pour un motif légitime (stand, chasse), arme déchargée et dans une mallette fermée. Les munitions ne s'achètent que sur présentation du titre. L'arme ne va pas dans le sac d'évacuation.",
+   "objectives": [
+    "defense.legitime_defense"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Arme enregistrée au SIA avec un titre valide, rangée sous clé, munitions rangées à part",
+     "min_days": null,
+     "objectives": [
+      "defense.armes_regle"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Coffre-fort ou armoire forte fixée au mur, verrou de pontet, clés hors de portée des enfants",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Licence de tir en club et pratique encadrée régulière",
+     "min_days": null,
+     "objectives": [
+      "defense.tir_sportif"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Entretien et nettoyage maîtrisés, munitions stockées au sec dans les quantités permises par le titre",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Formation à la sécurité renouvelée, transport conforme et titre, certificat médical et compte SIA toujours à jour",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "porte_securisee",
+   "group": "defense",
+   "name": "Porte d'entrée sécurisée",
+   "icon": "🚪",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Retarder une intrusion le temps d'appeler et de se mettre à l'abri. La plupart des cambriolages passent par la porte ou une fenêtre facile.",
+   "caution": "",
+   "objectives": [
+    "defense.intrusion"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Judas ou entrebâilleur, porte toujours fermée à clé, même quand on est là",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Judas et entrebâilleur, cylindre de serrure changé à l'emménagement",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Serrure certifiée A2P, entrebâilleur, éclairage extérieur à détecteur",
+     "min_days": null,
+     "objectives": [
+      "securite.logement"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Porte blindée ou bloc-porte certifié A2P (à voir avec le propriétaire pour un locataire)",
+     "min_days": null,
+     "objectives": [
+      "securite.porte_blindee"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Porte blindée, fenêtres basses protégées (volets, barreaux ou vitrage retardateur) et pièce refuge qui ferme à clé",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "alarme",
+   "group": "defense",
+   "name": "Alarme et détection",
+   "icon": "🚨",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Être prévenu tôt et faire fuir : le bruit et la lumière arrêtent la plupart des intrusions avant le premier contact.",
+   "caution": "Une caméra ne filme que chez soi : jamais la voie publique ni chez les voisins, et les personnes filmées (aide à domicile, nounou) doivent en être informées. Face à une intrusion, on s'enferme et on appelle le 17, on ne va pas au contact.",
+   "objectives": [
+    "defense.intrusion"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Alarme personnelle de poche (sirène à goupille) pour chaque adulte",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Éclairage extérieur à détecteur de mouvement et alarmes d'ouverture sur les accès",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Alarme du logement avec sirène intérieure, sur batterie en cas de coupure",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Alarme reliée au téléphone ou à un service de télésurveillance, caméra à l'entrée",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Alarme autonome sur batterie et signal convenu avec les voisins, qui savent quoi faire quand elle sonne",
+     "min_days": null,
+     "objectives": [
+      "defense.voisinage"
+     ],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "lacrymogene",
+   "group": "defense",
+   "name": "Bombe lacrymogène",
+   "icon": "🧯",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Pour se dégager et fuir, pas pour combattre. Elle reste au domicile, à un endroit connu des adultes et hors de portée des enfants.",
+   "caution": "Une bombe lacrymogène de 100 ml au plus est une arme de catégorie D : achat réservé aux majeurs, et la porter ou la transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Au-delà de 100 ml, elle relève de la catégorie B, interdite sans autorisation. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée. Jamais à portée d'un enfant ; en pièce fermée, elle atteint aussi le foyer.",
+   "objectives": [
+    "defense.legitime_defense"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une bombe de 100 ml au plus au domicile, rangée hors de portée des enfants",
+     "min_days": null,
+     "objectives": [
+      "defense.aerosol"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Rangée dans la pièce refuge, près du téléphone chargé",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Formule en gel plutôt qu'en gaz, moins de retombées dans un lieu clos",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Manipulation essayée avec une bombe d'entraînement inerte, date de péremption suivie",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Prévue dans le plan intrusion, remplacée avant péremption, chaque adulte connaît les règles de la légitime défense",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "matraque",
+   "group": "defense",
+   "name": "Matraque ou bâton de défense",
+   "icon": "🏏",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Bâton télescopique, tonfa ou matraque, gardé au domicile en dernier recours, derrière la fuite et l'appel au 17. Les niveaux mesurent la détention en règle et la formation, pas la dangerosité.",
+   "caution": "En France, c'est une arme de catégorie D : achat réservé aux majeurs, détention libre au domicile. La porter ou la transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1), et « pour me défendre » n'est pas un motif légitime. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée à une attaque injuste. Frapper un agresseur qui fuit ou à terre, ou viser la tête, fait basculer dans les violences volontaires.",
+   "objectives": [
+    "defense.legitime_defense",
+    "defense.initiation"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Rangée au domicile, à un endroit connu des seuls adultes ; jamais dans le sac ni la voiture",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Rangée dans la pièce refuge avec le téléphone chargé, règles de la légitime défense connues",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Initiation encadrée au bâton de défense : garder la distance, se dégager, ne jamais frapper la tête",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Pratique entretenue en club (bâton de défense, canne de combat) au moins deux fois par an",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Prévue dans le plan intrusion comme dernier recours, après la fuite et l'appel, revue chaque année",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "poignard",
+   "group": "defense",
+   "name": "Couteau-poignard",
+   "icon": "🗡️",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Une lame est l'objet le plus risqué à faire entrer dans une confrontation : elle blesse gravement, peut être retournée contre soi, et la riposte devient vite disproportionnée. Les niveaux mesurent un rangement sûr et la connaissance des règles, pas la dangerosité.",
+   "caution": "En France, le poignard et le couteau-poignard sont des armes de catégorie D : achat réservé aux majeurs, détention libre au domicile. Les porter ou les transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1), et se défendre n'est pas un motif légitime. Face à un agresseur à mains nues, une lame est rarement une riposte proportionnée : la légitime défense est alors presque toujours écartée. Hors de portée des enfants, sous clé.",
+   "objectives": [
+    "defense.legitime_defense"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Rangé au domicile dans un étui fermé, hors de portée des enfants",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Rangé sous clé, facture conservée",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Chaque adulte sait qu'une lame face à un agresseur désarmé n'est pas proportionnée, et que la fuite passe d'abord",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Initiation encadrée à la défense face à une arme blanche (distance, fuite, protection) suivie en club",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Rangé sous clé, transporté seulement pour un motif légitime (chasse, collection, randonnée), dans un étui fermé au fond du sac",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  },
+  {
+   "id": "arme_contondante",
+   "group": "defense",
+   "name": "Canne ou arme contondante",
+   "icon": "🦯",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Une canne solide reste la plus utile : elle aide à marcher, se porte partout, et un cours de canne de défense apprend à s'en servir pour se dégager. Les niveaux mesurent la détention en règle et la formation, pas la dangerosité.",
+   "caution": "Les armes contondantes (casse-tête, nunchaku, massue) sont des armes de catégorie D : achat réservé aux majeurs, détention libre au domicile, port et transport interdits sans motif légitime (Code de la sécurité intérieure, art. L315-1). Une canne de marche n'est pas une arme tant qu'elle sert à marcher, mais tout objet utilisé pour frapper en devient une. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée.",
+   "objectives": [
+    "defense.legitime_defense",
+    "defense.initiation",
+    "defense.initiation_adaptee"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Rangée au domicile, à un endroit connu des seuls adultes",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Canne de marche robuste, utilisée et portée comme aide à la marche",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Initiation à la canne de défense ou à la canne de combat dans un club",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Pratique entretenue au moins deux fois par an, adaptée à la mobilité de chacun",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Prévue dans le plan intrusion comme dernier recours, après la fuite et l'appel, et connue de chaque adulte qui s'en sert",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ],
+   "crisis": false
+  }
+ ],
+ "talent_ranks": [
+  "Novice",
+  "Apprenti",
+  "Compagnon",
+  "Expert",
+  "Maître"
+ ],
+ "specialties": [
+  {
+   "id": "physique",
+   "name": "Condition physique",
+   "icon": "🏃",
+   "description": "Marcher, porter, nager, tenir l'effort par tous les temps : le corps est le premier équipement en crise.",
+   "branches": [
+    "Endurance",
+    "Force",
+    "Milieu et agilité"
+   ],
+   "titles": [
+    "Remis en mouvement",
+    "Randonneur",
+    "Coureur des bois",
+    "Increvable",
+    "Force de la nature"
+   ]
+  },
+  {
+   "id": "stratege",
+   "name": "Stratège de survie",
+   "icon": "🧠",
+   "description": "Connaître ses risques, s'informer, s'orienter, planifier : la théorie qui évite de subir.",
+   "branches": [
+    "Risques et information",
+    "Terrain et orientation",
+    "Plans et transmission"
+   ],
+   "titles": [
+    "Curieux",
+    "Informé",
+    "Planificateur",
+    "Stratège",
+    "Sage du quartier"
+   ]
+  },
+  {
+   "id": "soin",
+   "name": "Soigneur",
+   "icon": "⛑️",
+   "description": "Alerter, secourir, soigner et soutenir : les gestes qui comptent avant l'arrivée des secours, ou quand ils ne viennent pas.",
+   "branches": [
+    "Urgence",
+    "Soins et hygiène",
+    "Soutien psychologique"
+   ],
+   "titles": [
+    "Témoin utile",
+    "Secouriste",
+    "Soigneur aguerri",
+    "Référent santé",
+    "Guérisseur du hameau"
+   ]
+  },
+  {
+   "id": "brico",
+   "name": "Bricoleur",
+   "icon": "🛠️",
+   "description": "Réparer, entretenir, produire de l'énergie et du feu : garder la maison debout quand les artisans ne viennent plus.",
+   "branches": [
+    "Maison",
+    "Énergie et feu",
+    "Mécanique et textile"
+   ],
+   "titles": [
+    "Bricoleur du dimanche",
+    "Débrouillard",
+    "Artisan",
+    "Maître d'œuvre",
+    "Bâtisseur"
+   ]
+  },
+  {
+   "id": "cuisto",
+   "name": "Cuisto",
+   "icon": "🍳",
+   "description": "Nourrir le foyer avec ses réserves, conserver, produire : la cuisine qui tient quand les magasins ferment.",
+   "branches": [
+    "Cuisine de crise",
+    "Conservation",
+    "Production"
+   ],
+   "titles": [
+    "Commis",
+    "Cuisinier du placard",
+    "Chef de crise",
+    "Maître conserveur",
+    "Nourricier"
+   ]
+  },
+  {
+   "id": "protecteur",
+   "name": "Protecteur",
+   "icon": "🛡️",
+   "description": "Éviter, dissuader, se mettre à l'abri, et ne se défendre que dans le cadre de la loi : protéger les siens sans se mettre en faute.",
+   "branches": [
+    "Évitement",
+    "Domicile",
+    "Cadre et entraînement"
+   ],
+   "titles": [
+    "Vigilant",
+    "Veilleur",
+    "Garde",
+    "Protecteur",
+    "Bouclier du foyer"
+   ]
+  },
+  {
+   "id": "rassembleur",
+   "name": "Rassembleur",
+   "icon": "🤝",
+   "description": "Dans une crise longue, le réseau compte plus que le stock : voisins, entraide, échanges.",
+   "branches": [
+    "Voisinage",
+    "Entraide organisée",
+    "Échange"
+   ],
+   "titles": [
+    "Bon voisin",
+    "Lien du quartier",
+    "Organisateur",
+    "Pilier",
+    "Cœur du village"
+   ]
+  },
+  {
+   "id": "pisteur",
+   "name": "Pisteur",
+   "icon": "🌲",
+   "description": "Vivre dehors, trouver l'eau, le feu et la nourriture, garder le cap : l'autonomie en milieu naturel.",
+   "branches": [
+    "Bivouac",
+    "Eau",
+    "feu et cap",
+    "Ressources sauvages"
+   ],
+   "titles": [
+    "Promeneur",
+    "Campeur",
+    "Trappeur",
+    "Forestier",
+    "Esprit sauvage"
+   ]
+  },
+  {
+   "id": "transmetteur",
+   "name": "Transmetteur",
+   "icon": "📡",
+   "description": "S'informer, joindre les siens et relayer quand le téléphone et Internet tombent.",
+   "branches": [
+    "Radio",
+    "Réseau du foyer",
+    "Données et maillage"
+   ],
+   "titles": [
+    "À l'écoute",
+    "Opérateur",
+    "Relais",
+    "Maître radio",
+    "Voix du quartier"
+   ]
+  }
+ ],
+ "talents": [
+  {
+   "id": "physique.marche",
+   "specialty": "physique",
+   "name": "Bon marcheur",
+   "icon": "🥾",
+   "row": 1,
+   "col": 1,
+   "description": "La marche est le moyen de déplacement qui ne tombe jamais en panne.",
+   "criteria": "Marcher 5 km d'un bon pas, sans douleur le lendemain.",
+   "requires": [],
+   "objectives": [
+    "sante.activite_reguliere"
+   ]
+  },
+  {
+   "id": "physique.renfo",
+   "specialty": "physique",
+   "name": "Renforcement de base",
+   "icon": "💪",
+   "row": 1,
+   "col": 2,
+   "description": "Des muscles entretenus protègent le dos et les articulations quand il faut porter.",
+   "criteria": "Un mois de renforcement au poids du corps, deux à trois séances par semaine (squats, pompes adaptées, gainage).",
+   "requires": [],
+   "objectives": [
+    "sante.activite_reguliere"
+   ]
+  },
+  {
+   "id": "physique.mobilite",
+   "specialty": "physique",
+   "name": "Souple et stable",
+   "icon": "🧘",
+   "row": 1,
+   "col": 3,
+   "description": "Garder l'équilibre et la souplesse évite les chutes, première cause de blessure.",
+   "criteria": "Une routine de mobilité de 10 minutes connue, tenir 30 secondes sur un pied, se relever du sol sans appui.",
+   "requires": [],
+   "objectives": []
+  },
+  {
+   "id": "physique.endurance",
+   "specialty": "physique",
+   "name": "Souffle",
+   "icon": "🫁",
+   "row": 2,
+   "col": 1,
+   "description": "Tenir l'effort sans s'épuiser, pour marcher longtemps ou aider sans s'arrêter.",
+   "criteria": "30 minutes de course, de vélo ou de marche rapide sans s'arrêter.",
+   "requires": [
+    "physique.marche"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "physique.porteur",
+   "specialty": "physique",
+   "name": "Porteur",
+   "icon": "🎒",
+   "row": 2,
+   "col": 2,
+   "description": "Sans eau courante, on porte l'eau ; en évacuation, on porte son sac.",
+   "criteria": "Porter 2 × 10 L d'eau sur 100 m, et un sac de 10 kg sur 5 km.",
+   "requires": [
+    "physique.marche",
+    "physique.renfo"
+   ],
+   "objectives": [
+    "sante.force_fonctionnelle"
+   ]
+  },
+  {
+   "id": "physique.terrain",
+   "specialty": "physique",
+   "name": "Pied sûr",
+   "icon": "🪨",
+   "row": 2,
+   "col": 3,
+   "description": "Hors des trottoirs : sentiers, pentes, gravats, escaliers sans lumière.",
+   "criteria": "Marcher une heure en terrain varié (sentier, pente, escaliers) avec un sac, sans chute ni torsion.",
+   "requires": [
+    "physique.mobilite"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "physique.cycliste",
+   "specialty": "physique",
+   "name": "Cycliste chargé",
+   "icon": "🚲",
+   "row": 3,
+   "col": 1,
+   "description": "Le vélo multiplie par trois ou quatre la distance parcourue à pied, sans carburant.",
+   "criteria": "20 km à vélo avec 10 kg en sacoches, casque porté, et réparer une crevaison seul.",
+   "requires": [
+    "physique.endurance"
+   ],
+   "objectives": [
+    "mobilite.velo_pratique"
+   ]
+  },
+  {
+   "id": "physique.randonneur",
+   "specialty": "physique",
+   "name": "Randonneur",
+   "icon": "🗻",
+   "row": 3,
+   "col": 2,
+   "description": "Une journée de marche chargée : de quoi rejoindre un lieu de repli proche.",
+   "criteria": "15 km avec un sac de 10 kg dans la journée.",
+   "requires": [
+    "physique.endurance",
+    "physique.porteur"
+   ],
+   "objectives": [
+    "sante.condition"
+   ]
+  },
+  {
+   "id": "physique.nageur",
+   "specialty": "physique",
+   "name": "Nageur",
+   "icon": "🏊",
+   "row": 3,
+   "col": 3,
+   "description": "En crue, savoir flotter et sortir de l'eau sauve la vie.",
+   "criteria": "Nager 50 m, flotter 5 minutes sur place et sortir de l'eau seul (savoir-nager en sécurité).",
+   "requires": [
+    "physique.terrain"
+   ],
+   "objectives": [
+    "sante.natation"
+   ]
+  },
+  {
+   "id": "physique.longue_distance",
+   "specialty": "physique",
+   "name": "Grand marcheur",
+   "icon": "🛣️",
+   "row": 4,
+   "col": 1,
+   "description": "Quand il n'y a ni voiture ni carburant, 25 km séparent souvent de l'aide.",
+   "criteria": "25 km dans la journée avec le sac d'évacuation, sans blessure, pieds soignés à l'arrivée.",
+   "requires": [
+    "physique.cycliste",
+    "physique.randonneur"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "physique.brancardier",
+   "specialty": "physique",
+   "name": "Brancardier",
+   "icon": "🛏️",
+   "row": 4,
+   "col": 2,
+   "description": "Déplacer un blessé ou une personne qui ne peut plus marcher, sans se blesser soi-même.",
+   "criteria": "Porter un adulte à deux sur 100 m avec un brancard improvisé (couverture, bâtons), et le dégager seul sur quelques mètres.",
+   "requires": [
+    "physique.randonneur"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "physique.climat",
+   "specialty": "physique",
+   "name": "Effort par tous les temps",
+   "icon": "🌡️",
+   "row": 4,
+   "col": 3,
+   "description": "En canicule comme en grand froid, l'effort mal géré devient dangereux.",
+   "criteria": "Savoir s'hydrater, ralentir et s'arrêter à temps ; reconnaître un coup de chaleur et une hypothermie, chez soi et chez les autres.",
+   "requires": [
+    "physique.nageur"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "physique.maitre",
+   "specialty": "physique",
+   "name": "Condition entretenue",
+   "icon": "🏆",
+   "row": 5,
+   "col": 2,
+   "description": "Une forme qui ne dépend pas d'une salle de sport et tient dans la durée.",
+   "criteria": "Un an de pratique régulière (trois séances par semaine) et le test complet réussi dans le mois : 25 km chargé, un adulte porté, 50 m nagés.",
+   "requires": [
+    "physique.longue_distance",
+    "physique.brancardier",
+    "physique.climat"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "stratege.risques",
+   "specialty": "stratege",
+   "name": "Connaître ses risques",
+   "icon": "🗺️",
+   "row": 1,
+   "col": 1,
+   "description": "On se prépare à ce qui peut vraiment arriver chez soi.",
+   "criteria": "Le DICRIM de la commune et la fiche Géorisques de l'adresse lus, les risques du foyer listés.",
+   "requires": [],
+   "objectives": [
+    "securite.risques"
+   ]
+  },
+  {
+   "id": "stratege.carte",
+   "specialty": "stratege",
+   "name": "Lire une carte",
+   "icon": "🧾",
+   "row": 1,
+   "col": 2,
+   "description": "Sans GPS, la carte papier reste lisible.",
+   "criteria": "Situer sa maison, son travail et l'école sur une carte papier, lire la légende d'une carte IGN.",
+   "requires": [],
+   "objectives": []
+  },
+  {
+   "id": "stratege.guide",
+   "specialty": "stratege",
+   "name": "Le guide lu",
+   "icon": "📖",
+   "row": 1,
+   "col": 3,
+   "description": "Les bases officielles : quoi faire avant, pendant et après.",
+   "criteria": "Un guide officiel de préparation aux urgences lu en entier.",
+   "requires": [],
+   "objectives": [
+    "competences.guide"
+   ]
+  },
+  {
+   "id": "stratege.veille",
+   "specialty": "stratege",
+   "name": "Veille et alertes",
+   "icon": "📡",
+   "row": 2,
+   "col": 1,
+   "description": "Être prévenu tôt, par des sources fiables, et ne pas relayer les rumeurs.",
+   "criteria": "FR-Alert, Vigicrues et la vigilance Météo-France connus ; une liste de sources fiables et le réflexe de vérifier avant de partager.",
+   "requires": [
+    "stratege.risques"
+   ],
+   "objectives": [
+    "securite.alertes",
+    "communication.sources"
+   ]
+  },
+  {
+   "id": "stratege.boussole",
+   "specialty": "stratege",
+   "name": "Carte et boussole",
+   "icon": "🧭",
+   "row": 2,
+   "col": 2,
+   "description": "Garder le cap la nuit, dans le brouillard ou hors des routes connues.",
+   "criteria": "Suivre un azimut et rejoindre un point à 2 km avec une carte et une boussole.",
+   "requires": [
+    "stratege.carte"
+   ],
+   "objectives": [
+    "mobilite.orientation"
+   ]
+  },
+  {
+   "id": "stratege.plan_familial",
+   "specialty": "stratege",
+   "name": "Plan familial",
+   "icon": "📝",
+   "row": 2,
+   "col": 3,
+   "description": "Chacun sait quoi faire, où se retrouver et qui appeler, même séparé.",
+   "criteria": "Plan écrit et partagé : points de rendez-vous, contacts, rôles de chacun, enfants à l'école.",
+   "requires": [
+    "stratege.guide"
+   ],
+   "objectives": [
+    "securite.plan_familial"
+   ]
+  },
+  {
+   "id": "stratege.scenarios",
+   "specialty": "stratege",
+   "name": "Scénarios de crise",
+   "icon": "🎲",
+   "row": 3,
+   "col": 1,
+   "description": "Réfléchir à froid aux 72 premières heures de chaque crise probable.",
+   "criteria": "Pour chaque risque majeur du foyer, un scénario écrit des 72 premières heures : quoi faire, qui, avec quoi.",
+   "requires": [
+    "stratege.veille",
+    "stratege.plan_familial"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "stratege.itineraires",
+   "specialty": "stratege",
+   "name": "Itinéraires reconnus",
+   "icon": "🛤️",
+   "row": 3,
+   "col": 2,
+   "description": "Un itinéraire tracé sur une carte ne vaut que s'il a été parcouru.",
+   "criteria": "Deux itinéraires d'évacuation vers le lieu de repli reconnus sur le terrain, dont un à pied.",
+   "requires": [
+    "stratege.boussole"
+   ],
+   "objectives": [
+    "mobilite.itineraires"
+   ]
+  },
+  {
+   "id": "stratege.bibliotheque",
+   "specialty": "stratege",
+   "name": "Savoir des livres",
+   "icon": "📚",
+   "row": 3,
+   "col": 3,
+   "description": "Apprendre avant d'en avoir besoin, dans des livres qui marchent sans réseau.",
+   "criteria": "Secourisme, jardinage et réparations étudiés dans des livres papier gardés à la maison.",
+   "requires": [
+    "stratege.plan_familial"
+   ],
+   "objectives": [
+    "competences.bibliotheque"
+   ]
+  },
+  {
+   "id": "stratege.decision",
+   "specialty": "stratege",
+   "name": "Partir ou rester",
+   "icon": "⚖️",
+   "row": 4,
+   "col": 1,
+   "description": "La décision la plus lourde d'une crise se prépare à froid, pas dans l'urgence.",
+   "criteria": "Des critères écrits à l'avance pour évacuer ou rester (alertes, seuils, signes sur le terrain), connus de tous les adultes du foyer.",
+   "requires": [
+    "stratege.scenarios"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "stratege.exercice",
+   "specialty": "stratege",
+   "name": "Exercice grandeur nature",
+   "icon": "🎯",
+   "row": 4,
+   "col": 2,
+   "description": "Un plan non testé est une hypothèse.",
+   "criteria": "Un exercice de 24 heures sans réseau organisé pour le foyer, suivi d'un retour d'expérience écrit.",
+   "requires": [
+    "stratege.scenarios",
+    "stratege.itineraires"
+   ],
+   "objectives": [
+    "securite.exercice_24h",
+    "securite.retex"
+   ]
+  },
+  {
+   "id": "stratege.transmettre",
+   "specialty": "stratege",
+   "name": "Transmettre",
+   "icon": "🎓",
+   "row": 4,
+   "col": 3,
+   "description": "Un quartier préparé protège mieux qu'un foyer préparé seul.",
+   "criteria": "Une séance de sensibilisation animée (voisins, école, association), avec les bases de la préparation.",
+   "requires": [
+    "stratege.bibliotheque"
+   ],
+   "objectives": [
+    "competences.transmettre"
+   ]
+  },
+  {
+   "id": "stratege.maitre",
+   "specialty": "stratege",
+   "name": "Résilience locale",
+   "icon": "🏛️",
+   "row": 5,
+   "col": 2,
+   "description": "Penser à l'échelle de la commune, avec ceux qui organisent les secours.",
+   "criteria": "Participer au plan communal de sauvegarde, à la réserve communale de sécurité civile ou à un plan commun de quartier.",
+   "requires": [
+    "stratege.decision",
+    "stratege.exercice",
+    "stratege.transmettre"
+   ],
+   "objectives": [
+    "securite.pcs",
+    "securite.plan_commun"
+   ]
+  },
+  {
+   "id": "soin.alerter",
+   "specialty": "soin",
+   "name": "Alerter",
+   "icon": "📞",
+   "row": 1,
+   "col": 1,
+   "description": "Une bonne alerte fait gagner de précieuses minutes aux secours.",
+   "criteria": "Connaître le 15, le 18, le 112 et le 114 (SMS) ; savoir donner l'adresse exacte, décrire la situation et rester en ligne.",
+   "requires": [],
+   "objectives": [
+    "sante.numeros_urgence"
+   ]
+  },
+  {
+   "id": "soin.petits_soins",
+   "specialty": "soin",
+   "name": "Petits soins",
+   "icon": "🩹",
+   "row": 1,
+   "col": 2,
+   "description": "Les petites plaies mal soignées s'infectent quand on ne peut pas voir un médecin.",
+   "criteria": "Nettoyer et panser une plaie, retirer une écharde ou une tique, connaître le contenu de sa trousse.",
+   "requires": [],
+   "objectives": []
+  },
+  {
+   "id": "soin.respiration",
+   "specialty": "soin",
+   "name": "Garder son calme",
+   "icon": "🌬️",
+   "row": 1,
+   "col": 3,
+   "description": "On ne peut aider personne en paniquant.",
+   "criteria": "Une technique de respiration (inspirer 4 s, expirer 6 s) pratiquée et montrée au foyer.",
+   "requires": [],
+   "objectives": [
+    "moral.stress"
+   ]
+  },
+  {
+   "id": "soin.gqs",
+   "specialty": "soin",
+   "name": "Gestes qui sauvent",
+   "icon": "🫀",
+   "row": 2,
+   "col": 1,
+   "description": "Deux heures pour apprendre à arrêter une hémorragie et masser un cœur.",
+   "criteria": "Formation « Gestes qui sauvent » suivie (2 h, gratuite) ou mieux.",
+   "requires": [
+    "soin.alerter"
+   ],
+   "objectives": [
+    "sante.gestes_qui_sauvent"
+   ]
+  },
+  {
+   "id": "soin.hygiene",
+   "specialty": "soin",
+   "name": "Hygiène de crise",
+   "icon": "🧼",
+   "row": 2,
+   "col": 2,
+   "description": "Sans eau courante, les maladies viennent de l'eau, des mains et des toilettes.",
+   "criteria": "Rendre une eau potable (ébullition, chlore, filtre), se laver les mains avec peu d'eau, gérer des toilettes sèches.",
+   "requires": [
+    "soin.petits_soins"
+   ],
+   "objectives": [
+    "eau.savoir_traiter"
+   ]
+  },
+  {
+   "id": "soin.ecoute",
+   "specialty": "soin",
+   "name": "Écoute",
+   "icon": "👂",
+   "row": 2,
+   "col": 3,
+   "description": "Accueillir la peur ou la détresse d'un proche sans juger ni conseiller trop vite.",
+   "criteria": "Savoir écouter quelqu'un en détresse, reformuler, et orienter vers le 3114 ou un professionnel si besoin.",
+   "requires": [
+    "soin.respiration"
+   ],
+   "objectives": [
+    "moral.ecoute"
+   ]
+  },
+  {
+   "id": "soin.psc1",
+   "specialty": "soin",
+   "name": "Secouriste PSC1",
+   "icon": "⛑️",
+   "row": 3,
+   "col": 1,
+   "description": "La formation de référence aux premiers secours.",
+   "criteria": "PSC1 (ou équivalent) obtenu, recyclé au moins tous les trois ans.",
+   "requires": [
+    "soin.gqs"
+   ],
+   "objectives": [
+    "sante.psc1"
+   ]
+  },
+  {
+   "id": "soin.pharmacie",
+   "specialty": "soin",
+   "name": "Pharmacie de famille",
+   "icon": "💊",
+   "row": 3,
+   "col": 2,
+   "description": "Bien utiliser la trousse, c'est surtout connaître les doses et les contre-indications.",
+   "criteria": "Doses adultes et enfants des médicaments de la trousse connues, contre-indications notées, liste des traitements du foyer à jour.",
+   "requires": [
+    "soin.hygiene"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "soin.pssm",
+   "specialty": "soin",
+   "name": "Secouriste en santé mentale",
+   "icon": "🧠",
+   "row": 3,
+   "col": 3,
+   "description": "Les premiers secours, version santé mentale : crise d'angoisse, idées suicidaires, choc.",
+   "criteria": "Formation Premiers secours en santé mentale (PSSM) suivie.",
+   "requires": [
+    "soin.ecoute"
+   ],
+   "objectives": [
+    "moral.pssm"
+   ]
+  },
+  {
+   "id": "soin.isole",
+   "specialty": "soin",
+   "name": "Secours en milieu isolé",
+   "icon": "🏔️",
+   "row": 4,
+   "col": 1,
+   "description": "Quand les secours mettent des heures à venir : surveiller, immobiliser, évacuer.",
+   "criteria": "PSE1 ou formation de secourisme en milieu isolé (WFA) obtenue.",
+   "requires": [
+    "soin.psc1"
+   ],
+   "objectives": [
+    "sante.secourisme_avance"
+   ]
+  },
+  {
+   "id": "soin.plantes",
+   "specialty": "soin",
+   "name": "Plantes médicinales",
+   "icon": "🌿",
+   "row": 4,
+   "col": 2,
+   "description": "Des remèdes simples pour les petits maux, avec leurs dangers.",
+   "criteria": "Reconnaître et utiliser dix plantes médicinales courantes de sa région, en connaissant leurs sosies toxiques et leurs contre-indications.",
+   "requires": [
+    "soin.pharmacie"
+   ],
+   "objectives": [
+    "sante.plantes"
+   ]
+  },
+  {
+   "id": "soin.debriefing",
+   "specialty": "soin",
+   "name": "Après le choc",
+   "icon": "🗣️",
+   "row": 4,
+   "col": 3,
+   "description": "Après un événement, repérer ceux qui vont mal et organiser la parole.",
+   "criteria": "Savoir organiser un temps de parole après un événement et repérer qui a besoin d'une aide professionnelle.",
+   "requires": [
+    "soin.pssm"
+   ],
+   "objectives": [
+    "moral.debriefing",
+    "moral.reperer"
+   ]
+  },
+  {
+   "id": "soin.maitre",
+   "specialty": "soin",
+   "name": "Référent santé",
+   "icon": "⚕️",
+   "row": 5,
+   "col": 2,
+   "description": "La personne vers qui le quartier se tourne quand quelqu'un est blessé.",
+   "criteria": "Secouriste bénévole dans une association agréée (PSE2), ou membre de la réserve sanitaire ou communale.",
+   "requires": [
+    "soin.isole",
+    "soin.plantes",
+    "soin.debriefing"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "brico.coupures",
+   "specialty": "brico",
+   "name": "Couper l'essentiel",
+   "icon": "🔧",
+   "row": 1,
+   "col": 1,
+   "description": "Fuite, inondation, incendie : le premier geste est de couper.",
+   "criteria": "Couper l'eau, le gaz et l'électricité en moins de deux minutes, même de nuit.",
+   "requires": [],
+   "objectives": [
+    "abri.coupures"
+   ]
+  },
+  {
+   "id": "brico.feu",
+   "specialty": "brico",
+   "name": "Faire du feu",
+   "icon": "🔥",
+   "row": 1,
+   "col": 2,
+   "description": "Chaleur, cuisson, eau bouillie : le feu reste la base, s'il est maîtrisé.",
+   "criteria": "Allumer et entretenir un feu en sécurité, à l'endroit autorisé, et l'éteindre complètement.",
+   "requires": [],
+   "objectives": [
+    "competences.feu"
+   ]
+  },
+  {
+   "id": "brico.couture",
+   "specialty": "brico",
+   "name": "Coudre",
+   "icon": "🧵",
+   "row": 1,
+   "col": 3,
+   "description": "Un vêtement réparé est un vêtement qu'on n'a pas à racheter.",
+   "criteria": "Recoudre un bouton, faire un ourlet, refermer un accroc à la main.",
+   "requires": [],
+   "objectives": []
+  },
+  {
+   "id": "brico.reparations",
+   "specialty": "brico",
+   "name": "Petites réparations",
+   "icon": "🪛",
+   "row": 2,
+   "col": 1,
+   "description": "Les dépannages qui évitent d'attendre un artisan.",
+   "criteria": "Changer un joint de robinet, remplacer une prise ou un interrupteur au disjoncteur coupé, fixer solidement une étagère.",
+   "requires": [
+    "brico.coupures"
+   ],
+   "objectives": [
+    "abri.reparations"
+   ]
+  },
+  {
+   "id": "brico.rechaud",
+   "specialty": "brico",
+   "name": "Combustion en sécurité",
+   "icon": "🏕️",
+   "row": 2,
+   "col": 2,
+   "description": "Le monoxyde de carbone tue chaque hiver pendant les coupures.",
+   "criteria": "Utiliser réchaud, poêle et groupe électrogène sans risque de monoxyde de carbone : jamais en pièce close, aération, détecteur.",
+   "requires": [
+    "brico.feu"
+   ],
+   "objectives": [
+    "competences.rechaud"
+   ]
+  },
+  {
+   "id": "brico.textile",
+   "specialty": "brico",
+   "name": "Réparer les textiles",
+   "icon": "🧶",
+   "row": 2,
+   "col": 3,
+   "description": "Vêtements, bâches, sacs, tentes : tout s'use plus vite en crise.",
+   "criteria": "Rapiécer un vêtement, réparer une bâche ou une sangle de sac, à la main ou à la machine.",
+   "requires": [
+    "brico.couture"
+   ],
+   "objectives": [
+    "competences.couture"
+   ]
+  },
+  {
+   "id": "brico.plomberie",
+   "specialty": "brico",
+   "name": "Plomberie",
+   "icon": "🚿",
+   "row": 3,
+   "col": 1,
+   "description": "Une fuite non réparée, c'est de l'eau perdue et un logement abîmé.",
+   "criteria": "Réparer une fuite sur un raccord, déboucher une évacuation, vidanger un circuit avant le gel.",
+   "requires": [
+    "brico.reparations"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "brico.bois",
+   "specialty": "brico",
+   "name": "Bois de chauffage",
+   "icon": "🪓",
+   "row": 3,
+   "col": 2,
+   "description": "Le bois ne chauffe bien que sec : il se prépare un ou deux ans à l'avance.",
+   "criteria": "Fendre, empiler et faire sécher le bois ; mesurer son humidité ; entretenir un poêle et faire ramoner.",
+   "requires": [
+    "brico.rechaud"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "brico.velo",
+   "specialty": "brico",
+   "name": "Mécanique vélo",
+   "icon": "🚲",
+   "row": 3,
+   "col": 3,
+   "description": "Un vélo entretenu reste le transport le plus sûr quand le carburant manque.",
+   "criteria": "Réparer une crevaison, régler freins et dérailleur, changer une chaîne.",
+   "requires": [
+    "brico.textile"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "brico.installations",
+   "specialty": "brico",
+   "name": "Installations autonomes",
+   "icon": "🔋",
+   "row": 4,
+   "col": 1,
+   "description": "Eau et électricité qui ne dépendent pas du réseau, installées proprement.",
+   "criteria": "Chiffrer ses besoins en Wh par jour, raccorder un panneau, un régulateur et une batterie, poser un récupérateur d'eau raccordé.",
+   "requires": [
+    "brico.plomberie"
+   ],
+   "objectives": [
+    "energie.bilan_wh"
+   ]
+  },
+  {
+   "id": "brico.tronconneuse",
+   "specialty": "brico",
+   "name": "Tronçonneuse",
+   "icon": "🪵",
+   "row": 4,
+   "col": 2,
+   "description": "Un arbre en travers de la route au troisième jour d'isolement.",
+   "criteria": "Formation suivie, dégager un arbre tombé avec casque à visière, jambières anti-coupure et gants.",
+   "requires": [
+    "brico.bois"
+   ],
+   "objectives": [
+    "competences.tronconneuse"
+   ]
+  },
+  {
+   "id": "brico.mecanique",
+   "specialty": "brico",
+   "name": "Mécanique de base",
+   "icon": "⚙️",
+   "row": 4,
+   "col": 3,
+   "description": "Garder en état la voiture, le groupe électrogène ou la tondeuse.",
+   "criteria": "Changer une roue, vérifier niveaux et batterie, faire la vidange et changer la bougie d'un petit moteur.",
+   "requires": [
+    "brico.velo"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "brico.maitre",
+   "specialty": "brico",
+   "name": "Savoir-faire échangeable",
+   "icon": "🏗️",
+   "row": 5,
+   "col": 2,
+   "description": "Un savoir-faire assez solide pour dépanner les autres, et l'échanger.",
+   "criteria": "Un artisanat ou une compétence technique pratiqué au point de réparer pour les voisins (menuiserie, plomberie, mécanique, couture).",
+   "requires": [
+    "brico.installations",
+    "brico.tronconneuse",
+    "brico.mecanique"
+   ],
+   "objectives": [
+    "competences.echangeable"
+   ]
+  },
+  {
+   "id": "cuisto.sans_cuisson",
+   "specialty": "cuisto",
+   "name": "Repas sans cuisson",
+   "icon": "🥫",
+   "row": 1,
+   "col": 1,
+   "description": "Les premiers jours d'une coupure, on mange sans gaz ni électricité.",
+   "criteria": "Préparer trois jours de repas équilibrés sans aucune cuisson, avec ce qu'il y a dans les réserves.",
+   "requires": [],
+   "objectives": [
+    "alimentation.sans_cuisson"
+   ]
+  },
+  {
+   "id": "cuisto.rotation",
+   "specialty": "cuisto",
+   "name": "Rotation des stocks",
+   "icon": "🔄",
+   "row": 1,
+   "col": 2,
+   "description": "Une réserve qu'on mange et qu'on renouvelle ne périme jamais.",
+   "criteria": "Premier entré, premier sorti : les réserves se consomment dans l'ordre des dates et se rachètent au fur et à mesure.",
+   "requires": [],
+   "objectives": [
+    "alimentation.rotation"
+   ]
+  },
+  {
+   "id": "cuisto.semis",
+   "specialty": "cuisto",
+   "name": "Premiers semis",
+   "icon": "🌱",
+   "row": 1,
+   "col": 3,
+   "description": "Commencer petit : un balcon suffit.",
+   "criteria": "Faire pousser des aromatiques ou des salades jusqu'à la récolte.",
+   "requires": [],
+   "objectives": []
+  },
+  {
+   "id": "cuisto.rechaud",
+   "specialty": "cuisto",
+   "name": "Cuisine au réchaud",
+   "icon": "🔥",
+   "row": 2,
+   "col": 1,
+   "description": "Un vrai repas chaud remonte le moral, s'il est cuisiné sans danger.",
+   "criteria": "Cuisiner un repas complet pour le foyer au réchaud ou au feu, dehors ou fenêtre ouverte.",
+   "requires": [
+    "cuisto.sans_cuisson"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "cuisto.securite",
+   "specialty": "cuisto",
+   "name": "Sécurité des aliments",
+   "icon": "🧊",
+   "row": 2,
+   "col": 2,
+   "description": "En coupure, l'intoxication alimentaire est un vrai risque.",
+   "criteria": "Connaître les durées sans courant (environ 4 h pour le frigo, 24 à 48 h pour un congélateur fermé), quoi jeter, et écarter les boîtes bombées.",
+   "requires": [
+    "cuisto.rotation"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "cuisto.potager",
+   "specialty": "cuisto",
+   "name": "Potager de base",
+   "icon": "🥕",
+   "row": 2,
+   "col": 3,
+   "description": "Cinq légumes bien maîtrisés valent mieux qu'un grand potager raté.",
+   "criteria": "Cultiver au moins cinq légumes de base jusqu'à la récolte (stage, jardin partagé ou chez soi).",
+   "requires": [
+    "cuisto.semis"
+   ],
+   "objectives": [
+    "alimentation.potager_savoir"
+   ]
+  },
+  {
+   "id": "cuisto.semaine",
+   "specialty": "cuisto",
+   "name": "Une semaine sur les réserves",
+   "icon": "📅",
+   "row": 3,
+   "col": 1,
+   "description": "Le seul vrai test d'une réserve : en vivre.",
+   "criteria": "Cuisiner une semaine entière uniquement avec ses réserves, sans courses.",
+   "requires": [
+    "cuisto.rechaud"
+   ],
+   "objectives": [
+    "competences.cuisine_stock"
+   ]
+  },
+  {
+   "id": "cuisto.conserves",
+   "specialty": "cuisto",
+   "name": "Conserves",
+   "icon": "🫙",
+   "row": 3,
+   "col": 2,
+   "description": "Garder les récoltes et les promotions des mois durant.",
+   "criteria": "Stériliser des bocaux, lacto-fermenter et déshydrater, en respectant les temps et les règles d'hygiène.",
+   "requires": [
+    "cuisto.securite"
+   ],
+   "objectives": [
+    "alimentation.conservation"
+   ]
+  },
+  {
+   "id": "cuisto.semences",
+   "specialty": "cuisto",
+   "name": "Semences",
+   "icon": "🌾",
+   "row": 3,
+   "col": 3,
+   "description": "Des graines reproductibles, c'est le potager de l'année suivante.",
+   "criteria": "Récolter, sécher et garder les graines d'au moins trois légumes reproductibles, et les ressemer.",
+   "requires": [
+    "cuisto.potager"
+   ],
+   "objectives": [
+    "alimentation.semences"
+   ]
+  },
+  {
+   "id": "cuisto.sobre",
+   "specialty": "cuisto",
+   "name": "Cuisson sobre",
+   "icon": "♨️",
+   "row": 4,
+   "col": 1,
+   "description": "Deux à trois fois moins de combustible : la réserve dure d'autant plus.",
+   "criteria": "Cuisiner régulièrement à la marmite norvégienne, à l'autocuiseur ou au cuiseur solaire.",
+   "requires": [
+    "cuisto.semaine"
+   ],
+   "objectives": [
+    "energie.cuisson_sobre"
+   ]
+  },
+  {
+   "id": "cuisto.conservation_longue",
+   "specialty": "cuisto",
+   "name": "Conservation sans froid",
+   "icon": "🥓",
+   "row": 4,
+   "col": 2,
+   "description": "Les techniques d'avant le frigo : sel, fumée, cave.",
+   "criteria": "Saler, fumer ou sécher viande et poisson, et garder des légumes tout l'hiver en cave ou en silo.",
+   "requires": [
+    "cuisto.conserves"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "cuisto.elevage",
+   "specialty": "cuisto",
+   "name": "Petit élevage",
+   "icon": "🐔",
+   "row": 4,
+   "col": 3,
+   "description": "Quelques poules donnent des œufs toute l'année et mangent les restes.",
+   "criteria": "S'occuper de poules (ou de lapins) toute une année : nourriture, soins, abri, protection contre les prédateurs.",
+   "requires": [
+    "cuisto.semences"
+   ],
+   "objectives": [
+    "alimentation.elevage"
+   ]
+  },
+  {
+   "id": "cuisto.maitre",
+   "specialty": "cuisto",
+   "name": "Nourrir le foyer",
+   "icon": "🍲",
+   "row": 5,
+   "col": 2,
+   "description": "Produire, conserver et cuisiner une bonne part de ce qu'on mange.",
+   "criteria": "Une année où le foyer a produit, conservé et cuisiné la moitié de ses légumes, avec des repas de crise maîtrisés.",
+   "requires": [
+    "cuisto.sobre",
+    "cuisto.conservation_longue",
+    "cuisto.elevage"
+   ],
+   "objectives": [
+    "alimentation.production_50"
+   ]
+  },
+  {
+   "id": "protecteur.fuir",
+   "specialty": "protecteur",
+   "name": "Fuir et alerter",
+   "icon": "🏃",
+   "row": 1,
+   "col": 1,
+   "description": "La première défense est de ne pas être là.",
+   "criteria": "Règle connue de tout le foyer : face à une agression, on fuit et on alerte (17 ou 112, SMS au 114) ; aucun bien ne vaut un risque.",
+   "requires": [],
+   "objectives": [
+    "defense.fuir_alerter"
+   ]
+  },
+  {
+   "id": "protecteur.issues",
+   "specialty": "protecteur",
+   "name": "Connaître ses issues",
+   "icon": "🚪",
+   "row": 1,
+   "col": 2,
+   "description": "Savoir par où sortir, de jour comme de nuit, avant d'en avoir besoin.",
+   "criteria": "Issues de secours du logement et de l'immeuble repérées par tous ; clés, papiers, téléphone et chaussures toujours au même endroit près de la sortie.",
+   "requires": [],
+   "objectives": [
+    "abri.issues",
+    "mobilite.depart_rapide"
+   ]
+  },
+  {
+   "id": "protecteur.loi",
+   "specialty": "protecteur",
+   "name": "Légitime défense",
+   "icon": "📜",
+   "row": 1,
+   "col": 3,
+   "description": "Ce que la loi permet, et surtout ce qu'elle ne permet pas.",
+   "criteria": "Chaque adulte connaît les conditions de la légitime défense : attaque injuste et actuelle, riposte nécessaire, immédiate et proportionnée ; défendre un bien seul ne justifie jamais un geste qui peut tuer.",
+   "requires": [],
+   "objectives": [
+    "defense.legitime_defense"
+   ]
+  },
+  {
+   "id": "protecteur.vigilance",
+   "specialty": "protecteur",
+   "name": "Vigilance",
+   "icon": "👀",
+   "row": 2,
+   "col": 1,
+   "description": "La plupart des agressions s'évitent avant le premier contact.",
+   "criteria": "Repérer les signaux d'une situation qui dégénère, garder la distance, ne pas s'isoler, poser sa voix pour dissuader : pratiqué au quotidien.",
+   "requires": [
+    "protecteur.fuir"
+   ],
+   "objectives": [
+    "defense.evitement"
+   ]
+  },
+  {
+   "id": "protecteur.discretion",
+   "specialty": "protecteur",
+   "name": "Discrétion",
+   "icon": "🤫",
+   "row": 2,
+   "col": 2,
+   "description": "Des réserves que tout le monde connaît attirent ceux qui n'en ont pas.",
+   "criteria": "Règle familiale de discrétion sur les réserves et l'équipement, respectée en ligne comme dans le voisinage.",
+   "requires": [
+    "protecteur.issues"
+   ],
+   "objectives": [
+    "securite.discretion"
+   ]
+  },
+  {
+   "id": "protecteur.apres",
+   "specialty": "protecteur",
+   "name": "Après une agression",
+   "icon": "🧾",
+   "row": 2,
+   "col": 3,
+   "description": "Ce qu'on fait juste après compte pour la victime comme pour la justice.",
+   "criteria": "Conduite connue : se mettre en sûreté, appeler le 17, ne pas poursuivre, noter les témoins, certificat médical, plainte, France Victimes (116 006).",
+   "requires": [
+    "protecteur.loi"
+   ],
+   "objectives": [
+    "defense.apres_agression"
+   ]
+  },
+  {
+   "id": "protecteur.desescalade",
+   "specialty": "protecteur",
+   "name": "Désescalade",
+   "icon": "🕊️",
+   "row": 3,
+   "col": 1,
+   "description": "Faire retomber la tension plutôt que gagner la confrontation.",
+   "criteria": "Savoir calmer un conflit : voix posée, distance, laisser une sortie à l'autre, ne pas humilier ; formation ou atelier suivi.",
+   "requires": [
+    "protecteur.vigilance"
+   ],
+   "objectives": [
+    "securite.desescalade"
+   ]
+  },
+  {
+   "id": "protecteur.intrusion",
+   "specialty": "protecteur",
+   "name": "Plan intrusion",
+   "icon": "🔐",
+   "row": 3,
+   "col": 2,
+   "description": "De nuit chez soi, le plus sûr reste de s'enfermer et d'appeler.",
+   "criteria": "Pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, consigne de ne pas aller au contact ; exercice fait en famille.",
+   "requires": [
+    "protecteur.discretion"
+   ],
+   "objectives": [
+    "defense.intrusion",
+    "defense.exercice_intrusion"
+   ]
+  },
+  {
+   "id": "protecteur.initiation",
+   "specialty": "protecteur",
+   "name": "Self-défense",
+   "icon": "🥋",
+   "row": 3,
+   "col": 3,
+   "description": "Se dégager et fuir, pas combattre.",
+   "criteria": "Initiation encadrée suivie (dégagements, chutes, protection), adaptée si besoin (défense assise, canne).",
+   "requires": [
+    "protecteur.apres"
+   ],
+   "objectives": [
+    "defense.initiation",
+    "defense.initiation_adaptee"
+   ]
+  },
+  {
+   "id": "protecteur.vulnerables",
+   "specialty": "protecteur",
+   "name": "Protéger les plus fragiles",
+   "icon": "🧒",
+   "row": 4,
+   "col": 1,
+   "description": "Les enfants et les personnes vulnérables ont besoin de consignes à leur mesure.",
+   "criteria": "Consignes apprises par les enfants (adultes de confiance, « un secret qui fait peur se dit », crier et fuir, le 119) ; numéros contre les violences connus des adultes.",
+   "requires": [
+    "protecteur.desescalade"
+   ],
+   "objectives": [
+    "defense.enfants",
+    "defense.violences"
+   ]
+  },
+  {
+   "id": "protecteur.voisinage",
+   "specialty": "protecteur",
+   "name": "Veille de voisinage",
+   "icon": "🏘️",
+   "row": 4,
+   "col": 2,
+   "description": "Une intrusion vue et signalée par les voisins s'arrête souvent d'elle-même.",
+   "criteria": "Signal d'alerte convenu avec les voisins (appel, SMS groupé, sifflet) et entraide prévue en cas d'agression ou d'intrusion.",
+   "requires": [
+    "protecteur.intrusion"
+   ],
+   "objectives": [
+    "defense.voisinage",
+    "securite.veille"
+   ]
+  },
+  {
+   "id": "protecteur.pratique",
+   "specialty": "protecteur",
+   "name": "Gestes entretenus",
+   "icon": "🔁",
+   "row": 4,
+   "col": 3,
+   "description": "Un geste appris une fois s'oublie sous le stress.",
+   "criteria": "Gestes de self-défense entretenus au moins deux fois par an (stage, séances en club, révision encadrée).",
+   "requires": [
+    "protecteur.initiation"
+   ],
+   "objectives": [
+    "defense.pratique",
+    "defense.pratique_adaptee"
+   ]
+  },
+  {
+   "id": "protecteur.maitre",
+   "specialty": "protecteur",
+   "name": "Transmettre la protection",
+   "icon": "🛡️",
+   "row": 5,
+   "col": 2,
+   "description": "Un foyer où chacun sait éviter, alerter et se mettre à l'abri.",
+   "criteria": "Savoir transmettre au foyer l'évitement, les dégagements et les règles de la légitime défense, et l'avoir fait ; mise en situation encadrée suivie.",
+   "requires": [
+    "protecteur.vulnerables",
+    "protecteur.voisinage",
+    "protecteur.pratique"
+   ],
+   "objectives": [
+    "defense.transmission",
+    "defense.mise_en_situation"
+   ]
+  },
+  {
+   "id": "rassembleur.voisins",
+   "specialty": "rassembleur",
+   "name": "Connaître ses voisins",
+   "icon": "👋",
+   "row": 1,
+   "col": 1,
+   "description": "En crise, l'aide la plus rapide vient de la porte d'à côté.",
+   "criteria": "Connaître au moins deux voisins par leur nom et avoir échangé les numéros.",
+   "requires": [],
+   "objectives": [
+    "communaute.voisins"
+   ]
+  },
+  {
+   "id": "rassembleur.proche",
+   "specialty": "rassembleur",
+   "name": "Contacts d'urgence",
+   "icon": "📇",
+   "row": 1,
+   "col": 2,
+   "description": "Quelqu'un de proche qui peut venir, et quelqu'un de loin que tout le monde peut joindre.",
+   "criteria": "Un proche à moins de 30 minutes prévenu qu'il est le contact d'urgence, et un contact hors de la région connu de tous les membres.",
+   "requires": [],
+   "objectives": [
+    "communaute.proche_joignable",
+    "communication.contact_externe"
+   ]
+  },
+  {
+   "id": "rassembleur.service",
+   "specialty": "rassembleur",
+   "name": "Rendre service",
+   "icon": "🎁",
+   "row": 1,
+   "col": 3,
+   "description": "L'entraide commence par donner, avant d'en avoir besoin.",
+   "criteria": "Avoir proposé et rendu un service concret à un voisin (courses, garde, outil prêté, coup de main).",
+   "requires": [],
+   "objectives": []
+  },
+  {
+   "id": "rassembleur.fragiles",
+   "specialty": "rassembleur",
+   "name": "Repérer les fragiles",
+   "icon": "🫶",
+   "row": 2,
+   "col": 1,
+   "description": "En canicule ou en coupure, les personnes isolées sont les premières en danger.",
+   "criteria": "Savoir qui, autour de soi, est âgé, malade, isolé ou dépendant d'un appareil, et comment le joindre.",
+   "requires": [
+    "rassembleur.voisins"
+   ],
+   "objectives": [
+    "communaute.fragiles"
+   ]
+  },
+  {
+   "id": "rassembleur.binome",
+   "specialty": "rassembleur",
+   "name": "Foyer binôme",
+   "icon": "🤜",
+   "row": 2,
+   "col": 2,
+   "description": "Deux foyers qui s'épaulent tiennent bien plus longtemps qu'un seul.",
+   "criteria": "Accord d'entraide réciproque avec un autre foyer : hébergement, garde des enfants, partage des réserves.",
+   "requires": [
+    "rassembleur.proche"
+   ],
+   "objectives": [
+    "communaute.binome"
+   ]
+  },
+  {
+   "id": "rassembleur.annuaire",
+   "specialty": "rassembleur",
+   "name": "Qui sait quoi",
+   "icon": "📒",
+   "row": 2,
+   "col": 3,
+   "description": "Savoir à qui demander : l'infirmière, le mécanicien, la voisine qui a un puits.",
+   "criteria": "Un annuaire des compétences et des ressources de son réseau, tenu sur papier.",
+   "requires": [
+    "rassembleur.service"
+   ],
+   "objectives": [
+    "communaute.annuaire"
+   ]
+  },
+  {
+   "id": "rassembleur.tournee",
+   "specialty": "rassembleur",
+   "name": "Tournée de nouvelles",
+   "icon": "🚶",
+   "row": 3,
+   "col": 1,
+   "description": "Passer voir, frapper à la porte, rappeler : c'est souvent ce qui sauve en canicule.",
+   "criteria": "Une tournée organisée auprès des voisins fragiles pendant une canicule, un grand froid ou une coupure, avec les rôles répartis.",
+   "requires": [
+    "rassembleur.fragiles"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "rassembleur.groupe",
+   "specialty": "rassembleur",
+   "name": "Groupe d'entraide",
+   "icon": "👥",
+   "row": 3,
+   "col": 2,
+   "description": "Un petit groupe de foyers qui se sont mis d'accord à l'avance.",
+   "criteria": "Groupe d'entraide d'au moins trois foyers avec un plan commun (qui aide qui, où se retrouver, quoi mettre en commun).",
+   "requires": [
+    "rassembleur.binome"
+   ],
+   "objectives": [
+    "communaute.groupe"
+   ]
+  },
+  {
+   "id": "rassembleur.troc",
+   "specialty": "rassembleur",
+   "name": "Troc et échange",
+   "icon": "🔄",
+   "row": 3,
+   "col": 3,
+   "description": "Quand l'argent manque ou ne sert plus, on échange des biens et des savoir-faire.",
+   "criteria": "Participer à un réseau d'échange local : SEL, gratiferia, troc, monnaie locale.",
+   "requires": [
+    "rassembleur.annuaire"
+   ],
+   "objectives": [
+    "communaute.troc"
+   ]
+  },
+  {
+   "id": "rassembleur.reunion",
+   "specialty": "rassembleur",
+   "name": "Animer une réunion",
+   "icon": "🗣️",
+   "row": 4,
+   "col": 1,
+   "description": "Faire décider un groupe sans que la réunion tourne au conflit.",
+   "criteria": "Avoir animé une réunion de voisins ou d'association : ordre du jour, tour de parole, décisions écrites, désaccords apaisés.",
+   "requires": [
+    "rassembleur.tournee"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "rassembleur.engagement",
+   "specialty": "rassembleur",
+   "name": "Engagement local",
+   "icon": "🚒",
+   "row": 4,
+   "col": 2,
+   "description": "Être du côté de ceux qui organisent les secours.",
+   "criteria": "Engagé dans la réserve communale de sécurité civile, chez les pompiers volontaires ou dans une association de secours.",
+   "requires": [
+    "rassembleur.groupe"
+   ],
+   "objectives": [
+    "communaute.engagement"
+   ]
+  },
+  {
+   "id": "rassembleur.mutualiser",
+   "specialty": "rassembleur",
+   "name": "Mutualiser",
+   "icon": "🧺",
+   "row": 4,
+   "col": 3,
+   "description": "Une tronçonneuse, un groupe électrogène, un jardin : pas besoin que chacun ait tout.",
+   "criteria": "Outils, stocks ou jardin mis en commun avec d'autres foyers, avec des règles d'usage écrites.",
+   "requires": [
+    "rassembleur.troc"
+   ],
+   "objectives": [
+    "communaute.mutualisation"
+   ]
+  },
+  {
+   "id": "rassembleur.maitre",
+   "specialty": "rassembleur",
+   "name": "Communauté résiliente",
+   "icon": "🌳",
+   "row": 5,
+   "col": 2,
+   "description": "Faire grandir la préparation autour de soi.",
+   "criteria": "Porter un projet de résilience locale (jardin partagé, réserve communale, plan de quartier) ou accompagner un autre foyer jusqu'au niveau Paré.",
+   "requires": [
+    "rassembleur.reunion",
+    "rassembleur.engagement",
+    "rassembleur.mutualiser"
+   ],
+   "objectives": [
+    "communaute.resilience_locale",
+    "communaute.parrainage"
+   ]
+  },
+  {
+   "id": "pisteur.noeuds",
+   "specialty": "pisteur",
+   "name": "Nœuds de base",
+   "icon": "🪢",
+   "row": 1,
+   "col": 1,
+   "description": "Quatre nœuds suffisent pour tendre une bâche, attacher une charge ou assurer quelqu'un.",
+   "criteria": "Faire sans hésiter un nœud de chaise, un cabestan, un nœud de tension réglable et un nœud plat.",
+   "requires": [],
+   "objectives": []
+  },
+  {
+   "id": "pisteur.eau",
+   "specialty": "pisteur",
+   "name": "Trouver l'eau",
+   "icon": "🏞️",
+   "row": 1,
+   "col": 2,
+   "description": "Savoir où chercher l'eau autour de chez soi et de ses itinéraires.",
+   "criteria": "Deux sources d'eau brute repérées et accessibles (rivière, source, fontaine), en sachant qu'elle se traite toujours avant de boire.",
+   "requires": [],
+   "objectives": [
+    "eau.sources_identifiees"
+   ]
+  },
+  {
+   "id": "pisteur.observer",
+   "specialty": "pisteur",
+   "name": "Lire la nature",
+   "icon": "🔍",
+   "row": 1,
+   "col": 3,
+   "description": "Reconnaître ce qui pousse et sentir le temps qui tourne.",
+   "criteria": "Reconnaître dix arbres et plantes courantes de sa région, et les signes d'un orage qui arrive (nuages, vent, pression).",
+   "requires": [],
+   "objectives": []
+  },
+  {
+   "id": "pisteur.abri",
+   "specialty": "pisteur",
+   "name": "Abri de bâche",
+   "icon": "⛺",
+   "row": 2,
+   "col": 1,
+   "description": "Un toit en quinze minutes avec une bâche et une cordelette.",
+   "criteria": "Monter seul un abri de bâche tendu et étanche en moins de 15 minutes.",
+   "requires": [
+    "pisteur.noeuds"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "pisteur.traiter",
+   "specialty": "pisteur",
+   "name": "Eau traitée",
+   "icon": "💧",
+   "row": 2,
+   "col": 2,
+   "description": "Une eau claire peut rendre gravement malade.",
+   "criteria": "Préfiltrer, filtrer puis désinfecter une eau brute (ébullition, chlore ou filtre adapté), en connaissant les limites de chaque méthode.",
+   "requires": [
+    "pisteur.eau"
+   ],
+   "objectives": [
+    "eau.savoir_traiter"
+   ]
+  },
+  {
+   "id": "pisteur.cueillette",
+   "specialty": "pisteur",
+   "name": "Cueillette sûre",
+   "icon": "🫐",
+   "row": 2,
+   "col": 3,
+   "description": "Des plantes sauvages en complément, jamais au hasard.",
+   "criteria": "Reconnaître dix plantes sauvages comestibles et leurs sosies toxiques ; cueillir seulement ce qu'on identifie à coup sûr, là où c'est autorisé.",
+   "requires": [
+    "pisteur.observer"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "pisteur.nuit",
+   "specialty": "pisteur",
+   "name": "Nuit dehors",
+   "icon": "🌙",
+   "row": 3,
+   "col": 1,
+   "description": "Dormir au chaud et au sec quand il fait froid, c'est d'abord une question d'isolation du sol.",
+   "criteria": "Passer une nuit dehors sous les 5 °C, au sec et au chaud, avec son matériel.",
+   "requires": [
+    "pisteur.abri"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "pisteur.feu",
+   "specialty": "pisteur",
+   "name": "Feu sous la pluie",
+   "icon": "🌧️",
+   "row": 3,
+   "col": 2,
+   "description": "Allumer un feu quand tout est mouillé, là où c'est permis.",
+   "criteria": "Allumer et entretenir un feu avec du bois humide, sans allume-feu industriel, dans un lieu autorisé, et l'éteindre complètement.",
+   "requires": [
+    "pisteur.traiter"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "pisteur.champignons",
+   "specialty": "pisteur",
+   "name": "Champignons",
+   "icon": "🍄",
+   "row": 3,
+   "col": 3,
+   "description": "Quelques espèces bien connues, et les mortelles par cœur.",
+   "criteria": "Identifier quelques champignons comestibles sûrs et les espèces mortelles de sa région ; toujours faire vérifier par un pharmacien ou une société mycologique.",
+   "requires": [
+    "pisteur.cueillette"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "pisteur.bivouac",
+   "specialty": "pisteur",
+   "name": "Bivouac de 48 h",
+   "icon": "🏕️",
+   "row": 4,
+   "col": 1,
+   "description": "Deux jours en autonomie avec ce qu'on porte.",
+   "criteria": "Deux jours et une nuit en autonomie en nature avec son sac, dans le respect des règles du bivouac, sans laisser de trace.",
+   "requires": [
+    "pisteur.nuit"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "pisteur.cap",
+   "specialty": "pisteur",
+   "name": "S'orienter sans boussole",
+   "icon": "🌄",
+   "row": 4,
+   "col": 2,
+   "description": "Retrouver une direction quand on n'a plus rien.",
+   "criteria": "Trouver le nord avec le soleil, une montre ou les étoiles, et rejoindre une route en suivant le relief et les cours d'eau.",
+   "requires": [
+    "pisteur.feu"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "pisteur.peche",
+   "specialty": "pisteur",
+   "name": "Pêche",
+   "icon": "🎣",
+   "row": 4,
+   "col": 3,
+   "description": "Une source de protéines, dans le respect des règles.",
+   "criteria": "Pêcher avec une carte de pêche, dans les périodes et tailles autorisées ; vider et cuire un poisson.",
+   "requires": [
+    "pisteur.champignons"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "pisteur.maitre",
+   "specialty": "pisteur",
+   "name": "Autonomie en nature",
+   "icon": "🦉",
+   "row": 5,
+   "col": 2,
+   "description": "Une semaine dehors, sans dépendre d'un commerce.",
+   "criteria": "Une semaine en itinérance ou en bivouac avec ce qu'on porte, eau traitée et feu maîtrisé, dans le respect de la réglementation.",
+   "requires": [
+    "pisteur.bivouac",
+    "pisteur.cap",
+    "pisteur.peche"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "transmetteur.ecoute",
+   "specialty": "transmetteur",
+   "name": "À l'écoute",
+   "icon": "📻",
+   "row": 1,
+   "col": 1,
+   "description": "En coupure, la radio FM reste la voix des autorités.",
+   "criteria": "Radio à piles ou à dynamo testée, fréquence de la radio publique locale notée sur papier.",
+   "requires": [],
+   "objectives": [
+    "communication.radio",
+    "communication.frequence"
+   ]
+  },
+  {
+   "id": "transmetteur.contacts",
+   "specialty": "transmetteur",
+   "name": "Contacts sur papier",
+   "icon": "📇",
+   "row": 1,
+   "col": 2,
+   "description": "Un téléphone vide ou perdu, et plus aucun numéro en tête.",
+   "criteria": "Contacts essentiels notés sur papier, à la maison et dans chaque sac.",
+   "requires": [],
+   "objectives": [
+    "communication.contacts_papier"
+   ]
+  },
+  {
+   "id": "transmetteur.sauvegarde",
+   "specialty": "transmetteur",
+   "name": "Sauvegarder",
+   "icon": "💾",
+   "row": 1,
+   "col": 3,
+   "description": "Papiers, photos, contacts : ce qui n'est que dans le téléphone peut disparaître avec lui.",
+   "criteria": "Documents importants sauvegardés hors ligne (clé ou disque chiffré), et une copie hors de la maison.",
+   "requires": [],
+   "objectives": [
+    "cyber.sauvegarde",
+    "cyber.restauration"
+   ]
+  },
+  {
+   "id": "transmetteur.talkies",
+   "specialty": "transmetteur",
+   "name": "Talkies-walkies",
+   "icon": "📟",
+   "row": 2,
+   "col": 1,
+   "description": "Garder le contact dans le quartier sans réseau.",
+   "criteria": "Talkies PMR446 du foyer : canal convenu, portée testée, procédure connue (indicatif, parler court, « à vous »).",
+   "requires": [
+    "transmetteur.ecoute"
+   ],
+   "objectives": [
+    "communication.talkies"
+   ]
+  },
+  {
+   "id": "transmetteur.plan",
+   "specialty": "transmetteur",
+   "name": "Plan de communication",
+   "icon": "🗓️",
+   "row": 2,
+   "col": 2,
+   "description": "Quand le réseau sature, les SMS passent souvent mieux que les appels.",
+   "criteria": "Plan connu de tous : qui appelle qui, SMS plutôt qu'appel, horaires et fréquences convenus avec les proches.",
+   "requires": [
+    "transmetteur.contacts"
+   ],
+   "objectives": [
+    "communication.reseau_local"
+   ]
+  },
+  {
+   "id": "transmetteur.hors_ligne",
+   "specialty": "transmetteur",
+   "name": "Tout hors ligne",
+   "icon": "🗺️",
+   "row": 2,
+   "col": 3,
+   "description": "Cartes, guides et fiches utiles sans Internet.",
+   "criteria": "Cartes de la région, guides de secourisme et fiches du foyer disponibles hors ligne sur téléphone et ordinateur, vérifiés en mode avion.",
+   "requires": [
+    "transmetteur.sauvegarde"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "transmetteur.cb",
+   "specialty": "transmetteur",
+   "name": "CB et antenne",
+   "icon": "📡",
+   "row": 3,
+   "col": 1,
+   "description": "La CB porte plus loin que les talkies, sans licence.",
+   "criteria": "Poste CB opérationnel, antenne réglée, canaux d'appel et d'urgence connus, un essai de contact réussi.",
+   "requires": [
+    "transmetteur.talkies"
+   ],
+   "objectives": [
+    "communication.radio_emission"
+   ]
+  },
+  {
+   "id": "transmetteur.messages",
+   "specialty": "transmetteur",
+   "name": "Messages d'urgence",
+   "icon": "✉️",
+   "row": 3,
+   "col": 2,
+   "description": "Un message clair se transmet mieux et se comprend du premier coup.",
+   "criteria": "Rédiger un message court et complet (qui, où, quoi, quel besoin, à quelle heure) et le faire passer par SMS, radio ou papier.",
+   "requires": [
+    "transmetteur.plan"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "transmetteur.maille",
+   "specialty": "transmetteur",
+   "name": "Réseau maillé",
+   "icon": "🕸️",
+   "row": 3,
+   "col": 3,
+   "description": "Des messages qui passent d'appareil en appareil, sans opérateur.",
+   "criteria": "Une messagerie maillée (type LoRa) installée et testée entre au moins deux foyers.",
+   "requires": [
+    "transmetteur.hors_ligne"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "transmetteur.licence",
+   "specialty": "transmetteur",
+   "name": "Radioamateur",
+   "icon": "🎙️",
+   "row": 4,
+   "col": 1,
+   "description": "Émettre loin quand les réseaux sont tombés, dans un cadre légal.",
+   "criteria": "Licence de radioamateur obtenue.",
+   "requires": [
+    "transmetteur.cb"
+   ],
+   "objectives": [
+    "communication.licence"
+   ]
+  },
+  {
+   "id": "transmetteur.relais",
+   "specialty": "transmetteur",
+   "name": "Relayer l'information",
+   "icon": "📢",
+   "row": 4,
+   "col": 2,
+   "description": "Être celui qui transmet les consignes vérifiées, pas les rumeurs.",
+   "criteria": "Relayer les informations officielles vérifiées pour le quartier (affichage, radio, messages), avec une liste de sources fiables.",
+   "requires": [
+    "transmetteur.messages"
+   ],
+   "objectives": [
+    "communication.relais",
+    "communication.sources"
+   ]
+  },
+  {
+   "id": "transmetteur.energie",
+   "specialty": "transmetteur",
+   "name": "Tenir sans réseau",
+   "icon": "🔋",
+   "row": 4,
+   "col": 3,
+   "description": "Une radio sans batterie ne sert à rien.",
+   "criteria": "Radios, téléphones et réseau maillé alimentés une semaine hors réseau (solaire, batteries), testé.",
+   "requires": [
+    "transmetteur.maille"
+   ],
+   "objectives": []
+  },
+  {
+   "id": "transmetteur.maitre",
+   "specialty": "transmetteur",
+   "name": "Réseau de secours",
+   "icon": "🗼",
+   "row": 5,
+   "col": 2,
+   "description": "Le quartier reste joint quand tout le reste est tombé.",
+   "criteria": "Réseau radio de secours avec le groupe d'entraide, plan de fréquences et d'horaires, testé au moins tous les six mois.",
+   "requires": [
+    "transmetteur.licence",
+    "transmetteur.relais",
+    "transmetteur.energie"
+   ],
+   "objectives": [
+    "communication.reseau_teste"
+   ]
   }
  ]
 }

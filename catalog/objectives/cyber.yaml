@@ -1,0 +1,74 @@
+# Cybersécurité du foyer : garder l'accès à ses comptes, ses fichiers et son argent malgré une
+# arnaque, un piratage, un vol ou la perte du téléphone. En crise, les arnaques se multiplient
+# (faux secours, fausses cagnottes, faux conseillers bancaires) et un téléphone perdu peut bloquer
+# l'accès à la banque. Repères : cybermalveillance.gouv.fr, 17Cyber, ANSSI.
+# Pas d'objectif au niveau 1 : le premier palier reste celui des heures de coupure.
+axis: cyber
+objectives:
+  - id: cyber.verrouillage
+    level: 2
+    title: Téléphones et ordinateurs verrouillés par un code ou une empreinte, verrouillage automatique activé
+    why: Un téléphone perdu ou volé déverrouillé donne accès à la messagerie, donc à tous les comptes.
+  - id: cyber.arnaques
+    level: 2
+    title: "Réflexes anti-arnaque connus des adultes : ni la banque, ni la police, ni un proche en détresse ne demandent un code ou un virement par message ; on raccroche et on rappelle le numéro officiel"
+    why: "Les arnaques au faux conseiller et au « proche en détresse » explosent pendant les crises ; signalement sur 17Cyber ou cybermalveillance.gouv.fr."
+  - id: cyber.double_auth
+    level: 3
+    title: Mot de passe propre et double authentification sur la messagerie principale et la banque de chaque adulte
+    why: La messagerie permet de réinitialiser tous les autres comptes ; c'est elle qu'il faut protéger en premier.
+  - id: cyber.mises_a_jour
+    level: 3
+    title: Mises à jour automatiques activées sur les téléphones, les ordinateurs et la box
+    revalidate_days: 365
+  - id: cyber.sauvegarde
+    level: 3
+    title: Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de trois mois
+    why: Un rançongiciel, un incendie ou un vol effacent tout ce qui n'existe qu'à un seul endroit.
+    revalidate_days: 90
+  - id: cyber.gestionnaire
+    level: 4
+    title: Un gestionnaire de mots de passe pour chaque adulte, et un mot de passe différent pour chaque compte important
+  - id: cyber.recuperation
+    level: 4
+    title: Codes de secours de la double authentification et moyens de récupération des comptes notés sur papier, rangés avec les papiers importants
+    why: Sans le téléphone, impossible de recevoir les codes ; sans codes de secours, on perd l'accès à la banque et à la messagerie.
+  - id: cyber.box
+    level: 4
+    title: "Box internet sécurisée : mot de passe d'administration changé, Wi-Fi en WPA2 ou WPA3, réseau invité pour les visiteurs et les objets connectés"
+  - id: cyber.enfants
+    level: 4
+    requires_tags: [enfants]
+    title: "Règles numériques des enfants : contrôle parental adapté à l'âge, ne jamais donner de code ni d'information sur la maison, parler d'un message qui fait peur"
+  - id: cyber.restauration
+    level: 5
+    title: Restauration testée - un dossier récupéré depuis la sauvegarde hors ligne sur un autre appareil
+    revalidate_days: 365
+  - id: cyber.plan_incident
+    level: 5
+    title: "Plan en cas de piratage ou de perte du téléphone, sur papier : opposition bancaire, blocage de la ligne chez l'opérateur, comptes à reprendre en premier, 17Cyber"
+  - id: cyber.chiffrement
+    level: 6
+    title: Disques des ordinateurs et des téléphones chiffrés, clés de récupération rangées avec les papiers importants
+  - id: cyber.discretion
+    level: 6
+    title: "Discrétion en ligne : profils en privé, pas de publication des absences, de l'adresse ni des réserves du foyer"
+    why: Les cambrioleurs et les escrocs exploitent ce qu'on publie.
+  - id: cyber.regle_321
+    level: 7
+    title: "Sauvegardes 3-2-1 : trois copies, sur deux supports, dont une hors du domicile, vérifiées tous les six mois"
+    revalidate_days: 180
+  - id: cyber.independance
+    level: 8
+    title: "Pas de dépendance à un seul fournisseur : seconde adresse de messagerie de secours, second moyen de paiement dans une autre banque, documents essentiels hors du cloud"
+  - id: cyber.heritage
+    level: 8
+    title: "Accès d'urgence prévu : une personne de confiance peut reprendre les comptes essentiels si un adulte est hospitalisé ou décède (procédure écrite, rangée en lieu sûr)"
+  - id: cyber.exercice
+    level: 9
+    title: Exercice annuel - perte simulée du téléphone principal, le foyer récupère messagerie, banque et contacts en moins de 48 h avec ses seuls moyens de secours
+    revalidate_days: 365
+  - id: cyber.transmettre
+    level: 9
+    required: false
+    title: Aider des proches ou des voisins à sécuriser leurs comptes et leurs sauvegardes

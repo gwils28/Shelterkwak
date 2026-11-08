@@ -77,6 +77,10 @@ def item(
     }
 
 
+def talent(talent_id: str, on: str | None, note: str = "") -> dict[str, Any]:
+    return {"talent_id": talent_id, "acquired_on": on, "note": note}
+
+
 def validation(oid: str, on: str, source: str = "manual") -> dict[str, Any]:
     return {"objective_id": oid, "validated_at": on, "note": "", "source": source}
 
@@ -119,6 +123,8 @@ LEVEL2 = [
     "securite.cles",
     "securite.pcs",
     "moral.stress",
+    "cyber.verrouillage",
+    "cyber.arnaques",
 ]
 LEVEL3 = [
     "eau.contenants",
@@ -146,6 +152,9 @@ LEVEL3 = [
     "competences.rechaud",
     "moral.kit_occupation",
     "sante.gestes_qui_sauvent",
+    "cyber.double_auth",
+    "cyber.mises_a_jour",
+    "cyber.sauvegarde",
 ]
 
 
@@ -324,6 +333,21 @@ def engine_cases() -> list[dict[str, Any]]:
                 op(7, "2026-11-08T08:00:00.000Z", "reset", {}),
                 op(8, "2026-11-09T08:00:00.000Z", "household.set", household()),
                 op(9, "2026-11-10T08:00:00.000Z", "item.set", item("radio", "confirme")),
+            ],
+        },
+        {
+            "name": "talents : acquisition, mise à jour, retrait, remise à zéro",
+            "today": "2026-11-12",
+            "ops": [
+                onboard,
+                op(2, "2026-11-03T08:00:00.000Z", "talent.set", talent("soin.alerter", "2026-11-03")),
+                op(3, "2026-11-04T08:00:00.000Z", "talent.set", talent("soin.gqs", None)),
+                op(4, "2026-11-05T08:00:00.000Z", "talent.set", talent("soin.gqs", "2026-10-20", note="Stage mairie")),
+                op(5, "2026-11-06T08:00:00.000Z", "talent.delete", {"talent_id": "soin.alerter"}),
+                op(6, "2026-11-07T08:00:00.000Z", "talent.set", talent("talent_retire_du_catalogue", None)),
+                op(7, "2026-11-08T08:00:00.000Z", "reset", {}),
+                op(8, "2026-11-09T08:00:00.000Z", "household.set", household()),
+                op(9, "2026-11-10T08:00:00.000Z", "talent.set", talent("cuisto.rotation", "2026-11-10")),
             ],
         },
         {

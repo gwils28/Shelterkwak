@@ -4,7 +4,7 @@ import { memberOf } from "../engine/engine";
 import { addDays, localToday } from "../engine/dates";
 import type { Answer } from "../engine/interview";
 import { applyAnswers } from "../engine/interview";
-import { evaluateState, type HouseholdData, type ItemData, replay, type StockData } from "../engine/replay";
+import { evaluateState, type HouseholdData, type ItemData, replay, type StockData, type TalentData } from "../engine/replay";
 import { type CustomObjective, withCustom } from "../engine/types";
 import { buildDashboard, buildObjectives } from "../model";
 import { newId, store } from "./store";
@@ -53,6 +53,15 @@ export const actions = {
   deleteStock: (id: string) => store.append("stock.delete", { id }),
   setItem: (item: ItemData) => store.append("item.set", { ...item }),
   deleteItem: (item_id: string) => store.append("item.delete", { item_id }),
+  /** Coche des talents (avec leurs prérequis manquants), dans l'ordre donné : prérequis d'abord. */
+  learnTalents: async (ids: string[], acquired_on: string | null, note = "") => {
+    for (const talent_id of ids) await store.append("talent.set", { talent_id, acquired_on, note });
+  },
+  setTalent: (t: TalentData) => store.append("talent.set", { ...t }),
+  /** Retire des talents (le talent et ceux qui en dépendent), les plus hauts d'abord. */
+  forgetTalents: async (ids: string[]) => {
+    for (const talent_id of ids) await store.append("talent.delete", { talent_id });
+  },
   setHousehold: (h: HouseholdData) => store.append("household.set", { ...h }),
   upsertCustom: (c: Omit<CustomObjective, "id"> & { id?: string }) =>
     store.append("custom.upsert", { ...c, id: c.id ?? `perso.${newId()}` }),

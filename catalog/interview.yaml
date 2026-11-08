@@ -187,6 +187,9 @@ questions:
       - {value: ecoute, label: Numéros d'écoute notés, validates: [moral.ecoute]}
       - {value: pcs, label: Plan communal de sauvegarde consulté, validates: [securite.pcs]}
       - {value: stress, label: "Une technique de gestion du stress connue (respiration, cohérence cardiaque)", validates: [moral.stress]}
+      - {value: verrouillage, label: "Téléphones et ordinateurs verrouillés par un code", validates: [cyber.verrouillage]}
+      - {value: double_auth, label: "Double authentification sur la messagerie et la banque", validates: [cyber.double_auth]}
+      - {value: sauvegarde, label: "Sauvegarde récente des fichiers sur un support hors ligne", validates: [cyber.sauvegarde]}
 
   - id: competences
     section: Tes compétences

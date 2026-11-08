@@ -12,6 +12,7 @@ axes:
   - {id: communaute, name: Réseau & entraide, icon: "🤝"}
   - {id: moral, name: Moral & cohésion, icon: "🧠"}
   - {id: defense, name: Défense personnelle, icon: "🥋"}
+  - {id: cyber, name: Cybersécurité, icon: "🔐"}
 
 contexts:
   - {id: appartement, name: Appartement en ville}

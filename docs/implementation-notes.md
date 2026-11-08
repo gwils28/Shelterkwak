@@ -113,8 +113,26 @@ déploiement sur Raspberry Pi.
   charge telle quelle ; seule l'app l'interprète (péremption pour un consommable, prochaine
   vérification pour un équipement). Un objet déclaré avant n'a pas le champ.
 - **`crisis: true`** sur un objet : son emplacement s'affiche dans l'écran Crise.
+- **`caution`** sur un objet : mise en garde (loi française, santé, sécurité) affichée en tête de
+  la fiche, signalée par ⚠️ sur la carte. Utilisée pour les armes, les lames, l'alcool, le tabac,
+  les métaux précieux et le compteur Geiger. Le groupe `defense` (« Défense et sécurité ») accueille
+  la carte des armes, dont les niveaux mesurent la détention en règle, pas la puissance de feu.
 - **Prochains achats** : une réserve y figure avec la quantité manquante pour son prochain niveau ;
   tri par palier de l'objectif, puis requis avant bonus.
 - **Saison** : prochaine échéance = 1er du mois `due_month` à venir ; urgente sous 60 jours. Le
   panneau ne s'affiche pas si aucun objectif saisonnier ne concerne le foyer.
 - **`thermometre` → `kit_canicule`** : renommé avant toute écriture dans un journal partagé.
+
+## Compétences en arbres de talents (2026-11-08)
+- **Catalogue** : `catalog/talents.yaml` (rangs, spécialités, talents). Un id de talent est stocké
+  dans le journal : il ne se renomme pas. Vérifié au chargement : place unique (rang, branche),
+  prérequis plus bas dans le même arbre, au moins un prérequis au-delà du rang 1, objectifs connus.
+- **Opérations `talent.set` / `talent.delete`** : gérées par les deux moteurs, sans effet sur le
+  niveau du foyer. Les talents sont ceux du foyer, pas d'un membre (comme l'inventaire).
+- **Cocher en chaîne** : l'app émet une opération par talent, prérequis d'abord ; le retrait émet
+  les talents dépendants du plus haut au plus bas. Le moteur ne contrôle pas les prérequis : un
+  journal incohérent s'affiche tel quel (le talent reste acquis).
+- **Objectifs liés** : un bouton « Valider » est proposé quand le talent est acquis, compétences
+  comprises ; rien n'est validé automatiquement.
+- **Navigation** : six onglets ; la spécialité choisie est gardée dans l'adresse (`?spe=`) et sur
+  l'appareil, la fiche ouverte dans `?talent=`.

@@ -76,7 +76,9 @@ retour d'expérience et la radio). Le niveau est donc perdu dès qu'on cesse de 
 `moral` (moral & cohésion : écoute, sommeil, routine de crise, gestion du stress, enfants),
 `defense` (défense personnelle dans le cadre de la loi française : fuir et alerter, légitime
 défense, plan intrusion, self-défense ; les armes sont facultatives, sauf la détention en règle
-quand le foyer en déclare).
+quand le foyer en déclare),
+`cyber` (cybersécurité : garder l'accès à ses comptes, ses fichiers et son argent malgré une
+arnaque, un piratage, un vol ou la perte du téléphone ; à partir du niveau 2).
 
 Chaque axe a aussi son niveau propre (le plus haut palier dont tous les objectifs requis de
 l'axe sont validés), affiché pour repérer le maillon faible.
@@ -226,9 +228,17 @@ haut de page.
      prochains achats utiles (réserves comprises, avec ce qui manque), équipement par catégorie et
      par niveau, saison (objectifs à échéance annuelle), échéances mois par mois (articles et
      objets datés), emplacements.
-5. **Parcours** (`/historique`) : courbe du niveau et journal.
-6. **Foyer** : membres, monument, contexte actuel et cible, objectifs déclarés, synchronisation.
-7. **Crise** (`/crise`, bouton de l'en-tête) : écran du jour J, hors ligne et imprimable, pensé
+5. **Compétences** (`/competences`) : neuf spécialités (condition physique, stratège de survie,
+   soigneur, bricoleur, cuisto, protecteur, rassembleur, pisteur, transmetteur), toutes visibles
+   dans une grille de trois colonnes, chacune un arbre de talents (`catalog/talents.yaml`) en cinq rangs
+   (novice → maître) et trois branches. Un talent se coche quand ses prérequis sont acquis ; un
+   talent verrouillé peut être coché avec ses prérequis manquants, et retirer un talent retire
+   ceux qui en dépendent. La fiche d'un talent donne ce qui prouve qu'on l'a acquis, la date et
+   une note, et les objectifs liés : cocher un talent ne valide aucun objectif. Le titre de la
+   spécialité dépend du rang le plus haut atteint.
+6. **Parcours** (`/historique`) : courbe du niveau et journal.
+7. **Foyer** : membres, monument, contexte actuel et cible, objectifs déclarés, synchronisation.
+8. **Crise** (`/crise`, bouton de l'en-tête) : écran du jour J, hors ligne et imprimable, pensé
    pour une personne sous stress. Dans l'ordre : boutons d'appel (15, 112, 18, 17, SMS 114) et
    rappel de respiration ; fiches réflexes repliées, « Premiers secours » puis « Situations »
    (`catalog/crisis.yaml`, `group`), filtrées selon les risques et les membres du foyer, avec des
@@ -301,6 +311,7 @@ cible, **la dernière écrite gagne**.
 | `custom.upsert` / `custom.delete` | Crée ou modifie / supprime un objectif perso (`perso.<uuid>`) |
 | `notes.set` | Remplace le texte d'une fiche de l'écran Crise (`key` = id de `crisis.yaml`) |
 | `item.set` / `item.delete` | Déclare (niveau, quantité, rangement, note, `expires_on` facultatif) / retire une carte d'inventaire (`item_id` = id de `items.yaml`) |
+| `talent.set` / `talent.delete` | Coche (date `acquired_on` facultative, note) / retire un talent (`talent_id` = id de `talents.yaml`) |
 | `onboarding` | Marque la fin de l'interview (les effets sont des opérations ordinaires émises juste avant) |
 | `reset` | Efface tout ce qui précède |
 
