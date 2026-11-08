@@ -161,7 +161,7 @@ Un article : nom, catégorie, quantité, libellé d'unité, quantité de base pa
 (« cellier », « sous l'évier »). Un bouton retire une unité consommée.
 Autonomie = somme des articles non périmés ÷ besoin journalier du foyer.
 Les stocks estimés pendant l'interview périment au bout de 6 mois : une estimation déclarée doit
-être confirmée ou détaillée dans les Réserves pour continuer à compter.
+être confirmée ou détaillée dans l'Inventaire pour continuer à compter.
 Articles périmant sous 30 jours signalés.
 
 ## 8. Interview d'inscription
@@ -211,8 +211,18 @@ haut de page.
    acquis qui se colore avec un éclat. Coupées si l'appareil demande moins d'animations ou via
    l'interrupteur de l'onglet Foyer (réglage propre à l'appareil, non synchronisé).
 3. **Objectifs** : filtres par niveau / axe / statut, cocher, décocher, revalider.
-4. **Réserves** (`/inventaire`) : articles, autonomie par catégorie face aux paliers 3 j, 14 j,
-   90 j, 180 j.
+4. **Inventaire** (`/inventaire`), deux sous-onglets :
+   - **Objets** : cartes par catégorie (`catalog/items.yaml`), grisées tant que le foyer ne les a
+     pas, colorées par niveau quand il les a. Chaque objet a les cinq niveaux rustique, commun,
+     confirmé, épique, légendaire ; le niveau dépend de la qualité, des options, de la quantité,
+     du contenu (contenants : contenu minimal détaillé par niveau) ou, pour les réserves (eau,
+     vivres, cuisson, traitements), de l'autonomie. Une fiche par carte : niveau, quantité,
+     rangement, objectifs servis ; celle d'une réserve porte les articles.
+   - **État des lieux** (`/inventaire/etat-des-lieux`) : chiffres clés (maillon faible, objets en
+     place, objectifs servis, articles à surveiller), autonomie par catégorie face aux repères
+     3 j, 14 j, 90 j, 180 j, projection de l'autonomie sur 12 mois au fil des péremptions,
+     prochains achats utiles, équipement par catégorie et par niveau, péremptions mois par mois,
+     emplacements.
 5. **Parcours** (`/historique`) : courbe du niveau et journal.
 6. **Foyer** : membres, monument, contexte actuel et cible, objectifs déclarés, synchronisation.
 7. **Crise** (`/crise`, bouton de l'en-tête) : écran du jour J, hors ligne et imprimable, pensé
@@ -286,6 +296,7 @@ cible, **la dernière écrite gagne**.
 | `stock.upsert` / `stock.delete` | Ajoute ou modifie / retire un article (id stable) |
 | `custom.upsert` / `custom.delete` | Crée ou modifie / supprime un objectif perso (`perso.<uuid>`) |
 | `notes.set` | Remplace le texte d'une fiche de l'écran Crise (`key` = id de `crisis.yaml`) |
+| `item.set` / `item.delete` | Déclare (palier, quantité, rangement, note) / retire une carte d'inventaire (`item_id` = id de `items.yaml`) |
 | `onboarding` | Marque la fin de l'interview (les effets sont des opérations ordinaires émises juste avant) |
 | `reset` | Efface tout ce qui précède |
 

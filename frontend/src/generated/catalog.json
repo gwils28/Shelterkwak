@@ -8258,5 +8258,3786 @@
     "Disparue : chercher d'abord dans les lieux familiers proches, puis appeler le 17 sans attendre, avec une photo récente."
    ]
   }
+ ],
+ "item_tiers": [
+  {
+   "id": "rustique",
+   "name": "Rustique"
+  },
+  {
+   "id": "commun",
+   "name": "Commun"
+  },
+  {
+   "id": "confirme",
+   "name": "Confirmé"
+  },
+  {
+   "id": "epique",
+   "name": "Épique"
+  },
+  {
+   "id": "legendaire",
+   "name": "Légendaire"
+  }
+ ],
+ "item_groups": [
+  {
+   "id": "eau",
+   "name": "Eau",
+   "icon": "💧"
+  },
+  {
+   "id": "vivres",
+   "name": "Vivres et cuisine",
+   "icon": "🥫"
+  },
+  {
+   "id": "sante",
+   "name": "Santé et hygiène",
+   "icon": "🩹"
+  },
+  {
+   "id": "energie",
+   "name": "Énergie et lumière",
+   "icon": "🔦"
+  },
+  {
+   "id": "abri",
+   "name": "Abri, chaleur et feu",
+   "icon": "🏠"
+  },
+  {
+   "id": "communication",
+   "name": "Information et communication",
+   "icon": "📻"
+  },
+  {
+   "id": "evacuation",
+   "name": "Évacuation et mobilité",
+   "icon": "🎒"
+  },
+  {
+   "id": "papiers",
+   "name": "Papiers et argent",
+   "icon": "🗂️"
+  },
+  {
+   "id": "moral",
+   "name": "Réconfort et occupation",
+   "icon": "🧸"
+  }
+ ],
+ "items": [
+  {
+   "id": "reserve_eau",
+   "group": "eau",
+   "name": "Réserve d'eau potable",
+   "icon": "🚰",
+   "kind": "reserve",
+   "basis": "autonomie",
+   "category": "eau",
+   "description": "Bouteilles, packs et bidons alimentaires remplis. Compte 4 L par adulte et par jour (boisson, cuisine, hygiène minimale).",
+   "objectives": [
+    "eau.rotation"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "24 heures pour tout le foyer",
+     "min_days": 1.0,
+     "objectives": [
+      "eau.stock_24h"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Le temps que les secours s'organisent",
+     "min_days": 3.0,
+     "objectives": [
+      "eau.stock_3j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Deux semaines de coupure",
+     "min_days": 14.0,
+     "objectives": [
+      "eau.stock_14j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Un mois sans eau du réseau",
+     "min_days": 30.0,
+     "objectives": [
+      "eau.stock_30j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Deux mois et plus",
+     "min_days": 60.0,
+     "objectives": [
+      "eau.stock_60j"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "pastilles_eau",
+   "group": "eau",
+   "name": "Pastilles de purification",
+   "icon": "💊",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Pastilles (chlore ou argent) ou eau de Javel non parfumée, pour rendre potable une eau douteuse. Vérifier la date.",
+   "objectives": [
+    "eau.pastilles"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un flacon d'eau de Javel non parfumée (2 gouttes par litre, 30 min d'attente)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Pastilles pour 50 L",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Pastilles pour 200 L et Javel de secours",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Pastilles pour 1 000 L, dans le sac et à la maison",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Traitement pour plusieurs milliers de litres (pastilles, Javel, chlore en poudre) et bandelettes de test du chlore",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "bidons",
+   "group": "eau",
+   "name": "Bidons alimentaires",
+   "icon": "🛢️",
+   "kind": "equipement",
+   "basis": "quantite",
+   "category": null,
+   "description": "Vides et propres, prêts à remplir dès une alerte de coupure. 10 L au plus si l'eau se monte à pied.",
+   "objectives": [
+    "eau.contenants",
+    "eau.portage"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Bouteilles vides lavées, gardées de côté",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Deux bidons alimentaires de 10 L",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un bidon de 10 L par personne, avec robinet",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "100 L de contenants pliables ou rigides, et un sac de baignoire (WaterBOB)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Cuve alimentaire de 500 L ou plus, remplie et renouvelée",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "chariot_portage",
+   "group": "eau",
+   "name": "Chariot de portage",
+   "icon": "🛒",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Pour rapporter l'eau d'un point de distribution sans s'épuiser.",
+   "objectives": [
+    "eau.portage",
+    "eau.plan_appro"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Sac à dos et sangles pour porter deux bidons",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Chariot de courses solide",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Diable pliant avec sangles, 50 kg et plus",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Chariot monte-escalier à trois roues",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Remorque de vélo ou charrette tout-terrain, 100 L et plus",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "filtre_eau",
+   "group": "eau",
+   "name": "Filtre à eau",
+   "icon": "🫗",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Retient bactéries et parasites d'une eau brute (rivière, citerne). Ne retire pas les produits chimiques.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Paille filtrante individuelle",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Gourde ou filtre portable avec cartouche valide",
+     "min_days": null,
+     "objectives": [
+      "eau.filtre"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Filtre gravitaire familial (10 L et plus)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Filtre gravitaire céramique grande capacité (plusieurs milliers de litres) et cartouches de rechange",
+     "min_days": null,
+     "objectives": [
+      "eau.filtre_gravitaire"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Filtre grande capacité branché sur une source autonome avec pompe manuelle",
+     "min_days": null,
+     "objectives": [
+      "eau.pompe_manuelle"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "recuperateur",
+   "group": "eau",
+   "name": "Récupérateur d'eau de pluie",
+   "icon": "🌧️",
+   "kind": "equipement",
+   "basis": "quantite",
+   "category": null,
+   "description": "Eau d'hygiène, de WC et d'arrosage ; à filtrer et traiter avant de la boire.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Bacs et seaux sous une gouttière",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Cuve de 200 L sur une descente de gouttière",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Cuve de 500 L ou plus, nettoyée avant l'été",
+     "min_days": null,
+     "objectives": [
+      "eau.recuperateur"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Plusieurs cuves reliées (1 m³ et plus), filtre de premier rinçage",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Citerne enterrée de 5 m³ ou plus, eau analysée",
+     "min_days": null,
+     "objectives": [
+      "eau.source_autonome"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "reserve_vivres",
+   "group": "vivres",
+   "name": "Garde-manger",
+   "icon": "🥫",
+   "kind": "reserve",
+   "basis": "autonomie",
+   "category": "alimentation",
+   "description": "Conserves, féculents, aliments secs. Les calories sont sur l'étiquette (riz 1 kg ≈ 3 600 kcal, boîte de lentilles 400 g ≈ 400 kcal).",
+   "objectives": [
+    "alimentation.rotation",
+    "alimentation.sans_cuisson",
+    "alimentation.inventaire"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "24 heures pour tout le foyer",
+     "min_days": 1.0,
+     "objectives": [
+      "alimentation.stock_24h"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Le kit d'urgence officiel",
+     "min_days": 3.0,
+     "objectives": [
+      "alimentation.stock_3j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Deux semaines sans courses",
+     "min_days": 14.0,
+     "objectives": [
+      "alimentation.stock_14j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Un trimestre",
+     "min_days": 90.0,
+     "objectives": [
+      "alimentation.stock_90j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Six mois et plus",
+     "min_days": 180.0,
+     "objectives": [
+      "alimentation.stock_180j"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "reserve_cuisson",
+   "group": "vivres",
+   "name": "Combustible de cuisson",
+   "icon": "🔥",
+   "kind": "reserve",
+   "basis": "autonomie",
+   "category": "cuisson",
+   "description": "Cartouches de gaz, alcool à brûler, bois sec. Une cartouche de 250 g fait environ 3 jours-personne.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une journée de repas chauds",
+     "min_days": 1.0,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Trois jours",
+     "min_days": 3.0,
+     "objectives": [
+      "energie.cuisson_3j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Deux semaines",
+     "min_days": 14.0,
+     "objectives": [
+      "energie.cuisson_14j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Un mois",
+     "min_days": 30.0,
+     "objectives": [
+      "energie.cuisson_30j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Trois mois et plus",
+     "min_days": 90.0,
+     "objectives": [
+      "energie.cuisson_90j"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "rechaud",
+   "group": "vivres",
+   "name": "Réchaud",
+   "icon": "🍳",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Pour cuisiner sans gaz ni électricité du réseau. Toujours à l'extérieur ou fenêtre ouverte (monoxyde de carbone).",
+   "objectives": [
+    "competences.rechaud",
+    "competences.feu"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Réchaud à alcool ou chauffe-plat",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Réchaud à cartouche de gaz, un feu",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Réchaud deux feux ou à gaz en bouteille, avec pare-vent",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Réchaud multi-combustible (bois, alcool, gaz) ou rocket stove, et cuiseur solaire",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Cuisinière ou poêle à bois qui cuisine et chauffe",
+     "min_days": null,
+     "objectives": [
+      "energie.bois"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "ouvre_boite",
+   "group": "vivres",
+   "name": "Ouvre-boîte et ustensiles",
+   "icon": "🥄",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "L'outil qu'on oublie et sans lequel les conserves restent fermées.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un ouvre-boîte manuel",
+     "min_days": null,
+     "objectives": [
+      "alimentation.ouvre_boite"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Deux ouvre-boîtes (maison et sac) et un couteau",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Couverts, gamelle et quart par personne",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Batterie de camping (casserole, poêle, bouilloire) et pinces",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Cuisine nomade complète : marmite en fonte, cuiseur à foin, ustensiles de conserve",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "bebe",
+   "group": "vivres",
+   "name": "Lait infantile et couches",
+   "icon": "🍼",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Lait infantile, eau adaptée aux nourrissons, petits pots, couches et lingettes.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "24 heures",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "3 jours",
+     "min_days": null,
+     "objectives": [
+      "alimentation.bebe_3j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "14 jours",
+     "min_days": null,
+     "objectives": [
+      "alimentation.bebe"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "1 mois, et biberons stérilisables à froid",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "3 mois, taille suivante comprise",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "animaux_vivres",
+   "group": "vivres",
+   "name": "Nourriture des animaux",
+   "icon": "🦴",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Croquettes ou pâtée, litière, et le traitement habituel de l'animal.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "3 jours",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "7 jours",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "14 jours",
+     "min_days": null,
+     "objectives": [
+      "alimentation.animaux"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "1 mois, traitement compris",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "3 mois, traitement compris",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "bocaux",
+   "group": "vivres",
+   "name": "Bocaux et conservation",
+   "icon": "🫙",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Bocaux, joints et couvercles neufs, sel, vinaigre, sucre pour conserver une récolte.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Quelques bocaux de récupération",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "20 bocaux et joints neufs",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "50 bocaux, stérilisateur, sel et vinaigre",
+     "min_days": null,
+     "objectives": [
+      "alimentation.intrants"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Intrants pour une saison, déshydrateur",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Atelier de conservation : autoclave, fumoir ou cave, intrants pour une année",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "semences",
+   "group": "vivres",
+   "name": "Semences reproductibles",
+   "icon": "🌱",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Variétés non hybrides, dont on peut garder les graines d'une année sur l'autre.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Aromatiques et salades pour le balcon",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Dix variétés potagères",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Vingt variétés non hybrides, conservées au frais et au sec",
+     "min_days": null,
+     "objectives": [
+      "alimentation.semences"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Semences pour une saison complète de potager, dont légumineuses et céréales",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Grainothèque autoproduite d'au moins trois légumes",
+     "min_days": null,
+     "objectives": [
+      "alimentation.semences_autoproduites"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "reserve_traitements",
+   "group": "sante",
+   "name": "Traitements d'avance",
+   "icon": "💊",
+   "kind": "reserve",
+   "basis": "autonomie",
+   "category": "traitements",
+   "description": "Boîtes de traitement régulier en avance, comptées en jours pour chaque membre traité.",
+   "objectives": [
+    "sante.medicaments_chaleur",
+    "sante.traitements_plan"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Trois jours d'avance",
+     "min_days": 3.0,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Une semaine",
+     "min_days": 7.0,
+     "objectives": [
+      "sante.traitements_7j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un mois",
+     "min_days": 30.0,
+     "objectives": [
+      "sante.traitements_30j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Trois mois",
+     "min_days": 90.0,
+     "objectives": [
+      "sante.traitements_90j"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Six mois (si le médecin l'autorise)",
+     "min_days": 180.0,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "trousse_secours",
+   "group": "sante",
+   "name": "Trousse de secours",
+   "icon": "🩹",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "À vérifier une fois par an (dates, ciseaux, piles du thermomètre).",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Les soins de tous les jours",
+     "min_days": null,
+     "objectives": [
+      "sante.pharmacie_base"
+     ],
+     "includes": [
+      "Antalgique (paracétamol)",
+      "Pansements de tailles variées",
+      "Désinfectant (chlorhexidine)"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "La trousse complète recommandée",
+     "min_days": null,
+     "objectives": [
+      "sante.trousse"
+     ],
+     "includes": [
+      "Compresses stériles et bande extensible",
+      "Sparadrap",
+      "Sérum physiologique en dosettes",
+      "Solutés de réhydratation orale (SRO)",
+      "Pince à épiler et ciseaux",
+      "Gants jetables",
+      "Couverture de survie",
+      "Thermomètre"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Une trousse à la maison, une dans chaque sac",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Une trousse compacte dans chaque sac d'évacuation",
+      "Pansements pour ampoules et brûlures (hydrocolloïdes, compresses gel)",
+      "Bande cohésive et écharpe triangulaire",
+      "Coussin hémostatique",
+      "Fiche des gestes de premiers secours"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Pharmacie étendue pour tenir sans pharmacie",
+     "min_days": null,
+     "objectives": [
+      "sante.pharmacie"
+     ],
+     "includes": [
+      "Antidiarrhéique et antihistaminique",
+      "Anti-inflammatoire (si toléré)",
+      "Sutures adhésives (Steri-Strip)",
+      "Collyre et dosettes de lavage oculaire",
+      "Crème pour brûlures et pansements gras",
+      "Réserve de désinfectant pour un mois"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Prendre en charge un blessé plusieurs jours",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Garrot tourniquet et pansement compressif d'urgence",
+      "Attelles malléables (SAM Splint)",
+      "Pansements hémostatiques",
+      "Oxymètre de pouls et tensiomètre",
+      "Manuel de secourisme papier"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "masques",
+   "group": "sante",
+   "name": "Masques FFP2 et gants",
+   "icon": "😷",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Pour une épidémie, une fumée d'incendie ou un nettoyage après sinistre.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Quelques masques chirurgicaux et une boîte de gants",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "FFP2 pour 3 jours par personne",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "14 jours de confinement, avec gel et thermomètre",
+     "min_days": null,
+     "objectives": [
+      "sante.masques_pandemie"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "La durée d'une épidémie (plusieurs semaines) pour chacun",
+     "min_days": null,
+     "objectives": [
+      "sante.masques"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Demi-masques à cartouches, lunettes étanches, combinaisons jetables",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "hygiene",
+   "group": "sante",
+   "name": "Kit d'hygiène",
+   "icon": "🧼",
+   "kind": "consommable",
+   "basis": "contenu",
+   "category": null,
+   "description": "De quoi rester propre sans eau courante : c'est la première protection contre les maladies.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "L'essentiel pour une journée",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Savon",
+      "Brosse et dentifrice par personne",
+      "Un rouleau de papier toilette par personne"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "Trois jours sans eau courante",
+     "min_days": null,
+     "objectives": [
+      "sante.hygiene_3j"
+     ],
+     "includes": [
+      "Gel hydroalcoolique",
+      "Lingettes",
+      "Protections périodiques pour un cycle",
+      "Sacs poubelle",
+      "Déodorant et peigne"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Deux semaines",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Papier toilette et savon pour deux semaines",
+      "Shampoing sec",
+      "Bassine et gant de toilette",
+      "Coupe-ongles"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Trois mois, linge et ménage compris",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Lessive à la main et pinces à linge",
+      "Eau de Javel et vinaigre blanc",
+      "Protections lavables (cup, serviettes)",
+      "Rasoirs et lames de rechange"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Hygiène autonome et durable",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Douche solaire ou de camping",
+      "Savon de Marseille pour six mois",
+      "Tondeuse à cheveux et ciseaux de coiffure",
+      "Lessiveuse manuelle"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "toilettes_secours",
+   "group": "sante",
+   "name": "Toilettes de secours",
+   "icon": "🪣",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Sans eau courante, l'hygiène devient le premier risque sanitaire.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Le minimum pour une coupure d'eau",
+     "min_days": null,
+     "objectives": [
+      "sante.toilettes"
+     ],
+     "includes": [
+      "Seau solide",
+      "Sacs poubelle épais",
+      "Litière ou sciure"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "Un vrai poste de toilettes",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Seau à couvercle hermétique",
+      "Abattant adaptable",
+      "Gants et gel hydroalcoolique à côté"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Deux semaines",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Réserve de sacs et de sciure pour deux semaines",
+      "Bac fermé dehors pour stocker les sacs"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Toilettes de camping chimiques ou à séparation",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Toilettes portables à séparation d'urine",
+      "Produit ou matière sèche pour un mois"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Assainissement autonome",
+     "min_days": null,
+     "objectives": [
+      "sante.assainissement"
+     ],
+     "includes": [
+      "Toilettes sèches installées",
+      "Composteur dédié"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "iode",
+   "group": "sante",
+   "name": "Comprimés d'iode",
+   "icon": "⚛️",
+   "kind": "consommable",
+   "basis": "options",
+   "category": null,
+   "description": "Retirés en pharmacie pour chaque membre si le foyer est dans le périmètre d'un site nucléaire. Ne se prennent que sur consigne du préfet.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Bon de retrait reçu, adresse de la pharmacie notée",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Comprimés retirés pour chaque membre",
+     "min_days": null,
+     "objectives": [
+      "securite.iode"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Comprimés rangés avec la trousse, dose de chaque membre notée sur la boîte",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Une boîte à la maison et une dans le sac d'évacuation",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Kit de confinement nucléaire : iode, ruban adhésif, consignes, radio dans la pièce refuge",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "lunettes",
+   "group": "sante",
+   "name": "Lunettes de secours",
+   "icon": "👓",
+   "kind": "equipement",
+   "basis": "quantite",
+   "category": null,
+   "description": "À la vue actuelle, en étui rigide.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une ancienne paire gardée en secours",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Une paire de secours à la vue actuelle par porteur",
+     "min_days": null,
+     "objectives": [
+      "sante.lunettes_secours"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Une paire à la maison et une dans chaque sac d'évacuation",
+     "min_days": null,
+     "objectives": [
+      "sante.lunettes_sac"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Deux paires de rechange et un kit de réparation (tournevis, vis, cordon)",
+     "min_days": null,
+     "objectives": [
+      "sante.lunettes_reserve"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Rechanges, lunettes de soleil à la vue, lentilles et produits pour trois mois",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "piles_auditives",
+   "group": "sante",
+   "name": "Piles de l'appareil auditif",
+   "icon": "🦻",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Dans une boîte étanche ; ou un chargeur alimenté hors réseau.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "7 jours",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "14 jours",
+     "min_days": null,
+     "objectives": [
+      "sante.auditif_piles"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "30 jours et un étui de séchage",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "90 jours ou chargeur hors réseau",
+     "min_days": null,
+     "objectives": [
+      "sante.auditif_reserve"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "90 jours, chargeur solaire et appareil de secours",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "adrenaline",
+   "group": "sante",
+   "name": "Stylos d'adrénaline",
+   "icon": "💉",
+   "kind": "equipement",
+   "basis": "quantite",
+   "category": null,
+   "description": "Toujours avec la personne allergique, jamais périmés.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un stylo non périmé",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Deux stylos non périmés toujours sur la personne",
+     "min_days": null,
+     "objectives": [
+      "sante.adrenaline"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Deux stylos sur la personne et un à la maison, rappel de péremption noté",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Un stylo de plus dans chaque sac, plan d'action allergie écrit",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Stylos à l'école ou au travail, entourage formé, antihistaminiques en réserve",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "inhalateur",
+   "group": "sante",
+   "name": "Inhalateur de secours",
+   "icon": "🫁",
+   "kind": "equipement",
+   "basis": "quantite",
+   "category": null,
+   "description": "Non périmé, avec une chambre d'inhalation si besoin.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un inhalateur entamé",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Deux inhalateurs : un sur soi, un à la maison",
+     "min_days": null,
+     "objectives": [
+      "sante.inhalateur"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un de plus dans le sac d'évacuation, et une chambre d'inhalation",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Un mois de traitement de fond d'avance et un purificateur d'air sur batterie",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Trois mois d'avance, plan d'action écrit, masques FFP2 contre les fumées",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "glaciere_insuline",
+   "group": "sante",
+   "name": "Froid pour l'insuline",
+   "icon": "🧊",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Conserver l'insuline sans électricité, et de quoi corriger une hypoglycémie.",
+   "objectives": [
+    "sante.hypo"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Glacière souple et pains de glace",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Pochette réfrigérante à évaporation (type Frio)",
+     "min_days": null,
+     "objectives": [
+      "sante.insuline_froid"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Deux pochettes et un thermomètre de contrôle",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Mini-réfrigérateur médical sur batterie",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Mini-réfrigérateur médical rechargé au solaire, un mois de matériel de diabète",
+     "min_days": null,
+     "objectives": [
+      "sante.diabete_materiel"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "batterie_medicale",
+   "group": "sante",
+   "name": "Batterie de l'appareil médical",
+   "icon": "🔋",
+   "kind": "equipement",
+   "basis": "quantite",
+   "category": null,
+   "description": "Batterie de secours de l'appareil médical électrique, testée.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "24 heures d'autonomie",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "72 heures d'autonomie",
+     "min_days": null,
+     "objectives": [
+      "sante.appareil_batterie"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "72 heures et chargeur pour la voiture",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Une semaine d'autonomie (station électrique dédiée)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Recharge hors réseau (solaire ou groupe) dimensionnée pour l'appareil",
+     "min_days": null,
+     "objectives": [
+      "sante.appareil_autonome"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "lampes",
+   "group": "energie",
+   "name": "Lampes",
+   "icon": "🔦",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Une lumière sans réseau, rangée à un endroit connu de tous. Les bougies sont un dernier recours (incendie).",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une lampe torche à un endroit connu",
+     "min_days": null,
+     "objectives": [
+      "energie.lumiere"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Une lampe frontale par personne, avec piles de rechange",
+     "min_days": null,
+     "objectives": [
+      "energie.lampes"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Frontales rechargeables et une lanterne pour la pièce de vie",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Frontales, lanternes solaires ou à dynamo, une lampe au pied de chaque lit",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Éclairage de toute la maison sur batterie solaire, veilleuses de secours qui s'allument à la coupure",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "piles",
+   "group": "energie",
+   "name": "Piles de rechange",
+   "icon": "🪫",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Aux formats des lampes, de la radio et des détecteurs (souvent AA, AAA, 9 V).",
+   "objectives": [
+    "energie.lampes",
+    "communication.radio"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un jeu de rechange pour la lampe principale",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Un jeu de rechange pour chaque appareil",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Piles pour un mois d'usage, rangées au sec",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Piles rechargeables et chargeur USB",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Rechargeables, chargeur solaire et réserve pour trois mois",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "electricite_secours",
+   "group": "energie",
+   "name": "Électricité de secours",
+   "icon": "🔌",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Pour garder téléphones, radio et lumière en marche pendant une coupure. Commencer par chiffrer ses besoins en Wh par jour.",
+   "objectives": [
+    "energie.bilan_wh"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Batteries externes chargées pour les téléphones",
+     "min_days": null,
+     "objectives": [
+      "energie.batterie"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Batteries externes et panneau solaire portable testé",
+     "min_days": null,
+     "objectives": [
+      "energie.solaire_portable"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Station électrique portable de 500 Wh ou plus rechargeable au solaire",
+     "min_days": null,
+     "objectives": [
+      "energie.station"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Station d'au moins 1 kWh, ou kit solaire de balcon avec batterie",
+     "min_days": null,
+     "objectives": [
+      "energie.station_1kwh",
+      "energie.kit_balcon"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Installation solaire fixe avec stockage couvrant les besoins prioritaires",
+     "min_days": null,
+     "objectives": [
+      "energie.solaire_fixe"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "groupe_electrogene",
+   "group": "energie",
+   "name": "Groupe électrogène",
+   "icon": "⚙️",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Toujours dehors, jamais dans un garage ou une cave (monoxyde de carbone). Carburant stocké et renouvelé.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Petit groupe de 1 kW",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Groupe inverter 2 kW, rallonge extérieure",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Groupe testé tous les trois mois, carburant stocké",
+     "min_days": null,
+     "objectives": [
+      "energie.secours"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Groupe bicarburant (essence et gaz), inverseur de source installé par un électricien",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Groupe couplé au solaire et à des batteries, démarrage automatique",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "allumettes",
+   "group": "energie",
+   "name": "Allumettes et briquets",
+   "icon": "🔥",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Dans une boîte étanche.",
+   "objectives": [
+    "competences.feu",
+    "competences.rechaud"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une boîte d'allumettes",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Deux briquets et allumettes dans une boîte étanche",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Allumettes tempête, briquets, allume-feux",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Pierre à feu (ferrocérium) et amadou dans chaque sac",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Kit feu complet : ferro, loupe, allume-feux pour un an, briquets tempête rechargeables",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "bois",
+   "group": "energie",
+   "name": "Bois de chauffage",
+   "icon": "🪵",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Rentré avant novembre, à moins de 20 % d'humidité.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Quelques stères pour les grands froids",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Un demi-hiver de bois sec",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un hiver de bois sec",
+     "min_days": null,
+     "objectives": [
+      "energie.bois_hiver"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Deux hivers d'avance : un sec, un qui sèche",
+     "min_days": null,
+     "objectives": [
+      "energie.bois"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Deux hivers d'avance et une parcelle ou un accord d'affouage",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "couchage",
+   "group": "abri",
+   "name": "Couvertures et couchages",
+   "icon": "🛏️",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Pour tenir au chaud sans chauffage, et accueillir.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Couvertures de survie pour chacun",
+     "min_days": null,
+     "objectives": [
+      "abri.chaleur"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Sac de couchage ou couette épaisse et vêtements chauds pour chacun",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Sacs de couchage grand froid, bonnets, sous-couches et bouillottes",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Sacs de couchage grand froid, matelas isolants et tente d'intérieur pour la pièce refuge",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Couchages en plus pour accueillir un foyer sinistré",
+     "min_days": null,
+     "objectives": [
+      "abri.accueil"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "detecteurs",
+   "group": "abri",
+   "name": "Détecteurs de fumée et de CO",
+   "icon": "🚨",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Testés une fois par mois. Un détecteur de CO est indispensable dès qu'on fait du feu ou qu'on utilise un appoint.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un détecteur de fumée (obligatoire)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Fumée et CO installés et testés",
+     "min_days": null,
+     "objectives": [
+      "abri.detecteurs"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un détecteur par étage et dans chaque chambre",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Détecteurs reliés entre eux, alerte à flash ou vibreur si besoin",
+     "min_days": null,
+     "objectives": [
+      "sante.auditif_alerte"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Détecteurs reliés, détecteur de gaz et d'inondation, alertes sur le téléphone",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "extincteur",
+   "group": "abri",
+   "name": "Extincteur et couverture anti-feu",
+   "icon": "🧯",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Extincteur à poudre ou à eau avec additif près de la cuisine, couverture anti-feu pour un feu de poêle.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Couverture anti-feu dans la cuisine",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Extincteur et couverture anti-feu",
+     "min_days": null,
+     "objectives": [
+      "abri.extincteur"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un extincteur par étage, vérifié chaque année",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Extincteurs adaptés (eau additivée, CO2 pour l'électrique), échelle d'évacuation",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Défense incendie extérieure : tuyau, motopompe sur la réserve d'eau, débroussaillement fait",
+     "min_days": null,
+     "objectives": [
+      "securite.incendie_ext"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "kit_confinement",
+   "group": "abri",
+   "name": "Kit de confinement",
+   "icon": "🧻",
+   "kind": "consommable",
+   "basis": "contenu",
+   "category": null,
+   "description": "Pour calfeutrer une pièce lors d'un accident industriel ou d'une fumée toxique.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "De quoi boucher une porte",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Un rouleau de ruban adhésif large",
+      "Serviettes à mouiller pour le bas des portes"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "Une pièce calfeutrable",
+     "min_days": null,
+     "objectives": [
+      "abri.calfeutrage",
+      "abri.calfeutrage_industriel"
+     ],
+     "includes": [
+      "Film plastique épais prédécoupé aux fenêtres",
+      "Deux rouleaux de ruban adhésif",
+      "Ciseaux",
+      "Radio à piles"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Tenir quelques heures enfermé",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Eau et en-cas pour toute la pièce",
+      "Seau hygiénique",
+      "Lampe et piles",
+      "Fiche réflexe confinement"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Pièce refuge prête",
+     "min_days": null,
+     "objectives": [
+      "abri.piece_refuge"
+     ],
+     "includes": [
+      "Bâches renforcées et agrafeuse",
+      "Couvertures et occupation pour chacun",
+      "Trousse de secours dans la pièce"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Pièce refuge équipée pour 48 heures",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Purificateur d'air HEPA sur batterie",
+      "Détecteur de CO2",
+      "Réserves pour 48 heures dans la pièce"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chauffage_appoint",
+   "group": "abri",
+   "name": "Chauffage d'appoint",
+   "icon": "♨️",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Hors réseau et sûr, avec ventilation et détecteur de CO.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Bouillottes et vêtements chauds",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Chauffage d'appoint au gaz homologué pour l'intérieur, détecteur de CO",
+     "min_days": null,
+     "objectives": [
+      "abri.chauffage_appoint"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Appoint et pièce refuge isolée avec textiles",
+     "min_days": null,
+     "objectives": [
+      "abri.hiver_sans_chauffage"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Poêle à bois ou à granulés sans électricité",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Logement chauffable de façon autonome toute la saison",
+     "min_days": null,
+     "objectives": [
+      "abri.isolation"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "outils",
+   "group": "abri",
+   "name": "Caisse à outils",
+   "icon": "🧰",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Pour les petites réparations quand les artisans ne viennent plus.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Les outils de base",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Tournevis plat et cruciforme",
+      "Pince universelle",
+      "Marteau",
+      "Ruban adhésif toilé"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "La caisse du foyer",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Jeu de clés plates",
+      "Scie à main",
+      "Perceuse-visseuse sur batterie",
+      "Mètre et niveau",
+      "Colliers, vis et chevilles"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Plomberie, électricité, menuiserie",
+     "min_days": null,
+     "objectives": [
+      "abri.reparations"
+     ],
+     "includes": [
+      "Clé à molette et pince multiprise",
+      "Joints, téflon et colle époxy",
+      "Testeur de tension et dominos",
+      "Rabot, ciseaux à bois, serre-joints"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Réparer après une tempête",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Bâches et planches de contreplaqué",
+      "Visserie et clous en quantité",
+      "Pied-de-biche et masse",
+      "Scie sabre ou tronçonneuse"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Atelier autonome",
+     "min_days": null,
+     "objectives": [
+      "abri.resilient"
+     ],
+     "includes": [
+      "Établi et outillage stationnaire",
+      "Matériaux de réparation stockés (bois, tôle, tuiles)",
+      "Poste à souder ou outils manuels anciens",
+      "Outillage mutualisé avec le voisinage"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "thermometre",
+   "group": "abri",
+   "name": "Kit canicule",
+   "icon": "🌡️",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Pour garder une pièce vivable quand il fait plus de 35 °C.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Repérer la chaleur",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Thermomètre intérieur",
+      "Brumisateur"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "La pièce fraîche",
+     "min_days": null,
+     "objectives": [
+      "abri.piece_fraiche"
+     ],
+     "includes": [
+      "Linges humides et bassine",
+      "Ventilateur",
+      "Liste des proches isolés à appeler"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Rafraîchir sans réseau",
+     "min_days": null,
+     "objectives": [
+      "abri.rafraichir_sans_reseau"
+     ],
+     "includes": [
+      "Ventilateur sur batterie",
+      "Rideaux occultants ou film réfléchissant"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Protections solaires extérieures",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Volets ou stores extérieurs",
+      "Voiles d'ombrage",
+      "Glacière et pains de glace"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Logement qui reste frais",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Brasseur d'air sur solaire",
+      "Isolation et végétalisation côté soleil"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kit_neige",
+   "group": "abri",
+   "name": "Équipement neige",
+   "icon": "❄️",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Pour la route et pour rester bloqué une semaine.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Raclette, gants et pelle pliante",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Chaînes ou chaussettes à neige, sel",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Pneus hiver, chaînes, pelle et sel, réserves pour une semaine",
+     "min_days": null,
+     "objectives": [
+      "abri.neige"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Raquettes, crampons, luge de transport",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Fraise à neige ou lame, accès dégagé de façon autonome",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "sacs_dechets",
+   "group": "abri",
+   "name": "Sacs et bacs à déchets",
+   "icon": "🗑️",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Si la collecte s'arrête.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un rouleau de sacs de rechange",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Sacs résistants pour deux semaines",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Sacs pour un mois et bacs fermés, lieu de stockage prévu",
+     "min_days": null,
+     "objectives": [
+      "securite.dechets"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Composteur pour les déchets organiques",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Tri, compost et réduction : moins d'un sac par semaine",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "radio",
+   "group": "communication",
+   "name": "Radio",
+   "icon": "📻",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Quand le réseau mobile tombe, la radio publique diffuse les consignes.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Petit poste FM à piles",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Radio FM à dynamo ou solaire, testée, avec piles de rechange",
+     "min_days": null,
+     "objectives": [
+      "communication.radio"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Radio multibande (FM, grandes ondes, ondes courtes) à dynamo",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Poste CB ou radioamateur opérationnel en émission",
+     "min_days": null,
+     "objectives": [
+      "communication.radio_emission"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Station radio de secours qui relaie l'information au quartier",
+     "min_days": null,
+     "objectives": [
+      "communication.relais"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "talkies",
+   "group": "communication",
+   "name": "Talkies-walkies",
+   "icon": "📟",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "PMR446 sans licence : quelques kilomètres en terrain dégagé.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une paire de talkies jouets ou d'entrée de gamme",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Un talkie PMR446 par adulte, piles de rechange",
+     "min_days": null,
+     "objectives": [
+      "communication.talkies"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Talkies rechargeables, canaux convenus notés dans le répertoire",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Talkies et plan de communication avec les proches (fréquences, horaires)",
+     "min_days": null,
+     "objectives": [
+      "communication.reseau_local"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Réseau de talkies partagé avec le groupe d'entraide, testé",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "cartes",
+   "group": "communication",
+   "name": "Cartes papier",
+   "icon": "🗺️",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Sans GPS ni réseau, une carte et une boussole.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Plan de la ville",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Carte routière de la région",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Carte de la région avec les itinéraires d'évacuation tracés",
+     "min_days": null,
+     "objectives": [
+      "communication.cartes",
+      "mobilite.itineraires"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Cartes IGN au 1:25 000 du trajet vers le lieu de repli, boussole",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Jeu de cartes plastifiées dans chaque sac, points d'eau et abris notés",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "sifflet",
+   "group": "communication",
+   "name": "Sifflets et signaux",
+   "icon": "📯",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Pour se signaler sous des décombres ou alerter les voisins.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un sifflet dans le sac",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Un sifflet par membre, accroché au sac",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Sifflets et signal d'alerte convenu avec les voisins",
+     "min_days": null,
+     "objectives": [
+      "defense.voisinage"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Sifflets, miroir de signalisation, bâtons lumineux",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Signaux, corne de brume et code d'alerte du quartier affiché",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "telephone_secours",
+   "group": "communication",
+   "name": "Téléphone de secours",
+   "icon": "📱",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Un second téléphone chargé, qui marche si le principal est perdu, cassé ou sur un réseau tombé.",
+   "objectives": [
+    "securite.alertes"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un ancien téléphone chargé, qui appelle le 112 même sans carte SIM",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Téléphone de secours avec une carte SIM d'un autre opérateur",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Téléphone robuste à grosse batterie, contacts et FR-Alert configurés",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Routeur 4G de secours sur batterie pour partager une connexion",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Téléphone satellite ou messagerie satellite (SOS hors réseau)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "chargeurs",
+   "group": "communication",
+   "name": "Câbles et chargeurs",
+   "icon": "🔗",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Le câble oublié rend la batterie inutile.",
+   "objectives": [
+    "energie.batterie"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Recharger un téléphone",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Un câble par téléphone du foyer",
+      "Un chargeur secteur"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "Recharger partout",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Chargeur allume-cigare",
+      "Multiprise",
+      "Câbles en double dans le sac"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Tous les formats",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Câbles USB-C, Lightning et micro-USB",
+      "Adaptateurs et rallonge USB",
+      "Chargeur multiport"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Pochette étanche de recharge",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Pochette étanche avec tout le nécessaire",
+      "Câbles renforcés",
+      "Convertisseur 12 V vers 230 V"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Recharger n'importe quel appareil hors réseau",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Câbles 12 V et Anderson pour batteries et panneaux",
+      "Chargeur de piles USB",
+      "Fer à souder et gaine pour réparer"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sauvegarde",
+   "group": "communication",
+   "name": "Sauvegardes numériques",
+   "icon": "💾",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Papiers scannés, photos, contacts : à retrouver même si l'ordinateur brûle ou est volé.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Photos des papiers importants sur le téléphone",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Clé USB chiffrée avec les papiers et contacts",
+     "min_days": null,
+     "objectives": [
+      "finances.papiers"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Règle 3-2-1 : trois copies, deux supports, une hors du logement",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Disque chiffré chez un proche hors de la région, vérifié tous les six mois",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Serveur domestique (NAS) répliqué hors site, restauration testée",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "ordinateur_hors_ligne",
+   "group": "communication",
+   "name": "Bibliothèque numérique hors ligne",
+   "icon": "💻",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Savoir et cartes consultables sans Internet : Wikipédia hors ligne (Kiwix), cartes OpenStreetMap, guides en PDF.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Guides officiels en PDF sur le téléphone",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Cartes hors ligne de la région sur le téléphone (OsmAnd, Organic Maps)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Liseuse ou tablette avec guides de secourisme, jardinage, réparations",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Ordinateur portable sobre avec Wikipédia hors ligne (Kiwix) et cartes",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Serveur Kiwix local sur mini-ordinateur solaire, accessible en Wi-Fi au voisinage",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "reseau_maille",
+   "group": "communication",
+   "name": "Réseau maillé LoRa",
+   "icon": "📡",
+   "kind": "equipement",
+   "basis": "quantite",
+   "category": null,
+   "description": "Messagerie texte sans opérateur (Meshtastic) : de petits boîtiers relaient les messages de proche en proche, sur plusieurs kilomètres.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un boîtier pour découvrir le réseau du coin",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Deux boîtiers appairés aux téléphones du foyer",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un boîtier par adulte et un canal convenu avec les proches",
+     "min_days": null,
+     "objectives": [
+      "communication.reseau_local"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Relais fixe sur le toit, alimenté au solaire",
+     "min_days": null,
+     "objectives": [
+      "communication.relais"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Réseau de quartier testé tous les six mois avec le groupe d'entraide",
+     "min_days": null,
+     "objectives": [
+      "communication.reseau_teste"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "onduleur",
+   "group": "communication",
+   "name": "Onduleur box et routeur",
+   "icon": "🖧",
+   "kind": "equipement",
+   "basis": "qualite",
+   "category": null,
+   "description": "Garde Internet et le Wi-Fi en marche quelques heures pendant une coupure, tant que le réseau de l'opérateur tient.",
+   "objectives": [
+    "energie.bilan_wh"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Batterie externe capable d'alimenter la box en USB-C ou 12 V",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Petit onduleur pour la box : 1 à 2 heures",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Mini-onduleur 12 V pour box et routeur : 4 heures et plus",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Box, routeur et ordinateur sur la station électrique",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Réseau domestique entier sur batterie solaire, avec accès de secours 4G ou satellite",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "sac_evacuation",
+   "group": "evacuation",
+   "name": "Sac d'évacuation",
+   "icon": "🎒",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Prêt près de la sortie, à revoir tous les six mois (tailles, dates, saison).",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un sac commun pour partir dans la minute",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Copies des papiers d'identité",
+      "Un litre d'eau par personne",
+      "Lampe et piles",
+      "Chargeur et batterie externe",
+      "50 € en espèces",
+      "Liste des contacts sur papier"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "Tenir 24 heures dehors",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Couverture de survie",
+      "Barres énergétiques pour 24 heures",
+      "Trousse de secours compacte",
+      "Médicaments du quotidien pour 3 jours",
+      "Vêtement de pluie",
+      "Couteau multifonction"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un sac 72 heures par membre",
+     "min_days": null,
+     "objectives": [
+      "mobilite.sac"
+     ],
+     "includes": [
+      "Un sac par personne à sa taille",
+      "Eau pour 72 heures (ou 1 L et des pastilles)",
+      "Vivres pour 72 heures",
+      "Vêtements de rechange et sous-vêtements",
+      "Kit d'hygiène de voyage",
+      "Radio à dynamo",
+      "Sifflet",
+      "Masques FFP2"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Sacs personnalisés selon chacun",
+     "min_days": null,
+     "objectives": [
+      "sante.lunettes_sac"
+     ],
+     "includes": [
+      "Lunettes de secours en étui rigide",
+      "Traitements pour 7 jours et ordonnances",
+      "Kit de réconfort pour chaque enfant",
+      "Matériel des animaux (laisse, gamelle, croquettes)",
+      "Clé USB chiffrée des papiers",
+      "Carte papier avec itinéraires et lieu de rassemblement"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Sacs et lieu de repli prêts",
+     "min_days": null,
+     "objectives": [
+      "mobilite.repli"
+     ],
+     "includes": [
+      "Sac de couchage léger et abri (tarp)",
+      "Filtre à eau portable",
+      "Réchaud compact et popote",
+      "Lieu de repli pré-approvisionné",
+      "Sac vérifié lors d'un exercice d'évacuation"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "velo",
+   "group": "evacuation",
+   "name": "Vélo",
+   "icon": "🚲",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Pour se déplacer quand le carburant manque ou que les routes sont bloquées.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un vélo qui roule",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Vélo en état et kit de réparation (chambre à air, démonte-pneus, pompe)",
+     "min_days": null,
+     "objectives": [
+      "mobilite.velo"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Un vélo par adulte, éclairage, antivol, porte-bagages",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Sacoches, remorque enfant ou cargo, pièces d'usure de rechange",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Vélo cargo ou VAE rechargé au solaire",
+     "min_days": null,
+     "objectives": [
+      "mobilite.sans_fossile"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "kit_vehicule",
+   "group": "evacuation",
+   "name": "Kit véhicule",
+   "icon": "🚗",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Le réservoir ne descend jamais sous la moitié.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Le minimum légal et un peu plus",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Gilet et triangle",
+      "Lampe",
+      "Couverture"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "Rester bloqué quelques heures",
+     "min_days": null,
+     "objectives": [
+      "mobilite.vehicule"
+     ],
+     "includes": [
+      "Eau et barres énergétiques",
+      "Câbles de démarrage",
+      "Chargeur allume-cigare",
+      "Trousse de secours"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Une nuit bloqué sur la route",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Sac de couchage ou couvertures pour chacun",
+      "Bouteille d'eau de 5 L",
+      "Pelle pliante et gants",
+      "Booster de démarrage"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Se dépanner seul",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Compresseur 12 V et kit anti-crevaison",
+      "Sangle de remorquage",
+      "Outils de base",
+      "Carte routière"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Véhicule d'évacuation",
+     "min_days": null,
+     "objectives": [
+      "mobilite.carburant"
+     ],
+     "includes": [
+      "Jerrican de carburant renouvelé",
+      "Plaques de désensablement",
+      "Réchaud et vivres pour 72 heures",
+      "Talkie ou CB"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "jerrican_carburant",
+   "group": "evacuation",
+   "name": "Jerrican de carburant",
+   "icon": "⛽",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Stocké dehors à l'abri, renouvelé tous les six mois (ou avec un stabilisant).",
+   "objectives": [
+    "energie.secours"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un jerrican de 5 L",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Un jerrican de 20 L",
+     "min_days": null,
+     "objectives": [
+      "mobilite.carburant"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "40 L et stabilisant, rotation notée",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Un plein d'avance et carburant pour le groupe électrogène",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Réserve pour un mois de déplacements essentiels, stockage conforme",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "caisse_animaux",
+   "group": "evacuation",
+   "name": "Caisse de transport",
+   "icon": "🐾",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Pour partir avec chaque animal.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Une laisse ou un sac de transport",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Caisse, laisse et gamelle pour chaque animal, près de la sortie",
+     "min_days": null,
+     "objectives": [
+      "mobilite.animaux_transport"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Copie du carnet de vaccination et photo de l'animal dans la caisse",
+     "min_days": null,
+     "objectives": [
+      "finances.animaux_papiers"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Sac de l'animal : nourriture et litière pour 3 jours, traitement, jouet",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Hébergement de repli qui accepte les animaux, trajet testé",
+     "min_days": null,
+     "objectives": [
+      "mobilite.animaux_repli"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "aide_technique",
+   "group": "evacuation",
+   "name": "Aide technique de secours",
+   "icon": "🦯",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Pour évacuer une personne à mobilité réduite sans ascenseur ni électricité.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Canne pliante",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Canne pliante et fauteuil manuel si le fauteuil habituel est électrique",
+     "min_days": null,
+     "objectives": [
+      "mobilite.aide_technique"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Chaise d'évacuation pour escaliers",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Batterie de rechange du fauteuil et chargeur hors réseau",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Matériel adapté dans le lieu de repli, évacuation testée",
+     "min_days": null,
+     "objectives": [
+      "mobilite.evacuation_pmr_testee"
+     ],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "classeur_papiers",
+   "group": "papiers",
+   "name": "Classeur des papiers",
+   "icon": "🗂️",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Au même endroit et prêts à partir.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Les originaux rassemblés",
+     "min_days": null,
+     "objectives": [
+      "finances.papiers_ranges"
+     ],
+     "includes": [
+      "Pièces d'identité et passeports",
+      "Cartes Vitale et de mutuelle",
+      "Carnets de santé",
+      "Livret de famille"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "Des copies prêtes à partir",
+     "min_days": null,
+     "objectives": [
+      "finances.papiers"
+     ],
+     "includes": [
+      "Copies papier dans le sac d'évacuation",
+      "Contrats d'assurance et de logement",
+      "Relevé d'identité bancaire"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Santé et animaux compris",
+     "min_days": null,
+     "objectives": [
+      "sante.fiches",
+      "sante.ordonnance_vue",
+      "finances.animaux_papiers"
+     ],
+     "includes": [
+      "Fiche médicale par membre",
+      "Ordonnances en cours, dont la correction visuelle",
+      "Carnets de vaccination des animaux",
+      "Titres de propriété et carte grise"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "À l'abri de l'eau et du feu",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Pochette étanche et ignifugée",
+      "Copies chez un proche hors de la région",
+      "Inventaire photo du logement pour l'assurance"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Dossier complet et à jour",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Coffre ignifugé",
+      "Testament et procurations",
+      "Codes et accès d'urgence chez une personne de confiance",
+      "Mise à jour datée de l'année"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "especes",
+   "group": "papiers",
+   "name": "Espèces",
+   "icon": "💶",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "En petites coupures : quand les terminaux de paiement tombent, seul le liquide passe.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "50 € à la maison",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "150 € par adulte",
+     "min_days": null,
+     "objectives": [
+      "finances.especes"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "300 € par adulte, dont une part dans le sac d'évacuation",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Un mois de dépenses courantes en liquide",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Liquide et biens d'échange (outils, petits objets utiles)",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "repertoire",
+   "group": "papiers",
+   "name": "Répertoire papier",
+   "icon": "📒",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Sans téléphone, on ne se souvient d'aucun numéro.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Les numéros vitaux",
+     "min_days": null,
+     "objectives": [
+      "communication.frequence"
+     ],
+     "includes": [
+      "Numéros d'urgence (15, 17, 18, 112, 114)",
+      "Fréquence FM de la radio publique locale",
+      "Le proche à contacter en premier"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "Les contacts essentiels",
+     "min_days": null,
+     "objectives": [
+      "communication.contacts_papier",
+      "moral.ecoute"
+     ],
+     "includes": [
+      "Famille, voisins, école, travail",
+      "Médecin et pharmacie",
+      "Numéros d'écoute (3114, SOS Amitié)"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Le plan de communication",
+     "min_days": null,
+     "objectives": [
+      "communication.contact_externe"
+     ],
+     "includes": [
+      "Contact référent hors de la région",
+      "Lieu de rassemblement",
+      "Assurance, fournisseurs d'eau et d'électricité"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Un exemplaire par personne",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Une carte plastifiée dans chaque portefeuille et chaque sac",
+      "Canaux de talkie et fréquences convenues"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "L'annuaire du réseau",
+     "min_days": null,
+     "objectives": [
+      "communaute.annuaire"
+     ],
+     "includes": [
+      "Compétences et ressources des proches",
+      "Contacts du groupe d'entraide",
+      "Mise à jour datée de l'année"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "doubles_cles",
+   "group": "papiers",
+   "name": "Doubles des clés",
+   "icon": "🔑",
+   "kind": "equipement",
+   "basis": "options",
+   "category": null,
+   "description": "Logement, voiture, boîte aux lettres.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un double rangé à la maison",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Doubles chez un proche de confiance et cache sûre",
+     "min_days": null,
+     "objectives": [
+      "securite.cles"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Doubles étiquetés de façon discrète, un jeu dans le sac",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Doubles des lieux de repli et des proches",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Boîte à clés sécurisée et inventaire des clés à jour",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "bibliotheque",
+   "group": "papiers",
+   "name": "Bibliothèque papier",
+   "icon": "📚",
+   "kind": "equipement",
+   "basis": "quantite",
+   "category": null,
+   "description": "Guides de référence, lisibles sans écran.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un guide officiel de préparation aux urgences",
+     "min_days": null,
+     "objectives": [
+      "competences.guide"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Un manuel de premiers secours",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Secourisme, jardinage, réparations, conserves",
+     "min_days": null,
+     "objectives": [
+      "competences.bibliotheque"
+     ],
+     "includes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Plantes comestibles et médicinales, élevage, mécanique",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Bibliothèque partagée avec le voisinage, fiches pratiques plastifiées",
+     "min_days": null,
+     "objectives": [],
+     "includes": []
+    }
+   ]
+  },
+  {
+   "id": "kit_occupation",
+   "group": "moral",
+   "name": "Kit sommeil et occupation",
+   "icon": "🎲",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Sans écran, le temps est long et le sommeil fragile.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Dormir malgré le bruit",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Bouchons d'oreille",
+      "Masque de nuit"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "S'occuper une soirée",
+     "min_days": null,
+     "objectives": [
+      "moral.kit_occupation"
+     ],
+     "includes": [
+      "Un livre par personne",
+      "Jeu de cartes",
+      "Carnet et crayons"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "S'occuper une semaine",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Jeux de société pour tout le foyer",
+      "Livres et magazines variés",
+      "Activité manuelle (tricot, dessin, maquette)"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Tenir le moral longtemps",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Instrument de musique simple",
+      "Ballon et jeux d'extérieur",
+      "Routine de crise écrite et affichée"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Animer le voisinage",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Jeux pour un groupe",
+      "Projecteur ou lecteur sur batterie",
+      "Programme de veillées"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kit_enfant",
+   "group": "moral",
+   "name": "Kit de réconfort enfant",
+   "icon": "🧸",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Dans le sac de chaque enfant.",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Un objet rassurant",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Doudou ou objet familier"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "Le kit de réconfort",
+     "min_days": null,
+     "objectives": [
+      "moral.kit_enfant"
+     ],
+     "includes": [
+      "Petit jeu",
+      "Photo de famille",
+      "Carte avec les contacts des parents"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Occuper et apaiser",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Livre ou cahier de coloriage",
+      "Friandises",
+      "Casque anti-bruit"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Expliquer et préparer",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Livre qui explique les situations d'urgence à son âge",
+      "Bracelet avec nom et contact",
+      "Vêtement doudou de rechange"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Tenir plusieurs jours loin de chez soi",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Jeux pour plusieurs jours",
+      "Rituel du coucher transportable (veilleuse, histoire)",
+      "Kit révisé à chaque anniversaire"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kit_reassurance",
+   "group": "moral",
+   "name": "Kit de réassurance",
+   "icon": "🎧",
+   "kind": "equipement",
+   "basis": "contenu",
+   "category": null,
+   "description": "Pour une personne qui a besoin d'accompagnement (autisme, troubles cognitifs, handicap).",
+   "objectives": [],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Pouvoir être identifié",
+     "min_days": null,
+     "objectives": [
+      "sante.identification"
+     ],
+     "includes": [
+      "Carte ou bracelet d'identification (nom, contact, besoins)"
+     ]
+    },
+    {
+     "tier": "commun",
+     "contents": "Le kit de réassurance",
+     "min_days": null,
+     "objectives": [
+      "sante.reassurance"
+     ],
+     "includes": [
+      "Casque anti-bruit",
+      "Objet familier",
+      "Pictogrammes de communication"
+     ]
+    },
+    {
+     "tier": "confirme",
+     "contents": "Garder ses repères",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Routine de crise illustrée",
+      "Aliments habituels pour 3 jours",
+      "Fiche de besoins pour les secours"
+     ]
+    },
+    {
+     "tier": "epique",
+     "contents": "Apaiser une crise",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Lunettes teintées et objets sensoriels",
+      "Couverture lestée ou vêtement rassurant",
+      "Traitement et consignes du médecin"
+     ]
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Plan d'accompagnement complet",
+     "min_days": null,
+     "objectives": [],
+     "includes": [
+      "Plan validé par les soignants",
+      "Kit en double au lieu de repli",
+      "Exercice d'évacuation fait avec la personne"
+     ]
+    }
+   ]
+  }
  ]
 }

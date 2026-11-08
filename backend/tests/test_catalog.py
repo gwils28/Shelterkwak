@@ -29,3 +29,26 @@ def test_invalid_reference_is_rejected(tmp_path, catalog: Catalog) -> None:
 
 def test_loader_reads_directory() -> None:
     assert len(load_catalog().objectives) > 100
+
+
+def test_items_cover_every_group_and_reserve_category(catalog: Catalog) -> None:
+    assert {i.group for i in catalog.items} == {g.id for g in catalog.item_groups}
+    reserves = {i.category for i in catalog.items if i.kind == "reserve"}
+    assert reserves == {c.id for c in catalog.categories}
+
+
+@pytest.mark.parametrize(
+    ("change", "message"),
+    [
+        (lambda it: it["objectives"].append("inexistant"), "objectif inconnu"),
+        (lambda it: it.update(group="inexistant"), "groupe inconnu"),
+        (lambda it: it["tiers"].reverse(), "les cinq niveaux"),
+        (lambda it: it["tiers"].pop(), "les cinq niveaux"),
+        (lambda it: it["tiers"][2].update(includes=[]), "includes"),
+    ],
+)
+def test_invalid_item_is_rejected(catalog: Catalog, change, message: str) -> None:
+    data = catalog.model_dump()
+    change(next(it for it in data["items"] if it["id"] == "trousse_secours"))
+    with pytest.raises(ValueError, match=message):
+        Catalog.model_validate(data)

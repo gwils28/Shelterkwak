@@ -4,7 +4,7 @@ import { memberOf } from "../engine/engine";
 import { addDays, localToday } from "../engine/dates";
 import type { Answer } from "../engine/interview";
 import { applyAnswers } from "../engine/interview";
-import { evaluateState, type HouseholdData, replay, type StockData } from "../engine/replay";
+import { evaluateState, type HouseholdData, type ItemData, replay, type StockData } from "../engine/replay";
 import { type CustomObjective, withCustom } from "../engine/types";
 import { buildDashboard, buildObjectives } from "../model";
 import { newId, store } from "./store";
@@ -51,6 +51,8 @@ export const actions = {
   toggle: (objective_id: string, done: boolean) => (done ? actions.unvalidate(objective_id) : actions.validate(objective_id)),
   upsertStock: (item: Omit<StockData, "id"> & { id?: string }) => store.append("stock.upsert", { ...item, id: item.id ?? newId() }),
   deleteStock: (id: string) => store.append("stock.delete", { id }),
+  setItem: (item: ItemData) => store.append("item.set", { ...item }),
+  deleteItem: (item_id: string) => store.append("item.delete", { item_id }),
   setHousehold: (h: HouseholdData) => store.append("household.set", { ...h }),
   upsertCustom: (c: Omit<CustomObjective, "id"> & { id?: string }) =>
     store.append("custom.upsert", { ...c, id: c.id ?? `perso.${newId()}` }),
@@ -100,7 +102,7 @@ export function buildOnboarding(
       .sort()
       .map((objective_id) => ({ objective_id, validated_at: today, note: "", source: "interview" })),
     // Une estimation déclarée n'est pas un stock vérifié : elle périme au bout de 6 mois, ce qui
-    // invite à la confirmer ou à la détailler dans les Réserves.
+    // invite à la confirmer ou à la détailler dans l'Inventaire.
     stock: result.stock.map((s) => ({ ...s, id: newId(), expires_on: addDays(today, INTERVIEW_STOCK_DAYS) })),
   };
 }

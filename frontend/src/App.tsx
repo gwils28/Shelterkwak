@@ -16,7 +16,7 @@ import { useFoyer } from "./store/hooks";
 const NAV = [
   { to: "/", label: "Monument", Icon: IconMonument },
   { to: "/objectifs", label: "Objectifs", Icon: IconObjectives },
-  { to: "/inventaire", label: "Réserves", Icon: IconStock },
+  { to: "/inventaire", label: "Inventaire", Icon: IconStock },
   { to: "/historique", label: "Parcours", Icon: IconJourney },
   { to: "/foyer", label: "Foyer", Icon: IconHousehold },
 ];
@@ -70,7 +70,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/objectifs" element={<ObjectivesPage />} />
-          <Route path="/inventaire" element={<InventoryPage />} />
+          <Route path="/inventaire/*" element={<InventoryPage />} />
           <Route path="/foyer" element={<HouseholdPage />} />
           <Route path="/historique" element={<HistoryPage />} />
           <Route path="/crise" element={<CrisisPage />} />

@@ -118,6 +118,57 @@ class Category(BaseModel):
     applies_if: str | None = None
 
 
+TierId = Literal["rustique", "commun", "confirme", "epique", "legendaire"]
+
+
+class ItemTierName(BaseModel):
+    id: TierId
+    name: str
+
+
+class ItemGroup(BaseModel):
+    id: str
+    name: str
+    icon: str = ""
+
+
+class ItemTier(BaseModel):
+    """Palier de qualité ou de contenu d'un objet ; `min_days` pour une réserve (jours d'autonomie)."""
+
+    tier: TierId
+    contents: str = ""
+    min_days: float | None = None
+    objectives: list[str] = Field(default_factory=list)
+    includes: list[str] = Field(default_factory=list)  # contenu minimal ajouté à ce niveau (contenants)
+
+
+class Item(BaseModel):
+    """Carte de l'inventaire. Son id est stocké dans le journal (opération item.set)."""
+
+    id: str
+    group: str
+    name: str
+    icon: str = ""
+    kind: Literal["equipement", "consommable", "reserve"]
+    basis: Literal["qualite", "options", "quantite", "contenu", "autonomie"]  # ce qui fait monter le niveau
+    category: str | None = None  # catégorie d'autonomie, pour une réserve
+    description: str = ""
+    objectives: list[str] = Field(default_factory=list)
+    tiers: list[ItemTier] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _reserve_consistency(self) -> Item:
+        if (self.kind == "reserve") != (self.category is not None):
+            raise ValueError(f"{self.id}: `category` est requis si et seulement si kind == 'reserve'")
+        if any((t.min_days is not None) != (self.kind == "reserve") for t in self.tiers):
+            raise ValueError(f"{self.id}: `min_days` est requis sur chaque palier d'une réserve, et seulement là")
+        if (self.kind == "reserve") != (self.basis == "autonomie"):
+            raise ValueError(f"{self.id}: `basis: autonomie` est réservé aux réserves, et obligatoire pour elles")
+        if (self.basis == "contenu") != all(t.includes for t in self.tiers):
+            raise ValueError(f"{self.id}: un contenant liste `includes` à chaque niveau, et lui seul")
+        return self
+
+
 class ShowIf(BaseModel):
     context_in: list[ContextId] | None = None
     tags_any: list[str] | None = None
@@ -166,6 +217,9 @@ class Catalog(BaseModel):
     questions: list[Question]
     crisis_notes: list[CrisisNote] = Field(default_factory=list)
     scenarios: list[Scenario] = Field(default_factory=list)
+    item_tiers: list[ItemTierName] = Field(default_factory=list)
+    item_groups: list[ItemGroup] = Field(default_factory=list)
+    items: list[Item] = Field(default_factory=list)
 
     def is_animal(self, member_type: str) -> bool:
         return self.member_tags.get(member_type) == "animaux"
@@ -232,9 +286,35 @@ class Catalog(BaseModel):
                 errors.append(f"question {q.id}: catégorie inconnue {q.creates_stock.category}")
             if q.type != "number" and not q.options and not q.options_from:
                 errors.append(f"question {q.id}: aucune option")
+        errors.extend(_item_errors(self, seen, cat_ids))
         if errors:
             raise ValueError("Catalogue invalide :\n- " + "\n- ".join(errors))
         return self
+
+
+def _item_errors(catalog: Catalog, objective_ids: set[str], cat_ids: set[str]) -> list[str]:
+    """Références des cartes d'inventaire : groupe, catégorie, objectifs, ordre des paliers."""
+    errors: list[str] = []
+    rank = {t.id: i for i, t in enumerate(catalog.item_tiers)}
+    group_ids = {g.id for g in catalog.item_groups}
+    seen: set[str] = set()
+    for it in catalog.items:
+        if it.id in seen:
+            errors.append(f"objet en double : {it.id}")
+        seen.add(it.id)
+        if it.group not in group_ids:
+            errors.append(f"objet {it.id}: groupe inconnu {it.group}")
+        if it.category is not None and it.category not in cat_ids:
+            errors.append(f"objet {it.id}: catégorie inconnue {it.category}")
+        for oid in [*it.objectives, *(o for t in it.tiers for o in t.objectives)]:
+            if oid not in objective_ids:
+                errors.append(f"objet {it.id}: objectif inconnu {oid}")
+        if [t.tier for t in it.tiers] != list(rank):
+            errors.append(f"objet {it.id}: les cinq niveaux sont attendus, dans l'ordre ({', '.join(rank)})")
+        days = [t.min_days for t in it.tiers if t.min_days is not None]
+        if days != sorted(set(days)):
+            errors.append(f"objet {it.id}: `min_days` doit croître d'un palier au suivant")
+    return errors
 
 
 def _read(path: Path) -> dict:
@@ -252,6 +332,7 @@ def load_catalog(directory: Path | None = None) -> Catalog:
         for o in data.get("objectives", []):
             objectives.append({"axis": data["axis"], **o})
     # Ordre stable : niveau, puis ordre des axes déclaré dans axes.yaml, puis ordre du fichier.
+    items = _read(directory / "items.yaml") if (directory / "items.yaml").exists() else {}
     objectives.sort(key=lambda o: (o.get("level", 0), axis_rank.get(o["axis"], len(axis_rank))))
     return Catalog(
         levels=_read(directory / "levels.yaml")["levels"],
@@ -265,6 +346,9 @@ def load_catalog(directory: Path | None = None) -> Catalog:
         questions=_read(directory / "interview.yaml")["questions"],
         crisis_notes=_read(directory / "crisis.yaml").get("notes", []),
         scenarios=_read(directory / "crisis.yaml").get("scenarios", []),
+        item_tiers=items.get("tiers", []),
+        item_groups=items.get("groups", []),
+        items=items.get("items", []),
     )
 
 

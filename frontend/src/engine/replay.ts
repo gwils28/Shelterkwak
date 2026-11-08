@@ -14,6 +14,8 @@ export type OpType =
   | "custom.upsert"
   | "custom.delete"
   | "notes.set"
+  | "item.set"
+  | "item.delete"
   | "reset";
 
 export interface Op {
@@ -60,17 +62,27 @@ export interface StockData {
   location?: string | null; // où il est rangé (absent des opérations anciennes)
 }
 
+/** Carte d'inventaire possédée (opération item.set) ; `tier` est l'id d'un palier de qualité. */
+export interface ItemData {
+  item_id: string;
+  tier: string | null;
+  quantity: number;
+  location: string | null;
+  note: string;
+}
+
 export interface State {
   household: HouseholdData | null;
   validations: Map<string, ValidationData>;
   stock: Map<string, StockData>;
   custom: Map<string, CustomObjective>;
   notes: Map<string, string>; // fiches de l'écran Crise
+  items: Map<string, ItemData>; // cartes possédées, par id d'objet
   onboarded_at: string | null;
 }
 
 export function emptyState(): State {
-  return { household: null, validations: new Map(), stock: new Map(), custom: new Map(), notes: new Map(), onboarded_at: null };
+  return { household: null, validations: new Map(), stock: new Map(), custom: new Map(), notes: new Map(), items: new Map(), onboarded_at: null };
 }
 
 export function compareOps(a: Op, b: Op): number {
@@ -95,6 +107,12 @@ function contextName(catalog: Catalog, ctx: string | null | undefined): string {
   return catalog.contexts.find((c) => c.id === ctx)?.name ?? String(ctx);
 }
 
+function itemLabel(catalog: Catalog, itemId: string, tier: string | null = null): string {
+  const name = catalog.items.find((i) => i.id === itemId)?.name ?? itemId;
+  const tierName = catalog.item_tiers.find((t) => t.id === tier)?.name;
+  return tierName ? `${name} (${tierName.toLowerCase()})` : name;
+}
+
 /** Applique une opération ; renvoie [message du journal, cause d'un éventuel changement de niveau]. */
 export function apply(catalog: Catalog, state: State, op: Op): [string, string] {
   const p = op.payload;
@@ -106,6 +124,7 @@ export function apply(catalog: Catalog, state: State, op: Op): [string, string] 
       state.stock.clear();
       state.custom.clear();
       state.notes.clear();
+      state.items.clear();
       return ["Remise à zéro du foyer", "remise à zéro"];
     case "onboarding": {
       state.household = { ...p.household };
@@ -175,6 +194,17 @@ export function apply(catalog: Catalog, state: State, op: Op): [string, string] 
       state.notes.set(p.key, String(p.text ?? ""));
       const name = catalog.crisis_notes.find((n) => n.id === p.key)?.name ?? p.key;
       return [`Fiche de crise mise à jour : ${name}`, `fiche de crise « ${name} »`];
+    }
+    case "item.set": {
+      const prefix = state.items.has(p.item_id) ? "Inventaire mis à jour" : "Ajouté à l'inventaire";
+      state.items.set(p.item_id, { ...(p as ItemData) });
+      const label = itemLabel(catalog, p.item_id, p.tier ?? null);
+      return [`${prefix} : ${label}`, `inventaire « ${label} »`];
+    }
+    case "item.delete": {
+      state.items.delete(p.item_id);
+      const label = itemLabel(catalog, p.item_id);
+      return [`Retiré de l'inventaire : ${label}`, `inventaire « ${label} » retiré`];
     }
     default:
       throw new Error(`type d'opération inconnu : ${(op as Op).type}`);
