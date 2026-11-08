@@ -69,6 +69,7 @@ export interface ItemData {
   quantity: number;
   location: string | null;
   note: string;
+  expires_on?: IsoDate | null; // péremption (consommable) ou prochaine vérification (équipement)
 }
 
 export interface State {

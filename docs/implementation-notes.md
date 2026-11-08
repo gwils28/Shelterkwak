@@ -103,3 +103,18 @@ déploiement sur Raspberry Pi.
   confondent) ; elles restent sur les cartes, toujours avec le nom du niveau écrit. Les graphiques
   utilisent une palette validée (une couleur fixe par catégorie d'autonomie), avec étiquettes
   directes et vue tableau.
+
+## Conseil du 2026-11-08 (voir `docs/conseil/2026-11-08.md`)
+- **Règles des niveaux d'objet**, vérifiées au chargement (`_tier_order_errors`) : un niveau ne
+  porte pas de compétence (`kind: skill`), qui reste liée à l'objet seulement ; un niveau ne
+  remplit pas d'objectif plus bas que ceux des niveaux précédents. Des objectifs propres à des
+  contextes différents peuvent partager un niveau (balcon et solaire fixe).
+- **Date sur les objets** : `expires_on` facultatif dans `item.set`. Les deux moteurs stockent la
+  charge telle quelle ; seule l'app l'interprète (péremption pour un consommable, prochaine
+  vérification pour un équipement). Un objet déclaré avant n'a pas le champ.
+- **`crisis: true`** sur un objet : son emplacement s'affiche dans l'écran Crise.
+- **Prochains achats** : une réserve y figure avec la quantité manquante pour son prochain niveau ;
+  tri par palier de l'objectif, puis requis avant bonus.
+- **Saison** : prochaine échéance = 1er du mois `due_month` à venir ; urgente sous 60 jours. Le
+  panneau ne s'affiche pas si aucun objectif saisonnier ne concerne le foyer.
+- **`thermometre` → `kit_canicule`** : renommé avant toute écriture dans un journal partagé.

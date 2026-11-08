@@ -5,6 +5,7 @@ import { addDays } from "../engine/dates";
 import type { ItemData, StockData } from "../engine/replay";
 import type { Catalog, Item, ItemTier, Status } from "../engine/types";
 import type { Autonomy, Objective } from "../model";
+import { formatNumber } from "./format";
 
 export const DONE_STATUSES: Status[] = ["done", "expiring", "grace"];
 
@@ -80,7 +81,7 @@ export function buildCards(
         articles,
         objectives: linked,
         done,
-        relevant: owned || auto?.days !== null,
+        relevant: owned || (auto !== null && auto.days !== null),
         warn: articles.some((s) => s.quantity > 0 && !!s.expires_on && s.expires_on <= soon),
       };
     }
@@ -97,7 +98,7 @@ export function buildCards(
       objectives: linked,
       done,
       relevant: data !== null || allLinks.length === 0 || linked.length > 0,
-      warn: false,
+      warn: !!data?.expires_on && data.expires_on <= soon,
     };
   });
 }
@@ -111,6 +112,8 @@ export interface NextStep {
   /** Niveau à atteindre. */
   target: ItemTier;
   objective: Objective;
+  /** Pour une réserve : ce qui manque pour atteindre le niveau, dans l'unité de la catégorie. */
+  missing: { amount: number; unit: string } | null;
 }
 
 /**
@@ -120,7 +123,7 @@ export interface NextStep {
 export function nextSteps(cards: Card[]): NextStep[] {
   const out: NextStep[] = [];
   for (const card of cards) {
-    if (!card.relevant || card.item.kind === "reserve") continue;
+    if (!card.relevant) continue;
     const open = new Map(card.objectives.filter((o) => OPEN_STATUSES.includes(o.status)).map((o) => [o.id, o]));
     if (!open.size) continue;
     const current = card.tier ? card.item.tiers.indexOf(card.tier) : -1;
@@ -128,9 +131,15 @@ export function nextSteps(cards: Card[]): NextStep[] {
     const i = card.item.tiers.findIndex((t, n) => n > current && t.objectives.some((id) => open.has(id)));
     if (i < 0) continue;
     const target = card.item.tiers[i];
-    out.push({ card, target, objective: open.get(target.objectives.find((id) => open.has(id))!)! });
+    const auto = card.autonomy;
+    const missing =
+      card.item.kind === "reserve" && auto && target.min_days !== null
+        ? { amount: Math.max(0, target.min_days - (auto.days ?? 0)) * auto.need_per_day, unit: auto.unit }
+        : null;
+    out.push({ card, target, objective: open.get(target.objectives.find((id) => open.has(id))!)!, missing });
   }
-  return out.sort((a, b) => a.objective.level - b.objective.level);
+  // Le palier le plus bas d'abord, et à palier égal ce qui est requis avant les bonus.
+  return out.sort((a, b) => a.objective.level - b.objective.level || Number(b.objective.required) - Number(a.objective.required));
 }
 
 export interface ProjectionPoint {
@@ -169,13 +178,35 @@ export function autonomyProjection(stock: StockData[], autonomy: Autonomy[], tod
     });
 }
 
-/** Articles qui périment, regroupés par mois (AAAA-MM) sur les `months` prochains mois. */
-export function expiriesByMonth(stock: StockData[], today: string, months = 12): { month: string; articles: StockData[] }[] {
-  const out: { month: string; articles: StockData[] }[] = [];
+/** Ce qui a une date : articles des réserves (péremption) et objets (péremption ou vérification). */
+export interface Dated {
+  id: string;
+  name: string;
+  date: string;
+  /** Article de réserve (péremption) ou objet (péremption d'un consommable, vérification d'un équipement). */
+  kind: "article" | "consommable" | "equipement";
+  detail: string;
+}
+
+export function datedEntries(cards: Card[], categoryName: (id: string) => string): Dated[] {
+  const out: Dated[] = [];
+  for (const c of cards) {
+    for (const s of c.articles)
+      if (s.quantity > 0 && s.expires_on)
+        out.push({ id: s.id, name: s.name, date: s.expires_on, kind: "article", detail: `${formatNumber(s.quantity)} ${s.unit_label} · ${categoryName(s.category)}` });
+    if (c.data?.expires_on && c.item.kind !== "reserve")
+      out.push({ id: c.item.id, name: c.item.name, date: c.data.expires_on, kind: c.item.kind, detail: c.data.location ?? "" });
+  }
+  return out.sort((a, b) => a.date.localeCompare(b.date) || a.name.localeCompare(b.name));
+}
+
+/** Échéances regroupées par mois (AAAA-MM) sur les `months` prochains mois. */
+export function expiriesByMonth(entries: Dated[], today: string, months = 12): { month: string; entries: Dated[] }[] {
+  const out: { month: string; entries: Dated[] }[] = [];
   let [y, m] = today.slice(0, 7).split("-").map(Number);
   for (let i = 0; i < months; i++) {
     const month = `${y}-${String(m).padStart(2, "0")}`;
-    out.push({ month, articles: stock.filter((s) => s.quantity > 0 && s.expires_on?.startsWith(month) && s.expires_on >= today) });
+    out.push({ month, entries: entries.filter((e) => e.date.startsWith(month) && e.date >= today) });
     m += 1;
     if (m > 12) [y, m] = [y + 1, 1];
   }
@@ -196,4 +227,19 @@ export function byLocation(cards: Card[]): { location: string; names: string[] }
   return [...map.entries()]
     .map(([location, names]) => ({ location, names: [...names].sort() }))
     .sort((a, b) => (a.location === "") !== (b.location === "") ? (a.location === "" ? 1 : -1) : b.names.length - a.names.length);
+}
+
+/** Prochaine échéance d'un objectif saisonnier : le 1er du mois `dueMonth` à venir (aujourd'hui exclu). */
+export function nextDue(dueMonth: number, today: string): string {
+  const year = Number(today.slice(0, 4));
+  const thisYear = `${year}-${String(dueMonth).padStart(2, "0")}-01`;
+  return thisYear > today ? thisYear : `${year + 1}-${String(dueMonth).padStart(2, "0")}-01`;
+}
+
+/** Objectifs saisonniers du foyer, du plus proche au plus lointain. */
+export function seasonal(objectives: Objective[], today: string): { objective: Objective; due: string }[] {
+  return objectives
+    .filter((o) => o.due_month !== null && o.status !== "na")
+    .map((o) => ({ objective: o, due: nextDue(o.due_month!, today) }))
+    .sort((a, b) => a.due.localeCompare(b.due) || a.objective.level - b.objective.level);
 }

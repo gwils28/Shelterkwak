@@ -133,6 +133,7 @@ export interface Item {
   description: string;
   objectives: string[];
   tiers: ItemTier[];
+  crisis: boolean; // à retrouver le jour J : emplacement affiché dans l'écran Crise
 }
 export interface Catalog {
   levels: Level[];

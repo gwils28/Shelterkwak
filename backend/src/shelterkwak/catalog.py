@@ -155,6 +155,7 @@ class Item(BaseModel):
     description: str = ""
     objectives: list[str] = Field(default_factory=list)
     tiers: list[ItemTier] = Field(default_factory=list)
+    crisis: bool = False  # à retrouver le jour J : emplacement affiché dans l'écran Crise
 
     @model_validator(mode="after")
     def _reserve_consistency(self) -> Item:
@@ -309,11 +310,35 @@ def _item_errors(catalog: Catalog, objective_ids: set[str], cat_ids: set[str]) -
         for oid in [*it.objectives, *(o for t in it.tiers for o in t.objectives)]:
             if oid not in objective_ids:
                 errors.append(f"objet {it.id}: objectif inconnu {oid}")
+        errors.extend(_tier_order_errors(catalog, it))
         if [t.tier for t in it.tiers] != list(rank):
             errors.append(f"objet {it.id}: les cinq niveaux sont attendus, dans l'ordre ({', '.join(rank)})")
         days = [t.min_days for t in it.tiers if t.min_days is not None]
         if days != sorted(set(days)):
             errors.append(f"objet {it.id}: `min_days` doit croître d'un palier au suivant")
+    return errors
+
+
+def _tier_order_errors(catalog: Catalog, item: Item) -> list[str]:
+    """Un niveau ne remplit que des objectifs matériels, jamais plus bas que ceux du niveau précédent.
+
+    Posséder un objet ne prouve pas une compétence : une compétence peut être liée à l'objet
+    (`objectives`), pas à un niveau. Et un foyer qui monte les niveaux d'un objet doit rencontrer
+    les objectifs dans l'ordre des paliers.
+    """
+    by_id = catalog.objectives_by_id
+    errors: list[str] = []
+    highest = 0
+    for t in item.tiers:
+        objs = [by_id[o] for o in t.objectives if o in by_id]
+        errors.extend(
+            f"objet {item.id}/{t.tier}: {o.id} est une compétence, à lier à l'objet et non à un niveau"
+            for o in objs
+            if o.kind == "skill"
+        )
+        if objs and min(o.level for o in objs) < highest:
+            errors.append(f"objet {item.id}/{t.tier}: objectif de niveau inférieur à celui d'un niveau précédent")
+        highest = max([highest, *(o.level for o in objs)])
     return errors
 
 

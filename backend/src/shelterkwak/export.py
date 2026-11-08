@@ -64,8 +64,17 @@ def stock(id_: str, name: str, category: str, quantity: float, per_unit: float, 
     }
 
 
-def item(item_id: str, tier: str | None, quantity: float = 1, location: str | None = None) -> dict[str, Any]:
-    return {"item_id": item_id, "tier": tier, "quantity": quantity, "location": location, "note": ""}
+def item(
+    item_id: str, tier: str | None, quantity: float = 1, location: str | None = None, expires: str | None = None
+) -> dict[str, Any]:
+    return {
+        "item_id": item_id,
+        "tier": tier,
+        "quantity": quantity,
+        "location": location,
+        "note": "",
+        "expires_on": expires,
+    }
 
 
 def validation(oid: str, on: str, source: str = "manual") -> dict[str, Any]:
@@ -303,7 +312,12 @@ def engine_cases() -> list[dict[str, Any]]:
             "ops": [
                 onboard,
                 op(2, "2026-11-03T08:00:00.000Z", "item.set", item("trousse_secours", "commun")),
-                op(3, "2026-11-04T08:00:00.000Z", "item.set", item("trousse_secours", "epique", location="Cellier")),
+                op(
+                    3,
+                    "2026-11-04T08:00:00.000Z",
+                    "item.set",
+                    item("trousse_secours", "epique", location="Cellier", expires="2027-06-01"),
+                ),
                 op(4, "2026-11-05T08:00:00.000Z", "item.set", item("piles", None, quantity=12)),
                 op(5, "2026-11-06T08:00:00.000Z", "item.delete", {"item_id": "piles"}),
                 op(6, "2026-11-07T08:00:00.000Z", "item.set", item("objet_retire_du_catalogue", None)),

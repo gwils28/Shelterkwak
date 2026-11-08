@@ -180,7 +180,7 @@ function ItemCard({ card, catalog, onOpen }: { card: Card; catalog: Catalog; onO
             🎯 {card.done}/{card.objectives.length}
           </span>
         )}
-        {card.warn && <span className="warn-text">⏳ péremption</span>}
+        {card.warn && <span className="warn-text">⏳ {item.kind === "equipement" ? "à vérifier" : "péremption"}</span>}
       </span>
     </button>
   );
@@ -230,11 +230,12 @@ function ItemSheet({ card, catalog, today, soon, onClose }: { card: Card; catalo
 /** Équipement ou consommable : niveau, quantité, rangement, objectifs servis. */
 function ItemDetail({ card, catalog, onDone }: { card: Card; catalog: Catalog; onDone: () => void }) {
   const { item, data } = card;
-  const [draft, setDraft] = useState<ItemData>(
-    data ?? { item_id: item.id, tier: item.tiers[0]?.tier ?? null, quantity: 1, location: null, note: "" },
-  );
+  const initial: ItemData = data
+    ? { ...data, expires_on: data.expires_on ?? null }
+    : { item_id: item.id, tier: item.tiers[0]?.tier ?? null, quantity: 1, location: null, note: "", expires_on: null };
+  const [draft, setDraft] = useState<ItemData>(initial);
   const covered = tierObjectiveIds(item, draft.tier);
-  const changed = JSON.stringify(data) !== JSON.stringify(draft);
+  const changed = JSON.stringify(initial) !== JSON.stringify(draft);
 
   const save = () => {
     void actions.setItem(draft);
@@ -280,6 +281,10 @@ function ItemDetail({ card, catalog, onDone }: { card: Card; catalog: Catalog; o
           <input value={draft.location ?? ""} placeholder="cellier, sac d'évacuation, entrée…" onChange={(e) => setDraft({ ...draft, location: e.target.value || null })} />
         </label>
       </div>
+      <label className="field">
+        {item.kind === "consommable" ? "Péremption (la plus proche)" : "Prochaine vérification"}
+        <input type="date" value={draft.expires_on ?? ""} onChange={(e) => setDraft({ ...draft, expires_on: e.target.value || null })} />
+      </label>
       <label className="field">
         Note
         <input value={draft.note} placeholder="marque, date de vérification, ce qui manque…" onChange={(e) => setDraft({ ...draft, note: e.target.value })} />

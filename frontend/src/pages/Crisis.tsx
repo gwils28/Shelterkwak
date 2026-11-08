@@ -41,6 +41,7 @@ export function CrisisPage() {
   const locations = (category: string) =>
     [...new Set([...state.stock.values()].filter((s) => s.category === category && s.location).map((s) => s.location as string))];
   const autonomy = dashboard.autonomy.filter((a) => a.days !== null);
+  const gear = catalog.items.filter((i) => i.crisis && state.items.has(i.id)).map((i) => ({ item: i, data: state.items.get(i.id)! }));
 
   return (
     <div className="page crisis">
@@ -81,6 +82,24 @@ export function CrisisPage() {
           ))}
         </div>
       </section>
+
+      {gear.length > 0 && (
+        <section className="panel crisis-autonomy">
+          <h2>Où est le matériel</h2>
+          <ul>
+            {gear.map(({ item, data }) => (
+              <li key={item.id}>
+                <span aria-hidden>{item.icon}</span> <strong>{item.name}</strong>
+                {data.location ? (
+                  <div className="where">📍 {data.location}</div>
+                ) : (
+                  <div className="where warn-text">Emplacement non noté : à préciser dans l'Inventaire</div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section className="panel crisis-autonomy">
         <h2>Réserves</h2>
