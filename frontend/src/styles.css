@@ -2771,6 +2771,11 @@ a.phone {
   color: var(--panel);
   font-weight: 900;
 }
+.talent-badge.stale {
+  background: var(--warn);
+  color: var(--panel);
+  font-weight: 900;
+}
 .talent-badge.lock {
   background: var(--line);
   font-size: 0.6rem;
@@ -2970,5 +2975,180 @@ a.phone {
   }
   .spec-meter-count {
     font-size: 0.68rem;
+  }
+}
+
+/* Repères d'achat (revue du marché) dans la fiche d'une carte */
+.buy-guide {
+  border-top: 1px solid var(--line);
+  padding-top: 0.7rem;
+}
+.buy-guide summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.6rem;
+  cursor: pointer;
+  list-style: none;
+}
+.buy-guide summary::-webkit-details-marker {
+  display: none;
+}
+.buy-guide summary::before {
+  content: "▸";
+  color: var(--muted);
+  transition: transform 0.15s;
+}
+.buy-guide[open] summary::before {
+  transform: rotate(90deg);
+}
+.buy-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.buy-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 0.7rem 0 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.buy-tab {
+  position: relative;
+  flex: none;
+  padding: 4px 12px;
+  border: 1.5px solid var(--tier);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tier);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.buy-tab.active {
+  background: var(--tier);
+  color: #fff;
+}
+.buy-next-dot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--panel);
+}
+.buy-panel {
+  margin-top: 0.6rem;
+  padding: 0.8rem;
+  border-radius: var(--radius);
+  border-top: 3px solid var(--tier);
+  background: color-mix(in srgb, var(--tier) 7%, var(--panel));
+}
+.buy-next {
+  margin: 0 0 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tier);
+}
+.buy-criteria {
+  margin: 0 0 0.7rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+.buy-refs {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.buy-ref {
+  display: grid;
+  gap: 4px;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+.buy-ref.pick {
+  border: 1.5px solid var(--tier);
+  box-shadow: var(--shadow);
+}
+.buy-pick {
+  justify-self: start;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--tier);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.buy-ref-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+.buy-name {
+  display: grid;
+  min-width: 0;
+}
+.buy-brand {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.buy-model {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.buy-price {
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--gold) 18%, transparent);
+  color: var(--gold-dark);
+  font-weight: 700;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.buy-why {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.buy-market {
+  justify-self: start;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.buy-market::before {
+  content: "● ";
+  color: var(--ok);
+}
+.buy-market.market-europe::before {
+  color: var(--tier-confirme);
+}
+.buy-market.market-usa::before {
+  color: var(--warn);
+}
+.buy-foot {
+  margin: 0.6rem 0 0;
+}
+@media (prefers-color-scheme: dark) {
+  .buy-tab.active,
+  .buy-pick {
+    color: #1b1916;
+  }
+  .buy-price {
+    color: var(--gold-light);
   }
 }

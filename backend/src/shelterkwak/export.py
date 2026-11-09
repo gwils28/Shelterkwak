@@ -153,7 +153,6 @@ LEVEL3 = [
     "moral.kit_occupation",
     "sante.gestes_qui_sauvent",
     "cyber.double_auth",
-    "cyber.mises_a_jour",
     "cyber.sauvegarde",
 ]
 

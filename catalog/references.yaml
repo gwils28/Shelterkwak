@@ -1,0 +1,534 @@
+# Repères d'achat par carte et palier, tenus à jour par « la revue du marché » (le Fourrier).
+# Qualité d'abord, prix secondaire (surtout aux paliers élevés) ; marchés France, Europe, États-Unis.
+# Une entrée par carte et palier : critères durables, puis 2 ou 3 modèles dont le premier est le
+# choix du Fourrier ; `market` : france, europe ou usa ; `checked` = dernière vérification en ligne.
+# Sources : docs/marche/AAAA-MM-JJ.md. Jamais de réserve, ni de contenu de pharmacie, ni d'arme.
+
+references:
+
+  - item: pastilles_eau
+    tier: commun
+    criteria: "Un désinfectant reconnu (NaDCC ou dioxyde de chlore) avec un dosage clair par litre, en blister individuel qui se conserve plusieurs années ; les pastilles à l'argent seul ne désinfectent pas."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Katadyn", model: "Micropur Forte MF 1T (100 comprimés)", price: "20-25 €", market: france, why: "Chlore NaDCC pour désinfecter plus argent pour conserver, un comprimé par litre, 100 L par boîte, référence des voyageurs."}
+      - {brand: "Aquatabs", model: "Comprimés effervescents 1 L (3,5 mg, boîte de 60)", price: "12-17 €", market: france, why: "NaDCC vendu en pharmacie, utilisé par les ONG humanitaires, 60 L par boîte."}
+      - {brand: "Katadyn", model: "Micropur MP1 (30 comprimés)", price: "14-18 $", market: usa, why: "Dioxyde de chlore, actif aussi sur Cryptosporidium (4 h de contact) et sans goût de chlore, mais 30 L seulement par boîte."}
+  - item: pastilles_eau
+    tier: confirme
+    criteria: "Des comprimés dosés pour le contenant réellement utilisé (un comprimé par bidon de 10 L), pour ne pas compter les comprimés de 1 L par dizaines."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Aquatabs", model: "Aquatabs 10 litres (33 mg, boîte de 40)", price: "16-20 €", market: france, why: "Un comprimé par bidon de 10 L, 400 L par boîte, en pharmacie."}
+      - {brand: "Katadyn", model: "Micropur Forte MF 1T (2 boîtes de 100)", price: "40-50 €", market: france, why: "Même produit que pour la gourde, 200 L au total et conservation de l'eau stockée grâce à l'argent."}
+  - item: pastilles_eau
+    tier: epique
+    criteria: "Des comprimés grand volume pour les réserves de la maison, plus des comprimés de 1 L dans le sac : le stock se compte en milliers de litres, pas en boîtes de voyage."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Aquatabs", model: "Aquatabs Réservoirs (1 comprimé pour 10 L, boîte de 120)", price: "20-25 €", market: france, why: "1 200 L par boîte, demi-dose pour la conservation hebdomadaire d'une réserve."}
+      - {brand: "Aquatabs", model: "Aquatabs 10 litres (33 mg, boîte de 40) x3", price: "50-60 €", market: france, why: "Plus facile à trouver en pharmacie, même dosage d'un comprimé par bidon de 10 L."}
+
+  - item: filtre_eau
+    tier: rustique
+    criteria: "Membrane à fibres creuses de 0,1 à 0,2 µm (norme NSF P231 ou EPA), capacité annoncée en milliers de litres ; mieux si elle se visse sur une bouteille plutôt que d'obliger à boire à la source."
+    checked: 2026-11-09
+    refs:
+      - {brand: "LifeStraw", model: "Personal Peak Series", price: "22-30 €", why: "Paille de référence, certifiée NSF P231, vendue partout."}
+      - {brand: "Sawyer", model: "Mini (SP128)", price: "40-60 €", why: "En paille ou vissé sur une bouteille, se nettoie par contre-lavage."}
+  - item: filtre_eau
+    tier: commun
+    criteria: "Une membrane fine (0,1 à 0,2 µm) qui se rétrolave et dure des milliers de litres ; un purificateur qui retient aussi les virus vaut mieux si l'eau vient de zones habitées."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Sawyer", model: "Squeeze SP129", price: "65-90 €", market: europe, why: "Fibre creuse 0,1 µm rétrolavable, élu meilleur filtre de randonnée par les testeurs indépendants depuis des années."}
+      - {brand: "Grayl", model: "GeoPress 710 ml", price: "90-120 €", market: france, why: "Purificateur à piston qui retient aussi virus et une partie des produits chimiques, mais cartouche de 250 L seulement."}
+  - item: filtre_eau
+    tier: confirme
+    criteria: "Un sac de 10 L sans pompe, un filtre à fibre creuse remplaçable d'au moins 1 500 L et des raccords robustes qui supportent un usage quotidien."
+    checked: 2026-11-09
+    refs:
+      - {brand: "MSR", model: "AutoFlow XL Gravity Filter 10 L", price: "120-150 €", market: europe, why: "Réservoir épais et cartouche 0,2 µm d'environ 1 500 L, entretien simple sur le terrain."}
+      - {brand: "Katadyn", model: "BeFree Gravity 10 L", price: "105-130 €", market: europe, why: "Membrane 0,1 µm à fort débit qui se nettoie en secouant, plus légère mais sac plus fin."}
+  - item: filtre_eau
+    tier: epique
+    criteria: "Des bougies céramiques nettoyables par brossage, qui filtrent des dizaines de milliers de litres sans électricité et dont les rechanges restent disponibles."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Katadyn", model: "Drip Ceradyn (3 bougies céramiques)", price: "360-450 €", market: france, why: "Filtre gravitaire suisse à trois bougies céramiques 0,2 µm imprégnées d'argent, conçu pour les camps et les ONG."}
+      - {brand: "Katadyn", model: "Pocket", price: "300-380 €", market: france, why: "Pompe à cartouche céramique 0,2 µm de 50 000 L, garantie 20 ans, utilisée par armées et expéditions."}
+      - {brand: "British Berkefeld (Doulton)", model: "Système gravitaire inox avec bougies Ultra Sterasyl", price: "200-230 €", market: europe, why: "Bougies céramiques à cœur de charbon certifiées, bonne option de cuisine pour une eau du réseau douteuse."}
+  - item: filtre_eau
+    tier: legendaire
+    criteria: "Un appareil qui retient aussi les virus ou qui traite l'eau d'un groupe au débit d'une pompe, se nettoie sans outils et accepte un préfiltre ; à défaut, finir par une chloration."
+    checked: 2026-11-09
+    refs:
+      - {brand: "MSR", model: "Guardian Purifier", price: "270-370 €", market: france, why: "Pompe à fibre creuse 0,02 µm qui retient les virus, autonettoyante à chaque coup de pompe, conçue pour l'armée américaine."}
+      - {brand: "Katadyn", model: "Expedition (KFT)", price: "1 700-2 000 €", market: france, why: "Pompe céramique de très grande capacité pour dix personnes et plus, mais virus à traiter ensuite au chlore."}
+
+  - item: rechaud
+    tier: rustique
+    criteria: "Un brûleur à alcool sans pièce mobile ni joint, avec bouchon vissé pour garder le combustible, posé dans un pare-vent qui tient la casserole : rien ne s'use, rien ne se dérègle."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Trangia", model: "27-1 UL (réchaud tempête, brûleur B25)", price: "55-80 €", market: france, why: "Le standard suédois depuis des décennies : pare-vent intégré, casseroles et brûleur inusable, très stable."}
+      - {brand: "Trangia", model: "Brûleur à alcool B25 avec bouchon", price: "17-20 €", market: europe, why: "Le même brûleur seul, en laiton, à poser dans un support ou un pare-vent existant."}
+  - item: rechaud
+    tier: commun
+    criteria: "Un détendeur qui garde une flamme régulière quand la cartouche se vide ou qu'il fait froid, un réglage fin pour mijoter et un support de casserole stable."
+    checked: 2026-11-09
+    refs:
+      - {brand: "MSR", model: "PocketRocket Deluxe", price: "80-100 €", market: france, why: "Brûleur régulé, très bien noté en test, tient la flamme au vent et par temps froid ; petit support de casserole."}
+      - {brand: "Campingaz", model: "Camp'Bistro 3", price: "27-50 €", market: france, why: "Réchaud de table à cartouche, stable sous une grande casserole, cartouches vendues partout en France."}
+  - item: rechaud
+    tier: confirme
+    criteria: "Deux brûleurs réglables indépendamment, pare-vent sur trois côtés, grilles en acier inoxydable ou émaillé et raccord pour bouteille de gaz standard."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Primus", model: "Tupike Stove II", price: "220-280 €", market: france, why: "Deux feux régulés, pare-vent intégré, grilles inox : la référence haut de gamme des testeurs pour la cuisine de camp."}
+      - {brand: "Campingaz", model: "Camping Kitchen 2 Multi-Cook", price: "100-170 €", market: europe, why: "Deux feux et plaque grill sur bouteille de gaz, pare-vent, pièces et SAV faciles à trouver en France."}
+      - {brand: "Cadac", model: "Safari Chef 30 HP", price: "130-160 €", market: europe, why: "Un seul brûleur mais très robuste, sur bouteille de gaz, avec support de casserole et plaques de cuisson ; distribué par Dometic."}
+  - item: rechaud
+    tier: epique
+    criteria: "Un foyer en acier épais ou en fonte qui brûle des brindilles avec peu de fumée et porte une grosse marmite, complété par un cuiseur solaire qui monte au-delà de 100 °C."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Petromax", model: "Rocket Stove rf33", price: "110-150 €", market: europe, why: "Rocket stove en fonte de 7,5 kg, très stable sous une marmite, brûle du petit bois avec un bon rendement."}
+      - {brand: "Bushcraft Essentials", model: "Bushbox XL (inox)", price: "90-105 €", market: europe, why: "Réchaud pliant multi-combustible (bois, alcool avec brûleur Trangia, pastilles), fabriqué en Allemagne."}
+      - {brand: "Solar Brother", model: "SunGood 360", price: "245-300 €", market: france, why: "Cuiseur solaire français qui atteint 180 à 240 °C en mode tube, 2,5 kg, fabricant joignable en France."}
+  - item: rechaud
+    tier: legendaire
+    criteria: "Une cuisinière à forte part de fonte, avec un four et une plaque assez grands pour cuire au quotidien, un rendement élevé et le label Flamme Verte 7 étoiles, posée par un installateur certifié."
+    checked: 2026-11-09
+    refs:
+      - {brand: "La Nordica-Extraflame", model: "Rosa XXL", price: "2 350-2 950 €", market: france, why: "Fonte émaillée à 70 %, four de 78 L, 10,5 kW et 86 % de rendement, Flamme Verte 7 étoiles."}
+      - {brand: "Godin", model: "Arpège (réf. 240162)", price: "4 500-4 700 €", market: france, why: "Fabricant français, dessus en fonte et Flamme Verte 7 étoiles, réseau d'installateurs en France."}
+
+  - item: cuisson_sobre
+    tier: confirme
+    criteria: "Un autocuiseur en inox 18/10 à fond épais multicouche, avec des soupapes et des joints vendus en pièces détachées pendant de longues années."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Fissler", model: "Vitavit Premium 6 L", price: "220-330 €", market: europe, why: "Autocuiseur allemand haut de gamme en inox, compatible avec tous les feux, très bien noté en test."}
+      - {brand: "SEB", model: "Authentique inox 6 L", price: "100-125 €", market: france, why: "Fabriqué en France, engagement de réparabilité de 15 ans, pièces détachées en grande surface."}
+  - item: cuisson_sobre
+    tier: epique
+    criteria: "Un cuiseur solaire qui atteint au moins 120 °C sans surveillance, résiste au vent et se range sans s'abîmer."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Solar Brother", model: "SunGood 360", price: "245-300 €", market: france, why: "Le plus polyvalent de la gamme : jusqu'à 240 °C en mode tube, ou 100 à 120 °C pour mijoter en marmite."}
+      - {brand: "Sun Oven", model: "All American Sun Oven", price: "350-400 $", market: usa, why: "Four solaire en caisson rigide, réputé pour durer plus de quinze ans ; volumineux à importer."}
+      - {brand: "Solar Brother", model: "SunGood", price: "90-100 €", market: france, why: "Version pliante de 900 g, 80 à 120 °C, pour mijoter sans surveillance."}
+
+  - item: trousse_secours
+    tier: commun
+    criteria: "Une trousse se juge à son contenu et à son rangement : compartiments étiquetés, sac déperlant et solide, composants de marque médicale remplaçables à l'unité, plutôt qu'un gros nombre de « pièces » qui compte chaque pansement."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Lifesystems", model: "Mountain Leader Pro First Aid Kit", price: "95-115 €", market: europe, why: "Conçue pour les encadrants de montagne britanniques, sac robuste à compartiments, contenu professionnel complet et réassortissable."}
+      - {brand: "Croix-Rouge française", model: "Trousse Premium (gamme 2026)", price: "45 €", market: france, why: "La plus complète de la gamme 2026 de la Croix-Rouge, composée selon ses formations aux premiers secours, facile à trouver."}
+  - item: trousse_secours
+    tier: confirme
+    criteria: "Pour un sac : compacte, étanche ou dans une pochette déperlante, ouverture en livre qui montre tout d'un coup d'œil, et contenu orienté plaies, ampoules et entorses."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Lifesystems", model: "Mountain Leader First Aid Kit", price: "60-95 €", market: europe, why: "Version allégée de la Pro, même conception et même qualité de composants, au format d'un sac d'évacuation."}
+      - {brand: "Adventure Medical Kits", model: "Mountain Series Backpacker", price: "47-58 $", market: usa, why: "Bien noté par OutdoorGearLab et CleverHiker, sachets étanches classés par blessure et guide de soins inclus ; notice en anglais."}
+  - item: trousse_secours
+    tier: legendaire
+    criteria: "Uniquement des garrots recommandés par le CoTCCC (CAT Gen 7, SAM XT, SOFTT-W), achetés chez un distributeur médical ou agréé : les contrefaçons cèdent sous la tension. On garde un garrot d'entraînement à part, celui de la trousse reste scellé."
+    checked: 2026-11-09
+    refs:
+      - {brand: "SMSP", model: "Kit hémorragie externe (réf. 270202)", price: "175-185 €", market: france, why: "Fournisseur des sapeurs-pompiers : garrot SOF TT, pansement compressif israélien et gaze hémostatique Celox dans un même kit."}
+      - {brand: "North American Rescue / C-A-T Resources", model: "Garrot C-A-T Gen 7", price: "40-55 €", market: france, why: "Le garrot de référence des armées et des secours, recommandé par le CoTCCC, le plus réussi par des utilisateurs peu entraînés."}
+      - {brand: "SAM Medical", model: "SAM XT Extremity Tourniquet", price: "42-56 €", market: europe, why: "Recommandé par le CoTCCC, boucle à verrouillage automatique qui limite le jeu, du fabricant de l'attelle SAM Splint."}
+
+  - item: masques
+    tier: commun
+    criteria: "Un FFP2 certifié EN 149 (marquage CE suivi du numéro d'organisme notifié), d'une marque d'équipement de protection professionnelle : c'est l'étanchéité au visage qui protège, d'où l'intérêt d'un modèle avec barrette nasale et joint confortable."
+    checked: 2026-11-09
+    refs:
+      - {brand: "3M", model: "Aura 9320+ FFP2 sans soupape (boîte de 20)", price: "45-60 €", market: france, why: "Masque pliable de référence en milieu industriel et hospitalier, trois panneaux qui épousent bien le visage, emballage individuel."}
+      - {brand: "Moldex", model: "2400 Classic FFP2 NR D (boîte de 20)", price: "55-67 €", market: europe, why: "Coque moulée qui garde sa forme et tient longtemps, fabricant allemand d'équipements de protection."}
+  - item: masques
+    tier: legendaire
+    criteria: "Un demi-masque réutilisable EN 140 d'un fabricant de protection respiratoire, avec des filtres combinés gaz et particules EN 14387 (ABEK1-P3 au minimum) faciles à trouver en recharge ; les filtres ont une date de péremption sous emballage."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Dräger", model: "X-plore 3500 + filtres baïonnette A1B1E1K1 Hg-P3", price: "50-60 € le masque, 25-30 € la paire de filtres", market: europe, why: "Demi-masque prévu pour un port long, joint souple confortable, gamme de filtres complète d'un fabricant de référence des pompiers."}
+      - {brand: "Moldex", model: "7002 série 7000 + filtres EasyLock 9430 ABEK1P3", price: "30 € le masque, 13-19 € la paire de filtres", market: europe, why: "Système de filtres préassemblés simple à monter sans erreur, recharges bon marché."}
+
+  - item: toilettes_secours
+    tier: epique
+    criteria: "Une séparation d'urine efficace et une construction en plastique épais qui se vide et se nettoie sans renverser ; sans eau, sans produit chimique et sans électricité, elle fonctionne pendant toute la coupure."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Trelino", model: "Evo L", price: "520 €", market: europe, why: "Toilette à séparation allemande sans eau ni électricité, grand réservoir à urine, matériel de vanlife éprouvé."}
+      - {brand: "Kildwick", model: "MiniLoo (toilette sèche à séparation)", price: "320-470 €", market: europe, why: "Fabriquée en Allemagne, en bois, existe en kit à monter soi-même pour moins cher."}
+  - item: toilettes_secours
+    tier: legendaire
+    criteria: "Une toilette sèche fixe à séparation, avec ventilation vers l'extérieur et pièces détachées disponibles, pensée pour un usage quotidien sur des années."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Separett", model: "Villa", price: "700-800 €", market: europe, why: "Référence suédoise des chalets sans raccordement, séparation d'urine éprouvée depuis des décennies ; vérifier le stock."}
+      - {brand: "Kildwick", model: "FancyLoo Capture", price: "840 €", market: europe, why: "Toilette sèche fixe en bois fabriquée en Allemagne, finition de meuble pour une installation durable."}
+
+  - item: glaciere_insuline
+    tier: commun
+    criteria: "Une pochette qui garde l'insuline en cours d'utilisation à moins de 26 °C pendant au moins deux jours par forte chaleur, réactivable à l'eau, sans risque de gel."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Frio", model: "Pochette Two ou Five (2 ou 5 stylos)", price: "25-45 €", market: europe, why: "Le standard des diabétiques voyageurs : 18-26 °C pendant au moins 45 h à 38 °C, réactivable en trempant dans l'eau."}
+      - {brand: "4AllFamily", model: "Explorer (glacière insuline 3 en 1)", price: "140 $", market: usa, why: "Fabricant spécialisé dans le transport de l'insuline, alternative à la pochette Frio ; durée de froid à vérifier sur la fiche."}
+  - item: glaciere_insuline
+    tier: epique
+    criteria: "Un vrai réfrigérateur à compresseur ou un réfrigérateur médical réglé entre 2 et 8 °C, alimentable en 12 V ou USB depuis une batterie, et un fabricant qui assure le SAV en Europe."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Dometic", model: "CFF 12 + batterie PLB15", price: "630 € (349 + 279)", market: france, why: "Compresseur fiable et réglable au degré, 12/24 V et secteur, SAV en France ; la batterie lithium fer phosphate dédiée le fait tourner sans courant."}
+      - {brand: "4AllFamily", model: "Pioneer (mini-réfrigérateur médical USB)", price: "280 $", market: usa, why: "Conçu pour les médicaments (2-8 °C), alimenté en USB donc par n'importe quelle batterie, et 32 h au frais sans courant."}
+
+  - item: compteur_geiger
+    tier: commun
+    criteria: "Un appareil qui affiche le débit de dose en µSv/h avec une conversion documentée, garde l'historique et se recharge ou prend des piles courantes ; une marque qui publie ses caractéristiques de détecteur."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Radiacode", model: "Radiacode 110", price: "399 €", market: europe, why: "Scintillateur CsI(Tl) bien plus sensible qu'un tube Geiger, spectromètre qui identifie la source, application et carte partagée (gamma seulement)."}
+      - {brand: "GQ Electronics", model: "GMC-800", price: "90-95 $", market: usa, why: "Compteur Geiger simple bêta-gamma avec alarme réglable sonore, lumineuse et vibrante, le plus accessible des appareils sérieux."}
+  - item: compteur_geiger
+    tier: confirme
+    criteria: "Un compteur bêta-gamma à seuil d'alarme réglable, avec une plage de mesure étendue pour rester utile si le niveau monte fortement."
+    checked: 2026-11-09
+    refs:
+      - {brand: "GQ Electronics", model: "GMC-500+", price: "124 $", market: usa, why: "Deux tubes (sensible et haute plage), bêta, gamma et X, enregistrement des données et alarme réglable."}
+      - {brand: "GQ Electronics", model: "GMC-800", price: "90-95 $", market: usa, why: "Bêta-gamma avec cinq modes d'alarme dont vibration et voix, plus simple mais moins de plage."}
+  - item: compteur_geiger
+    tier: epique
+    criteria: "Un tube à fenêtre mica (crêpe ou fenêtre en bout) pour voir aussi les alpha et mieux les bêta, ce qui permet de contrôler une surface ou un aliment de près."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Gamma-Scout", model: "Alert", price: "450 € HT", market: europe, why: "Fabriqué en Allemagne, alpha, bêta et gamma, étalonnage certifié et alarme sonore à seuil, conçu pour une mesure continue économe en pile."}
+      - {brand: "GQ Electronics", model: "GMC-600 Pro", price: "328 $", market: usa, why: "Grand tube crêpe LND 7317 très sensible, alpha, bêta, gamma et X, tube remplaçable."}
+  - item: compteur_geiger
+    tier: legendaire
+    criteria: "Un appareil livré avec un certificat d'étalonnage et un service de réétalonnage, et des mesures exportables vers un réseau de surveillance."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Gamma-Scout", model: "Online / RealTime", price: "550 € HT", market: europe, why: "Alpha-bêta-gamma, étalonnage certifié et service de réétalonnage du fabricant, transmission des mesures en temps réel."}
+      - {brand: "Radiacode", model: "Radiacode 110 (un par adulte)", price: "399 €", market: europe, why: "De poche, partage de mesures sur la carte Radiaverse, complète un compteur alpha-bêta fixe."}
+
+  - item: lampes
+    tier: commun
+    criteria: "Une frontale à piles standard (AAA) d'une marque qui assure le SAV, avec un faisceau large pour la maison et un éclairage rouge ; la compatibilité avec une batterie rechargeable permet d'évoluer sans changer de lampe."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Petzl", model: "Tikka (350 lm, 3 AAA ou batterie CORE)", price: "25-35 €", market: france, why: "Frontale de référence, simple et robuste, garantie Petzl, accepte la batterie CORE plus tard."}
+      - {brand: "Petzl", model: "Actik Core (600 lm, CORE fournie ou 3 AAA)", price: "55-80 €", market: france, why: "Même plateforme plus puissante, livrée avec sa batterie rechargeable, roule aussi aux AAA."}
+  - item: lampes
+    tier: confirme
+    criteria: "Une frontale hybride (batterie rechargeable et piles AA/AAA en secours) et une lanterne à diffusion large, étanche, dont l'accumulateur tient plusieurs nuits en mode bas et peut recharger un téléphone."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Petzl", model: "Actik Core (600 lm, hybride CORE/AAA)", price: "55-80 €", market: france, why: "Batterie USB plus repli sur piles du commerce : on n'est jamais dans le noir."}
+      - {brand: "Ledlenser", model: "ML6 (750 lm, 3 000 mAh, sortie USB)", price: "90-115 €", market: europe, why: "Lanterne haut de gamme, environ 70 h à 20 lm, fait batterie de secours, garantie longue."}
+      - {brand: "Fenix", model: "CL26R Pro (650 lm, accu 18650 amovible)", price: "60-90 €", market: europe, why: "Accumulateur standard remplaçable, USB-C, construction solide et prix plus doux."}
+  - item: lampes
+    tier: epique
+    criteria: "Une lanterne qui se recharge sans réseau (panneau intégré ou manivelle) et reste utile des semaines : charge solaire réelle en une journée, mode bas très long, matériaux qui tiennent au stockage."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Goal Zero", model: "Lighthouse 600 (600 lm, manivelle, USB)", price: "70-110 $", market: usa, why: "Manivelle de secours, diffusion 180 ou 360°, sortie USB ; testée et recommandée par OutdoorGearLab."}
+      - {brand: "MPOWERD", model: "Luci Pro Outdoor 2.0 (solaire, gonflable)", price: "35-50 €", market: europe, why: "Panneau intégré, ultra-légère et compacte, idéale au pied du lit ou à la fenêtre."}
+  - item: lampes
+    tier: legendaire
+    criteria: "Des veilleuses branchées en permanence qui s'allument seules à la coupure et se décrochent en lampe torche : un fabricant d'appareillage électrique, une batterie remplaçable et une autonomie annoncée d'au moins une heure."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Legrand", model: "Veilleuse lampe torche avec batterie 0 506 78", price: "45-60 €", market: france, why: "Matériel d'électricien, s'allume à pleine puissance à la coupure, 1 h 30 minimum, se décroche."}
+      - {brand: "Alecto", model: "ATL-110 (torche sur socle à induction)", price: "30-38 €", market: europe, why: "S'allume à la coupure ou quand on la retire du socle, 200 lm, recharge sans contact."}
+
+  - item: piles
+    tier: confirme
+    criteria: "Pour le stock, des piles à très faible autodécharge et sans fuite : lithium pour les appareils critiques et le froid, alcalines de gamme industrielle en boîte pour le volume, toujours avec une date limite lisible."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Energizer", model: "Ultimate Lithium AA (L91), boîte de 24", price: "95-110 €", market: france, why: "Conservation 20 ans, fonctionne par grand froid, ne coule pas : la pile des appareils vitaux."}
+      - {brand: "Varta", model: "Industrial Pro AA (4006), boîte de 40", price: "10-15 €", market: europe, why: "Alcaline professionnelle en vrac, excellent rapport qualité-prix pour le stock courant."}
+  - item: piles
+    tier: epique
+    criteria: "Des NiMH à faible autodécharge (70 % de charge après des années) et un chargeur intelligent qui gère chaque pile séparément et coupe proprement en fin de charge."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Panasonic", model: "eneloop AA 2 000 mAh + chargeur BQ-CC55", price: "35-40 € (chargeur et 4 piles), 3 € la pile en plus", market: france, why: "La référence des NiMH de stockage, chargeur rapide à surveillance individuelle."}
+      - {brand: "Technoline", model: "BC 700 (chargeur-analyseur AA/AAA)", price: "35-45 €", market: europe, why: "Choix du courant, mesure de capacité et rafraîchissement pour trier les piles fatiguées."}
+
+  - item: electricite_secours
+    tier: rustique
+    criteria: "Comparer en Wh plutôt qu'en mAh (20 000 mAh ≈ 74 Wh), sortie USB-C PD ; recharger tous les trois mois."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Xiaomi", model: "Power Bank 20000 mAh 18 W", price: "20-30 €", why: "La capacité utile au meilleur prix : 3 ou 4 recharges de téléphone."}
+      - {brand: "Anker", model: "PowerCore 20000 (USB-C)", price: "30-50 €", why: "Marque suivie, SAV et garantie fiables en France."}
+  - item: electricite_secours
+    tier: commun
+    criteria: "20 W réels ou plus pour les téléphones (100 W ou plus pour une station), sorties USB-C, toile robuste à œillets ; à tester un jour de soleil avant d'en avoir besoin."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Decathlon Simond", model: "Panneau solaire 21 W (2 USB-C)", price: "70-80 €", why: "Charge téléphones et batteries en direct, sans électronique superflue."}
+      - {brand: "Sunslice", model: "Fusion Core 22 (22 W)", price: "85-95 €", why: "Marque spécialisée du solaire nomade, bien construite."}
+      - {brand: "Bluetti", model: "PV100 (100 W pliable)", price: "180-210 €", why: "Si une station est prévue ensuite : il la recharge directement."}
+  - item: electricite_secours
+    tier: confirme
+    criteria: "Station LiFePO4 (milliers de cycles), onduleur sinus 230 V, entrée solaire MPPT généreuse, recharge secteur rapide et marque qui assure garantie et pièces sur plusieurs années."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Anker SOLIX", model: "C1000 Gen 2 (1 024 Wh LiFePO4, 600 W solaire)", price: "600-1 000 €", market: france, why: "Compacte pour sa capacité, recharge secteur en moins d'une heure, très silencieuse à faible charge."}
+      - {brand: "EcoFlow", model: "DELTA 3 Plus (1 024 Wh LiFePO4)", price: "800-1 000 €", market: france, why: "Bien notée en test, recharge 230 V en 56 min, silencieuse sous 600 W."}
+  - item: electricite_secours
+    tier: epique
+    criteria: "Une batterie de balcon n'aide en coupure que si elle a une vraie prise hors réseau : vérifier sa puissance et son fonctionnement réseau coupé, et préférer une chimie LiFePO4 extensible."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Anker SOLIX", model: "Solarbank 3 E2700 Pro (2,7 kWh)", price: "1 500-2 000 €", market: france, why: "Prise de secours jusqu'à 1 200 W, quatre entrées solaires, testée par Test-Achats et Notebookcheck."}
+      - {brand: "Zendure", model: "SolarFlow 800 Pro (1,9 kWh)", price: "720-1 200 €", market: france, why: "Sortie hors réseau de 1 000 W, extensible ; remplacée par la 800 Pro 2, donc souvent soldée."}
+  - item: electricite_secours
+    tier: legendaire
+    criteria: "Plusieurs kWh en LiFePO4, onduleur capable de démarrer un frigo ou une pompe, entrée solaire de 1 kW ou plus et possibilité d'ajouter des batteries pour tenir une semaine."
+    checked: 2026-11-09
+    refs:
+      - {brand: "EcoFlow", model: "DELTA Pro 3 (4 096 Wh LiFePO4, 4 000 W)", price: "3 200-3 400 €", market: france, why: "Une semaine de besoins prioritaires dans une seule unité sur roulettes, extensible."}
+      - {brand: "EcoFlow", model: "DELTA 3 Plus (1 024 Wh) et panneaux", price: "800-1 000 €", market: france, why: "Socle plus abordable, à compléter de panneaux pour couvrir la semaine en sobriété."}
+
+  - item: groupe_electrogene
+    tier: rustique
+    criteria: "Inverter (sinus pur pour l'électronique), moteur 4 temps d'une marque dont les pièces se trouvent en France, SAV proche."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Honda", model: "EU10i (900 W inverter)", price: "900-1 050 €", why: "Référence de durabilité et de silence, pièces disponibles des décennies."}
+      - {brand: "Eberth", model: "Inverter 1000 W essence", price: "250-280 €", why: "Dépannage occasionnel pas cher ; SAV et réparabilité incertains."}
+  - item: groupe_electrogene
+    tier: commun
+    criteria: "1 800 W continus ou plus en inverter, distorsion (THD) sous 3 %, 60 dB ou moins, garantie 3 ans en usage domestique."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Honda", model: "EU22i (1 800 W continus)", price: "1 450-1 500 €", why: "La valeur sûre : silencieux, increvable, revendable."}
+      - {brand: "Hyundai", model: "HY2350Si-EU (1 800 W continus)", price: "330-350 €", why: "Sinus pur, 18 kg ; vérifier la garantie, qui varie selon le revendeur."}
+  - item: groupe_electrogene
+    tier: confirme
+    criteria: "Jerrican homologué ONU (marquage UN) de 20 L au plus, stabilisant dosé dès le plein, stock renouvelé tous les 6 à 12 mois."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Briggs & Stratton", model: "Stabilisant Fuel Fit 250 ml", price: "7-10 €", why: "Courant et bon marché, en grande surface de bricolage."}
+      - {brand: "Hünersdorff", model: "Jerrican 20 L homologué UN", price: "19-25 €", why: "Robuste, bec verseur sûr."}
+  - item: groupe_electrogene
+    tier: epique
+    criteria: "Inverter bicarburant (essence et GPL) avec détendeur fourni ; compter environ 10 % de puissance en moins au gaz. L'inverseur de source se fait à part, sur devis d'électricien."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Könner & Söhnen", model: "KS 2100iG S (1 800 W, essence et GPL)", price: "580-620 €", why: "Le gaz se garde des années sans encrasser le moteur."}
+      - {brand: "Könner & Söhnen", model: "KS 3100iG S (environ 3 kW, essence et GPL)", price: "680-720 €", why: "Assez de marge pour frigo, congélateur et pompe de chauffage ensemble."}
+
+  - item: couchage
+    tier: confirme
+    criteria: "Duvet d'oie de gonflant élevé (800 cuin ou plus) et température de confort mesurée selon EN ISO 23537 au moins 5 °C sous la température attendue dans la maison sans chauffage ; capuche et collerette, fabricant qui répare et relave."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Valandré", model: "Shocking Blue NEO (-20 °C)", price: "650-680 €", market: france, why: "Fabriqué en France, duvet haut de gamme, conçu pour l'expédition, réparable par le fabricant."}
+      - {brand: "Valandré", model: "Swing CO 850 (-20 °C)", price: "410-440 €", market: france, why: "Même fabricant et même duvet, coupe plus simple, nettement moins cher pour équiper chaque membre du foyer."}
+
+  - item: detecteurs
+    tier: rustique
+    criteria: "Détecteur optique certifié EN 14604, idéalement NF DAAF ou label Q (VdS), pile lithium scellée de 10 ans et sirène de 85 dB à 3 m ; un bouton de test facile à atteindre."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Ei Electronics", model: "Ei650F", price: "20-35 €", market: france, why: "Référence des installateurs, NF DAAF et EN 14604, pile scellée 10 ans, garantie 5 ans."}
+      - {brand: "Hekatron", model: "Genius Plus", price: "20-40 €", market: europe, why: "Fabriqué en Allemagne, label Q, noté « bien » (1,9) par Stiftung Warentest."}
+      - {brand: "Kidde", model: "10Y29", price: "21-32 €", market: france, why: "EN 14604, pile scellée 10 ans, facile à trouver en France."}
+  - item: detecteurs
+    tier: commun
+    criteria: "Détecteur de CO à capteur électrochimique certifié EN 50291 (et NF DAACO si possible), durée de vie de 10 ans pile scellée ; un afficheur de concentration aide à repérer une petite fuite chronique."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Ei Electronics", model: "Ei208W (ou Ei208DW avec écran)", price: "30-50 €", market: france, why: "NF DAACO et EN 50291, 10 ans, interconnectable en option par module radio Ei200MRF."}
+      - {brand: "Kidde", model: "7DCO (écran)", price: "29-40 €", market: france, why: "EN 50291-1:2018 et -2:2019, affiche le taux de CO, durée de vie 10 ans."}
+      - {brand: "FireAngel", model: "FA3820", price: "30-50 €", market: europe, why: "Fabricant britannique spécialisé, EN 50291-1:2018, pile scellée 10 ans."}
+  - item: detecteurs
+    tier: confirme
+    criteria: "Pour un malentendant : système radio qui déclenche flash et coussin vibrant sous l'oreiller. Vérifier la norme EN 14604 (beaucoup de kits sont certifiés nord-américains) ; la PCH peut en prendre une grande part."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Kidde", model: "10Y29 (un par étage et par chambre)", price: "20-30 €", why: "Le même modèle fiable, multiplié pour couvrir le logement."}
+      - {brand: "Bellman & Symfon", model: "Pack Visit 868 (détecteur, flash, coussin vibrant)", price: "400-450 €", why: "Système de référence pour les sourds et malentendants ; vérifier la norme européenne."}
+  - item: detecteurs
+    tier: epique
+    criteria: "Interconnexion radio du même fabricant que les détecteurs (pas de mélange de marques), qui fait sonner toute la maison dès qu'un détecteur déclenche ; détecteurs certifiés EN 14604 et module radio vendu séparément pour pouvoir compléter le réseau."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Ei Electronics", model: "Ei650WF avec module radio Ei600MRF", price: "50-80 € par point", market: france, why: "NF DAAF, pile 10 ans, même réseau radio que les détecteurs de CO Ei208W."}
+      - {brand: "Hekatron", model: "Genius Plus X avec Funkmodul Basis X", price: "85-95 € par point", market: europe, why: "Label Q, jusqu'à 60 détecteurs reliés par radio, fabriqué en Allemagne."}
+  - item: detecteurs
+    tier: legendaire
+    criteria: "Alertes sur le téléphone sans abonnement, autotest qui signale pile, capteur et Wi-Fi défaillants, et sirène locale de 85 dB qui fonctionne même sans réseau ; certification NF ou EN conservée."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Netatmo (Legrand)", model: "Détecteur de fumée intelligent", price: "90-100 €", market: france, why: "Certifié NF, pile 10 ans, alerte sur le téléphone et autotest, extinction d'une fausse alarme depuis l'application."}
+      - {brand: "Netatmo (Legrand)", model: "Détecteur de monoxyde de carbone intelligent", price: "90-100 €", market: france, why: "Même application que le détecteur de fumée, pile 10 ans, alerte à distance."}
+
+  - item: couverture_survie
+    tier: epique
+    criteria: "Un sac ou une couverture épais qui ne se déchire pas au premier accroc, coupe le vent, se réutilise et se replie ; un sac respirant limite la condensation sur plusieurs nuits."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Blizzard Survival", model: "Blizzard 3 Layer Survival Bag", price: "50-60 €", market: europe, why: "Matériau Reflexcell multicouche, utilisé par les armées, bien plus chaud et solide qu'une couverture alu, se replie sous vide."}
+      - {brand: "SOL (Survive Outdoors Longer)", model: "Escape Bivvy", price: "60-80 €", market: europe, why: "Sac de bivouac réfléchissant et respirant, réutilisable, de la marque de couvertures de survie d'Adventure Medical Kits."}
+
+  - item: radio
+    tier: rustique
+    criteria: "Accord numérique avec stations mémorisées, piles standard AA ou AAA et bonne sensibilité FM : un poste qu'on retrouve calé sur la bonne station après des mois au placard."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Sangean", model: "DT-120", price: "45-55 €", market: france, why: "Poste de poche à accord numérique et mémoires, réputé pour sa réception FM, sur deux piles AAA."}
+      - {brand: "Panasonic", model: "RF-2400DEG-K", price: "30-50 €", market: france, why: "Poste FM/AM simple et durable, sur secteur ou sur piles, gros haut-parleur lisible pour toute la maison."}
+  - item: radio
+    tier: commun
+    criteria: "Trois sources d'énergie réelles (dynamo, solaire, USB) et un boîtier étanche et robuste, d'une marque de radio sérieuse plutôt que d'un fabricant de gadgets."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Sangean", model: "MMR-88 (USB-C)", price: "95-115 €", market: europe, why: "Radio de secours d'un vrai fabricant de récepteurs : dynamo, solaire et USB-C, boîtier étanche, bonne réception."}
+      - {brand: "Midland", model: "ER300 Pro", price: "70-95 €", market: europe, why: "Alternative moins chère : FM, dynamo, solaire et USB-C, avec lampe et batterie de secours."}
+  - item: radio
+    tier: confirme
+    criteria: "Aucun poste actuel ne réunit FM, DAB+ et ondes courtes : on combine un récepteur DAB+/FM à dynamo et un récepteur ondes courtes qui accepte des piles AA du commerce."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Sangean", model: "MMR-99 DAB+", price: "140-190 €", market: europe, why: "Le meilleur poste de secours DAB+/FM : dynamo, solaire, boîtier IP55, bien noté par la presse allemande en 2026."}
+      - {brand: "Sangean", model: "ATS-909X2", price: "245-300 €", market: france, why: "Récepteur ondes courtes de référence, très sensible, sur quatre piles AA : capte les radios internationales si tout tombe."}
+      - {brand: "Tecsun", model: "PL-990X", price: "270-345 €", market: europe, why: "Excellent récepteur ondes courtes et BLU, plus compact, mais sur batterie 18650 et non sur piles du commerce."}
+  - item: radio
+    tier: epique
+    criteria: "Un émetteur-récepteur d'une marque de radiocommunication avec SAV en Europe ; la CB s'utilise sans licence, le radioamateur exige le certificat d'opérateur."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Icom", model: "IC-705", price: "1250-1500 €", market: france, why: "Transceiver portable radioamateur HF/VHF/UHF de référence, sur batterie, pour joindre loin sans infrastructure (licence obligatoire)."}
+      - {brand: "Midland", model: "Alan 42 DS", price: "100-135 €", market: france, why: "Portable CB 27 MHz sans licence, multinorme européenne, sur piles ou batterie : la porte d'entrée de l'émission."}
+
+  - item: talkies
+    tier: rustique
+    criteria: "Une marque qui respecte vraiment la norme PMR446 (500 mW, 8 canaux), plutôt qu'un jouet aux fréquences douteuses."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Motorola", model: "Talkabout T62 (paire)", price: "55-60 €", market: france, why: "Paire d'entrée de gamme fiable, rechargeable en USB, simple à utiliser par toute la famille."}
+      - {brand: "Motorola", model: "Talkabout T82 (paire)", price: "80-90 €", market: france, why: "Un cran au-dessus : boîtier plus résistant à la pluie, lampe intégrée, mêmes canaux que la T62."}
+  - item: talkies
+    tier: commun
+    criteria: "Un talkie qui fonctionne sur piles AA : on recharge les accus ou, en panne de courant, on glisse des piles du commerce."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Midland", model: "G9 Pro", price: "85-110 €", market: france, why: "Le grand public le plus robuste (IPX5, double touche d'émission), sur quatre piles AA rechargeables, très répandu en France."}
+      - {brand: "Midland", model: "G7 Pro", price: "75-80 €", market: france, why: "Version plus simple et moins chère du même principe, même format de piles AA."}
+  - item: talkies
+    tier: confirme
+    criteria: "Matériel professionnel PMR446 : boîtier étanche IP55, batterie Li-Ion de plus de 15 heures, bonne qualité audio et garantie longue."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Motorola", model: "XT460", price: "160-175 €", market: france, why: "Talkie pro sans licence IP55, 20 h d'autonomie, écran et canaux nommés : le choix des chantiers et de l'événementiel."}
+      - {brand: "Motorola", model: "XT420", price: "140-170 €", market: france, why: "Même robustesse et autonomie que le XT460, sans écran : plus simple à remettre à un proche."}
+
+  - item: reseau_maille
+    tier: commun
+    criteria: "Un boîtier prêt à l'emploi livré avec Meshtastic, en version 868 MHz pour l'Europe, avec batterie, GPS et boîtier fermé."
+    checked: 2026-11-09
+    refs:
+      - {brand: "RAK Wireless", model: "WisMesh Pocket V2", price: "90-110 €", market: europe, why: "Boîtier complet avec écran, GPS et grosse batterie de 3200 mAh certifiée : utilisable seul, sans téléphone."}
+      - {brand: "Seeed Studio", model: "SenseCAP Card Tracker T1000-E", price: "40-50 €", market: europe, why: "Format carte bancaire, GPS, livré avec Meshtastic : le moins cher pour équiper chaque téléphone."}
+
+  - item: sac_evacuation
+    tier: commun
+    criteria: "Un sac de 25 à 35 L avec ceinture ventrale, dos ventilé réglable et tissu résistant à l'abrasion, d'une marque qui répare ou remplace : il doit supporter d'attendre des années puis de servir d'un coup."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Osprey", model: "Talon 33", price: "120-170 €", market: france, why: "Léger et confortable, longueur de dos réglable, garantie « All Mighty » de réparation à vie."}
+      - {brand: "Deuter", model: "Futura 27", price: "110-155 €", market: france, why: "Dos filet Aircomfort très ventilé et housse de pluie intégrée, construction allemande durable."}
+  - item: sac_evacuation
+    tier: confirme
+    criteria: "Un sac de 45 à 60 L ajusté à la longueur de dos de chaque porteur, avec une vraie ceinture porteuse pour 10 à 15 kg : la taille juste compte plus que la marque."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Osprey", model: "Kestrel 48 (Kyte 48 en coupe femme)", price: "155-220 €", market: france, why: "Dos réglable, accès frontal, housse de pluie intégrée et garantie de réparation à vie."}
+      - {brand: "Deuter", model: "Aircontact Core 50+10 (et coupe SL femme)", price: "180-270 €", market: france, why: "Portage de charge très stable et tissu épais, prévu pour durer des décennies."}
+  - item: sac_evacuation
+    tier: epique
+    criteria: "Pour un enfant : un sac de 12 à 18 L à sa taille, avec bretelles rembourrées et sangle de poitrine, qu'il porte lui-même avec son kit de réconfort."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Deuter", model: "Junior (18 L)", price: "40-60 €", market: france, why: "Le sac enfant de référence de 5 à 10 ans, solide et réglé comme un sac adulte."}
+      - {brand: "Osprey", model: "Jet 12", price: "40-70 €", market: europe, why: "Plus petit et léger, pour les plus jeunes, avec la même garantie de réparation à vie."}
+  - item: sac_evacuation
+    tier: legendaire
+    criteria: "Sac de 45 à 60 L qui porte couchage et abri sans dépasser 10 à 12 kg ; tarp de moins de 600 g, sac de couchage synthétique confort autour de 0 °C."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Simond (Decathlon)", model: "Sac MT500 Air 50+10 L", price: "80-115 €", why: "Assez grand pour le couchage, garanti 10 ans."}
+      - {brand: "Simond (Decathlon)", model: "Tarp de trekking MT900", price: "60-70 €", why: "Environ 500 g, abri pour une ou deux personnes."}
+      - {brand: "Simond (Decathlon)", model: "Sac de couchage MT500 0 °C", price: "85-95 €", why: "Synthétique : supporte mieux l'humidité et le stockage long que le duvet."}
+
+  - item: velo
+    tier: epique
+    criteria: "Une remorque enfant homologuée (EN 15918) avec harnais 5 points, suspension et habitacle fermé, convertible en poussette pour finir à pied."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Thule", model: "Chariot Sport 2 (double)", price: "1600-1700 €", market: france, why: "Suspension réglable, freins, finition et SAV de référence ; se convertit en poussette ou en poussette de course."}
+      - {brand: "Thule", model: "Chariot Lite (double)", price: "900-950 €", market: france, why: "Même châssis éprouvé avec moins d'équipements, pour un usage occasionnel."}
+
+  - item: couteau_survie
+    tier: rustique
+    criteria: "Un vrai verrouillage de lame, un acier inoxydable facile à réaffûter et des pièces simples : un couteau pliant robuste se juge à son blocage et à la facilité de son entretien."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Opinel", model: "N°08 inox", price: "10-25 €", market: france, why: "Bague Virobloc qui verrouille la lame, acier inox Sandvik facile à affûter, fabriqué en Savoie depuis plus d'un siècle."}
+      - {brand: "Victorinox", model: "Hunter Pro", price: "85-150 €", market: france, why: "Grand pliant à lame bloquante ouvrable d'une main, finition suisse et garantie mondiale de 10 ans."}
+  - item: couteau_survie
+    tier: commun
+    criteria: "Des pinces solides, des lames accessibles pince fermée et verrouillées, une vraie garantie : une pince multifonction se juge à ses pinces et à la qualité de ses verrous."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Leatherman", model: "Wave+", price: "120-160 €", market: france, why: "Référence des professionnels : 18 outils, lames et scie accessibles d'une main, embouts remplaçables, garantie 25 ans."}
+      - {brand: "Victorinox", model: "SwissTool Spirit MX", price: "150-170 €", market: france, why: "Construction suisse soignée, outils verrouillés, plus compacte et douce en main que la Wave+."}
+  - item: couteau_survie
+    tier: confirme
+    criteria: "Une soie traversante ou au moins une lame épaisse d'environ 10 cm, une émouture scandinave facile à affûter sur le terrain et un étui qui retient bien le couteau."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Morakniv", model: "Kansbol (étui polymère)", price: "45-60 €", market: europe, why: "Lame inox de 10,9 cm, manche antidérapant et étui multi-fixation : le meilleur rapport fiabilité-poids pour un sac."}
+      - {brand: "Morakniv", model: "Companion Heavy Duty", price: "23-30 €", market: europe, why: "Lame de 3,2 mm quasi indestructible pour le prix, facile à remplacer dans chaque sac du foyer."}
+  - item: couteau_survie
+    tier: epique
+    criteria: "Un acier de qualité sur soie pleine ou laminé, une pierre de terrain pour l'entretenir et une scie pliante verrouillable pour le bois : l'ensemble compte plus que le seul couteau."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Fällkniven", model: "F1", price: "140-180 €", market: europe, why: "Couteau de survie des pilotes suédois, lame laminée très tenace ; à associer à la pierre de poche Fällkniven DC4 (environ 25 €)."}
+      - {brand: "Morakniv", model: "Garberg (étui cuir)", price: "95-110 €", market: europe, why: "Soie pleine de 3,2 mm, la version la plus robuste de Morakniv pour fendre et tailler."}
+      - {brand: "Bahco", model: "Laplander 396-LAP", price: "26-40 €", market: france, why: "Scie pliante à lame verrouillée la plus recommandée en bushcraft, coupe bois vert et sec, lame remplaçable."}
+  - item: couteau_survie
+    tier: legendaire
+    criteria: "Une tête forgée bien trempée, un manche en bois ou composite qui ne se dissocie pas de la tête et un étui protecteur : une hachette s'achète pour la vie."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Gränsfors Bruk", model: "Wildlife Hatchet n° 415", price: "160-200 €", market: europe, why: "Forgée à la main en Suède, manche hickory, étui cuir et garantie 20 ans ; elle se réaffûte et se remanche."}
+      - {brand: "Fiskars", model: "X13 (hachette de randonnée XXS)", price: "40-55 €", market: france, why: "500 g, manche composite incassable surmoulé sur la tête, disponible en grande surface de bricolage."}
+
+  - item: sacs_etanches
+    tier: confirme
+    criteria: "Un tissu épais soudé (non cousu) et une fermeture enroulée sur au moins trois tours : la résistance à l'abrasion décide de la durée de vie."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Ortlieb", model: "Dry-Bag PD350 (22 L)", price: "20-30 €", market: france, why: "Bâche PVC épaisse soudée, quasi inusable, fabriquée en Allemagne avec garantie de 5 ans."}
+      - {brand: "Sea to Summit", model: "Big River Dry Bag (20 L)", price: "40-60 €", market: france, why: "Nylon enduit TPU plus léger et souple, fond ovale qui tient debout, très bon en sac de canoë."}
+      - {brand: "Ortlieb", model: "Dry-Bag PS10 (22 L)", price: "25-32 €", market: europe, why: "Version légère pour compartimenter l'intérieur d'un sac à dos."}
+  - item: sacs_etanches
+    tier: epique
+    criteria: "Un sac à dos entièrement soudé, à fermeture étanche (zip étanche ou roll-top) et dos porteur : il doit garder le contenu sec sous une pluie de plusieurs heures."
+    checked: 2026-11-09
+    refs:
+      - {brand: "Ortlieb", model: "Atrack 25", price: "170-220 €", market: france, why: "Sac à dos soudé à ouverture dorsale TIZIP étanche, vrai système de portage, garantie de 5 ans."}
+      - {brand: "Itiwit (Decathlon)", model: "Sac à dos étanche 20 L", price: "40 €", market: france, why: "Roll-top IPX6 simple et accessible en magasin ; résiste à la pluie et aux vagues, pas à l'immersion."}

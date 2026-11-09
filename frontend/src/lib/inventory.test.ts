@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { CATALOG } from "../engine/catalog";
 import type { ItemData, StockData } from "../engine/replay";
 import type { Autonomy, Objective } from "../model";
-import { autonomyProjection, buildCards, byLocation, datedEntries, expiriesByMonth, nextDue, nextSteps, reserveTier, tierObjectiveIds } from "./inventory";
+import { autonomyProjection, buildCards, byLocation, datedEntries, expiriesByMonth, nextDue, nextSteps, purchaseGuide, reserveTier, tierObjectiveIds } from "./inventory";
 
 const item = (id: string) => CATALOG.items.find((i) => i.id === id)!;
 const objective = (id: string, status: Objective["status"]): Objective =>
@@ -107,5 +107,34 @@ describe("inventaire", () => {
     expect(nextDue(11, "2026-11-08")).toBe("2027-11-01");
     expect(nextDue(11, "2026-10-31")).toBe("2026-11-01");
     expect(nextDue(6, "2026-11-08")).toBe("2027-06-01");
+  });
+
+  it("ne propose les cartes sur demande et les cartes à tag qu'aux foyers concernés", () => {
+    const relevant = (items: Map<string, ItemData>, tags: Set<string>) =>
+      new Set(buildCards(CATALOG, items, new Map(), [], [objective("defense.armes_regle", "todo")], "2026-12-01", tags).filter((c) => c.relevant).map((c) => c.item.id));
+    const none = relevant(new Map(), new Set());
+    expect(none.has("armes")).toBe(false);
+    expect(none.has("poignard")).toBe(false);
+    expect(none.has("tabac")).toBe(false);
+    expect(none.has("compteur_geiger")).toBe(false);
+    expect(relevant(new Map(), new Set(["armes"])).has("armes")).toBe(true);
+    expect(relevant(new Map(), new Set(["risque_industriel"])).has("compteur_geiger")).toBe(true);
+    const owned = new Map([["poignard", { item_id: "poignard", tier: "rustique", quantity: 1, location: null, note: "" }]]);
+    expect(relevant(owned, new Set()).has("poignard")).toBe(true);
+  });
+
+  it("range les repères d'achat par palier et signale le prochain palier à viser", () => {
+    const filtre = item("filtre_eau");
+    const all = purchaseGuide(CATALOG, filtre, null, "2026-11-09");
+    expect(all.length).toBeGreaterThan(0);
+    const order = filtre.tiers.map((t) => t.tier);
+    expect(all.map((g) => order.indexOf(g.tier))).toEqual([...all.map((g) => order.indexOf(g.tier))].sort((a, b) => a - b));
+    expect(all.filter((g) => g.next)).toEqual([all[0]]); // rien possédé : le premier palier renseigné
+    const owned = all[0].tier;
+    const after = purchaseGuide(CATALOG, filtre, owned, "2026-11-09");
+    expect(after.find((g) => g.next)?.tier).toBe(all[1]?.tier);
+    expect(after.some((g) => g.stale)).toBe(false);
+    expect(purchaseGuide(CATALOG, filtre, null, "2030-01-01").every((g) => g.stale)).toBe(true);
+    expect(purchaseGuide(CATALOG, item("chocolat"), null, "2026-11-09")).toEqual([]);
   });
 });

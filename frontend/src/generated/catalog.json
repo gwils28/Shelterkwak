@@ -2445,7 +2445,7 @@
    "id": "cyber.double_auth",
    "axis": "cyber",
    "level": 3,
-   "title": "Mot de passe propre et double authentification sur la messagerie principale et la banque de chaque adulte",
+   "title": "Mot de passe propre et double authentification sur la messagerie principale et la banque de chaque adulte (ou compte géré avec un aidant de confiance pour qui n'a pas de smartphone)",
    "description": "",
    "why": "La messagerie permet de réinitialiser tous les autres comptes ; c'est elle qu'il faut protéger en premier.",
    "kind": "check",
@@ -2463,31 +2463,10 @@
    "custom": false
   },
   {
-   "id": "cyber.mises_a_jour",
-   "axis": "cyber",
-   "level": 3,
-   "title": "Mises à jour automatiques activées sur les téléphones, les ordinateurs et la box",
-   "description": "",
-   "why": "",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": 365,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
    "id": "cyber.sauvegarde",
    "axis": "cyber",
    "level": 3,
-   "title": "Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de trois mois",
+   "title": "Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de six mois",
    "description": "",
    "why": "Un rançongiciel, un incendie ou un vol effacent tout ce qui n'existe qu'à un seul endroit.",
    "kind": "check",
@@ -2499,7 +2478,7 @@
    ],
    "requires_tags": [],
    "excludes_tags": [],
-   "revalidate_days": 90,
+   "revalidate_days": 180,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -3296,6 +3275,27 @@
    "custom": false
   },
   {
+   "id": "mobilite.criteres_depart",
+   "axis": "mobilite",
+   "level": 4,
+   "title": "Critères écrits pour décider d'évacuer ou de rester (consignes des autorités, alertes, seuils sur le terrain, état des membres), connus de tous les adultes",
+   "description": "",
+   "why": "La décision la plus lourde d'une crise se prend mieux à froid ; en urgence, on part trop tard ou sans raison.",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
    "id": "mobilite.evacuation_pmr_testee",
    "axis": "mobilite",
    "level": 4,
@@ -3533,10 +3533,10 @@
    "custom": false
   },
   {
-   "id": "cyber.gestionnaire",
+   "id": "cyber.mises_a_jour",
    "axis": "cyber",
    "level": 4,
-   "title": "Un gestionnaire de mots de passe pour chaque adulte, et un mot de passe différent pour chaque compte important",
+   "title": "Mises à jour automatiques activées sur les téléphones, les ordinateurs et la box",
    "description": "",
    "why": "",
    "kind": "check",
@@ -3548,7 +3548,7 @@
    ],
    "requires_tags": [],
    "excludes_tags": [],
-   "revalidate_days": null,
+   "revalidate_days": 365,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -3560,27 +3560,6 @@
    "title": "Codes de secours de la double authentification et moyens de récupération des comptes notés sur papier, rangés avec les papiers importants",
    "description": "",
    "why": "Sans le téléphone, impossible de recevoir les codes ; sans codes de secours, on perd l'accès à la banque et à la messagerie.",
-   "kind": "check",
-   "required": true,
-   "contexts": [
-    "appartement",
-    "periurbain",
-    "rural"
-   ],
-   "requires_tags": [],
-   "excludes_tags": [],
-   "revalidate_days": null,
-   "due_month": null,
-   "stock": null,
-   "custom": false
-  },
-  {
-   "id": "cyber.box",
-   "axis": "cyber",
-   "level": 4,
-   "title": "Box internet sécurisée : mot de passe d'administration changé, Wi-Fi en WPA2 ou WPA3, réseau invité pour les visiteurs et les objets connectés",
-   "description": "",
-   "why": "",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -4496,6 +4475,48 @@
    "requires_tags": [],
    "excludes_tags": [],
    "revalidate_days": 365,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.gestionnaire",
+   "axis": "cyber",
+   "level": 5,
+   "title": "Un gestionnaire de mots de passe pour chaque adulte, et un mot de passe différent pour chaque compte important",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
+   "due_month": null,
+   "stock": null,
+   "custom": false
+  },
+  {
+   "id": "cyber.box",
+   "axis": "cyber",
+   "level": 5,
+   "title": "Box internet sécurisée : mot de passe d'administration changé, Wi-Fi en WPA2 ou WPA3, réseau invité pour les visiteurs et les objets connectés",
+   "description": "",
+   "why": "",
+   "kind": "check",
+   "required": true,
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires_tags": [],
+   "excludes_tags": [],
+   "revalidate_days": null,
    "due_month": null,
    "stock": null,
    "custom": false
@@ -8490,6 +8511,21 @@
    ]
   },
   {
+   "id": "numerique",
+   "name": "Téléphone perdu, piratage ou arnaque",
+   "icon": "🔐",
+   "tags_any": [],
+   "group": "situation",
+   "steps": [
+    "Arnaque en cours (faux conseiller, faux proche, faux secours) : raccrocher, ne donner aucun code, rappeler soi-même le numéro officiel.",
+    "Carte bancaire ou code donné : faire opposition tout de suite (numéro de la banque, ou 0 892 705 705), puis prévenir sa banque.",
+    "Téléphone perdu ou volé : faire suspendre la ligne chez l'opérateur, puis bloquer ou effacer le téléphone à distance depuis un autre appareil.",
+    "Compte piraté : changer le mot de passe de la messagerie d'abord (elle donne accès aux autres), avec les codes de secours rangés avec les papiers.",
+    "Signaler et se faire aider : 17Cyber (17cyber.gouv.fr) ou cybermalveillance.gouv.fr ; plainte au commissariat ou à la gendarmerie.",
+    "Garder les preuves : captures d'écran, numéros, références de virement."
+   ]
+  },
+  {
    "id": "arret_cardiaque",
    "name": "Arrêt cardiaque",
    "icon": "❤️",
@@ -8806,7 +8842,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "pastilles_eau",
@@ -8858,7 +8896,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "bidons",
@@ -8912,7 +8952,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "chariot_portage",
@@ -8966,7 +9008,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "filtre_eau",
@@ -9020,7 +9064,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "recuperateur",
@@ -9074,7 +9120,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "point_eau",
@@ -9135,7 +9183,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "reserve_vivres",
@@ -9199,7 +9249,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "reserve_cuisson",
@@ -9257,7 +9309,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "rechaud",
@@ -9307,7 +9361,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "ouvre_boite",
@@ -9359,7 +9415,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "bebe",
@@ -9413,7 +9471,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "animaux_vivres",
@@ -9465,7 +9525,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "bocaux",
@@ -9476,7 +9538,7 @@
    "basis": "quantite",
    "category": null,
    "description": "Bocaux, joints et couvercles neufs, sel, vinaigre, sucre pour conserver une récolte.",
-   "caution": "",
+   "caution": "Botulisme : les conserves maison de légumes peu acides (haricots, petits pois, champignons), de viande ou de poisson exigent le temps et la température de stérilisation indiqués par une recette fiable. Couvercle bombé, liquide trouble ou odeur suspecte : on jette sans goûter.",
    "objectives": [],
    "tiers": [
     {
@@ -9517,7 +9579,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "semences",
@@ -9571,7 +9635,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "vivres_regime",
@@ -9623,7 +9689,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "cuisson_sobre",
@@ -9675,7 +9743,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "froid_sans_reseau",
@@ -9725,7 +9795,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "moulin",
@@ -9775,7 +9847,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "outils_jardin",
@@ -9833,7 +9907,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "ration_survie",
@@ -9886,7 +9962,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "reserve_traitements",
@@ -9945,7 +10023,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "trousse_secours",
@@ -10037,7 +10117,9 @@
      ]
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "masques",
@@ -10091,7 +10173,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "hygiene",
@@ -10168,7 +10252,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "toilettes_secours",
@@ -10239,7 +10325,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "iode",
@@ -10291,7 +10379,9 @@
      "includes": []
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "lunettes",
@@ -10347,7 +10437,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "piles_auditives",
@@ -10401,7 +10493,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "adrenaline",
@@ -10453,7 +10547,9 @@
      "includes": []
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "inhalateur",
@@ -10505,7 +10601,9 @@
      "includes": []
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "glaciere_insuline",
@@ -10561,7 +10659,9 @@
      "includes": []
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "batterie_medicale",
@@ -10615,7 +10715,9 @@
      "includes": []
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "sac_maternite",
@@ -10687,7 +10789,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "kit_senior",
@@ -10756,7 +10860,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "compteur_geiger",
@@ -10806,7 +10912,11 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [
+    "risque_industriel"
+   ],
+   "opt_in": false
   },
   {
    "id": "lampes",
@@ -10860,7 +10970,9 @@
      "includes": []
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "piles",
@@ -10913,7 +11025,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "electricite_secours",
@@ -10977,7 +11091,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "groupe_electrogene",
@@ -11029,7 +11145,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "allumettes",
@@ -11079,7 +11197,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "bois",
@@ -11133,7 +11253,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "kit_solaire_nomade",
@@ -11151,18 +11273,14 @@
      "tier": "rustique",
      "contents": "Panneau pliant de 10 à 20 W avec sortie USB, et une batterie externe chargée",
      "min_days": null,
-     "objectives": [
-      "energie.batterie"
-     ],
+     "objectives": [],
      "includes": []
     },
     {
      "tier": "commun",
      "contents": "Panneau de 20 à 40 W testé, batterie externe de 20 000 mAh et câbles",
      "min_days": null,
-     "objectives": [
-      "energie.solaire_portable"
-     ],
+     "objectives": [],
      "includes": []
     },
     {
@@ -11176,9 +11294,7 @@
      "tier": "epique",
      "contents": "Station de 500 Wh, panneau de 100 à 200 W, recharge par l'allume-cigare",
      "min_days": null,
-     "objectives": [
-      "energie.station"
-     ],
+     "objectives": [],
      "includes": []
     },
     {
@@ -11189,7 +11305,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "bougies",
@@ -11201,47 +11319,47 @@
    "category": null,
    "description": "Une lumière qui ne dépend d'aucune pile, et un peu de chaleur. Les bougies de longue durée (en boîte, chauffe-plats en quantité) brûlent plusieurs heures.",
    "caution": "Les bougies causent chaque année des incendies mortels, surtout pendant les coupures. Jamais sans surveillance, ni près des rideaux, ni dans une chambre d'enfant ou en dormant ; toujours sur un support stable et incombustible. Préférer une lampe à piles dès qu'on en a une.",
-   "objectives": [
-    "energie.lumiere"
-   ],
+   "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
-     "contents": "Quelques bougies et des allumettes, rangées ensemble",
+     "contents": "Quelques bougies et des allumettes rangées ensemble, avec un bougeoir stable",
      "min_days": null,
      "objectives": [],
      "includes": []
     },
     {
      "tier": "commun",
-     "contents": "Bougies et bougeoirs stables, une boîte de chauffe-plats",
+     "contents": "Un photophore fermé (en verre) pour chaque bougie : jamais de flamme nue",
      "min_days": null,
      "objectives": [],
      "includes": []
     },
     {
      "tier": "confirme",
-     "contents": "Bougies de longue durée en boîte métallique et photophores fermés",
+     "contents": "Bougies de longue durée en boîte métallique, posées sur un support incombustible",
      "min_days": null,
      "objectives": [],
      "includes": []
     },
     {
      "tier": "epique",
-     "contents": "Lanterne à bougie avec verre protecteur et réserve pour deux semaines",
+     "contents": "Lanternes à bougie fermées et une couverture anti-feu à portée",
      "min_days": null,
      "objectives": [],
      "includes": []
     },
     {
      "tier": "legendaire",
-     "contents": "Bougies pour un mois, lanternes fermées, et un extincteur ou une couverture anti-feu à portée",
+     "contents": "Les bougies restent un appoint : lampes à piles en priorité, lanternes fermées, extincteur à portée",
      "min_days": null,
      "objectives": [],
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "couchage",
@@ -11295,7 +11413,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "detecteurs",
@@ -11349,7 +11469,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "extincteur",
@@ -11403,7 +11525,9 @@
      "includes": []
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "kit_confinement",
@@ -11479,7 +11603,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "chauffage_appoint",
@@ -11533,7 +11659,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "outils",
@@ -11617,7 +11745,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "kit_canicule",
@@ -11688,7 +11818,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "kit_neige",
@@ -11740,7 +11872,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "sacs_dechets",
@@ -11792,7 +11926,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "fixations_seisme",
@@ -11844,7 +11980,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "batardeau",
@@ -11896,7 +12034,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "ruban_adhesif",
@@ -11908,9 +12048,7 @@
    "category": null,
    "description": "Réparer, calfeutrer, étiqueter, fixer une bâche : le ruban toilé (duct tape) répare presque tout, au moins provisoirement.",
    "caution": "",
-   "objectives": [
-    "abri.calfeutrage"
-   ],
+   "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
@@ -11928,7 +12066,7 @@
     },
     {
      "tier": "confirme",
-     "contents": "Deux rouleaux de ruban toilé large, réservés au calfeutrage de la pièce refuge",
+     "contents": "Deux rouleaux de ruban toilé large et un rouleau de ruban aluminium pour les réparations",
      "min_days": null,
      "objectives": [],
      "includes": []
@@ -11948,7 +12086,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "bache",
@@ -11959,10 +12099,8 @@
    "basis": "options",
    "category": null,
    "description": "Couvrir un toit abîmé, protéger du matériel, faire un abri ou récupérer l'eau de pluie. Œillets renforcés et cordelette font toute la différence.",
-   "caution": "",
-   "objectives": [
-    "abri.calfeutrage"
-   ],
+   "caution": "Ne jamais monter sur un toit mouillé, par grand vent ou sans être assuré : après une tempête, les chutes de toit sont un accident fréquent, et le bâchage d'urgence peut être demandé aux pompiers (18). L'eau de pluie récupérée n'est pas potable sans traitement.",
+   "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
@@ -12000,7 +12138,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "couverture_survie",
@@ -12010,7 +12150,7 @@
    "kind": "consommable",
    "basis": "options",
    "category": null,
-   "description": "Quelques grammes qui renvoient la chaleur du corps. Face dorée vers l'extérieur pour se protéger du froid ; elle se déchire facilement, d'où l'intérêt d'en avoir plusieurs.",
+   "description": "Quelques grammes qui limitent la perte de chaleur, surtout par le vent et l'humidité. Ce qui compte : envelopper tout le corps en laissant le visage libre, s'isoler du sol et se protéger du vent ; le sens des faces change peu de chose. Elle se déchire facilement, d'où l'intérêt d'en avoir plusieurs. Elle ne remplace ni un sac de couchage ni des vêtements chauds.",
    "caution": "",
    "objectives": [],
    "tiers": [
@@ -12025,9 +12165,7 @@
      "tier": "commun",
      "contents": "Une couverture de survie par personne",
      "min_days": null,
-     "objectives": [
-      "abri.chaleur"
-     ],
+     "objectives": [],
      "includes": []
     },
     {
@@ -12052,7 +12190,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "radio",
@@ -12084,7 +12224,7 @@
     },
     {
      "tier": "confirme",
-     "contents": "Radio multibande (FM, grandes ondes, ondes courtes) à dynamo",
+     "contents": "Radio FM, DAB+ et ondes courtes, à dynamo ou sur piles du commerce",
      "min_days": null,
      "objectives": [],
      "includes": []
@@ -12108,7 +12248,9 @@
      "includes": []
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "talkies",
@@ -12162,7 +12304,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "cartes",
@@ -12216,7 +12360,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "sifflet",
@@ -12268,7 +12414,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "telephone_secours",
@@ -12321,7 +12469,9 @@
      "includes": []
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "chargeurs",
@@ -12392,7 +12542,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "sauvegarde",
@@ -12426,7 +12578,7 @@
     },
     {
      "tier": "confirme",
-     "contents": "Disque externe hors ligne, sauvegarde refaite tous les trois mois",
+     "contents": "Disque externe hors ligne, sauvegarde refaite au moins tous les six mois",
      "min_days": null,
      "objectives": [
       "cyber.sauvegarde"
@@ -12450,7 +12602,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "ordinateur_hors_ligne",
@@ -12500,7 +12654,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "reseau_maille",
@@ -12556,7 +12712,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "onduleur",
@@ -12608,11 +12766,13 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "boussole",
-   "group": "communication",
+   "group": "evacuation",
    "name": "Boussole",
    "icon": "🧭",
    "kind": "equipement",
@@ -12660,7 +12820,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "sac_evacuation",
@@ -12750,7 +12912,9 @@
      ]
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "velo",
@@ -12804,7 +12968,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "kit_vehicule",
@@ -12882,7 +13048,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "jerrican_carburant",
@@ -12936,7 +13104,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "caisse_animaux",
@@ -12991,7 +13161,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "aide_technique",
@@ -13045,7 +13217,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "depart_rapide",
@@ -13115,7 +13289,9 @@
      ]
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "sac_edc",
@@ -13189,7 +13365,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "couteau_survie",
@@ -13212,21 +13390,21 @@
     },
     {
      "tier": "commun",
-     "contents": "Couteau à lame fixe de 10 cm environ, avec étui",
+     "contents": "Pince multifonction avec lame, scie et tournevis",
      "min_days": null,
      "objectives": [],
      "includes": []
     },
     {
      "tier": "confirme",
-     "contents": "Couteau à lame fixe en acier de qualité, pleine soie, et pierre à affûter",
+     "contents": "Couteau à lame fixe d'environ 10 cm avec étui, rangé dans le sac de randonnée ou d'évacuation",
      "min_days": null,
      "objectives": [],
      "includes": []
     },
     {
      "tier": "epique",
-     "contents": "Couteau fixe, pince multifonction et petite scie pliante",
+     "contents": "Couteau fixe en acier de qualité, pierre à affûter et petite scie pliante",
      "min_days": null,
      "objectives": [],
      "includes": []
@@ -13239,7 +13417,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "sacs_etanches",
@@ -13289,7 +13469,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "classeur_papiers",
@@ -13369,7 +13551,9 @@
      ]
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "especes",
@@ -13421,7 +13605,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "repertoire",
@@ -13500,7 +13686,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "doubles_cles",
@@ -13552,7 +13740,9 @@
      "includes": []
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "bibliotheque",
@@ -13606,7 +13796,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "pieces_metal",
@@ -13622,7 +13814,7 @@
    "tiers": [
     {
      "tier": "rustique",
-     "contents": "Quelques pièces d'argent",
+     "contents": "Quelques pièces d'argent, une fois l'épargne de précaution constituée",
      "min_days": null,
      "objectives": [],
      "includes": []
@@ -13652,13 +13844,13 @@
      "tier": "legendaire",
      "contents": "L'équivalent de trois mois de dépenses, une fois l'épargne de précaution constituée",
      "min_days": null,
-     "objectives": [
-      "finances.actifs"
-     ],
+     "objectives": [],
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "kit_occupation",
@@ -13732,7 +13924,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "kit_enfant",
@@ -13804,7 +13998,9 @@
      ]
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "kit_reassurance",
@@ -13876,7 +14072,9 @@
      ]
     }
    ],
-   "crisis": true
+   "crisis": true,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "chocolat",
@@ -13928,7 +14126,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "cafe",
@@ -13980,7 +14180,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "alcool",
@@ -13990,11 +14192,9 @@
    "kind": "consommable",
    "basis": "quantite",
    "category": null,
-   "description": "Des mignonettes (5 cl) pour marquer un moment, remercier un voisin ou échanger. L'alcool fort se garde des années, bouchon fermé, à l'abri de la lumière.",
-   "caution": "Jamais pour un mineur, ni avec un traitement qui l'interdit. L'alcool ne réchauffe pas : il accélère la perte de chaleur et aggrave l'hypothermie. Il ne remplace pas l'antiseptique de la trousse. En crise, garder les idées claires : on boit peu, et jamais avant de conduire ou de veiller.",
-   "objectives": [
-    "communaute.troc"
-   ],
+   "description": "Des mignonettes (5 cl) pour marquer un moment ou remercier un voisin. L'alcool fort se garde des années, bouchon fermé, à l'abri de la lumière.",
+   "caution": "Jamais pour un mineur, ni avec un traitement qui l'interdit. L'alcool ne réchauffe pas : il accélère la perte de chaleur et aggrave l'hypothermie. Il ne remplace pas l'antiseptique de la trousse. En crise, garder les idées claires : on boit peu, et jamais avant de conduire ou de veiller. Pour une personne dépendante, un arrêt brutal (faute d'approvisionnement) peut provoquer convulsions et delirium tremens : en parler à un médecin avant une crise, et ne jamais arrêter seul.",
+   "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
@@ -14005,7 +14205,7 @@
     },
     {
      "tier": "commun",
-     "contents": "Cinq mignonettes, faciles à offrir ou à échanger",
+     "contents": "Cinq mignonettes, faciles à offrir",
      "min_days": null,
      "objectives": [],
      "includes": []
@@ -14026,13 +14226,15 @@
     },
     {
      "tier": "legendaire",
-     "contents": "Réserve d'échange tenue à jour (mignonettes, eaux-de-vie), sous clé",
+     "contents": "Réserve tenue à jour, sous clé, hors de portée des mineurs",
      "min_days": null,
      "objectives": [],
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": true
   },
   {
    "id": "tabac",
@@ -14042,49 +14244,49 @@
    "kind": "consommable",
    "basis": "quantite",
    "category": null,
-   "description": "Pour un fumeur du foyer, un sevrage brutal en pleine crise aggrave le stress, l'irritabilité et les troubles du sommeil. Le tabac reste aussi une monnaie d'échange recherchée.",
-   "caution": "Fumer nuit gravement à la santé, à celle des enfants et à celle des voisins de confinement. La revente de tabac est réservée aux buralistes ; on peut l'offrir, pas en faire commerce. Les substituts nicotiniques (patchs, gommes) sont la vraie réserve de sécurité pour un fumeur. Jamais de flamme près du carburant ni dans la pièce de confinement.",
-   "objectives": [
-    "communaute.troc"
-   ],
+   "description": "Pour un fumeur du foyer, un sevrage brutal en pleine crise aggrave le stress, l'irritabilité et les troubles du sommeil. La vraie réserve, ce sont les substituts nicotiniques : le niveau monte avec eux, pas avec le tabac.",
+   "caution": "Fumer nuit gravement à la santé, à celle des enfants et à celle des voisins de confinement. La revente de tabac est réservée aux buralistes. Les substituts nicotiniques (patchs, gommes) sont la vraie réserve de sécurité pour un fumeur. Jamais de flamme près du carburant ni dans la pièce de confinement.",
+   "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
-     "contents": "Une semaine de substituts nicotiniques (patchs ou gommes) pour chaque fumeur",
+     "contents": "Une semaine de substituts nicotiniques (patchs, gommes ou pastilles) pour chaque fumeur",
      "min_days": null,
      "objectives": [],
      "includes": []
     },
     {
      "tier": "commun",
-     "contents": "Deux semaines de consommation habituelle, substituts compris",
+     "contents": "Deux semaines de substituts, dosage vu avec un pharmacien",
      "min_days": null,
      "objectives": [],
      "includes": []
     },
     {
      "tier": "confirme",
-     "contents": "Un mois, au sec dans une boîte hermétique, substituts compris",
+     "contents": "Un mois de substituts : patch pour le fond et forme orale pour les envies soudaines",
      "min_days": null,
      "objectives": [],
      "includes": []
     },
     {
      "tier": "epique",
-     "contents": "Un mois pour le foyer et quelques paquets à offrir en remerciement",
+     "contents": "Un mois de substituts et un accompagnement possible à distance (Tabac info service, 39 89)",
      "min_days": null,
      "objectives": [],
      "includes": []
     },
     {
      "tier": "legendaire",
-     "contents": "Trois mois de substituts et un plan de sevrage vu avec un médecin ou un pharmacien",
+     "contents": "Sevrage engagé ou réussi avec un professionnel de santé, substituts gardés en réserve contre les rechutes",
      "min_days": null,
      "objectives": [],
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": true
   },
   {
    "id": "armes",
@@ -14096,9 +14298,7 @@
    "category": null,
    "description": "Pour un foyer qui chasse ou pratique le tir sportif. Les niveaux mesurent la détention en règle et la sécurité, pas la puissance de feu.",
    "caution": "En France, une arme à feu ne se détient pas pour se défendre : la détention exige un titre (permis de chasser validé ou licence de tir), une autorisation préfectorale pour la catégorie B, et chaque arme est enregistrée au SIA. Le port est interdit, le transport n'est permis que pour un motif légitime (stand, chasse), arme déchargée et dans une mallette fermée. Les munitions ne s'achètent que sur présentation du titre. L'arme ne va pas dans le sac d'évacuation.",
-   "objectives": [
-    "defense.legitime_defense"
-   ],
+   "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
@@ -14120,9 +14320,7 @@
      "tier": "confirme",
      "contents": "Licence de tir en club et pratique encadrée régulière",
      "min_days": null,
-     "objectives": [
-      "defense.tir_sportif"
-     ],
+     "objectives": [],
      "includes": []
     },
     {
@@ -14140,7 +14338,11 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [
+    "armes"
+   ],
+   "opt_in": false
   },
   {
    "id": "porte_securisee",
@@ -14196,7 +14398,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "alarme",
@@ -14250,7 +14454,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
   },
   {
    "id": "lacrymogene",
@@ -14261,7 +14467,7 @@
    "basis": "options",
    "category": null,
    "description": "Pour se dégager et fuir, pas pour combattre. Elle reste au domicile, à un endroit connu des adultes et hors de portée des enfants.",
-   "caution": "Une bombe lacrymogène de 100 ml au plus est une arme de catégorie D : achat réservé aux majeurs, et la porter ou la transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Au-delà de 100 ml, elle relève de la catégorie B, interdite sans autorisation. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée. Jamais à portée d'un enfant ; en pièce fermée, elle atteint aussi le foyer.",
+   "caution": "Une bombe lacrymogène de 100 ml au plus est une arme de catégorie D : achat réservé aux majeurs, et la porter ou la transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Au-delà de 100 ml, elle relève de la catégorie B, interdite sans autorisation. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée. Jamais à portée d'un enfant ; en pièce fermée, elle atteint aussi le foyer. Déconseillée si un membre est asthmatique ou si un bébé vit au foyer, et jamais utilisée dans la pièce de confinement.",
    "objectives": [
     "defense.legitime_defense"
    ],
@@ -14277,7 +14483,7 @@
     },
     {
      "tier": "commun",
-     "contents": "Rangée dans la pièce refuge, près du téléphone chargé",
+     "contents": "Rangée hors de portée des enfants, à un endroit connu des adultes, en dehors de la pièce de confinement",
      "min_days": null,
      "objectives": [],
      "includes": []
@@ -14298,13 +14504,15 @@
     },
     {
      "tier": "legendaire",
-     "contents": "Prévue dans le plan intrusion, remplacée avant péremption, chaque adulte connaît les règles de la légitime défense",
+     "contents": "Remplacée avant péremption, et chaque adulte connaît les règles de la légitime défense ; le plan du foyer reste de s'enfermer et d'appeler le 17",
      "min_days": null,
      "objectives": [],
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": true
   },
   {
    "id": "matraque",
@@ -14330,7 +14538,7 @@
     },
     {
      "tier": "commun",
-     "contents": "Rangée dans la pièce refuge avec le téléphone chargé, règles de la légitime défense connues",
+     "contents": "Rangée hors de portée des enfants, règles de la légitime défense connues de chaque adulte",
      "min_days": null,
      "objectives": [],
      "includes": []
@@ -14351,13 +14559,15 @@
     },
     {
      "tier": "legendaire",
-     "contents": "Prévue dans le plan intrusion comme dernier recours, après la fuite et l'appel, revue chaque année",
+     "contents": "Dernier recours seulement : le plan du foyer reste de s'enfermer et d'appeler le 17 sans aller au contact ; règles revues chaque année",
      "min_days": null,
      "objectives": [],
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": true
   },
   {
    "id": "poignard",
@@ -14409,7 +14619,9 @@
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": true
   },
   {
    "id": "arme_contondante",
@@ -14457,13 +14669,1655 @@
     },
     {
      "tier": "legendaire",
-     "contents": "Prévue dans le plan intrusion comme dernier recours, après la fuite et l'appel, et connue de chaque adulte qui s'en sert",
+     "contents": "Dernier recours seulement : le plan du foyer reste de s'enfermer et d'appeler le 17 sans aller au contact ; règles connues de chaque adulte",
      "min_days": null,
      "objectives": [],
      "includes": []
     }
    ],
-   "crisis": false
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": true
+  }
+ ],
+ "references": [
+  {
+   "item": "pastilles_eau",
+   "tier": "commun",
+   "criteria": "Un désinfectant reconnu (NaDCC ou dioxyde de chlore) avec un dosage clair par litre, en blister individuel qui se conserve plusieurs années ; les pastilles à l'argent seul ne désinfectent pas.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Katadyn",
+     "model": "Micropur Forte MF 1T (100 comprimés)",
+     "price": "20-25 €",
+     "market": "france",
+     "why": "Chlore NaDCC pour désinfecter plus argent pour conserver, un comprimé par litre, 100 L par boîte, référence des voyageurs."
+    },
+    {
+     "brand": "Aquatabs",
+     "model": "Comprimés effervescents 1 L (3,5 mg, boîte de 60)",
+     "price": "12-17 €",
+     "market": "france",
+     "why": "NaDCC vendu en pharmacie, utilisé par les ONG humanitaires, 60 L par boîte."
+    },
+    {
+     "brand": "Katadyn",
+     "model": "Micropur MP1 (30 comprimés)",
+     "price": "14-18 $",
+     "market": "usa",
+     "why": "Dioxyde de chlore, actif aussi sur Cryptosporidium (4 h de contact) et sans goût de chlore, mais 30 L seulement par boîte."
+    }
+   ]
+  },
+  {
+   "item": "pastilles_eau",
+   "tier": "confirme",
+   "criteria": "Des comprimés dosés pour le contenant réellement utilisé (un comprimé par bidon de 10 L), pour ne pas compter les comprimés de 1 L par dizaines.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Aquatabs",
+     "model": "Aquatabs 10 litres (33 mg, boîte de 40)",
+     "price": "16-20 €",
+     "market": "france",
+     "why": "Un comprimé par bidon de 10 L, 400 L par boîte, en pharmacie."
+    },
+    {
+     "brand": "Katadyn",
+     "model": "Micropur Forte MF 1T (2 boîtes de 100)",
+     "price": "40-50 €",
+     "market": "france",
+     "why": "Même produit que pour la gourde, 200 L au total et conservation de l'eau stockée grâce à l'argent."
+    }
+   ]
+  },
+  {
+   "item": "pastilles_eau",
+   "tier": "epique",
+   "criteria": "Des comprimés grand volume pour les réserves de la maison, plus des comprimés de 1 L dans le sac : le stock se compte en milliers de litres, pas en boîtes de voyage.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Aquatabs",
+     "model": "Aquatabs Réservoirs (1 comprimé pour 10 L, boîte de 120)",
+     "price": "20-25 €",
+     "market": "france",
+     "why": "1 200 L par boîte, demi-dose pour la conservation hebdomadaire d'une réserve."
+    },
+    {
+     "brand": "Aquatabs",
+     "model": "Aquatabs 10 litres (33 mg, boîte de 40) x3",
+     "price": "50-60 €",
+     "market": "france",
+     "why": "Plus facile à trouver en pharmacie, même dosage d'un comprimé par bidon de 10 L."
+    }
+   ]
+  },
+  {
+   "item": "filtre_eau",
+   "tier": "rustique",
+   "criteria": "Membrane à fibres creuses de 0,1 à 0,2 µm (norme NSF P231 ou EPA), capacité annoncée en milliers de litres ; mieux si elle se visse sur une bouteille plutôt que d'obliger à boire à la source.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "LifeStraw",
+     "model": "Personal Peak Series",
+     "price": "22-30 €",
+     "market": "france",
+     "why": "Paille de référence, certifiée NSF P231, vendue partout."
+    },
+    {
+     "brand": "Sawyer",
+     "model": "Mini (SP128)",
+     "price": "40-60 €",
+     "market": "france",
+     "why": "En paille ou vissé sur une bouteille, se nettoie par contre-lavage."
+    }
+   ]
+  },
+  {
+   "item": "filtre_eau",
+   "tier": "commun",
+   "criteria": "Une membrane fine (0,1 à 0,2 µm) qui se rétrolave et dure des milliers de litres ; un purificateur qui retient aussi les virus vaut mieux si l'eau vient de zones habitées.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Sawyer",
+     "model": "Squeeze SP129",
+     "price": "65-90 €",
+     "market": "europe",
+     "why": "Fibre creuse 0,1 µm rétrolavable, élu meilleur filtre de randonnée par les testeurs indépendants depuis des années."
+    },
+    {
+     "brand": "Grayl",
+     "model": "GeoPress 710 ml",
+     "price": "90-120 €",
+     "market": "france",
+     "why": "Purificateur à piston qui retient aussi virus et une partie des produits chimiques, mais cartouche de 250 L seulement."
+    }
+   ]
+  },
+  {
+   "item": "filtre_eau",
+   "tier": "confirme",
+   "criteria": "Un sac de 10 L sans pompe, un filtre à fibre creuse remplaçable d'au moins 1 500 L et des raccords robustes qui supportent un usage quotidien.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "MSR",
+     "model": "AutoFlow XL Gravity Filter 10 L",
+     "price": "120-150 €",
+     "market": "europe",
+     "why": "Réservoir épais et cartouche 0,2 µm d'environ 1 500 L, entretien simple sur le terrain."
+    },
+    {
+     "brand": "Katadyn",
+     "model": "BeFree Gravity 10 L",
+     "price": "105-130 €",
+     "market": "europe",
+     "why": "Membrane 0,1 µm à fort débit qui se nettoie en secouant, plus légère mais sac plus fin."
+    }
+   ]
+  },
+  {
+   "item": "filtre_eau",
+   "tier": "epique",
+   "criteria": "Des bougies céramiques nettoyables par brossage, qui filtrent des dizaines de milliers de litres sans électricité et dont les rechanges restent disponibles.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Katadyn",
+     "model": "Drip Ceradyn (3 bougies céramiques)",
+     "price": "360-450 €",
+     "market": "france",
+     "why": "Filtre gravitaire suisse à trois bougies céramiques 0,2 µm imprégnées d'argent, conçu pour les camps et les ONG."
+    },
+    {
+     "brand": "Katadyn",
+     "model": "Pocket",
+     "price": "300-380 €",
+     "market": "france",
+     "why": "Pompe à cartouche céramique 0,2 µm de 50 000 L, garantie 20 ans, utilisée par armées et expéditions."
+    },
+    {
+     "brand": "British Berkefeld (Doulton)",
+     "model": "Système gravitaire inox avec bougies Ultra Sterasyl",
+     "price": "200-230 €",
+     "market": "europe",
+     "why": "Bougies céramiques à cœur de charbon certifiées, bonne option de cuisine pour une eau du réseau douteuse."
+    }
+   ]
+  },
+  {
+   "item": "filtre_eau",
+   "tier": "legendaire",
+   "criteria": "Un appareil qui retient aussi les virus ou qui traite l'eau d'un groupe au débit d'une pompe, se nettoie sans outils et accepte un préfiltre ; à défaut, finir par une chloration.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "MSR",
+     "model": "Guardian Purifier",
+     "price": "270-370 €",
+     "market": "france",
+     "why": "Pompe à fibre creuse 0,02 µm qui retient les virus, autonettoyante à chaque coup de pompe, conçue pour l'armée américaine."
+    },
+    {
+     "brand": "Katadyn",
+     "model": "Expedition (KFT)",
+     "price": "1 700-2 000 €",
+     "market": "france",
+     "why": "Pompe céramique de très grande capacité pour dix personnes et plus, mais virus à traiter ensuite au chlore."
+    }
+   ]
+  },
+  {
+   "item": "rechaud",
+   "tier": "rustique",
+   "criteria": "Un brûleur à alcool sans pièce mobile ni joint, avec bouchon vissé pour garder le combustible, posé dans un pare-vent qui tient la casserole : rien ne s'use, rien ne se dérègle.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Trangia",
+     "model": "27-1 UL (réchaud tempête, brûleur B25)",
+     "price": "55-80 €",
+     "market": "france",
+     "why": "Le standard suédois depuis des décennies : pare-vent intégré, casseroles et brûleur inusable, très stable."
+    },
+    {
+     "brand": "Trangia",
+     "model": "Brûleur à alcool B25 avec bouchon",
+     "price": "17-20 €",
+     "market": "europe",
+     "why": "Le même brûleur seul, en laiton, à poser dans un support ou un pare-vent existant."
+    }
+   ]
+  },
+  {
+   "item": "rechaud",
+   "tier": "commun",
+   "criteria": "Un détendeur qui garde une flamme régulière quand la cartouche se vide ou qu'il fait froid, un réglage fin pour mijoter et un support de casserole stable.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "MSR",
+     "model": "PocketRocket Deluxe",
+     "price": "80-100 €",
+     "market": "france",
+     "why": "Brûleur régulé, très bien noté en test, tient la flamme au vent et par temps froid ; petit support de casserole."
+    },
+    {
+     "brand": "Campingaz",
+     "model": "Camp'Bistro 3",
+     "price": "27-50 €",
+     "market": "france",
+     "why": "Réchaud de table à cartouche, stable sous une grande casserole, cartouches vendues partout en France."
+    }
+   ]
+  },
+  {
+   "item": "rechaud",
+   "tier": "confirme",
+   "criteria": "Deux brûleurs réglables indépendamment, pare-vent sur trois côtés, grilles en acier inoxydable ou émaillé et raccord pour bouteille de gaz standard.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Primus",
+     "model": "Tupike Stove II",
+     "price": "220-280 €",
+     "market": "france",
+     "why": "Deux feux régulés, pare-vent intégré, grilles inox : la référence haut de gamme des testeurs pour la cuisine de camp."
+    },
+    {
+     "brand": "Campingaz",
+     "model": "Camping Kitchen 2 Multi-Cook",
+     "price": "100-170 €",
+     "market": "europe",
+     "why": "Deux feux et plaque grill sur bouteille de gaz, pare-vent, pièces et SAV faciles à trouver en France."
+    },
+    {
+     "brand": "Cadac",
+     "model": "Safari Chef 30 HP",
+     "price": "130-160 €",
+     "market": "europe",
+     "why": "Un seul brûleur mais très robuste, sur bouteille de gaz, avec support de casserole et plaques de cuisson ; distribué par Dometic."
+    }
+   ]
+  },
+  {
+   "item": "rechaud",
+   "tier": "epique",
+   "criteria": "Un foyer en acier épais ou en fonte qui brûle des brindilles avec peu de fumée et porte une grosse marmite, complété par un cuiseur solaire qui monte au-delà de 100 °C.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Petromax",
+     "model": "Rocket Stove rf33",
+     "price": "110-150 €",
+     "market": "europe",
+     "why": "Rocket stove en fonte de 7,5 kg, très stable sous une marmite, brûle du petit bois avec un bon rendement."
+    },
+    {
+     "brand": "Bushcraft Essentials",
+     "model": "Bushbox XL (inox)",
+     "price": "90-105 €",
+     "market": "europe",
+     "why": "Réchaud pliant multi-combustible (bois, alcool avec brûleur Trangia, pastilles), fabriqué en Allemagne."
+    },
+    {
+     "brand": "Solar Brother",
+     "model": "SunGood 360",
+     "price": "245-300 €",
+     "market": "france",
+     "why": "Cuiseur solaire français qui atteint 180 à 240 °C en mode tube, 2,5 kg, fabricant joignable en France."
+    }
+   ]
+  },
+  {
+   "item": "rechaud",
+   "tier": "legendaire",
+   "criteria": "Une cuisinière à forte part de fonte, avec un four et une plaque assez grands pour cuire au quotidien, un rendement élevé et le label Flamme Verte 7 étoiles, posée par un installateur certifié.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "La Nordica-Extraflame",
+     "model": "Rosa XXL",
+     "price": "2 350-2 950 €",
+     "market": "france",
+     "why": "Fonte émaillée à 70 %, four de 78 L, 10,5 kW et 86 % de rendement, Flamme Verte 7 étoiles."
+    },
+    {
+     "brand": "Godin",
+     "model": "Arpège (réf. 240162)",
+     "price": "4 500-4 700 €",
+     "market": "france",
+     "why": "Fabricant français, dessus en fonte et Flamme Verte 7 étoiles, réseau d'installateurs en France."
+    }
+   ]
+  },
+  {
+   "item": "cuisson_sobre",
+   "tier": "confirme",
+   "criteria": "Un autocuiseur en inox 18/10 à fond épais multicouche, avec des soupapes et des joints vendus en pièces détachées pendant de longues années.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Fissler",
+     "model": "Vitavit Premium 6 L",
+     "price": "220-330 €",
+     "market": "europe",
+     "why": "Autocuiseur allemand haut de gamme en inox, compatible avec tous les feux, très bien noté en test."
+    },
+    {
+     "brand": "SEB",
+     "model": "Authentique inox 6 L",
+     "price": "100-125 €",
+     "market": "france",
+     "why": "Fabriqué en France, engagement de réparabilité de 15 ans, pièces détachées en grande surface."
+    }
+   ]
+  },
+  {
+   "item": "cuisson_sobre",
+   "tier": "epique",
+   "criteria": "Un cuiseur solaire qui atteint au moins 120 °C sans surveillance, résiste au vent et se range sans s'abîmer.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Solar Brother",
+     "model": "SunGood 360",
+     "price": "245-300 €",
+     "market": "france",
+     "why": "Le plus polyvalent de la gamme : jusqu'à 240 °C en mode tube, ou 100 à 120 °C pour mijoter en marmite."
+    },
+    {
+     "brand": "Sun Oven",
+     "model": "All American Sun Oven",
+     "price": "350-400 $",
+     "market": "usa",
+     "why": "Four solaire en caisson rigide, réputé pour durer plus de quinze ans ; volumineux à importer."
+    },
+    {
+     "brand": "Solar Brother",
+     "model": "SunGood",
+     "price": "90-100 €",
+     "market": "france",
+     "why": "Version pliante de 900 g, 80 à 120 °C, pour mijoter sans surveillance."
+    }
+   ]
+  },
+  {
+   "item": "trousse_secours",
+   "tier": "commun",
+   "criteria": "Une trousse se juge à son contenu et à son rangement : compartiments étiquetés, sac déperlant et solide, composants de marque médicale remplaçables à l'unité, plutôt qu'un gros nombre de « pièces » qui compte chaque pansement.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Lifesystems",
+     "model": "Mountain Leader Pro First Aid Kit",
+     "price": "95-115 €",
+     "market": "europe",
+     "why": "Conçue pour les encadrants de montagne britanniques, sac robuste à compartiments, contenu professionnel complet et réassortissable."
+    },
+    {
+     "brand": "Croix-Rouge française",
+     "model": "Trousse Premium (gamme 2026)",
+     "price": "45 €",
+     "market": "france",
+     "why": "La plus complète de la gamme 2026 de la Croix-Rouge, composée selon ses formations aux premiers secours, facile à trouver."
+    }
+   ]
+  },
+  {
+   "item": "trousse_secours",
+   "tier": "confirme",
+   "criteria": "Pour un sac : compacte, étanche ou dans une pochette déperlante, ouverture en livre qui montre tout d'un coup d'œil, et contenu orienté plaies, ampoules et entorses.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Lifesystems",
+     "model": "Mountain Leader First Aid Kit",
+     "price": "60-95 €",
+     "market": "europe",
+     "why": "Version allégée de la Pro, même conception et même qualité de composants, au format d'un sac d'évacuation."
+    },
+    {
+     "brand": "Adventure Medical Kits",
+     "model": "Mountain Series Backpacker",
+     "price": "47-58 $",
+     "market": "usa",
+     "why": "Bien noté par OutdoorGearLab et CleverHiker, sachets étanches classés par blessure et guide de soins inclus ; notice en anglais."
+    }
+   ]
+  },
+  {
+   "item": "trousse_secours",
+   "tier": "legendaire",
+   "criteria": "Uniquement des garrots recommandés par le CoTCCC (CAT Gen 7, SAM XT, SOFTT-W), achetés chez un distributeur médical ou agréé : les contrefaçons cèdent sous la tension. On garde un garrot d'entraînement à part, celui de la trousse reste scellé.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "SMSP",
+     "model": "Kit hémorragie externe (réf. 270202)",
+     "price": "175-185 €",
+     "market": "france",
+     "why": "Fournisseur des sapeurs-pompiers : garrot SOF TT, pansement compressif israélien et gaze hémostatique Celox dans un même kit."
+    },
+    {
+     "brand": "North American Rescue / C-A-T Resources",
+     "model": "Garrot C-A-T Gen 7",
+     "price": "40-55 €",
+     "market": "france",
+     "why": "Le garrot de référence des armées et des secours, recommandé par le CoTCCC, le plus réussi par des utilisateurs peu entraînés."
+    },
+    {
+     "brand": "SAM Medical",
+     "model": "SAM XT Extremity Tourniquet",
+     "price": "42-56 €",
+     "market": "europe",
+     "why": "Recommandé par le CoTCCC, boucle à verrouillage automatique qui limite le jeu, du fabricant de l'attelle SAM Splint."
+    }
+   ]
+  },
+  {
+   "item": "masques",
+   "tier": "commun",
+   "criteria": "Un FFP2 certifié EN 149 (marquage CE suivi du numéro d'organisme notifié), d'une marque d'équipement de protection professionnelle : c'est l'étanchéité au visage qui protège, d'où l'intérêt d'un modèle avec barrette nasale et joint confortable.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "3M",
+     "model": "Aura 9320+ FFP2 sans soupape (boîte de 20)",
+     "price": "45-60 €",
+     "market": "france",
+     "why": "Masque pliable de référence en milieu industriel et hospitalier, trois panneaux qui épousent bien le visage, emballage individuel."
+    },
+    {
+     "brand": "Moldex",
+     "model": "2400 Classic FFP2 NR D (boîte de 20)",
+     "price": "55-67 €",
+     "market": "europe",
+     "why": "Coque moulée qui garde sa forme et tient longtemps, fabricant allemand d'équipements de protection."
+    }
+   ]
+  },
+  {
+   "item": "masques",
+   "tier": "legendaire",
+   "criteria": "Un demi-masque réutilisable EN 140 d'un fabricant de protection respiratoire, avec des filtres combinés gaz et particules EN 14387 (ABEK1-P3 au minimum) faciles à trouver en recharge ; les filtres ont une date de péremption sous emballage.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Dräger",
+     "model": "X-plore 3500 + filtres baïonnette A1B1E1K1 Hg-P3",
+     "price": "50-60 € le masque, 25-30 € la paire de filtres",
+     "market": "europe",
+     "why": "Demi-masque prévu pour un port long, joint souple confortable, gamme de filtres complète d'un fabricant de référence des pompiers."
+    },
+    {
+     "brand": "Moldex",
+     "model": "7002 série 7000 + filtres EasyLock 9430 ABEK1P3",
+     "price": "30 € le masque, 13-19 € la paire de filtres",
+     "market": "europe",
+     "why": "Système de filtres préassemblés simple à monter sans erreur, recharges bon marché."
+    }
+   ]
+  },
+  {
+   "item": "toilettes_secours",
+   "tier": "epique",
+   "criteria": "Une séparation d'urine efficace et une construction en plastique épais qui se vide et se nettoie sans renverser ; sans eau, sans produit chimique et sans électricité, elle fonctionne pendant toute la coupure.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Trelino",
+     "model": "Evo L",
+     "price": "520 €",
+     "market": "europe",
+     "why": "Toilette à séparation allemande sans eau ni électricité, grand réservoir à urine, matériel de vanlife éprouvé."
+    },
+    {
+     "brand": "Kildwick",
+     "model": "MiniLoo (toilette sèche à séparation)",
+     "price": "320-470 €",
+     "market": "europe",
+     "why": "Fabriquée en Allemagne, en bois, existe en kit à monter soi-même pour moins cher."
+    }
+   ]
+  },
+  {
+   "item": "toilettes_secours",
+   "tier": "legendaire",
+   "criteria": "Une toilette sèche fixe à séparation, avec ventilation vers l'extérieur et pièces détachées disponibles, pensée pour un usage quotidien sur des années.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Separett",
+     "model": "Villa",
+     "price": "700-800 €",
+     "market": "europe",
+     "why": "Référence suédoise des chalets sans raccordement, séparation d'urine éprouvée depuis des décennies ; vérifier le stock."
+    },
+    {
+     "brand": "Kildwick",
+     "model": "FancyLoo Capture",
+     "price": "840 €",
+     "market": "europe",
+     "why": "Toilette sèche fixe en bois fabriquée en Allemagne, finition de meuble pour une installation durable."
+    }
+   ]
+  },
+  {
+   "item": "glaciere_insuline",
+   "tier": "commun",
+   "criteria": "Une pochette qui garde l'insuline en cours d'utilisation à moins de 26 °C pendant au moins deux jours par forte chaleur, réactivable à l'eau, sans risque de gel.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Frio",
+     "model": "Pochette Two ou Five (2 ou 5 stylos)",
+     "price": "25-45 €",
+     "market": "europe",
+     "why": "Le standard des diabétiques voyageurs : 18-26 °C pendant au moins 45 h à 38 °C, réactivable en trempant dans l'eau."
+    },
+    {
+     "brand": "4AllFamily",
+     "model": "Explorer (glacière insuline 3 en 1)",
+     "price": "140 $",
+     "market": "usa",
+     "why": "Fabricant spécialisé dans le transport de l'insuline, alternative à la pochette Frio ; durée de froid à vérifier sur la fiche."
+    }
+   ]
+  },
+  {
+   "item": "glaciere_insuline",
+   "tier": "epique",
+   "criteria": "Un vrai réfrigérateur à compresseur ou un réfrigérateur médical réglé entre 2 et 8 °C, alimentable en 12 V ou USB depuis une batterie, et un fabricant qui assure le SAV en Europe.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Dometic",
+     "model": "CFF 12 + batterie PLB15",
+     "price": "630 € (349 + 279)",
+     "market": "france",
+     "why": "Compresseur fiable et réglable au degré, 12/24 V et secteur, SAV en France ; la batterie lithium fer phosphate dédiée le fait tourner sans courant."
+    },
+    {
+     "brand": "4AllFamily",
+     "model": "Pioneer (mini-réfrigérateur médical USB)",
+     "price": "280 $",
+     "market": "usa",
+     "why": "Conçu pour les médicaments (2-8 °C), alimenté en USB donc par n'importe quelle batterie, et 32 h au frais sans courant."
+    }
+   ]
+  },
+  {
+   "item": "compteur_geiger",
+   "tier": "commun",
+   "criteria": "Un appareil qui affiche le débit de dose en µSv/h avec une conversion documentée, garde l'historique et se recharge ou prend des piles courantes ; une marque qui publie ses caractéristiques de détecteur.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Radiacode",
+     "model": "Radiacode 110",
+     "price": "399 €",
+     "market": "europe",
+     "why": "Scintillateur CsI(Tl) bien plus sensible qu'un tube Geiger, spectromètre qui identifie la source, application et carte partagée (gamma seulement)."
+    },
+    {
+     "brand": "GQ Electronics",
+     "model": "GMC-800",
+     "price": "90-95 $",
+     "market": "usa",
+     "why": "Compteur Geiger simple bêta-gamma avec alarme réglable sonore, lumineuse et vibrante, le plus accessible des appareils sérieux."
+    }
+   ]
+  },
+  {
+   "item": "compteur_geiger",
+   "tier": "confirme",
+   "criteria": "Un compteur bêta-gamma à seuil d'alarme réglable, avec une plage de mesure étendue pour rester utile si le niveau monte fortement.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "GQ Electronics",
+     "model": "GMC-500+",
+     "price": "124 $",
+     "market": "usa",
+     "why": "Deux tubes (sensible et haute plage), bêta, gamma et X, enregistrement des données et alarme réglable."
+    },
+    {
+     "brand": "GQ Electronics",
+     "model": "GMC-800",
+     "price": "90-95 $",
+     "market": "usa",
+     "why": "Bêta-gamma avec cinq modes d'alarme dont vibration et voix, plus simple mais moins de plage."
+    }
+   ]
+  },
+  {
+   "item": "compteur_geiger",
+   "tier": "epique",
+   "criteria": "Un tube à fenêtre mica (crêpe ou fenêtre en bout) pour voir aussi les alpha et mieux les bêta, ce qui permet de contrôler une surface ou un aliment de près.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Gamma-Scout",
+     "model": "Alert",
+     "price": "450 € HT",
+     "market": "europe",
+     "why": "Fabriqué en Allemagne, alpha, bêta et gamma, étalonnage certifié et alarme sonore à seuil, conçu pour une mesure continue économe en pile."
+    },
+    {
+     "brand": "GQ Electronics",
+     "model": "GMC-600 Pro",
+     "price": "328 $",
+     "market": "usa",
+     "why": "Grand tube crêpe LND 7317 très sensible, alpha, bêta, gamma et X, tube remplaçable."
+    }
+   ]
+  },
+  {
+   "item": "compteur_geiger",
+   "tier": "legendaire",
+   "criteria": "Un appareil livré avec un certificat d'étalonnage et un service de réétalonnage, et des mesures exportables vers un réseau de surveillance.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Gamma-Scout",
+     "model": "Online / RealTime",
+     "price": "550 € HT",
+     "market": "europe",
+     "why": "Alpha-bêta-gamma, étalonnage certifié et service de réétalonnage du fabricant, transmission des mesures en temps réel."
+    },
+    {
+     "brand": "Radiacode",
+     "model": "Radiacode 110 (un par adulte)",
+     "price": "399 €",
+     "market": "europe",
+     "why": "De poche, partage de mesures sur la carte Radiaverse, complète un compteur alpha-bêta fixe."
+    }
+   ]
+  },
+  {
+   "item": "lampes",
+   "tier": "commun",
+   "criteria": "Une frontale à piles standard (AAA) d'une marque qui assure le SAV, avec un faisceau large pour la maison et un éclairage rouge ; la compatibilité avec une batterie rechargeable permet d'évoluer sans changer de lampe.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Petzl",
+     "model": "Tikka (350 lm, 3 AAA ou batterie CORE)",
+     "price": "25-35 €",
+     "market": "france",
+     "why": "Frontale de référence, simple et robuste, garantie Petzl, accepte la batterie CORE plus tard."
+    },
+    {
+     "brand": "Petzl",
+     "model": "Actik Core (600 lm, CORE fournie ou 3 AAA)",
+     "price": "55-80 €",
+     "market": "france",
+     "why": "Même plateforme plus puissante, livrée avec sa batterie rechargeable, roule aussi aux AAA."
+    }
+   ]
+  },
+  {
+   "item": "lampes",
+   "tier": "confirme",
+   "criteria": "Une frontale hybride (batterie rechargeable et piles AA/AAA en secours) et une lanterne à diffusion large, étanche, dont l'accumulateur tient plusieurs nuits en mode bas et peut recharger un téléphone.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Petzl",
+     "model": "Actik Core (600 lm, hybride CORE/AAA)",
+     "price": "55-80 €",
+     "market": "france",
+     "why": "Batterie USB plus repli sur piles du commerce : on n'est jamais dans le noir."
+    },
+    {
+     "brand": "Ledlenser",
+     "model": "ML6 (750 lm, 3 000 mAh, sortie USB)",
+     "price": "90-115 €",
+     "market": "europe",
+     "why": "Lanterne haut de gamme, environ 70 h à 20 lm, fait batterie de secours, garantie longue."
+    },
+    {
+     "brand": "Fenix",
+     "model": "CL26R Pro (650 lm, accu 18650 amovible)",
+     "price": "60-90 €",
+     "market": "europe",
+     "why": "Accumulateur standard remplaçable, USB-C, construction solide et prix plus doux."
+    }
+   ]
+  },
+  {
+   "item": "lampes",
+   "tier": "epique",
+   "criteria": "Une lanterne qui se recharge sans réseau (panneau intégré ou manivelle) et reste utile des semaines : charge solaire réelle en une journée, mode bas très long, matériaux qui tiennent au stockage.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Goal Zero",
+     "model": "Lighthouse 600 (600 lm, manivelle, USB)",
+     "price": "70-110 $",
+     "market": "usa",
+     "why": "Manivelle de secours, diffusion 180 ou 360°, sortie USB ; testée et recommandée par OutdoorGearLab."
+    },
+    {
+     "brand": "MPOWERD",
+     "model": "Luci Pro Outdoor 2.0 (solaire, gonflable)",
+     "price": "35-50 €",
+     "market": "europe",
+     "why": "Panneau intégré, ultra-légère et compacte, idéale au pied du lit ou à la fenêtre."
+    }
+   ]
+  },
+  {
+   "item": "lampes",
+   "tier": "legendaire",
+   "criteria": "Des veilleuses branchées en permanence qui s'allument seules à la coupure et se décrochent en lampe torche : un fabricant d'appareillage électrique, une batterie remplaçable et une autonomie annoncée d'au moins une heure.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Legrand",
+     "model": "Veilleuse lampe torche avec batterie 0 506 78",
+     "price": "45-60 €",
+     "market": "france",
+     "why": "Matériel d'électricien, s'allume à pleine puissance à la coupure, 1 h 30 minimum, se décroche."
+    },
+    {
+     "brand": "Alecto",
+     "model": "ATL-110 (torche sur socle à induction)",
+     "price": "30-38 €",
+     "market": "europe",
+     "why": "S'allume à la coupure ou quand on la retire du socle, 200 lm, recharge sans contact."
+    }
+   ]
+  },
+  {
+   "item": "piles",
+   "tier": "confirme",
+   "criteria": "Pour le stock, des piles à très faible autodécharge et sans fuite : lithium pour les appareils critiques et le froid, alcalines de gamme industrielle en boîte pour le volume, toujours avec une date limite lisible.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Energizer",
+     "model": "Ultimate Lithium AA (L91), boîte de 24",
+     "price": "95-110 €",
+     "market": "france",
+     "why": "Conservation 20 ans, fonctionne par grand froid, ne coule pas : la pile des appareils vitaux."
+    },
+    {
+     "brand": "Varta",
+     "model": "Industrial Pro AA (4006), boîte de 40",
+     "price": "10-15 €",
+     "market": "europe",
+     "why": "Alcaline professionnelle en vrac, excellent rapport qualité-prix pour le stock courant."
+    }
+   ]
+  },
+  {
+   "item": "piles",
+   "tier": "epique",
+   "criteria": "Des NiMH à faible autodécharge (70 % de charge après des années) et un chargeur intelligent qui gère chaque pile séparément et coupe proprement en fin de charge.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Panasonic",
+     "model": "eneloop AA 2 000 mAh + chargeur BQ-CC55",
+     "price": "35-40 € (chargeur et 4 piles), 3 € la pile en plus",
+     "market": "france",
+     "why": "La référence des NiMH de stockage, chargeur rapide à surveillance individuelle."
+    },
+    {
+     "brand": "Technoline",
+     "model": "BC 700 (chargeur-analyseur AA/AAA)",
+     "price": "35-45 €",
+     "market": "europe",
+     "why": "Choix du courant, mesure de capacité et rafraîchissement pour trier les piles fatiguées."
+    }
+   ]
+  },
+  {
+   "item": "electricite_secours",
+   "tier": "rustique",
+   "criteria": "Comparer en Wh plutôt qu'en mAh (20 000 mAh ≈ 74 Wh), sortie USB-C PD ; recharger tous les trois mois.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Xiaomi",
+     "model": "Power Bank 20000 mAh 18 W",
+     "price": "20-30 €",
+     "market": "france",
+     "why": "La capacité utile au meilleur prix : 3 ou 4 recharges de téléphone."
+    },
+    {
+     "brand": "Anker",
+     "model": "PowerCore 20000 (USB-C)",
+     "price": "30-50 €",
+     "market": "france",
+     "why": "Marque suivie, SAV et garantie fiables en France."
+    }
+   ]
+  },
+  {
+   "item": "electricite_secours",
+   "tier": "commun",
+   "criteria": "20 W réels ou plus pour les téléphones (100 W ou plus pour une station), sorties USB-C, toile robuste à œillets ; à tester un jour de soleil avant d'en avoir besoin.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Decathlon Simond",
+     "model": "Panneau solaire 21 W (2 USB-C)",
+     "price": "70-80 €",
+     "market": "france",
+     "why": "Charge téléphones et batteries en direct, sans électronique superflue."
+    },
+    {
+     "brand": "Sunslice",
+     "model": "Fusion Core 22 (22 W)",
+     "price": "85-95 €",
+     "market": "france",
+     "why": "Marque spécialisée du solaire nomade, bien construite."
+    },
+    {
+     "brand": "Bluetti",
+     "model": "PV100 (100 W pliable)",
+     "price": "180-210 €",
+     "market": "france",
+     "why": "Si une station est prévue ensuite : il la recharge directement."
+    }
+   ]
+  },
+  {
+   "item": "electricite_secours",
+   "tier": "confirme",
+   "criteria": "Station LiFePO4 (milliers de cycles), onduleur sinus 230 V, entrée solaire MPPT généreuse, recharge secteur rapide et marque qui assure garantie et pièces sur plusieurs années.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Anker SOLIX",
+     "model": "C1000 Gen 2 (1 024 Wh LiFePO4, 600 W solaire)",
+     "price": "600-1 000 €",
+     "market": "france",
+     "why": "Compacte pour sa capacité, recharge secteur en moins d'une heure, très silencieuse à faible charge."
+    },
+    {
+     "brand": "EcoFlow",
+     "model": "DELTA 3 Plus (1 024 Wh LiFePO4)",
+     "price": "800-1 000 €",
+     "market": "france",
+     "why": "Bien notée en test, recharge 230 V en 56 min, silencieuse sous 600 W."
+    }
+   ]
+  },
+  {
+   "item": "electricite_secours",
+   "tier": "epique",
+   "criteria": "Une batterie de balcon n'aide en coupure que si elle a une vraie prise hors réseau : vérifier sa puissance et son fonctionnement réseau coupé, et préférer une chimie LiFePO4 extensible.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Anker SOLIX",
+     "model": "Solarbank 3 E2700 Pro (2,7 kWh)",
+     "price": "1 500-2 000 €",
+     "market": "france",
+     "why": "Prise de secours jusqu'à 1 200 W, quatre entrées solaires, testée par Test-Achats et Notebookcheck."
+    },
+    {
+     "brand": "Zendure",
+     "model": "SolarFlow 800 Pro (1,9 kWh)",
+     "price": "720-1 200 €",
+     "market": "france",
+     "why": "Sortie hors réseau de 1 000 W, extensible ; remplacée par la 800 Pro 2, donc souvent soldée."
+    }
+   ]
+  },
+  {
+   "item": "electricite_secours",
+   "tier": "legendaire",
+   "criteria": "Plusieurs kWh en LiFePO4, onduleur capable de démarrer un frigo ou une pompe, entrée solaire de 1 kW ou plus et possibilité d'ajouter des batteries pour tenir une semaine.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "EcoFlow",
+     "model": "DELTA Pro 3 (4 096 Wh LiFePO4, 4 000 W)",
+     "price": "3 200-3 400 €",
+     "market": "france",
+     "why": "Une semaine de besoins prioritaires dans une seule unité sur roulettes, extensible."
+    },
+    {
+     "brand": "EcoFlow",
+     "model": "DELTA 3 Plus (1 024 Wh) et panneaux",
+     "price": "800-1 000 €",
+     "market": "france",
+     "why": "Socle plus abordable, à compléter de panneaux pour couvrir la semaine en sobriété."
+    }
+   ]
+  },
+  {
+   "item": "groupe_electrogene",
+   "tier": "rustique",
+   "criteria": "Inverter (sinus pur pour l'électronique), moteur 4 temps d'une marque dont les pièces se trouvent en France, SAV proche.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Honda",
+     "model": "EU10i (900 W inverter)",
+     "price": "900-1 050 €",
+     "market": "france",
+     "why": "Référence de durabilité et de silence, pièces disponibles des décennies."
+    },
+    {
+     "brand": "Eberth",
+     "model": "Inverter 1000 W essence",
+     "price": "250-280 €",
+     "market": "france",
+     "why": "Dépannage occasionnel pas cher ; SAV et réparabilité incertains."
+    }
+   ]
+  },
+  {
+   "item": "groupe_electrogene",
+   "tier": "commun",
+   "criteria": "1 800 W continus ou plus en inverter, distorsion (THD) sous 3 %, 60 dB ou moins, garantie 3 ans en usage domestique.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Honda",
+     "model": "EU22i (1 800 W continus)",
+     "price": "1 450-1 500 €",
+     "market": "france",
+     "why": "La valeur sûre : silencieux, increvable, revendable."
+    },
+    {
+     "brand": "Hyundai",
+     "model": "HY2350Si-EU (1 800 W continus)",
+     "price": "330-350 €",
+     "market": "france",
+     "why": "Sinus pur, 18 kg ; vérifier la garantie, qui varie selon le revendeur."
+    }
+   ]
+  },
+  {
+   "item": "groupe_electrogene",
+   "tier": "confirme",
+   "criteria": "Jerrican homologué ONU (marquage UN) de 20 L au plus, stabilisant dosé dès le plein, stock renouvelé tous les 6 à 12 mois.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Briggs & Stratton",
+     "model": "Stabilisant Fuel Fit 250 ml",
+     "price": "7-10 €",
+     "market": "france",
+     "why": "Courant et bon marché, en grande surface de bricolage."
+    },
+    {
+     "brand": "Hünersdorff",
+     "model": "Jerrican 20 L homologué UN",
+     "price": "19-25 €",
+     "market": "france",
+     "why": "Robuste, bec verseur sûr."
+    }
+   ]
+  },
+  {
+   "item": "groupe_electrogene",
+   "tier": "epique",
+   "criteria": "Inverter bicarburant (essence et GPL) avec détendeur fourni ; compter environ 10 % de puissance en moins au gaz. L'inverseur de source se fait à part, sur devis d'électricien.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Könner & Söhnen",
+     "model": "KS 2100iG S (1 800 W, essence et GPL)",
+     "price": "580-620 €",
+     "market": "france",
+     "why": "Le gaz se garde des années sans encrasser le moteur."
+    },
+    {
+     "brand": "Könner & Söhnen",
+     "model": "KS 3100iG S (environ 3 kW, essence et GPL)",
+     "price": "680-720 €",
+     "market": "france",
+     "why": "Assez de marge pour frigo, congélateur et pompe de chauffage ensemble."
+    }
+   ]
+  },
+  {
+   "item": "couchage",
+   "tier": "confirme",
+   "criteria": "Duvet d'oie de gonflant élevé (800 cuin ou plus) et température de confort mesurée selon EN ISO 23537 au moins 5 °C sous la température attendue dans la maison sans chauffage ; capuche et collerette, fabricant qui répare et relave.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Valandré",
+     "model": "Shocking Blue NEO (-20 °C)",
+     "price": "650-680 €",
+     "market": "france",
+     "why": "Fabriqué en France, duvet haut de gamme, conçu pour l'expédition, réparable par le fabricant."
+    },
+    {
+     "brand": "Valandré",
+     "model": "Swing CO 850 (-20 °C)",
+     "price": "410-440 €",
+     "market": "france",
+     "why": "Même fabricant et même duvet, coupe plus simple, nettement moins cher pour équiper chaque membre du foyer."
+    }
+   ]
+  },
+  {
+   "item": "detecteurs",
+   "tier": "rustique",
+   "criteria": "Détecteur optique certifié EN 14604, idéalement NF DAAF ou label Q (VdS), pile lithium scellée de 10 ans et sirène de 85 dB à 3 m ; un bouton de test facile à atteindre.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Ei Electronics",
+     "model": "Ei650F",
+     "price": "20-35 €",
+     "market": "france",
+     "why": "Référence des installateurs, NF DAAF et EN 14604, pile scellée 10 ans, garantie 5 ans."
+    },
+    {
+     "brand": "Hekatron",
+     "model": "Genius Plus",
+     "price": "20-40 €",
+     "market": "europe",
+     "why": "Fabriqué en Allemagne, label Q, noté « bien » (1,9) par Stiftung Warentest."
+    },
+    {
+     "brand": "Kidde",
+     "model": "10Y29",
+     "price": "21-32 €",
+     "market": "france",
+     "why": "EN 14604, pile scellée 10 ans, facile à trouver en France."
+    }
+   ]
+  },
+  {
+   "item": "detecteurs",
+   "tier": "commun",
+   "criteria": "Détecteur de CO à capteur électrochimique certifié EN 50291 (et NF DAACO si possible), durée de vie de 10 ans pile scellée ; un afficheur de concentration aide à repérer une petite fuite chronique.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Ei Electronics",
+     "model": "Ei208W (ou Ei208DW avec écran)",
+     "price": "30-50 €",
+     "market": "france",
+     "why": "NF DAACO et EN 50291, 10 ans, interconnectable en option par module radio Ei200MRF."
+    },
+    {
+     "brand": "Kidde",
+     "model": "7DCO (écran)",
+     "price": "29-40 €",
+     "market": "france",
+     "why": "EN 50291-1:2018 et -2:2019, affiche le taux de CO, durée de vie 10 ans."
+    },
+    {
+     "brand": "FireAngel",
+     "model": "FA3820",
+     "price": "30-50 €",
+     "market": "europe",
+     "why": "Fabricant britannique spécialisé, EN 50291-1:2018, pile scellée 10 ans."
+    }
+   ]
+  },
+  {
+   "item": "detecteurs",
+   "tier": "confirme",
+   "criteria": "Pour un malentendant : système radio qui déclenche flash et coussin vibrant sous l'oreiller. Vérifier la norme EN 14604 (beaucoup de kits sont certifiés nord-américains) ; la PCH peut en prendre une grande part.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Kidde",
+     "model": "10Y29 (un par étage et par chambre)",
+     "price": "20-30 €",
+     "market": "france",
+     "why": "Le même modèle fiable, multiplié pour couvrir le logement."
+    },
+    {
+     "brand": "Bellman & Symfon",
+     "model": "Pack Visit 868 (détecteur, flash, coussin vibrant)",
+     "price": "400-450 €",
+     "market": "france",
+     "why": "Système de référence pour les sourds et malentendants ; vérifier la norme européenne."
+    }
+   ]
+  },
+  {
+   "item": "detecteurs",
+   "tier": "epique",
+   "criteria": "Interconnexion radio du même fabricant que les détecteurs (pas de mélange de marques), qui fait sonner toute la maison dès qu'un détecteur déclenche ; détecteurs certifiés EN 14604 et module radio vendu séparément pour pouvoir compléter le réseau.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Ei Electronics",
+     "model": "Ei650WF avec module radio Ei600MRF",
+     "price": "50-80 € par point",
+     "market": "france",
+     "why": "NF DAAF, pile 10 ans, même réseau radio que les détecteurs de CO Ei208W."
+    },
+    {
+     "brand": "Hekatron",
+     "model": "Genius Plus X avec Funkmodul Basis X",
+     "price": "85-95 € par point",
+     "market": "europe",
+     "why": "Label Q, jusqu'à 60 détecteurs reliés par radio, fabriqué en Allemagne."
+    }
+   ]
+  },
+  {
+   "item": "detecteurs",
+   "tier": "legendaire",
+   "criteria": "Alertes sur le téléphone sans abonnement, autotest qui signale pile, capteur et Wi-Fi défaillants, et sirène locale de 85 dB qui fonctionne même sans réseau ; certification NF ou EN conservée.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Netatmo (Legrand)",
+     "model": "Détecteur de fumée intelligent",
+     "price": "90-100 €",
+     "market": "france",
+     "why": "Certifié NF, pile 10 ans, alerte sur le téléphone et autotest, extinction d'une fausse alarme depuis l'application."
+    },
+    {
+     "brand": "Netatmo (Legrand)",
+     "model": "Détecteur de monoxyde de carbone intelligent",
+     "price": "90-100 €",
+     "market": "france",
+     "why": "Même application que le détecteur de fumée, pile 10 ans, alerte à distance."
+    }
+   ]
+  },
+  {
+   "item": "couverture_survie",
+   "tier": "epique",
+   "criteria": "Un sac ou une couverture épais qui ne se déchire pas au premier accroc, coupe le vent, se réutilise et se replie ; un sac respirant limite la condensation sur plusieurs nuits.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Blizzard Survival",
+     "model": "Blizzard 3 Layer Survival Bag",
+     "price": "50-60 €",
+     "market": "europe",
+     "why": "Matériau Reflexcell multicouche, utilisé par les armées, bien plus chaud et solide qu'une couverture alu, se replie sous vide."
+    },
+    {
+     "brand": "SOL (Survive Outdoors Longer)",
+     "model": "Escape Bivvy",
+     "price": "60-80 €",
+     "market": "europe",
+     "why": "Sac de bivouac réfléchissant et respirant, réutilisable, de la marque de couvertures de survie d'Adventure Medical Kits."
+    }
+   ]
+  },
+  {
+   "item": "radio",
+   "tier": "rustique",
+   "criteria": "Accord numérique avec stations mémorisées, piles standard AA ou AAA et bonne sensibilité FM : un poste qu'on retrouve calé sur la bonne station après des mois au placard.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Sangean",
+     "model": "DT-120",
+     "price": "45-55 €",
+     "market": "france",
+     "why": "Poste de poche à accord numérique et mémoires, réputé pour sa réception FM, sur deux piles AAA."
+    },
+    {
+     "brand": "Panasonic",
+     "model": "RF-2400DEG-K",
+     "price": "30-50 €",
+     "market": "france",
+     "why": "Poste FM/AM simple et durable, sur secteur ou sur piles, gros haut-parleur lisible pour toute la maison."
+    }
+   ]
+  },
+  {
+   "item": "radio",
+   "tier": "commun",
+   "criteria": "Trois sources d'énergie réelles (dynamo, solaire, USB) et un boîtier étanche et robuste, d'une marque de radio sérieuse plutôt que d'un fabricant de gadgets.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Sangean",
+     "model": "MMR-88 (USB-C)",
+     "price": "95-115 €",
+     "market": "europe",
+     "why": "Radio de secours d'un vrai fabricant de récepteurs : dynamo, solaire et USB-C, boîtier étanche, bonne réception."
+    },
+    {
+     "brand": "Midland",
+     "model": "ER300 Pro",
+     "price": "70-95 €",
+     "market": "europe",
+     "why": "Alternative moins chère : FM, dynamo, solaire et USB-C, avec lampe et batterie de secours."
+    }
+   ]
+  },
+  {
+   "item": "radio",
+   "tier": "confirme",
+   "criteria": "Aucun poste actuel ne réunit FM, DAB+ et ondes courtes : on combine un récepteur DAB+/FM à dynamo et un récepteur ondes courtes qui accepte des piles AA du commerce.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Sangean",
+     "model": "MMR-99 DAB+",
+     "price": "140-190 €",
+     "market": "europe",
+     "why": "Le meilleur poste de secours DAB+/FM : dynamo, solaire, boîtier IP55, bien noté par la presse allemande en 2026."
+    },
+    {
+     "brand": "Sangean",
+     "model": "ATS-909X2",
+     "price": "245-300 €",
+     "market": "france",
+     "why": "Récepteur ondes courtes de référence, très sensible, sur quatre piles AA : capte les radios internationales si tout tombe."
+    },
+    {
+     "brand": "Tecsun",
+     "model": "PL-990X",
+     "price": "270-345 €",
+     "market": "europe",
+     "why": "Excellent récepteur ondes courtes et BLU, plus compact, mais sur batterie 18650 et non sur piles du commerce."
+    }
+   ]
+  },
+  {
+   "item": "radio",
+   "tier": "epique",
+   "criteria": "Un émetteur-récepteur d'une marque de radiocommunication avec SAV en Europe ; la CB s'utilise sans licence, le radioamateur exige le certificat d'opérateur.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Icom",
+     "model": "IC-705",
+     "price": "1250-1500 €",
+     "market": "france",
+     "why": "Transceiver portable radioamateur HF/VHF/UHF de référence, sur batterie, pour joindre loin sans infrastructure (licence obligatoire)."
+    },
+    {
+     "brand": "Midland",
+     "model": "Alan 42 DS",
+     "price": "100-135 €",
+     "market": "france",
+     "why": "Portable CB 27 MHz sans licence, multinorme européenne, sur piles ou batterie : la porte d'entrée de l'émission."
+    }
+   ]
+  },
+  {
+   "item": "talkies",
+   "tier": "rustique",
+   "criteria": "Une marque qui respecte vraiment la norme PMR446 (500 mW, 8 canaux), plutôt qu'un jouet aux fréquences douteuses.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Motorola",
+     "model": "Talkabout T62 (paire)",
+     "price": "55-60 €",
+     "market": "france",
+     "why": "Paire d'entrée de gamme fiable, rechargeable en USB, simple à utiliser par toute la famille."
+    },
+    {
+     "brand": "Motorola",
+     "model": "Talkabout T82 (paire)",
+     "price": "80-90 €",
+     "market": "france",
+     "why": "Un cran au-dessus : boîtier plus résistant à la pluie, lampe intégrée, mêmes canaux que la T62."
+    }
+   ]
+  },
+  {
+   "item": "talkies",
+   "tier": "commun",
+   "criteria": "Un talkie qui fonctionne sur piles AA : on recharge les accus ou, en panne de courant, on glisse des piles du commerce.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Midland",
+     "model": "G9 Pro",
+     "price": "85-110 €",
+     "market": "france",
+     "why": "Le grand public le plus robuste (IPX5, double touche d'émission), sur quatre piles AA rechargeables, très répandu en France."
+    },
+    {
+     "brand": "Midland",
+     "model": "G7 Pro",
+     "price": "75-80 €",
+     "market": "france",
+     "why": "Version plus simple et moins chère du même principe, même format de piles AA."
+    }
+   ]
+  },
+  {
+   "item": "talkies",
+   "tier": "confirme",
+   "criteria": "Matériel professionnel PMR446 : boîtier étanche IP55, batterie Li-Ion de plus de 15 heures, bonne qualité audio et garantie longue.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Motorola",
+     "model": "XT460",
+     "price": "160-175 €",
+     "market": "france",
+     "why": "Talkie pro sans licence IP55, 20 h d'autonomie, écran et canaux nommés : le choix des chantiers et de l'événementiel."
+    },
+    {
+     "brand": "Motorola",
+     "model": "XT420",
+     "price": "140-170 €",
+     "market": "france",
+     "why": "Même robustesse et autonomie que le XT460, sans écran : plus simple à remettre à un proche."
+    }
+   ]
+  },
+  {
+   "item": "reseau_maille",
+   "tier": "commun",
+   "criteria": "Un boîtier prêt à l'emploi livré avec Meshtastic, en version 868 MHz pour l'Europe, avec batterie, GPS et boîtier fermé.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "RAK Wireless",
+     "model": "WisMesh Pocket V2",
+     "price": "90-110 €",
+     "market": "europe",
+     "why": "Boîtier complet avec écran, GPS et grosse batterie de 3200 mAh certifiée : utilisable seul, sans téléphone."
+    },
+    {
+     "brand": "Seeed Studio",
+     "model": "SenseCAP Card Tracker T1000-E",
+     "price": "40-50 €",
+     "market": "europe",
+     "why": "Format carte bancaire, GPS, livré avec Meshtastic : le moins cher pour équiper chaque téléphone."
+    }
+   ]
+  },
+  {
+   "item": "sac_evacuation",
+   "tier": "commun",
+   "criteria": "Un sac de 25 à 35 L avec ceinture ventrale, dos ventilé réglable et tissu résistant à l'abrasion, d'une marque qui répare ou remplace : il doit supporter d'attendre des années puis de servir d'un coup.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Osprey",
+     "model": "Talon 33",
+     "price": "120-170 €",
+     "market": "france",
+     "why": "Léger et confortable, longueur de dos réglable, garantie « All Mighty » de réparation à vie."
+    },
+    {
+     "brand": "Deuter",
+     "model": "Futura 27",
+     "price": "110-155 €",
+     "market": "france",
+     "why": "Dos filet Aircomfort très ventilé et housse de pluie intégrée, construction allemande durable."
+    }
+   ]
+  },
+  {
+   "item": "sac_evacuation",
+   "tier": "confirme",
+   "criteria": "Un sac de 45 à 60 L ajusté à la longueur de dos de chaque porteur, avec une vraie ceinture porteuse pour 10 à 15 kg : la taille juste compte plus que la marque.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Osprey",
+     "model": "Kestrel 48 (Kyte 48 en coupe femme)",
+     "price": "155-220 €",
+     "market": "france",
+     "why": "Dos réglable, accès frontal, housse de pluie intégrée et garantie de réparation à vie."
+    },
+    {
+     "brand": "Deuter",
+     "model": "Aircontact Core 50+10 (et coupe SL femme)",
+     "price": "180-270 €",
+     "market": "france",
+     "why": "Portage de charge très stable et tissu épais, prévu pour durer des décennies."
+    }
+   ]
+  },
+  {
+   "item": "sac_evacuation",
+   "tier": "epique",
+   "criteria": "Pour un enfant : un sac de 12 à 18 L à sa taille, avec bretelles rembourrées et sangle de poitrine, qu'il porte lui-même avec son kit de réconfort.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Deuter",
+     "model": "Junior (18 L)",
+     "price": "40-60 €",
+     "market": "france",
+     "why": "Le sac enfant de référence de 5 à 10 ans, solide et réglé comme un sac adulte."
+    },
+    {
+     "brand": "Osprey",
+     "model": "Jet 12",
+     "price": "40-70 €",
+     "market": "europe",
+     "why": "Plus petit et léger, pour les plus jeunes, avec la même garantie de réparation à vie."
+    }
+   ]
+  },
+  {
+   "item": "sac_evacuation",
+   "tier": "legendaire",
+   "criteria": "Sac de 45 à 60 L qui porte couchage et abri sans dépasser 10 à 12 kg ; tarp de moins de 600 g, sac de couchage synthétique confort autour de 0 °C.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Simond (Decathlon)",
+     "model": "Sac MT500 Air 50+10 L",
+     "price": "80-115 €",
+     "market": "france",
+     "why": "Assez grand pour le couchage, garanti 10 ans."
+    },
+    {
+     "brand": "Simond (Decathlon)",
+     "model": "Tarp de trekking MT900",
+     "price": "60-70 €",
+     "market": "france",
+     "why": "Environ 500 g, abri pour une ou deux personnes."
+    },
+    {
+     "brand": "Simond (Decathlon)",
+     "model": "Sac de couchage MT500 0 °C",
+     "price": "85-95 €",
+     "market": "france",
+     "why": "Synthétique : supporte mieux l'humidité et le stockage long que le duvet."
+    }
+   ]
+  },
+  {
+   "item": "velo",
+   "tier": "epique",
+   "criteria": "Une remorque enfant homologuée (EN 15918) avec harnais 5 points, suspension et habitacle fermé, convertible en poussette pour finir à pied.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Thule",
+     "model": "Chariot Sport 2 (double)",
+     "price": "1600-1700 €",
+     "market": "france",
+     "why": "Suspension réglable, freins, finition et SAV de référence ; se convertit en poussette ou en poussette de course."
+    },
+    {
+     "brand": "Thule",
+     "model": "Chariot Lite (double)",
+     "price": "900-950 €",
+     "market": "france",
+     "why": "Même châssis éprouvé avec moins d'équipements, pour un usage occasionnel."
+    }
+   ]
+  },
+  {
+   "item": "couteau_survie",
+   "tier": "rustique",
+   "criteria": "Un vrai verrouillage de lame, un acier inoxydable facile à réaffûter et des pièces simples : un couteau pliant robuste se juge à son blocage et à la facilité de son entretien.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Opinel",
+     "model": "N°08 inox",
+     "price": "10-25 €",
+     "market": "france",
+     "why": "Bague Virobloc qui verrouille la lame, acier inox Sandvik facile à affûter, fabriqué en Savoie depuis plus d'un siècle."
+    },
+    {
+     "brand": "Victorinox",
+     "model": "Hunter Pro",
+     "price": "85-150 €",
+     "market": "france",
+     "why": "Grand pliant à lame bloquante ouvrable d'une main, finition suisse et garantie mondiale de 10 ans."
+    }
+   ]
+  },
+  {
+   "item": "couteau_survie",
+   "tier": "commun",
+   "criteria": "Des pinces solides, des lames accessibles pince fermée et verrouillées, une vraie garantie : une pince multifonction se juge à ses pinces et à la qualité de ses verrous.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Leatherman",
+     "model": "Wave+",
+     "price": "120-160 €",
+     "market": "france",
+     "why": "Référence des professionnels : 18 outils, lames et scie accessibles d'une main, embouts remplaçables, garantie 25 ans."
+    },
+    {
+     "brand": "Victorinox",
+     "model": "SwissTool Spirit MX",
+     "price": "150-170 €",
+     "market": "france",
+     "why": "Construction suisse soignée, outils verrouillés, plus compacte et douce en main que la Wave+."
+    }
+   ]
+  },
+  {
+   "item": "couteau_survie",
+   "tier": "confirme",
+   "criteria": "Une soie traversante ou au moins une lame épaisse d'environ 10 cm, une émouture scandinave facile à affûter sur le terrain et un étui qui retient bien le couteau.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Morakniv",
+     "model": "Kansbol (étui polymère)",
+     "price": "45-60 €",
+     "market": "europe",
+     "why": "Lame inox de 10,9 cm, manche antidérapant et étui multi-fixation : le meilleur rapport fiabilité-poids pour un sac."
+    },
+    {
+     "brand": "Morakniv",
+     "model": "Companion Heavy Duty",
+     "price": "23-30 €",
+     "market": "europe",
+     "why": "Lame de 3,2 mm quasi indestructible pour le prix, facile à remplacer dans chaque sac du foyer."
+    }
+   ]
+  },
+  {
+   "item": "couteau_survie",
+   "tier": "epique",
+   "criteria": "Un acier de qualité sur soie pleine ou laminé, une pierre de terrain pour l'entretenir et une scie pliante verrouillable pour le bois : l'ensemble compte plus que le seul couteau.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Fällkniven",
+     "model": "F1",
+     "price": "140-180 €",
+     "market": "europe",
+     "why": "Couteau de survie des pilotes suédois, lame laminée très tenace ; à associer à la pierre de poche Fällkniven DC4 (environ 25 €)."
+    },
+    {
+     "brand": "Morakniv",
+     "model": "Garberg (étui cuir)",
+     "price": "95-110 €",
+     "market": "europe",
+     "why": "Soie pleine de 3,2 mm, la version la plus robuste de Morakniv pour fendre et tailler."
+    },
+    {
+     "brand": "Bahco",
+     "model": "Laplander 396-LAP",
+     "price": "26-40 €",
+     "market": "france",
+     "why": "Scie pliante à lame verrouillée la plus recommandée en bushcraft, coupe bois vert et sec, lame remplaçable."
+    }
+   ]
+  },
+  {
+   "item": "couteau_survie",
+   "tier": "legendaire",
+   "criteria": "Une tête forgée bien trempée, un manche en bois ou composite qui ne se dissocie pas de la tête et un étui protecteur : une hachette s'achète pour la vie.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Gränsfors Bruk",
+     "model": "Wildlife Hatchet n° 415",
+     "price": "160-200 €",
+     "market": "europe",
+     "why": "Forgée à la main en Suède, manche hickory, étui cuir et garantie 20 ans ; elle se réaffûte et se remanche."
+    },
+    {
+     "brand": "Fiskars",
+     "model": "X13 (hachette de randonnée XXS)",
+     "price": "40-55 €",
+     "market": "france",
+     "why": "500 g, manche composite incassable surmoulé sur la tête, disponible en grande surface de bricolage."
+    }
+   ]
+  },
+  {
+   "item": "sacs_etanches",
+   "tier": "confirme",
+   "criteria": "Un tissu épais soudé (non cousu) et une fermeture enroulée sur au moins trois tours : la résistance à l'abrasion décide de la durée de vie.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Ortlieb",
+     "model": "Dry-Bag PD350 (22 L)",
+     "price": "20-30 €",
+     "market": "france",
+     "why": "Bâche PVC épaisse soudée, quasi inusable, fabriquée en Allemagne avec garantie de 5 ans."
+    },
+    {
+     "brand": "Sea to Summit",
+     "model": "Big River Dry Bag (20 L)",
+     "price": "40-60 €",
+     "market": "france",
+     "why": "Nylon enduit TPU plus léger et souple, fond ovale qui tient debout, très bon en sac de canoë."
+    },
+    {
+     "brand": "Ortlieb",
+     "model": "Dry-Bag PS10 (22 L)",
+     "price": "25-32 €",
+     "market": "europe",
+     "why": "Version légère pour compartimenter l'intérieur d'un sac à dos."
+    }
+   ]
+  },
+  {
+   "item": "sacs_etanches",
+   "tier": "epique",
+   "criteria": "Un sac à dos entièrement soudé, à fermeture étanche (zip étanche ou roll-top) et dos porteur : il doit garder le contenu sec sous une pluie de plusieurs heures.",
+   "checked": "2026-11-09",
+   "refs": [
+    {
+     "brand": "Ortlieb",
+     "model": "Atrack 25",
+     "price": "170-220 €",
+     "market": "france",
+     "why": "Sac à dos soudé à ouverture dorsale TIZIP étanche, vrai système de portage, garantie de 5 ans."
+    },
+    {
+     "brand": "Itiwit (Decathlon)",
+     "model": "Sac à dos étanche 20 L",
+     "price": "40 €",
+     "market": "france",
+     "why": "Roll-top IPX6 simple et accessible en magasin ; résiste à la pluie et aux vagues, pas à l'immersion."
+    }
+   ]
   }
  ],
  "talent_ranks": [
@@ -14525,7 +16379,7 @@
     "Secouriste",
     "Soigneur aguerri",
     "Référent santé",
-    "Guérisseur du hameau"
+    "Pilier santé du quartier"
    ]
   },
   {
@@ -14607,8 +16461,7 @@
    "description": "Vivre dehors, trouver l'eau, le feu et la nourriture, garder le cap : l'autonomie en milieu naturel.",
    "branches": [
     "Bivouac",
-    "Eau",
-    "feu et cap",
+    "Eau, feu et cap",
     "Ressources sauvages"
    ],
    "titles": [
@@ -14648,6 +16501,11 @@
    "col": 1,
    "description": "La marche est le moyen de déplacement qui ne tombe jamais en panne.",
    "criteria": "Marcher 5 km d'un bon pas, sans douleur le lendemain.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "sante.activite_reguliere"
@@ -14662,6 +16520,11 @@
    "col": 2,
    "description": "Des muscles entretenus protègent le dos et les articulations quand il faut porter.",
    "criteria": "Un mois de renforcement au poids du corps, deux à trois séances par semaine (squats, pompes adaptées, gainage).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "sante.activite_reguliere"
@@ -14676,6 +16539,11 @@
    "col": 3,
    "description": "Garder l'équilibre et la souplesse évite les chutes, première cause de blessure.",
    "criteria": "Une routine de mobilité de 10 minutes connue, tenir 30 secondes sur un pied, se relever du sol sans appui.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": []
   },
@@ -14688,6 +16556,11 @@
    "col": 1,
    "description": "Tenir l'effort sans s'épuiser, pour marcher longtemps ou aider sans s'arrêter.",
    "criteria": "30 minutes de course, de vélo ou de marche rapide sans s'arrêter.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "physique.marche"
    ],
@@ -14702,6 +16575,11 @@
    "col": 2,
    "description": "Sans eau courante, on porte l'eau ; en évacuation, on porte son sac.",
    "criteria": "Porter 2 × 10 L d'eau sur 100 m, et un sac de 10 kg sur 5 km.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "physique.marche",
     "physique.renfo"
@@ -14719,6 +16597,11 @@
    "col": 3,
    "description": "Hors des trottoirs : sentiers, pentes, gravats, escaliers sans lumière.",
    "criteria": "Marcher une heure en terrain varié (sentier, pente, escaliers) avec un sac, sans chute ni torsion.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "physique.mobilite"
    ],
@@ -14733,6 +16616,11 @@
    "col": 1,
    "description": "Le vélo multiplie par trois ou quatre la distance parcourue à pied, sans carburant.",
    "criteria": "20 km à vélo avec 10 kg en sacoches, casque porté, et réparer une crevaison seul.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "physique.endurance"
    ],
@@ -14749,6 +16637,11 @@
    "col": 2,
    "description": "Une journée de marche chargée : de quoi rejoindre un lieu de repli proche.",
    "criteria": "15 km avec un sac de 10 kg dans la journée.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "physique.endurance",
     "physique.porteur"
@@ -14762,10 +16655,15 @@
    "specialty": "physique",
    "name": "Nageur",
    "icon": "🏊",
-   "row": 3,
+   "row": 4,
    "col": 3,
    "description": "En crue, savoir flotter et sortir de l'eau sauve la vie.",
    "criteria": "Nager 50 m, flotter 5 minutes sur place et sortir de l'eau seul (savoir-nager en sécurité).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "physique.terrain"
    ],
@@ -14782,6 +16680,11 @@
    "col": 1,
    "description": "Quand il n'y a ni voiture ni carburant, 25 km séparent souvent de l'aide.",
    "criteria": "25 km dans la journée avec le sac d'évacuation, sans blessure, pieds soignés à l'arrivée.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "physique.cycliste",
     "physique.randonneur"
@@ -14796,7 +16699,12 @@
    "row": 4,
    "col": 2,
    "description": "Déplacer un blessé ou une personne qui ne peut plus marcher, sans se blesser soi-même.",
-   "criteria": "Porter un adulte à deux sur 100 m avec un brancard improvisé (couverture, bâtons), et le dégager seul sur quelques mètres.",
+   "criteria": "Porter un adulte à deux sur 100 m avec un brancard improvisé (couverture, bâtons), et ne le déplacer seul sur quelques mètres que face à un danger vital immédiat (feu, effondrement).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "physique.randonneur"
    ],
@@ -14807,12 +16715,17 @@
    "specialty": "physique",
    "name": "Effort par tous les temps",
    "icon": "🌡️",
-   "row": 4,
+   "row": 3,
    "col": 3,
    "description": "En canicule comme en grand froid, l'effort mal géré devient dangereux.",
    "criteria": "Savoir s'hydrater, ralentir et s'arrêter à temps ; reconnaître un coup de chaleur et une hypothermie, chez soi et chez les autres.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
-    "physique.nageur"
+    "physique.endurance"
    ],
    "objectives": []
   },
@@ -14825,10 +16738,15 @@
    "col": 2,
    "description": "Une forme qui ne dépend pas d'une salle de sport et tient dans la durée.",
    "criteria": "Un an de pratique régulière (trois séances par semaine) et le test complet réussi dans le mois : 25 km chargé, un adulte porté, 50 m nagés.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "physique.longue_distance",
     "physique.brancardier",
-    "physique.climat"
+    "physique.nageur"
    ],
    "objectives": []
   },
@@ -14841,6 +16759,11 @@
    "col": 1,
    "description": "On se prépare à ce qui peut vraiment arriver chez soi.",
    "criteria": "Le DICRIM de la commune et la fiche Géorisques de l'adresse lus, les risques du foyer listés.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "securite.risques"
@@ -14854,9 +16777,16 @@
    "row": 1,
    "col": 2,
    "description": "Sans GPS, la carte papier reste lisible.",
-   "criteria": "Situer sa maison, son travail et l'école sur une carte papier, lire la légende d'une carte IGN.",
+   "criteria": "Situer sa maison, son travail et l'école sur une carte papier, lire la légende d'une carte IGN ; deux itinéraires d'évacuation et un lieu de rassemblement tracés et connus du foyer.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
-   "objectives": []
+   "objectives": [
+    "mobilite.itineraires"
+   ]
   },
   {
    "id": "stratege.guide",
@@ -14867,6 +16797,11 @@
    "col": 3,
    "description": "Les bases officielles : quoi faire avant, pendant et après.",
    "criteria": "Un guide officiel de préparation aux urgences lu en entier.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "competences.guide"
@@ -14881,12 +16816,18 @@
    "col": 1,
    "description": "Être prévenu tôt, par des sources fiables, et ne pas relayer les rumeurs.",
    "criteria": "FR-Alert, Vigicrues et la vigilance Météo-France connus ; une liste de sources fiables et le réflexe de vérifier avant de partager.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "stratege.risques"
    ],
    "objectives": [
     "securite.alertes",
-    "communication.sources"
+    "communication.sources",
+    "securite.pcs"
    ]
   },
   {
@@ -14898,6 +16839,11 @@
    "col": 2,
    "description": "Garder le cap la nuit, dans le brouillard ou hors des routes connues.",
    "criteria": "Suivre un azimut et rejoindre un point à 2 km avec une carte et une boussole.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "stratege.carte"
    ],
@@ -14914,6 +16860,11 @@
    "col": 3,
    "description": "Chacun sait quoi faire, où se retrouver et qui appeler, même séparé.",
    "criteria": "Plan écrit et partagé : points de rendez-vous, contacts, rôles de chacun, enfants à l'école.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "stratege.guide"
    ],
@@ -14930,6 +16881,11 @@
    "col": 1,
    "description": "Réfléchir à froid aux 72 premières heures de chaque crise probable.",
    "criteria": "Pour chaque risque majeur du foyer, un scénario écrit des 72 premières heures : quoi faire, qui, avec quoi.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "stratege.veille",
     "stratege.plan_familial"
@@ -14945,12 +16901,15 @@
    "col": 2,
    "description": "Un itinéraire tracé sur une carte ne vaut que s'il a été parcouru.",
    "criteria": "Deux itinéraires d'évacuation vers le lieu de repli reconnus sur le terrain, dont un à pied.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "stratege.boussole"
    ],
-   "objectives": [
-    "mobilite.itineraires"
-   ]
+   "objectives": []
   },
   {
    "id": "stratege.bibliotheque",
@@ -14961,6 +16920,11 @@
    "col": 3,
    "description": "Apprendre avant d'en avoir besoin, dans des livres qui marchent sans réseau.",
    "criteria": "Secourisme, jardinage et réparations étudiés dans des livres papier gardés à la maison.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "stratege.plan_familial"
    ],
@@ -14977,10 +16941,17 @@
    "col": 1,
    "description": "La décision la plus lourde d'une crise se prépare à froid, pas dans l'urgence.",
    "criteria": "Des critères écrits à l'avance pour évacuer ou rester (alertes, seuils, signes sur le terrain), connus de tous les adultes du foyer.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "stratege.scenarios"
    ],
-   "objectives": []
+   "objectives": [
+    "mobilite.criteres_depart"
+   ]
   },
   {
    "id": "stratege.exercice",
@@ -14991,6 +16962,11 @@
    "col": 2,
    "description": "Un plan non testé est une hypothèse.",
    "criteria": "Un exercice de 24 heures sans réseau organisé pour le foyer, suivi d'un retour d'expérience écrit.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "stratege.scenarios",
     "stratege.itineraires"
@@ -15009,6 +16985,11 @@
    "col": 3,
    "description": "Un quartier préparé protège mieux qu'un foyer préparé seul.",
    "criteria": "Une séance de sensibilisation animée (voisins, école, association), avec les bases de la préparation.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "stratege.bibliotheque"
    ],
@@ -15025,13 +17006,17 @@
    "col": 2,
    "description": "Penser à l'échelle de la commune, avec ceux qui organisent les secours.",
    "criteria": "Participer au plan communal de sauvegarde, à la réserve communale de sécurité civile ou à un plan commun de quartier.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "stratege.decision",
     "stratege.exercice",
     "stratege.transmettre"
    ],
    "objectives": [
-    "securite.pcs",
     "securite.plan_commun"
    ]
   },
@@ -15044,6 +17029,11 @@
    "col": 1,
    "description": "Une bonne alerte fait gagner de précieuses minutes aux secours.",
    "criteria": "Connaître le 15, le 18, le 112 et le 114 (SMS) ; savoir donner l'adresse exacte, décrire la situation et rester en ligne.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "sante.numeros_urgence"
@@ -15058,6 +17048,11 @@
    "col": 2,
    "description": "Les petites plaies mal soignées s'infectent quand on ne peut pas voir un médecin.",
    "criteria": "Nettoyer et panser une plaie, retirer une écharde ou une tique, connaître le contenu de sa trousse.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": []
   },
@@ -15070,6 +17065,11 @@
    "col": 3,
    "description": "On ne peut aider personne en paniquant.",
    "criteria": "Une technique de respiration (inspirer 4 s, expirer 6 s) pratiquée et montrée au foyer.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "moral.stress"
@@ -15084,6 +17084,11 @@
    "col": 1,
    "description": "Deux heures pour apprendre à arrêter une hémorragie et masser un cœur.",
    "criteria": "Formation « Gestes qui sauvent » suivie (2 h, gratuite) ou mieux.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "soin.alerter"
    ],
@@ -15100,6 +17105,11 @@
    "col": 2,
    "description": "Sans eau courante, les maladies viennent de l'eau, des mains et des toilettes.",
    "criteria": "Rendre une eau potable (ébullition, chlore, filtre), se laver les mains avec peu d'eau, gérer des toilettes sèches.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "soin.petits_soins"
    ],
@@ -15116,6 +17126,11 @@
    "col": 3,
    "description": "Accueillir la peur ou la détresse d'un proche sans juger ni conseiller trop vite.",
    "criteria": "Savoir écouter quelqu'un en détresse, reformuler, et orienter vers le 3114 ou un professionnel si besoin.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "soin.respiration"
    ],
@@ -15132,6 +17147,11 @@
    "col": 1,
    "description": "La formation de référence aux premiers secours.",
    "criteria": "PSC1 (ou équivalent) obtenu, recyclé au moins tous les trois ans.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "soin.gqs"
    ],
@@ -15147,7 +17167,12 @@
    "row": 3,
    "col": 2,
    "description": "Bien utiliser la trousse, c'est surtout connaître les doses et les contre-indications.",
-   "criteria": "Doses adultes et enfants des médicaments de la trousse connues, contre-indications notées, liste des traitements du foyer à jour.",
+   "criteria": "Doses adultes, et doses enfants selon le poids, des médicaments de la trousse connues, contre-indications notées, liste des traitements du foyer à jour.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "soin.hygiene"
    ],
@@ -15162,6 +17187,11 @@
    "col": 3,
    "description": "Les premiers secours, version santé mentale : crise d'angoisse, idées suicidaires, choc.",
    "criteria": "Formation Premiers secours en santé mentale (PSSM) suivie.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "soin.ecoute"
    ],
@@ -15178,6 +17208,11 @@
    "col": 1,
    "description": "Quand les secours mettent des heures à venir : surveiller, immobiliser, évacuer.",
    "criteria": "PSE1 ou formation de secourisme en milieu isolé (WFA) obtenue.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "soin.psc1"
    ],
@@ -15193,7 +17228,12 @@
    "row": 4,
    "col": 2,
    "description": "Des remèdes simples pour les petits maux, avec leurs dangers.",
-   "criteria": "Reconnaître et utiliser dix plantes médicinales courantes de sa région, en connaissant leurs sosies toxiques et leurs contre-indications.",
+   "criteria": "Reconnaître et utiliser dix plantes médicinales courantes de sa région, en connaissant leurs sosies toxiques et leurs contre-indications ; jamais à la place d'un traitement, et prudence pour la grossesse, les enfants et les traitements en cours.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "soin.pharmacie"
    ],
@@ -15210,6 +17250,11 @@
    "col": 3,
    "description": "Après un événement, repérer ceux qui vont mal et organiser la parole.",
    "criteria": "Savoir organiser un temps de parole après un événement et repérer qui a besoin d'une aide professionnelle.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "soin.pssm"
    ],
@@ -15227,9 +17272,13 @@
    "col": 2,
    "description": "La personne vers qui le quartier se tourne quand quelqu'un est blessé.",
    "criteria": "Secouriste bénévole dans une association agréée (PSE2), ou membre de la réserve sanitaire ou communale.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "soin.isole",
-    "soin.plantes",
     "soin.debriefing"
    ],
    "objectives": []
@@ -15243,6 +17292,11 @@
    "col": 1,
    "description": "Fuite, inondation, incendie : le premier geste est de couper.",
    "criteria": "Couper l'eau, le gaz et l'électricité en moins de deux minutes, même de nuit.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "abri.coupures"
@@ -15253,11 +17307,18 @@
    "specialty": "brico",
    "name": "Faire du feu",
    "icon": "🔥",
-   "row": 1,
+   "row": 2,
    "col": 2,
    "description": "Chaleur, cuisson, eau bouillie : le feu reste la base, s'il est maîtrisé.",
    "criteria": "Allumer et entretenir un feu en sécurité, à l'endroit autorisé, et l'éteindre complètement.",
-   "requires": [],
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires": [
+    "brico.rechaud"
+   ],
    "objectives": [
     "competences.feu"
    ]
@@ -15271,6 +17332,11 @@
    "col": 3,
    "description": "Un vêtement réparé est un vêtement qu'on n'a pas à racheter.",
    "criteria": "Recoudre un bouton, faire un ourlet, refermer un accroc à la main.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": []
   },
@@ -15283,6 +17349,11 @@
    "col": 1,
    "description": "Les dépannages qui évitent d'attendre un artisan.",
    "criteria": "Changer un joint de robinet, remplacer une prise ou un interrupteur au disjoncteur coupé, fixer solidement une étagère.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "brico.coupures"
    ],
@@ -15295,13 +17366,16 @@
    "specialty": "brico",
    "name": "Combustion en sécurité",
    "icon": "🏕️",
-   "row": 2,
+   "row": 1,
    "col": 2,
    "description": "Le monoxyde de carbone tue chaque hiver pendant les coupures.",
    "criteria": "Utiliser réchaud, poêle et groupe électrogène sans risque de monoxyde de carbone : jamais en pièce close, aération, détecteur.",
-   "requires": [
-    "brico.feu"
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
    ],
+   "requires": [],
    "objectives": [
     "competences.rechaud"
    ]
@@ -15315,6 +17389,11 @@
    "col": 3,
    "description": "Vêtements, bâches, sacs, tentes : tout s'use plus vite en crise.",
    "criteria": "Rapiécer un vêtement, réparer une bâche ou une sangle de sac, à la main ou à la machine.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "brico.couture"
    ],
@@ -15331,6 +17410,11 @@
    "col": 1,
    "description": "Une fuite non réparée, c'est de l'eau perdue et un logement abîmé.",
    "criteria": "Réparer une fuite sur un raccord, déboucher une évacuation, vidanger un circuit avant le gel.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "brico.reparations"
    ],
@@ -15345,8 +17429,13 @@
    "col": 2,
    "description": "Le bois ne chauffe bien que sec : il se prépare un ou deux ans à l'avance.",
    "criteria": "Fendre, empiler et faire sécher le bois ; mesurer son humidité ; entretenir un poêle et faire ramoner.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
-    "brico.rechaud"
+    "brico.feu"
    ],
    "objectives": []
   },
@@ -15359,8 +17448,13 @@
    "col": 3,
    "description": "Un vélo entretenu reste le transport le plus sûr quand le carburant manque.",
    "criteria": "Réparer une crevaison, régler freins et dérailleur, changer une chaîne.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
-    "brico.textile"
+    "brico.reparations"
    ],
    "objectives": []
   },
@@ -15373,6 +17467,11 @@
    "col": 1,
    "description": "Eau et électricité qui ne dépendent pas du réseau, installées proprement.",
    "criteria": "Chiffrer ses besoins en Wh par jour, raccorder un panneau, un régulateur et une batterie, poser un récupérateur d'eau raccordé.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "brico.plomberie"
    ],
@@ -15389,6 +17488,10 @@
    "col": 2,
    "description": "Un arbre en travers de la route au troisième jour d'isolement.",
    "criteria": "Formation suivie, dégager un arbre tombé avec casque à visière, jambières anti-coupure et gants.",
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "brico.bois"
    ],
@@ -15405,6 +17508,11 @@
    "col": 3,
    "description": "Garder en état la voiture, le groupe électrogène ou la tondeuse.",
    "criteria": "Changer une roue, vérifier niveaux et batterie, faire la vidange et changer la bougie d'un petit moteur.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "brico.velo"
    ],
@@ -15419,6 +17527,11 @@
    "col": 2,
    "description": "Un savoir-faire assez solide pour dépanner les autres, et l'échanger.",
    "criteria": "Un artisanat ou une compétence technique pratiqué au point de réparer pour les voisins (menuiserie, plomberie, mécanique, couture).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "brico.installations",
     "brico.tronconneuse",
@@ -15437,6 +17550,11 @@
    "col": 1,
    "description": "Les premiers jours d'une coupure, on mange sans gaz ni électricité.",
    "criteria": "Préparer trois jours de repas équilibrés sans aucune cuisson, avec ce qu'il y a dans les réserves.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "alimentation.sans_cuisson"
@@ -15451,6 +17569,11 @@
    "col": 2,
    "description": "Une réserve qu'on mange et qu'on renouvelle ne périme jamais.",
    "criteria": "Premier entré, premier sorti : les réserves se consomment dans l'ordre des dates et se rachètent au fur et à mesure.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "alimentation.rotation"
@@ -15465,6 +17588,11 @@
    "col": 3,
    "description": "Commencer petit : un balcon suffit.",
    "criteria": "Faire pousser des aromatiques ou des salades jusqu'à la récolte.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": []
   },
@@ -15477,6 +17605,11 @@
    "col": 1,
    "description": "Un vrai repas chaud remonte le moral, s'il est cuisiné sans danger.",
    "criteria": "Cuisiner un repas complet pour le foyer au réchaud ou au feu, dehors ou fenêtre ouverte.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "cuisto.sans_cuisson"
    ],
@@ -15491,6 +17624,11 @@
    "col": 2,
    "description": "En coupure, l'intoxication alimentaire est un vrai risque.",
    "criteria": "Connaître les durées sans courant (environ 4 h pour le frigo, 24 à 48 h pour un congélateur fermé), quoi jeter, et écarter les boîtes bombées.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "cuisto.rotation"
    ],
@@ -15505,6 +17643,11 @@
    "col": 3,
    "description": "Cinq légumes bien maîtrisés valent mieux qu'un grand potager raté.",
    "criteria": "Cultiver au moins cinq légumes de base jusqu'à la récolte (stage, jardin partagé ou chez soi).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "cuisto.semis"
    ],
@@ -15521,6 +17664,11 @@
    "col": 1,
    "description": "Le seul vrai test d'une réserve : en vivre.",
    "criteria": "Cuisiner une semaine entière uniquement avec ses réserves, sans courses.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "cuisto.rechaud"
    ],
@@ -15536,7 +17684,12 @@
    "row": 3,
    "col": 2,
    "description": "Garder les récoltes et les promotions des mois durant.",
-   "criteria": "Stériliser des bocaux, lacto-fermenter et déshydrater, en respectant les temps et les règles d'hygiène.",
+   "criteria": "Stériliser des bocaux, lacto-fermenter et déshydrater, en respectant les temps et températures d'une recette fiable ; connaître le botulisme (légumes peu acides, viande, poisson) : couvercle bombé ou odeur suspecte, on jette sans goûter.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "cuisto.securite"
    ],
@@ -15553,6 +17706,11 @@
    "col": 3,
    "description": "Des graines reproductibles, c'est le potager de l'année suivante.",
    "criteria": "Récolter, sécher et garder les graines d'au moins trois légumes reproductibles, et les ressemer.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "cuisto.potager"
    ],
@@ -15569,6 +17727,11 @@
    "col": 1,
    "description": "Deux à trois fois moins de combustible : la réserve dure d'autant plus.",
    "criteria": "Cuisiner régulièrement à la marmite norvégienne, à l'autocuiseur ou au cuiseur solaire.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "cuisto.semaine"
    ],
@@ -15584,7 +17747,12 @@
    "row": 4,
    "col": 2,
    "description": "Les techniques d'avant le frigo : sel, fumée, cave.",
-   "criteria": "Saler, fumer ou sécher viande et poisson, et garder des légumes tout l'hiver en cave ou en silo.",
+   "criteria": "Saler, fumer ou sécher viande et poisson, et garder des légumes tout l'hiver en cave ou en silo, en suivant des recettes fiables (sel, nitrites, températures) pour éviter le botulisme.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "cuisto.conserves"
    ],
@@ -15599,6 +17767,10 @@
    "col": 3,
    "description": "Quelques poules donnent des œufs toute l'année et mangent les restes.",
    "criteria": "S'occuper de poules (ou de lapins) toute une année : nourriture, soins, abri, protection contre les prédateurs.",
+   "contexts": [
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "cuisto.semences"
    ],
@@ -15615,6 +17787,11 @@
    "col": 2,
    "description": "Produire, conserver et cuisiner une bonne part de ce qu'on mange.",
    "criteria": "Une année où le foyer a produit, conservé et cuisiné la moitié de ses légumes, avec des repas de crise maîtrisés.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "cuisto.sobre",
     "cuisto.conservation_longue",
@@ -15633,6 +17810,11 @@
    "col": 1,
    "description": "La première défense est de ne pas être là.",
    "criteria": "Règle connue de tout le foyer : face à une agression, on fuit et on alerte (17 ou 112, SMS au 114) ; aucun bien ne vaut un risque.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "defense.fuir_alerter"
@@ -15647,6 +17829,11 @@
    "col": 2,
    "description": "Savoir par où sortir, de jour comme de nuit, avant d'en avoir besoin.",
    "criteria": "Issues de secours du logement et de l'immeuble repérées par tous ; clés, papiers, téléphone et chaussures toujours au même endroit près de la sortie.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "abri.issues",
@@ -15661,10 +17848,16 @@
    "row": 1,
    "col": 3,
    "description": "Ce que la loi permet, et surtout ce qu'elle ne permet pas.",
-   "criteria": "Chaque adulte connaît les conditions de la légitime défense : attaque injuste et actuelle, riposte nécessaire, immédiate et proportionnée ; défendre un bien seul ne justifie jamais un geste qui peut tuer.",
+   "criteria": "Chaque adulte connaît les conditions de la légitime défense : attaque injuste et actuelle, riposte nécessaire, immédiate et proportionnée ; défendre un bien seul ne justifie jamais un geste qui peut tuer. Numéros contre les violences connus : 17 ou 112, SMS au 114, 3919, 119.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
-    "defense.legitime_defense"
+    "defense.legitime_defense",
+    "defense.violences"
    ]
   },
   {
@@ -15676,6 +17869,11 @@
    "col": 1,
    "description": "La plupart des agressions s'évitent avant le premier contact.",
    "criteria": "Repérer les signaux d'une situation qui dégénère, garder la distance, ne pas s'isoler, poser sa voix pour dissuader : pratiqué au quotidien.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "protecteur.fuir"
    ],
@@ -15692,6 +17890,11 @@
    "col": 2,
    "description": "Des réserves que tout le monde connaît attirent ceux qui n'en ont pas.",
    "criteria": "Règle familiale de discrétion sur les réserves et l'équipement, respectée en ligne comme dans le voisinage.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "protecteur.issues"
    ],
@@ -15708,6 +17911,11 @@
    "col": 3,
    "description": "Ce qu'on fait juste après compte pour la victime comme pour la justice.",
    "criteria": "Conduite connue : se mettre en sûreté, appeler le 17, ne pas poursuivre, noter les témoins, certificat médical, plainte, France Victimes (116 006).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "protecteur.loi"
    ],
@@ -15724,6 +17932,11 @@
    "col": 1,
    "description": "Faire retomber la tension plutôt que gagner la confrontation.",
    "criteria": "Savoir calmer un conflit : voix posée, distance, laisser une sortie à l'autre, ne pas humilier ; formation ou atelier suivi.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "protecteur.vigilance"
    ],
@@ -15740,6 +17953,11 @@
    "col": 2,
    "description": "De nuit chez soi, le plus sûr reste de s'enfermer et d'appeler.",
    "criteria": "Pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, consigne de ne pas aller au contact ; exercice fait en famille.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "protecteur.discretion"
    ],
@@ -15757,6 +17975,11 @@
    "col": 3,
    "description": "Se dégager et fuir, pas combattre.",
    "criteria": "Initiation encadrée suivie (dégagements, chutes, protection), adaptée si besoin (défense assise, canne).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "protecteur.apres"
    ],
@@ -15773,13 +17996,17 @@
    "row": 4,
    "col": 1,
    "description": "Les enfants et les personnes vulnérables ont besoin de consignes à leur mesure.",
-   "criteria": "Consignes apprises par les enfants (adultes de confiance, « un secret qui fait peur se dit », crier et fuir, le 119) ; numéros contre les violences connus des adultes.",
+   "criteria": "Consignes apprises par les enfants (adultes de confiance, « un secret qui fait peur se dit », crier et fuir, le 119).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "protecteur.desescalade"
    ],
    "objectives": [
-    "defense.enfants",
-    "defense.violences"
+    "defense.enfants"
    ]
   },
   {
@@ -15791,6 +18018,11 @@
    "col": 2,
    "description": "Une intrusion vue et signalée par les voisins s'arrête souvent d'elle-même.",
    "criteria": "Signal d'alerte convenu avec les voisins (appel, SMS groupé, sifflet) et entraide prévue en cas d'agression ou d'intrusion.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "protecteur.intrusion"
    ],
@@ -15808,6 +18040,11 @@
    "col": 3,
    "description": "Un geste appris une fois s'oublie sous le stress.",
    "criteria": "Gestes de self-défense entretenus au moins deux fois par an (stage, séances en club, révision encadrée).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "protecteur.initiation"
    ],
@@ -15825,6 +18062,11 @@
    "col": 2,
    "description": "Un foyer où chacun sait éviter, alerter et se mettre à l'abri.",
    "criteria": "Savoir transmettre au foyer l'évitement, les dégagements et les règles de la légitime défense, et l'avoir fait ; mise en situation encadrée suivie.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "protecteur.vulnerables",
     "protecteur.voisinage",
@@ -15844,6 +18086,11 @@
    "col": 1,
    "description": "En crise, l'aide la plus rapide vient de la porte d'à côté.",
    "criteria": "Connaître au moins deux voisins par leur nom et avoir échangé les numéros.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "communaute.voisins"
@@ -15858,6 +18105,11 @@
    "col": 2,
    "description": "Quelqu'un de proche qui peut venir, et quelqu'un de loin que tout le monde peut joindre.",
    "criteria": "Un proche à moins de 30 minutes prévenu qu'il est le contact d'urgence, et un contact hors de la région connu de tous les membres.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "communaute.proche_joignable",
@@ -15873,6 +18125,11 @@
    "col": 3,
    "description": "L'entraide commence par donner, avant d'en avoir besoin.",
    "criteria": "Avoir proposé et rendu un service concret à un voisin (courses, garde, outil prêté, coup de main).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": []
   },
@@ -15885,6 +18142,11 @@
    "col": 1,
    "description": "En canicule ou en coupure, les personnes isolées sont les premières en danger.",
    "criteria": "Savoir qui, autour de soi, est âgé, malade, isolé ou dépendant d'un appareil, et comment le joindre.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "rassembleur.voisins"
    ],
@@ -15901,6 +18163,11 @@
    "col": 2,
    "description": "Deux foyers qui s'épaulent tiennent bien plus longtemps qu'un seul.",
    "criteria": "Accord d'entraide réciproque avec un autre foyer : hébergement, garde des enfants, partage des réserves.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "rassembleur.proche"
    ],
@@ -15917,6 +18184,11 @@
    "col": 3,
    "description": "Savoir à qui demander : l'infirmière, le mécanicien, la voisine qui a un puits.",
    "criteria": "Un annuaire des compétences et des ressources de son réseau, tenu sur papier.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "rassembleur.service"
    ],
@@ -15933,6 +18205,11 @@
    "col": 1,
    "description": "Passer voir, frapper à la porte, rappeler : c'est souvent ce qui sauve en canicule.",
    "criteria": "Une tournée organisée auprès des voisins fragiles pendant une canicule, un grand froid ou une coupure, avec les rôles répartis.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "rassembleur.fragiles"
    ],
@@ -15947,6 +18224,11 @@
    "col": 2,
    "description": "Un petit groupe de foyers qui se sont mis d'accord à l'avance.",
    "criteria": "Groupe d'entraide d'au moins trois foyers avec un plan commun (qui aide qui, où se retrouver, quoi mettre en commun).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "rassembleur.binome"
    ],
@@ -15963,6 +18245,11 @@
    "col": 3,
    "description": "Quand l'argent manque ou ne sert plus, on échange des biens et des savoir-faire.",
    "criteria": "Participer à un réseau d'échange local : SEL, gratiferia, troc, monnaie locale.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "rassembleur.annuaire"
    ],
@@ -15979,6 +18266,11 @@
    "col": 1,
    "description": "Faire décider un groupe sans que la réunion tourne au conflit.",
    "criteria": "Avoir animé une réunion de voisins ou d'association : ordre du jour, tour de parole, décisions écrites, désaccords apaisés.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "rassembleur.tournee"
    ],
@@ -15993,6 +18285,11 @@
    "col": 2,
    "description": "Être du côté de ceux qui organisent les secours.",
    "criteria": "Engagé dans la réserve communale de sécurité civile, chez les pompiers volontaires ou dans une association de secours.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "rassembleur.groupe"
    ],
@@ -16009,6 +18306,11 @@
    "col": 3,
    "description": "Une tronçonneuse, un groupe électrogène, un jardin : pas besoin que chacun ait tout.",
    "criteria": "Outils, stocks ou jardin mis en commun avec d'autres foyers, avec des règles d'usage écrites.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "rassembleur.troc"
    ],
@@ -16025,6 +18327,11 @@
    "col": 2,
    "description": "Faire grandir la préparation autour de soi.",
    "criteria": "Porter un projet de résilience locale (jardin partagé, réserve communale, plan de quartier) ou accompagner un autre foyer jusqu'au niveau Paré.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "rassembleur.reunion",
     "rassembleur.engagement",
@@ -16044,6 +18351,11 @@
    "col": 1,
    "description": "Quatre nœuds suffisent pour tendre une bâche, attacher une charge ou assurer quelqu'un.",
    "criteria": "Faire sans hésiter un nœud de chaise, un cabestan, un nœud de tension réglable et un nœud plat.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": []
   },
@@ -16056,6 +18368,11 @@
    "col": 2,
    "description": "Savoir où chercher l'eau autour de chez soi et de ses itinéraires.",
    "criteria": "Deux sources d'eau brute repérées et accessibles (rivière, source, fontaine), en sachant qu'elle se traite toujours avant de boire.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "eau.sources_identifiees"
@@ -16070,6 +18387,11 @@
    "col": 3,
    "description": "Reconnaître ce qui pousse et sentir le temps qui tourne.",
    "criteria": "Reconnaître dix arbres et plantes courantes de sa région, et les signes d'un orage qui arrive (nuages, vent, pression).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": []
   },
@@ -16082,6 +18404,11 @@
    "col": 1,
    "description": "Un toit en quinze minutes avec une bâche et une cordelette.",
    "criteria": "Monter seul un abri de bâche tendu et étanche en moins de 15 minutes.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "pisteur.noeuds"
    ],
@@ -16096,6 +18423,11 @@
    "col": 2,
    "description": "Une eau claire peut rendre gravement malade.",
    "criteria": "Préfiltrer, filtrer puis désinfecter une eau brute (ébullition, chlore ou filtre adapté), en connaissant les limites de chaque méthode.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "pisteur.eau"
    ],
@@ -16112,6 +18444,11 @@
    "col": 3,
    "description": "Des plantes sauvages en complément, jamais au hasard.",
    "criteria": "Reconnaître dix plantes sauvages comestibles et leurs sosies toxiques ; cueillir seulement ce qu'on identifie à coup sûr, là où c'est autorisé.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "pisteur.observer"
    ],
@@ -16126,6 +18463,11 @@
    "col": 1,
    "description": "Dormir au chaud et au sec quand il fait froid, c'est d'abord une question d'isolation du sol.",
    "criteria": "Passer une nuit dehors sous les 5 °C, au sec et au chaud, avec son matériel.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "pisteur.abri"
    ],
@@ -16140,8 +18482,13 @@
    "col": 2,
    "description": "Allumer un feu quand tout est mouillé, là où c'est permis.",
    "criteria": "Allumer et entretenir un feu avec du bois humide, sans allume-feu industriel, dans un lieu autorisé, et l'éteindre complètement.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
-    "pisteur.traiter"
+    "pisteur.abri"
    ],
    "objectives": []
   },
@@ -16154,6 +18501,11 @@
    "col": 3,
    "description": "Quelques espèces bien connues, et les mortelles par cœur.",
    "criteria": "Identifier quelques champignons comestibles sûrs et les espèces mortelles de sa région ; toujours faire vérifier par un pharmacien ou une société mycologique.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "pisteur.cueillette"
    ],
@@ -16167,7 +18519,12 @@
    "row": 4,
    "col": 1,
    "description": "Deux jours en autonomie avec ce qu'on porte.",
-   "criteria": "Deux jours et une nuit en autonomie en nature avec son sac, dans le respect des règles du bivouac, sans laisser de trace.",
+   "criteria": "Deux jours et deux nuits en autonomie en nature avec son sac, dans le respect des règles du bivouac, sans laisser de trace.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "pisteur.nuit"
    ],
@@ -16179,11 +18536,16 @@
    "name": "S'orienter sans boussole",
    "icon": "🌄",
    "row": 4,
-   "col": 2,
+   "col": 3,
    "description": "Retrouver une direction quand on n'a plus rien.",
    "criteria": "Trouver le nord avec le soleil, une montre ou les étoiles, et rejoindre une route en suivant le relief et les cours d'eau.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
-    "pisteur.feu"
+    "pisteur.observer"
    ],
    "objectives": []
   },
@@ -16193,11 +18555,16 @@
    "name": "Pêche",
    "icon": "🎣",
    "row": 4,
-   "col": 3,
+   "col": 2,
    "description": "Une source de protéines, dans le respect des règles.",
    "criteria": "Pêcher avec une carte de pêche, dans les périodes et tailles autorisées ; vider et cuire un poisson.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
-    "pisteur.champignons"
+    "pisteur.feu"
    ],
    "objectives": []
   },
@@ -16210,6 +18577,11 @@
    "col": 2,
    "description": "Une semaine dehors, sans dépendre d'un commerce.",
    "criteria": "Une semaine en itinérance ou en bivouac avec ce qu'on porte, eau traitée et feu maîtrisé, dans le respect de la réglementation.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "pisteur.bivouac",
     "pisteur.cap",
@@ -16226,6 +18598,11 @@
    "col": 1,
    "description": "En coupure, la radio FM reste la voix des autorités.",
    "criteria": "Radio à piles ou à dynamo testée, fréquence de la radio publique locale notée sur papier.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "communication.radio",
@@ -16241,6 +18618,11 @@
    "col": 2,
    "description": "Un téléphone vide ou perdu, et plus aucun numéro en tête.",
    "criteria": "Contacts essentiels notés sur papier, à la maison et dans chaque sac.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "communication.contacts_papier"
@@ -16255,6 +18637,11 @@
    "col": 3,
    "description": "Papiers, photos, contacts : ce qui n'est que dans le téléphone peut disparaître avec lui.",
    "criteria": "Documents importants sauvegardés hors ligne (clé ou disque chiffré), et une copie hors de la maison.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [],
    "objectives": [
     "cyber.sauvegarde",
@@ -16270,6 +18657,11 @@
    "col": 1,
    "description": "Garder le contact dans le quartier sans réseau.",
    "criteria": "Talkies PMR446 du foyer : canal convenu, portée testée, procédure connue (indicatif, parler court, « à vous »).",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "transmetteur.ecoute"
    ],
@@ -16286,12 +18678,15 @@
    "col": 2,
    "description": "Quand le réseau sature, les SMS passent souvent mieux que les appels.",
    "criteria": "Plan connu de tous : qui appelle qui, SMS plutôt qu'appel, horaires et fréquences convenus avec les proches.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "transmetteur.contacts"
    ],
-   "objectives": [
-    "communication.reseau_local"
-   ]
+   "objectives": []
   },
   {
    "id": "transmetteur.hors_ligne",
@@ -16302,6 +18697,11 @@
    "col": 3,
    "description": "Cartes, guides et fiches utiles sans Internet.",
    "criteria": "Cartes de la région, guides de secourisme et fiches du foyer disponibles hors ligne sur téléphone et ordinateur, vérifiés en mode avion.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "transmetteur.sauvegarde"
    ],
@@ -16315,12 +18715,18 @@
    "row": 3,
    "col": 1,
    "description": "La CB porte plus loin que les talkies, sans licence.",
-   "criteria": "Poste CB opérationnel, antenne réglée, canaux d'appel et d'urgence connus, un essai de contact réussi.",
+   "criteria": "Poste CB opérationnel, antenne réglée, canaux d'appel et d'urgence connus, un essai de contact réussi ; fréquences et horaires de vacation convenus avec les proches.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "transmetteur.talkies"
    ],
    "objectives": [
-    "communication.radio_emission"
+    "communication.radio_emission",
+    "communication.reseau_local"
    ]
   },
   {
@@ -16332,6 +18738,11 @@
    "col": 2,
    "description": "Un message clair se transmet mieux et se comprend du premier coup.",
    "criteria": "Rédiger un message court et complet (qui, où, quoi, quel besoin, à quelle heure) et le faire passer par SMS, radio ou papier.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "transmetteur.plan"
    ],
@@ -16346,6 +18757,11 @@
    "col": 3,
    "description": "Des messages qui passent d'appareil en appareil, sans opérateur.",
    "criteria": "Une messagerie maillée (type LoRa) installée et testée entre au moins deux foyers.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "transmetteur.hors_ligne"
    ],
@@ -16360,6 +18776,11 @@
    "col": 1,
    "description": "Émettre loin quand les réseaux sont tombés, dans un cadre légal.",
    "criteria": "Licence de radioamateur obtenue.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "transmetteur.cb"
    ],
@@ -16376,6 +18797,11 @@
    "col": 2,
    "description": "Être celui qui transmet les consignes vérifiées, pas les rumeurs.",
    "criteria": "Relayer les informations officielles vérifiées pour le quartier (affichage, radio, messages), avec une liste de sources fiables.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "transmetteur.messages"
    ],
@@ -16393,6 +18819,11 @@
    "col": 3,
    "description": "Une radio sans batterie ne sert à rien.",
    "criteria": "Radios, téléphones et réseau maillé alimentés une semaine hors réseau (solaire, batteries), testé.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "transmetteur.maille"
    ],
@@ -16407,6 +18838,11 @@
    "col": 2,
    "description": "Le quartier reste joint quand tout le reste est tombé.",
    "criteria": "Réseau radio de secours avec le groupe d'entraide, plan de fréquences et d'horaires, testé au moins tous les six mois.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
    "requires": [
     "transmetteur.licence",
     "transmetteur.relais",

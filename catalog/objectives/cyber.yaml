@@ -15,26 +15,26 @@ objectives:
     why: "Les arnaques au faux conseiller et au « proche en détresse » explosent pendant les crises ; signalement sur 17Cyber ou cybermalveillance.gouv.fr."
   - id: cyber.double_auth
     level: 3
-    title: Mot de passe propre et double authentification sur la messagerie principale et la banque de chaque adulte
+    title: "Mot de passe propre et double authentification sur la messagerie principale et la banque de chaque adulte (ou compte géré avec un aidant de confiance pour qui n'a pas de smartphone)"
     why: La messagerie permet de réinitialiser tous les autres comptes ; c'est elle qu'il faut protéger en premier.
   - id: cyber.mises_a_jour
-    level: 3
+    level: 4
     title: Mises à jour automatiques activées sur les téléphones, les ordinateurs et la box
     revalidate_days: 365
   - id: cyber.sauvegarde
     level: 3
-    title: Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de trois mois
+    title: Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de six mois
     why: Un rançongiciel, un incendie ou un vol effacent tout ce qui n'existe qu'à un seul endroit.
-    revalidate_days: 90
+    revalidate_days: 180
   - id: cyber.gestionnaire
-    level: 4
+    level: 5
     title: Un gestionnaire de mots de passe pour chaque adulte, et un mot de passe différent pour chaque compte important
   - id: cyber.recuperation
     level: 4
     title: Codes de secours de la double authentification et moyens de récupération des comptes notés sur papier, rangés avec les papiers importants
     why: Sans le téléphone, impossible de recevoir les codes ; sans codes de secours, on perd l'accès à la banque et à la messagerie.
   - id: cyber.box
-    level: 4
+    level: 5
     title: "Box internet sécurisée : mot de passe d'administration changé, Wi-Fi en WPA2 ou WPA3, réseau invité pour les visiteurs et les objets connectés"
   - id: cyber.enfants
     level: 4

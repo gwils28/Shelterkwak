@@ -29,6 +29,10 @@ objectives:
     level: 4
     title: Lieu d'accueil convenu hors de la zone (famille, amis)
     revalidate_days: 365
+  - id: mobilite.criteres_depart
+    level: 4
+    title: "Critères écrits pour décider d'évacuer ou de rester (consignes des autorités, alertes, seuils sur le terrain, état des membres), connus de tous les adultes"
+    why: La décision la plus lourde d'une crise se prend mieux à froid ; en urgence, on part trop tard ou sans raison.
   - id: mobilite.carburant
     why: Stocker du carburant en cave d'immeuble est interdit et dangereux ; l'essence se dégrade en six mois.
     contexts: [periurbain, rural]

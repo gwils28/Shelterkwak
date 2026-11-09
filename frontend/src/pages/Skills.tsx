@@ -4,7 +4,7 @@ import type { TalentData } from "../engine/replay";
 import type { Catalog, Talent } from "../engine/types";
 import { formatDate, STATUS_LABEL } from "../lib/format";
 import { DONE_STATUSES } from "../lib/inventory";
-import { buildTrees, dependentChain, missingChain, type TalentNode, type TalentState, type Tree, unlocks } from "../lib/talents";
+import { buildTrees, dependentChain, forContext, missingChain, type TalentNode, type TalentState, type Tree, unlocks } from "../lib/talents";
 import type { Objective } from "../model";
 import { actions, useFoyer } from "../store/hooks";
 
@@ -22,9 +22,15 @@ function rememberedSpecialty(): string | null {
 
 /** Onglet Compétences : une spécialité choisie à la fois, son arbre de talents et la fiche d'un talent. */
 export function SkillsPage() {
-  const { catalog, state, objectives, today } = useFoyer();
+  const { catalog: fullCatalog, state, objectives, today, context } = useFoyer();
   const [params, setParams] = useSearchParams();
+  const catalog = useMemo(() => forContext(fullCatalog, context), [fullCatalog, context]);
   const trees = useMemo(() => buildTrees(catalog, state.talents), [catalog, state.talents]);
+  // Un talent acquis est « à entretenir » quand un objectif lié a expiré ou est en sursis (PSC1, sauvegarde…).
+  const stale = useMemo(() => {
+    const lapsed = new Set(objectives.filter((o) => o.status === "expired" || o.status === "grace").map((o) => o.id));
+    return new Set(catalog.talents.filter((t) => state.talents.has(t.id) && t.objectives.some((o) => lapsed.has(o))).map((t) => t.id));
+  }, [catalog, objectives, state.talents]);
   const wanted = params.get("spe") ?? rememberedSpecialty();
   const tree = trees.find((t) => t.specialty.id === wanted) ?? trees[0];
   const openId = params.get("talent");
@@ -68,7 +74,7 @@ export function SkillsPage() {
 
       <section className={`spec-panel spec-${tree.specialty.id}`} role="tabpanel" aria-label={tree.specialty.name}>
         <SpecBanner tree={tree} catalog={catalog} />
-        <TalentTree tree={tree} catalog={catalog} onOpen={openTalent} />
+        <TalentTree tree={tree} catalog={catalog} stale={stale} onOpen={openTalent} />
         <ul className="tree-legend" aria-label="Légende">
           <li>
             <i className="dot acquired" /> Acquis
@@ -79,6 +85,11 @@ export function SkillsPage() {
           <li>
             <i className="dot locked" /> Verrouillé
           </li>
+          {stale.size > 0 && (
+            <li>
+              <span aria-hidden>⟳</span> À entretenir : un objectif lié a expiré
+            </li>
+          )}
         </ul>
       </section>
 
@@ -86,6 +97,7 @@ export function SkillsPage() {
         <TalentSheet
           key={open.talent.id}
           node={open}
+          stale={stale.has(open.talent.id)}
           tree={tree}
           catalog={catalog}
           acquired={state.talents}
@@ -178,7 +190,7 @@ const R = 30; // rayon d'un nœud (le maître est plus grand)
 const R_MASTER = 36;
 const LABEL_H = 46; // place du nom sous un nœud (deux lignes)
 
-function TalentTree({ tree, catalog, onOpen }: { tree: Tree; catalog: Catalog; onOpen: (id: string) => void }) {
+function TalentTree({ tree, catalog, stale, onOpen }: { tree: Tree; catalog: Catalog; stale: Set<string>; onOpen: (id: string) => void }) {
   const [ref, W] = useWidth<HTMLDivElement>();
   const cols = tree.specialty.branches.length;
   const pos = (t: Talent) => ({ x: (W * (t.col - 0.5)) / cols, y: (t.row - 1) * ROW_H + NODE_Y, r: t.row === 5 ? R_MASTER : R });
@@ -212,20 +224,40 @@ function TalentTree({ tree, catalog, onOpen }: { tree: Tree; catalog: Catalog; o
               const y2 = b.y - b.r - 4;
               const mid = (y1 + y2) / 2;
               const cls = parent.state !== "acquired" ? "locked" : n.state === "acquired" ? "acquired" : "open";
-              return <path key={`${r}>${n.talent.id}`} className={cls} d={`M${a.x},${y1} C${a.x},${mid} ${b.x},${mid} ${b.x},${y2}`} />;
+              // Un lien qui saute un rang dans la même branche contourne le talent intermédiaire.
+              const skip = a.x === b.x && n.talent.row - parent.talent.row > 1;
+              const dx = ((n.talent.col === cols ? -1 : 1) * 0.42 * W) / cols;
+              const d = skip
+                ? `M${a.x},${y1} C${a.x + dx},${y1 + 50} ${b.x + dx},${y2 - 50} ${b.x},${y2}`
+                : `M${a.x},${y1} C${a.x},${mid} ${b.x},${mid} ${b.x},${y2}`;
+              return <path key={`${r}>${n.talent.id}`} className={cls} d={d} />;
             }),
           )}
         </svg>
         {nodes.map((n) => {
           const p = pos(n.talent);
-          return <TalentNodeButton key={n.talent.id} node={n} x={p.x} y={p.y} width={W / cols} onOpen={() => onOpen(n.talent.id)} />;
+          return <TalentNodeButton key={n.talent.id} node={n} stale={stale.has(n.talent.id)} x={p.x} y={p.y} width={W / cols} onOpen={() => onOpen(n.talent.id)} />;
         })}
       </div>
     </div>
   );
 }
 
-function TalentNodeButton({ node, x, y, width, onOpen }: { node: TalentNode; x: number; y: number; width: number; onOpen: () => void }) {
+function TalentNodeButton({
+  node,
+  stale,
+  x,
+  y,
+  width,
+  onOpen,
+}: {
+  node: TalentNode;
+  stale: boolean;
+  x: number;
+  y: number;
+  width: number;
+  onOpen: () => void;
+}) {
   const { talent, state } = node;
   const master = talent.row === 5;
   return (
@@ -234,15 +266,15 @@ function TalentNodeButton({ node, x, y, width, onOpen }: { node: TalentNode; x: 
       style={{ left: x, top: y, width: Math.min(150, width - 8) }}
       onClick={onOpen}
       aria-haspopup="dialog"
-      aria-label={`${talent.name}, ${STATE_LABEL[state]}`}
+      aria-label={`${talent.name}, ${STATE_LABEL[state]}${stale ? ", à entretenir" : ""}`}
     >
       <span className="talent-orb">
         <span className="talent-icon" aria-hidden>
           {talent.icon}
         </span>
         {state === "acquired" && (
-          <span className="talent-badge ok" aria-hidden>
-            ✓
+          <span className={`talent-badge ${stale ? "stale" : "ok"}`} aria-hidden>
+            {stale ? "⟳" : "✓"}
           </span>
         )}
         {state === "locked" && (
@@ -260,6 +292,7 @@ function TalentNodeButton({ node, x, y, width, onOpen }: { node: TalentNode; x: 
 
 function TalentSheet({
   node,
+  stale,
   tree,
   catalog,
   acquired,
@@ -269,6 +302,7 @@ function TalentSheet({
   onClose,
 }: {
   node: TalentNode;
+  stale: boolean;
   tree: Tree;
   catalog: Catalog;
   acquired: ReadonlyMap<string, TalentData>;
@@ -316,6 +350,11 @@ function TalentSheet({
         </header>
 
         {talent.description && <p>{talent.description}</p>}
+        {stale && (
+          <p className="caution" role="note">
+            <strong>⟳ À entretenir.</strong> Un objectif lié a expiré : refais la formation ou la vérification, puis revalide l'objectif ci-dessous.
+          </p>
+        )}
         <div className="talent-criteria">
           <h3>Pour le cocher</h3>
           <p>{talent.criteria}</p>

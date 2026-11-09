@@ -215,7 +215,10 @@ haut de page.
 3. **Objectifs** : filtres par niveau / axe / statut, cocher, décocher, revalider.
 4. **Inventaire** (`/inventaire`), deux sous-onglets :
    - **Objets** : cartes par catégorie (`catalog/items.yaml`), grisées tant que le foyer ne les a
-     pas, colorées par niveau quand il les a. Chaque objet a les cinq niveaux rustique, commun,
+     pas, colorées par niveau quand il les a. Certaines cartes ne sont proposées qu'aux foyers
+     concernés (armes à feu déclarées, risque industriel) ou sur demande (armes blanches, bombe
+     lacrymogène, alcool, tabac) : cachées tant que le foyer ne les possède pas, accessibles via
+     « Voir aussi… ». Chaque objet a les cinq niveaux rustique, commun,
      confirmé, épique, légendaire ; le niveau dépend de la qualité, des options, de la quantité,
      du contenu (contenants : contenu minimal détaillé par niveau) ou, pour les réserves (eau,
      vivres, cuisson, traitements), de l'autonomie. Une fiche par carte : niveau, quantité,

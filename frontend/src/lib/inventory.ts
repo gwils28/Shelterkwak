@@ -3,7 +3,7 @@
 
 import { addDays } from "../engine/dates";
 import type { ItemData, StockData } from "../engine/replay";
-import type { Catalog, Item, ItemTier, Status } from "../engine/types";
+import type { Catalog, Item, ItemReference, ItemTier, Status } from "../engine/types";
 import type { Autonomy, Objective } from "../model";
 import { formatNumber } from "./format";
 
@@ -56,6 +56,7 @@ export function buildCards(
   autonomy: Autonomy[],
   objectives: Objective[],
   soon: string,
+  tags: ReadonlySet<string> = new Set(),
 ): Card[] {
   const byObjective = new Map(objectives.map((o) => [o.id, o]));
   const byCategory = new Map(autonomy.map((a) => [a.category, a]));
@@ -97,7 +98,11 @@ export function buildCards(
       articles: [],
       objectives: linked,
       done,
-      relevant: data !== null || allLinks.length === 0 || linked.length > 0,
+      relevant:
+        data !== null ||
+        (!item.opt_in &&
+          (!item.requires_tags.length || item.requires_tags.some((t) => tags.has(t))) &&
+          (allLinks.length === 0 || linked.length > 0)),
       warn: !!data?.expires_on && data.expires_on <= soon,
     };
   });
@@ -242,4 +247,23 @@ export function seasonal(objectives: Objective[], today: string): { objective: O
     .filter((o) => o.due_month !== null && o.status !== "na")
     .map((o) => ({ objective: o, due: nextDue(o.due_month!, today) }))
     .sort((a, b) => a.due.localeCompare(b.due) || a.objective.level - b.objective.level);
+}
+
+/** Au-delà d'un an, un repère d'achat est à revérifier : modèles et prix changent vite. */
+export const REFERENCE_STALE_DAYS = 365;
+
+export interface PurchaseGuide extends ItemReference {
+  next: boolean; // le palier à viser ensuite (premier palier au-dessus de celui du foyer)
+  stale: boolean;
+}
+
+/** Repères d'achat d'une carte, dans l'ordre des paliers, en signalant le prochain palier à viser. */
+export function purchaseGuide(catalog: Catalog, item: Item, ownedTier: string | null, today: string): PurchaseGuide[] {
+  const rank = new Map(item.tiers.map((t, i) => [t.tier, i]));
+  const owned = ownedTier === null ? -1 : (rank.get(ownedTier) ?? -1);
+  const refs = catalog.references
+    .filter((r) => r.item === item.id && rank.has(r.tier))
+    .sort((a, b) => rank.get(a.tier)! - rank.get(b.tier)!);
+  const next = refs.find((r) => rank.get(r.tier)! > owned);
+  return refs.map((r) => ({ ...r, next: r === next, stale: addDays(r.checked, REFERENCE_STALE_DAYS) < today }));
 }

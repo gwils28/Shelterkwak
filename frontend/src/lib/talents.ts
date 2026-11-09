@@ -24,6 +24,17 @@ export interface Tree {
   title: string | null; // titre porté à ce rang
 }
 
+/**
+ * Les arbres vus depuis un lieu de vie : on retire les talents qui n'y ont pas cours (tronçonneuse,
+ * élevage en appartement) et les prérequis qui pointaient vers eux, pour que le maître reste atteignable.
+ */
+export function forContext(catalog: Catalog, context: string | null): Catalog {
+  if (!context) return catalog;
+  const talents = catalog.talents.filter((t) => !t.contexts?.length || t.contexts.includes(context));
+  const ids = new Set(talents.map((t) => t.id));
+  return { ...catalog, talents: talents.map((t) => ({ ...t, requires: t.requires.filter((r) => ids.has(r)) })) };
+}
+
 export function talentState(talent: Talent, acquired: ReadonlyMap<string, TalentData>): TalentState {
   if (acquired.has(talent.id)) return "acquired";
   return talent.requires.every((r) => acquired.has(r)) ? "available" : "locked";

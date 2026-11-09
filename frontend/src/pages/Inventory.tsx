@@ -3,8 +3,8 @@ import { NavLink, Route, Routes, useSearchParams } from "react-router-dom";
 import { AutonomyCards } from "../components/AutonomyCards";
 import { addDays } from "../engine/dates";
 import type { ItemData } from "../engine/replay";
-import type { Catalog, ItemBasis, ItemKind, ItemTier } from "../engine/types";
-import { type Card, buildCards, DONE_STATUSES, tierObjectiveIds } from "../lib/inventory";
+import type { Catalog, ItemBasis, ItemKind, ItemTier, Market } from "../engine/types";
+import { type Card, buildCards, DONE_STATUSES, purchaseGuide, tierObjectiveIds } from "../lib/inventory";
 import { formatDate, formatDays, formatNumber, STATUS_LABEL, unitLabel } from "../lib/format";
 import type { Objective, StockData } from "../model";
 import { actions, useFoyer } from "../store/hooks";
@@ -46,7 +46,7 @@ export function InventoryPage() {
 }
 
 function InventoryCards() {
-  const { catalog, dashboard, state, objectives, today } = useFoyer();
+  const { catalog, dashboard, state, objectives, today, tags } = useFoyer();
   const [filter, setFilter] = useState<Filter>("all");
   const [query, setQuery] = useState("");
   const [showAll, setShowAll] = useState(false);
@@ -56,8 +56,8 @@ function InventoryCards() {
 
   const soon = addDays(today, 30);
   const cards = useMemo(
-    () => (dashboard ? buildCards(catalog, state.items, state.stock, dashboard.autonomy, objectives, soon) : []),
-    [catalog, state, dashboard, objectives, soon],
+    () => (dashboard ? buildCards(catalog, state.items, state.stock, dashboard.autonomy, objectives, soon, tags) : []),
+    [catalog, state, dashboard, objectives, soon, tags],
   );
   if (!dashboard) return null;
 
@@ -226,7 +226,7 @@ function ItemSheet({ card, catalog, today, soon, onClose }: { card: Card; catalo
         {item.kind === "reserve" ? (
           <ReserveDetail card={card} catalog={catalog} today={today} soon={soon} />
         ) : (
-          <ItemDetail key={item.id} card={card} catalog={catalog} onDone={() => ref.current?.close()} />
+          <ItemDetail key={item.id} card={card} catalog={catalog} today={today} onDone={() => ref.current?.close()} />
         )}
       </div>
     </dialog>
@@ -234,7 +234,7 @@ function ItemSheet({ card, catalog, today, soon, onClose }: { card: Card; catalo
 }
 
 /** Équipement ou consommable : niveau, quantité, rangement, objectifs servis. */
-function ItemDetail({ card, catalog, onDone }: { card: Card; catalog: Catalog; onDone: () => void }) {
+function ItemDetail({ card, catalog, today, onDone }: { card: Card; catalog: Catalog; today: string; onDone: () => void }) {
   const { item, data } = card;
   const initial: ItemData = data
     ? { ...data, expires_on: data.expires_on ?? null }
@@ -297,6 +297,7 @@ function ItemDetail({ card, catalog, onDone }: { card: Card; catalog: Catalog; o
       </label>
 
       <LinkedObjectives objectives={card.objectives} covered={covered} />
+      <PurchaseGuideSection card={card} catalog={catalog} today={today} />
 
       <div className="actions sheet-actions">
         {data && (
@@ -362,6 +363,66 @@ function TierRow({
       <input type="radio" name="tier" checked={selected} onChange={onSelect} />
       {body}
     </label>
+  );
+}
+
+const MARKET_LABEL: Record<Market, string> = { france: "En France", europe: "En Europe", usa: "Import États-Unis" };
+
+/** Repères d'achat (revue du marché) : un onglet par palier, ouvert sur le prochain palier à viser. */
+function PurchaseGuideSection({ card, catalog, today }: { card: Card; catalog: Catalog; today: string }) {
+  const guide = purchaseGuide(catalog, card.item, card.data?.tier ?? null, today);
+  const [tier, setTier] = useState<string | null>(null);
+  if (!guide.length) return null;
+  const shown = guide.find((g) => g.tier === tier) ?? guide.find((g) => g.next) ?? guide[guide.length - 1];
+  const checked = guide.map((g) => g.checked).sort()[0];
+  return (
+    <details className="buy-guide">
+      <summary>
+        <span className="buy-title">Repères d'achat</span>
+        <span className="hint">
+          {guide.length} {guide.length > 1 ? "paliers" : "palier"} · vérifiés le {formatDate(checked)}
+        </span>
+      </summary>
+      <div className="buy-tabs" role="tablist" aria-label="Palier">
+        {guide.map((g) => (
+          <button
+            key={g.tier}
+            type="button"
+            role="tab"
+            aria-selected={g === shown}
+            className={`buy-tab tier-${g.tier}${g === shown ? " active" : ""}`}
+            onClick={() => setTier(g.tier)}
+          >
+            {tierName(catalog, g.tier)}
+            {g.next && <span className="buy-next-dot" title="Prochain palier" aria-label="prochain palier" />}
+          </button>
+        ))}
+      </div>
+      <section className={`buy-panel tier-${shown.tier}`} role="tabpanel">
+        {shown.next && <p className="buy-next">Ton prochain palier</p>}
+        <p className="buy-criteria">
+          <strong>Ce qui compte.</strong> {shown.criteria}
+        </p>
+        <ol className="buy-refs">
+          {shown.refs.map((r, i) => (
+            <li key={`${r.brand} ${r.model}`} className={`buy-ref${i === 0 ? " pick" : ""}`}>
+              {i === 0 && <span className="buy-pick">Choix du Fourrier</span>}
+              <div className="buy-ref-head">
+                <span className="buy-name">
+                  <span className="buy-brand">{r.brand}</span>
+                  <span className="buy-model">{r.model}</span>
+                </span>
+                <span className="buy-price">{r.price}</span>
+              </div>
+              {r.why && <p className="buy-why">{r.why}</p>}
+              <span className={`buy-market market-${r.market}`}>{MARKET_LABEL[r.market]}</span>
+            </li>
+          ))}
+        </ol>
+        {shown.stale && <p className="hint warn-text">Vérifié il y a plus d'un an : modèles et prix sont peut-être dépassés.</p>}
+      </section>
+      <p className="hint buy-foot">Des repères, pas des obligations : un équivalent qui remplit les critères fait l'affaire.</p>
+    </details>
   );
 }
 

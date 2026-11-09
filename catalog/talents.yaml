@@ -35,7 +35,7 @@ specialties:
     icon: ⛑️
     description: "Alerter, secourir, soigner et soutenir : les gestes qui comptent avant l'arrivée des secours, ou quand ils ne viennent pas."
     branches: [Urgence, Soins et hygiène, Soutien psychologique]
-    titles: [Témoin utile, Secouriste, Soigneur aguerri, Référent santé, Guérisseur du hameau]
+    titles: [Témoin utile, Secouriste, Soigneur aguerri, Référent santé, Pilier santé du quartier]
 
   - id: brico
     name: Bricoleur
@@ -69,7 +69,7 @@ specialties:
     name: Pisteur
     icon: 🌲
     description: "Vivre dehors, trouver l'eau, le feu et la nourriture, garder le cap : l'autonomie en milieu naturel."
-    branches: [Bivouac, Eau, feu et cap, Ressources sauvages]
+    branches: [Bivouac, "Eau, feu et cap", Ressources sauvages]
     titles: [Promeneur, Campeur, Trappeur, Forestier, Esprit sauvage]
 
   - id: transmetteur
@@ -169,7 +169,7 @@ talents:
     specialty: physique
     name: Nageur
     icon: 🏊
-    row: 3
+    row: 4
     col: 3
     description: "En crue, savoir flotter et sortir de l'eau sauve la vie."
     criteria: "Nager 50 m, flotter 5 minutes sur place et sortir de l'eau seul (savoir-nager en sécurité)."
@@ -193,18 +193,18 @@ talents:
     row: 4
     col: 2
     description: "Déplacer un blessé ou une personne qui ne peut plus marcher, sans se blesser soi-même."
-    criteria: "Porter un adulte à deux sur 100 m avec un brancard improvisé (couverture, bâtons), et le dégager seul sur quelques mètres."
+    criteria: "Porter un adulte à deux sur 100 m avec un brancard improvisé (couverture, bâtons), et ne le déplacer seul sur quelques mètres que face à un danger vital immédiat (feu, effondrement)."
     requires: [physique.randonneur]
 
   - id: physique.climat
     specialty: physique
     name: Effort par tous les temps
     icon: 🌡️
-    row: 4
+    row: 3
     col: 3
     description: "En canicule comme en grand froid, l'effort mal géré devient dangereux."
     criteria: "Savoir s'hydrater, ralentir et s'arrêter à temps ; reconnaître un coup de chaleur et une hypothermie, chez soi et chez les autres."
-    requires: [physique.nageur]
+    requires: [physique.endurance]
 
   - id: physique.maitre
     specialty: physique
@@ -214,7 +214,7 @@ talents:
     col: 2
     description: "Une forme qui ne dépend pas d'une salle de sport et tient dans la durée."
     criteria: "Un an de pratique régulière (trois séances par semaine) et le test complet réussi dans le mois : 25 km chargé, un adulte porté, 50 m nagés."
-    requires: [physique.longue_distance, physique.brancardier, physique.climat]
+    requires: [physique.longue_distance, physique.brancardier, physique.nageur]
 
   # ======================================================================
   # Stratège de survie
@@ -236,7 +236,8 @@ talents:
     row: 1
     col: 2
     description: "Sans GPS, la carte papier reste lisible."
-    criteria: "Situer sa maison, son travail et l'école sur une carte papier, lire la légende d'une carte IGN."
+    criteria: "Situer sa maison, son travail et l'école sur une carte papier, lire la légende d'une carte IGN ; deux itinéraires d'évacuation et un lieu de rassemblement tracés et connus du foyer."
+    objectives: [mobilite.itineraires]
 
   - id: stratege.guide
     specialty: stratege
@@ -257,7 +258,7 @@ talents:
     description: "Être prévenu tôt, par des sources fiables, et ne pas relayer les rumeurs."
     criteria: "FR-Alert, Vigicrues et la vigilance Météo-France connus ; une liste de sources fiables et le réflexe de vérifier avant de partager."
     requires: [stratege.risques]
-    objectives: [securite.alertes, communication.sources]
+    objectives: [securite.alertes, communication.sources, securite.pcs]
 
   - id: stratege.boussole
     specialty: stratege
@@ -300,7 +301,6 @@ talents:
     description: "Un itinéraire tracé sur une carte ne vaut que s'il a été parcouru."
     criteria: "Deux itinéraires d'évacuation vers le lieu de repli reconnus sur le terrain, dont un à pied."
     requires: [stratege.boussole]
-    objectives: [mobilite.itineraires]
 
   - id: stratege.bibliotheque
     specialty: stratege
@@ -322,6 +322,7 @@ talents:
     description: "La décision la plus lourde d'une crise se prépare à froid, pas dans l'urgence."
     criteria: "Des critères écrits à l'avance pour évacuer ou rester (alertes, seuils, signes sur le terrain), connus de tous les adultes du foyer."
     requires: [stratege.scenarios]
+    objectives: [mobilite.criteres_depart]
 
   - id: stratege.exercice
     specialty: stratege
@@ -354,7 +355,7 @@ talents:
     description: "Penser à l'échelle de la commune, avec ceux qui organisent les secours."
     criteria: "Participer au plan communal de sauvegarde, à la réserve communale de sécurité civile ou à un plan commun de quartier."
     requires: [stratege.decision, stratege.exercice, stratege.transmettre]
-    objectives: [securite.pcs, securite.plan_commun]
+    objectives: [securite.plan_commun]
 
   # ======================================================================
   # Soigneur
@@ -439,7 +440,7 @@ talents:
     row: 3
     col: 2
     description: "Bien utiliser la trousse, c'est surtout connaître les doses et les contre-indications."
-    criteria: "Doses adultes et enfants des médicaments de la trousse connues, contre-indications notées, liste des traitements du foyer à jour."
+    criteria: "Doses adultes, et doses enfants selon le poids, des médicaments de la trousse connues, contre-indications notées, liste des traitements du foyer à jour."
     requires: [soin.hygiene]
 
   - id: soin.pssm
@@ -471,7 +472,7 @@ talents:
     row: 4
     col: 2
     description: "Des remèdes simples pour les petits maux, avec leurs dangers."
-    criteria: "Reconnaître et utiliser dix plantes médicinales courantes de sa région, en connaissant leurs sosies toxiques et leurs contre-indications."
+    criteria: "Reconnaître et utiliser dix plantes médicinales courantes de sa région, en connaissant leurs sosies toxiques et leurs contre-indications ; jamais à la place d'un traitement, et prudence pour la grossesse, les enfants et les traitements en cours."
     requires: [soin.pharmacie]
     objectives: [sante.plantes]
 
@@ -494,7 +495,7 @@ talents:
     col: 2
     description: "La personne vers qui le quartier se tourne quand quelqu'un est blessé."
     criteria: "Secouriste bénévole dans une association agréée (PSE2), ou membre de la réserve sanitaire ou communale."
-    requires: [soin.isole, soin.plantes, soin.debriefing]
+    requires: [soin.isole, soin.debriefing]
 
   # ======================================================================
   # Bricoleur
@@ -513,10 +514,11 @@ talents:
     specialty: brico
     name: Faire du feu
     icon: 🔥
-    row: 1
+    row: 2
     col: 2
     description: "Chaleur, cuisson, eau bouillie : le feu reste la base, s'il est maîtrisé."
     criteria: "Allumer et entretenir un feu en sécurité, à l'endroit autorisé, et l'éteindre complètement."
+    requires: [brico.rechaud]
     objectives: [competences.feu]
 
   - id: brico.couture
@@ -543,11 +545,10 @@ talents:
     specialty: brico
     name: Combustion en sécurité
     icon: 🏕️
-    row: 2
+    row: 1
     col: 2
     description: "Le monoxyde de carbone tue chaque hiver pendant les coupures."
     criteria: "Utiliser réchaud, poêle et groupe électrogène sans risque de monoxyde de carbone : jamais en pièce close, aération, détecteur."
-    requires: [brico.feu]
     objectives: [competences.rechaud]
 
   - id: brico.textile
@@ -579,7 +580,7 @@ talents:
     col: 2
     description: "Le bois ne chauffe bien que sec : il se prépare un ou deux ans à l'avance."
     criteria: "Fendre, empiler et faire sécher le bois ; mesurer son humidité ; entretenir un poêle et faire ramoner."
-    requires: [brico.rechaud]
+    requires: [brico.feu]
 
   - id: brico.velo
     specialty: brico
@@ -589,7 +590,7 @@ talents:
     col: 3
     description: "Un vélo entretenu reste le transport le plus sûr quand le carburant manque."
     criteria: "Réparer une crevaison, régler freins et dérailleur, changer une chaîne."
-    requires: [brico.textile]
+    requires: [brico.reparations]
 
   - id: brico.installations
     specialty: brico
@@ -610,6 +611,7 @@ talents:
     col: 2
     description: "Un arbre en travers de la route au troisième jour d'isolement."
     criteria: "Formation suivie, dégager un arbre tombé avec casque à visière, jambières anti-coupure et gants."
+    contexts: [periurbain, rural]
     requires: [brico.bois]
     objectives: [competences.tronconneuse]
 
@@ -715,7 +717,7 @@ talents:
     row: 3
     col: 2
     description: "Garder les récoltes et les promotions des mois durant."
-    criteria: "Stériliser des bocaux, lacto-fermenter et déshydrater, en respectant les temps et les règles d'hygiène."
+    criteria: "Stériliser des bocaux, lacto-fermenter et déshydrater, en respectant les temps et températures d'une recette fiable ; connaître le botulisme (légumes peu acides, viande, poisson) : couvercle bombé ou odeur suspecte, on jette sans goûter."
     requires: [cuisto.securite]
     objectives: [alimentation.conservation]
 
@@ -748,7 +750,7 @@ talents:
     row: 4
     col: 2
     description: "Les techniques d'avant le frigo : sel, fumée, cave."
-    criteria: "Saler, fumer ou sécher viande et poisson, et garder des légumes tout l'hiver en cave ou en silo."
+    criteria: "Saler, fumer ou sécher viande et poisson, et garder des légumes tout l'hiver en cave ou en silo, en suivant des recettes fiables (sel, nitrites, températures) pour éviter le botulisme."
     requires: [cuisto.conserves]
 
   - id: cuisto.elevage
@@ -759,6 +761,7 @@ talents:
     col: 3
     description: "Quelques poules donnent des œufs toute l'année et mangent les restes."
     criteria: "S'occuper de poules (ou de lapins) toute une année : nourriture, soins, abri, protection contre les prédateurs."
+    contexts: [periurbain, rural]
     requires: [cuisto.semences]
     objectives: [alimentation.elevage]
 
@@ -803,8 +806,8 @@ talents:
     row: 1
     col: 3
     description: "Ce que la loi permet, et surtout ce qu'elle ne permet pas."
-    criteria: "Chaque adulte connaît les conditions de la légitime défense : attaque injuste et actuelle, riposte nécessaire, immédiate et proportionnée ; défendre un bien seul ne justifie jamais un geste qui peut tuer."
-    objectives: [defense.legitime_defense]
+    criteria: "Chaque adulte connaît les conditions de la légitime défense : attaque injuste et actuelle, riposte nécessaire, immédiate et proportionnée ; défendre un bien seul ne justifie jamais un geste qui peut tuer. Numéros contre les violences connus : 17 ou 112, SMS au 114, 3919, 119."
+    objectives: [defense.legitime_defense, defense.violences]
 
   - id: protecteur.vigilance
     specialty: protecteur
@@ -879,9 +882,9 @@ talents:
     row: 4
     col: 1
     description: "Les enfants et les personnes vulnérables ont besoin de consignes à leur mesure."
-    criteria: "Consignes apprises par les enfants (adultes de confiance, « un secret qui fait peur se dit », crier et fuir, le 119) ; numéros contre les violences connus des adultes."
+    criteria: "Consignes apprises par les enfants (adultes de confiance, « un secret qui fait peur se dit », crier et fuir, le 119)."
     requires: [protecteur.desescalade]
-    objectives: [defense.enfants, defense.violences]
+    objectives: [defense.enfants]
 
   - id: protecteur.voisinage
     specialty: protecteur
@@ -1136,7 +1139,7 @@ talents:
     col: 2
     description: "Allumer un feu quand tout est mouillé, là où c'est permis."
     criteria: "Allumer et entretenir un feu avec du bois humide, sans allume-feu industriel, dans un lieu autorisé, et l'éteindre complètement."
-    requires: [pisteur.traiter]
+    requires: [pisteur.abri]
 
   - id: pisteur.champignons
     specialty: pisteur
@@ -1155,7 +1158,7 @@ talents:
     row: 4
     col: 1
     description: "Deux jours en autonomie avec ce qu'on porte."
-    criteria: "Deux jours et une nuit en autonomie en nature avec son sac, dans le respect des règles du bivouac, sans laisser de trace."
+    criteria: "Deux jours et deux nuits en autonomie en nature avec son sac, dans le respect des règles du bivouac, sans laisser de trace."
     requires: [pisteur.nuit]
 
   - id: pisteur.cap
@@ -1163,20 +1166,20 @@ talents:
     name: S'orienter sans boussole
     icon: 🌄
     row: 4
-    col: 2
+    col: 3
     description: "Retrouver une direction quand on n'a plus rien."
     criteria: "Trouver le nord avec le soleil, une montre ou les étoiles, et rejoindre une route en suivant le relief et les cours d'eau."
-    requires: [pisteur.feu]
+    requires: [pisteur.observer]
 
   - id: pisteur.peche
     specialty: pisteur
     name: Pêche
     icon: 🎣
     row: 4
-    col: 3
+    col: 2
     description: "Une source de protéines, dans le respect des règles."
     criteria: "Pêcher avec une carte de pêche, dans les périodes et tailles autorisées ; vider et cuire un poisson."
-    requires: [pisteur.champignons]
+    requires: [pisteur.feu]
 
   - id: pisteur.maitre
     specialty: pisteur
@@ -1241,7 +1244,6 @@ talents:
     description: "Quand le réseau sature, les SMS passent souvent mieux que les appels."
     criteria: "Plan connu de tous : qui appelle qui, SMS plutôt qu'appel, horaires et fréquences convenus avec les proches."
     requires: [transmetteur.contacts]
-    objectives: [communication.reseau_local]
 
   - id: transmetteur.hors_ligne
     specialty: transmetteur
@@ -1260,9 +1262,9 @@ talents:
     row: 3
     col: 1
     description: "La CB porte plus loin que les talkies, sans licence."
-    criteria: "Poste CB opérationnel, antenne réglée, canaux d'appel et d'urgence connus, un essai de contact réussi."
+    criteria: "Poste CB opérationnel, antenne réglée, canaux d'appel et d'urgence connus, un essai de contact réussi ; fréquences et horaires de vacation convenus avec les proches."
     requires: [transmetteur.talkies]
-    objectives: [communication.radio_emission]
+    objectives: [communication.radio_emission, communication.reseau_local]
 
   - id: transmetteur.messages
     specialty: transmetteur
