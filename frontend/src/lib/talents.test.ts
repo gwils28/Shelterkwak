@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { CATALOG } from "../engine/catalog";
 import type { TalentData } from "../engine/replay";
-import { buildTree, dependentChain, missingChain, talentState, unlocks } from "./talents";
+import { buildTree, dependentChain, forContext, missingChain, talentState, unlocks } from "./talents";
 
 const owned = (...ids: string[]) => new Map<string, TalentData>(ids.map((id) => [id, { talent_id: id, acquired_on: null, note: "" }]));
 const talent = (id: string) => CATALOG.talents.find((t) => t.id === id)!;
@@ -26,7 +26,7 @@ describe("arbres de talents", () => {
     expect(missingChain(CATALOG, "soin.psc1", owned()).map((t) => t.id)).toEqual(["soin.alerter", "soin.gqs", "soin.psc1"]);
     expect(missingChain(CATALOG, "soin.psc1", owned("soin.alerter")).map((t) => t.id)).toEqual(["soin.gqs", "soin.psc1"]);
     const master = missingChain(CATALOG, "soin.maitre", owned());
-    expect(master).toHaveLength(13);
+    expect(master).toHaveLength(9); // les plantes médicinales ne sont plus exigées
     expect(master.at(-1)?.id).toBe("soin.maitre");
   });
 
@@ -38,5 +38,12 @@ describe("arbres de talents", () => {
 
   it("indique ce qu'un talent débloque", () => {
     expect(unlocks(CATALOG, "physique.marche").map((t) => t.id)).toEqual(["physique.endurance", "physique.porteur"]);
+  });
+
+  it("retire en appartement les talents réservés à la campagne, sans bloquer le maître", () => {
+    const flat = forContext(CATALOG, "appartement");
+    expect(flat.talents.some((t) => t.id === "brico.tronconneuse")).toBe(false);
+    expect(flat.talents.find((t) => t.id === "brico.maitre")?.requires).toEqual(["brico.installations", "brico.mecanique"]);
+    expect(forContext(CATALOG, "rural").talents.some((t) => t.id === "brico.tronconneuse")).toBe(true);
   });
 });

@@ -62,6 +62,7 @@ def test_talent_trees_are_complete(catalog: Catalog) -> None:
         talents = [t for t in catalog.talents if t.specialty == spec.id]
         assert {t.row for t in talents} == {1, 2, 3, 4, 5}, spec.id
         assert len([t for t in talents if t.row == 5]) == 1, spec.id  # un seul talent de maître
+        assert {t.col for t in talents} == set(range(1, len(spec.branches) + 1)), spec.id  # aucune branche vide
 
 
 @pytest.mark.parametrize(
@@ -82,3 +83,44 @@ def test_invalid_talent_is_rejected(catalog: Catalog, talent_id: str, change, me
     change(next(t for t in data["talents"] if t["id"] == talent_id))
     with pytest.raises(ValueError, match=message):
         Catalog.model_validate(data)
+
+
+def test_purchase_references_target_existing_cards(catalog: Catalog) -> None:
+    assert catalog.references, "catalog/references.yaml est chargé"
+    items = {it.id for it in catalog.items}
+    assert {r.item for r in catalog.references} <= items
+
+
+@pytest.mark.parametrize(
+    ("change", "message"),
+    [
+        (lambda r: r.update(item="inexistant"), "objet inconnu"),
+        (lambda r: r.update(item="reserve_eau"), "réserve"),
+        (lambda r: r.update(refs=r["refs"][:1]), "at least 2"),
+        (lambda r: r.update(tier="mythique"), "tier"),
+    ],
+)
+def test_invalid_purchase_reference_is_rejected(catalog: Catalog, change, message: str) -> None:
+    data = catalog.model_dump()
+    change(data["references"][0])
+    with pytest.raises(ValueError, match=message):
+        Catalog.model_validate(data)
+
+
+def test_duplicate_purchase_reference_is_rejected(catalog: Catalog) -> None:
+    data = catalog.model_dump()
+    data["references"].append(data["references"][0])
+    with pytest.raises(ValueError, match="en double"):
+        Catalog.model_validate(data)
+
+
+def test_stale_references_are_listed_oldest_first(catalog: Catalog) -> None:
+    from datetime import date
+
+    from shelterkwak.references import stale
+
+    newest = max(r.checked for r in catalog.references)
+    assert stale(catalog, newest) == []
+    later = stale(catalog, date(newest.year + 2, 1, 1))
+    assert len(later) == len(catalog.references)
+    assert [r.checked for r in later] == sorted(r.checked for r in later)

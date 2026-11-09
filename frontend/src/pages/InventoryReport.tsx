@@ -28,12 +28,12 @@ function seriesSlot(catalog: Catalog, category: string): number {
 }
 
 export function InventoryReport() {
-  const { catalog, dashboard, state, objectives, today } = useFoyer();
+  const { catalog, dashboard, state, objectives, today, tags } = useFoyer();
   const soon = addDays(today, 30);
   const horizon = addDays(today, 365);
   const cards = useMemo(
-    () => (dashboard ? buildCards(catalog, state.items, state.stock, dashboard.autonomy, objectives, soon) : []),
-    [catalog, state, dashboard, objectives, soon],
+    () => (dashboard ? buildCards(catalog, state.items, state.stock, dashboard.autonomy, objectives, soon, tags) : []),
+    [catalog, state, dashboard, objectives, soon, tags],
   );
   if (!dashboard) return null;
 

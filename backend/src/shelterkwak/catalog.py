@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from datetime import date
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
@@ -157,6 +158,8 @@ class Item(BaseModel):
     objectives: list[str] = Field(default_factory=list)
     tiers: list[ItemTier] = Field(default_factory=list)
     crisis: bool = False  # à retrouver le jour J : emplacement affiché dans l'écran Crise
+    requires_tags: list[str] = Field(default_factory=list)  # carte proposée aux seuls foyers portant ce tag
+    opt_in: bool = False  # carte sur demande : cachée sauf si le foyer la possède (« Voir aussi… »)
 
     @model_validator(mode="after")
     def _reserve_consistency(self) -> Item:
@@ -169,6 +172,29 @@ class Item(BaseModel):
         if (self.basis == "contenu") != all(t.includes for t in self.tiers):
             raise ValueError(f"{self.id}: un contenant liste `includes` à chaque niveau, et lui seul")
         return self
+
+
+class PurchaseRef(BaseModel):
+    """Modèle conseillé, prix en fourchette. Le premier d'un palier est le choix du Fourrier."""
+
+    brand: str
+    model: str
+    price: str  # fourchette arrondie, « 25-35 € » ou « 150-180 $ »
+    market: Literal["france", "europe", "usa"] = "france"  # où l'acheter : en France, en Europe, en import
+    why: str = ""
+
+
+class ItemReference(BaseModel):
+    """Repères d'achat d'un palier d'une carte (catalog/references.yaml), tenus à jour par la revue du marché.
+
+    Les critères passent avant les marques : ils restent vrais quand un modèle disparaît.
+    """
+
+    item: str
+    tier: TierId
+    criteria: str
+    checked: date  # dernière vérification en ligne des modèles et des prix
+    refs: list[PurchaseRef] = Field(min_length=2, max_length=3)
 
 
 class Specialty(BaseModel):
@@ -193,6 +219,7 @@ class Talent(BaseModel):
     col: int = Field(ge=1)  # branche (colonne), à partir de 1
     description: str = ""
     criteria: str  # ce qui prouve qu'on l'a acquis
+    contexts: list[ContextId] = Field(default_factory=lambda: list(ALL_CONTEXTS))  # lieux de vie où il s'affiche
     requires: list[str] = Field(default_factory=list)  # talents prérequis, tous exigés
     objectives: list[str] = Field(default_factory=list)  # objectifs que ce talent aide à valider
 
@@ -248,6 +275,7 @@ class Catalog(BaseModel):
     item_tiers: list[ItemTierName] = Field(default_factory=list)
     item_groups: list[ItemGroup] = Field(default_factory=list)
     items: list[Item] = Field(default_factory=list)
+    references: list[ItemReference] = Field(default_factory=list)  # repères d'achat par carte et palier
     talent_ranks: list[str] = Field(default_factory=list)  # noms des cinq rangs des arbres
     specialties: list[Specialty] = Field(default_factory=list)
     talents: list[Talent] = Field(default_factory=list)
@@ -318,6 +346,7 @@ class Catalog(BaseModel):
             if q.type != "number" and not q.options and not q.options_from:
                 errors.append(f"question {q.id}: aucune option")
         errors.extend(_item_errors(self, seen, cat_ids))
+        errors.extend(_reference_errors(self))
         errors.extend(_talent_errors(self, seen))
         if errors:
             raise ValueError("Catalogue invalide :\n- " + "\n- ".join(errors))
@@ -347,6 +376,24 @@ def _item_errors(catalog: Catalog, objective_ids: set[str], cat_ids: set[str]) -
         days = [t.min_days for t in it.tiers if t.min_days is not None]
         if days != sorted(set(days)):
             errors.append(f"objet {it.id}: `min_days` doit croître d'un palier au suivant")
+    return errors
+
+
+def _reference_errors(catalog: Catalog) -> list[str]:
+    """Repères d'achat : une carte et un palier existants, une seule entrée par palier, pas de réserve."""
+    items = {it.id: it for it in catalog.items}
+    errors: list[str] = []
+    seen: set[tuple[str, str]] = set()
+    for r in catalog.references:
+        key = (r.item, r.tier)
+        if key in seen:
+            errors.append(f"repères d'achat en double : {r.item}/{r.tier}")
+        seen.add(key)
+        item = items.get(r.item)
+        if item is None:
+            errors.append(f"repères d'achat : objet inconnu {r.item}")
+        elif item.kind == "reserve":
+            errors.append(f"repères d'achat {r.item}: une réserve se compte en jours, pas en modèles")
     return errors
 
 
@@ -422,6 +469,7 @@ def load_catalog(directory: Path | None = None) -> Catalog:
     # Ordre stable : niveau, puis ordre des axes déclaré dans axes.yaml, puis ordre du fichier.
     items = _read(directory / "items.yaml") if (directory / "items.yaml").exists() else {}
     skills = _read(directory / "talents.yaml") if (directory / "talents.yaml").exists() else {}
+    refs = _read(directory / "references.yaml") if (directory / "references.yaml").exists() else {}
     objectives.sort(key=lambda o: (o.get("level", 0), axis_rank.get(o["axis"], len(axis_rank))))
     return Catalog(
         levels=_read(directory / "levels.yaml")["levels"],
@@ -438,6 +486,7 @@ def load_catalog(directory: Path | None = None) -> Catalog:
         item_tiers=items.get("tiers", []),
         item_groups=items.get("groups", []),
         items=items.get("items", []),
+        references=refs.get("references", []),
         talent_ranks=skills.get("ranks", []),
         specialties=skills.get("specialties", []),
         talents=skills.get("talents", []),

@@ -212,6 +212,16 @@ scenarios:
       - "En pharmacie : demander « Masque 19 » pour que l'alerte soit donnée discrètement."
       - "Écoute anonyme et gratuite : 3919 (violences faites aux femmes), 119 (enfance en danger)."
       - "Mettre un sac et des copies des papiers en lieu sûr, chez une personne de confiance."
+  - id: numerique
+    name: Téléphone perdu, piratage ou arnaque
+    icon: "🔐"
+    steps:
+      - "Arnaque en cours (faux conseiller, faux proche, faux secours) : raccrocher, ne donner aucun code, rappeler soi-même le numéro officiel."
+      - "Carte bancaire ou code donné : faire opposition tout de suite (numéro de la banque, ou 0 892 705 705), puis prévenir sa banque."
+      - "Téléphone perdu ou volé : faire suspendre la ligne chez l'opérateur, puis bloquer ou effacer le téléphone à distance depuis un autre appareil."
+      - "Compte piraté : changer le mot de passe de la messagerie d'abord (elle donne accès aux autres), avec les codes de secours rangés avec les papiers."
+      - "Signaler et se faire aider : 17Cyber (17cyber.gouv.fr) ou cybermalveillance.gouv.fr ; plainte au commissariat ou à la gendarmerie."
+      - "Garder les preuves : captures d'écran, numéros, références de virement."
 
   # ---------- Premiers secours ----------
   - id: arret_cardiaque

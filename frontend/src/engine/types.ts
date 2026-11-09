@@ -135,6 +135,26 @@ export interface Item {
   objectives: string[];
   tiers: ItemTier[];
   crisis: boolean; // à retrouver le jour J : emplacement affiché dans l'écran Crise
+  requires_tags: string[]; // carte proposée seulement si le foyer porte l'un de ces tags
+  opt_in: boolean; // carte sur demande : cachée sauf si le foyer la possède
+}
+/** Où acheter un modèle : en France, ailleurs en Europe, ou en import des États-Unis. */
+export type Market = "france" | "europe" | "usa";
+/** Modèle conseillé, prix en fourchette. Le premier d'un palier est le choix du Fourrier. */
+export interface PurchaseRef {
+  brand: string;
+  model: string;
+  price: string;
+  market: Market;
+  why: string;
+}
+/** Repères d'achat d'un palier d'une carte (catalog/references.yaml). */
+export interface ItemReference {
+  item: string;
+  tier: string;
+  criteria: string; // ce qu'il faut regarder, quelle que soit la marque
+  checked: string; // date ISO de la dernière vérification en ligne
+  refs: PurchaseRef[];
 }
 export interface Specialty {
   id: string;
@@ -153,6 +173,7 @@ export interface Talent {
   col: number; // branche, à partir de 1
   description: string;
   criteria: string; // ce qui prouve qu'on l'a acquis
+  contexts: string[]; // lieux de vie où il s'affiche
   requires: string[]; // talents prérequis, tous exigés
   objectives: string[];
 }
@@ -171,6 +192,7 @@ export interface Catalog {
   item_tiers: ItemTierName[];
   item_groups: ItemGroup[];
   items: Item[];
+  references: ItemReference[]; // repères d'achat par carte et palier
   talent_ranks: string[]; // noms des cinq rangs des arbres
   specialties: Specialty[];
   talents: Talent[];

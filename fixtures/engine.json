@@ -412,12 +412,6 @@
        "source": "interview"
       },
       {
-       "objective_id": "cyber.mises_a_jour",
-       "validated_at": "2026-11-02",
-       "note": "",
-       "source": "interview"
-      },
-      {
        "objective_id": "cyber.sauvegarde",
        "validated_at": "2026-11-02",
        "note": "",
@@ -483,12 +477,12 @@
      {
       "n": 3,
       "state": "current",
-      "required_total": 22,
-      "required_done": 20,
+      "required_total": 21,
+      "required_done": 19,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9090909090909091
+      "progress": 0.9047619047619048
      },
      {
       "n": 4,
@@ -503,7 +497,7 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 22,
+      "required_total": 24,
       "required_done": 0,
       "optional_total": 7,
       "optional_done": 0,
@@ -559,7 +553,7 @@
      "abri": 3,
      "securite": 3,
      "communication": 3,
-     "mobilite": 5,
+     "mobilite": 3,
      "competences": 3,
      "finances": 3,
      "communaute": 3,
@@ -1150,17 +1144,11 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "cyber.mises_a_jour": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
      "cyber.sauvegarde": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
-      "expires_on": "2027-01-31"
+      "expires_on": "2027-05-01"
      },
      "eau.stock_14j": {
       "status": "todo",
@@ -1378,6 +1366,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "mobilite.criteres_depart": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -1444,19 +1438,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.gestionnaire": {
+     "cyber.mises_a_jour": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
      "cyber.recuperation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -1703,6 +1691,18 @@
       "expires_on": null
      },
      "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.gestionnaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -2306,7 +2306,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 63 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 62 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      }
     ]
@@ -2714,12 +2714,6 @@
        "source": "interview"
       },
       {
-       "objective_id": "cyber.mises_a_jour",
-       "validated_at": "2026-11-02",
-       "note": "",
-       "source": "interview"
-      },
-      {
        "objective_id": "cyber.sauvegarde",
        "validated_at": "2026-11-02",
        "note": "",
@@ -2797,12 +2791,12 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 22,
+      "required_total": 21,
       "required_done": 9,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.4090909090909091
+      "progress": 0.42857142857142855
      },
      {
       "n": 4,
@@ -2817,7 +2811,7 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 22,
+      "required_total": 24,
       "required_done": 0,
       "optional_total": 7,
       "optional_done": 0,
@@ -3464,17 +3458,11 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "cyber.mises_a_jour": {
-      "status": "expired",
-      "progress": 0.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
      "cyber.sauvegarde": {
       "status": "expired",
       "progress": 0.0,
       "validated_at": "2026-11-02",
-      "expires_on": "2027-01-31"
+      "expires_on": "2027-05-01"
      },
      "eau.stock_14j": {
       "status": "todo",
@@ -3692,6 +3680,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "mobilite.criteres_depart": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -3758,19 +3752,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.gestionnaire": {
+     "cyber.mises_a_jour": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
      "cyber.recuperation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -4017,6 +4005,18 @@
       "expires_on": null
      },
      "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.gestionnaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -4707,17 +4707,8 @@
      },
      {
       "kind": "revalidate",
-      "title": "Mises à jour automatiques activées sur les téléphones, les ordinateurs et la box",
-      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-11-02)",
-      "objective_id": "cyber.mises_a_jour",
-      "stock_id": null,
-      "axis": "cyber",
-      "level": 3
-     },
-     {
-      "kind": "revalidate",
-      "title": "Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de trois mois",
-      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-01-31)",
+      "title": "Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de six mois",
+      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-05-01)",
       "objective_id": "cyber.sauvegarde",
       "stock_id": null,
       "axis": "cyber",
@@ -4771,14 +4762,14 @@
      {
       "at": "2027-03-02T00:00:00.000Z",
       "level": 0,
-      "cause": "péremption « Conserves », revalidation dépassée « Batteries externes chargées pour les téléphones », revalidation dépassée « Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de trois mois »"
+      "cause": "péremption « Conserves », revalidation dépassée « Batteries externes chargées pour les téléphones »"
      }
     ],
     "journal": [
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 63 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 62 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -4790,7 +4781,7 @@
      {
       "at": "2027-03-02T00:00:00.000Z",
       "type": "level_changed",
-      "message": "Le foyer descend au niveau 0 (Débutant) : péremption « Conserves », revalidation dépassée « Batteries externes chargées pour les téléphones », revalidation dépassée « Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de trois mois »",
+      "message": "Le foyer descend au niveau 0 (Débutant) : péremption « Conserves », revalidation dépassée « Batteries externes chargées pour les téléphones »",
       "op_id": null
      }
     ]
@@ -5198,12 +5189,6 @@
        "source": "interview"
       },
       {
-       "objective_id": "cyber.mises_a_jour",
-       "validated_at": "2026-11-02",
-       "note": "",
-       "source": "interview"
-      },
-      {
        "objective_id": "cyber.sauvegarde",
        "validated_at": "2026-11-02",
        "note": "",
@@ -5341,12 +5326,12 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 25,
-      "required_done": 20,
+      "required_total": 24,
+      "required_done": 19,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.8
+      "progress": 0.7916666666666666
      },
      {
       "n": 4,
@@ -5361,7 +5346,7 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 23,
+      "required_total": 25,
       "required_done": 0,
       "optional_total": 7,
       "optional_done": 0,
@@ -6008,17 +5993,11 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "cyber.mises_a_jour": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
      "cyber.sauvegarde": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
-      "expires_on": "2027-01-31"
+      "expires_on": "2027-05-01"
      },
      "eau.stock_14j": {
       "status": "todo",
@@ -6236,6 +6215,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "mobilite.criteres_depart": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -6302,19 +6287,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.gestionnaire": {
+     "cyber.mises_a_jour": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
      "cyber.recuperation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -6561,6 +6540,18 @@
       "expires_on": null
      },
      "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.gestionnaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -7178,7 +7169,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 63 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 62 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -7604,12 +7595,6 @@
        "source": "interview"
       },
       {
-       "objective_id": "cyber.mises_a_jour",
-       "validated_at": "2026-11-02",
-       "note": "",
-       "source": "interview"
-      },
-      {
        "objective_id": "cyber.sauvegarde",
        "validated_at": "2026-11-02",
        "note": "",
@@ -7738,12 +7723,12 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 22,
-      "required_done": 21,
+      "required_total": 21,
+      "required_done": 20,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9545454545454546
+      "progress": 0.9523809523809523
      },
      {
       "n": 4,
@@ -7758,7 +7743,7 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 22,
+      "required_total": 24,
       "required_done": 0,
       "optional_total": 7,
       "optional_done": 0,
@@ -7814,7 +7799,7 @@
      "abri": 3,
      "securite": 1,
      "communication": 3,
-     "mobilite": 5,
+     "mobilite": 3,
      "competences": 3,
      "finances": 3,
      "communaute": 3,
@@ -8405,17 +8390,11 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "cyber.mises_a_jour": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
      "cyber.sauvegarde": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
-      "expires_on": "2027-01-31"
+      "expires_on": "2027-05-01"
      },
      "eau.stock_14j": {
       "status": "todo",
@@ -8633,6 +8612,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "mobilite.criteres_depart": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -8699,19 +8684,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.gestionnaire": {
+     "cyber.mises_a_jour": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
      "cyber.recuperation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -8958,6 +8937,18 @@
       "expires_on": null
      },
      "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.gestionnaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -9575,7 +9566,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 63 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 62 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -10019,12 +10010,6 @@
        "source": "interview"
       },
       {
-       "objective_id": "cyber.mises_a_jour",
-       "validated_at": "2026-11-02",
-       "note": "",
-       "source": "interview"
-      },
-      {
        "objective_id": "cyber.sauvegarde",
        "validated_at": "2026-11-02",
        "note": "",
@@ -10158,12 +10143,12 @@
      {
       "n": 3,
       "state": "current",
-      "required_total": 23,
-      "required_done": 22,
+      "required_total": 22,
+      "required_done": 21,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9565217391304348
+      "progress": 0.9545454545454546
      },
      {
       "n": 4,
@@ -10178,7 +10163,7 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 22,
+      "required_total": 24,
       "required_done": 0,
       "optional_total": 7,
       "optional_done": 0,
@@ -10234,7 +10219,7 @@
      "abri": 3,
      "securite": 3,
      "communication": 3,
-     "mobilite": 5,
+     "mobilite": 3,
      "competences": 3,
      "finances": 3,
      "communaute": 3,
@@ -10825,17 +10810,11 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "cyber.mises_a_jour": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
      "cyber.sauvegarde": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
-      "expires_on": "2027-01-31"
+      "expires_on": "2027-05-01"
      },
      "eau.stock_14j": {
       "status": "todo",
@@ -11053,6 +11032,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "mobilite.criteres_depart": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -11119,19 +11104,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.gestionnaire": {
+     "cyber.mises_a_jour": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
      "cyber.recuperation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -11378,6 +11357,18 @@
       "expires_on": null
      },
      "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.gestionnaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -11987,7 +11978,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 63 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 62 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -12425,12 +12416,6 @@
        "source": "interview"
       },
       {
-       "objective_id": "cyber.mises_a_jour",
-       "validated_at": "2026-11-02",
-       "note": "",
-       "source": "interview"
-      },
-      {
        "objective_id": "cyber.sauvegarde",
        "validated_at": "2026-11-02",
        "note": "",
@@ -12526,12 +12511,12 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 22,
-      "required_done": 20,
+      "required_total": 21,
+      "required_done": 19,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.9090909090909091
+      "progress": 0.9047619047619048
      },
      {
       "n": 4,
@@ -12546,7 +12531,7 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 22,
+      "required_total": 24,
       "required_done": 0,
       "optional_total": 7,
       "optional_done": 0,
@@ -12602,7 +12587,7 @@
      "abri": 3,
      "securite": 3,
      "communication": 3,
-     "mobilite": 5,
+     "mobilite": 3,
      "competences": 3,
      "finances": 3,
      "communaute": 3,
@@ -13193,17 +13178,11 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "cyber.mises_a_jour": {
-      "status": "done",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
      "cyber.sauvegarde": {
       "status": "done",
       "progress": 1.0,
       "validated_at": "2026-11-02",
-      "expires_on": "2027-01-31"
+      "expires_on": "2027-05-01"
      },
      "eau.stock_14j": {
       "status": "todo",
@@ -13421,6 +13400,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "mobilite.criteres_depart": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -13487,19 +13472,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.gestionnaire": {
+     "cyber.mises_a_jour": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
      "cyber.recuperation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -13746,6 +13725,18 @@
       "expires_on": null
      },
      "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.gestionnaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -14345,7 +14336,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 63 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 62 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -14778,12 +14769,6 @@
        "source": "interview"
       },
       {
-       "objective_id": "cyber.mises_a_jour",
-       "validated_at": "2026-11-02",
-       "note": "",
-       "source": "interview"
-      },
-      {
        "objective_id": "cyber.sauvegarde",
        "validated_at": "2026-11-02",
        "note": "",
@@ -14895,12 +14880,12 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 24,
-      "required_done": 16,
+      "required_total": 23,
+      "required_done": 15,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.6666666666666666
+      "progress": 0.6521739130434783
      },
      {
       "n": 4,
@@ -14915,7 +14900,7 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 21,
+      "required_total": 23,
       "required_done": 0,
       "optional_total": 6,
       "optional_done": 0,
@@ -15562,17 +15547,11 @@
       "validated_at": "2026-11-02",
       "expires_on": null
      },
-     "cyber.mises_a_jour": {
-      "status": "grace",
-      "progress": 1.0,
-      "validated_at": "2026-11-02",
-      "expires_on": "2027-11-02"
-     },
      "cyber.sauvegarde": {
       "status": "expired",
       "progress": 0.0,
       "validated_at": "2026-11-02",
-      "expires_on": "2027-01-31"
+      "expires_on": "2027-05-01"
      },
      "eau.stock_14j": {
       "status": "todo",
@@ -15790,6 +15769,12 @@
       "validated_at": "2026-11-02",
       "expires_on": "2027-11-02"
      },
+     "mobilite.criteres_depart": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "todo",
       "progress": 0.0,
@@ -15856,19 +15841,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.gestionnaire": {
+     "cyber.mises_a_jour": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
      "cyber.recuperation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -16115,6 +16094,18 @@
       "expires_on": null
      },
      "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.gestionnaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -16787,15 +16778,6 @@
      },
      {
       "kind": "revalidate",
-      "title": "Mises à jour automatiques activées sur les téléphones, les ordinateurs et la box",
-      "detail": "En sursis : à refaire pour que le tambour ne tombe pas. (le tambour tombe le 2027-12-02)",
-      "objective_id": "cyber.mises_a_jour",
-      "stock_id": null,
-      "axis": "cyber",
-      "level": 3
-     },
-     {
-      "kind": "revalidate",
       "title": "Lieu d'accueil convenu hors de la zone (famille, amis)",
       "detail": "En sursis : à refaire pour que le tambour ne tombe pas. (le tambour tombe le 2027-12-02)",
       "objective_id": "mobilite.accueil",
@@ -16841,8 +16823,8 @@
      },
      {
       "kind": "revalidate",
-      "title": "Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de trois mois",
-      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-01-31)",
+      "title": "Sauvegarde des fichiers importants (papiers, photos, contacts) sur un support hors ligne, faite il y a moins de six mois",
+      "detail": "Validation expirée : à refaire pour retrouver ton niveau. (échéance 2027-05-01)",
       "objective_id": "cyber.sauvegarde",
       "stock_id": null,
       "axis": "cyber",
@@ -16910,7 +16892,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 63 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 62 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -17330,12 +17312,6 @@
        "source": "interview"
       },
       {
-       "objective_id": "cyber.mises_a_jour",
-       "validated_at": "2026-11-02",
-       "note": "",
-       "source": "interview"
-      },
-      {
        "objective_id": "cyber.sauvegarde",
        "validated_at": "2026-11-02",
        "note": "",
@@ -17515,7 +17491,7 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 22,
+      "required_total": 21,
       "required_done": 0,
       "optional_total": 0,
       "optional_done": 0,
@@ -17535,7 +17511,7 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 22,
+      "required_total": 24,
       "required_done": 0,
       "optional_total": 7,
       "optional_done": 0,
@@ -18182,12 +18158,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.mises_a_jour": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "cyber.sauvegarde": {
       "status": "todo",
       "progress": 0.0,
@@ -18410,6 +18380,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.criteres_depart": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -18476,19 +18452,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.gestionnaire": {
+     "cyber.mises_a_jour": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
      "cyber.recuperation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -18735,6 +18705,18 @@
       "expires_on": null
      },
      "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.gestionnaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -19442,7 +19424,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 63 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 62 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -19898,12 +19880,6 @@
        "source": "interview"
       },
       {
-       "objective_id": "cyber.mises_a_jour",
-       "validated_at": "2026-11-02",
-       "note": "",
-       "source": "interview"
-      },
-      {
        "objective_id": "cyber.sauvegarde",
        "validated_at": "2026-11-02",
        "note": "",
@@ -20068,7 +20044,7 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 22,
+      "required_total": 21,
       "required_done": 0,
       "optional_total": 0,
       "optional_done": 0,
@@ -20088,7 +20064,7 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 22,
+      "required_total": 24,
       "required_done": 0,
       "optional_total": 7,
       "optional_done": 0,
@@ -20735,12 +20711,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.mises_a_jour": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "cyber.sauvegarde": {
       "status": "todo",
       "progress": 0.0,
@@ -20963,6 +20933,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.criteres_depart": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -21029,19 +21005,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.gestionnaire": {
+     "cyber.mises_a_jour": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
      "cyber.recuperation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -21288,6 +21258,18 @@
       "expires_on": null
      },
      "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.gestionnaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -21995,7 +21977,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 63 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 62 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {
@@ -22451,12 +22433,6 @@
        "source": "interview"
       },
       {
-       "objective_id": "cyber.mises_a_jour",
-       "validated_at": "2026-11-02",
-       "note": "",
-       "source": "interview"
-      },
-      {
        "objective_id": "cyber.sauvegarde",
        "validated_at": "2026-11-02",
        "note": "",
@@ -22592,12 +22568,12 @@
      {
       "n": 3,
       "state": "future",
-      "required_total": 28,
+      "required_total": 27,
       "required_done": 1,
       "optional_total": 0,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.03571428571428571
+      "progress": 0.037037037037037035
      },
      {
       "n": 4,
@@ -22612,12 +22588,12 @@
      {
       "n": 5,
       "state": "future",
-      "required_total": 26,
+      "required_total": 28,
       "required_done": 1,
       "optional_total": 8,
       "optional_done": 0,
       "cracked": false,
-      "progress": 0.038461538461538464
+      "progress": 0.03571428571428571
      },
      {
       "n": 6,
@@ -23259,12 +23235,6 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.mises_a_jour": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
      "cyber.sauvegarde": {
       "status": "todo",
       "progress": 0.0,
@@ -23487,6 +23457,12 @@
       "validated_at": null,
       "expires_on": null
      },
+     "mobilite.criteres_depart": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
      "mobilite.evacuation_pmr_testee": {
       "status": "na",
       "progress": 0.0,
@@ -23553,19 +23529,13 @@
       "validated_at": null,
       "expires_on": null
      },
-     "cyber.gestionnaire": {
+     "cyber.mises_a_jour": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
       "expires_on": null
      },
      "cyber.recuperation": {
-      "status": "todo",
-      "progress": 0.0,
-      "validated_at": null,
-      "expires_on": null
-     },
-     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -23812,6 +23782,18 @@
       "expires_on": null
      },
      "defense.exercice_intrusion": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.gestionnaire": {
+      "status": "todo",
+      "progress": 0.0,
+      "validated_at": null,
+      "expires_on": null
+     },
+     "cyber.box": {
       "status": "todo",
       "progress": 0.0,
       "validated_at": null,
@@ -24528,7 +24510,7 @@
      {
       "at": "2026-11-02T10:00:00.000Z",
       "type": "onboarding",
-      "message": "Interview terminée : 63 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
+      "message": "Interview terminée : 62 objectif(s) déjà acquis, 3 stock(s) estimé(s)",
       "op_id": "op-001"
      },
      {

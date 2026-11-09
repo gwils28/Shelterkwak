@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { CATALOG } from "../engine/catalog";
-import { memberOf } from "../engine/engine";
+import { householdTags, memberOf } from "../engine/engine";
 import { addDays, localToday } from "../engine/dates";
 import type { Answer } from "../engine/interview";
 import { applyAnswers } from "../engine/interview";
-import { evaluateState, type HouseholdData, type ItemData, replay, type StockData, type TalentData } from "../engine/replay";
+import { evaluateState, type HouseholdData, inputs, type ItemData, replay, type StockData, type TalentData } from "../engine/replay";
 import { type CustomObjective, withCustom } from "../engine/types";
 import { buildDashboard, buildObjectives } from "../model";
 import { newId, store } from "./store";
@@ -31,6 +31,7 @@ export function useFoyer() {
     const state = replay(CATALOG, snap.ops);
     const catalog = withCustom(CATALOG, [...state.custom.values()]);
     const ev = evaluateState(CATALOG, state, today);
+    const inp = inputs(CATALOG, state);
     return {
       ready: snap.ready,
       ops: snap.ops,
@@ -40,6 +41,8 @@ export function useFoyer() {
       catalog,
       dashboard: ev ? buildDashboard(catalog, state, ev) : null,
       objectives: ev ? buildObjectives(catalog, state, ev) : [],
+      tags: inp ? householdTags(inp.catalog, inp.household) : new Set<string>(), // tags du foyer (membres, réponses)
+      context: inp?.household.context ?? null, // lieu de vie actuel
     };
   }, [snap, today]);
 }

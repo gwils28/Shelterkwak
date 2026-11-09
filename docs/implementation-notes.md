@@ -136,3 +136,34 @@ déploiement sur Raspberry Pi.
   comprises ; rien n'est validé automatiquement.
 - **Navigation** : six onglets ; la spécialité choisie est gardée dans l'adresse (`?spe=`) et sur
   l'appareil, la fiche ouverte dans `?talent=`.
+
+## Conseil du 9 novembre
+- **Cartes à tag et cartes sur demande** : `requires_tags` sur un objet le réserve aux foyers qui
+  portent l'un de ces tags (armes, risque industriel) ; `opt_in: true` le cache tant que le foyer
+  ne le possède pas (armes blanches, bombe lacrymogène, alcool, tabac). Une carte cachée reste
+  accessible par « Voir aussi… » et n'entre pas dans « Prochains achats ». Les tags du foyer
+  viennent de `useFoyer()` (`tags`, calculés comme pour les objectifs).
+- **Talents par lieu de vie** : `contexts` sur un talent (tous par défaut). `forContext()` retire
+  les talents d'un autre lieu de vie et les prérequis qui pointaient vers eux : le maître reste
+  atteignable en appartement (tronçonneuse, élevage).
+- **Talent « à entretenir »** : affiché quand un objectif lié au talent acquis a expiré ou est en
+  sursis ; le talent reste acquis, rien n'est retiré.
+- **Liens qui sautent un rang** dans la même branche : tracés en arc pour contourner le talent
+  intermédiaire. Le catalogue vérifie qu'aucune branche n'est vide (un nom de branche avec une
+  virgule doit être entre guillemets en YAML).
+
+
+## Repères d'achat et revue du marché (2026-11-09)
+- **Catalogue** : `catalog/references.yaml`, une entrée par carte et palier : critères durables,
+  2 ou 3 modèles (marque, modèle, fourchette de prix, `market` france/europe/usa, pourquoi), date
+  `checked`. Le premier modèle est le « choix du Fourrier » (qualité d'abord, prix secondaire). Fichier séparé
+  d'`items.yaml` : le marché vieillit plus vite que les paliers. Pas d'URL de boutique (liens
+  cassants, app hors ligne) ; les sources sont dans `docs/marche/AAAA-MM-JJ.md`.
+- **Périmètre** : seulement les cartes où le modèle compte (pas de réserve, de contenu de
+  pharmacie ni d'arme). Vérifié au chargement : carte existante, pas de réserve, une entrée par palier.
+- **Affichage** : section repliée « Repères d'achat » dans la fiche, un onglet par palier, ouvert
+  sur le premier palier au-dessus de celui du foyer ; un bloc par modèle (marque, prix, où
+  l'acheter) ; « à revérifier » au-delà d'un an.
+- **Mise à jour** : « la revue du marché » (le Fourrier, expert indépendant hors conseil), tous les
+  six mois ; `make stale-refs` liste les entrées vérifiées il y a plus d'un an. Données de
+  catalogue, pas du journal : rien n'est stocké côté foyer.
