@@ -58,6 +58,34 @@ function falling(targets: Element[], spin = 300) {
   });
 }
 
+/** Pivot SVG d'un élément, donné par data-ox / data-oy. */
+function origin(el: Element): string {
+  return `${num(el, "data-ox", CX)} ${num(el, "data-oy", GROUND)}`;
+}
+
+/** Vagues qui vont et viennent. */
+function waves(q: Q) {
+  q(".anim-wave").forEach((w, i) => gsap.to(w, { x: i % 2 ? 10 : -10, duration: 2.6 + i * 0.3, ease: SINE, yoyo: true, repeat: -1 }));
+}
+
+/** Fumée ou brume qui monte en s'élargissant (hauteur dans data-rise). */
+function rising(targets: Element[], duration: number, spread = 8) {
+  targets.forEach((s, i) =>
+    gsap.fromTo(
+      s,
+      { x: 0, y: 0, scale: 0.4, opacity: 0 },
+      {
+        keyframes: { y: [0, -num(s, "data-rise", 34)], x: [0, i % 2 ? spread : -spread], scale: [0.4, 1.8], opacity: [0, 0.55, 0] },
+        transformOrigin: "50% 50%",
+        duration,
+        repeat: -1,
+        delay: i * (duration / targets.length),
+        ease: "none",
+      },
+    ),
+  );
+}
+
 const SCENES: Record<MonumentStyle, (q: Q, level: number) => void> = {
   colonne: (q) => {
     gsap.fromTo(q(".anim-sheen"), { x: -110 }, { x: 110, duration: 3.2, ease: "power1.inOut", repeat: -1, repeatDelay: 3.5 });
@@ -185,6 +213,75 @@ const SCENES: Record<MonumentStyle, (q: Q, level: number) => void> = {
         { y: -rise, keyframes: { x: [0, 4, -3, 2], opacity: [0, 0.9, 0.9, 0] }, duration: 7 + i, ease: "none", repeat: -1, delay: i * 1.2 },
       );
     });
+  },
+  cocotier: (q) => {
+    clouds(q);
+    birds(q);
+    waves(q);
+    q(".anim-frond").forEach((f) => gsap.fromTo(f, { rotation: -2.5 }, { rotation: 2.5, svgOrigin: origin(f), duration: 2.8, ease: SINE, yoyo: true, repeat: -1 }));
+  },
+  everest: (q) => {
+    clouds(q);
+    // la neige soufflée du sommet par le jet-stream, en panache vers l'est
+    q(".anim-spin").forEach((p, i) =>
+      gsap.fromTo(
+        p,
+        { x: 0, y: 0, opacity: 0 },
+        { keyframes: { x: [0, 40, 110], y: [0, 4, 14], opacity: [0, 0.9, 0] }, duration: 2.4 + (i % 4) * 0.4, repeat: -1, delay: i * 0.3, ease: "power1.out" },
+      ),
+    );
+    gsap.to(q(".anim-flag"), { keyframes: { skewY: [0, 10, -6, 0], scaleX: [1, 0.85, 1.05, 1] }, duration: 1.1, repeat: -1, ease: SINE, stagger: { each: 0.08, repeat: -1 } });
+  },
+  totem: (q) => {
+    gsap.to(q(".anim-fire"), { keyframes: { scaleY: [1, 1.18, 0.9, 1.1, 1], scaleX: [1, 0.92, 1.06, 0.95, 1] }, duration: 0.9, repeat: -1, ease: SINE, stagger: 0.15 });
+    rising(q(".anim-smoke"), 4);
+    q(".anim-tbwing").forEach((w) =>
+      gsap.fromTo(w, { rotation: 0 }, { rotation: -6 * num(w, "data-dir", 1), svgOrigin: origin(w), duration: 1.8, ease: SINE, yoyo: true, repeat: -1 }),
+    );
+  },
+  phare: (q) => {
+    clouds(q);
+    birds(q);
+    waves(q);
+    q(".anim-lbeam").forEach((b) => gsap.fromTo(b, { scaleX: 1 }, { scaleX: -1, svgOrigin: origin(b), duration: 2.4, ease: SINE, yoyo: true, repeat: -1 }));
+    gsap.to(q(".anim-glow"), { opacity: 0.7, duration: 1.2, ease: SINE, yoyo: true, repeat: -1 });
+  },
+  iguazu: (q) => {
+    birds(q);
+    gsap.set(q(".anim-water"), { strokeDasharray: "12 7" });
+    gsap.to(q(".anim-water"), { strokeDashoffset: -38, duration: 0.7, ease: "none", repeat: -1 });
+    rising(q(".anim-mist"), 5, 12);
+    gsap.to(q(".anim-rainbow"), { opacity: 0.3, duration: 4, ease: SINE, yoyo: true, repeat: -1 });
+  },
+  burj: (q) => {
+    clouds(q);
+    gsap.to(q(".anim-blink"), { keyframes: { opacity: [1, 1, 0.15, 1] }, duration: 1.6, repeat: -1, ease: "none" });
+    gsap.fromTo(q(".anim-jet"), { scaleY: 0.4 }, { scaleY: 1.15, transformOrigin: "50% 100%", duration: 1.3, ease: SINE, yoyo: true, repeat: -1, stagger: { each: 0.25, from: "center" } });
+    q(".anim-sand").forEach((s, i) =>
+      gsap.fromTo(s, { x: -10, opacity: 0 }, { x: 270, keyframes: { opacity: [0, 0.8, 0.8, 0] }, duration: 3 + i * 0.5, ease: "none", repeat: -1, delay: i * 1.1 }),
+    );
+  },
+  panier: (q, level) => {
+    gsap.fromTo(q(".anim-dribble"), { y: 0 }, { y: -46, duration: 0.42, ease: "power2.out", yoyo: true, repeat: -1 });
+    twinkle(q(".anim-star"));
+    if (level < LAYOUT.levels) return;
+    // le tir : le ballon part de la droite, passe dans le cercle, secoue le filet et rebondit au sol
+    const [ball] = q(".anim-ball");
+    if (!ball) return;
+    const rim = num(ball, "data-rim", 124);
+    const floor = num(ball, "data-floor", 480);
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.6, delay: 0.8 });
+    tl.set(ball, { x: 110, y: 70, opacity: 0 })
+      .to(ball, { opacity: 1, duration: 0.2 })
+      .to(ball, { keyframes: { x: [110, 72, 36, 10, 0], y: [70, -6, -16, rim * 0.3, rim - 14] }, duration: 1, ease: "none" })
+      .to(ball, { y: rim + 26, duration: 0.25, ease: "none" })
+      .to(q(".anim-net"), { scaleY: 1.3, scaleX: 0.9, duration: 0.12, yoyo: true, repeat: 1 }, "<")
+      .to(ball, { y: floor, duration: 0.55, ease: "power2.in" })
+      .to(ball, { y: floor - 34, duration: 0.22, ease: "power2.out" })
+      .to(ball, { y: floor, duration: 0.22, ease: "power2.in" })
+      .to(ball, { opacity: 0, duration: 0.3 })
+      .set(ball, { x: 0, y: 0 })
+      .to(ball, { opacity: 1, duration: 0.5 });
   },
 };
 

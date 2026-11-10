@@ -13,10 +13,12 @@ Le niveau du foyer est représenté par un **monument de 9 paliers**, choisi à 
 modifiable dans l'onglet Foyer (champ `monument` du foyer) : colonne romaine (par défaut),
 pyramide d'Égypte, arbre, pyramide aztèque, tour Eiffel, statue de la Liberté, stalactites de
 glace, Grande Mosquée de Djenné (Mali), moaï, pagode, bouddha, fusée,
-tornade ou massif Tamu (volcan sous-marin). Les paliers acquis prennent chacun leur
+tornade, massif Tamu (volcan sous-marin), cocotier, mont Everest, totem amérindien, phare,
+chutes d'Iguazú, Burj Khalifa ou panier de basket. Les paliers acquis prennent chacun leur
 couleur, le palier en cours et les suivants restent gris ; le couronnement (chapiteau, pyramidion,
 étoile, temple, phare, flamme, aurore boréale, œufs d'autruche, pukao, flèche, flamme du bouddha, décollage, éclair
-d'orage, surface de l'océan et navire de forage) s'illumine au niveau 9. Le niveau monte quand on valide des objectifs, et
+d'orage, surface de l'océan et navire de forage, noix de coco, drapeaux de prières, oiseau-tonnerre,
+lanterne, arc-en-ciel, flèche, ballon) s'illumine au niveau 9. Le niveau monte quand on valide des objectifs, et
 redescend quand des stocks périment, qu'une compétence ou un équipement n'est pas revalidé,
 qu'on décoche un objectif ou que le foyer s'agrandit.
 

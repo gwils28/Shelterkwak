@@ -3,7 +3,7 @@
 
 import { MAX_LEVEL } from "../engine/types";
 
-export type MonumentStyle = "colonne" | "pyramide" | "arbre" | "azteque" | "eiffel" | "liberte" | "glace" | "djenne" | "moai" | "pagode" | "bouddha" | "fusee" | "tornade" | "tamu";
+export type MonumentStyle = "colonne" | "pyramide" | "arbre" | "azteque" | "eiffel" | "liberte" | "glace" | "djenne" | "moai" | "pagode" | "bouddha" | "fusee" | "tornade" | "tamu" | "cocotier" | "everest" | "totem" | "phare" | "iguazu" | "burj" | "panier";
 
 export const MONUMENTS: { id: MonumentStyle; name: string; hint: string }[] = [
   { id: "colonne", name: "Colonne romaine", hint: "Tambour après tambour, jusqu'au chapiteau doré." },
@@ -20,6 +20,13 @@ export const MONUMENTS: { id: MonumentStyle; name: string; hint: string }[] = [
   { id: "fusee", name: "Fusée", hint: "Étage après étage, jusqu'au décollage." },
   { id: "tornade", name: "Tornade", hint: "Du tourbillon au sol jusqu'à l'orage qui gronde." },
   { id: "tamu", name: "Massif Tamu (volcan sous-marin)", hint: "Volcan bouclier géant, du plancher du Pacifique à la surface." },
+  { id: "cocotier", name: "Cocotier", hint: "Anneau après anneau, jusqu'aux noix de coco." },
+  { id: "everest", name: "Mont Everest", hint: "Du camp de base au toit du monde." },
+  { id: "totem", name: "Totem amérindien", hint: "Figure après figure, jusqu'à l'oiseau-tonnerre." },
+  { id: "phare", name: "Phare", hint: "Bande après bande, jusqu'à la lanterne qui veille." },
+  { id: "iguazu", name: "Chutes d'Iguazú", hint: "Cascade après cascade, jusqu'à l'arc-en-ciel." },
+  { id: "burj", name: "Burj Khalifa", hint: "Retrait après retrait, jusqu'à la flèche." },
+  { id: "panier", name: "Panier de basket", hint: "Du poteau au panneau, jusqu'au panier marqué." },
 ];
 
 /** Teinte de la scène derrière le monument (page Monument), mêlée au fond de carte. */
@@ -38,6 +45,13 @@ export const SCENE: Record<MonumentStyle, string> = {
   fusee: "#cfd4ec",
   tornade: "#cdd4df",
   tamu: "#b7e0ee",
+  cocotier: "#cfeaf0",
+  everest: "#d3dfeb",
+  totem: "#e6d9c2",
+  phare: "#c8dff0",
+  iguazu: "#cfe8d6",
+  burj: "#f0dfbf",
+  panier: "#f3d6bf",
 };
 
 export function monumentOf(value: unknown): MonumentStyle {
@@ -133,6 +147,21 @@ const RAMPS: Record<MonumentStyle, string[]> = {
   tornade: ["#3e4a5c", "#4f6a91", "#6a5aa8", "#3aa6c9"],
   // basalte des coulées profondes, oxydé en rouge, jusqu'aux sédiments ocre du sommet
   tamu: ["#2e2a3a", "#47354a", "#6b3f45", "#94523f", "#b8763f", "#d6a65c"],
+  // Neuf jalons ci-dessous : un par palier.
+  // stipe brun qui s'éclaircit, puis le vert des palmes
+  cocotier: ["#5a3c24", "#68462a", "#765131", "#855c38", "#94683f", "#a37548", "#b38352", "#4f9438", "#79bd48"],
+  // forêt du camp de base, roche brune, puis neiges éternelles bleutées
+  everest: ["#3f6b45", "#557048", "#6c6d4c", "#7a6450", "#8c7461", "#9f8673", "#b6cbe0", "#d4e4f2", "#eef6fc"],
+  // cèdre rouge sculpté, puis peintures turquoise, rouge et ocre
+  totem: ["#6e2f1f", "#8a3a24", "#a5472a", "#b85c33", "#2f6f73", "#2a5f86", "#b8432f", "#c98a34", "#dcb054"],
+  // bandes rouges et blanches alternées
+  phare: ["#b8322a", "#f1ece0", "#c23a2e", "#f3efe4", "#cc4232", "#f5f1e8", "#d64a36", "#f7f3ec", "#e0533a"],
+  // eau sombre du bas vers l'écume claire du haut
+  iguazu: ["#1d4f68", "#22607c", "#2a7290", "#3584a2", "#4497b3", "#56a9c2", "#6dbbcf", "#89ccdb", "#a9dde7"],
+  // verre bleuté qui s'éclaircit vers le ciel
+  burj: ["#34506a", "#3d5e7c", "#476d8e", "#527d9f", "#5f8daf", "#6f9dbd", "#82adc9", "#98bfd5", "#b2d1e2"],
+  // poteau bleu nuit, panneau de verre
+  panier: ["#22324a", "#283b57", "#2f4565", "#364f73", "#3e5a81", "#46658f", "#4f709d", "#d8e6ef", "#eef5f9"],
 };
 
 const GRANITE = ["#6f6a63", "#8a847a", "#a39c90"];
