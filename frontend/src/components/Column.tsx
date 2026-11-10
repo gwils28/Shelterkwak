@@ -5,10 +5,11 @@ import { LevelInfoText } from "./LevelInfo";
 import { CLASSIC, type Renderer } from "./monuments";
 import { MORE } from "./monuments-more";
 import { WORLD } from "./monuments-world";
+import { EXTRA } from "./monuments-extra";
 import { MAX_LEVEL } from "../engine/types";
 import { builtTone, GREY, HEIGHT, LAYOUT, type MonumentStyle, MONUMENTS, crackPath, tierBottom, tierTop } from "../lib/monument";
 
-const RENDERERS: Record<MonumentStyle, Renderer> = { ...CLASSIC, ...WORLD, ...MORE };
+const RENDERERS: Record<MonumentStyle, Renderer> = { ...CLASSIC, ...WORLD, ...MORE, ...EXTRA };
 
 interface Props {
   tiers: Tier[];

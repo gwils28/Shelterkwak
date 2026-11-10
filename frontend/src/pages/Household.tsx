@@ -19,6 +19,12 @@ const DECLARABLE_TAGS: { id: string; label: string }[] = [
   { id: "risque_seisme", label: "Séisme" },
   { id: "risque_incendie", label: "Feux de forêt" },
   { id: "risque_canicule", label: "Canicules" },
+  { id: "risque_tempete", label: "Tempêtes ou orages" },
+  { id: "risque_mouvement_terrain", label: "Glissement de terrain ou éboulements" },
+  { id: "risque_epidemie", label: "Épidémie / crise sanitaire" },
+  { id: "risque_cyber", label: "Cyberattaque / crise de désinformation" },
+  { id: "risque_terrorisme", label: "Terrorisme" },
+  { id: "risque_guerre", label: "Guerre" },
 ];
 
 export function HouseholdPage() {
