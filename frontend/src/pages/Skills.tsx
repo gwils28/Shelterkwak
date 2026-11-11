@@ -1,16 +1,30 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import type { TalentData } from "../engine/replay";
+import { holders, type TalentData } from "../engine/replay";
 import { type Catalog, linksOf, type Talent } from "../engine/types";
 import { formatDate, STATUS_LABEL } from "../lib/format";
 import { DONE_STATUSES } from "../lib/inventory";
-import { buildTrees, dependentChain, forContext, missingChain, type TalentNode, type TalentState, type Tree, unlocks } from "../lib/talents";
+import {
+  buildTrees,
+  criticalCover,
+  dependentChain,
+  forContext,
+  missingChain,
+  refreshDate,
+  type TalentNode,
+  type TalentState,
+  type Tree,
+  unlocks,
+} from "../lib/talents";
 import type { Objective } from "../model";
 import { actions, useFoyer } from "../store/hooks";
 
 const SPEC_KEY = "shelterkwak.specialite";
 const ROMAN = ["I", "II", "III", "IV", "V"];
 const STATE_LABEL: Record<TalentState, string> = { acquired: "acquis", available: "disponible", locked: "verrouillé" };
+
+/** Pourquoi un talent acquis est « à entretenir » : un objectif lié a expiré, ou son délai de recyclage est passé. */
+type Stale = "objective" | "refresh";
 
 function rememberedSpecialty(): string | null {
   try {
@@ -26,15 +40,25 @@ export function SkillsPage() {
   const [params, setParams] = useSearchParams();
   const catalog = useMemo(() => forContext(fullCatalog, context), [fullCatalog, context]);
   const trees = useMemo(() => buildTrees(catalog, state.talents), [catalog, state.talents]);
-  // Un talent acquis est « à entretenir » quand un objectif lié a expiré ou est en sursis (PSC1, sauvegarde…).
+  // Un talent acquis est « à entretenir » quand un objectif lié a expiré ou est en sursis (PSC1, sauvegarde…),
+  // ou quand son délai de recyclage (`refresh_days`) est passé. Rien n'est retiré.
   const stale = useMemo(() => {
     const lapsed = new Set(objectives.filter((o) => o.status === "expired" || o.status === "grace").map((o) => o.id));
-    return new Set(catalog.talents.filter((t) => state.talents.has(t.id) && linksOf(t).some((o) => lapsed.has(o))).map((t) => t.id));
-  }, [catalog, objectives, state.talents]);
+    const out = new Map<string, Stale>();
+    for (const t of catalog.talents) {
+      const data = state.talents.get(t.id);
+      if (!data) continue;
+      const due = refreshDate(t, data, state.declared.get(`talent:${t.id}`));
+      if (linksOf(t).some((o) => lapsed.has(o))) out.set(t.id, "objective");
+      else if (due && due <= today) out.set(t.id, "refresh");
+    }
+    return out;
+  }, [catalog, objectives, state.talents, state.declared, today]);
+  const cover = useMemo(() => criticalCover(catalog, state.talents), [catalog, state.talents]);
   const wanted = params.get("spe") ?? rememberedSpecialty();
   const tree = trees.find((t) => t.specialty.id === wanted) ?? trees[0];
   const openId = params.get("talent");
-  const open = tree?.nodes.find((n) => n.talent.id === openId) ?? null;
+  const open = tree ? ([...tree.nodes, ...tree.retired].find((n) => n.talent.id === openId) ?? null) : null;
 
   if (!tree) return null;
   const total = trees.reduce((n, t) => n + t.total, 0);
@@ -64,6 +88,12 @@ export function SkillsPage() {
             </>
           )}
         </p>
+        {cover.total > 0 && (
+          <p className={`skills-cover${cover.alone.length ? " alone" : ""}`}>
+            Talents critiques : <strong>{cover.backed}</strong> sur {cover.total} ont un remplaçant
+            {cover.alone.length > 0 && <> · une seule personne sait : {cover.alone.map((t) => t.name).join(", ")}</>}
+          </p>
+        )}
       </header>
 
       <div className="spec-picker" role="tablist" aria-label="Spécialités">
@@ -75,6 +105,20 @@ export function SkillsPage() {
       <section className={`spec-panel spec-${tree.specialty.id}`} role="tabpanel" aria-label={tree.specialty.name}>
         <SpecBanner tree={tree} catalog={catalog} />
         <TalentTree tree={tree} catalog={catalog} stale={stale} onOpen={openTalent} />
+        {tree.retired.length > 0 && (
+          <div className="talent-chips tree-retired">
+            <h3>Hors de la grille</h3>
+            <ul>
+              {tree.retired.map((n) => (
+                <li key={n.talent.id}>
+                  <button className="talent-chip acquired" onClick={() => openTalent(n.talent.id)} aria-label={`${n.talent.name}, acquis, retiré de la grille`}>
+                    <span aria-hidden>✓</span> {n.talent.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <ul className="tree-legend" aria-label="Légende">
           <li>
             <i className="dot acquired" /> Acquis
@@ -87,9 +131,21 @@ export function SkillsPage() {
           </li>
           {stale.size > 0 && (
             <li>
-              <span aria-hidden>⟳</span> À entretenir : un objectif lié a expiré
+              <span aria-hidden>⟳</span> À entretenir : un objectif lié a expiré ou le recyclage est dû
             </li>
           )}
+          <li>
+            <span className="legend-holders" aria-hidden>
+              ×2
+            </span>{" "}
+            Maîtrisé par plusieurs personnes
+          </li>
+          <li>
+            <span className="legend-holders alone" aria-hidden>
+              1
+            </span>{" "}
+            Geste vital qu'une seule personne sait faire
+          </li>
         </ul>
       </section>
 
@@ -97,7 +153,7 @@ export function SkillsPage() {
         <TalentSheet
           key={open.talent.id}
           node={open}
-          stale={stale.has(open.talent.id)}
+          stale={stale.get(open.talent.id) ?? null}
           tree={tree}
           catalog={catalog}
           acquired={state.talents}
@@ -190,7 +246,7 @@ const R = 30; // rayon d'un nœud (le maître est plus grand)
 const R_MASTER = 36;
 const LABEL_H = 46; // place du nom sous un nœud (deux lignes)
 
-function TalentTree({ tree, catalog, stale, onOpen }: { tree: Tree; catalog: Catalog; stale: Set<string>; onOpen: (id: string) => void }) {
+function TalentTree({ tree, catalog, stale, onOpen }: { tree: Tree; catalog: Catalog; stale: Map<string, Stale>; onOpen: (id: string) => void }) {
   const [ref, W] = useWidth<HTMLDivElement>();
   const cols = tree.specialty.branches.length;
   const pos = (t: Talent) => ({ x: (W * (t.col - 0.5)) / cols, y: (t.row - 1) * ROW_H + NODE_Y, r: t.row === 5 ? R_MASTER : R });
@@ -258,15 +314,18 @@ function TalentNodeButton({
   width: number;
   onOpen: () => void;
 }) {
-  const { talent, state } = node;
+  const { talent, state, data } = node;
   const master = talent.row === 5;
+  const count = data && talent.scope === "personne" ? holders(data) : 0;
+  const alone = talent.critical && count === 1;
+  const who = count > 1 ? `, ${count} personnes` : alone ? ", une seule personne sait" : "";
   return (
     <button
       className={`talent-node ${state}${master ? " master" : ""}`}
       style={{ left: x, top: y, width: Math.min(150, width - 8) }}
       onClick={onOpen}
       aria-haspopup="dialog"
-      aria-label={`${talent.name}, ${STATE_LABEL[state]}${stale ? ", à entretenir" : ""}`}
+      aria-label={`${talent.name}, ${STATE_LABEL[state]}${who}${stale ? ", à entretenir" : ""}`}
     >
       <span className="talent-orb">
         <span className="talent-icon" aria-hidden>
@@ -280,6 +339,11 @@ function TalentNodeButton({
         {state === "locked" && (
           <span className="talent-badge lock" aria-hidden>
             🔒
+          </span>
+        )}
+        {(count > 1 || alone) && (
+          <span className={`talent-holders${alone ? " alone" : ""}`} aria-hidden>
+            {alone ? "1" : `×${count}`}
           </span>
         )}
       </span>
@@ -302,7 +366,7 @@ function TalentSheet({
   onClose,
 }: {
   node: TalentNode;
-  stale: boolean;
+  stale: Stale | null;
   tree: Tree;
   catalog: Catalog;
   acquired: ReadonlyMap<string, TalentData>;
@@ -350,9 +414,25 @@ function TalentSheet({
         </header>
 
         {talent.description && <p>{talent.description}</p>}
-        {stale && (
+        {talent.retired && (
+          <p className="hint" role="note">
+            Ce talent ne figure plus dans la grille. Il reste acquis et compte toujours pour les objectifs qu'il prouve.
+          </p>
+        )}
+        {stale === "objective" && (
           <p className="caution" role="note">
-            <strong>⟳ À entretenir.</strong> Un objectif lié a expiré : refais la formation ou la vérification, puis revalide l'objectif ci-dessous.
+            <strong>⟳ À entretenir.</strong> Un objectif lié a expiré : refais la formation ou la vérification, puis indique-le ci-dessous.
+          </p>
+        )}
+        {stale === "refresh" && (
+          <p className="caution" role="note">
+            <strong>⟳ À entretenir.</strong> Ce geste se perd sans pratique : un recyclage est conseillé tous les {Math.round((talent.refresh_days ?? 0) / 30)} mois.
+          </p>
+        )}
+        {talent.critical && (
+          <p className="hint" role="note">
+            <strong>Geste vital.</strong> Il doit pouvoir être fait même si la personne qui le maîtrise est absente ou blessée : au moins deux
+            personnes du foyer devraient le savoir.
           </p>
         )}
         <div className="talent-criteria">
@@ -370,7 +450,16 @@ function TalentSheet({
         <TalentObjectives objectives={linked} proves={talent.proves} acquired={state === "acquired"} />
 
         {state === "acquired" ? (
-          <AcquiredForm key={data?.acquired_on ?? ""} talent={talent} data={data!} catalog={catalog} acquired={acquired} onDone={() => ref.current?.close()} />
+          <AcquiredForm
+            key={`${data?.acquired_on ?? ""}:${data?.holders ?? 1}`}
+            talent={talent}
+            data={data!}
+            stale={stale}
+            catalog={catalog}
+            acquired={acquired}
+            today={today}
+            onDone={() => ref.current?.close()}
+          />
         ) : (
           <LearnForm talent={talent} catalog={catalog} acquired={acquired} today={today} onDone={() => ref.current?.close()} />
         )}
@@ -422,13 +511,18 @@ function TalentObjectives({ objectives, proves, acquired }: { objectives: Object
         {objectives.map((o) => {
           const done = DONE_STATUSES.includes(o.status);
           const auto = proves.includes(o.id);
+          const everyAdult = auto && o.every_adult;
           return (
             <li key={o.id} className={acquired && !done ? "covered" : ""}>
               <span className={`badge status-${o.status}`}>{STATUS_LABEL[o.status]}</span>
               <span className="linked-title">
                 {o.title} <span className="hint">· niveau {o.level}</span>
               </span>
-              {auto ? (
+              {everyAdult ? (
+                <span className="badge proof" title="Valide l'objectif quand tous les adultes du foyer maîtrisent ce talent (nombre de personnes ci-dessous)">
+                  ✓ tous les adultes
+                </span>
+              ) : auto ? (
                 <span className="badge proof" title="Acquérir ce talent valide l'objectif, sans autre action">
                   ✓ auto
                 </span>
@@ -508,19 +602,23 @@ function LearnForm({
 function AcquiredForm({
   talent,
   data,
+  stale,
   catalog,
   acquired,
+  today,
   onDone,
 }: {
   talent: Talent;
   data: TalentData;
+  stale: Stale | null;
   catalog: Catalog;
   acquired: ReadonlyMap<string, TalentData>;
+  today: string;
   onDone: () => void;
 }) {
-  const [draft, setDraft] = useState<TalentData>({ ...data, acquired_on: data.acquired_on ?? null, note: data.note ?? "" });
+  const [draft, setDraft] = useState<TalentData>({ ...data, acquired_on: data.acquired_on ?? null, note: data.note ?? "", holders: holders(data) });
   const [confirm, setConfirm] = useState(false);
-  const changed = draft.acquired_on !== (data.acquired_on ?? null) || draft.note !== (data.note ?? "");
+  const changed = draft.acquired_on !== (data.acquired_on ?? null) || draft.note !== (data.note ?? "") || draft.holders !== holders(data);
   const chain = dependentChain(catalog, talent.id, acquired);
   const dependents = chain.filter((t) => t.id !== talent.id);
   const forget = () => {
@@ -539,6 +637,21 @@ function AcquiredForm({
           <input value={draft.note} placeholder="formation, organisme, à revoir…" onChange={(e) => setDraft({ ...draft, note: e.target.value })} />
         </label>
       </div>
+      {talent.scope === "personne" && (
+        <div className="row">
+          <label className="field">
+            Personnes du foyer qui le maîtrisent
+            <input
+              type="number"
+              inputMode="numeric"
+              min={1}
+              max={20}
+              value={draft.holders ?? 1}
+              onChange={(e) => setDraft({ ...draft, holders: Math.max(1, Math.trunc(Number(e.target.value)) || 1) })}
+            />
+          </label>
+        </div>
+      )}
       {confirm && (
         <div className="talent-missing danger-box" role="alert">
           <p>
@@ -561,6 +674,16 @@ function AcquiredForm({
         {!confirm && (
           <button className="link danger" onClick={() => (dependents.length ? setConfirm(true) : forget())}>
             Retirer ce talent
+          </button>
+        )}
+        {stale && !changed && (
+          <button
+            onClick={() => {
+              void actions.setTalent({ ...draft, acquired_on: today });
+              onDone();
+            }}
+          >
+            Recyclé aujourd'hui
           </button>
         )}
         <button

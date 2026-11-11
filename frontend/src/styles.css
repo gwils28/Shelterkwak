@@ -2436,6 +2436,17 @@ a.phone {
   color: var(--accent);
   font-weight: 600;
 }
+.skills-cover {
+  margin: 2px 0 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.skills-cover strong {
+  color: var(--ink);
+}
+.skills-cover.alone {
+  color: var(--warn);
+}
 
 /* Sélecteur de spécialités : les neuf toujours visibles, en grille de trois colonnes */
 .spec-picker {
@@ -2603,9 +2614,17 @@ a.phone {
 }
 .tree-branches span {
   padding: 0 4px;
+  line-height: 1.15;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+@media (max-width: 420px) {
+  .tree-branches {
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
+  }
 }
 .tree-body {
   position: relative;
@@ -2787,6 +2806,33 @@ a.phone {
 .talent-badge.lock {
   background: var(--line);
   font-size: 0.6rem;
+}
+/* Nombre de personnes qui maîtrisent le talent : « ×2 », ou « 1 » en alerte sur un geste vital */
+.talent-holders,
+.legend-holders {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: 10px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  background: var(--ok);
+  color: var(--panel);
+}
+.talent-holders {
+  position: absolute;
+  left: -3px;
+  bottom: -3px;
+  border: 2px solid var(--panel);
+}
+.talent-holders.alone,
+.legend-holders.alone {
+  background: var(--warn);
+}
+.tree-retired {
+  margin-top: 10px;
 }
 .talent-name {
   font-size: 0.8rem;

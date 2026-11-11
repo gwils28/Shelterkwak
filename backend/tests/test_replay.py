@@ -4,7 +4,7 @@ from datetime import date
 
 from shelterkwak import replay
 from shelterkwak.catalog import Catalog
-from shelterkwak.export import LEVEL2, household, item, onboarding, op, stock, talent, validation
+from shelterkwak.export import ADULTES, LEVEL2, household, item, onboarding, op, stock, talent, validation
 
 D0 = "2026-11-02"
 
@@ -166,3 +166,59 @@ def test_proof_expiry_is_scheduled_in_history(catalog: Catalog) -> None:
     found = replay._expirations(catalog, state, date(2027, 1, 1), date(2027, 6, 1))
     title = catalog.objectives_by_id["sante.trousse"].title
     assert any(f"revalidation dépassée « {title} »" in cause for _, cause in found)
+
+
+# ---------- Qui sait faire quoi (docs/conseil/2026-11-11-competences.md) ----------
+
+
+def _allergic_household(*extra: dict) -> dict:
+    child = {"name": "C", "type": "enfant", "conditions": ["allergie_severe"]}
+    return op(1, "2026-11-02T08:00:00.000Z", "household.set", household(members=[*ADULTES, *extra, child]))
+
+
+def test_every_adult_objective_needs_as_many_holders_as_adults(catalog: Catalog) -> None:
+    once = op(2, "2026-11-03T08:00:00.000Z", "talent.set", talent("soin.traitements", "2026-10-15"))
+    twice = op(3, "2026-11-04T08:00:00.000Z", "talent.set", talent("soin.traitements", "2026-10-15", holders=2))
+    state = replay.replay(catalog, ops(_allergic_household(), once))
+    assert _status(catalog, state, "sante.adrenaline_formation").status == "todo"
+    state = replay.replay(catalog, ops(_allergic_household(), once, twice))
+    assert _status(catalog, state, "sante.adrenaline_formation").validated_at == date(2026, 10, 15)
+    # Un senior compte comme adulte : deux personnes ne suffisent plus.
+    state = replay.replay(catalog, ops(_allergic_household({"name": "D", "type": "senior"}), once, twice))
+    assert _status(catalog, state, "sante.adrenaline_formation").status == "todo"
+
+
+def test_redundancy_needs_two_holders_for_every_critical_talent(catalog: Catalog) -> None:
+    alerter = op(2, "2026-11-03T08:00:00.000Z", "talent.set", talent("soin.alerter", "2025-01-10", holders=2))
+    gqs = op(3, "2026-11-04T08:00:00.000Z", "talent.set", talent("soin.gqs", None))
+    state = replay.replay(catalog, ops(bare(), alerter))
+    s = _status(catalog, state, "competences.redondance")
+    assert (s.status, s.validated_at) == ("done", date(2026, 11, 3))  # datée du compteur, pas de l'acquisition
+    state = replay.replay(catalog, ops(bare(), alerter, gqs))
+    assert _status(catalog, state, "competences.redondance").status == "todo"
+    gqs2 = op(4, "2026-11-05T08:00:00.000Z", "talent.set", talent("soin.gqs", None, holders=2))
+    state = replay.replay(catalog, ops(bare(), alerter, gqs, gqs2))
+    assert _status(catalog, state, "competences.redondance").validated_at == date(2026, 11, 5)
+
+
+def test_redundancy_ignores_critical_talents_of_another_context(catalog: Catalog) -> None:
+    # Talent critique réservé au rural, coché dans un foyer en appartement (journal venu d'un ancien lieu de vie).
+    rural = [t.model_copy(update={"contexts": ["rural"]}) if t.id == "brico.rechaud" else t for t in catalog.talents]
+    catalog = catalog.model_copy(update={"talents": rural})
+    outside = next(t for t in catalog.talents if t.id == "brico.rechaud")
+    state = replay.replay(
+        catalog,
+        ops(
+            bare(),
+            op(2, "2026-11-03T08:00:00.000Z", "talent.set", talent("soin.alerter", None, holders=2)),
+            op(3, "2026-11-04T08:00:00.000Z", "talent.set", talent(outside.id, None)),
+        ),
+    )
+    assert _status(catalog, state, "competences.redondance").status == "done"
+
+
+def test_retired_talent_still_proves_when_acquired(catalog: Catalog) -> None:
+    state = replay.replay(
+        catalog, ops(bare(), op(2, "2026-11-03T08:00:00.000Z", "talent.set", talent("soin.plantes", "2026-11-03")))
+    )
+    assert _status(catalog, state, "sante.plantes").status == "done"

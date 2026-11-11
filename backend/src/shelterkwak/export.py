@@ -77,8 +77,11 @@ def item(
     }
 
 
-def talent(talent_id: str, on: str | None, note: str = "") -> dict[str, Any]:
-    return {"talent_id": talent_id, "acquired_on": on, "note": note}
+def talent(talent_id: str, on: str | None, note: str = "", holders: int | None = None) -> dict[str, Any]:
+    out: dict[str, Any] = {"talent_id": talent_id, "acquired_on": on, "note": note}
+    if holders is not None:
+        out["holders"] = holders
+    return out
 
 
 def validation(oid: str, on: str, source: str = "manual") -> dict[str, Any]:
@@ -362,6 +365,38 @@ def engine_cases() -> list[dict[str, Any]]:
                 op(7, "2026-11-08T08:00:00.000Z", "item.delete", {"item_id": "radio"}),
                 op(8, "2026-11-09T08:00:00.000Z", "stock.delete", {"id": "s-vivres"}),
                 op(9, "2026-11-10T08:00:00.000Z", "talent.delete", {"talent_id": "transmetteur.plan"}),
+            ],
+        },
+        {
+            "name": "preuves : tous les adultes, talents critiques en double, talent retiré",
+            "today": "2026-12-01",
+            "ops": [
+                op(
+                    1,
+                    "2026-11-02T08:00:00.000Z",
+                    "household.set",
+                    household(members=[*ADULTES, {"name": "C", "type": "enfant", "conditions": ["allergie_severe"]}]),
+                ),
+                op(2, "2026-11-03T08:00:00.000Z", "talent.set", talent("soin.traitements", "2026-10-15")),
+                op(3, "2026-11-04T08:00:00.000Z", "talent.set", talent("soin.alerter", "2026-01-10", holders=2)),
+                op(4, "2026-11-05T08:00:00.000Z", "talent.set", talent("soin.gqs", None)),
+                op(5, "2026-11-06T08:00:00.000Z", "talent.set", talent("soin.traitements", "2026-10-15", holders=2)),
+                op(6, "2026-11-07T08:00:00.000Z", "talent.set", talent("soin.gqs", None, holders=3)),
+                op(7, "2026-11-08T08:00:00.000Z", "talent.set", talent("soin.plantes", "2026-11-08")),
+                op(8, "2026-11-09T08:00:00.000Z", "talent.set", talent("soin.feu", "2026-11-09")),
+                op(9, "2026-11-10T08:00:00.000Z", "talent.set", talent("soin.feu", "2026-11-09", holders=2)),
+                op(
+                    10,
+                    "2026-11-11T08:00:00.000Z",
+                    "household.set",
+                    household(
+                        members=[
+                            *ADULTES,
+                            {"name": "D", "type": "senior"},
+                            {"name": "C", "type": "enfant", "conditions": ["allergie_severe"]},
+                        ]
+                    ),
+                ),
             ],
         },
         {

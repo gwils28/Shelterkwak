@@ -63,7 +63,7 @@ def test_invalid_item_is_rejected(catalog: Catalog, change, message: str) -> Non
 def test_talent_trees_are_complete(catalog: Catalog) -> None:
     assert len(catalog.talent_ranks) == 5
     for spec in catalog.specialties:
-        talents = [t for t in catalog.talents if t.specialty == spec.id]
+        talents = [t for t in catalog.talents if t.specialty == spec.id and not t.retired]
         assert {t.row for t in talents} == {1, 2, 3, 4, 5}, spec.id
         assert len([t for t in talents if t.row == 5]) == 1, spec.id  # un seul talent de maître
         assert {t.col for t in talents} == set(range(1, len(spec.branches) + 1)), spec.id  # aucune branche vide
@@ -80,7 +80,12 @@ def test_talent_trees_are_complete(catalog: Catalog) -> None:
         ("soin.gqs", lambda t: t.update(requires=["cuisto.rotation"]), "plus bas dans le même arbre"),
         ("soin.gqs", lambda t: t.update(requires=["inexistant"]), "prérequis inconnu"),
         ("soin.gqs", lambda t: t.update(col=2), "place déjà prise"),
-        ("soin.gqs", lambda t: t.update(col=4), "hors des 3 branches"),
+        ("soin.gqs", lambda t: t.update(col=5), "hors des 4 branches"),
+        ("soin.maitre", lambda t: t["requires"].append("soin.plantes"), "est retiré de la grille"),
+        ("soin.gqs", lambda t: t.update(refresh_days=365), "en double de la revalidation"),
+        ("cuisto.rotation", lambda t: t.update(critical=True), "talent critique"),
+        ("transmetteur.plan", lambda t: t["proves"].append("sante.adrenaline_formation"), "tous les adultes"),
+        ("soin.gqs", lambda t: t["proves"].append("competences.redondance"), "se calcule"),
     ],
 )
 def test_invalid_talent_is_rejected(catalog: Catalog, talent_id: str, change, message: str) -> None:

@@ -236,11 +236,14 @@ haut de page.
 5. **Compétences** (`/competences`) : neuf spécialités (condition physique, stratège de survie,
    soigneur, bricoleur, cuisto, protecteur, rassembleur, pisteur, transmetteur), toutes visibles
    dans une grille de trois colonnes, chacune un arbre de talents (`catalog/talents.yaml`) en cinq rangs
-   (novice → maître) et trois branches. Un talent se coche quand ses prérequis sont acquis ; un
+   (novice → maître) et trois ou quatre branches. Un talent se coche quand ses prérequis sont acquis ; un
    talent verrouillé peut être coché avec ses prérequis manquants, et retirer un talent retire
-   ceux qui en dépendent. La fiche d'un talent donne ce qui prouve qu'on l'a acquis, la date et
-   une note, et les objectifs liés : cocher un talent ne valide aucun objectif. Le titre de la
-   spécialité dépend du rang le plus haut atteint.
+   ceux qui en dépendent. La fiche d'un talent donne ce qui prouve qu'on l'a acquis, la date, une
+   note, le nombre de personnes du foyer qui le maîtrisent (talents de personne) et les objectifs
+   liés. Les gestes vitaux (talents critiques) signalent « une seule personne sait » ; un talent
+   à recycler (`refresh_days`) ou dont un objectif lié a expiré est « à entretenir », sans être
+   retiré. Un talent retiré du catalogue (`retired`) quitte la grille mais reste affiché s'il est
+   coché. Le titre de la spécialité dépend du rang le plus haut atteint.
 6. **Parcours** (`/historique`) : courbe du niveau et journal.
 7. **Foyer** : membres, monument, contexte actuel et cible, objectifs déclarés, synchronisation.
 8. **Crise** (`/crise`, bouton de l'en-tête) : écran du jour J, hors ligne et imprimable, pensé
@@ -316,7 +319,7 @@ cible, **la dernière écrite gagne**.
 | `custom.upsert` / `custom.delete` | Crée ou modifie / supprime un objectif perso (`perso.<uuid>`) |
 | `notes.set` | Remplace le texte d'une fiche de l'écran Crise (`key` = id de `crisis.yaml`) |
 | `item.set` / `item.delete` | Déclare (niveau, quantité, rangement, note, `expires_on` facultatif) / retire une carte d'inventaire (`item_id` = id de `items.yaml`) |
-| `talent.set` / `talent.delete` | Coche (date `acquired_on` facultative, note) / retire un talent (`talent_id` = id de `talents.yaml`) |
+| `talent.set` / `talent.delete` | Coche (date `acquired_on` facultative, note, `holders` facultatif : personnes du foyer qui le maîtrisent, 1 par défaut) / retire un talent (`talent_id` = id de `talents.yaml`) |
 | `onboarding` | Marque la fin de l'interview (les effets sont des opérations ordinaires émises juste avant) |
 | `reset` | Efface tout ce qui précède |
 

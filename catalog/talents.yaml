@@ -14,6 +14,13 @@
 #            prouve un savoir-faire du foyer, pas un objet possédé (c'est l'inventaire qui le prouve),
 #            ni « chaque membre ». Voir docs/conseil/2026-11-11.md.
 #   objectives : objectifs auxquels ce talent contribue : l'objectif garde sa propre validation.
+#   scope : personne (défaut : chacun l'apprend, le foyer déclare combien le maîtrisent) ou foyer
+#           (un bien commun : plan, contacts, réseau) ;
+#   critical : geste vital, à maîtriser par au moins deux personnes (competences.redondance) ;
+#   refresh_days : affiché « à entretenir » passé ce délai depuis l'acquisition, sans rien retirer ;
+#                  interdit si un objectif prouvé porte déjà sa revalidation ;
+#   retired : sorti de la grille (plus de case), reste lisible s'il est déjà coché.
+# Voir docs/conseil/2026-11-11-competences.md.
 
 ranks: [Novice, Apprenti, Compagnon, Expert, Maître]
 
@@ -36,7 +43,7 @@ specialties:
     name: Soigneur
     icon: ⛑️
     description: "Alerter, secourir, soigner et soutenir : les gestes qui comptent avant l'arrivée des secours, ou quand ils ne viennent pas."
-    branches: [Urgence, Soins et hygiène, Soutien psychologique]
+    branches: [Urgence, Soins et hygiène, Soutien psychologique, Accidents et climat]
     titles: [Témoin utile, Secouriste, Soigneur aguerri, Référent santé, Pilier santé du quartier]
 
   - id: brico
@@ -205,7 +212,7 @@ talents:
     row: 3
     col: 3
     description: "En canicule comme en grand froid, l'effort mal géré devient dangereux."
-    criteria: "Savoir s'hydrater, ralentir et s'arrêter à temps ; reconnaître un coup de chaleur et une hypothermie, chez soi et chez les autres."
+    criteria: "Savoir s'hydrater, adapter son rythme et s'arrêter à temps par forte chaleur comme par grand froid ; s'habiller en couches et rester au sec."
     requires: [physique.endurance]
 
   - id: physique.maitre
@@ -217,6 +224,7 @@ talents:
     description: "Une forme qui ne dépend pas d'une salle de sport et tient dans la durée."
     criteria: "Un an de pratique régulière (trois séances par semaine) et le test complet réussi dans le mois : 25 km chargé, un adulte porté, 50 m nagés."
     requires: [physique.longue_distance, physique.brancardier, physique.nageur]
+    refresh_days: 365
 
   # ======================================================================
   # Stratège de survie
@@ -284,6 +292,7 @@ talents:
     criteria: "Plan écrit et partagé : points de rendez-vous, contacts, rôles de chacun, enfants à l'école."
     requires: [stratege.guide]
     proves: [securite.plan_familial]
+    scope: foyer
 
   - id: stratege.scenarios
     specialty: stratege
@@ -374,6 +383,7 @@ talents:
     description: "Une bonne alerte fait gagner de précieuses minutes aux secours."
     criteria: "Connaître le 15, le 18, le 112 et le 114 (SMS) ; savoir donner l'adresse exacte, décrire la situation et rester en ligne."
     objectives: [sante.numeros_urgence]
+    critical: true
 
   - id: soin.petits_soins
     specialty: soin
@@ -404,6 +414,7 @@ talents:
     criteria: "Formation « Gestes qui sauvent » suivie (2 h, gratuite) ou mieux."
     requires: [soin.alerter]
     proves: [sante.gestes_qui_sauvent]
+    critical: true
 
   - id: soin.hygiene
     specialty: soin
@@ -437,6 +448,7 @@ talents:
     criteria: "PSC1 (ou équivalent) obtenu, recyclé au moins tous les trois ans."
     requires: [soin.gqs]
     proves: [sante.psc1]
+    critical: true
 
   - id: soin.pharmacie
     specialty: soin
@@ -447,6 +459,7 @@ talents:
     description: "Bien utiliser la trousse, c'est surtout connaître les doses et les contre-indications."
     criteria: "Doses adultes, et doses enfants selon le poids, des médicaments de la trousse connues, contre-indications notées, liste des traitements du foyer à jour."
     requires: [soin.hygiene]
+    refresh_days: 365
 
   - id: soin.pssm
     specialty: soin
@@ -480,6 +493,7 @@ talents:
     criteria: "Reconnaître et utiliser dix plantes médicinales courantes de sa région, en connaissant leurs sosies toxiques et leurs contre-indications ; jamais à la place d'un traitement, et prudence pour la grossesse, les enfants et les traitements en cours."
     requires: [soin.pharmacie]
     proves: [sante.plantes]
+    retired: true
 
   - id: soin.debriefing
     specialty: soin
@@ -487,11 +501,70 @@ talents:
     icon: 🗣️
     row: 4
     col: 3
-    description: "Après un événement, repérer ceux qui vont mal et organiser la parole."
-    criteria: "Savoir organiser un temps de parole après un événement et repérer qui a besoin d'une aide professionnelle."
+    description: "Après un événement, protéger, écouter et orienter ceux qui vont mal, sans forcer personne à raconter."
+    criteria: "Savoir appliquer les premiers secours psychologiques (OMS) : mettre en sécurité, répondre aux besoins concrets, écouter sans faire raconter, repérer qui a besoin d'une aide professionnelle et orienter (médecin, 3114, cellule d'urgence médico-psychologique par le 15)."
     requires: [soin.pssm]
     proves: [moral.reperer]
     objectives: [moral.debriefing]
+
+  - id: soin.traitements
+    specialty: soin
+    name: Traitements d'urgence
+    icon: 💉
+    row: 4
+    col: 2
+    description: "Les gestes que les besoins de santé du foyer rendent vitaux, avant l'arrivée des secours."
+    criteria: "Pour chaque besoin du foyer : stylo d'adrénaline (reconnaître l'anaphylaxie, piquer dans la cuisse, appeler le 15), inhalateur avec chambre d'inhalation, resucrage d'une hypoglycémie, crise d'épilepsie (protéger, chronométrer, appeler le 15 au-delà de 5 minutes). Chaque adulte qui le maîtrise compte."
+    requires: [soin.pharmacie]
+    proves: [sante.adrenaline_formation]
+
+  - id: soin.feu
+    specialty: soin
+    name: Feu qui démarre
+    icon: 🧯
+    row: 1
+    col: 4
+    description: "Le feu domestique est le premier risque réel d'un foyer : il se joue dans la première minute."
+    criteria: "Feu de casserole ou de friteuse : couper la source, couvrir (couvercle, couverture anti-feu), jamais d'eau. Extincteur : dégoupiller, à 2 ou 3 m, viser la base des flammes, dos à la sortie. Si le feu dépasse sa taille : sortir, fermer la porte, appeler le 18."
+    critical: true
+    refresh_days: 365
+    objectives: [abri.extincteur]
+
+  - id: soin.fumee
+    specialty: soin
+    name: Sortir de la fumée
+    icon: 🚪
+    row: 2
+    col: 4
+    description: "La fumée tue avant les flammes : savoir quand sortir et quand rester."
+    criteria: "Plan à deux sorties exercé de nuit. Se baisser sous la fumée, toucher la porte avant de l'ouvrir, pas d'ascenseur. Si la sortie est enfumée : rester, fermer, calfeutrer avec un linge mouillé, se signaler à la fenêtre, appeler le 18."
+    requires: [soin.feu]
+    critical: true
+    refresh_days: 365
+    objectives: [securite.exercice]
+
+  - id: soin.urgences_climat
+    specialty: soin
+    name: Chaleur, froid, CO
+    icon: 🌡️
+    row: 3
+    col: 4
+    description: "Coup de chaleur, hypothermie, intoxication au monoxyde de carbone : trois urgences du logement en crise."
+    criteria: "Coup de chaleur : appeler le 15, mettre au frais, déshabiller, mouiller et ventiler, faire boire seulement si la personne est consciente. Hypothermie : retirer les vêtements mouillés, isoler du sol, couvrir tête comprise, boisson chaude sucrée si elle avale bien, ni alcool ni frictions ; 15 si elle est confuse ou si les frissons s'arrêtent. Monoxyde : maux de tête ou nausées chez plusieurs personnes, aérer, arrêter les appareils, sortir, appeler le 18 ou le 112, ne pas rentrer avant les secours."
+    requires: [soin.gqs]
+    critical: true
+    refresh_days: 365
+    objectives: [abri.plan_canicule, abri.chauffage_appoint]
+
+  - id: soin.maison_sure
+    specialty: soin
+    name: Logement sûr
+    icon: 🏠
+    row: 4
+    col: 4
+    description: "Chutes, intoxications, brûlures : les accidents de la vie courante tuent bien plus que les crises."
+    criteria: "Audit du logement fait : éclairage de nuit, tapis fixés, barres d'appui où il faut, produits et médicaments hors de portée, numéro du centre antipoison affiché. Après une chute : ne pas relever une personne qui a mal, la couvrir et appeler le 15."
+    requires: [soin.urgences_climat]
 
   - id: soin.maitre
     specialty: soin
@@ -502,6 +575,7 @@ talents:
     description: "La personne vers qui le quartier se tourne quand quelqu'un est blessé."
     criteria: "Secouriste bénévole dans une association agréée (PSE2), ou membre de la réserve sanitaire ou communale."
     requires: [soin.isole, soin.debriefing]
+    refresh_days: 365
 
   # ======================================================================
   # Bricoleur
@@ -515,6 +589,7 @@ talents:
     description: "Fuite, inondation, incendie : le premier geste est de couper."
     criteria: "Couper l'eau, le gaz et l'électricité en moins de deux minutes, même de nuit."
     proves: [abri.coupures, eau.robinet_arret]
+    critical: true
 
   - id: brico.feu
     specialty: brico
@@ -556,6 +631,7 @@ talents:
     description: "Le monoxyde de carbone tue chaque hiver pendant les coupures."
     criteria: "Utiliser réchaud, poêle et groupe électrogène sans risque de monoxyde de carbone : jamais en pièce close, aération, détecteur."
     proves: [competences.rechaud]
+    critical: true
 
   - id: brico.textile
     specialty: brico
@@ -664,6 +740,7 @@ talents:
     description: "Une réserve qu'on mange et qu'on renouvelle ne périme jamais."
     criteria: "Premier entré, premier sorti : les réserves se consomment dans l'ordre des dates et se rachètent au fur et à mesure."
     proves: [alimentation.rotation]
+    scope: foyer
 
   - id: cuisto.semis
     specialty: cuisto
@@ -870,6 +947,7 @@ talents:
     criteria: "Pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, consigne de ne pas aller au contact ; exercice fait en famille."
     requires: [protecteur.discretion]
     proves: [defense.intrusion, defense.exercice_intrusion]
+    scope: foyer
 
   - id: protecteur.initiation
     specialty: protecteur
@@ -939,6 +1017,7 @@ talents:
     description: "En crise, l'aide la plus rapide vient de la porte d'à côté."
     criteria: "Connaître au moins deux voisins par leur nom et avoir échangé les numéros."
     proves: [communaute.voisins]
+    scope: foyer
 
   - id: rassembleur.proche
     specialty: rassembleur
@@ -949,6 +1028,7 @@ talents:
     description: "Quelqu'un de proche qui peut venir, et quelqu'un de loin que tout le monde peut joindre."
     criteria: "Un proche à moins de 30 minutes prévenu qu'il est le contact d'urgence, et un contact hors de la région connu de tous les membres."
     proves: [communaute.proche_joignable, communication.contact_externe]
+    scope: foyer
 
   - id: rassembleur.service
     specialty: rassembleur
@@ -958,6 +1038,7 @@ talents:
     col: 3
     description: "L'entraide commence par donner, avant d'en avoir besoin."
     criteria: "Avoir proposé et rendu un service concret à un voisin (courses, garde, outil prêté, coup de main)."
+    scope: foyer
 
   - id: rassembleur.fragiles
     specialty: rassembleur
@@ -969,6 +1050,7 @@ talents:
     criteria: "Savoir qui, autour de soi, est âgé, malade, isolé ou dépendant d'un appareil, et comment le joindre."
     requires: [rassembleur.voisins]
     proves: [communaute.fragiles]
+    scope: foyer
 
   - id: rassembleur.binome
     specialty: rassembleur
@@ -980,6 +1062,7 @@ talents:
     criteria: "Accord d'entraide réciproque avec un autre foyer : hébergement, garde des enfants, partage des réserves."
     requires: [rassembleur.proche]
     proves: [communaute.binome]
+    scope: foyer
 
   - id: rassembleur.annuaire
     specialty: rassembleur
@@ -991,6 +1074,7 @@ talents:
     criteria: "Un annuaire des compétences et des ressources de son réseau, tenu sur papier."
     requires: [rassembleur.service]
     proves: [communaute.annuaire]
+    scope: foyer
 
   - id: rassembleur.tournee
     specialty: rassembleur
@@ -1001,6 +1085,7 @@ talents:
     description: "Passer voir, frapper à la porte, rappeler : c'est souvent ce qui sauve en canicule."
     criteria: "Une tournée organisée auprès des voisins fragiles pendant une canicule, un grand froid ou une coupure, avec les rôles répartis."
     requires: [rassembleur.fragiles]
+    scope: foyer
 
   - id: rassembleur.groupe
     specialty: rassembleur
@@ -1012,6 +1097,7 @@ talents:
     criteria: "Groupe d'entraide d'au moins trois foyers avec un plan commun (qui aide qui, où se retrouver, quoi mettre en commun)."
     requires: [rassembleur.binome]
     proves: [communaute.groupe]
+    scope: foyer
 
   - id: rassembleur.troc
     specialty: rassembleur
@@ -1023,6 +1109,7 @@ talents:
     criteria: "Participer à un réseau d'échange local : SEL, gratiferia, troc, monnaie locale."
     requires: [rassembleur.annuaire]
     proves: [communaute.troc]
+    scope: foyer
 
   - id: rassembleur.reunion
     specialty: rassembleur
@@ -1033,6 +1120,7 @@ talents:
     description: "Faire décider un groupe sans que la réunion tourne au conflit."
     criteria: "Avoir animé une réunion de voisins ou d'association : ordre du jour, tour de parole, décisions écrites, désaccords apaisés."
     requires: [rassembleur.tournee]
+    scope: foyer
 
   - id: rassembleur.engagement
     specialty: rassembleur
@@ -1044,6 +1132,7 @@ talents:
     criteria: "Engagé dans la réserve communale de sécurité civile, chez les pompiers volontaires ou dans une association de secours."
     requires: [rassembleur.groupe]
     proves: [communaute.engagement]
+    scope: foyer
 
   - id: rassembleur.mutualiser
     specialty: rassembleur
@@ -1055,6 +1144,7 @@ talents:
     criteria: "Outils, stocks ou jardin mis en commun avec d'autres foyers, avec des règles d'usage écrites."
     requires: [rassembleur.troc]
     proves: [communaute.mutualisation]
+    scope: foyer
 
   - id: rassembleur.maitre
     specialty: rassembleur
@@ -1066,6 +1156,7 @@ talents:
     criteria: "Porter un projet de résilience locale (jardin partagé, réserve communale, plan de quartier) ou accompagner un autre foyer jusqu'au niveau Paré."
     requires: [rassembleur.reunion, rassembleur.engagement, rassembleur.mutualiser]
     objectives: [communaute.resilience_locale, communaute.parrainage]
+    scope: foyer
 
   # ======================================================================
   # Pisteur
@@ -1118,6 +1209,7 @@ talents:
     criteria: "Préfiltrer, filtrer puis désinfecter une eau brute (ébullition, chlore ou filtre adapté), en connaissant les limites de chaque méthode."
     requires: [pisteur.eau]
     proves: [eau.savoir_traiter]
+    critical: true
 
   - id: pisteur.cueillette
     specialty: pisteur
@@ -1159,6 +1251,7 @@ talents:
     description: "Quelques espèces bien connues, et les mortelles par cœur."
     criteria: "Identifier quelques champignons comestibles sûrs et les espèces mortelles de sa région ; toujours faire vérifier par un pharmacien ou une société mycologique."
     requires: [pisteur.cueillette]
+    refresh_days: 365
 
   - id: pisteur.bivouac
     specialty: pisteur
@@ -1223,6 +1316,7 @@ talents:
     description: "Un téléphone vide ou perdu, et plus aucun numéro en tête."
     criteria: "Contacts essentiels notés sur papier, à la maison et dans chaque sac."
     proves: [communication.contacts_papier]
+    scope: foyer
 
   - id: transmetteur.sauvegarde
     specialty: transmetteur
@@ -1234,6 +1328,7 @@ talents:
     criteria: "Documents importants sauvegardés hors ligne (clé ou disque chiffré), et une copie hors de la maison."
     proves: [cyber.sauvegarde]
     objectives: [cyber.restauration]
+    scope: foyer
 
   - id: transmetteur.talkies
     specialty: transmetteur
@@ -1256,6 +1351,7 @@ talents:
     criteria: "Plan connu de tous : qui appelle qui, SMS plutôt qu'appel, horaires et fréquences convenus avec les proches."
     requires: [transmetteur.contacts]
     proves: [communication.reseau_local]
+    scope: foyer
 
   - id: transmetteur.hors_ligne
     specialty: transmetteur

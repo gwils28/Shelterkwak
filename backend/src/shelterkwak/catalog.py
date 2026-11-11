@@ -99,6 +99,11 @@ class Objective(BaseModel):
     due_month: int | None = Field(default=None, ge=1, le=12)  # à refaire chaque année avant le 1er de ce mois
     stock: StockRule | None = None
     custom: bool = False  # objectif perso créé par le foyer
+    # « Tous les adultes » : un talent ne le prouve que si au moins autant de personnes du foyer le
+    # maîtrisent (`holders` de talent.set) qu'il y a d'adultes. Voir docs/conseil/2026-11-11-competences.md.
+    every_adult: bool = False
+    # Prouvé quand chaque talent critique acquis est maîtrisé par au moins deux personnes du foyer.
+    redundancy: bool = False
 
     @model_validator(mode="after")
     def _stock_consistency(self) -> Objective:
@@ -106,6 +111,8 @@ class Objective(BaseModel):
             raise ValueError(f"{self.id}: `stock` est requis si et seulement si kind == 'stock'")
         if self.revalidate_days is not None and self.due_month is not None:
             raise ValueError(f"{self.id}: `revalidate_days` et `due_month` sont exclusifs")
+        if self.kind == "stock" and (self.every_adult or self.redundancy):
+            raise ValueError(f"{self.id}: un objectif de stock est calculé, il ne se prouve pas par les talents")
         return self
 
 
@@ -252,6 +259,11 @@ class Talent(BaseModel):
     requires: list[str] = Field(default_factory=list)  # talents prérequis, tous exigés
     proves: list[str] = Field(default_factory=list)  # objectifs validés par ce talent
     objectives: list[str] = Field(default_factory=list)  # objectifs auxquels ce talent contribue
+    # personne : chacun l'apprend, le foyer déclare combien le maîtrisent ; foyer : un bien commun (plan, contacts).
+    scope: Literal["personne", "foyer"] = "personne"
+    critical: bool = False  # geste vital : doit être maîtrisé par au moins deux personnes (objectif `redundancy`)
+    refresh_days: int | None = Field(default=None, ge=1)  # « à entretenir » passé ce délai depuis l'acquisition
+    retired: bool = False  # sorti de la grille : reste lisible s'il est coché, l'id est dans des journaux
 
 
 class ShowIf(BaseModel):
@@ -297,6 +309,7 @@ class Catalog(BaseModel):
     member_types: list[NamedId]
     member_tags: dict[str, str]
     member_conditions: list[MemberCondition] = Field(default_factory=list)
+    adult_member_types: list[str] = Field(default_factory=list)  # types comptés comme adultes (« tous les adultes »)
     categories: list[Category]
     objectives: list[Objective]
     questions: list[Question]
@@ -358,6 +371,11 @@ class Catalog(BaseModel):
                 errors.append(f"{o.id}: axe inconnu {o.axis}")
             if o.stock and o.stock.category not in cat_ids:
                 errors.append(f"{o.id}: catégorie de stock inconnue {o.stock.category}")
+        errors.extend(
+            f"adult_member_types : type de membre inconnu {t}"
+            for t in self.adult_member_types
+            if t not in member_type_ids
+        )
         for c in self.categories:
             unknown = set(c.daily_need) - member_type_ids
             if unknown:
@@ -466,6 +484,7 @@ def _talent_errors(catalog: Catalog, objective_ids: set[str]) -> list[str]:
     talents = {t.id: t for t in catalog.talents}
     if len(talents) != len(catalog.talents):
         errors.append("talent en double")
+    by_obj = catalog.objectives_by_id
     places: set[tuple[str, int, int]] = set()
     for t in catalog.talents:
         spec = specs.get(t.specialty)
@@ -474,9 +493,10 @@ def _talent_errors(catalog: Catalog, objective_ids: set[str]) -> list[str]:
             continue
         if t.col > len(spec.branches):
             errors.append(f"talent {t.id}: colonne {t.col} hors des {len(spec.branches)} branches")
-        if (t.specialty, t.row, t.col) in places:
-            errors.append(f"talent {t.id}: place déjà prise (rang {t.row}, colonne {t.col})")
-        places.add((t.specialty, t.row, t.col))
+        if not t.retired:  # un talent retiré n'occupe plus de case
+            if (t.specialty, t.row, t.col) in places:
+                errors.append(f"talent {t.id}: place déjà prise (rang {t.row}, colonne {t.col})")
+            places.add((t.specialty, t.row, t.col))
         if t.row > 1 and not t.requires:
             errors.append(f"talent {t.id}: un talent au-delà du premier rang a au moins un prérequis")
         for r in t.requires:
@@ -485,10 +505,24 @@ def _talent_errors(catalog: Catalog, objective_ids: set[str]) -> list[str]:
                 errors.append(f"talent {t.id}: prérequis inconnu {r}")
             elif req.specialty != t.specialty or req.row >= t.row:
                 errors.append(f"talent {t.id}: le prérequis {r} doit être plus bas dans le même arbre")
+            elif req.retired and not t.retired:
+                errors.append(f"talent {t.id}: le prérequis {r} est retiré de la grille")
+        if t.critical and (t.scope != "personne" or t.retired):
+            errors.append(f"talent {t.id}: un talent critique est un talent de personne, encore dans la grille")
+        if t.refresh_days is not None:
+            # Une seule source de vérité : l'objectif prouvé porte déjà sa propre revalidation.
+            dated = [o for o in t.proves if o in by_obj and (by_obj[o].revalidate_days or by_obj[o].due_month)]
+            errors.extend(f"talent {t.id}: `refresh_days` en double de la revalidation de {o}" for o in dated)
+        for oid in t.proves:
+            obj = by_obj.get(oid)
+            if obj and obj.every_adult and t.scope != "personne":
+                errors.append(f"talent {t.id}: {oid} vise tous les adultes, un talent du foyer ne le prouve pas")
         errors.extend(
             f"talent {t.id}: objectif inconnu {o}" for o in [*t.proves, *t.objectives] if o not in objective_ids
         )
         errors.extend(_proof_errors(catalog, f"talent {t.id}", t.proves, t.objectives, owner_is_item=False))
+    if any(o.redundancy for o in catalog.objectives) and not any(t.critical for t in catalog.talents):
+        errors.append("compétences : un objectif `redundancy` sans aucun talent critique")
     return errors
 
 
@@ -510,6 +544,10 @@ def _proof_errors(
             errors.append(f"{owner}: {oid} est un objectif de stock, déjà calculé : il ne se prouve pas")
         elif obj.kind == "skill" and owner_is_item:
             errors.append(f"{owner}: {oid} est une compétence, qu'aucune possession ne prouve")
+        elif obj.redundancy:
+            errors.append(f"{owner}: {oid} se calcule depuis les talents critiques, il ne se prouve pas")
+        elif obj.every_adult and owner_is_item:
+            errors.append(f"{owner}: {oid} vise tous les adultes, qu'aucune possession ne prouve")
     return errors
 
 
@@ -539,6 +577,7 @@ def load_catalog(directory: Path | None = None) -> Catalog:
         member_types=axes["member_types"],
         member_tags=axes.get("member_tags", {}),
         member_conditions=axes.get("member_conditions", []),
+        adult_member_types=axes.get("adult_member_types", []),
         categories=_read(directory / "needs.yaml")["categories"],
         objectives=objectives,
         questions=_read(directory / "interview.yaml")["questions"],
