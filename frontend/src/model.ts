@@ -1,7 +1,7 @@
 // Vue calculée sur l'appareil : état rejoué depuis le journal + évaluation du moteur.
 
 import type { ChecklistItem as EngineItem, Evaluation, Tier as EngineTier } from "./engine/engine";
-import type { HouseholdData, State } from "./engine/replay";
+import { type HouseholdData, proofs, type State } from "./engine/replay";
 import { type Catalog, type Kind, type Level, levelOf, MAX_LEVEL, type Objective as CatalogObjective, type Status } from "./engine/types";
 
 export type { Axis, ContextId, NamedId, Status } from "./engine/types";
@@ -48,6 +48,16 @@ export interface Objective extends CatalogObjective {
   validated_at: string | null;
   expires_on: string | null;
   source: string | null;
+  /** Objets possédés et talents acquis qui valident l'objectif (liens `proves`). */
+  proofs: ProofSource[];
+}
+export interface ProofSource {
+  kind: "item" | "talent";
+  id: string;
+  label: string; // « Radio (commun) », « Plan de communication »
+  on: string;
+  /** Lien vers la fiche de l'objet ou du talent. */
+  to: string;
 }
 
 export function buildDashboard(catalog: Catalog, state: State, ev: Evaluation): Dashboard {
@@ -72,6 +82,21 @@ export function buildDashboard(catalog: Catalog, state: State, ev: Evaluation): 
 }
 
 export function buildObjectives(catalog: Catalog, state: State, ev: Evaluation): Objective[] {
+  const byObjective = new Map<string, ProofSource[]>();
+  for (const p of proofs(catalog, state)) {
+    let src: ProofSource;
+    if (p.kind === "item") {
+      const item = catalog.items.find((i) => i.id === p.source_id)!;
+      const tier = catalog.item_tiers.find((t) => t.id === state.items.get(item.id)?.tier)?.name;
+      src = { kind: "item", id: item.id, label: tier ? `${item.name} (${tier.toLowerCase()})` : item.name, on: p.on, to: `/inventaire?objet=${item.id}` };
+    } else {
+      const t = catalog.talents.find((x) => x.id === p.source_id)!;
+      src = { kind: "talent", id: t.id, label: t.name, on: p.on, to: `/competences?spe=${t.specialty}&talent=${t.id}` };
+    }
+    const list = byObjective.get(p.objective_id) ?? [];
+    if (!list.some((x) => x.kind === src.kind && x.id === src.id)) list.push(src);
+    byObjective.set(p.objective_id, list);
+  }
   return catalog.objectives.map((o) => {
     const st = ev.statuses[o.id];
     return {
@@ -81,6 +106,7 @@ export function buildObjectives(catalog: Catalog, state: State, ev: Evaluation):
       validated_at: st.validated_at,
       expires_on: st.expires_on,
       source: state.validations.get(o.id)?.source ?? null,
+      proofs: byObjective.get(o.id) ?? [],
     };
   });
 }

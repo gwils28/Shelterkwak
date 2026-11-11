@@ -45,8 +45,12 @@ def test_items_cover_every_group_and_reserve_category(catalog: Catalog) -> None:
         (lambda it: it["tiers"].reverse(), "les cinq niveaux"),
         (lambda it: it["tiers"].pop(), "les cinq niveaux"),
         (lambda it: it["tiers"][2].update(includes=[]), "includes"),
-        (lambda it: it["tiers"][4]["objectives"].append("sante.pharmacie_base"), "niveau inférieur"),
+        (lambda it: it["tiers"][4]["objectives"].append("sante.numeros_urgence"), "niveau inférieur"),
         (lambda it: it["tiers"][4]["objectives"].append("sante.psc1"), "compétence"),
+        (lambda it: it["tiers"][0]["objectives"].append(it["tiers"][0]["proves"][0]), "à la fois"),
+        (lambda it: it["proves"].append("sante.psc1"), "aucune possession ne prouve"),
+        (lambda it: it["tiers"][4]["proves"].append("eau.stock_3j"), "objectif de stock"),
+        (lambda it: it["proves"].append("inexistant"), "objectif inconnu"),
     ],
 )
 def test_invalid_item_is_rejected(catalog: Catalog, change, message: str) -> None:
@@ -69,6 +73,7 @@ def test_talent_trees_are_complete(catalog: Catalog) -> None:
     ("talent_id", "change", "message"),
     [
         ("soin.gqs", lambda t: t["objectives"].append("inexistant"), "objectif inconnu"),
+        ("soin.gqs", lambda t: t["proves"].append("eau.stock_3j"), "objectif de stock"),
         ("soin.gqs", lambda t: t.update(specialty="inexistante"), "spécialité inconnue"),
         ("soin.gqs", lambda t: t.update(requires=[]), "au moins un prérequis"),
         ("soin.gqs", lambda t: t.update(requires=["soin.psc1"]), "plus bas dans le même arbre"),

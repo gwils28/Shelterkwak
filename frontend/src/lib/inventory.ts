@@ -3,7 +3,7 @@
 
 import { addDays } from "../engine/dates";
 import type { ItemData, StockData } from "../engine/replay";
-import type { BasketLine, Catalog, Item, ItemReference, ItemTier, Status } from "../engine/types";
+import { type BasketLine, type Catalog, type Item, type ItemReference, type ItemTier, linksOf, type Status } from "../engine/types";
 import type { Autonomy, Objective } from "../model";
 import { formatNumber } from "./format";
 
@@ -29,15 +29,15 @@ export interface Card {
 
 /** Objectifs que l'objet sert, tous paliers confondus, sans doublon. */
 export function itemObjectiveIds(item: Item): string[] {
-  return [...new Set([...item.objectives, ...item.tiers.flatMap((t) => t.objectives)])];
+  return [...new Set([...linksOf(item), ...item.tiers.flatMap(linksOf)])];
 }
 
 /** Objectifs que l'objet remplit au palier donné (paliers précédents compris) ; sans palier, ceux de l'objet. */
 export function tierObjectiveIds(item: Item, tierId: string | null): Set<string> {
-  if (!item.tiers.length) return new Set(item.objectives);
+  if (!item.tiers.length) return new Set(linksOf(item));
   const ids = new Set<string>();
   for (const t of item.tiers) {
-    t.objectives.forEach((o) => ids.add(o));
+    linksOf(t).forEach((o) => ids.add(o));
     if (t.tier === tierId) break;
   }
   return tierId ? ids : new Set();
@@ -133,7 +133,7 @@ export function nextSteps(cards: Card[]): NextStep[] {
     if (!open.size) continue;
     const current = card.tier ? card.item.tiers.indexOf(card.tier) : -1;
     // Seuls les objectifs qu'un niveau remplit comptent : ceux de l'objet lui-même n'y suffisent pas.
-    const i = card.item.tiers.findIndex((t, n) => n > current && t.objectives.some((id) => open.has(id)));
+    const i = card.item.tiers.findIndex((t, n) => n > current && linksOf(t).some((id) => open.has(id)));
     if (i < 0) continue;
     const target = card.item.tiers[i];
     const auto = card.autonomy;
@@ -141,7 +141,7 @@ export function nextSteps(cards: Card[]): NextStep[] {
       card.item.kind === "reserve" && auto && target.min_days !== null
         ? { amount: Math.max(0, target.min_days - (auto.days ?? 0)) * auto.need_per_day, unit: auto.unit }
         : null;
-    out.push({ card, target, objective: open.get(target.objectives.find((id) => open.has(id))!)!, missing });
+    out.push({ card, target, objective: open.get(linksOf(target).find((id) => open.has(id))!)!, missing });
   }
   // Le palier le plus bas d'abord, et à palier égal ce qui est requis avant les bonus.
   return out.sort((a, b) => a.objective.level - b.objective.level || Number(b.objective.required) - Number(a.objective.required));

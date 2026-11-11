@@ -350,6 +350,21 @@ def engine_cases() -> list[dict[str, Any]]:
             ],
         },
         {
+            "name": "preuves : objets et talents valident leurs objectifs, retrait, vérification avancée",
+            "today": "2027-02-15",
+            "ops": [
+                onboarding(1, t0, household(), LEVEL2, base_stock, d0),
+                op(2, "2026-11-03T08:00:00.000Z", "item.set", item("trousse_secours", "commun", expires="2027-01-10")),
+                op(3, "2026-11-04T08:00:00.000Z", "item.set", item("radio", "epique")),
+                op(4, "2026-11-05T08:00:00.000Z", "talent.set", talent("brico.coupures", "2026-10-01")),
+                op(5, "2026-11-06T08:00:00.000Z", "talent.set", talent("transmetteur.plan", None)),
+                op(6, "2026-11-07T08:00:00.000Z", "validation.set", validation("communication.radio", "2026-11-07")),
+                op(7, "2026-11-08T08:00:00.000Z", "item.delete", {"item_id": "radio"}),
+                op(8, "2026-11-09T08:00:00.000Z", "stock.delete", {"id": "s-vivres"}),
+                op(9, "2026-11-10T08:00:00.000Z", "talent.delete", {"talent_id": "transmetteur.plan"}),
+            ],
+        },
+        {
             "name": "remise à zéro puis nouveau foyer rural",
             "today": "2026-11-10",
             "ops": [

@@ -128,7 +128,8 @@ export interface ItemTier {
   tier: string;
   contents: string;
   min_days: number | null; // jours d'autonomie, pour une réserve
-  objectives: string[];
+  proves: string[]; // objectifs validés par la possession de ce niveau
+  objectives: string[]; // objectifs auxquels ce niveau contribue
   includes: string[]; // contenu minimal ajouté à ce niveau (contenants)
   basket: BasketLine[]; // panier type d'une réserve, pour ce palier
   basket_notes: string[];
@@ -146,7 +147,8 @@ export interface Item {
   category: string | null; // catégorie d'autonomie, pour une réserve
   description: string;
   caution: string; // mise en garde (loi, santé, sécurité), affichée en tête de la fiche
-  objectives: string[];
+  proves: string[]; // objectifs validés par la possession, à tout niveau
+  objectives: string[]; // objectifs auxquels l'objet contribue
   tiers: ItemTier[];
   crisis: boolean; // à retrouver le jour J : emplacement affiché dans l'écran Crise
   requires_tags: string[]; // carte proposée seulement si le foyer porte l'un de ces tags
@@ -189,8 +191,14 @@ export interface Talent {
   criteria: string; // ce qui prouve qu'on l'a acquis
   contexts: string[]; // lieux de vie où il s'affiche
   requires: string[]; // talents prérequis, tous exigés
-  objectives: string[];
+  proves: string[]; // objectifs validés par ce talent
+  objectives: string[]; // objectifs auxquels ce talent contribue
 }
+/** Tous les objectifs liés à un niveau, un objet ou un talent : ceux qu'il prouve, puis ceux auxquels il contribue. */
+export function linksOf(x: { proves: string[]; objectives: string[] }): string[] {
+  return [...x.proves, ...x.objectives];
+}
+
 export interface Catalog {
   levels: Level[];
   axes: Axis[];

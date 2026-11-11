@@ -92,11 +92,17 @@ export function ObjectivesPage() {
           <ul className="objectives">
             {byLevel.get(n)!.map((o) => {
               const done = o.status === "done" || o.status === "expiring" || o.status === "grace";
+              // Atteint par un objet ou un talent : on ne décoche pas, on renvoie vers sa fiche.
+              const proved = done && o.proofs.length > 0;
               return (
                 <li key={o.id} className={`objective ${o.status}`}>
                   {o.kind === "stock" ? (
                     <Link to="/inventaire" className="tick ghost" title="Calculé depuis l'inventaire">
                       {done ? "✓" : `${Math.round(o.progress * 100)}%`}
+                    </Link>
+                  ) : proved ? (
+                    <Link to={o.proofs[0].to} className="tick on" title={`Atteint grâce à : ${o.proofs.map((p) => p.label).join(", ")}`}>
+                      ✓
                     </Link>
                   ) : (
                     <button
@@ -128,6 +134,17 @@ export function ObjectivesPage() {
                         </span>
                       )}
                       {o.expires_on && <span className="badge soft">Échéance {formatDate(o.expires_on)}</span>}
+                      {o.proofs.length > 0 && (
+                        <span className="badge proof">
+                          {done ? "Atteint grâce à" : "Prouvé par"} :{" "}
+                          {o.proofs.map((p, i) => (
+                            <span key={`${p.kind}:${p.id}`}>
+                              {i > 0 && ", "}
+                              <Link to={p.to}>{p.label}</Link>
+                            </span>
+                          ))}
+                        </span>
+                      )}
                       {(o.status === "expiring" || o.status === "grace") && (
                         <button className="link" onClick={() => void actions.validate(o.id)}>
                           Revalider maintenant
