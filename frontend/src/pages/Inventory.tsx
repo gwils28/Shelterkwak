@@ -4,7 +4,7 @@ import { AutonomyCards } from "../components/AutonomyCards";
 import { addDays } from "../engine/dates";
 import type { ItemData } from "../engine/replay";
 import type { Catalog, ItemBasis, ItemKind, ItemTier, Market } from "../engine/types";
-import { type Card, buildCards, DONE_STATUSES, purchaseGuide, tierObjectiveIds } from "../lib/inventory";
+import { type Basket, type BasketRow, type Card, buildCards, DONE_STATUSES, purchaseGuide, reserveBaskets, suggestedExpiry, tierObjectiveIds } from "../lib/inventory";
 import { formatDate, formatDays, formatNumber, STATUS_LABEL, unitLabel } from "../lib/format";
 import type { Objective, StockData } from "../model";
 import { actions, useFoyer } from "../store/hooks";
@@ -470,8 +470,12 @@ const HINTS: Record<string, string> = {
 
 function ReserveDetail({ card, catalog, today, soon }: { card: Card; catalog: Catalog; today: string; soon: string }) {
   const { item, autonomy, articles } = card;
+  const { tags } = useFoyer();
   const category = catalog.categories.find((c) => c.id === item.category)!;
-  const empty: StockIn = { name: "", category: category.id, quantity: 1, unit_label: "", amount_per_unit: 1, expires_on: null, location: null };
+  const empty: StockIn = { name: "", category: category.id, quantity: 1, unit_label: "", amount_per_unit: 1, expires_on: null, location: null, basket: null };
+  const baskets = reserveBaskets(item, articles, autonomy, today);
+  const lines = baskets.flatMap((b) => b.tier.basket);
+  const lineName = (id: string | null | undefined) => lines.find((l) => l.id === id)?.name;
   const [form, setForm] = useState<StockIn>(empty);
   const [editing, setEditing] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -485,8 +489,15 @@ function ReserveDetail({ card, catalog, today, soon }: { card: Card; catalog: Ca
   };
   const edit = (s: StockData) => {
     setEditing(s.id);
-    setForm({ name: s.name, category: s.category, quantity: s.quantity, unit_label: s.unit_label, amount_per_unit: s.amount_per_unit, expires_on: s.expires_on, location: s.location ?? null });
+    setForm({ name: s.name, category: s.category, quantity: s.quantity, unit_label: s.unit_label, amount_per_unit: s.amount_per_unit, expires_on: s.expires_on, location: s.location ?? null, basket: s.basket ?? null });
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  };
+  /** Prépare l'article d'une ligne du panier : nom, format, calories, quantité manquante, date estimée. */
+  const addFromBasket = ({ line, target, have }: BasketRow) => {
+    setEditing(null);
+    setForm({ name: line.name, category: category.id, quantity: Math.max(1, target - have), unit_label: line.unit, amount_per_unit: line.amount_per_unit, expires_on: suggestedExpiry(line, today), location: null, basket: line.id });
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    formRef.current?.querySelector<HTMLInputElement>("input[name=quantity]")?.focus({ preventScroll: true });
   };
 
   return (
@@ -498,6 +509,9 @@ function ReserveDetail({ card, catalog, today, soon }: { card: Card; catalog: Ca
           <TierRow key={t.tier} t={t} catalog={catalog} reached={i <= rank} />
         ))}
       </div>
+      {baskets.map((b) => (
+        <BasketSection key={b.tier.tier} basket={b} catalog={catalog} unit={category.unit} child={tags.has("enfants") || tags.has("bebe")} onAdd={addFromBasket} />
+      ))}
       <LinkedObjectives objectives={card.objectives} covered={new Set()} />
 
       <section>
@@ -517,6 +531,7 @@ function ReserveDetail({ card, catalog, today, soon }: { card: Card; catalog: Ca
                       {formatNumber(s.quantity)} {s.unit_label} · {formatNumber(total)} {unitLabel(category.unit, total)}
                       {s.location && ` · ${s.location}`}
                     </div>
+                    {lineName(s.basket) && <div className="item-detail">Panier type : {lineName(s.basket)}</div>}
                     <div className={`item-detail${st ? " warn-text" : ""}`}>
                       {s.expires_on ? `Péremption ${formatDate(s.expires_on)}` : "Sans date de péremption"}
                       {st === "expired" && " · périmé, ne compte plus"}
@@ -550,7 +565,7 @@ function ReserveDetail({ card, catalog, today, soon }: { card: Card; catalog: Ca
         <div className="row">
           <label className="field">
             Quantité
-            <input type="number" min={0} step="any" required value={form.quantity} onChange={(e) => setForm({ ...form, quantity: Number(e.target.value) })} />
+            <input name="quantity" type="number" min={0} step="any" required value={form.quantity} onChange={(e) => setForm({ ...form, quantity: Number(e.target.value) })} />
           </label>
           <label className="field">
             Unité
@@ -571,7 +586,20 @@ function ReserveDetail({ card, catalog, today, soon }: { card: Card; catalog: Ca
             <input value={form.location ?? ""} placeholder="cellier, sous l'évier, cave…" onChange={(e) => setForm({ ...form, location: e.target.value || null })} />
           </label>
         </div>
-        <p className="hint">{HINTS[category.id]}</p>
+        {lines.length > 0 && (
+          <label className="field grow">
+            Ligne du panier type
+            <select value={form.basket ?? ""} onChange={(e) => setForm({ ...form, basket: e.target.value || null })}>
+              <option value="">Aucune</option>
+              {lines.map((l) => (
+                <option key={l.id} value={l.id}>
+                  {l.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        <p className="hint">{form.basket && form.expires_on ? "Date de péremption estimée : remplace-la par celle de l'emballage. " : ""}{HINTS[category.id]}</p>
         <div className="actions">
           {editing && (
             <button type="button" onClick={() => { setEditing(null); setForm(empty); }}>
@@ -582,5 +610,70 @@ function ReserveDetail({ card, catalog, today, soon }: { card: Card; catalog: Ca
         </div>
       </form>
     </>
+  );
+}
+
+/** Panier type d'un palier : quantités pour le foyer, lignes cochées par les articles reliés. */
+function BasketSection({ basket, catalog, unit, child, onAdd }: { basket: Basket; catalog: Catalog; unit: string; child: boolean; onAdd: (row: BasketRow) => void }) {
+  const { tier, rows, full, days, need } = basket;
+  const total = rows.length;
+  const done = full === total;
+  return (
+    <details className={`basket tier-${tier.tier}`} open={!done}>
+      <summary>
+        <span className="buy-title">Panier type</span>
+        <span className={`tier-pill tier-${tier.tier}`}>{tierName(catalog, tier.tier)}</span>
+        <span className="hint">
+          {formatDays(days)} · {full}/{total} {done ? "· complet" : "lignes"}
+        </span>
+        <span className="basket-bar" role="progressbar" aria-label="Lignes complètes" aria-valuemin={0} aria-valuemax={total} aria-valuenow={full}>
+          <span style={{ width: `${(100 * full) / total}%` }} />
+        </span>
+      </summary>
+      <p className="hint basket-intro">
+        Pour ton foyer : {formatNumber(Math.round(need))} {unitLabel(unit, need)} sur {formatDays(days)}. Une ligne se coche quand un article relié est en stock.
+      </p>
+      <ul className="basket-rows">
+        {rows.map((r) => (
+          <li key={r.line.id} className={`basket-row is-${r.status}`}>
+            <span className="basket-mark" aria-hidden>
+              {r.status === "full" ? "✓" : r.status === "partial" ? "◐" : ""}
+            </span>
+            <div className="basket-main">
+              <span className="basket-name">{r.line.name}</span>
+              <span className="item-detail">
+                {r.target} × {r.line.unit}
+                {r.line.keeps && ` · se garde ${r.line.keeps.charAt(0).toLowerCase()}${r.line.keeps.slice(1)}`}
+              </span>
+              {r.line.note && <span className="basket-note">{r.line.note}</span>}
+              {child && r.line.child && (
+                <span className="basket-note basket-child">
+                  <span aria-hidden>🧒 </span>
+                  {r.line.child}
+                </span>
+              )}
+            </div>
+            <div className="basket-side">
+              <span className="basket-count" aria-label={`${formatNumber(r.have)} sur ${r.target}`}>
+                {formatNumber(r.have)}/{r.target}
+              </span>
+              {r.status !== "full" && (
+                <button type="button" className="link" onClick={() => onAdd(r)} aria-label={`Ajouter ${r.line.name} au stock`}>
+                  Ajouter
+                </button>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+      {tier.basket_notes.length > 0 && (
+        <ul className="basket-notes">
+          {tier.basket_notes.map((n) => (
+            <li key={n}>{n}</li>
+          ))}
+        </ul>
+      )}
+      <p className="hint">Un article déjà saisi se relie à une ligne avec « Modifier ».</p>
+    </details>
   );
 }

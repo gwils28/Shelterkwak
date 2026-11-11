@@ -124,3 +124,39 @@ def test_stale_references_are_listed_oldest_first(catalog: Catalog) -> None:
     later = stale(catalog, date(newest.year + 2, 1, 1))
     assert len(later) == len(catalog.references)
     assert [r.checked for r in later] == sorted(r.checked for r in later)
+
+
+def _vivres_commun(data: dict) -> dict:
+    item = next(i for i in data["items"] if i["id"] == "reserve_vivres")
+    return next(t for t in item["tiers"] if t["tier"] == "commun")
+
+
+def test_pantry_basket_shares_make_a_whole(catalog: Catalog) -> None:
+    item = next(i for i in catalog.items if i.id == "reserve_vivres")
+    basket = next(t for t in item.tiers if t.tier == "commun").basket
+    assert sum(line.share for line in basket) == 100
+    assert "lyophilises" in {line.id for line in basket}
+
+
+@pytest.mark.parametrize(
+    ("change", "message"),
+    [
+        (lambda t: t["basket"][0].update(share=t["basket"][0]["share"] + 1), "100 %"),
+        (lambda t: t["basket"].append(dict(t["basket"][0], share=0)), "greater than 0"),
+        (lambda t: t["basket"][1].update(id=t["basket"][0]["id"]), "en double"),
+    ],
+)
+def test_invalid_basket_is_rejected(catalog: Catalog, change, message: str) -> None:
+    data = catalog.model_dump()
+    change(_vivres_commun(data))
+    with pytest.raises(ValueError, match=message):
+        Catalog.model_validate(data)
+
+
+def test_basket_is_reserved_to_reserves(catalog: Catalog) -> None:
+    data = catalog.model_dump()
+    line = _vivres_commun(data)["basket"][0]
+    other = next(i for i in data["items"] if i["kind"] != "reserve")
+    other["tiers"][0]["basket"] = [dict(line, share=100)]
+    with pytest.raises(ValueError, match="réservé aux réserves"):
+        Catalog.model_validate(data)

@@ -167,3 +167,17 @@ déploiement sur Raspberry Pi.
 - **Mise à jour** : « la revue du marché » (le Fourrier, expert indépendant hors conseil), tous les
   six mois ; `make stale-refs` liste les entrées vérifiées il y a plus d'un an. Données de
   catalogue, pas du journal : rien n'est stocké côté foyer.
+
+## Panier type d'une réserve (2026-11-11)
+- **Catalogue** : `basket` sur un palier de réserve (`reserve_vivres` / commun pour l'instant), une ligne
+  par denrée : format, calories par unité, `share` (part du besoin du palier, en %, total 100 vérifié
+  au chargement), conservation, note, précaution pour l'enfant (affichée si le foyer porte `enfants`
+  ou `bebe`). `basket_notes` : les principes du panier. Contenu issu de l'avis des experts du
+  10 novembre (lyophilisés retenus pour le repas salé).
+- **Quantités** : calculées par l'app pour le foyer (part × besoin quotidien × jours du palier,
+  arrondi à l'unité supérieure, au moins 1). Rien n'est stocké côté catalogue pour un foyer.
+- **Cases cochées** : déduites des articles, pas d'une nouvelle opération. Un article porte
+  facultativement `basket` (id de ligne) dans `stock.upsert` ; les deux moteurs stockent la charge
+  telle quelle (comme `location`). Une ligne est complète quand ses articles non périmés atteignent
+  la cible. « Ajouter » préremplit l'article (quantité manquante, date estimée à corriger avec
+  l'emballage) ; « Modifier » relie un article existant. Un id de ligne ne se renomme pas.

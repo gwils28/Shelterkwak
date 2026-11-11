@@ -112,12 +112,26 @@ export interface ItemGroup {
   name: string;
   icon: string;
 }
+/** Ligne du panier type d'une réserve ; son id est stocké dans `basket` d'un article. */
+export interface BasketLine {
+  id: string;
+  name: string;
+  unit: string;
+  amount_per_unit: number; // dans l'unité de la catégorie (kcal pour l'alimentation)
+  share: number; // part des besoins du palier, en %
+  keeps: string;
+  keeps_months: number | null;
+  note: string;
+  child: string; // précaution si le foyer compte un enfant ou un bébé
+}
 export interface ItemTier {
   tier: string;
   contents: string;
   min_days: number | null; // jours d'autonomie, pour une réserve
   objectives: string[];
   includes: string[]; // contenu minimal ajouté à ce niveau (contenants)
+  basket: BasketLine[]; // panier type d'une réserve, pour ce palier
+  basket_notes: string[];
 }
 /** Ce qui fait monter le niveau d'un objet. */
 export type ItemBasis = "qualite" | "options" | "quantite" | "contenu" | "autonomie";

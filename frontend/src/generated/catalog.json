@@ -8803,7 +8803,9 @@
      "objectives": [
       "eau.stock_24h"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -8812,7 +8814,9 @@
      "objectives": [
       "eau.stock_3j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -8821,7 +8825,9 @@
      "objectives": [
       "eau.stock_14j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -8830,7 +8836,9 @@
      "objectives": [
       "eau.stock_30j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -8839,7 +8847,9 @@
      "objectives": [
       "eau.stock_60j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -8865,35 +8875,45 @@
      "objectives": [
       "eau.pastilles"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Pastilles de chlore pour 50 L",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Pastilles pour 200 L et Javel de secours",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Pastilles pour 1 000 L, dans le sac et à la maison",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Traitement pour plusieurs milliers de litres (pastilles, Javel, chlore en poudre) et bandelettes de test du chlore",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -8921,35 +8941,45 @@
      "contents": "Bouteilles vides lavées, gardées de côté",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Deux bidons alimentaires de 10 L",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Un bidon de 10 L par personne, avec robinet",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "100 L de contenants pliables ou rigides, et un sac de baignoire (WaterBOB)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Cuve alimentaire de 500 L ou plus, remplie et renouvelée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -8977,35 +9007,45 @@
      "contents": "Sac à dos et sangles pour porter deux bidons",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Chariot de courses solide",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Diable pliant avec sangles, 50 kg et plus",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Chariot monte-escalier à trois roues",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Remorque de vélo ou charrette tout-terrain, 100 L et plus",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9031,21 +9071,27 @@
      "objectives": [
       "eau.filtre"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Gourde ou filtre portable pour chacun, cartouches de rechange",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Filtre gravitaire familial (10 L et plus)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -9054,14 +9100,18 @@
      "objectives": [
       "eau.filtre_gravitaire"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Filtre grande capacité, préfiltre et chloration de finition pour les virus, que le filtre laisse passer",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9085,14 +9135,18 @@
      "contents": "Bacs et seaux sous une gouttière",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Cuve de 200 L sur une descente de gouttière",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -9101,14 +9155,18 @@
      "objectives": [
       "eau.recuperateur"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Plusieurs cuves reliées (1 m³ et plus), filtre de premier rinçage",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -9117,7 +9175,9 @@
      "objectives": [
       "eau.source_autonome"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9145,14 +9205,18 @@
       "eau.relais_ville",
       "eau.sources_identifiees"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Deux sources repérées, trajet de portage testé avec les bidons",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -9161,7 +9225,9 @@
      "objectives": [
       "eau.pompe_manuelle"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -9170,7 +9236,9 @@
      "objectives": [
       "eau.source_autonome"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -9180,7 +9248,9 @@
       "eau.acces_hors_reseau",
       "eau.autonomie_annuelle"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9210,16 +9280,169 @@
      "objectives": [
       "alimentation.stock_24h"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
-     "contents": "Le kit d'urgence officiel",
+     "contents": "Trois jours sans cuisson : le panier type ci-dessous",
      "min_days": 3.0,
      "objectives": [
       "alimentation.stock_3j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [
+      {
+       "id": "biscottes",
+       "name": "Biscottes ou crackers peu salés",
+       "unit": "paquet de 300 g",
+       "amount_per_unit": 1200.0,
+       "share": 15,
+       "keeps": "9 à 12 mois",
+       "keeps_months": 9,
+       "note": "",
+       "child": ""
+      },
+      {
+       "id": "puree_cacahuete",
+       "name": "Purée de cacahuète lisse",
+       "unit": "pot de 350 g",
+       "amount_per_unit": 2100.0,
+       "share": 12,
+       "keeps": "12 à 18 mois",
+       "keeps_months": 12,
+       "note": "",
+       "child": "En couche fine, seulement si l'arachide est déjà introduite."
+      },
+      {
+       "id": "flocons",
+       "name": "Flocons d'avoine ou céréales peu sucrées",
+       "unit": "paquet de 500 g",
+       "amount_per_unit": 1850.0,
+       "share": 11,
+       "keeps": "12 mois",
+       "keeps_months": 12,
+       "note": "Avec le lait UHT, sans cuisson.",
+       "child": ""
+      },
+      {
+       "id": "sardines",
+       "name": "Sardines à l'huile",
+       "unit": "boîte de 135 g",
+       "amount_per_unit": 250.0,
+       "share": 9,
+       "keeps": "4 à 5 ans",
+       "keeps_months": 48,
+       "note": "",
+       "child": "Arêtes molles : on les écrase."
+      },
+      {
+       "id": "fruits_secs",
+       "name": "Fruits secs",
+       "unit": "sachet de 250 g",
+       "amount_per_unit": 700.0,
+       "share": 8,
+       "keeps": "12 mois",
+       "keeps_months": 12,
+       "note": "",
+       "child": "Coupés ou trempés (risque d'étouffement)."
+      },
+      {
+       "id": "lait_uht",
+       "name": "Lait UHT entier",
+       "unit": "brique de 1 L",
+       "amount_per_unit": 650.0,
+       "share": 8,
+       "keeps": "3 à 6 mois",
+       "keeps_months": 3,
+       "note": "À renouveler souvent.",
+       "child": ""
+      },
+      {
+       "id": "lyophilises",
+       "name": "Repas lyophilisés",
+       "unit": "sachet",
+       "amount_per_unit": 550.0,
+       "share": 7,
+       "keeps": "selon la date du sachet",
+       "keeps_months": null,
+       "note": "Vrai repas salé. Demande de l'eau (sortie du stock d'eau) ; à l'eau froide, 30 à 60 min.",
+       "child": "Souvent salés : à faire goûter avant une crise, ou pour les adultes."
+      },
+      {
+       "id": "chocolat",
+       "name": "Chocolat noir",
+       "unit": "tablette de 100 g",
+       "amount_per_unit": 550.0,
+       "share": 6,
+       "keeps": "12 à 18 mois",
+       "keeps_months": 12,
+       "note": "Pour le moral.",
+       "child": ""
+      },
+      {
+       "id": "legumineuses",
+       "name": "Légumineuses en conserve",
+       "unit": "boîte de 400 g",
+       "amount_per_unit": 325.0,
+       "share": 6,
+       "keeps": "2 à 3 ans",
+       "keeps_months": 24,
+       "note": "Se mangent froides.",
+       "child": "Écrasées."
+      },
+      {
+       "id": "biscuits",
+       "name": "Biscuits secs",
+       "unit": "paquet de 200 g",
+       "amount_per_unit": 900.0,
+       "share": 5,
+       "keeps": "12 mois",
+       "keeps_months": 12,
+       "note": "Réconfort.",
+       "child": ""
+      },
+      {
+       "id": "huile_olive",
+       "name": "Huile d'olive",
+       "unit": "bouteille de 25 cl",
+       "amount_per_unit": 2050.0,
+       "share": 5,
+       "keeps": "12 à 18 mois",
+       "keeps_months": 12,
+       "note": "",
+       "child": ""
+      },
+      {
+       "id": "compotes",
+       "name": "Compotes sans sucre ajouté",
+       "unit": "gourde de 90 g",
+       "amount_per_unit": 70.0,
+       "share": 5,
+       "keeps": "9 à 12 mois",
+       "keeps_months": 9,
+       "note": "",
+       "child": "Aliment familier, apporte aussi de l'eau."
+      },
+      {
+       "id": "legumes",
+       "name": "Légumes en conserve",
+       "unit": "boîte de 400 g",
+       "amount_per_unit": 175.0,
+       "share": 3,
+       "keeps": "2 à 3 ans",
+       "keeps_months": 24,
+       "note": "",
+       "child": ""
+      }
+     ],
+     "basket_notes": [
+      "Tout se mange sans cuisson, sauf les repas lyophilisés qui demandent de l'eau.",
+      "On stocke ce qu'on mange déjà, pour que la rotation se fasse avec les courses.",
+      "Petits formats : sans frigo, une boîte ouverte se finit dans le repas.",
+      "Le sel des conserves donne soif : la réserve d'eau ne compte pas sur l'eau des aliments."
+     ]
     },
     {
      "tier": "confirme",
@@ -9228,7 +9451,9 @@
      "objectives": [
       "alimentation.stock_14j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -9237,7 +9462,9 @@
      "objectives": [
       "alimentation.stock_90j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -9246,7 +9473,9 @@
      "objectives": [
       "alimentation.stock_180j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9270,7 +9499,9 @@
      "contents": "Une journée de repas chauds",
      "min_days": 1.0,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -9279,7 +9510,9 @@
      "objectives": [
       "energie.cuisson_3j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -9288,7 +9521,9 @@
      "objectives": [
       "energie.cuisson_14j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -9297,7 +9532,9 @@
      "objectives": [
       "energie.cuisson_30j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -9306,7 +9543,9 @@
      "objectives": [
       "energie.cuisson_90j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9330,35 +9569,45 @@
      "contents": "Réchaud à alcool ou chauffe-plat",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Réchaud à cartouche de gaz, un feu",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Réchaud deux feux ou à gaz en bouteille, avec pare-vent",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Réchaud multi-combustible (bois, alcool, gaz) ou rocket stove, et cuiseur solaire",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Cuisinière ou poêle à bois qui cuisine et chauffe",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9384,35 +9633,45 @@
      "objectives": [
       "alimentation.ouvre_boite"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Deux ouvre-boîtes (maison et sac) et un couteau",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Couverts, gamelle et quart par personne",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Batterie de camping (casserole, poêle, bouilloire) et pinces",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Cuisine nomade complète : marmite en fonte, ustensiles de conserve",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9436,7 +9695,9 @@
      "contents": "24 heures",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -9445,7 +9706,9 @@
      "objectives": [
       "alimentation.bebe_3j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -9454,21 +9717,27 @@
      "objectives": [
       "alimentation.bebe"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "1 mois, biberons stérilisables à froid et porte-bébé",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "3 mois, taille suivante comprise",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9492,14 +9761,18 @@
      "contents": "3 jours",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "7 jours",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -9508,21 +9781,27 @@
      "objectives": [
       "alimentation.animaux"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "1 mois, traitement compris",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "3 mois, traitement compris",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9546,21 +9825,27 @@
      "contents": "Quelques bocaux de récupération",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "20 bocaux et joints neufs",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "50 bocaux, stérilisateur, sel et vinaigre",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -9569,14 +9854,18 @@
      "objectives": [
       "alimentation.intrants"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Atelier de conservation : autoclave, fumoir ou cave, intrants pour une année",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9600,14 +9889,18 @@
      "contents": "Aromatiques et salades pour le balcon",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Dix variétés potagères",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -9616,14 +9909,18 @@
      "objectives": [
       "alimentation.semences"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Semences pour une saison complète de potager, dont légumineuses et céréales",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -9632,7 +9929,9 @@
      "objectives": [
       "alimentation.semences_autoproduites"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9656,14 +9955,18 @@
      "contents": "Trois jours d'aliments compatibles",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Une semaine",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -9672,21 +9975,27 @@
      "objectives": [
       "alimentation.regimes"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Un mois, et des recettes de crise adaptées",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Trois mois, compris dans la rotation des réserves",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9712,35 +10021,45 @@
      "contents": "Un couvercle pour chaque casserole, cuisson à l'étouffée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Marmite norvégienne (caisse isolée et couverture) qui finit la cuisson sans feu",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Autocuiseur et marmite norvégienne",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Cuiseur solaire en plus",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Cuisine sobre complète : marmite norvégienne, autocuiseur, four solaire et réchaud à bois à haut rendement",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9764,35 +10083,45 @@
      "contents": "Glacière et pains de glace",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Bouteilles d'eau gelées qui remplissent les vides du congélateur",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Thermomètres de frigo et de congélateur, liste de ce qu'on jette au-delà de 4 heures",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Cave, cellier ou garde-manger ventilé pour les produits qui se gardent au frais",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Réfrigérateur ou congélateur alimenté au solaire",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9816,35 +10145,45 @@
      "contents": "Moulin à café manuel pour de petites quantités",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Moulin à grain manuel",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Moulin manuel à meules de pierre, céréales en grain stockées",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Moulin fixé sur un plan de travail, trois mois de grain",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Moulin et fournil : pain au levain sans boulangerie",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9868,14 +10207,18 @@
      "contents": "Bacs, terreau, arrosoir et aromatiques",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Bêche ou grelinette, râteau, arrosoir, paillage",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -9884,7 +10227,9 @@
      "objectives": [
       "eau.secheresse"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -9894,7 +10239,9 @@
       "alimentation.balcon",
       "alimentation.potager"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -9904,7 +10251,9 @@
       "alimentation.production_50",
       "alimentation.circuit_25"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9931,35 +10280,45 @@
      "contents": "Une ration de 24 h dans le sac d'un adulte",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Une ration de 24 h par personne du foyer",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Trois jours de rations par personne, réparties entre la maison et les sacs",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Trois jours par personne dans les sacs et une réserve dans la voiture, dates notées",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Une semaine par personne, rations variées (barres, plats lyophilisés) et adaptées aux régimes du foyer, en rotation",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -9986,7 +10345,9 @@
      "contents": "Trois jours d'avance",
      "min_days": 3.0,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -9995,7 +10356,9 @@
      "objectives": [
       "sante.traitements_7j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -10004,7 +10367,9 @@
      "objectives": [
       "sante.traitements_30j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -10013,14 +10378,18 @@
      "objectives": [
       "sante.traitements_90j"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Six mois (si le médecin l'autorise)",
      "min_days": 180.0,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -10052,7 +10421,9 @@
       "Antalgique (paracétamol)",
       "Pansements de tailles variées",
       "Désinfectant (chlorhexidine)"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10070,7 +10441,9 @@
       "Gants jetables",
       "Couverture de survie",
       "Thermomètre"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -10084,7 +10457,9 @@
       "Coussin hémostatique",
       "Fiche des gestes de premiers secours",
       "Si le foyer compte des enfants : paracétamol en forme pédiatrique et SRO adaptés"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -10101,7 +10476,9 @@
       "Collyre et dosettes de lavage oculaire",
       "Crème pour brûlures et pansements gras",
       "Réserve de désinfectant pour un mois"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -10114,7 +10491,9 @@
       "Pansements hémostatiques",
       "Oxymètre de pouls et tensiomètre",
       "Manuel de secourisme papier"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -10138,14 +10517,18 @@
      "contents": "Quelques masques chirurgicaux et une boîte de gants",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "FFP2 pour 3 jours par personne",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -10154,7 +10537,9 @@
      "objectives": [
       "sante.masques_pandemie"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -10163,14 +10548,18 @@
      "objectives": [
       "sante.masques"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Demi-masques à cartouches, lunettes étanches, combinaisons jetables",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -10198,7 +10587,9 @@
       "Savon",
       "Brosse et dentifrice par personne",
       "Un rouleau de papier toilette par personne"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10213,7 +10604,9 @@
       "Protections périodiques pour un cycle",
       "Sacs poubelle",
       "Déodorant et peigne"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -10225,7 +10618,9 @@
       "Shampoing sec",
       "Bassine et gant de toilette",
       "Coupe-ongles"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -10237,7 +10632,9 @@
       "Eau de Javel et vinaigre blanc",
       "Protections lavables (cup, serviettes)",
       "Rasoirs et lames de rechange"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -10249,7 +10646,9 @@
       "Savon de Marseille pour six mois",
       "Tondeuse à cheveux et ciseaux de coiffure",
       "Lessiveuse manuelle"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -10279,7 +10678,9 @@
       "Seau solide",
       "Sacs poubelle épais",
       "Litière ou sciure"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10290,7 +10691,9 @@
       "Seau à couvercle hermétique",
       "Abattant adaptable",
       "Gants et gel hydroalcoolique à côté"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -10300,7 +10703,9 @@
      "includes": [
       "Réserve de sacs et de sciure pour deux semaines",
       "Bac fermé dehors pour stocker les sacs"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -10310,7 +10715,9 @@
      "includes": [
       "Toilettes portables à séparation d'urine",
       "Produit ou matière sèche pour un mois"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -10322,7 +10729,9 @@
      "includes": [
       "Toilettes sèches installées",
       "Composteur dédié"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -10346,7 +10755,9 @@
      "contents": "Bon de retrait reçu, adresse de la pharmacie notée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10355,28 +10766,36 @@
      "objectives": [
       "securite.iode"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Comprimés rangés avec la trousse, dose de chaque membre notée sur la boîte",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Une boîte à la maison et une dans le sac d'évacuation",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Kit de confinement nucléaire : iode, ruban adhésif, consignes, radio dans la pièce refuge",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -10400,7 +10819,9 @@
      "contents": "Une ancienne paire gardée en secours",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10409,7 +10830,9 @@
      "objectives": [
       "sante.lunettes_secours"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -10418,7 +10841,9 @@
      "objectives": [
       "sante.lunettes_sac"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -10427,14 +10852,18 @@
      "objectives": [
       "sante.lunettes_reserve"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Rechanges, lunettes de soleil à la vue, lentilles et produits pour trois mois",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -10458,7 +10887,9 @@
      "contents": "7 jours",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10467,14 +10898,18 @@
      "objectives": [
       "sante.auditif_piles"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "30 jours et un étui de séchage",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -10483,14 +10918,18 @@
      "objectives": [
       "sante.auditif_reserve"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "90 jours, chargeur solaire et appareil de secours",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -10514,7 +10953,9 @@
      "contents": "Un stylo non périmé",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10523,28 +10964,36 @@
      "objectives": [
       "sante.adrenaline"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Deux stylos sur la personne et un à la maison, rappel de péremption noté",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Un stylo de plus dans chaque sac, plan d'action allergie écrit",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Stylos à l'école ou au travail, entourage formé, antihistaminiques en réserve",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -10568,7 +11017,9 @@
      "contents": "Un inhalateur non périmé, doses restantes vérifiées",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10577,28 +11028,36 @@
      "objectives": [
       "sante.inhalateur"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Un de plus dans le sac d'évacuation, et une chambre d'inhalation",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Un mois de traitement de fond d'avance et un purificateur d'air sur batterie",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Trois mois d'avance, plan d'action écrit, masques FFP2 contre les fumées",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -10624,7 +11083,9 @@
      "contents": "Glacière souple, pains de glace emballés dans un linge, sucre rapide et glucagon à portée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10633,7 +11094,9 @@
      "objectives": [
       "sante.insuline_froid"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -10642,21 +11105,27 @@
      "objectives": [
       "sante.diabete_materiel"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Mini-réfrigérateur médical sur batterie",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Mini-réfrigérateur médical rechargé au solaire, trois mois de matériel",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -10680,7 +11149,9 @@
      "contents": "24 heures d'autonomie",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10689,21 +11160,27 @@
      "objectives": [
       "sante.appareil_batterie"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "72 heures et chargeur pour la voiture",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Une semaine d'autonomie (station électrique dédiée)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -10712,7 +11189,9 @@
      "objectives": [
       "sante.appareil_autonome"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -10741,7 +11220,9 @@
      "includes": [
       "Dossier de grossesse copié",
       "Deux maternités repérées, dont une hors de la zone à risque"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10754,7 +11235,9 @@
       "Vêtements et pyjama pour 3 jours",
       "Premières tenues du bébé, bonnet, couches",
       "Trajet prévu sans voiture personnelle (taxi, proche, SAMU)"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -10765,7 +11248,9 @@
       "Protections pour une semaine",
       "Coussin d'allaitement ou tire-lait manuel",
       "Lait infantile liquide prêt à l'emploi en secours"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -10775,7 +11260,9 @@
      "includes": [
       "Fiche des gestes du SAMU (appeler le 15 et suivre ses consignes)",
       "Champs propres, gants, couverture de survie"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -10786,7 +11273,9 @@
       "Porte-bébé",
       "Un mois de couches et de soins du bébé",
       "Aide à domicile prévue avec les proches"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -10815,7 +11304,9 @@
      "includes": [
       "Inscription au registre communal des personnes vulnérables",
       "Pilulier de la semaine"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10826,7 +11317,9 @@
       "Protections d'incontinence pour 7 jours",
       "Boîte et produits pour la prothèse dentaire",
       "Liste des traitements affichée sur le frigo"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -10837,7 +11330,9 @@
       "Téléassistance avec batterie de secours",
       "Canne ou déambulateur de rechange",
       "Lunettes de lecture et loupe"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -10847,7 +11342,9 @@
      "includes": [
       "Protections et soins pour un mois",
       "Visite quotidienne convenue avec un voisin en canicule ou en grand froid"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -10857,7 +11354,9 @@
      "includes": [
       "Plan écrit : qui passe, qui appelle, qui héberge",
       "Matériel en double au lieu de repli"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -10881,35 +11380,45 @@
      "contents": "Détecteur simple de rayonnement gamma avec alarme",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Compteur Geiger à tube affichant le débit de dose (µSv/h), mesure de fond de la maison notée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Compteur bêta-gamma avec seuil d'alarme réglable et piles de rechange",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Compteur alpha-bêta-gamma à fenêtre mica, et un dosimètre personnel",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Compteur étalonné, dosimètre pour chaque adulte, mesures partagées avec un réseau citoyen de surveillance",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -10937,7 +11446,9 @@
      "objectives": [
       "energie.lumiere"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -10946,28 +11457,36 @@
      "objectives": [
       "energie.lampes"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Frontales rechargeables et une lanterne pour la pièce de vie",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Frontales, lanternes solaires ou à dynamo, une lampe au pied de chaque lit",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Éclairage de toute la maison sur batterie solaire, veilleuses de secours qui s'allument à la coupure",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -10994,35 +11513,45 @@
      "contents": "Un jeu de rechange pour la lampe principale",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Un jeu de rechange pour chaque appareil",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Piles pour un mois d'usage, rangées au sec",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Piles rechargeables et chargeur USB",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Rechargeables, chargeur solaire et réserve pour trois mois",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11050,7 +11579,9 @@
      "objectives": [
       "energie.batterie"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -11059,7 +11590,9 @@
      "objectives": [
       "energie.solaire_portable"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -11068,7 +11601,9 @@
      "objectives": [
       "energie.station"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -11078,7 +11613,9 @@
       "energie.kit_balcon",
       "energie.solaire_fixe"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -11088,7 +11625,9 @@
       "energie.station_1kwh",
       "energie.autonomie"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11112,14 +11651,18 @@
      "contents": "Petit groupe de 1 kW, toujours dehors, détecteur de CO dans le logement",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Groupe inverter 2 kW, rallonge extérieure",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -11128,21 +11671,27 @@
      "objectives": [
       "energie.secours"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Groupe bicarburant (essence et gaz), inverseur de source installé par un électricien",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Groupe couplé au solaire et à des batteries, démarrage automatique",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11166,35 +11715,45 @@
      "contents": "Une boîte d'allumettes",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Deux briquets et allumettes dans une boîte étanche",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Allumettes tempête, briquets, allume-feux",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Pierre à feu (ferrocérium) et amadou dans chaque sac",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Kit feu complet : ferro, loupe, allume-feux pour un an, briquets tempête rechargeables",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11218,14 +11777,18 @@
      "contents": "Quelques stères pour les grands froids",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Un demi-hiver de bois sec et un humidimètre pour le vérifier",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -11234,7 +11797,9 @@
      "objectives": [
       "energie.bois_hiver"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -11243,14 +11808,18 @@
      "objectives": [
       "energie.bois"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Deux hivers d'avance et une parcelle ou un accord d'affouage",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11274,35 +11843,45 @@
      "contents": "Panneau pliant de 10 à 20 W avec sortie USB, et une batterie externe chargée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Panneau de 20 à 40 W testé, batterie externe de 20 000 mAh et câbles",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Panneau pliant de 60 à 100 W et petite station de 300 Wh",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Station de 500 Wh, panneau de 100 à 200 W, recharge par l'allume-cigare",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Système complet dans un sac (panneau, station, câbles, lampe et radio rechargeables), testé une semaine hors réseau",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11326,35 +11905,45 @@
      "contents": "Quelques bougies et des allumettes rangées ensemble, avec un bougeoir stable",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Un photophore fermé (en verre) pour chaque bougie : jamais de flamme nue",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Bougies de longue durée en boîte métallique, posées sur un support incombustible",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Lanternes à bougie fermées et une couverture anti-feu à portée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Les bougies restent un appoint : lampes à piles en priorité, lanternes fermées, extincteur à portée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11378,7 +11967,9 @@
      "contents": "Plaids et vêtements chauds en couches pour chacun",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -11387,21 +11978,27 @@
      "objectives": [
       "abri.chaleur"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Sacs de couchage grand froid, bonnets, sous-couches et bouillottes",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Sacs de couchage grand froid, matelas isolants et tente d'intérieur pour la pièce refuge",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -11410,7 +12007,9 @@
      "objectives": [
       "abri.accueil"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11434,7 +12033,9 @@
      "contents": "Un détecteur de fumée (obligatoire)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -11443,7 +12044,9 @@
      "objectives": [
       "abri.detecteurs"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -11452,21 +12055,27 @@
      "objectives": [
       "sante.auditif_alerte"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Détecteurs reliés entre eux",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Détecteurs reliés, détecteur de gaz et d'inondation, alertes sur le téléphone",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11490,7 +12099,9 @@
      "contents": "Couverture anti-feu dans la cuisine",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -11499,21 +12110,27 @@
      "objectives": [
       "abri.extincteur"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Un extincteur par étage, vérifié chaque année",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Extincteurs adaptés (eau additivée, CO2 pour l'électrique), échelle d'évacuation",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -11522,7 +12139,9 @@
      "objectives": [
       "securite.incendie_ext"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -11549,7 +12168,9 @@
      "includes": [
       "Un rouleau de ruban adhésif large",
       "Serviettes à mouiller pour le bas des portes"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -11564,7 +12185,9 @@
       "Deux rouleaux de ruban adhésif",
       "Ciseaux",
       "Radio à piles"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -11576,7 +12199,9 @@
       "Seau hygiénique",
       "Lampe et piles",
       "Fiche réflexe confinement"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -11589,7 +12214,9 @@
       "Bâches renforcées et agrafeuse",
       "Couvertures et occupation pour chacun",
       "Trousse de secours dans la pièce"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -11600,7 +12227,9 @@
       "Purificateur d'air HEPA sur batterie",
       "Détecteur de CO2",
       "Réserves pour 48 heures dans la pièce"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11624,7 +12253,9 @@
      "contents": "Bouillottes et vêtements chauds",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -11633,21 +12264,27 @@
      "objectives": [
       "abri.chauffage_appoint"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Appoint et pièce refuge isolée avec textiles",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Poêle à bois ou à granulés sans électricité",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -11656,7 +12293,9 @@
      "objectives": [
       "abri.isolation"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11691,7 +12330,9 @@
       "Pince universelle",
       "Marteau",
       "Ruban adhésif toilé"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -11704,7 +12345,9 @@
       "Perceuse-visseuse sur batterie",
       "Mètre et niveau",
       "Colliers, vis et chevilles"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -11716,7 +12359,9 @@
       "Joints, téflon et colle époxy",
       "Testeur de tension et dominos",
       "Rabot, ciseaux à bois, serre-joints"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -11728,7 +12373,9 @@
       "Visserie et clous en quantité",
       "Pied-de-biche et masse",
       "Tronçonneuse avec casque à visière, jambières anti-coupure et gants, réservée à qui est formé"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -11742,7 +12389,9 @@
       "Matériaux de réparation stockés (bois, tôle, tuiles)",
       "Poste à souder ou outils manuels anciens",
       "Outillage mutualisé avec le voisinage"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11769,7 +12418,9 @@
      "includes": [
       "Thermomètre intérieur",
       "Brumisateur"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -11782,7 +12433,9 @@
       "Linges humides et bassine",
       "Ventilateur, toujours avec un linge humide ou la peau mouillée (seul au-dessus de 35 °C, il assèche)",
       "Liste des proches isolés à appeler"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -11794,7 +12447,9 @@
      "includes": [
       "Ventilateur sur batterie",
       "Rideaux occultants ou film réfléchissant"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -11805,7 +12460,9 @@
       "Volets ou stores extérieurs",
       "Voiles d'ombrage",
       "Glacière et pains de glace"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -11815,7 +12472,9 @@
      "includes": [
       "Brasseur d'air sur solaire",
       "Isolation et végétalisation côté soleil"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11839,14 +12498,18 @@
      "contents": "Raclette, gants et pelle pliante",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Chaînes ou chaussettes à neige, sel",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -11855,21 +12518,27 @@
      "objectives": [
       "abri.neige"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Raquettes, crampons, luge de transport",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Fraise à neige ou lame, accès dégagé de façon autonome",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11893,14 +12562,18 @@
      "contents": "Un rouleau de sacs de rechange",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Sacs résistants pour deux semaines",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -11909,21 +12582,27 @@
      "objectives": [
       "securite.dechets"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Composteur pour les déchets organiques",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Tri, compost et réduction : moins d'un sac par semaine",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -11947,7 +12626,9 @@
      "contents": "Les meubles hauts fixés au mur",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -11956,28 +12637,36 @@
      "objectives": [
       "abri.seisme"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Objets lourds rangés en bas, loquets sur les placards",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Film anti-éclats sur les vitres, vanne de gaz à fermeture rapide",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Diagnostic parasismique fait, renforts réalisés",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12001,14 +12690,18 @@
      "contents": "Sacs de sable ou sacs anti-inondation pour une porte",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Batardeaux amovibles pour les ouvertures basses",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -12017,21 +12710,27 @@
      "objectives": [
       "abri.inondation"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Pompe vide-cave sur batterie, bottes et cuissardes",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Logement adapté : zone refuge à l'étage, prises et tableau électrique surélevés",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12055,35 +12754,45 @@
      "contents": "Un rouleau de ruban adhésif toilé",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Ruban toilé et ruban de masquage pour étiqueter",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Deux rouleaux de ruban toilé large et un rouleau de ruban aluminium pour les réparations",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Ruban toilé, ruban américain renforcé, ruban d'étanchéité pour la plomberie et ruban électrique",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Assortiment complet (toilé, aluminium, étanchéité, électrique, réparation de bâche), un rouleau plat dans chaque sac",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12107,35 +12816,45 @@
      "contents": "Une bâche de 3 × 4 m",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Bâche renforcée à œillets et 20 m de cordelette",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Deux bâches renforcées, cordelette, sardines et tendeurs",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Bâche légère pour le sac en plus des grandes, montage d'un abri déjà essayé",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Bâches lourdes de couverture de toit, liteaux et clous pour les fixer, tarp de bivouac dans chaque sac",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12159,35 +12878,45 @@
      "contents": "Une couverture de survie dans le sac",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Une couverture de survie par personne",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Une par personne dans chaque sac et une dans la voiture",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Couvertures renforcées réutilisables (bâche de survie, sac de bivouac)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Sac de bivouac pour chaque membre, couvertures de rechange pour aider d'autres personnes",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12211,7 +12940,9 @@
      "contents": "Petit poste FM à piles",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -12220,14 +12951,18 @@
      "objectives": [
       "communication.radio"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Radio FM, DAB+ et ondes courtes, à dynamo ou sur piles du commerce",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -12236,7 +12971,9 @@
      "objectives": [
       "communication.radio_emission"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -12245,7 +12982,9 @@
      "objectives": [
       "communication.relais"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -12269,7 +13008,9 @@
      "contents": "Une paire de talkies jouets ou d'entrée de gamme",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -12278,14 +13019,18 @@
      "objectives": [
       "communication.talkies"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Talkies rechargeables, canaux convenus notés dans le répertoire",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -12294,14 +13039,18 @@
      "objectives": [
       "communication.reseau_local"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Réseau de talkies partagé avec le groupe d'entraide, testé",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12325,7 +13074,9 @@
      "contents": "Plan de la ville",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -12334,7 +13085,9 @@
      "objectives": [
       "mobilite.itineraires"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -12343,21 +13096,27 @@
      "objectives": [
       "communication.cartes"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Cartes IGN au 1:25 000 du trajet vers le lieu de repli, boussole",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Jeu de cartes plastifiées dans chaque sac, points d'eau et abris notés",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12381,14 +13140,18 @@
      "contents": "Un sifflet dans le sac",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Un sifflet par membre, accroché au sac",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -12397,21 +13160,27 @@
      "objectives": [
       "defense.voisinage"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Sifflets, miroir de signalisation, bâtons lumineux",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Signaux, corne de brume et code d'alerte du quartier affiché",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12438,35 +13207,45 @@
      "contents": "Un ancien téléphone chargé, qui appelle le 112 même sans carte SIM",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Téléphone de secours avec une carte SIM d'un autre opérateur",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Téléphone robuste à grosse batterie, contacts et FR-Alert configurés",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Routeur 4G de secours sur batterie pour partager une connexion",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Téléphone satellite ou messagerie satellite (SOS hors réseau)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -12495,7 +13274,9 @@
      "includes": [
       "Un câble par téléphone du foyer",
       "Un chargeur secteur"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -12506,7 +13287,9 @@
       "Chargeur allume-cigare",
       "Multiprise",
       "Câbles en double dans le sac"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -12517,7 +13300,9 @@
       "Câbles USB-C, Lightning et micro-USB",
       "Adaptateurs et rallonge USB",
       "Chargeur multiport"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -12528,7 +13313,9 @@
       "Pochette étanche avec tout le nécessaire",
       "Câbles renforcés",
       "Convertisseur 12 V vers 230 V"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -12539,7 +13326,9 @@
       "Câbles 12 V et Anderson pour batteries et panneaux",
       "Chargeur de piles USB",
       "Fer à souder et gaine pour réparer"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12565,7 +13354,9 @@
      "contents": "Photos des papiers importants sur le téléphone",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -12574,7 +13365,9 @@
      "objectives": [
       "finances.papiers"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -12583,7 +13376,9 @@
      "objectives": [
       "cyber.sauvegarde"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -12592,14 +13387,18 @@
      "objectives": [
       "cyber.regle_321"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Serveur domestique (NAS) répliqué hors site, restauration testée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12623,35 +13422,45 @@
      "contents": "Guides officiels en PDF sur le téléphone",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Cartes hors ligne de la région sur le téléphone (OsmAnd, Organic Maps)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Liseuse ou tablette avec guides de secourisme, jardinage, réparations",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Ordinateur portable sobre avec Wikipédia hors ligne (Kiwix) et cartes",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Serveur Kiwix local sur mini-ordinateur solaire, accessible en Wi-Fi au voisinage",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12675,14 +13484,18 @@
      "contents": "Un boîtier pour découvrir le réseau du coin",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Deux boîtiers appairés aux téléphones du foyer",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -12691,7 +13504,9 @@
      "objectives": [
       "communication.reseau_local"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -12700,7 +13515,9 @@
      "objectives": [
       "communication.relais"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -12709,7 +13526,9 @@
      "objectives": [
       "communication.reseau_teste"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12735,35 +13554,45 @@
      "contents": "Batterie externe capable d'alimenter la box en USB-C ou 12 V",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Petit onduleur pour la box : 1 à 2 heures",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Mini-onduleur 12 V pour box et routeur : 4 heures et plus",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Box, routeur et ordinateur sur la station électrique",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Réseau domestique entier sur batterie solaire, avec accès de secours 4G ou satellite",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12789,35 +13618,45 @@
      "contents": "Boussole simple ou porte-clés",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Boussole à plaquette, utilisable sur une carte",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Boussole à plaquette avec réglage de la déclinaison et loupe",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Boussole à visée pour des relevés précis, et une boussole de secours dans le sac",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Boussole à visée, rapporteur et carte IGN de chaque trajet, une boussole par adulte",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12848,7 +13687,9 @@
       "Chargeur et batterie externe",
       "50 € en espèces",
       "Liste des contacts sur papier"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -12862,7 +13703,9 @@
       "Médicaments du quotidien pour 3 jours",
       "Vêtement de pluie",
       "Couteau multifonction"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -12880,7 +13723,9 @@
       "Radio à dynamo",
       "Sifflet",
       "Masques FFP2"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -12894,7 +13739,9 @@
       "Matériel des animaux (laisse, gamelle, croquettes)",
       "Clé USB chiffrée des papiers",
       "Carte papier avec itinéraires et lieu de rassemblement"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -12909,7 +13756,9 @@
       "Réchaud compact et popote",
       "Lieu de repli pré-approvisionné",
       "Sac vérifié lors d'un exercice d'évacuation"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -12933,7 +13782,9 @@
      "contents": "Un vélo qui roule",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -12942,21 +13793,27 @@
      "objectives": [
       "mobilite.velo"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Un vélo par adulte, éclairage, antivol, porte-bagages",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Sacoches, remorque enfant ou cargo, pièces d'usure de rechange",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -12965,7 +13822,9 @@
      "objectives": [
       "mobilite.sans_fossile"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -12993,7 +13852,9 @@
       "Gilet et triangle",
       "Lampe",
       "Couverture"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13007,7 +13868,9 @@
       "Câbles de démarrage",
       "Chargeur allume-cigare",
       "Trousse de secours"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -13019,7 +13882,9 @@
       "Bouteille d'eau de 5 L",
       "Pelle pliante et gants",
       "Booster de démarrage"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -13031,7 +13896,9 @@
       "Sangle de remorquage",
       "Outils de base",
       "Carte routière"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -13045,7 +13912,9 @@
       "Plaques de désensablement",
       "Réchaud et vivres pour 72 heures",
       "Talkie ou CB"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13071,7 +13940,9 @@
      "contents": "Un jerrican de 5 L",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13080,28 +13951,36 @@
      "objectives": [
       "mobilite.carburant"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "40 L et stabilisant, rotation notée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Un plein d'avance et carburant pour le groupe électrogène",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Réserve pour un mois de déplacements essentiels, stockage conforme",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13125,7 +14004,9 @@
      "contents": "Une laisse ou un sac de transport",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13135,21 +14016,27 @@
       "mobilite.animaux_transport",
       "finances.animaux_papiers"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Photo récente de l'animal et contact du vétérinaire dans la caisse",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Sac de l'animal : nourriture et litière pour 3 jours, traitement, jouet",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -13158,7 +14045,9 @@
      "objectives": [
       "mobilite.animaux_repli"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13182,7 +14071,9 @@
      "contents": "Canne pliante",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13191,7 +14082,9 @@
      "objectives": [
       "mobilite.aide_technique"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -13200,21 +14093,27 @@
      "objectives": [
       "mobilite.evacuation_pmr_testee"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Batterie de rechange du fauteuil et chargeur hors réseau",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Matériel adapté en double dans le lieu de repli",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13245,7 +14144,9 @@
       "Papiers",
       "Téléphone",
       "Chaussures"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13256,7 +14157,9 @@
       "Vide-poche ou crochets dédiés",
       "Lampe",
       "Chargeur"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -13266,7 +14169,9 @@
      "includes": [
       "Sac d'évacuation posé à côté",
       "Manteaux de saison accrochés"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -13276,7 +14181,9 @@
      "includes": [
       "Double des clés de voiture",
       "Liste de départ affichée : quoi prendre en 2 minutes"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -13286,7 +14193,9 @@
      "includes": [
       "Lampe à détection de mouvement à la sortie",
       "Départ en moins de 5 minutes testé de nuit"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -13314,7 +14223,9 @@
       "Clés, téléphone chargé, un peu d'espèces",
       "Mini-lampe",
       "Contacts d'urgence sur papier"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13326,7 +14237,9 @@
       "Batterie externe et câble",
       "Pansements, gel hydroalcoolique, médicament habituel",
       "Mouchoirs, stylo"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -13338,7 +14251,9 @@
       "Gourde",
       "Barre énergétique",
       "Couverture de survie et sifflet"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -13350,7 +14265,9 @@
       "Coupe-vent ou poncho",
       "Masque FFP2",
       "Copie des papiers d'identité"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -13362,7 +14279,9 @@
       "Filtre à eau de poche",
       "Briquet et allume-feu",
       "Contenu adapté à chaque saison, revu tous les trois mois"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13386,35 +14305,45 @@
      "contents": "Couteau pliant à lame verrouillable",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Pince multifonction avec lame, scie et tournevis",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Couteau à lame fixe d'environ 10 cm avec étui, rangé dans le sac de randonnée ou d'évacuation",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Couteau fixe en acier de qualité, pierre à affûter et petite scie pliante",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Couteau fixe, hachette et scie pliante, affûtage et entretien maîtrisés",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13438,35 +14367,45 @@
      "contents": "Sacs poubelle épais pour doubler l'intérieur des sacs",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Sacs de congélation à zip pour les papiers, les médicaments et le téléphone",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Sacs étanches à fermeture enroulée (roll-top) pour les vêtements et le couchage",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Sac à dos étanche, pochette étanche pour le téléphone utilisable à travers la housse",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Tout le contenu des sacs du foyer compartimenté et étanche, testé sous la douche ou à la rivière",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13497,7 +14436,9 @@
       "Cartes Vitale et de mutuelle",
       "Carnets de santé",
       "Livret de famille"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13514,7 +14455,9 @@
       "Fiche médicale par membre",
       "Ordonnances en cours, dont la correction visuelle",
       "Carnets de vaccination des animaux"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -13525,7 +14468,9 @@
       "Contrats d'assurance et de logement",
       "Relevé d'identité bancaire",
       "Titres de propriété et carte grise"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -13536,7 +14481,9 @@
       "Pochette étanche et ignifugée",
       "Copies chez un proche hors de la région",
       "Inventaire photo du logement pour l'assurance"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -13548,7 +14495,9 @@
       "Testament et procurations",
       "Codes et accès d'urgence chez une personne de confiance",
       "Mise à jour datée de l'année"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -13572,7 +14521,9 @@
      "contents": "50 € à la maison",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13581,28 +14532,36 @@
      "objectives": [
       "finances.especes"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "300 € par adulte, dont une part dans le sac d'évacuation",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Un mois de dépenses courantes en liquide",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Liquide et biens d'échange (outils, petits objets utiles)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13633,7 +14592,9 @@
       "Numéros d'urgence (15, 17, 18, 112, 114)",
       "Fréquence FM de la radio publique locale",
       "Le proche à contacter en premier"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13647,7 +14608,9 @@
       "Famille, voisins, école, travail",
       "Médecin et pharmacie",
       "Numéros d'écoute (3114, SOS Amitié)"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -13660,7 +14623,9 @@
       "Contact référent hors de la région",
       "Lieu de rassemblement",
       "Assurance, fournisseurs d'eau et d'électricité"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -13670,7 +14635,9 @@
      "includes": [
       "Une carte plastifiée dans chaque portefeuille et chaque sac",
       "Canaux de talkie et fréquences convenues"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -13683,7 +14650,9 @@
       "Compétences et ressources des proches",
       "Contacts du groupe d'entraide",
       "Mise à jour datée de l'année"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13707,7 +14676,9 @@
      "contents": "Un double rangé à la maison",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13716,28 +14687,36 @@
      "objectives": [
       "securite.cles"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Doubles étiquetés de façon discrète, un jeu dans le sac",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Doubles des lieux de repli et des proches",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Boîte à clés sécurisée et inventaire des clés à jour",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -13763,14 +14742,18 @@
      "objectives": [
       "competences.guide"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Un manuel de premiers secours",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -13779,21 +14762,27 @@
      "objectives": [
       "competences.bibliotheque"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Plantes comestibles et médicinales, élevage, mécanique",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Bibliothèque partagée avec le voisinage, fiches pratiques plastifiées",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13817,35 +14806,45 @@
      "contents": "Quelques pièces d'argent, une fois l'épargne de précaution constituée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Une vingtaine de pièces d'argent, factures rangées dans le classeur",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Pièces d'argent et quelques pièces d'or de petite valeur (10 ou 20 francs)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "L'équivalent d'un mois de dépenses en métal, réparti entre deux cachettes",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "L'équivalent de trois mois de dépenses, une fois l'épargne de précaution constituée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13872,7 +14871,9 @@
      "includes": [
       "Bouchons d'oreille",
       "Masque de nuit"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13885,7 +14886,9 @@
       "Un livre par personne",
       "Jeu de cartes",
       "Carnet et crayons"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -13896,7 +14899,9 @@
       "Jeux de société pour tout le foyer",
       "Livres et magazines variés",
       "Activité manuelle (tricot, dessin, maquette)"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -13910,7 +14915,9 @@
       "Ballon et jeux d'extérieur",
       "Routine de crise écrite et affichée",
       "Fiche de respiration (inspirer 4 s, expirer 6 s)"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -13921,7 +14928,9 @@
       "Jeux pour un groupe",
       "Projecteur ou lecteur sur batterie",
       "Programme de veillées"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -13947,7 +14956,9 @@
      "objectives": [],
      "includes": [
       "Doudou ou objet familier"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -13961,7 +14972,9 @@
       "Photo de famille",
       "Carte avec les contacts des parents",
       "Bracelet avec nom et contact (la séparation est le premier risque)"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -13972,7 +14985,9 @@
       "Livre ou cahier de coloriage",
       "Friandises",
       "Casque anti-bruit"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -13984,7 +14999,9 @@
      "includes": [
       "Livre qui explique les situations d'urgence à son âge",
       "Vêtement doudou de rechange"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -13995,7 +15012,9 @@
       "Jeux pour plusieurs jours",
       "Rituel du coucher transportable (veilleuse, histoire)",
       "Kit révisé à chaque anniversaire"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14023,7 +15042,9 @@
      ],
      "includes": [
       "Carte ou bracelet d'identification (nom, contact, besoins)"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
@@ -14036,7 +15057,9 @@
       "Casque anti-bruit",
       "Objet familier",
       "Pictogrammes de communication"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -14047,7 +15070,9 @@
       "Routine de crise illustrée",
       "Aliments habituels pour 3 jours",
       "Fiche de besoins pour les secours"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -14058,7 +15083,9 @@
       "Lunettes teintées et objets sensoriels",
       "Couverture lestée ou vêtement rassurant",
       "Traitement et consignes du médecin"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -14069,7 +15096,9 @@
       "Plan validé par les soignants",
       "Kit en double au lieu de repli",
       "Exercice d'évacuation fait avec la personne"
-     ]
+     ],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": true,
@@ -14095,35 +15124,45 @@
      "contents": "Quelques tablettes",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Une tablette par personne et par semaine, pour deux semaines",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Un mois, chocolat noir et cacao en poudre",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Trois mois en rotation, quelques tablettes réservées à l'échange",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Six mois en rotation avec les réserves, part d'échange comprise",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14149,35 +15188,45 @@
      "contents": "Une semaine de café soluble ou de thé",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Deux semaines, et de quoi le préparer sans électricité (cafetière italienne ou à piston)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Un mois, en paquets fermés ou sous vide",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Trois mois, dont du café en grains et un moulin manuel",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Six mois en rotation, une part réservée à l'échange",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14201,35 +15250,45 @@
      "contents": "Une petite bouteille pour un moment à fêter",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Cinq mignonettes, faciles à offrir",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Dix mignonettes et une bouteille pour les grandes occasions",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Une vingtaine de mignonettes variées, rangées hors de portée des enfants",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Réserve tenue à jour, sous clé, hors de portée des mineurs",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14253,35 +15312,45 @@
      "contents": "Une semaine de substituts nicotiniques (patchs, gommes ou pastilles) pour chaque fumeur",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Deux semaines de substituts, dosage vu avec un pharmacien",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Un mois de substituts : patch pour le fond et forme orale pour les envies soudaines",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Un mois de substituts et un accompagnement possible à distance (Tabac info service, 39 89)",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Sevrage engagé ou réussi avec un professionnel de santé, substituts gardés en réserve contre les rechutes",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14307,35 +15376,45 @@
      "objectives": [
       "defense.armes_regle"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Coffre-fort ou armoire forte fixée au mur, verrou de pontet, clés hors de portée des enfants",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Licence de tir en club et pratique encadrée régulière",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Entretien et nettoyage maîtrisés, munitions stockées au sec dans les quantités permises par le titre",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Formation à la sécurité renouvelée, transport conforme et titre, certificat médical et compte SIA toujours à jour",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14363,14 +15442,18 @@
      "contents": "Judas ou entrebâilleur, porte toujours fermée à clé, même quand on est là",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Judas et entrebâilleur, cylindre de serrure changé à l'emménagement",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
@@ -14379,7 +15462,9 @@
      "objectives": [
       "securite.logement"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
@@ -14388,14 +15473,18 @@
      "objectives": [
       "securite.porte_blindee"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Porte blindée, fenêtres basses protégées (volets, barreaux ou vitrage retardateur) et pièce refuge qui ferme à clé",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14421,28 +15510,36 @@
      "contents": "Alarme personnelle de poche (sirène à goupille) pour chaque adulte",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Éclairage extérieur à détecteur de mouvement et alarmes d'ouverture sur les accès",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Alarme du logement avec sirène intérieure, sur batterie en cas de coupure",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Alarme reliée au téléphone ou à un service de télésurveillance, caméra à l'entrée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
@@ -14451,7 +15548,9 @@
      "objectives": [
       "defense.voisinage"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14479,35 +15578,45 @@
      "objectives": [
       "defense.aerosol"
      ],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Rangée hors de portée des enfants, à un endroit connu des adultes, en dehors de la pièce de confinement",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Formule en gel plutôt qu'en gaz, moins de retombées dans un lieu clos",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Manipulation essayée avec une bombe d'entraînement inerte, date de péremption suivie",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Remplacée avant péremption, et chaque adulte connaît les règles de la légitime défense ; le plan du foyer reste de s'enfermer et d'appeler le 17",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14534,35 +15643,45 @@
      "contents": "Rangée au domicile, à un endroit connu des seuls adultes ; jamais dans le sac ni la voiture",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Rangée hors de portée des enfants, règles de la légitime défense connues de chaque adulte",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Initiation encadrée au bâton de défense : garder la distance, se dégager, ne jamais frapper la tête",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Pratique entretenue en club (bâton de défense, canne de combat) au moins deux fois par an",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Dernier recours seulement : le plan du foyer reste de s'enfermer et d'appeler le 17 sans aller au contact ; règles revues chaque année",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14588,35 +15707,45 @@
      "contents": "Rangé au domicile dans un étui fermé, hors de portée des enfants",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Rangé sous clé, facture conservée",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Chaque adulte sait qu'une lame face à un agresseur désarmé n'est pas proportionnée, et que la fuite passe d'abord",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Initiation encadrée à la défense face à une arme blanche (distance, fuite, protection) suivie en club",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Rangé sous clé, transporté seulement pour un motif légitime (chasse, collection, randonnée), dans un étui fermé au fond du sac",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,
@@ -14644,35 +15773,45 @@
      "contents": "Rangée au domicile, à un endroit connu des seuls adultes",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "commun",
      "contents": "Canne de marche robuste, utilisée et portée comme aide à la marche",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "confirme",
      "contents": "Initiation à la canne de défense ou à la canne de combat dans un club",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "epique",
      "contents": "Pratique entretenue au moins deux fois par an, adaptée à la mobilité de chacun",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     },
     {
      "tier": "legendaire",
      "contents": "Dernier recours seulement : le plan du foyer reste de s'enfermer et d'appeler le 17 sans aller au contact ; règles connues de chaque adulte",
      "min_days": null,
      "objectives": [],
-     "includes": []
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
     }
    ],
    "crisis": false,

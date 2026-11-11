@@ -62,6 +62,7 @@ export interface StockData {
   amount_per_unit: number;
   expires_on: IsoDate | null;
   location?: string | null; // où il est rangé (absent des opérations anciennes)
+  basket?: string | null; // ligne du panier type qu'il remplit (absent des opérations anciennes)
 }
 
 /** Carte d'inventaire possédée (opération item.set) ; `tier` est l'id d'un palier de qualité. */
