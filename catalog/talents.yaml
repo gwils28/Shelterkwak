@@ -10,8 +10,10 @@
 #   row, col : place dans l'arbre (rang 1 à 5, branche à partir de 1) ;
 #   criteria : ce qui prouve qu'on l'a acquis, à vérifier honnêtement avant de cocher ;
 #   requires : talents à acquérir avant (tous), plus bas dans le même arbre ;
-#   objectives : objectifs que ce talent aide à valider. Cocher un talent ne valide rien :
-#                l'objectif garde sa propre validation (date, revalidation).
+#   proves : objectifs que ce talent valide tout seul : le critère couvre tout l'objectif. Un talent
+#            prouve un savoir-faire du foyer, pas un objet possédé (c'est l'inventaire qui le prouve),
+#            ni « chaque membre ». Voir docs/conseil/2026-11-11.md.
+#   objectives : objectifs auxquels ce talent contribue : l'objectif garde sa propre validation.
 
 ranks: [Novice, Apprenti, Compagnon, Expert, Maître]
 
@@ -152,7 +154,7 @@ talents:
     description: "Le vélo multiplie par trois ou quatre la distance parcourue à pied, sans carburant."
     criteria: "20 km à vélo avec 10 kg en sacoches, casque porté, et réparer une crevaison seul."
     requires: [physique.endurance]
-    objectives: [mobilite.velo_pratique]
+    proves: [mobilite.velo_pratique]
 
   - id: physique.randonneur
     specialty: physique
@@ -227,7 +229,7 @@ talents:
     col: 1
     description: "On se prépare à ce qui peut vraiment arriver chez soi."
     criteria: "Le DICRIM de la commune et la fiche Géorisques de l'adresse lus, les risques du foyer listés."
-    objectives: [securite.risques]
+    proves: [securite.risques]
 
   - id: stratege.carte
     specialty: stratege
@@ -237,7 +239,7 @@ talents:
     col: 2
     description: "Sans GPS, la carte papier reste lisible."
     criteria: "Situer sa maison, son travail et l'école sur une carte papier, lire la légende d'une carte IGN ; deux itinéraires d'évacuation et un lieu de rassemblement tracés et connus du foyer."
-    objectives: [mobilite.itineraires]
+    proves: [mobilite.itineraires]
 
   - id: stratege.guide
     specialty: stratege
@@ -247,7 +249,7 @@ talents:
     col: 3
     description: "Les bases officielles : quoi faire avant, pendant et après."
     criteria: "Un guide officiel de préparation aux urgences lu en entier."
-    objectives: [competences.guide]
+    proves: [competences.guide]
 
   - id: stratege.veille
     specialty: stratege
@@ -258,7 +260,8 @@ talents:
     description: "Être prévenu tôt, par des sources fiables, et ne pas relayer les rumeurs."
     criteria: "FR-Alert, Vigicrues et la vigilance Météo-France connus ; une liste de sources fiables et le réflexe de vérifier avant de partager."
     requires: [stratege.risques]
-    objectives: [securite.alertes, communication.sources, securite.pcs]
+    proves: [communication.sources]
+    objectives: [securite.alertes, securite.pcs]
 
   - id: stratege.boussole
     specialty: stratege
@@ -269,7 +272,7 @@ talents:
     description: "Garder le cap la nuit, dans le brouillard ou hors des routes connues."
     criteria: "Suivre un azimut et rejoindre un point à 2 km avec une carte et une boussole."
     requires: [stratege.carte]
-    objectives: [mobilite.orientation]
+    proves: [mobilite.orientation]
 
   - id: stratege.plan_familial
     specialty: stratege
@@ -280,7 +283,7 @@ talents:
     description: "Chacun sait quoi faire, où se retrouver et qui appeler, même séparé."
     criteria: "Plan écrit et partagé : points de rendez-vous, contacts, rôles de chacun, enfants à l'école."
     requires: [stratege.guide]
-    objectives: [securite.plan_familial]
+    proves: [securite.plan_familial]
 
   - id: stratege.scenarios
     specialty: stratege
@@ -301,6 +304,7 @@ talents:
     description: "Un itinéraire tracé sur une carte ne vaut que s'il a été parcouru."
     criteria: "Deux itinéraires d'évacuation vers le lieu de repli reconnus sur le terrain, dont un à pied."
     requires: [stratege.boussole]
+    proves: [mobilite.repli_sans_voiture]
 
   - id: stratege.bibliotheque
     specialty: stratege
@@ -311,7 +315,7 @@ talents:
     description: "Apprendre avant d'en avoir besoin, dans des livres qui marchent sans réseau."
     criteria: "Secourisme, jardinage et réparations étudiés dans des livres papier gardés à la maison."
     requires: [stratege.plan_familial]
-    objectives: [competences.bibliotheque]
+    proves: [competences.bibliotheque]
 
   - id: stratege.decision
     specialty: stratege
@@ -322,7 +326,7 @@ talents:
     description: "La décision la plus lourde d'une crise se prépare à froid, pas dans l'urgence."
     criteria: "Des critères écrits à l'avance pour évacuer ou rester (alertes, seuils, signes sur le terrain), connus de tous les adultes du foyer."
     requires: [stratege.scenarios]
-    objectives: [mobilite.criteres_depart]
+    proves: [mobilite.criteres_depart]
 
   - id: stratege.exercice
     specialty: stratege
@@ -333,7 +337,8 @@ talents:
     description: "Un plan non testé est une hypothèse."
     criteria: "Un exercice de 24 heures sans réseau organisé pour le foyer, suivi d'un retour d'expérience écrit."
     requires: [stratege.scenarios, stratege.itineraires]
-    objectives: [securite.exercice_24h, securite.retex]
+    proves: [securite.exercice_24h]
+    objectives: [securite.retex]
 
   - id: stratege.transmettre
     specialty: stratege
@@ -344,7 +349,7 @@ talents:
     description: "Un quartier préparé protège mieux qu'un foyer préparé seul."
     criteria: "Une séance de sensibilisation animée (voisins, école, association), avec les bases de la préparation."
     requires: [stratege.bibliotheque]
-    objectives: [competences.transmettre]
+    proves: [competences.transmettre]
 
   - id: stratege.maitre
     specialty: stratege
@@ -387,7 +392,7 @@ talents:
     col: 3
     description: "On ne peut aider personne en paniquant."
     criteria: "Une technique de respiration (inspirer 4 s, expirer 6 s) pratiquée et montrée au foyer."
-    objectives: [moral.stress]
+    proves: [moral.stress]
 
   - id: soin.gqs
     specialty: soin
@@ -398,7 +403,7 @@ talents:
     description: "Deux heures pour apprendre à arrêter une hémorragie et masser un cœur."
     criteria: "Formation « Gestes qui sauvent » suivie (2 h, gratuite) ou mieux."
     requires: [soin.alerter]
-    objectives: [sante.gestes_qui_sauvent]
+    proves: [sante.gestes_qui_sauvent]
 
   - id: soin.hygiene
     specialty: soin
@@ -409,7 +414,7 @@ talents:
     description: "Sans eau courante, les maladies viennent de l'eau, des mains et des toilettes."
     criteria: "Rendre une eau potable (ébullition, chlore, filtre), se laver les mains avec peu d'eau, gérer des toilettes sèches."
     requires: [soin.petits_soins]
-    objectives: [eau.savoir_traiter]
+    proves: [eau.savoir_traiter]
 
   - id: soin.ecoute
     specialty: soin
@@ -431,7 +436,7 @@ talents:
     description: "La formation de référence aux premiers secours."
     criteria: "PSC1 (ou équivalent) obtenu, recyclé au moins tous les trois ans."
     requires: [soin.gqs]
-    objectives: [sante.psc1]
+    proves: [sante.psc1]
 
   - id: soin.pharmacie
     specialty: soin
@@ -452,7 +457,7 @@ talents:
     description: "Les premiers secours, version santé mentale : crise d'angoisse, idées suicidaires, choc."
     criteria: "Formation Premiers secours en santé mentale (PSSM) suivie."
     requires: [soin.ecoute]
-    objectives: [moral.pssm]
+    proves: [moral.pssm]
 
   - id: soin.isole
     specialty: soin
@@ -463,7 +468,7 @@ talents:
     description: "Quand les secours mettent des heures à venir : surveiller, immobiliser, évacuer."
     criteria: "PSE1 ou formation de secourisme en milieu isolé (WFA) obtenue."
     requires: [soin.psc1]
-    objectives: [sante.secourisme_avance]
+    proves: [sante.secourisme_avance]
 
   - id: soin.plantes
     specialty: soin
@@ -474,7 +479,7 @@ talents:
     description: "Des remèdes simples pour les petits maux, avec leurs dangers."
     criteria: "Reconnaître et utiliser dix plantes médicinales courantes de sa région, en connaissant leurs sosies toxiques et leurs contre-indications ; jamais à la place d'un traitement, et prudence pour la grossesse, les enfants et les traitements en cours."
     requires: [soin.pharmacie]
-    objectives: [sante.plantes]
+    proves: [sante.plantes]
 
   - id: soin.debriefing
     specialty: soin
@@ -485,7 +490,8 @@ talents:
     description: "Après un événement, repérer ceux qui vont mal et organiser la parole."
     criteria: "Savoir organiser un temps de parole après un événement et repérer qui a besoin d'une aide professionnelle."
     requires: [soin.pssm]
-    objectives: [moral.debriefing, moral.reperer]
+    proves: [moral.reperer]
+    objectives: [moral.debriefing]
 
   - id: soin.maitre
     specialty: soin
@@ -508,7 +514,7 @@ talents:
     col: 1
     description: "Fuite, inondation, incendie : le premier geste est de couper."
     criteria: "Couper l'eau, le gaz et l'électricité en moins de deux minutes, même de nuit."
-    objectives: [abri.coupures]
+    proves: [abri.coupures, eau.robinet_arret]
 
   - id: brico.feu
     specialty: brico
@@ -519,7 +525,7 @@ talents:
     description: "Chaleur, cuisson, eau bouillie : le feu reste la base, s'il est maîtrisé."
     criteria: "Allumer et entretenir un feu en sécurité, à l'endroit autorisé, et l'éteindre complètement."
     requires: [brico.rechaud]
-    objectives: [competences.feu]
+    proves: [competences.feu]
 
   - id: brico.couture
     specialty: brico
@@ -539,7 +545,7 @@ talents:
     description: "Les dépannages qui évitent d'attendre un artisan."
     criteria: "Changer un joint de robinet, remplacer une prise ou un interrupteur au disjoncteur coupé, fixer solidement une étagère."
     requires: [brico.coupures]
-    objectives: [abri.reparations]
+    proves: [abri.reparations]
 
   - id: brico.rechaud
     specialty: brico
@@ -549,7 +555,7 @@ talents:
     col: 2
     description: "Le monoxyde de carbone tue chaque hiver pendant les coupures."
     criteria: "Utiliser réchaud, poêle et groupe électrogène sans risque de monoxyde de carbone : jamais en pièce close, aération, détecteur."
-    objectives: [competences.rechaud]
+    proves: [competences.rechaud]
 
   - id: brico.textile
     specialty: brico
@@ -560,7 +566,7 @@ talents:
     description: "Vêtements, bâches, sacs, tentes : tout s'use plus vite en crise."
     criteria: "Rapiécer un vêtement, réparer une bâche ou une sangle de sac, à la main ou à la machine."
     requires: [brico.couture]
-    objectives: [competences.couture]
+    proves: [competences.couture]
 
   - id: brico.plomberie
     specialty: brico
@@ -601,7 +607,7 @@ talents:
     description: "Eau et électricité qui ne dépendent pas du réseau, installées proprement."
     criteria: "Chiffrer ses besoins en Wh par jour, raccorder un panneau, un régulateur et une batterie, poser un récupérateur d'eau raccordé."
     requires: [brico.plomberie]
-    objectives: [energie.bilan_wh]
+    proves: [energie.bilan_wh]
 
   - id: brico.tronconneuse
     specialty: brico
@@ -613,7 +619,7 @@ talents:
     criteria: "Formation suivie, dégager un arbre tombé avec casque à visière, jambières anti-coupure et gants."
     contexts: [periurbain, rural]
     requires: [brico.bois]
-    objectives: [competences.tronconneuse]
+    proves: [competences.tronconneuse]
 
   - id: brico.mecanique
     specialty: brico
@@ -634,7 +640,7 @@ talents:
     description: "Un savoir-faire assez solide pour dépanner les autres, et l'échanger."
     criteria: "Un artisanat ou une compétence technique pratiqué au point de réparer pour les voisins (menuiserie, plomberie, mécanique, couture)."
     requires: [brico.installations, brico.tronconneuse, brico.mecanique]
-    objectives: [competences.echangeable]
+    proves: [competences.echangeable]
 
   # ======================================================================
   # Cuisto
@@ -657,7 +663,7 @@ talents:
     col: 2
     description: "Une réserve qu'on mange et qu'on renouvelle ne périme jamais."
     criteria: "Premier entré, premier sorti : les réserves se consomment dans l'ordre des dates et se rachètent au fur et à mesure."
-    objectives: [alimentation.rotation]
+    proves: [alimentation.rotation]
 
   - id: cuisto.semis
     specialty: cuisto
@@ -697,7 +703,7 @@ talents:
     description: "Cinq légumes bien maîtrisés valent mieux qu'un grand potager raté."
     criteria: "Cultiver au moins cinq légumes de base jusqu'à la récolte (stage, jardin partagé ou chez soi)."
     requires: [cuisto.semis]
-    objectives: [alimentation.potager_savoir]
+    proves: [alimentation.potager_savoir]
 
   - id: cuisto.semaine
     specialty: cuisto
@@ -708,7 +714,7 @@ talents:
     description: "Le seul vrai test d'une réserve : en vivre."
     criteria: "Cuisiner une semaine entière uniquement avec ses réserves, sans courses."
     requires: [cuisto.rechaud]
-    objectives: [competences.cuisine_stock]
+    proves: [competences.cuisine_stock]
 
   - id: cuisto.conserves
     specialty: cuisto
@@ -719,7 +725,7 @@ talents:
     description: "Garder les récoltes et les promotions des mois durant."
     criteria: "Stériliser des bocaux, lacto-fermenter et déshydrater, en respectant les temps et températures d'une recette fiable ; connaître le botulisme (légumes peu acides, viande, poisson) : couvercle bombé ou odeur suspecte, on jette sans goûter."
     requires: [cuisto.securite]
-    objectives: [alimentation.conservation]
+    proves: [alimentation.conservation]
 
   - id: cuisto.semences
     specialty: cuisto
@@ -730,6 +736,7 @@ talents:
     description: "Des graines reproductibles, c'est le potager de l'année suivante."
     criteria: "Récolter, sécher et garder les graines d'au moins trois légumes reproductibles, et les ressemer."
     requires: [cuisto.potager]
+    proves: [alimentation.semences_autoproduites]
     objectives: [alimentation.semences]
 
   - id: cuisto.sobre
@@ -741,7 +748,7 @@ talents:
     description: "Deux à trois fois moins de combustible : la réserve dure d'autant plus."
     criteria: "Cuisiner régulièrement à la marmite norvégienne, à l'autocuiseur ou au cuiseur solaire."
     requires: [cuisto.semaine]
-    objectives: [energie.cuisson_sobre]
+    proves: [energie.cuisson_sobre]
 
   - id: cuisto.conservation_longue
     specialty: cuisto
@@ -787,7 +794,7 @@ talents:
     col: 1
     description: "La première défense est de ne pas être là."
     criteria: "Règle connue de tout le foyer : face à une agression, on fuit et on alerte (17 ou 112, SMS au 114) ; aucun bien ne vaut un risque."
-    objectives: [defense.fuir_alerter]
+    proves: [defense.fuir_alerter]
 
   - id: protecteur.issues
     specialty: protecteur
@@ -797,7 +804,7 @@ talents:
     col: 2
     description: "Savoir par où sortir, de jour comme de nuit, avant d'en avoir besoin."
     criteria: "Issues de secours du logement et de l'immeuble repérées par tous ; clés, papiers, téléphone et chaussures toujours au même endroit près de la sortie."
-    objectives: [abri.issues, mobilite.depart_rapide]
+    proves: [abri.issues, mobilite.depart_rapide]
 
   - id: protecteur.loi
     specialty: protecteur
@@ -807,7 +814,7 @@ talents:
     col: 3
     description: "Ce que la loi permet, et surtout ce qu'elle ne permet pas."
     criteria: "Chaque adulte connaît les conditions de la légitime défense : attaque injuste et actuelle, riposte nécessaire, immédiate et proportionnée ; défendre un bien seul ne justifie jamais un geste qui peut tuer. Numéros contre les violences connus : 17 ou 112, SMS au 114, 3919, 119."
-    objectives: [defense.legitime_defense, defense.violences]
+    proves: [defense.legitime_defense, defense.violences]
 
   - id: protecteur.vigilance
     specialty: protecteur
@@ -829,7 +836,7 @@ talents:
     description: "Des réserves que tout le monde connaît attirent ceux qui n'en ont pas."
     criteria: "Règle familiale de discrétion sur les réserves et l'équipement, respectée en ligne comme dans le voisinage."
     requires: [protecteur.issues]
-    objectives: [securite.discretion]
+    proves: [securite.discretion]
 
   - id: protecteur.apres
     specialty: protecteur
@@ -840,7 +847,7 @@ talents:
     description: "Ce qu'on fait juste après compte pour la victime comme pour la justice."
     criteria: "Conduite connue : se mettre en sûreté, appeler le 17, ne pas poursuivre, noter les témoins, certificat médical, plainte, France Victimes (116 006)."
     requires: [protecteur.loi]
-    objectives: [defense.apres_agression]
+    proves: [defense.apres_agression]
 
   - id: protecteur.desescalade
     specialty: protecteur
@@ -851,7 +858,7 @@ talents:
     description: "Faire retomber la tension plutôt que gagner la confrontation."
     criteria: "Savoir calmer un conflit : voix posée, distance, laisser une sortie à l'autre, ne pas humilier ; formation ou atelier suivi."
     requires: [protecteur.vigilance]
-    objectives: [securite.desescalade]
+    proves: [securite.desescalade]
 
   - id: protecteur.intrusion
     specialty: protecteur
@@ -862,7 +869,7 @@ talents:
     description: "De nuit chez soi, le plus sûr reste de s'enfermer et d'appeler."
     criteria: "Pièce refuge qui ferme à clé, téléphone chargé à l'intérieur, consigne de ne pas aller au contact ; exercice fait en famille."
     requires: [protecteur.discretion]
-    objectives: [defense.intrusion, defense.exercice_intrusion]
+    proves: [defense.intrusion, defense.exercice_intrusion]
 
   - id: protecteur.initiation
     specialty: protecteur
@@ -873,7 +880,7 @@ talents:
     description: "Se dégager et fuir, pas combattre."
     criteria: "Initiation encadrée suivie (dégagements, chutes, protection), adaptée si besoin (défense assise, canne)."
     requires: [protecteur.apres]
-    objectives: [defense.initiation, defense.initiation_adaptee]
+    proves: [defense.initiation, defense.initiation_adaptee]
 
   - id: protecteur.vulnerables
     specialty: protecteur
@@ -884,7 +891,7 @@ talents:
     description: "Les enfants et les personnes vulnérables ont besoin de consignes à leur mesure."
     criteria: "Consignes apprises par les enfants (adultes de confiance, « un secret qui fait peur se dit », crier et fuir, le 119)."
     requires: [protecteur.desescalade]
-    objectives: [defense.enfants]
+    proves: [defense.enfants]
 
   - id: protecteur.voisinage
     specialty: protecteur
@@ -895,7 +902,8 @@ talents:
     description: "Une intrusion vue et signalée par les voisins s'arrête souvent d'elle-même."
     criteria: "Signal d'alerte convenu avec les voisins (appel, SMS groupé, sifflet) et entraide prévue en cas d'agression ou d'intrusion."
     requires: [protecteur.intrusion]
-    objectives: [defense.voisinage, securite.veille]
+    proves: [defense.voisinage]
+    objectives: [securite.veille]
 
   - id: protecteur.pratique
     specialty: protecteur
@@ -906,7 +914,7 @@ talents:
     description: "Un geste appris une fois s'oublie sous le stress."
     criteria: "Gestes de self-défense entretenus au moins deux fois par an (stage, séances en club, révision encadrée)."
     requires: [protecteur.initiation]
-    objectives: [defense.pratique, defense.pratique_adaptee]
+    proves: [defense.pratique, defense.pratique_adaptee]
 
   - id: protecteur.maitre
     specialty: protecteur
@@ -917,7 +925,7 @@ talents:
     description: "Un foyer où chacun sait éviter, alerter et se mettre à l'abri."
     criteria: "Savoir transmettre au foyer l'évitement, les dégagements et les règles de la légitime défense, et l'avoir fait ; mise en situation encadrée suivie."
     requires: [protecteur.vulnerables, protecteur.voisinage, protecteur.pratique]
-    objectives: [defense.transmission, defense.mise_en_situation]
+    proves: [defense.transmission, defense.mise_en_situation]
 
   # ======================================================================
   # Rassembleur
@@ -930,7 +938,7 @@ talents:
     col: 1
     description: "En crise, l'aide la plus rapide vient de la porte d'à côté."
     criteria: "Connaître au moins deux voisins par leur nom et avoir échangé les numéros."
-    objectives: [communaute.voisins]
+    proves: [communaute.voisins]
 
   - id: rassembleur.proche
     specialty: rassembleur
@@ -940,7 +948,7 @@ talents:
     col: 2
     description: "Quelqu'un de proche qui peut venir, et quelqu'un de loin que tout le monde peut joindre."
     criteria: "Un proche à moins de 30 minutes prévenu qu'il est le contact d'urgence, et un contact hors de la région connu de tous les membres."
-    objectives: [communaute.proche_joignable, communication.contact_externe]
+    proves: [communaute.proche_joignable, communication.contact_externe]
 
   - id: rassembleur.service
     specialty: rassembleur
@@ -960,7 +968,7 @@ talents:
     description: "En canicule ou en coupure, les personnes isolées sont les premières en danger."
     criteria: "Savoir qui, autour de soi, est âgé, malade, isolé ou dépendant d'un appareil, et comment le joindre."
     requires: [rassembleur.voisins]
-    objectives: [communaute.fragiles]
+    proves: [communaute.fragiles]
 
   - id: rassembleur.binome
     specialty: rassembleur
@@ -971,7 +979,7 @@ talents:
     description: "Deux foyers qui s'épaulent tiennent bien plus longtemps qu'un seul."
     criteria: "Accord d'entraide réciproque avec un autre foyer : hébergement, garde des enfants, partage des réserves."
     requires: [rassembleur.proche]
-    objectives: [communaute.binome]
+    proves: [communaute.binome]
 
   - id: rassembleur.annuaire
     specialty: rassembleur
@@ -982,7 +990,7 @@ talents:
     description: "Savoir à qui demander : l'infirmière, le mécanicien, la voisine qui a un puits."
     criteria: "Un annuaire des compétences et des ressources de son réseau, tenu sur papier."
     requires: [rassembleur.service]
-    objectives: [communaute.annuaire]
+    proves: [communaute.annuaire]
 
   - id: rassembleur.tournee
     specialty: rassembleur
@@ -1003,7 +1011,7 @@ talents:
     description: "Un petit groupe de foyers qui se sont mis d'accord à l'avance."
     criteria: "Groupe d'entraide d'au moins trois foyers avec un plan commun (qui aide qui, où se retrouver, quoi mettre en commun)."
     requires: [rassembleur.binome]
-    objectives: [communaute.groupe]
+    proves: [communaute.groupe]
 
   - id: rassembleur.troc
     specialty: rassembleur
@@ -1014,7 +1022,7 @@ talents:
     description: "Quand l'argent manque ou ne sert plus, on échange des biens et des savoir-faire."
     criteria: "Participer à un réseau d'échange local : SEL, gratiferia, troc, monnaie locale."
     requires: [rassembleur.annuaire]
-    objectives: [communaute.troc]
+    proves: [communaute.troc]
 
   - id: rassembleur.reunion
     specialty: rassembleur
@@ -1035,7 +1043,7 @@ talents:
     description: "Être du côté de ceux qui organisent les secours."
     criteria: "Engagé dans la réserve communale de sécurité civile, chez les pompiers volontaires ou dans une association de secours."
     requires: [rassembleur.groupe]
-    objectives: [communaute.engagement]
+    proves: [communaute.engagement]
 
   - id: rassembleur.mutualiser
     specialty: rassembleur
@@ -1046,7 +1054,7 @@ talents:
     description: "Une tronçonneuse, un groupe électrogène, un jardin : pas besoin que chacun ait tout."
     criteria: "Outils, stocks ou jardin mis en commun avec d'autres foyers, avec des règles d'usage écrites."
     requires: [rassembleur.troc]
-    objectives: [communaute.mutualisation]
+    proves: [communaute.mutualisation]
 
   - id: rassembleur.maitre
     specialty: rassembleur
@@ -1079,7 +1087,7 @@ talents:
     col: 2
     description: "Savoir où chercher l'eau autour de chez soi et de ses itinéraires."
     criteria: "Deux sources d'eau brute repérées et accessibles (rivière, source, fontaine), en sachant qu'elle se traite toujours avant de boire."
-    objectives: [eau.sources_identifiees]
+    proves: [eau.sources_identifiees]
 
   - id: pisteur.observer
     specialty: pisteur
@@ -1109,7 +1117,7 @@ talents:
     description: "Une eau claire peut rendre gravement malade."
     criteria: "Préfiltrer, filtrer puis désinfecter une eau brute (ébullition, chlore ou filtre adapté), en connaissant les limites de chaque méthode."
     requires: [pisteur.eau]
-    objectives: [eau.savoir_traiter]
+    proves: [eau.savoir_traiter]
 
   - id: pisteur.cueillette
     specialty: pisteur
@@ -1140,6 +1148,7 @@ talents:
     description: "Allumer un feu quand tout est mouillé, là où c'est permis."
     criteria: "Allumer et entretenir un feu avec du bois humide, sans allume-feu industriel, dans un lieu autorisé, et l'éteindre complètement."
     requires: [pisteur.abri]
+    proves: [competences.feu]
 
   - id: pisteur.champignons
     specialty: pisteur
@@ -1202,7 +1211,8 @@ talents:
     col: 1
     description: "En coupure, la radio FM reste la voix des autorités."
     criteria: "Radio à piles ou à dynamo testée, fréquence de la radio publique locale notée sur papier."
-    objectives: [communication.radio, communication.frequence]
+    proves: [communication.frequence]
+    objectives: [communication.radio]
 
   - id: transmetteur.contacts
     specialty: transmetteur
@@ -1212,7 +1222,7 @@ talents:
     col: 2
     description: "Un téléphone vide ou perdu, et plus aucun numéro en tête."
     criteria: "Contacts essentiels notés sur papier, à la maison et dans chaque sac."
-    objectives: [communication.contacts_papier]
+    proves: [communication.contacts_papier]
 
   - id: transmetteur.sauvegarde
     specialty: transmetteur
@@ -1222,7 +1232,8 @@ talents:
     col: 3
     description: "Papiers, photos, contacts : ce qui n'est que dans le téléphone peut disparaître avec lui."
     criteria: "Documents importants sauvegardés hors ligne (clé ou disque chiffré), et une copie hors de la maison."
-    objectives: [cyber.sauvegarde, cyber.restauration]
+    proves: [cyber.sauvegarde]
+    objectives: [cyber.restauration]
 
   - id: transmetteur.talkies
     specialty: transmetteur
@@ -1244,6 +1255,7 @@ talents:
     description: "Quand le réseau sature, les SMS passent souvent mieux que les appels."
     criteria: "Plan connu de tous : qui appelle qui, SMS plutôt qu'appel, horaires et fréquences convenus avec les proches."
     requires: [transmetteur.contacts]
+    proves: [communication.reseau_local]
 
   - id: transmetteur.hors_ligne
     specialty: transmetteur
@@ -1264,7 +1276,8 @@ talents:
     description: "La CB porte plus loin que les talkies, sans licence."
     criteria: "Poste CB opérationnel, antenne réglée, canaux d'appel et d'urgence connus, un essai de contact réussi ; fréquences et horaires de vacation convenus avec les proches."
     requires: [transmetteur.talkies]
-    objectives: [communication.radio_emission, communication.reseau_local]
+    proves: [communication.reseau_local]
+    objectives: [communication.radio_emission]
 
   - id: transmetteur.messages
     specialty: transmetteur
@@ -1295,7 +1308,7 @@ talents:
     description: "Émettre loin quand les réseaux sont tombés, dans un cadre légal."
     criteria: "Licence de radioamateur obtenue."
     requires: [transmetteur.cb]
-    objectives: [communication.licence]
+    proves: [communication.licence]
 
   - id: transmetteur.relais
     specialty: transmetteur
@@ -1306,7 +1319,7 @@ talents:
     description: "Être celui qui transmet les consignes vérifiées, pas les rumeurs."
     criteria: "Relayer les informations officielles vérifiées pour le quartier (affichage, radio, messages), avec une liste de sources fiables."
     requires: [transmetteur.messages]
-    objectives: [communication.relais, communication.sources]
+    proves: [communication.relais, communication.sources]
 
   - id: transmetteur.energie
     specialty: transmetteur
@@ -1327,4 +1340,4 @@ talents:
     description: "Le quartier reste joint quand tout le reste est tombé."
     criteria: "Réseau radio de secours avec le groupe d'entraide, plan de fréquences et d'horaires, testé au moins tous les six mois."
     requires: [transmetteur.licence, transmetteur.relais, transmetteur.energie]
-    objectives: [communication.reseau_teste]
+    proves: [communication.reseau_teste]

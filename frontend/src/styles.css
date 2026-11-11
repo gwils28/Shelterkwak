@@ -2036,6 +2036,14 @@ ul.articles li.expiring {
 .page-head h1 {
   margin: 0;
 }
+.badge.proof {
+  background: color-mix(in srgb, var(--ok) 16%, transparent);
+  color: var(--ink);
+  border: 1px solid color-mix(in srgb, var(--ok) 45%, transparent);
+}
+.badge.proof a {
+  color: inherit;
+}
 .badge.perso {
   background: var(--accent);
   color: var(--accent-ink);

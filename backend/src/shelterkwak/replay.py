@@ -60,6 +60,8 @@ class State:
     items: dict[str, dict[str, Any]] = field(default_factory=dict)  # cartes possédées, par id d'objet
     talents: dict[str, dict[str, Any]] = field(default_factory=dict)  # talents acquis, par id de talent
     onboarded_at: str | None = None
+    # date (AAAA-MM-JJ) de la dernière déclaration : « item:<id> », « talent:<id> », « stock:<id> »
+    declared: dict[str, str] = field(default_factory=dict)
 
 
 def fmt_qty(x: float) -> str:
@@ -101,6 +103,7 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
         state.notes.clear()
         state.items.clear()
         state.talents.clear()
+        state.declared.clear()
         return "Remise à zéro du foyer", "remise à zéro"
     if t == "onboarding":
         state.household = dict(p["household"])
@@ -109,6 +112,7 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
             state.validations[v["objective_id"]] = dict(v)
         for s in p.get("stock", []):
             state.stock[s["id"]] = dict(s)
+            state.declared[f"stock:{s['id']}"] = op.at[:10]
         n_val, n_stock = len(p.get("validations", [])), len(p.get("stock", []))
         return (
             f"Interview terminée : {n_val} objectif(s) déjà acquis, {n_stock} stock(s) estimé(s)",
@@ -140,6 +144,7 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
     if t == "stock.upsert":
         existed = p["id"] in state.stock
         state.stock[p["id"]] = dict(p)
+        state.declared[f"stock:{p['id']}"] = op.at[:10]
         if existed:
             return f"Stock modifié : {p['name']}", f"modification du stock « {p['name']} »"
         return (
@@ -148,6 +153,7 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
         )
     if t == "stock.delete":
         item = state.stock.pop(p["id"], None)
+        state.declared.pop(f"stock:{p['id']}", None)
         name = item["name"] if item else p["id"]
         return f"Stock retiré : {name}", f"retrait du stock « {name} »"
     if t == "custom.upsert":
@@ -167,19 +173,23 @@ def apply(catalog: Catalog, state: State, op: Op) -> tuple[str, str]:
     if t == "item.set":
         prefix = "Inventaire mis à jour" if p["item_id"] in state.items else "Ajouté à l'inventaire"
         state.items[p["item_id"]] = dict(p)
+        state.declared[f"item:{p['item_id']}"] = op.at[:10]
         label = _item_label(catalog, p["item_id"], p.get("tier"))
         return f"{prefix} : {label}", f"inventaire « {label} »"
     if t == "item.delete":
         state.items.pop(p["item_id"], None)
+        state.declared.pop(f"item:{p['item_id']}", None)
         label = _item_label(catalog, p["item_id"])
         return f"Retiré de l'inventaire : {label}", f"inventaire « {label} » retiré"
     if t == "talent.set":
         prefix = "Talent mis à jour" if p["talent_id"] in state.talents else "Talent acquis"
         state.talents[p["talent_id"]] = dict(p)
+        state.declared[f"talent:{p['talent_id']}"] = op.at[:10]
         name = _talent_name(catalog, p["talent_id"])
         return f"{prefix} : {name}", f"talent « {name} »"
     if t == "talent.delete":
         state.talents.pop(p["talent_id"], None)
+        state.declared.pop(f"talent:{p['talent_id']}", None)
         name = _talent_name(catalog, p["talent_id"])
         return f"Talent retiré : {name}", f"talent « {name} » retiré"
     raise ValueError(f"type d'opération inconnu : {t}")
@@ -190,6 +200,67 @@ def replay(catalog: Catalog, ops: list[Op]) -> State:
     for op in sorted(ops, key=sort_key):
         apply(catalog, state, op)
     return state
+
+
+@dataclass(frozen=True)
+class Proof:
+    """Objectif validé par un objet possédé ou un talent acquis (lien `proves` du catalogue)."""
+
+    objective_id: str
+    kind: str  # "item" | "talent"
+    source_id: str
+    tier: str | None  # niveau de l'objet qui porte le lien (None : l'objet à tout niveau, ou un talent)
+    on: date  # date de la preuve, qui tient lieu de date de validation
+
+
+def proofs(catalog: Catalog, state: State) -> list[Proof]:
+    """Preuves tirées de l'inventaire et des talents, dans l'ordre du catalogue.
+
+    Un objet prouve les objectifs de son niveau et des niveaux inférieurs, à la date de sa dernière
+    déclaration ; si sa « prochaine vérification » (`expires_on`) tombe avant la revalidation de
+    l'objectif, la preuve est antidatée pour expirer avec elle. Une réserve prouve dès qu'un article
+    de sa catégorie est en stock. Un talent prouve à sa date d'acquisition, sinon de déclaration.
+    """
+    by_id = catalog.objectives_by_id
+    rank = {t.id: i for i, t in enumerate(catalog.item_tiers)}
+    out: list[Proof] = []
+    for item in catalog.items:
+        if item.kind == "reserve":
+            lines = [s for s in state.stock.values() if s["category"] == item.category and float(s["quantity"]) > 0]
+            if lines and item.proves:
+                on = max(date.fromisoformat(state.declared[f"stock:{s['id']}"]) for s in lines)
+                out.extend(Proof(oid, "item", item.id, None, on) for oid in item.proves)
+            continue
+        data = state.items.get(item.id)
+        if data is None:
+            continue
+        declared = date.fromisoformat(state.declared[f"item:{item.id}"])
+        check = date.fromisoformat(data["expires_on"]) if data.get("expires_on") else None
+        owned = rank.get(data.get("tier") or "", -1)
+        links: list[tuple[str, str | None]] = [(oid, None) for oid in item.proves]
+        links += [(oid, t.tier) for t in item.tiers if rank[t.tier] <= owned for oid in t.proves]
+        for oid, tier in links:
+            obj = by_id.get(oid)
+            on = declared
+            if obj and obj.revalidate_days and check:
+                on = min(on, check - timedelta(days=obj.revalidate_days))
+            out.append(Proof(oid, "item", item.id, tier, on))
+    for talent in catalog.talents:
+        tdata = state.talents.get(talent.id)
+        if tdata is None:
+            continue
+        on = date.fromisoformat(tdata.get("acquired_on") or state.declared[f"talent:{talent.id}"])
+        out.extend(Proof(oid, "talent", talent.id, None, on) for oid in talent.proves)
+    return out
+
+
+def effective_validations(catalog: Catalog, state: State) -> dict[str, date]:
+    """Validations manuelles et preuves réunies : la plus récente date l'emporte."""
+    out = {oid: date.fromisoformat(v["validated_at"]) for oid, v in state.validations.items()}
+    for p in proofs(catalog, state):
+        if p.objective_id not in out or p.on > out[p.objective_id]:
+            out[p.objective_id] = p.on
+    return out
 
 
 @dataclass
@@ -213,9 +284,7 @@ def inputs(catalog: Catalog, state: State) -> Inputs | None:
         priority_axes=list(h.get("priority_axes", [])),
         goal_level=h.get("goal_level"),
     )
-    validations = [
-        eng.Validation(v["objective_id"], date.fromisoformat(v["validated_at"])) for v in state.validations.values()
-    ]
+    validations = [eng.Validation(oid, on) for oid, on in effective_validations(catalog, state).items()]
     stock = [
         eng.StockLine(
             s["id"],
@@ -241,9 +310,9 @@ def _expirations(catalog: Catalog, state: State, after: date, until: date) -> li
     full = catalog.with_custom(list(state.custom.values()))
     by_id = full.objectives_by_id
     found: dict[date, list[str]] = {}
-    for oid, v in state.validations.items():
+    for oid, on in effective_validations(catalog, state).items():
         obj = by_id.get(oid)
-        expiry = eng.validation_expiry(obj, date.fromisoformat(v["validated_at"])) if obj else None
+        expiry = eng.validation_expiry(obj, on) if obj else None
         if obj and expiry:
             d = expiry + timedelta(days=eng.GRACE_DAYS)  # le tambour tombe à la fin du sursis
             if after < d <= until:

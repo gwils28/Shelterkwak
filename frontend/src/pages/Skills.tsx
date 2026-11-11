@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import type { TalentData } from "../engine/replay";
-import type { Catalog, Talent } from "../engine/types";
+import { type Catalog, linksOf, type Talent } from "../engine/types";
 import { formatDate, STATUS_LABEL } from "../lib/format";
 import { DONE_STATUSES } from "../lib/inventory";
 import { buildTrees, dependentChain, forContext, missingChain, type TalentNode, type TalentState, type Tree, unlocks } from "../lib/talents";
@@ -29,7 +29,7 @@ export function SkillsPage() {
   // Un talent acquis est « à entretenir » quand un objectif lié a expiré ou est en sursis (PSC1, sauvegarde…).
   const stale = useMemo(() => {
     const lapsed = new Set(objectives.filter((o) => o.status === "expired" || o.status === "grace").map((o) => o.id));
-    return new Set(catalog.talents.filter((t) => state.talents.has(t.id) && t.objectives.some((o) => lapsed.has(o))).map((t) => t.id));
+    return new Set(catalog.talents.filter((t) => state.talents.has(t.id) && linksOf(t).some((o) => lapsed.has(o))).map((t) => t.id));
   }, [catalog, objectives, state.talents]);
   const wanted = params.get("spe") ?? rememberedSpecialty();
   const tree = trees.find((t) => t.specialty.id === wanted) ?? trees[0];
@@ -319,7 +319,7 @@ function TalentSheet({
   const { talent, state, data } = node;
   const { specialty } = tree;
   const states = new Map(tree.nodes.map((n) => [n.talent.id, n.state]));
-  const linked = talent.objectives.map((id) => objectives.find((o) => o.id === id)).filter((o): o is Objective => !!o);
+  const linked = linksOf(talent).map((id) => objectives.find((o) => o.id === id)).filter((o): o is Objective => !!o);
   const next = unlocks(catalog, talent.id);
 
   return (
@@ -367,7 +367,7 @@ function TalentSheet({
           </div>
         )}
 
-        <TalentObjectives objectives={linked} acquired={state === "acquired"} />
+        <TalentObjectives objectives={linked} proves={talent.proves} acquired={state === "acquired"} />
 
         {state === "acquired" ? (
           <AcquiredForm key={data?.acquired_on ?? ""} talent={talent} data={data!} catalog={catalog} acquired={acquired} onDone={() => ref.current?.close()} />
@@ -413,7 +413,7 @@ function TalentChips({
   );
 }
 
-function TalentObjectives({ objectives, acquired }: { objectives: Objective[]; acquired: boolean }) {
+function TalentObjectives({ objectives, proves, acquired }: { objectives: Objective[]; proves: string[]; acquired: boolean }) {
   if (!objectives.length) return null;
   return (
     <section className="linked">
@@ -421,13 +421,23 @@ function TalentObjectives({ objectives, acquired }: { objectives: Objective[]; a
       <ul>
         {objectives.map((o) => {
           const done = DONE_STATUSES.includes(o.status);
+          const auto = proves.includes(o.id);
           return (
             <li key={o.id} className={acquired && !done ? "covered" : ""}>
               <span className={`badge status-${o.status}`}>{STATUS_LABEL[o.status]}</span>
               <span className="linked-title">
                 {o.title} <span className="hint">· niveau {o.level}</span>
               </span>
-              {acquired && !done && o.status !== "na" && (
+              {auto ? (
+                <span className="badge proof" title="Acquérir ce talent valide l'objectif, sans autre action">
+                  ✓ auto
+                </span>
+              ) : (
+                <span className="badge soft" title="Le talent y contribue : l'objectif se valide à part">
+                  Contribue
+                </span>
+              )}
+              {acquired && !done && !auto && o.status !== "na" && (
                 <button className="link" onClick={() => void actions.validate(o.id)}>
                   Valider
                 </button>
@@ -437,9 +447,8 @@ function TalentObjectives({ objectives, acquired }: { objectives: Objective[]; a
         })}
       </ul>
       <p className="hint">
-        {acquired
-          ? "Cocher un talent ne valide rien tout seul : valide l'objectif s'il est rempli pour ton foyer."
-          : "Ce talent aide à remplir ces objectifs du foyer."}
+        « ✓ auto » : acquérir ce talent valide l'objectif, et le retirer le fait retomber. « Contribue » : le talent aide, mais
+        {acquired ? " valide l'objectif toi-même s'il est rempli pour tout ton foyer." : " l'objectif se valide à part."}
       </p>
     </section>
   );

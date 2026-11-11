@@ -6,7 +6,7 @@ import { autonomyProjection, buildCards, byLocation, datedEntries, expiriesByMon
 
 const item = (id: string) => CATALOG.items.find((i) => i.id === id)!;
 const objective = (id: string, status: Objective["status"]): Objective =>
-  ({ ...CATALOG.objectives.find((o) => o.id === id)!, status, progress: 0, validated_at: null, expires_on: null, source: null });
+  ({ ...CATALOG.objectives.find((o) => o.id === id)!, status, progress: 0, validated_at: null, expires_on: null, source: null, proofs: [] });
 
 describe("inventaire", () => {
   it("cumule les objectifs des paliers jusqu'au palier choisi", () => {

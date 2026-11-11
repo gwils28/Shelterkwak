@@ -181,3 +181,21 @@ déploiement sur Raspberry Pi.
   telle quelle (comme `location`). Une ligne est complète quand ses articles non périmés atteignent
   la cible. « Ajouter » préremplit l'article (quantité manquante, date estimée à corriger avec
   l'emballage) ; « Modifier » relie un article existant. Un id de ligne ne se renomme pas.
+
+## Preuves : objets et talents qui valident des objectifs (2026-11-11)
+
+Voir `docs/conseil/2026-11-11.md` pour les principes et l'audit des liens.
+
+- Catalogue : `proves` (l'objet, un niveau ou un talent valide l'objectif tout seul) à côté de
+  `objectives` (il y contribue). Un objet ne prouve ni une compétence ni un stock ; un lien n'est
+  jamais dans les deux listes. L'ordre des niveaux ignore un objectif déjà lié plus bas, qu'un
+  niveau supérieur peut prouver (lait infantile : commun contribue, épique prouve).
+- Les preuves ne sont pas des opérations : `proofs()` les recalcule à chaque rejeu. L'état garde
+  la date de la dernière déclaration de chaque objet, talent et article (`declared`).
+- Date d'une preuve : déclaration ou mise à jour de l'objet ; si `expires_on` (« prochaine
+  vérification ») tombe avant la revalidation de l'objectif, la preuve est antidatée pour expirer
+  avec lui. Talent : `acquired_on`, sinon la déclaration. Réserve : dernier article déclaré de la
+  catégorie, tant qu'un article est en stock.
+- Validation manuelle et preuve : la plus récente compte. Retirer l'objet fait retomber
+  l'objectif, sauf validation manuelle. Les objets déjà déclarés valident leurs objectifs dès la
+  mise à jour, historique compris.

@@ -8792,6 +8792,7 @@
    "category": "eau",
    "description": "Bouteilles, packs et bidons alimentaires remplis. Compte 4 L par adulte et par jour (boisson, cuisine, hygiène minimale).",
    "caution": "",
+   "proves": [],
    "objectives": [
     "eau.rotation"
    ],
@@ -8800,6 +8801,7 @@
      "tier": "rustique",
      "contents": "24 heures pour tout le foyer",
      "min_days": 1.0,
+     "proves": [],
      "objectives": [
       "eau.stock_24h"
      ],
@@ -8811,6 +8813,7 @@
      "tier": "commun",
      "contents": "Le temps que les secours s'organisent",
      "min_days": 3.0,
+     "proves": [],
      "objectives": [
       "eau.stock_3j"
      ],
@@ -8822,6 +8825,7 @@
      "tier": "confirme",
      "contents": "Deux semaines de coupure",
      "min_days": 14.0,
+     "proves": [],
      "objectives": [
       "eau.stock_14j"
      ],
@@ -8833,6 +8837,7 @@
      "tier": "epique",
      "contents": "Un mois sans eau du réseau",
      "min_days": 30.0,
+     "proves": [],
      "objectives": [
       "eau.stock_30j"
      ],
@@ -8844,6 +8849,7 @@
      "tier": "legendaire",
      "contents": "Deux mois et plus",
      "min_days": 60.0,
+     "proves": [],
      "objectives": [
       "eau.stock_60j"
      ],
@@ -8866,15 +8872,17 @@
    "category": null,
    "description": "Pastilles de chlore (NaDCC) ou de dioxyde de chlore, ou eau de Javel sans additif, pour désinfecter une eau claire (30 min d'attente). Une eau trouble se filtre d'abord. Les pastilles à l'argent conservent l'eau mais ne la purifient pas.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un flacon d'eau de Javel à 2,6 % sans additif ni parfum, renouvelé chaque année, dosage des autorités sanitaires noté dessus",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "eau.pastilles"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -8883,6 +8891,7 @@
      "tier": "commun",
      "contents": "Pastilles de chlore pour 50 L",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -8892,6 +8901,7 @@
      "tier": "confirme",
      "contents": "Pastilles pour 200 L et Javel de secours",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -8901,6 +8911,7 @@
      "tier": "epique",
      "contents": "Pastilles pour 1 000 L, dans le sac et à la maison",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -8910,6 +8921,7 @@
      "tier": "legendaire",
      "contents": "Traitement pour plusieurs milliers de litres (pastilles, Javel, chlore en poudre) et bandelettes de test du chlore",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -8930,6 +8942,7 @@
    "category": null,
    "description": "Vides et propres, prêts à remplir dès une alerte de coupure. 10 L au plus si l'eau se monte à pied.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "eau.contenants",
     "eau.portage",
@@ -8940,6 +8953,7 @@
      "tier": "rustique",
      "contents": "Bouteilles vides lavées, gardées de côté",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -8949,6 +8963,9 @@
      "tier": "commun",
      "contents": "Deux bidons alimentaires de 10 L",
      "min_days": null,
+     "proves": [
+      "eau.contenants"
+     ],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -8958,6 +8975,7 @@
      "tier": "confirme",
      "contents": "Un bidon de 10 L par personne, avec robinet",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -8967,6 +8985,7 @@
      "tier": "epique",
      "contents": "100 L de contenants pliables ou rigides, et un sac de baignoire (WaterBOB)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -8976,6 +8995,7 @@
      "tier": "legendaire",
      "contents": "Cuve alimentaire de 500 L ou plus, remplie et renouvelée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -8996,6 +9016,7 @@
    "category": null,
    "description": "Pour rapporter l'eau d'un point de distribution sans s'épuiser.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "eau.portage",
     "eau.plan_appro",
@@ -9006,6 +9027,7 @@
      "tier": "rustique",
      "contents": "Sac à dos et sangles pour porter deux bidons",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9015,6 +9037,7 @@
      "tier": "commun",
      "contents": "Chariot de courses solide",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9024,6 +9047,7 @@
      "tier": "confirme",
      "contents": "Diable pliant avec sangles, 50 kg et plus",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9033,6 +9057,7 @@
      "tier": "epique",
      "contents": "Chariot monte-escalier à trois roues",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9042,6 +9067,7 @@
      "tier": "legendaire",
      "contents": "Remorque de vélo ou charrette tout-terrain, 100 L et plus",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9062,15 +9088,17 @@
    "category": null,
    "description": "Retient bactéries et parasites d'une eau brute (rivière, citerne). Ne retire pas les produits chimiques.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Paille filtrante individuelle, cartouche valide",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "eau.filtre"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9079,6 +9107,7 @@
      "tier": "commun",
      "contents": "Gourde ou filtre portable pour chacun, cartouches de rechange",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9088,6 +9117,7 @@
      "tier": "confirme",
      "contents": "Filtre gravitaire familial (10 L et plus)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9097,9 +9127,10 @@
      "tier": "epique",
      "contents": "Filtre gravitaire céramique grande capacité (plusieurs milliers de litres) et cartouches de rechange",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "eau.filtre_gravitaire"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9108,6 +9139,7 @@
      "tier": "legendaire",
      "contents": "Filtre grande capacité, préfiltre et chloration de finition pour les virus, que le filtre laisse passer",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9128,12 +9160,14 @@
    "category": null,
    "description": "Eau d'hygiène, de WC et d'arrosage ; à filtrer et traiter avant de la boire.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Bacs et seaux sous une gouttière",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9143,6 +9177,7 @@
      "tier": "commun",
      "contents": "Cuve de 200 L sur une descente de gouttière",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9152,9 +9187,10 @@
      "tier": "confirme",
      "contents": "Cuve de 500 L ou plus, nettoyée avant l'été",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "eau.recuperateur"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9163,6 +9199,7 @@
      "tier": "epique",
      "contents": "Plusieurs cuves reliées (1 m³ et plus), filtre de premier rinçage",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9172,9 +9209,10 @@
      "tier": "legendaire",
      "contents": "Citerne enterrée de 5 m³ ou plus, eau analysée",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "eau.source_autonome"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9194,12 +9232,14 @@
    "category": null,
    "description": "Au-delà de quelques semaines, ce n'est plus le stock qui compte mais la capacité de renouveler l'eau : une source, un puits, une fontaine. Toute eau brute se filtre puis se désinfecte.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Point d'eau repéré et testé à pied (fontaine, source, point de distribution), ou eau du puits analysée",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "eau.analyse",
       "eau.relais_ville",
@@ -9213,6 +9253,9 @@
      "tier": "commun",
      "contents": "Deux sources repérées, trajet de portage testé avec les bidons",
      "min_days": null,
+     "proves": [
+      "eau.sources_identifiees"
+     ],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9222,9 +9265,10 @@
      "tier": "confirme",
      "contents": "Pompe manuelle ou alimentée hors réseau sur la source",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "eau.pompe_manuelle"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9233,9 +9277,10 @@
      "tier": "epique",
      "contents": "Source autonome : puits, forage ou citerne d'au moins 5 m³, eau analysée",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "eau.source_autonome"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9244,10 +9289,11 @@
      "tier": "legendaire",
      "contents": "Eau couvrant les besoins de l'année (source propre ou accès convenu chez un proche ou à la commune), traitement compris",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "eau.acces_hors_reseau",
       "eau.autonomie_annuelle"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9267,16 +9313,19 @@
    "category": "alimentation",
    "description": "Conserves, féculents, aliments secs. Les calories sont sur l'étiquette (riz 1 kg ≈ 3 600 kcal, boîte de lentilles 400 g ≈ 400 kcal).",
    "caution": "",
+   "proves": [
+    "alimentation.inventaire"
+   ],
    "objectives": [
     "alimentation.rotation",
-    "alimentation.sans_cuisson",
-    "alimentation.inventaire"
+    "alimentation.sans_cuisson"
    ],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "24 heures pour tout le foyer",
      "min_days": 1.0,
+     "proves": [],
      "objectives": [
       "alimentation.stock_24h"
      ],
@@ -9288,6 +9337,7 @@
      "tier": "commun",
      "contents": "Trois jours sans cuisson : le panier type ci-dessous",
      "min_days": 3.0,
+     "proves": [],
      "objectives": [
       "alimentation.stock_3j"
      ],
@@ -9448,6 +9498,7 @@
      "tier": "confirme",
      "contents": "Deux semaines sans courses",
      "min_days": 14.0,
+     "proves": [],
      "objectives": [
       "alimentation.stock_14j"
      ],
@@ -9459,6 +9510,7 @@
      "tier": "epique",
      "contents": "Un trimestre",
      "min_days": 90.0,
+     "proves": [],
      "objectives": [
       "alimentation.stock_90j"
      ],
@@ -9470,6 +9522,7 @@
      "tier": "legendaire",
      "contents": "Six mois et plus",
      "min_days": 180.0,
+     "proves": [],
      "objectives": [
       "alimentation.stock_180j"
      ],
@@ -9492,12 +9545,14 @@
    "category": "cuisson",
    "description": "Cartouches de gaz, alcool à brûler, bois sec. Une cartouche de 250 g fait environ 3 jours-personne.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une journée de repas chauds",
      "min_days": 1.0,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9507,6 +9562,7 @@
      "tier": "commun",
      "contents": "Trois jours",
      "min_days": 3.0,
+     "proves": [],
      "objectives": [
       "energie.cuisson_3j"
      ],
@@ -9518,6 +9574,7 @@
      "tier": "confirme",
      "contents": "Deux semaines",
      "min_days": 14.0,
+     "proves": [],
      "objectives": [
       "energie.cuisson_14j"
      ],
@@ -9529,6 +9586,7 @@
      "tier": "epique",
      "contents": "Un mois",
      "min_days": 30.0,
+     "proves": [],
      "objectives": [
       "energie.cuisson_30j"
      ],
@@ -9540,6 +9598,7 @@
      "tier": "legendaire",
      "contents": "Trois mois et plus",
      "min_days": 90.0,
+     "proves": [],
      "objectives": [
       "energie.cuisson_90j"
      ],
@@ -9562,12 +9621,14 @@
    "category": null,
    "description": "Pour cuisiner sans gaz ni électricité du réseau. Toujours à l'extérieur ou fenêtre ouverte (monoxyde de carbone).",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Réchaud à alcool ou chauffe-plat",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9577,6 +9638,7 @@
      "tier": "commun",
      "contents": "Réchaud à cartouche de gaz, un feu",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9586,6 +9648,7 @@
      "tier": "confirme",
      "contents": "Réchaud deux feux ou à gaz en bouteille, avec pare-vent",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9595,6 +9658,7 @@
      "tier": "epique",
      "contents": "Réchaud multi-combustible (bois, alcool, gaz) ou rocket stove, et cuiseur solaire",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9604,6 +9668,7 @@
      "tier": "legendaire",
      "contents": "Cuisinière ou poêle à bois qui cuisine et chauffe",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9624,15 +9689,17 @@
    "category": null,
    "description": "L'outil qu'on oublie et sans lequel les conserves restent fermées.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un ouvre-boîte manuel",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "alimentation.ouvre_boite"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9641,6 +9708,7 @@
      "tier": "commun",
      "contents": "Deux ouvre-boîtes (maison et sac) et un couteau",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9650,6 +9718,7 @@
      "tier": "confirme",
      "contents": "Couverts, gamelle et quart par personne",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9659,6 +9728,7 @@
      "tier": "epique",
      "contents": "Batterie de camping (casserole, poêle, bouilloire) et pinces",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9668,6 +9738,7 @@
      "tier": "legendaire",
      "contents": "Cuisine nomade complète : marmite en fonte, ustensiles de conserve",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9688,12 +9759,14 @@
    "category": null,
    "description": "Lait infantile, eau adaptée aux nourrissons, petits pots, couches et lingettes.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "24 heures",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9703,6 +9776,7 @@
      "tier": "commun",
      "contents": "3 jours, dont du lait infantile liquide prêt à l'emploi (sans eau ni stérilisation)",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "alimentation.bebe_3j"
      ],
@@ -9714,9 +9788,10 @@
      "tier": "confirme",
      "contents": "14 jours",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "alimentation.bebe"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9725,6 +9800,9 @@
      "tier": "epique",
      "contents": "1 mois, biberons stérilisables à froid et porte-bébé",
      "min_days": null,
+     "proves": [
+      "alimentation.bebe_3j"
+     ],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9734,6 +9812,7 @@
      "tier": "legendaire",
      "contents": "3 mois, taille suivante comprise",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9754,12 +9833,14 @@
    "category": null,
    "description": "Croquettes ou pâtée, litière, et le traitement habituel de l'animal.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "3 jours",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9769,6 +9850,7 @@
      "tier": "commun",
      "contents": "7 jours",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9778,9 +9860,10 @@
      "tier": "confirme",
      "contents": "14 jours",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "alimentation.animaux"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9789,6 +9872,7 @@
      "tier": "epique",
      "contents": "1 mois, traitement compris",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9798,6 +9882,7 @@
      "tier": "legendaire",
      "contents": "3 mois, traitement compris",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9818,12 +9903,14 @@
    "category": null,
    "description": "Bocaux, joints et couvercles neufs, sel, vinaigre, sucre pour conserver une récolte.",
    "caution": "Botulisme : les conserves maison de légumes peu acides (haricots, petits pois, champignons), de viande ou de poisson exigent le temps et la température de stérilisation indiqués par une recette fiable. Couvercle bombé, liquide trouble ou odeur suspecte : on jette sans goûter.",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Quelques bocaux de récupération",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9833,6 +9920,7 @@
      "tier": "commun",
      "contents": "20 bocaux et joints neufs",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9842,6 +9930,7 @@
      "tier": "confirme",
      "contents": "50 bocaux, stérilisateur, sel et vinaigre",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9851,9 +9940,10 @@
      "tier": "epique",
      "contents": "Intrants pour une saison, déshydrateur",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "alimentation.intrants"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9862,6 +9952,7 @@
      "tier": "legendaire",
      "contents": "Atelier de conservation : autoclave, fumoir ou cave, intrants pour une année",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9882,12 +9973,14 @@
    "category": null,
    "description": "Variétés non hybrides, dont on peut garder les graines d'une année sur l'autre.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Aromatiques et salades pour le balcon",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9897,6 +9990,7 @@
      "tier": "commun",
      "contents": "Dix variétés potagères",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9906,9 +10000,10 @@
      "tier": "confirme",
      "contents": "Vingt variétés non hybrides, conservées au frais et au sec",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "alimentation.semences"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9917,6 +10012,7 @@
      "tier": "epique",
      "contents": "Semences pour une saison complète de potager, dont légumineuses et céréales",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9926,9 +10022,10 @@
      "tier": "legendaire",
      "contents": "Grainothèque autoproduite d'au moins trois légumes",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "alimentation.semences_autoproduites"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9948,12 +10045,14 @@
    "category": null,
    "description": "Sans gluten, sans allergène, adaptés au diabète : en crise, on ne trouve plus ces produits. Étiquettes vérifiées à chaque achat.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Trois jours d'aliments compatibles",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9963,6 +10062,7 @@
      "tier": "commun",
      "contents": "Une semaine",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9972,9 +10072,10 @@
      "tier": "confirme",
      "contents": "Deux semaines, étiquettes vérifiées",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "alimentation.regimes"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -9983,6 +10084,7 @@
      "tier": "epique",
      "contents": "Un mois, et des recettes de crise adaptées",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -9992,6 +10094,7 @@
      "tier": "legendaire",
      "contents": "Trois mois, compris dans la rotation des réserves",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10012,6 +10115,7 @@
    "category": null,
    "description": "Cuire avec deux à trois fois moins de combustible : la réserve dure plus longtemps et on respire moins de fumées.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "energie.cuisson_sobre"
    ],
@@ -10020,6 +10124,7 @@
      "tier": "rustique",
      "contents": "Un couvercle pour chaque casserole, cuisson à l'étouffée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10029,6 +10134,7 @@
      "tier": "commun",
      "contents": "Marmite norvégienne (caisse isolée et couverture) qui finit la cuisson sans feu",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10038,6 +10144,7 @@
      "tier": "confirme",
      "contents": "Autocuiseur et marmite norvégienne",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10047,6 +10154,7 @@
      "tier": "epique",
      "contents": "Cuiseur solaire en plus",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10056,6 +10164,7 @@
      "tier": "legendaire",
      "contents": "Cuisine sobre complète : marmite norvégienne, autocuiseur, four solaire et réchaud à bois à haut rendement",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10076,12 +10185,14 @@
    "category": null,
    "description": "Lors d'une coupure, c'est le contenu du frigo qu'on perd en premier. Un congélateur fermé garde le froid environ 24 à 48 heures, un réfrigérateur environ 4 heures.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Glacière et pains de glace",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10091,6 +10202,7 @@
      "tier": "commun",
      "contents": "Bouteilles d'eau gelées qui remplissent les vides du congélateur",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10100,6 +10212,7 @@
      "tier": "confirme",
      "contents": "Thermomètres de frigo et de congélateur, liste de ce qu'on jette au-delà de 4 heures",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10109,6 +10222,7 @@
      "tier": "epique",
      "contents": "Cave, cellier ou garde-manger ventilé pour les produits qui se gardent au frais",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10118,6 +10232,7 @@
      "tier": "legendaire",
      "contents": "Réfrigérateur ou congélateur alimenté au solaire",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10138,12 +10253,14 @@
    "category": null,
    "description": "Un stock de longue durée repose sur des céréales en grain, qui se gardent bien plus longtemps que la farine.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Moulin à café manuel pour de petites quantités",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10153,6 +10270,7 @@
      "tier": "commun",
      "contents": "Moulin à grain manuel",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10162,6 +10280,7 @@
      "tier": "confirme",
      "contents": "Moulin manuel à meules de pierre, céréales en grain stockées",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10171,6 +10290,7 @@
      "tier": "epique",
      "contents": "Moulin fixé sur un plan de travail, trois mois de grain",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10180,6 +10300,7 @@
      "tier": "legendaire",
      "contents": "Moulin et fournil : pain au levain sans boulangerie",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10200,12 +10321,14 @@
    "category": null,
    "description": "Produire une part de ses légumes, sur un balcon, une parcelle ou un jardin.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Bacs, terreau, arrosoir et aromatiques",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10215,6 +10338,7 @@
      "tier": "commun",
      "contents": "Bêche ou grelinette, râteau, arrosoir, paillage",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10224,6 +10348,7 @@
      "tier": "confirme",
      "contents": "Composteur, goutte-à-goutte et réserve d'arrosage",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "eau.secheresse"
      ],
@@ -10235,8 +10360,10 @@
      "tier": "epique",
      "contents": "Potager ou parcelle productive, serre ou tunnel",
      "min_days": null,
+     "proves": [
+      "alimentation.balcon"
+     ],
      "objectives": [
-      "alimentation.balcon",
       "alimentation.potager"
      ],
      "includes": [],
@@ -10247,6 +10374,7 @@
      "tier": "legendaire",
      "contents": "De quoi produire la moitié des besoins : outillage complet, serre, poulailler",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "alimentation.production_50",
       "alimentation.circuit_25"
@@ -10270,6 +10398,7 @@
    "category": null,
    "description": "Barres ou rations compactes, prêtes sans cuisson, qui se gardent cinq ans et plus. Pour le sac, la voiture ou les premiers jours, en complément de la réserve de vivres.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "alimentation.sans_cuisson",
     "mobilite.sac"
@@ -10279,6 +10408,7 @@
      "tier": "rustique",
      "contents": "Une ration de 24 h dans le sac d'un adulte",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10288,6 +10418,7 @@
      "tier": "commun",
      "contents": "Une ration de 24 h par personne du foyer",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10297,6 +10428,7 @@
      "tier": "confirme",
      "contents": "Trois jours de rations par personne, réparties entre la maison et les sacs",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10306,6 +10438,7 @@
      "tier": "epique",
      "contents": "Trois jours par personne dans les sacs et une réserve dans la voiture, dates notées",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10315,6 +10448,7 @@
      "tier": "legendaire",
      "contents": "Une semaine par personne, rations variées (barres, plats lyophilisés) et adaptées aux régimes du foyer, en rotation",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10335,6 +10469,7 @@
    "category": "traitements",
    "description": "Boîtes de traitement régulier en avance, comptées en jours pour chaque membre traité.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "sante.medicaments_chaleur",
     "sante.traitements_plan"
@@ -10344,6 +10479,7 @@
      "tier": "rustique",
      "contents": "Trois jours d'avance",
      "min_days": 3.0,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10353,6 +10489,7 @@
      "tier": "commun",
      "contents": "Une semaine",
      "min_days": 7.0,
+     "proves": [],
      "objectives": [
       "sante.traitements_7j"
      ],
@@ -10364,6 +10501,7 @@
      "tier": "confirme",
      "contents": "Un mois",
      "min_days": 30.0,
+     "proves": [],
      "objectives": [
       "sante.traitements_30j"
      ],
@@ -10375,6 +10513,7 @@
      "tier": "epique",
      "contents": "Trois mois",
      "min_days": 90.0,
+     "proves": [],
      "objectives": [
       "sante.traitements_90j"
      ],
@@ -10386,6 +10525,7 @@
      "tier": "legendaire",
      "contents": "Six mois (si le médecin l'autorise)",
      "min_days": 180.0,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10406,17 +10546,17 @@
    "category": null,
    "description": "À vérifier une fois par an (dates, ciseaux, piles du thermomètre). Le matériel avancé ne sert qu'à qui a appris le geste.",
    "caution": "",
-   "objectives": [
-    "sante.secourisme_avance"
-   ],
+   "proves": [],
+   "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Les soins de tous les jours",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.pharmacie_base"
      ],
+     "objectives": [],
      "includes": [
       "Antalgique (paracétamol)",
       "Pansements de tailles variées",
@@ -10429,9 +10569,10 @@
      "tier": "commun",
      "contents": "La trousse complète recommandée",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.trousse"
      ],
+     "objectives": [],
      "includes": [
       "Compresses stériles et bande extensible",
       "Sparadrap",
@@ -10449,6 +10590,7 @@
      "tier": "confirme",
      "contents": "Une trousse à la maison, une dans chaque sac",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Une trousse compacte dans chaque sac d'évacuation",
@@ -10465,9 +10607,10 @@
      "tier": "epique",
      "contents": "Pharmacie étendue pour tenir sans pharmacie",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.pharmacie"
      ],
+     "objectives": [],
      "includes": [
       "Antidiarrhéique (lopéramide : pas avant 15 ans, ni en cas de fièvre ou de sang dans les selles)",
       "Antihistaminique",
@@ -10484,6 +10627,7 @@
      "tier": "legendaire",
      "contents": "Prendre en charge un blessé plusieurs jours (matériel pour une personne formée)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Garrot tourniquet et pansement compressif d'urgence, à n'utiliser qu'après une formation",
@@ -10510,12 +10654,14 @@
    "category": null,
    "description": "Pour une épidémie ou un nettoyage après sinistre. Un FFP2 arrête les particules, pas le monoxyde de carbone ni les gaz : face à une fumée toxique, on se confine. Pas de taille enfant certifiée.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Quelques masques chirurgicaux et une boîte de gants",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10525,6 +10671,7 @@
      "tier": "commun",
      "contents": "FFP2 pour 3 jours par personne",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10534,9 +10681,10 @@
      "tier": "confirme",
      "contents": "14 jours de confinement, avec gel et thermomètre",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.masques_pandemie"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -10545,9 +10693,10 @@
      "tier": "epique",
      "contents": "La durée d'une épidémie (plusieurs semaines) pour chacun",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.masques"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -10556,6 +10705,7 @@
      "tier": "legendaire",
      "contents": "Demi-masques à cartouches, lunettes étanches, combinaisons jetables",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10576,12 +10726,14 @@
    "category": null,
    "description": "De quoi rester propre sans eau courante : c'est la première protection contre les maladies.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "L'essentiel pour une journée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Savon",
@@ -10595,9 +10747,10 @@
      "tier": "commun",
      "contents": "Trois jours sans eau courante",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.hygiene_3j"
      ],
+     "objectives": [],
      "includes": [
       "Gel hydroalcoolique",
       "Lingettes",
@@ -10612,6 +10765,7 @@
      "tier": "confirme",
      "contents": "Deux semaines",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Papier toilette et savon pour deux semaines",
@@ -10626,6 +10780,7 @@
      "tier": "epique",
      "contents": "Trois mois, linge et ménage compris",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Lessive à la main et pinces à linge",
@@ -10640,6 +10795,7 @@
      "tier": "legendaire",
      "contents": "Hygiène autonome et durable",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Douche solaire ou de camping",
@@ -10665,15 +10821,17 @@
    "category": null,
    "description": "Sans eau courante, l'hygiène devient le premier risque sanitaire.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Le minimum pour une coupure d'eau",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.toilettes"
      ],
+     "objectives": [],
      "includes": [
       "Seau solide",
       "Sacs poubelle épais",
@@ -10686,6 +10844,7 @@
      "tier": "commun",
      "contents": "Un vrai poste de toilettes",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Seau à couvercle hermétique",
@@ -10699,6 +10858,7 @@
      "tier": "confirme",
      "contents": "Deux semaines",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Réserve de sacs et de sciure pour deux semaines",
@@ -10711,6 +10871,7 @@
      "tier": "epique",
      "contents": "Toilettes de camping chimiques ou à séparation",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Toilettes portables à séparation d'urine",
@@ -10723,9 +10884,10 @@
      "tier": "legendaire",
      "contents": "Assainissement autonome",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.assainissement"
      ],
+     "objectives": [],
      "includes": [
       "Toilettes sèches installées",
       "Composteur dédié"
@@ -10748,12 +10910,14 @@
    "category": null,
    "description": "Retirés en pharmacie pour chaque membre si le foyer est dans le périmètre d'un site nucléaire. Ne se prennent que sur consigne du préfet.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Bon de retrait reçu, adresse de la pharmacie notée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10763,9 +10927,10 @@
      "tier": "commun",
      "contents": "Comprimés retirés pour chaque membre",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "securite.iode"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -10774,6 +10939,7 @@
      "tier": "confirme",
      "contents": "Comprimés rangés avec la trousse, dose de chaque membre notée sur la boîte",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10783,6 +10949,7 @@
      "tier": "epique",
      "contents": "Une boîte à la maison et une dans le sac d'évacuation",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10792,6 +10959,7 @@
      "tier": "legendaire",
      "contents": "Kit de confinement nucléaire : iode, ruban adhésif, consignes, radio dans la pièce refuge",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10812,12 +10980,14 @@
    "category": null,
    "description": "À la vue actuelle, en étui rigide.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une ancienne paire gardée en secours",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10827,9 +10997,10 @@
      "tier": "commun",
      "contents": "Une paire de secours à la vue actuelle par porteur",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.lunettes_secours"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -10838,9 +11009,10 @@
      "tier": "confirme",
      "contents": "Une paire à la maison et une dans chaque sac d'évacuation",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.lunettes_sac"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -10849,9 +11021,10 @@
      "tier": "epique",
      "contents": "Deux paires de rechange et un kit de réparation (tournevis, vis, cordon)",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.lunettes_reserve"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -10860,6 +11033,7 @@
      "tier": "legendaire",
      "contents": "Rechanges, lunettes de soleil à la vue, lentilles et produits pour trois mois",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10880,12 +11054,14 @@
    "category": null,
    "description": "Dans une boîte étanche ; ou un chargeur alimenté hors réseau.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "7 jours",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10895,9 +11071,10 @@
      "tier": "commun",
      "contents": "14 jours",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.auditif_piles"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -10906,6 +11083,7 @@
      "tier": "confirme",
      "contents": "30 jours et un étui de séchage",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10915,9 +11093,10 @@
      "tier": "epique",
      "contents": "90 jours ou chargeur hors réseau",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.auditif_reserve"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -10926,6 +11105,7 @@
      "tier": "legendaire",
      "contents": "90 jours, chargeur solaire et appareil de secours",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10946,12 +11126,14 @@
    "category": null,
    "description": "Toujours avec la personne allergique, jamais périmés.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un stylo non périmé",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10961,9 +11143,10 @@
      "tier": "commun",
      "contents": "Deux stylos non périmés toujours sur la personne",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.adrenaline"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -10972,6 +11155,7 @@
      "tier": "confirme",
      "contents": "Deux stylos sur la personne et un à la maison, rappel de péremption noté",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10981,6 +11165,7 @@
      "tier": "epique",
      "contents": "Un stylo de plus dans chaque sac, plan d'action allergie écrit",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -10990,6 +11175,7 @@
      "tier": "legendaire",
      "contents": "Stylos à l'école ou au travail, entourage formé, antihistaminiques en réserve",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11010,12 +11196,14 @@
    "category": null,
    "description": "Non périmé, avec une chambre d'inhalation si besoin.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un inhalateur non périmé, doses restantes vérifiées",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11025,9 +11213,10 @@
      "tier": "commun",
      "contents": "Deux inhalateurs : un sur soi, un à la maison",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.inhalateur"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11036,6 +11225,7 @@
      "tier": "confirme",
      "contents": "Un de plus dans le sac d'évacuation, et une chambre d'inhalation",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11045,6 +11235,7 @@
      "tier": "epique",
      "contents": "Un mois de traitement de fond d'avance et un purificateur d'air sur batterie",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11054,6 +11245,7 @@
      "tier": "legendaire",
      "contents": "Trois mois d'avance, plan d'action écrit, masques FFP2 contre les fumées",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11074,6 +11266,7 @@
    "category": null,
    "description": "Conserver l'insuline sans électricité, jamais au contact direct de la glace (une insuline gelée est perdue), et de quoi corriger une hypoglycémie.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "sante.hypo"
    ],
@@ -11082,6 +11275,7 @@
      "tier": "rustique",
      "contents": "Glacière souple, pains de glace emballés dans un linge, sucre rapide et glucagon à portée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11091,9 +11285,10 @@
      "tier": "commun",
      "contents": "Pochette réfrigérante à évaporation (type Frio)",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.insuline_froid"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11102,9 +11297,10 @@
      "tier": "confirme",
      "contents": "Deux pochettes, thermomètre de contrôle et un mois de matériel de diabète (bandelettes, aiguilles, capteurs, piles du lecteur)",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.diabete_materiel"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11113,6 +11309,7 @@
      "tier": "epique",
      "contents": "Mini-réfrigérateur médical sur batterie",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11122,6 +11319,7 @@
      "tier": "legendaire",
      "contents": "Mini-réfrigérateur médical rechargé au solaire, trois mois de matériel",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11142,12 +11340,14 @@
    "category": null,
    "description": "Batterie de secours de l'appareil médical électrique, testée.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "24 heures d'autonomie",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11155,11 +11355,12 @@
     },
     {
      "tier": "commun",
-     "contents": "72 heures d'autonomie",
+     "contents": "72 heures d'autonomie, testée sur batterie",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.appareil_batterie"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11168,6 +11369,7 @@
      "tier": "confirme",
      "contents": "72 heures et chargeur pour la voiture",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11177,6 +11379,7 @@
      "tier": "epique",
      "contents": "Une semaine d'autonomie (station électrique dédiée)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11186,9 +11389,10 @@
      "tier": "legendaire",
      "contents": "Recharge hors réseau (solaire ou groupe) dimensionnée pour l'appareil",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.appareil_autonome"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11208,15 +11412,17 @@
    "category": null,
    "description": "Prêt dès le 7e mois, avec un trajet vers la maternité qui ne dépend pas d'une voiture personnelle.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Le dossier",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.grossesse"
      ],
+     "objectives": [],
      "includes": [
       "Dossier de grossesse copié",
       "Deux maternités repérées, dont une hors de la zone à risque"
@@ -11228,9 +11434,10 @@
      "tier": "commun",
      "contents": "Le sac prêt",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.sac_maternite"
      ],
+     "objectives": [],
      "includes": [
       "Vêtements et pyjama pour 3 jours",
       "Premières tenues du bébé, bonnet, couches",
@@ -11243,6 +11450,7 @@
      "tier": "confirme",
      "contents": "Le retour à la maison",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Protections pour une semaine",
@@ -11256,6 +11464,7 @@
      "tier": "epique",
      "contents": "Si l'accouchement arrive avant les secours",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Fiche des gestes du SAMU (appeler le 15 et suivre ses consignes)",
@@ -11268,6 +11477,7 @@
      "tier": "legendaire",
      "contents": "Les premières semaines",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Porte-bébé",
@@ -11292,15 +11502,17 @@
    "category": null,
    "description": "Pour garder l'autonomie d'une personne âgée quand les aides et les commerces s'arrêtent.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Être connu et suivi",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.registre_vulnerables"
      ],
+     "objectives": [],
      "includes": [
       "Inscription au registre communal des personnes vulnérables",
       "Pilulier de la semaine"
@@ -11312,6 +11524,7 @@
      "tier": "commun",
      "contents": "Une semaine sans aide",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Protections d'incontinence pour 7 jours",
@@ -11325,6 +11538,7 @@
      "tier": "confirme",
      "contents": "Rester joignable et mobile",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Téléassistance avec batterie de secours",
@@ -11338,6 +11552,7 @@
      "tier": "epique",
      "contents": "Tenir un mois et la canicule",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Protections et soins pour un mois",
@@ -11350,6 +11565,7 @@
      "tier": "legendaire",
      "contents": "Un plan d'accompagnement",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Plan écrit : qui passe, qui appelle, qui héberge",
@@ -11373,12 +11589,14 @@
    "category": null,
    "description": "Mesurer la radioactivité autour de soi et des aliments. La mesure de fond de la maison, notée en temps normal, sert de point de comparaison.",
    "caution": "Mesurer n'est pas se protéger. En cas d'accident nucléaire, on suit les consignes du préfet (mise à l'abri, comprimés d'iode) quelle que soit la mesure. Un appareil d'entrée de gamme ne voit que les rayons gamma et ne dit pas si un aliment se mange.",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Détecteur simple de rayonnement gamma avec alarme",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11388,6 +11606,7 @@
      "tier": "commun",
      "contents": "Compteur Geiger à tube affichant le débit de dose (µSv/h), mesure de fond de la maison notée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11397,6 +11616,7 @@
      "tier": "confirme",
      "contents": "Compteur bêta-gamma avec seuil d'alarme réglable et piles de rechange",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11406,6 +11626,7 @@
      "tier": "epique",
      "contents": "Compteur alpha-bêta-gamma à fenêtre mica, et un dosimètre personnel",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11415,6 +11636,7 @@
      "tier": "legendaire",
      "contents": "Compteur étalonné, dosimètre pour chaque adulte, mesures partagées avec un réseau citoyen de surveillance",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11437,15 +11659,17 @@
    "category": null,
    "description": "Une lumière sans réseau, rangée à un endroit connu de tous. Les bougies sont un dernier recours (incendie).",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une lampe torche à un endroit connu",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "energie.lumiere"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11454,9 +11678,10 @@
      "tier": "commun",
      "contents": "Une lampe frontale par personne, avec piles de rechange",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "energie.lampes"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11465,6 +11690,7 @@
      "tier": "confirme",
      "contents": "Frontales rechargeables et une lanterne pour la pièce de vie",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11474,6 +11700,7 @@
      "tier": "epique",
      "contents": "Frontales, lanternes solaires ou à dynamo, une lampe au pied de chaque lit",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11483,6 +11710,7 @@
      "tier": "legendaire",
      "contents": "Éclairage de toute la maison sur batterie solaire, veilleuses de secours qui s'allument à la coupure",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11503,6 +11731,7 @@
    "category": null,
    "description": "Aux formats des lampes, de la radio et des détecteurs (souvent AA, AAA, 9 V).",
    "caution": "",
+   "proves": [],
    "objectives": [
     "energie.lampes",
     "communication.radio"
@@ -11512,6 +11741,7 @@
      "tier": "rustique",
      "contents": "Un jeu de rechange pour la lampe principale",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11521,6 +11751,7 @@
      "tier": "commun",
      "contents": "Un jeu de rechange pour chaque appareil",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11530,6 +11761,7 @@
      "tier": "confirme",
      "contents": "Piles pour un mois d'usage, rangées au sec",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11539,6 +11771,7 @@
      "tier": "epique",
      "contents": "Piles rechargeables et chargeur USB",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11548,6 +11781,7 @@
      "tier": "legendaire",
      "contents": "Rechargeables, chargeur solaire et réserve pour trois mois",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11568,6 +11802,7 @@
    "category": null,
    "description": "Pour garder téléphones, radio et lumière en marche pendant une coupure. Commencer par chiffrer ses besoins en Wh par jour.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "energie.bilan_wh"
    ],
@@ -11576,9 +11811,10 @@
      "tier": "rustique",
      "contents": "Batteries externes chargées pour les téléphones",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "energie.batterie"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11587,20 +11823,22 @@
      "tier": "commun",
      "contents": "Batteries externes et panneau solaire portable testé",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "energie.solaire_portable"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
     },
     {
      "tier": "confirme",
-     "contents": "Station électrique portable de 500 Wh ou plus rechargeable au solaire",
+     "contents": "Station électrique portable de 500 Wh ou plus rechargeable au solaire, testée",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "energie.station"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11609,8 +11847,10 @@
      "tier": "epique",
      "contents": "Kit solaire de balcon avec batterie, ou installation solaire fixe avec stockage couvrant les besoins prioritaires",
      "min_days": null,
+     "proves": [
+      "energie.kit_balcon"
+     ],
      "objectives": [
-      "energie.kit_balcon",
       "energie.solaire_fixe"
      ],
      "includes": [],
@@ -11621,8 +11861,10 @@
      "tier": "legendaire",
      "contents": "Station d'au moins 1 kWh rechargée au solaire couvrant une semaine, ou autonomie électrique sur l'année",
      "min_days": null,
+     "proves": [
+      "energie.station_1kwh"
+     ],
      "objectives": [
-      "energie.station_1kwh",
       "energie.autonomie"
      ],
      "includes": [],
@@ -11644,12 +11886,14 @@
    "category": null,
    "description": "Toujours dehors, jamais dans un garage ou une cave (monoxyde de carbone). Carburant stocké et renouvelé.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Petit groupe de 1 kW, toujours dehors, détecteur de CO dans le logement",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11659,6 +11903,7 @@
      "tier": "commun",
      "contents": "Groupe inverter 2 kW, rallonge extérieure",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11668,9 +11913,10 @@
      "tier": "confirme",
      "contents": "Groupe testé tous les trois mois, carburant stocké",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "energie.secours"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11679,6 +11925,7 @@
      "tier": "epique",
      "contents": "Groupe bicarburant (essence et gaz), inverseur de source installé par un électricien",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11688,6 +11935,7 @@
      "tier": "legendaire",
      "contents": "Groupe couplé au solaire et à des batteries, démarrage automatique",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11708,12 +11956,14 @@
    "category": null,
    "description": "Dans une boîte étanche.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une boîte d'allumettes",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11723,6 +11973,7 @@
      "tier": "commun",
      "contents": "Deux briquets et allumettes dans une boîte étanche",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11732,6 +11983,7 @@
      "tier": "confirme",
      "contents": "Allumettes tempête, briquets, allume-feux",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11741,6 +11993,7 @@
      "tier": "epique",
      "contents": "Pierre à feu (ferrocérium) et amadou dans chaque sac",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11750,6 +12003,7 @@
      "tier": "legendaire",
      "contents": "Kit feu complet : ferro, loupe, allume-feux pour un an, briquets tempête rechargeables",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11770,12 +12024,14 @@
    "category": null,
    "description": "Rentré avant novembre, à moins de 20 % d'humidité.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Quelques stères pour les grands froids",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11785,6 +12041,7 @@
      "tier": "commun",
      "contents": "Un demi-hiver de bois sec et un humidimètre pour le vérifier",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11794,9 +12051,10 @@
      "tier": "confirme",
      "contents": "Un hiver de bois sec sous un bûcher ventilé, merlin et scie",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "energie.bois_hiver"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11805,6 +12063,7 @@
      "tier": "epique",
      "contents": "Deux hivers d'avance : un sec, un qui sèche",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "energie.bois"
      ],
@@ -11816,6 +12075,7 @@
      "tier": "legendaire",
      "contents": "Deux hivers d'avance et une parcelle ou un accord d'affouage",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11836,12 +12096,14 @@
    "category": null,
    "description": "Recharger loin de chez soi : dans le sac, la voiture ou au lieu de repli. Un panneau ne charge bien qu'en plein soleil, orienté et sans ombre.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Panneau pliant de 10 à 20 W avec sortie USB, et une batterie externe chargée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11851,6 +12113,7 @@
      "tier": "commun",
      "contents": "Panneau de 20 à 40 W testé, batterie externe de 20 000 mAh et câbles",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11860,6 +12123,7 @@
      "tier": "confirme",
      "contents": "Panneau pliant de 60 à 100 W et petite station de 300 Wh",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11869,6 +12133,7 @@
      "tier": "epique",
      "contents": "Station de 500 Wh, panneau de 100 à 200 W, recharge par l'allume-cigare",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11878,6 +12143,7 @@
      "tier": "legendaire",
      "contents": "Système complet dans un sac (panneau, station, câbles, lampe et radio rechargeables), testé une semaine hors réseau",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11898,12 +12164,14 @@
    "category": null,
    "description": "Une lumière qui ne dépend d'aucune pile, et un peu de chaleur. Les bougies de longue durée (en boîte, chauffe-plats en quantité) brûlent plusieurs heures.",
    "caution": "Les bougies causent chaque année des incendies mortels, surtout pendant les coupures. Jamais sans surveillance, ni près des rideaux, ni dans une chambre d'enfant ou en dormant ; toujours sur un support stable et incombustible. Préférer une lampe à piles dès qu'on en a une.",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Quelques bougies et des allumettes rangées ensemble, avec un bougeoir stable",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11913,6 +12181,7 @@
      "tier": "commun",
      "contents": "Un photophore fermé (en verre) pour chaque bougie : jamais de flamme nue",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11922,6 +12191,7 @@
      "tier": "confirme",
      "contents": "Bougies de longue durée en boîte métallique, posées sur un support incombustible",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11931,6 +12201,7 @@
      "tier": "epique",
      "contents": "Lanternes à bougie fermées et une couverture anti-feu à portée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11940,6 +12211,7 @@
      "tier": "legendaire",
      "contents": "Les bougies restent un appoint : lampes à piles en priorité, lanternes fermées, extincteur à portée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11960,12 +12232,14 @@
    "category": null,
    "description": "Pour tenir au chaud sans chauffage, et accueillir.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Plaids et vêtements chauds en couches pour chacun",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11975,9 +12249,10 @@
      "tier": "commun",
      "contents": "Sac de couchage ou couette épaisse, bonnet et vêtements chauds pour chacun",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.chaleur"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -11986,6 +12261,7 @@
      "tier": "confirme",
      "contents": "Sacs de couchage grand froid, bonnets, sous-couches et bouillottes",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -11995,6 +12271,7 @@
      "tier": "epique",
      "contents": "Sacs de couchage grand froid, matelas isolants et tente d'intérieur pour la pièce refuge",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12004,6 +12281,7 @@
      "tier": "legendaire",
      "contents": "Couchages en plus pour accueillir un foyer sinistré",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "abri.accueil"
      ],
@@ -12026,12 +12304,14 @@
    "category": null,
    "description": "Testés une fois par mois. Un détecteur de CO est indispensable dès qu'on fait du feu ou qu'on utilise un appoint.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un détecteur de fumée (obligatoire)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12041,9 +12321,10 @@
      "tier": "commun",
      "contents": "Fumée et CO installés et testés",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.detecteurs"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -12052,9 +12333,10 @@
      "tier": "confirme",
      "contents": "Un détecteur par étage et dans chaque chambre, à flash ou vibreur pour les malentendants",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.auditif_alerte"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -12063,6 +12345,7 @@
      "tier": "epique",
      "contents": "Détecteurs reliés entre eux",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12072,6 +12355,7 @@
      "tier": "legendaire",
      "contents": "Détecteurs reliés, détecteur de gaz et d'inondation, alertes sur le téléphone",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12092,12 +12376,14 @@
    "category": null,
    "description": "Extincteur à poudre ou à eau avec additif près de la cuisine, couverture anti-feu pour un feu de poêle.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Couverture anti-feu dans la cuisine",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12107,9 +12393,10 @@
      "tier": "commun",
      "contents": "Extincteur et couverture anti-feu",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.extincteur"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -12118,6 +12405,7 @@
      "tier": "confirme",
      "contents": "Un extincteur par étage, vérifié chaque année",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12127,6 +12415,7 @@
      "tier": "epique",
      "contents": "Extincteurs adaptés (eau additivée, CO2 pour l'électrique), échelle d'évacuation",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12136,6 +12425,7 @@
      "tier": "legendaire",
      "contents": "Défense incendie extérieure : tuyau, motopompe sur la réserve d'eau, débroussaillement fait",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "securite.incendie_ext"
      ],
@@ -12158,12 +12448,14 @@
    "category": null,
    "description": "Pour calfeutrer une pièce lors d'un accident industriel ou d'une fumée toxique.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "De quoi boucher une porte",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Un rouleau de ruban adhésif large",
@@ -12176,10 +12468,11 @@
      "tier": "commun",
      "contents": "Une pièce calfeutrable",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.calfeutrage",
       "abri.calfeutrage_industriel"
      ],
+     "objectives": [],
      "includes": [
       "Film plastique épais prédécoupé aux fenêtres",
       "Deux rouleaux de ruban adhésif",
@@ -12193,6 +12486,7 @@
      "tier": "confirme",
      "contents": "Tenir quelques heures enfermé",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Eau et en-cas pour toute la pièce",
@@ -12207,9 +12501,10 @@
      "tier": "epique",
      "contents": "Pièce refuge prête",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.piece_refuge"
      ],
+     "objectives": [],
      "includes": [
       "Bâches renforcées et agrafeuse",
       "Couvertures et occupation pour chacun",
@@ -12222,6 +12517,7 @@
      "tier": "legendaire",
      "contents": "Pièce refuge équipée pour 48 heures",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Purificateur d'air HEPA sur batterie",
@@ -12246,12 +12542,14 @@
    "category": null,
    "description": "Hors réseau et sûr, avec ventilation et détecteur de CO.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Bouillottes et vêtements chauds",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12259,11 +12557,12 @@
     },
     {
      "tier": "commun",
-     "contents": "Chauffage d'appoint au gaz homologué pour l'intérieur, détecteur de CO",
+     "contents": "Chauffage d'appoint au gaz homologué pour l'intérieur, détecteur de CO, pièce aérée pendant l'usage",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.chauffage_appoint"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -12272,6 +12571,7 @@
      "tier": "confirme",
      "contents": "Appoint et pièce refuge isolée avec textiles",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12281,6 +12581,7 @@
      "tier": "epique",
      "contents": "Poêle à bois ou à granulés sans électricité",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12290,6 +12591,7 @@
      "tier": "legendaire",
      "contents": "Logement chauffable de façon autonome toute la saison",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "abri.isolation"
      ],
@@ -12312,15 +12614,16 @@
    "category": null,
    "description": "Pour les petites réparations quand les artisans ne viennent plus.",
    "caution": "",
+   "proves": [],
    "objectives": [
-    "abri.reparations",
-    "competences.tronconneuse"
+    "abri.reparations"
    ],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Les outils de base",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "abri.coupures"
      ],
@@ -12338,6 +12641,7 @@
      "tier": "commun",
      "contents": "La caisse du foyer",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Jeu de clés plates",
@@ -12353,6 +12657,7 @@
      "tier": "confirme",
      "contents": "Plomberie, électricité, menuiserie",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Clé à molette et pince multiprise",
@@ -12367,6 +12672,7 @@
      "tier": "epique",
      "contents": "Réparer après une tempête",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Bâches et planches de contreplaqué",
@@ -12381,6 +12687,7 @@
      "tier": "legendaire",
      "contents": "Atelier autonome",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "abri.resilient"
      ],
@@ -12408,12 +12715,14 @@
    "category": null,
    "description": "Pour garder une pièce vivable quand il fait plus de 35 °C.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Repérer la chaleur",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Thermomètre intérieur",
@@ -12426,9 +12735,10 @@
      "tier": "commun",
      "contents": "La pièce fraîche",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.piece_fraiche"
      ],
+     "objectives": [],
      "includes": [
       "Linges humides et bassine",
       "Ventilateur, toujours avec un linge humide ou la peau mouillée (seul au-dessus de 35 °C, il assèche)",
@@ -12441,9 +12751,10 @@
      "tier": "confirme",
      "contents": "Rafraîchir sans réseau",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.rafraichir_sans_reseau"
      ],
+     "objectives": [],
      "includes": [
       "Ventilateur sur batterie",
       "Rideaux occultants ou film réfléchissant"
@@ -12455,6 +12766,7 @@
      "tier": "epique",
      "contents": "Protections solaires extérieures",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Volets ou stores extérieurs",
@@ -12468,6 +12780,7 @@
      "tier": "legendaire",
      "contents": "Logement qui reste frais",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Brasseur d'air sur solaire",
@@ -12491,12 +12804,14 @@
    "category": null,
    "description": "Pour la route et pour rester bloqué une semaine.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Raclette, gants et pelle pliante",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12506,6 +12821,7 @@
      "tier": "commun",
      "contents": "Chaînes ou chaussettes à neige, sel",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12515,9 +12831,10 @@
      "tier": "confirme",
      "contents": "Pneus hiver, chaînes, pelle et sel, réserves pour une semaine",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.neige"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -12526,6 +12843,7 @@
      "tier": "epique",
      "contents": "Raquettes, crampons, luge de transport",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12535,6 +12853,7 @@
      "tier": "legendaire",
      "contents": "Fraise à neige ou lame, accès dégagé de façon autonome",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12555,12 +12874,14 @@
    "category": null,
    "description": "Si la collecte s'arrête.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un rouleau de sacs de rechange",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12570,6 +12891,7 @@
      "tier": "commun",
      "contents": "Sacs résistants pour deux semaines",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12579,9 +12901,10 @@
      "tier": "confirme",
      "contents": "Sacs pour un mois et bacs fermés, lieu de stockage prévu",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "securite.dechets"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -12590,6 +12913,7 @@
      "tier": "epique",
      "contents": "Composteur pour les déchets organiques",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12599,6 +12923,7 @@
      "tier": "legendaire",
      "contents": "Tri, compost et réduction : moins d'un sac par semaine",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12619,12 +12944,14 @@
    "category": null,
    "description": "En séisme, on se blesse surtout sous les meubles et les objets qui tombent.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Les meubles hauts fixés au mur",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12634,9 +12961,10 @@
      "tier": "commun",
      "contents": "Meubles hauts et chauffe-eau fixés, chaussures et lampe au pied de chaque lit",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.seisme"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -12645,6 +12973,7 @@
      "tier": "confirme",
      "contents": "Objets lourds rangés en bas, loquets sur les placards",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12654,6 +12983,7 @@
      "tier": "epique",
      "contents": "Film anti-éclats sur les vitres, vanne de gaz à fermeture rapide",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12663,6 +12993,7 @@
      "tier": "legendaire",
      "contents": "Diagnostic parasismique fait, renforts réalisés",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12683,12 +13014,14 @@
    "category": null,
    "description": "Ralentir l'eau le temps de mettre à l'abri ce qui compte. En crue, on ne reste jamais dans un sous-sol.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Sacs de sable ou sacs anti-inondation pour une porte",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12698,6 +13031,7 @@
      "tier": "commun",
      "contents": "Batardeaux amovibles pour les ouvertures basses",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12707,9 +13041,10 @@
      "tier": "confirme",
      "contents": "Batardeaux, clapets anti-retour, objets de valeur surélevés",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "abri.inondation"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -12718,6 +13053,7 @@
      "tier": "epique",
      "contents": "Pompe vide-cave sur batterie, bottes et cuissardes",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12727,6 +13063,7 @@
      "tier": "legendaire",
      "contents": "Logement adapté : zone refuge à l'étage, prises et tableau électrique surélevés",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12747,12 +13084,14 @@
    "category": null,
    "description": "Réparer, calfeutrer, étiqueter, fixer une bâche : le ruban toilé (duct tape) répare presque tout, au moins provisoirement.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un rouleau de ruban adhésif toilé",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12762,6 +13101,7 @@
      "tier": "commun",
      "contents": "Ruban toilé et ruban de masquage pour étiqueter",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12771,6 +13111,7 @@
      "tier": "confirme",
      "contents": "Deux rouleaux de ruban toilé large et un rouleau de ruban aluminium pour les réparations",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12780,6 +13121,7 @@
      "tier": "epique",
      "contents": "Ruban toilé, ruban américain renforcé, ruban d'étanchéité pour la plomberie et ruban électrique",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12789,6 +13131,7 @@
      "tier": "legendaire",
      "contents": "Assortiment complet (toilé, aluminium, étanchéité, électrique, réparation de bâche), un rouleau plat dans chaque sac",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12809,12 +13152,14 @@
    "category": null,
    "description": "Couvrir un toit abîmé, protéger du matériel, faire un abri ou récupérer l'eau de pluie. Œillets renforcés et cordelette font toute la différence.",
    "caution": "Ne jamais monter sur un toit mouillé, par grand vent ou sans être assuré : après une tempête, les chutes de toit sont un accident fréquent, et le bâchage d'urgence peut être demandé aux pompiers (18). L'eau de pluie récupérée n'est pas potable sans traitement.",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une bâche de 3 × 4 m",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12824,6 +13169,7 @@
      "tier": "commun",
      "contents": "Bâche renforcée à œillets et 20 m de cordelette",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12833,6 +13179,7 @@
      "tier": "confirme",
      "contents": "Deux bâches renforcées, cordelette, sardines et tendeurs",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12842,6 +13189,7 @@
      "tier": "epique",
      "contents": "Bâche légère pour le sac en plus des grandes, montage d'un abri déjà essayé",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12851,6 +13199,7 @@
      "tier": "legendaire",
      "contents": "Bâches lourdes de couverture de toit, liteaux et clous pour les fixer, tarp de bivouac dans chaque sac",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12871,12 +13220,14 @@
    "category": null,
    "description": "Quelques grammes qui limitent la perte de chaleur, surtout par le vent et l'humidité. Ce qui compte : envelopper tout le corps en laissant le visage libre, s'isoler du sol et se protéger du vent ; le sens des faces change peu de chose. Elle se déchire facilement, d'où l'intérêt d'en avoir plusieurs. Elle ne remplace ni un sac de couchage ni des vêtements chauds.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une couverture de survie dans le sac",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12886,6 +13237,7 @@
      "tier": "commun",
      "contents": "Une couverture de survie par personne",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12895,6 +13247,7 @@
      "tier": "confirme",
      "contents": "Une par personne dans chaque sac et une dans la voiture",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12904,6 +13257,7 @@
      "tier": "epique",
      "contents": "Couvertures renforcées réutilisables (bâche de survie, sac de bivouac)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12913,6 +13267,7 @@
      "tier": "legendaire",
      "contents": "Sac de bivouac pour chaque membre, couvertures de rechange pour aider d'autres personnes",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12933,12 +13288,14 @@
    "category": null,
    "description": "Quand le réseau mobile tombe, la radio publique diffuse les consignes.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Petit poste FM à piles",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12948,9 +13305,10 @@
      "tier": "commun",
      "contents": "Radio FM à dynamo ou solaire, testée, avec piles de rechange",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "communication.radio"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -12959,6 +13317,7 @@
      "tier": "confirme",
      "contents": "Radio FM, DAB+ et ondes courtes, à dynamo ou sur piles du commerce",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -12968,9 +13327,10 @@
      "tier": "epique",
      "contents": "Poste CB ou radioamateur opérationnel en émission",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "communication.radio_emission"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -12979,6 +13339,7 @@
      "tier": "legendaire",
      "contents": "Station radio de secours qui relaie l'information au quartier",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "communication.relais"
      ],
@@ -13001,12 +13362,14 @@
    "category": null,
    "description": "PMR446 sans licence : quelques kilomètres en terrain dégagé.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une paire de talkies jouets ou d'entrée de gamme",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13016,9 +13379,10 @@
      "tier": "commun",
      "contents": "Un talkie PMR446 par adulte, piles de rechange",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "communication.talkies"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -13027,6 +13391,7 @@
      "tier": "confirme",
      "contents": "Talkies rechargeables, canaux convenus notés dans le répertoire",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13036,9 +13401,10 @@
      "tier": "epique",
      "contents": "Talkies et plan de communication avec les proches (fréquences, horaires)",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "communication.reseau_local"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -13047,6 +13413,7 @@
      "tier": "legendaire",
      "contents": "Réseau de talkies partagé avec le groupe d'entraide, testé",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13067,12 +13434,14 @@
    "category": null,
    "description": "Sans GPS ni réseau, une carte et une boussole.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Plan de la ville",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13082,6 +13451,7 @@
      "tier": "commun",
      "contents": "Carte routière de la région, deux itinéraires d'évacuation tracés",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "mobilite.itineraires"
      ],
@@ -13093,9 +13463,10 @@
      "tier": "confirme",
      "contents": "Cartes de la région et des itinéraires dans la maison et dans le sac",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "communication.cartes"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -13104,6 +13475,7 @@
      "tier": "epique",
      "contents": "Cartes IGN au 1:25 000 du trajet vers le lieu de repli, boussole",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13113,6 +13485,7 @@
      "tier": "legendaire",
      "contents": "Jeu de cartes plastifiées dans chaque sac, points d'eau et abris notés",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13133,12 +13506,14 @@
    "category": null,
    "description": "Pour se signaler sous des décombres ou alerter les voisins.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un sifflet dans le sac",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13148,6 +13523,7 @@
      "tier": "commun",
      "contents": "Un sifflet par membre, accroché au sac",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13157,6 +13533,7 @@
      "tier": "confirme",
      "contents": "Sifflets et signal d'alerte convenu avec les voisins",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "defense.voisinage"
      ],
@@ -13168,6 +13545,7 @@
      "tier": "epique",
      "contents": "Sifflets, miroir de signalisation, bâtons lumineux",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13177,6 +13555,7 @@
      "tier": "legendaire",
      "contents": "Signaux, corne de brume et code d'alerte du quartier affiché",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13197,6 +13576,7 @@
    "category": null,
    "description": "Un second téléphone chargé, qui marche si le principal est perdu, cassé ou sur un réseau tombé.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "securite.alertes",
     "cyber.recuperation"
@@ -13206,6 +13586,7 @@
      "tier": "rustique",
      "contents": "Un ancien téléphone chargé, qui appelle le 112 même sans carte SIM",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13215,6 +13596,7 @@
      "tier": "commun",
      "contents": "Téléphone de secours avec une carte SIM d'un autre opérateur",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13224,6 +13606,7 @@
      "tier": "confirme",
      "contents": "Téléphone robuste à grosse batterie, contacts et FR-Alert configurés",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13233,6 +13616,7 @@
      "tier": "epique",
      "contents": "Routeur 4G de secours sur batterie pour partager une connexion",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13242,6 +13626,7 @@
      "tier": "legendaire",
      "contents": "Téléphone satellite ou messagerie satellite (SOS hors réseau)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13262,6 +13647,7 @@
    "category": null,
    "description": "Le câble oublié rend la batterie inutile.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "energie.batterie"
    ],
@@ -13270,6 +13656,7 @@
      "tier": "rustique",
      "contents": "Recharger un téléphone",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Un câble par téléphone du foyer",
@@ -13282,6 +13669,7 @@
      "tier": "commun",
      "contents": "Recharger partout",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Chargeur allume-cigare",
@@ -13295,6 +13683,7 @@
      "tier": "confirme",
      "contents": "Tous les formats",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Câbles USB-C, Lightning et micro-USB",
@@ -13308,6 +13697,7 @@
      "tier": "epique",
      "contents": "Pochette étanche de recharge",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Pochette étanche avec tout le nécessaire",
@@ -13321,6 +13711,7 @@
      "tier": "legendaire",
      "contents": "Recharger n'importe quel appareil hors réseau",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Câbles 12 V et Anderson pour batteries et panneaux",
@@ -13345,6 +13736,7 @@
    "category": null,
    "description": "Papiers scannés, photos, contacts : à retrouver même si l'ordinateur brûle ou est volé.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "cyber.restauration"
    ],
@@ -13353,6 +13745,7 @@
      "tier": "rustique",
      "contents": "Photos des papiers importants sur le téléphone",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13362,6 +13755,7 @@
      "tier": "commun",
      "contents": "Clé USB chiffrée avec les papiers et contacts",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "finances.papiers"
      ],
@@ -13373,9 +13767,10 @@
      "tier": "confirme",
      "contents": "Disque externe hors ligne, sauvegarde refaite au moins tous les six mois",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "cyber.sauvegarde"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -13384,9 +13779,10 @@
      "tier": "epique",
      "contents": "Règle 3-2-1 : trois copies, deux supports, dont un disque chiffré chez un proche, vérifié tous les six mois",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "cyber.regle_321"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -13395,6 +13791,9 @@
      "tier": "legendaire",
      "contents": "Serveur domestique (NAS) répliqué hors site, restauration testée",
      "min_days": null,
+     "proves": [
+      "cyber.restauration"
+     ],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13415,12 +13814,14 @@
    "category": null,
    "description": "Savoir et cartes consultables sans Internet : Wikipédia hors ligne (Kiwix), cartes OpenStreetMap, guides en PDF.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Guides officiels en PDF sur le téléphone",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13430,6 +13831,7 @@
      "tier": "commun",
      "contents": "Cartes hors ligne de la région sur le téléphone (OsmAnd, Organic Maps)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13439,6 +13841,7 @@
      "tier": "confirme",
      "contents": "Liseuse ou tablette avec guides de secourisme, jardinage, réparations",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13448,6 +13851,7 @@
      "tier": "epique",
      "contents": "Ordinateur portable sobre avec Wikipédia hors ligne (Kiwix) et cartes",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13457,6 +13861,7 @@
      "tier": "legendaire",
      "contents": "Serveur Kiwix local sur mini-ordinateur solaire, accessible en Wi-Fi au voisinage",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13477,12 +13882,14 @@
    "category": null,
    "description": "Messagerie texte sans opérateur (Meshtastic) : de petits boîtiers relaient les messages de proche en proche, sur plusieurs kilomètres.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un boîtier pour découvrir le réseau du coin",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13492,6 +13899,7 @@
      "tier": "commun",
      "contents": "Deux boîtiers appairés aux téléphones du foyer",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13501,9 +13909,10 @@
      "tier": "confirme",
      "contents": "Un boîtier par adulte et un canal convenu avec les proches",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "communication.reseau_local"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -13512,6 +13921,7 @@
      "tier": "epique",
      "contents": "Relais fixe sur le toit, alimenté au solaire",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "communication.relais"
      ],
@@ -13523,9 +13933,10 @@
      "tier": "legendaire",
      "contents": "Réseau de quartier testé tous les six mois avec le groupe d'entraide",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "communication.reseau_teste"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -13545,14 +13956,14 @@
    "category": null,
    "description": "Garde Internet et le Wi-Fi en marche quelques heures pendant une coupure, tant que le réseau de l'opérateur tient.",
    "caution": "",
-   "objectives": [
-    "energie.bilan_wh"
-   ],
+   "proves": [],
+   "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Batterie externe capable d'alimenter la box en USB-C ou 12 V",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13562,6 +13973,7 @@
      "tier": "commun",
      "contents": "Petit onduleur pour la box : 1 à 2 heures",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13571,6 +13983,7 @@
      "tier": "confirme",
      "contents": "Mini-onduleur 12 V pour box et routeur : 4 heures et plus",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13580,6 +13993,7 @@
      "tier": "epique",
      "contents": "Box, routeur et ordinateur sur la station électrique",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13589,6 +14003,7 @@
      "tier": "legendaire",
      "contents": "Réseau domestique entier sur batterie solaire, avec accès de secours 4G ou satellite",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13609,6 +14024,7 @@
    "category": null,
    "description": "Elle ne tombe jamais en panne, mais ne sert qu'avec une carte et un peu de pratique. Tenir loin du métal et des aimants pour lire juste.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "mobilite.orientation"
    ],
@@ -13617,6 +14033,7 @@
      "tier": "rustique",
      "contents": "Boussole simple ou porte-clés",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13626,6 +14043,7 @@
      "tier": "commun",
      "contents": "Boussole à plaquette, utilisable sur une carte",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13635,6 +14053,7 @@
      "tier": "confirme",
      "contents": "Boussole à plaquette avec réglage de la déclinaison et loupe",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13644,6 +14063,7 @@
      "tier": "epique",
      "contents": "Boussole à visée pour des relevés précis, et une boussole de secours dans le sac",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13653,6 +14073,7 @@
      "tier": "legendaire",
      "contents": "Boussole à visée, rapporteur et carte IGN de chaque trajet, une boussole par adulte",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13673,12 +14094,14 @@
    "category": null,
    "description": "Prêt près de la sortie, à revoir tous les six mois (tailles, dates, saison).",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un sac commun pour partir dans la minute",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Copies des papiers d'identité",
@@ -13695,6 +14118,7 @@
      "tier": "commun",
      "contents": "Tenir 24 heures dehors",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Couverture de survie",
@@ -13711,9 +14135,10 @@
      "tier": "confirme",
      "contents": "Un sac 72 heures par membre",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "mobilite.sac"
      ],
+     "objectives": [],
      "includes": [
       "Un sac par personne à sa taille",
       "Eau pour 72 heures (ou 1 L et des pastilles)",
@@ -13731,6 +14156,7 @@
      "tier": "epique",
      "contents": "Sacs personnalisés selon chacun",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Lunettes de secours en étui rigide",
@@ -13747,9 +14173,10 @@
      "tier": "legendaire",
      "contents": "Sacs et lieu de repli prêts",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "mobilite.repli"
      ],
+     "objectives": [],
      "includes": [
       "Sac de couchage léger et abri (tarp)",
       "Filtre à eau portable",
@@ -13775,12 +14202,14 @@
    "category": null,
    "description": "Pour se déplacer quand le carburant manque ou que les routes sont bloquées.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un vélo qui roule",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13790,9 +14219,10 @@
      "tier": "commun",
      "contents": "Vélo en état et kit de réparation (chambre à air, démonte-pneus, pompe)",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "mobilite.velo"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -13801,6 +14231,7 @@
      "tier": "confirme",
      "contents": "Un vélo par adulte, éclairage, antivol, porte-bagages",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13810,6 +14241,7 @@
      "tier": "epique",
      "contents": "Sacoches, remorque enfant ou cargo, pièces d'usure de rechange",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13819,9 +14251,10 @@
      "tier": "legendaire",
      "contents": "Vélo cargo ou VAE rechargé au solaire",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "mobilite.sans_fossile"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -13841,12 +14274,14 @@
    "category": null,
    "description": "Le réservoir ne descend jamais sous la moitié.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Le minimum légal et un peu plus",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Gilet et triangle",
@@ -13860,6 +14295,7 @@
      "tier": "commun",
      "contents": "Rester bloqué quelques heures",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "mobilite.vehicule"
      ],
@@ -13876,6 +14312,7 @@
      "tier": "confirme",
      "contents": "Une nuit bloqué sur la route",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Sac de couchage ou couvertures pour chacun",
@@ -13890,6 +14327,7 @@
      "tier": "epique",
      "contents": "Se dépanner seul",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Compresseur 12 V et kit anti-crevaison",
@@ -13904,9 +14342,10 @@
      "tier": "legendaire",
      "contents": "Véhicule d'évacuation",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "mobilite.carburant"
      ],
+     "objectives": [],
      "includes": [
       "Jerrican de carburant renouvelé",
       "Plaques de désensablement",
@@ -13931,6 +14370,7 @@
    "category": null,
    "description": "Stocké dehors à l'abri, renouvelé tous les six mois (ou avec un stabilisant).",
    "caution": "",
+   "proves": [],
    "objectives": [
     "energie.secours"
    ],
@@ -13939,6 +14379,7 @@
      "tier": "rustique",
      "contents": "Un jerrican de 5 L",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13948,9 +14389,10 @@
      "tier": "commun",
      "contents": "Un jerrican de 20 L",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "mobilite.carburant"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -13959,6 +14401,7 @@
      "tier": "confirme",
      "contents": "40 L et stabilisant, rotation notée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13968,6 +14411,7 @@
      "tier": "epique",
      "contents": "Un plein d'avance et carburant pour le groupe électrogène",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13977,6 +14421,7 @@
      "tier": "legendaire",
      "contents": "Réserve pour un mois de déplacements essentiels, stockage conforme",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -13997,12 +14442,14 @@
    "category": null,
    "description": "Pour partir avec chaque animal.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une laisse ou un sac de transport",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14012,8 +14459,10 @@
      "tier": "commun",
      "contents": "Caisse, laisse et gamelle pour chaque animal près de la sortie, copie du carnet de vaccination dans la caisse",
      "min_days": null,
+     "proves": [
+      "mobilite.animaux_transport"
+     ],
      "objectives": [
-      "mobilite.animaux_transport",
       "finances.animaux_papiers"
      ],
      "includes": [],
@@ -14024,6 +14473,7 @@
      "tier": "confirme",
      "contents": "Photo récente de l'animal et contact du vétérinaire dans la caisse",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14033,6 +14483,7 @@
      "tier": "epique",
      "contents": "Sac de l'animal : nourriture et litière pour 3 jours, traitement, jouet",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14042,9 +14493,10 @@
      "tier": "legendaire",
      "contents": "Hébergement de repli qui accepte les animaux, trajet testé",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "mobilite.animaux_repli"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -14064,12 +14516,14 @@
    "category": null,
    "description": "Pour évacuer une personne à mobilité réduite sans ascenseur ni électricité.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Canne pliante",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14079,9 +14533,10 @@
      "tier": "commun",
      "contents": "Canne pliante et fauteuil manuel si le fauteuil habituel est électrique",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "mobilite.aide_technique"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -14090,6 +14545,7 @@
      "tier": "confirme",
      "contents": "Chaise d'évacuation pour escaliers, évacuation testée sans ascenseur",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "mobilite.evacuation_pmr_testee"
      ],
@@ -14101,6 +14557,7 @@
      "tier": "epique",
      "contents": "Batterie de rechange du fauteuil et chargeur hors réseau",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14110,6 +14567,7 @@
      "tier": "legendaire",
      "contents": "Matériel adapté en double dans le lieu de repli",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14130,15 +14588,17 @@
    "category": null,
    "description": "L'endroit près de la sortie où l'on prend tout en deux minutes, même de nuit.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Toujours au même endroit",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "mobilite.depart_rapide"
      ],
+     "objectives": [],
      "includes": [
       "Clés",
       "Papiers",
@@ -14152,6 +14612,7 @@
      "tier": "commun",
      "contents": "Un vrai vide-poche",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Vide-poche ou crochets dédiés",
@@ -14165,6 +14626,7 @@
      "tier": "confirme",
      "contents": "Le sac à côté",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Sac d'évacuation posé à côté",
@@ -14177,6 +14639,7 @@
      "tier": "epique",
      "contents": "Une liste affichée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Double des clés de voiture",
@@ -14189,6 +14652,7 @@
      "tier": "legendaire",
      "contents": "Testé de nuit",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Lampe à détection de mouvement à la sortie",
@@ -14212,12 +14676,14 @@
    "category": null,
    "description": "EDC, « every day carry » : ce qu'on a toujours sur soi, pour une panne, une coupure ou un retour à pied. Léger et discret, il ne remplace pas le sac d'évacuation.",
    "caution": "Une lame peut être considérée comme une arme de catégorie D : la porter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Dans l'EDC du quotidien, préférer un petit couteau pliant ou une pince multifonction ; ni lame fixe ni bombe lacrymogène.",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Les poches",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Clés, téléphone chargé, un peu d'espèces",
@@ -14231,6 +14697,7 @@
      "tier": "commun",
      "contents": "La pochette",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Pochette ou petit sac",
@@ -14245,6 +14712,7 @@
      "tier": "confirme",
      "contents": "Faire face à un imprévu",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Pince multifonction ou petit couteau pliant",
@@ -14259,6 +14727,7 @@
      "tier": "epique",
      "contents": "Rentrer à pied",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Carte papier du trajet maison-travail",
@@ -14273,6 +14742,7 @@
      "tier": "legendaire",
      "contents": "Tenir une nuit dehors",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Lampe frontale",
@@ -14298,12 +14768,14 @@
    "category": null,
    "description": "Couper, tailler, préparer du petit bois : l'outil le plus polyvalent du sac. Un bon couteau s'entretient et s'affûte.",
    "caution": "Un couteau peut être considéré comme une arme de catégorie D : l'achat est libre pour un majeur, mais le port ou le transport sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Il voyage dans le sac de randonnée ou d'évacuation, pas dans la poche en ville.",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Couteau pliant à lame verrouillable",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14313,6 +14785,7 @@
      "tier": "commun",
      "contents": "Pince multifonction avec lame, scie et tournevis",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14322,6 +14795,7 @@
      "tier": "confirme",
      "contents": "Couteau à lame fixe d'environ 10 cm avec étui, rangé dans le sac de randonnée ou d'évacuation",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14331,6 +14805,7 @@
      "tier": "epique",
      "contents": "Couteau fixe en acier de qualité, pierre à affûter et petite scie pliante",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14340,6 +14815,7 @@
      "tier": "legendaire",
      "contents": "Couteau fixe, hachette et scie pliante, affûtage et entretien maîtrisés",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14360,12 +14836,14 @@
    "category": null,
    "description": "Garder au sec les papiers, les vêtements et l'électronique sous la pluie, en crue ou en traversée. Sert aussi à isoler, transporter ou improviser un poncho.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Sacs poubelle épais pour doubler l'intérieur des sacs",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14375,6 +14853,7 @@
      "tier": "commun",
      "contents": "Sacs de congélation à zip pour les papiers, les médicaments et le téléphone",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14384,6 +14863,7 @@
      "tier": "confirme",
      "contents": "Sacs étanches à fermeture enroulée (roll-top) pour les vêtements et le couchage",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14393,6 +14873,7 @@
      "tier": "epique",
      "contents": "Sac à dos étanche, pochette étanche pour le téléphone utilisable à travers la housse",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14402,6 +14883,7 @@
      "tier": "legendaire",
      "contents": "Tout le contenu des sacs du foyer compartimenté et étanche, testé sous la douche ou à la rivière",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14422,15 +14904,17 @@
    "category": null,
    "description": "Au même endroit et prêts à partir.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Les originaux rassemblés",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "finances.papiers_ranges"
      ],
+     "objectives": [],
      "includes": [
       "Pièces d'identité et passeports",
       "Cartes Vitale et de mutuelle",
@@ -14444,11 +14928,13 @@
      "tier": "commun",
      "contents": "Des copies prêtes à partir, santé et animaux compris",
      "min_days": null,
-     "objectives": [
-      "finances.papiers",
+     "proves": [
       "sante.fiches",
       "sante.ordonnance_vue",
       "finances.animaux_papiers"
+     ],
+     "objectives": [
+      "finances.papiers"
      ],
      "includes": [
       "Copies papier dans le sac d'évacuation",
@@ -14463,6 +14949,7 @@
      "tier": "confirme",
      "contents": "Logement, banque et véhicule",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Contrats d'assurance et de logement",
@@ -14476,6 +14963,7 @@
      "tier": "epique",
      "contents": "À l'abri de l'eau et du feu",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Pochette étanche et ignifugée",
@@ -14489,6 +14977,7 @@
      "tier": "legendaire",
      "contents": "Dossier complet et à jour",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Coffre ignifugé",
@@ -14514,12 +15003,14 @@
    "category": null,
    "description": "En petites coupures : quand les terminaux de paiement tombent, seul le liquide passe.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "50 € à la maison",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14529,9 +15020,10 @@
      "tier": "commun",
      "contents": "150 € par adulte",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "finances.especes"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -14540,6 +15032,7 @@
      "tier": "confirme",
      "contents": "300 € par adulte, dont une part dans le sac d'évacuation",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14549,6 +15042,7 @@
      "tier": "epique",
      "contents": "Un mois de dépenses courantes en liquide",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14558,6 +15052,7 @@
      "tier": "legendaire",
      "contents": "Liquide et biens d'échange (outils, petits objets utiles)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14578,14 +15073,17 @@
    "category": null,
    "description": "Sans téléphone, on ne se souvient d'aucun numéro.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Les numéros vitaux",
      "min_days": null,
+     "proves": [
+      "communication.frequence"
+     ],
      "objectives": [
-      "communication.frequence",
       "sante.numeros_urgence"
      ],
      "includes": [
@@ -14600,10 +15098,11 @@
      "tier": "commun",
      "contents": "Les contacts essentiels",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "communication.contacts_papier",
       "moral.ecoute"
      ],
+     "objectives": [],
      "includes": [
       "Famille, voisins, école, travail",
       "Médecin et pharmacie",
@@ -14616,6 +15115,7 @@
      "tier": "confirme",
      "contents": "Le plan de communication",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "communication.contact_externe"
      ],
@@ -14631,6 +15131,7 @@
      "tier": "epique",
      "contents": "Un exemplaire par personne",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Une carte plastifiée dans chaque portefeuille et chaque sac",
@@ -14643,9 +15144,10 @@
      "tier": "legendaire",
      "contents": "L'annuaire du réseau",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "communaute.annuaire"
      ],
+     "objectives": [],
      "includes": [
       "Compétences et ressources des proches",
       "Contacts du groupe d'entraide",
@@ -14669,12 +15171,14 @@
    "category": null,
    "description": "Logement, voiture, boîte aux lettres.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un double rangé à la maison",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14684,9 +15188,10 @@
      "tier": "commun",
      "contents": "Doubles chez un proche de confiance et cache sûre",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "securite.cles"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -14695,6 +15200,7 @@
      "tier": "confirme",
      "contents": "Doubles étiquetés de façon discrète, un jeu dans le sac",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14704,6 +15210,7 @@
      "tier": "epique",
      "contents": "Doubles des lieux de repli et des proches",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14713,6 +15220,7 @@
      "tier": "legendaire",
      "contents": "Boîte à clés sécurisée et inventaire des clés à jour",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14733,12 +15241,14 @@
    "category": null,
    "description": "Guides de référence, lisibles sans écran.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un guide officiel de préparation aux urgences",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "competences.guide"
      ],
@@ -14750,6 +15260,7 @@
      "tier": "commun",
      "contents": "Un manuel de premiers secours",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14759,9 +15270,10 @@
      "tier": "confirme",
      "contents": "Secourisme, jardinage, réparations, conserves",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "competences.bibliotheque"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -14770,6 +15282,7 @@
      "tier": "epique",
      "contents": "Plantes comestibles et médicinales, élevage, mécanique",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14779,6 +15292,7 @@
      "tier": "legendaire",
      "contents": "Bibliothèque partagée avec le voisinage, fiches pratiques plastifiées",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14799,12 +15313,14 @@
    "category": null,
    "description": "Une réserve de valeur qui ne dépend ni des banques ni du réseau. Les pièces courantes (once d'argent, 20 francs or) se reconnaissent et se revendent le plus facilement.",
    "caution": "Acheter chez un négociant reconnu, avec facture : sans justificatif, la revente est taxée au forfait sur le prix de vente, et une pièce peut être fausse. En crise, l'or se fractionne mal et s'échange avec une forte décote : il ne remplace ni les espèces ni les vivres. Le garder discrètement, hors de vue.",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Quelques pièces d'argent, une fois l'épargne de précaution constituée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14814,6 +15330,7 @@
      "tier": "commun",
      "contents": "Une vingtaine de pièces d'argent, factures rangées dans le classeur",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14823,6 +15340,7 @@
      "tier": "confirme",
      "contents": "Pièces d'argent et quelques pièces d'or de petite valeur (10 ou 20 francs)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14832,6 +15350,7 @@
      "tier": "epique",
      "contents": "L'équivalent d'un mois de dépenses en métal, réparti entre deux cachettes",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14841,6 +15360,7 @@
      "tier": "legendaire",
      "contents": "L'équivalent de trois mois de dépenses, une fois l'épargne de précaution constituée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -14861,12 +15381,14 @@
    "category": null,
    "description": "Sans écran, le temps est long et le sommeil fragile.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Dormir malgré le bruit",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Bouchons d'oreille",
@@ -14879,9 +15401,10 @@
      "tier": "commun",
      "contents": "S'occuper une soirée",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "moral.kit_occupation"
      ],
+     "objectives": [],
      "includes": [
       "Un livre par personne",
       "Jeu de cartes",
@@ -14894,6 +15417,7 @@
      "tier": "confirme",
      "contents": "S'occuper une semaine",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Jeux de société pour tout le foyer",
@@ -14907,9 +15431,10 @@
      "tier": "epique",
      "contents": "Tenir le moral longtemps",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "moral.routine"
      ],
+     "objectives": [],
      "includes": [
       "Instrument de musique simple",
       "Ballon et jeux d'extérieur",
@@ -14923,6 +15448,7 @@
      "tier": "legendaire",
      "contents": "Animer le voisinage",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Jeux pour un groupe",
@@ -14947,12 +15473,14 @@
    "category": null,
    "description": "Dans le sac de chaque enfant.",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Un objet rassurant",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Doudou ou objet familier"
@@ -14964,9 +15492,10 @@
      "tier": "commun",
      "contents": "Le kit de réconfort",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "moral.kit_enfant"
      ],
+     "objectives": [],
      "includes": [
       "Petit jeu",
       "Photo de famille",
@@ -14980,6 +15509,7 @@
      "tier": "confirme",
      "contents": "Occuper et apaiser",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Livre ou cahier de coloriage",
@@ -14993,6 +15523,7 @@
      "tier": "epique",
      "contents": "Expliquer et préparer",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "moral.explication_enfants"
      ],
@@ -15007,6 +15538,7 @@
      "tier": "legendaire",
      "contents": "Tenir plusieurs jours loin de chez soi",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Jeux pour plusieurs jours",
@@ -15031,15 +15563,17 @@
    "category": null,
    "description": "Pour une personne qui a besoin d'accompagnement (autisme, troubles cognitifs, handicap).",
    "caution": "",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Pouvoir être identifié",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "sante.identification"
      ],
+     "objectives": [],
      "includes": [
       "Carte ou bracelet d'identification (nom, contact, besoins)"
      ],
@@ -15050,6 +15584,7 @@
      "tier": "commun",
      "contents": "Le kit de réassurance",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "sante.reassurance"
      ],
@@ -15065,6 +15600,7 @@
      "tier": "confirme",
      "contents": "Garder ses repères",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Routine de crise illustrée",
@@ -15078,6 +15614,7 @@
      "tier": "epique",
      "contents": "Apaiser une crise",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Lunettes teintées et objets sensoriels",
@@ -15091,6 +15628,7 @@
      "tier": "legendaire",
      "contents": "Plan d'accompagnement complet",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [
       "Plan validé par les soignants",
@@ -15115,14 +15653,14 @@
    "category": null,
    "description": "Un carré au bon moment fait beaucoup pour le moral, et se partage ou s'échange facilement. Le chocolat noir se garde un à deux ans au frais et au sec.",
    "caution": "",
-   "objectives": [
-    "communaute.troc"
-   ],
+   "proves": [],
+   "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Quelques tablettes",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15132,6 +15670,7 @@
      "tier": "commun",
      "contents": "Une tablette par personne et par semaine, pour deux semaines",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15141,6 +15680,7 @@
      "tier": "confirme",
      "contents": "Un mois, chocolat noir et cacao en poudre",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15150,6 +15690,7 @@
      "tier": "epique",
      "contents": "Trois mois en rotation, quelques tablettes réservées à l'échange",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15159,6 +15700,7 @@
      "tier": "legendaire",
      "contents": "Six mois en rotation avec les réserves, part d'échange comprise",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15179,14 +15721,14 @@
    "category": null,
    "description": "Pour les buveurs du foyer, le manque de caféine donne des maux de tête plusieurs jours, au pire moment. Le café et le thé se gardent longtemps et s'échangent bien.",
    "caution": "",
-   "objectives": [
-    "communaute.troc"
-   ],
+   "proves": [],
+   "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une semaine de café soluble ou de thé",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15196,6 +15738,7 @@
      "tier": "commun",
      "contents": "Deux semaines, et de quoi le préparer sans électricité (cafetière italienne ou à piston)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15205,6 +15748,7 @@
      "tier": "confirme",
      "contents": "Un mois, en paquets fermés ou sous vide",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15214,6 +15758,7 @@
      "tier": "epique",
      "contents": "Trois mois, dont du café en grains et un moulin manuel",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15223,6 +15768,7 @@
      "tier": "legendaire",
      "contents": "Six mois en rotation, une part réservée à l'échange",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15243,12 +15789,14 @@
    "category": null,
    "description": "Des mignonettes (5 cl) pour marquer un moment ou remercier un voisin. L'alcool fort se garde des années, bouchon fermé, à l'abri de la lumière.",
    "caution": "Jamais pour un mineur, ni avec un traitement qui l'interdit. L'alcool ne réchauffe pas : il accélère la perte de chaleur et aggrave l'hypothermie. Il ne remplace pas l'antiseptique de la trousse. En crise, garder les idées claires : on boit peu, et jamais avant de conduire ou de veiller. Pour une personne dépendante, un arrêt brutal (faute d'approvisionnement) peut provoquer convulsions et delirium tremens : en parler à un médecin avant une crise, et ne jamais arrêter seul.",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une petite bouteille pour un moment à fêter",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15258,6 +15806,7 @@
      "tier": "commun",
      "contents": "Cinq mignonettes, faciles à offrir",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15267,6 +15816,7 @@
      "tier": "confirme",
      "contents": "Dix mignonettes et une bouteille pour les grandes occasions",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15276,6 +15826,7 @@
      "tier": "epique",
      "contents": "Une vingtaine de mignonettes variées, rangées hors de portée des enfants",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15285,6 +15836,7 @@
      "tier": "legendaire",
      "contents": "Réserve tenue à jour, sous clé, hors de portée des mineurs",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15305,12 +15857,14 @@
    "category": null,
    "description": "Pour un fumeur du foyer, un sevrage brutal en pleine crise aggrave le stress, l'irritabilité et les troubles du sommeil. La vraie réserve, ce sont les substituts nicotiniques : le niveau monte avec eux, pas avec le tabac.",
    "caution": "Fumer nuit gravement à la santé, à celle des enfants et à celle des voisins de confinement. La revente de tabac est réservée aux buralistes. Les substituts nicotiniques (patchs, gommes) sont la vraie réserve de sécurité pour un fumeur. Jamais de flamme près du carburant ni dans la pièce de confinement.",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Une semaine de substituts nicotiniques (patchs, gommes ou pastilles) pour chaque fumeur",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15320,6 +15874,7 @@
      "tier": "commun",
      "contents": "Deux semaines de substituts, dosage vu avec un pharmacien",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15329,6 +15884,7 @@
      "tier": "confirme",
      "contents": "Un mois de substituts : patch pour le fond et forme orale pour les envies soudaines",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15338,6 +15894,7 @@
      "tier": "epique",
      "contents": "Un mois de substituts et un accompagnement possible à distance (Tabac info service, 39 89)",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15347,6 +15904,7 @@
      "tier": "legendaire",
      "contents": "Sevrage engagé ou réussi avec un professionnel de santé, substituts gardés en réserve contre les rechutes",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15367,15 +15925,17 @@
    "category": null,
    "description": "Pour un foyer qui chasse ou pratique le tir sportif. Les niveaux mesurent la détention en règle et la sécurité, pas la puissance de feu.",
    "caution": "En France, une arme à feu ne se détient pas pour se défendre : la détention exige un titre (permis de chasser validé ou licence de tir), une autorisation préfectorale pour la catégorie B, et chaque arme est enregistrée au SIA. Le port est interdit, le transport n'est permis que pour un motif légitime (stand, chasse), arme déchargée et dans une mallette fermée. Les munitions ne s'achètent que sur présentation du titre. L'arme ne va pas dans le sac d'évacuation.",
+   "proves": [],
    "objectives": [],
    "tiers": [
     {
      "tier": "rustique",
      "contents": "Arme enregistrée au SIA avec un titre valide, rangée sous clé, munitions rangées à part",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "defense.armes_regle"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -15384,6 +15944,7 @@
      "tier": "commun",
      "contents": "Coffre-fort ou armoire forte fixée au mur, verrou de pontet, clés hors de portée des enfants",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15393,6 +15954,9 @@
      "tier": "confirme",
      "contents": "Licence de tir en club et pratique encadrée régulière",
      "min_days": null,
+     "proves": [
+      "defense.tir_sportif"
+     ],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15402,6 +15966,7 @@
      "tier": "epique",
      "contents": "Entretien et nettoyage maîtrisés, munitions stockées au sec dans les quantités permises par le titre",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15411,6 +15976,7 @@
      "tier": "legendaire",
      "contents": "Formation à la sécurité renouvelée, transport conforme et titre, certificat médical et compte SIA toujours à jour",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15433,6 +15999,7 @@
    "category": null,
    "description": "Retarder une intrusion le temps d'appeler et de se mettre à l'abri. La plupart des cambriolages passent par la porte ou une fenêtre facile.",
    "caution": "",
+   "proves": [],
    "objectives": [
     "defense.intrusion"
    ],
@@ -15441,6 +16008,7 @@
      "tier": "rustique",
      "contents": "Judas ou entrebâilleur, porte toujours fermée à clé, même quand on est là",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15450,6 +16018,7 @@
      "tier": "commun",
      "contents": "Judas et entrebâilleur, cylindre de serrure changé à l'emménagement",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15459,9 +16028,10 @@
      "tier": "confirme",
      "contents": "Serrure certifiée A2P, entrebâilleur, éclairage extérieur à détecteur",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "securite.logement"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -15470,9 +16040,10 @@
      "tier": "epique",
      "contents": "Porte blindée ou bloc-porte certifié A2P (à voir avec le propriétaire pour un locataire)",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "securite.porte_blindee"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -15481,6 +16052,7 @@
      "tier": "legendaire",
      "contents": "Porte blindée, fenêtres basses protégées (volets, barreaux ou vitrage retardateur) et pièce refuge qui ferme à clé",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15501,6 +16073,7 @@
    "category": null,
    "description": "Être prévenu tôt et faire fuir : le bruit et la lumière arrêtent la plupart des intrusions avant le premier contact.",
    "caution": "Une caméra ne filme que chez soi : jamais la voie publique ni chez les voisins, et les personnes filmées (aide à domicile, nounou) doivent en être informées. Face à une intrusion, on s'enferme et on appelle le 17, on ne va pas au contact.",
+   "proves": [],
    "objectives": [
     "defense.intrusion"
    ],
@@ -15509,6 +16082,7 @@
      "tier": "rustique",
      "contents": "Alarme personnelle de poche (sirène à goupille) pour chaque adulte",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15518,6 +16092,7 @@
      "tier": "commun",
      "contents": "Éclairage extérieur à détecteur de mouvement et alarmes d'ouverture sur les accès",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15527,6 +16102,7 @@
      "tier": "confirme",
      "contents": "Alarme du logement avec sirène intérieure, sur batterie en cas de coupure",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15536,6 +16112,7 @@
      "tier": "epique",
      "contents": "Alarme reliée au téléphone ou à un service de télésurveillance, caméra à l'entrée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15545,9 +16122,10 @@
      "tier": "legendaire",
      "contents": "Alarme autonome sur batterie et signal convenu avec les voisins, qui savent quoi faire quand elle sonne",
      "min_days": null,
-     "objectives": [
+     "proves": [
       "defense.voisinage"
      ],
+     "objectives": [],
      "includes": [],
      "basket": [],
      "basket_notes": []
@@ -15567,6 +16145,7 @@
    "category": null,
    "description": "Pour se dégager et fuir, pas pour combattre. Elle reste au domicile, à un endroit connu des adultes et hors de portée des enfants.",
    "caution": "Une bombe lacrymogène de 100 ml au plus est une arme de catégorie D : achat réservé aux majeurs, et la porter ou la transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1). Au-delà de 100 ml, elle relève de la catégorie B, interdite sans autorisation. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée. Jamais à portée d'un enfant ; en pièce fermée, elle atteint aussi le foyer. Déconseillée si un membre est asthmatique ou si un bébé vit au foyer, et jamais utilisée dans la pièce de confinement.",
+   "proves": [],
    "objectives": [
     "defense.legitime_defense"
    ],
@@ -15575,6 +16154,7 @@
      "tier": "rustique",
      "contents": "Une bombe de 100 ml au plus au domicile, rangée hors de portée des enfants",
      "min_days": null,
+     "proves": [],
      "objectives": [
       "defense.aerosol"
      ],
@@ -15586,6 +16166,7 @@
      "tier": "commun",
      "contents": "Rangée hors de portée des enfants, à un endroit connu des adultes, en dehors de la pièce de confinement",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15595,6 +16176,7 @@
      "tier": "confirme",
      "contents": "Formule en gel plutôt qu'en gaz, moins de retombées dans un lieu clos",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15604,6 +16186,7 @@
      "tier": "epique",
      "contents": "Manipulation essayée avec une bombe d'entraînement inerte, date de péremption suivie",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15613,6 +16196,9 @@
      "tier": "legendaire",
      "contents": "Remplacée avant péremption, et chaque adulte connaît les règles de la légitime défense ; le plan du foyer reste de s'enfermer et d'appeler le 17",
      "min_days": null,
+     "proves": [
+      "defense.legitime_defense"
+     ],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15633,6 +16219,7 @@
    "category": null,
    "description": "Bâton télescopique, tonfa ou matraque, gardé au domicile en dernier recours, derrière la fuite et l'appel au 17. Les niveaux mesurent la détention en règle et la formation, pas la dangerosité.",
    "caution": "En France, c'est une arme de catégorie D : achat réservé aux majeurs, détention libre au domicile. La porter ou la transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1), et « pour me défendre » n'est pas un motif légitime. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée à une attaque injuste. Frapper un agresseur qui fuit ou à terre, ou viser la tête, fait basculer dans les violences volontaires.",
+   "proves": [],
    "objectives": [
     "defense.legitime_defense",
     "defense.initiation"
@@ -15642,6 +16229,7 @@
      "tier": "rustique",
      "contents": "Rangée au domicile, à un endroit connu des seuls adultes ; jamais dans le sac ni la voiture",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15651,6 +16239,9 @@
      "tier": "commun",
      "contents": "Rangée hors de portée des enfants, règles de la légitime défense connues de chaque adulte",
      "min_days": null,
+     "proves": [
+      "defense.legitime_defense"
+     ],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15660,6 +16251,7 @@
      "tier": "confirme",
      "contents": "Initiation encadrée au bâton de défense : garder la distance, se dégager, ne jamais frapper la tête",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15669,6 +16261,7 @@
      "tier": "epique",
      "contents": "Pratique entretenue en club (bâton de défense, canne de combat) au moins deux fois par an",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15678,6 +16271,7 @@
      "tier": "legendaire",
      "contents": "Dernier recours seulement : le plan du foyer reste de s'enfermer et d'appeler le 17 sans aller au contact ; règles revues chaque année",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15698,6 +16292,7 @@
    "category": null,
    "description": "Une lame est l'objet le plus risqué à faire entrer dans une confrontation : elle blesse gravement, peut être retournée contre soi, et la riposte devient vite disproportionnée. Les niveaux mesurent un rangement sûr et la connaissance des règles, pas la dangerosité.",
    "caution": "En France, le poignard et le couteau-poignard sont des armes de catégorie D : achat réservé aux majeurs, détention libre au domicile. Les porter ou les transporter sans motif légitime est un délit (Code de la sécurité intérieure, art. L315-1), et se défendre n'est pas un motif légitime. Face à un agresseur à mains nues, une lame est rarement une riposte proportionnée : la légitime défense est alors presque toujours écartée. Hors de portée des enfants, sous clé.",
+   "proves": [],
    "objectives": [
     "defense.legitime_defense"
    ],
@@ -15706,6 +16301,7 @@
      "tier": "rustique",
      "contents": "Rangé au domicile dans un étui fermé, hors de portée des enfants",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15715,6 +16311,7 @@
      "tier": "commun",
      "contents": "Rangé sous clé, facture conservée",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15724,6 +16321,7 @@
      "tier": "confirme",
      "contents": "Chaque adulte sait qu'une lame face à un agresseur désarmé n'est pas proportionnée, et que la fuite passe d'abord",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15733,6 +16331,7 @@
      "tier": "epique",
      "contents": "Initiation encadrée à la défense face à une arme blanche (distance, fuite, protection) suivie en club",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15742,6 +16341,7 @@
      "tier": "legendaire",
      "contents": "Rangé sous clé, transporté seulement pour un motif légitime (chasse, collection, randonnée), dans un étui fermé au fond du sac",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15762,6 +16362,7 @@
    "category": null,
    "description": "Une canne solide reste la plus utile : elle aide à marcher, se porte partout, et un cours de canne de défense apprend à s'en servir pour se dégager. Les niveaux mesurent la détention en règle et la formation, pas la dangerosité.",
    "caution": "Les armes contondantes (casse-tête, nunchaku, massue) sont des armes de catégorie D : achat réservé aux majeurs, détention libre au domicile, port et transport interdits sans motif légitime (Code de la sécurité intérieure, art. L315-1). Une canne de marche n'est pas une arme tant qu'elle sert à marcher, mais tout objet utilisé pour frapper en devient une. Son usage n'est couvert que par la légitime défense : une riposte nécessaire, immédiate et proportionnée.",
+   "proves": [],
    "objectives": [
     "defense.legitime_defense",
     "defense.initiation",
@@ -15772,6 +16373,7 @@
      "tier": "rustique",
      "contents": "Rangée au domicile, à un endroit connu des seuls adultes",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15781,6 +16383,7 @@
      "tier": "commun",
      "contents": "Canne de marche robuste, utilisée et portée comme aide à la marche",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15790,6 +16393,7 @@
      "tier": "confirme",
      "contents": "Initiation à la canne de défense ou à la canne de combat dans un club",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15799,6 +16403,7 @@
      "tier": "epique",
      "contents": "Pratique entretenue au moins deux fois par an, adaptée à la mobilité de chacun",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -15808,6 +16413,7 @@
      "tier": "legendaire",
      "contents": "Dernier recours seulement : le plan du foyer reste de s'enfermer et d'appeler le 17 sans aller au contact ; règles connues de chaque adulte",
      "min_days": null,
+     "proves": [],
      "objectives": [],
      "includes": [],
      "basket": [],
@@ -17646,6 +18252,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": [
     "sante.activite_reguliere"
    ]
@@ -17665,6 +18272,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": [
     "sante.activite_reguliere"
    ]
@@ -17684,6 +18292,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": []
   },
   {
@@ -17703,6 +18312,7 @@
    "requires": [
     "physique.marche"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -17723,6 +18333,7 @@
     "physique.marche",
     "physique.renfo"
    ],
+   "proves": [],
    "objectives": [
     "sante.force_fonctionnelle"
    ]
@@ -17744,6 +18355,7 @@
    "requires": [
     "physique.mobilite"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -17763,9 +18375,10 @@
    "requires": [
     "physique.endurance"
    ],
-   "objectives": [
+   "proves": [
     "mobilite.velo_pratique"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "physique.randonneur",
@@ -17785,6 +18398,7 @@
     "physique.endurance",
     "physique.porteur"
    ],
+   "proves": [],
    "objectives": [
     "sante.condition"
    ]
@@ -17806,6 +18420,7 @@
    "requires": [
     "physique.terrain"
    ],
+   "proves": [],
    "objectives": [
     "sante.natation"
    ]
@@ -17828,6 +18443,7 @@
     "physique.cycliste",
     "physique.randonneur"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -17847,6 +18463,7 @@
    "requires": [
     "physique.randonneur"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -17866,6 +18483,7 @@
    "requires": [
     "physique.endurance"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -17887,6 +18505,7 @@
     "physique.brancardier",
     "physique.nageur"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -17904,9 +18523,10 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "securite.risques"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "stratege.carte",
@@ -17923,9 +18543,10 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "mobilite.itineraires"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "stratege.guide",
@@ -17942,9 +18563,10 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "competences.guide"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "stratege.veille",
@@ -17963,9 +18585,11 @@
    "requires": [
     "stratege.risques"
    ],
+   "proves": [
+    "communication.sources"
+   ],
    "objectives": [
     "securite.alertes",
-    "communication.sources",
     "securite.pcs"
    ]
   },
@@ -17986,9 +18610,10 @@
    "requires": [
     "stratege.carte"
    ],
-   "objectives": [
+   "proves": [
     "mobilite.orientation"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "stratege.plan_familial",
@@ -18007,9 +18632,10 @@
    "requires": [
     "stratege.guide"
    ],
-   "objectives": [
+   "proves": [
     "securite.plan_familial"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "stratege.scenarios",
@@ -18029,6 +18655,7 @@
     "stratege.veille",
     "stratege.plan_familial"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18047,6 +18674,9 @@
    ],
    "requires": [
     "stratege.boussole"
+   ],
+   "proves": [
+    "mobilite.repli_sans_voiture"
    ],
    "objectives": []
   },
@@ -18067,9 +18697,10 @@
    "requires": [
     "stratege.plan_familial"
    ],
-   "objectives": [
+   "proves": [
     "competences.bibliotheque"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "stratege.decision",
@@ -18088,9 +18719,10 @@
    "requires": [
     "stratege.scenarios"
    ],
-   "objectives": [
+   "proves": [
     "mobilite.criteres_depart"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "stratege.exercice",
@@ -18110,8 +18742,10 @@
     "stratege.scenarios",
     "stratege.itineraires"
    ],
+   "proves": [
+    "securite.exercice_24h"
+   ],
    "objectives": [
-    "securite.exercice_24h",
     "securite.retex"
    ]
   },
@@ -18132,9 +18766,10 @@
    "requires": [
     "stratege.bibliotheque"
    ],
-   "objectives": [
+   "proves": [
     "competences.transmettre"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "stratege.maitre",
@@ -18155,6 +18790,7 @@
     "stratege.exercice",
     "stratege.transmettre"
    ],
+   "proves": [],
    "objectives": [
     "securite.plan_commun"
    ]
@@ -18174,6 +18810,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": [
     "sante.numeros_urgence"
    ]
@@ -18193,6 +18830,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18210,9 +18848,10 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "moral.stress"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "soin.gqs",
@@ -18231,9 +18870,10 @@
    "requires": [
     "soin.alerter"
    ],
-   "objectives": [
+   "proves": [
     "sante.gestes_qui_sauvent"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "soin.hygiene",
@@ -18252,9 +18892,10 @@
    "requires": [
     "soin.petits_soins"
    ],
-   "objectives": [
+   "proves": [
     "eau.savoir_traiter"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "soin.ecoute",
@@ -18273,6 +18914,7 @@
    "requires": [
     "soin.respiration"
    ],
+   "proves": [],
    "objectives": [
     "moral.ecoute"
    ]
@@ -18294,9 +18936,10 @@
    "requires": [
     "soin.gqs"
    ],
-   "objectives": [
+   "proves": [
     "sante.psc1"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "soin.pharmacie",
@@ -18315,6 +18958,7 @@
    "requires": [
     "soin.hygiene"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18334,9 +18978,10 @@
    "requires": [
     "soin.ecoute"
    ],
-   "objectives": [
+   "proves": [
     "moral.pssm"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "soin.isole",
@@ -18355,9 +19000,10 @@
    "requires": [
     "soin.psc1"
    ],
-   "objectives": [
+   "proves": [
     "sante.secourisme_avance"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "soin.plantes",
@@ -18376,9 +19022,10 @@
    "requires": [
     "soin.pharmacie"
    ],
-   "objectives": [
+   "proves": [
     "sante.plantes"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "soin.debriefing",
@@ -18397,9 +19044,11 @@
    "requires": [
     "soin.pssm"
    ],
-   "objectives": [
-    "moral.debriefing",
+   "proves": [
     "moral.reperer"
+   ],
+   "objectives": [
+    "moral.debriefing"
    ]
   },
   {
@@ -18420,6 +19069,7 @@
     "soin.isole",
     "soin.debriefing"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18437,9 +19087,11 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
-    "abri.coupures"
-   ]
+   "proves": [
+    "abri.coupures",
+    "eau.robinet_arret"
+   ],
+   "objectives": []
   },
   {
    "id": "brico.feu",
@@ -18458,9 +19110,10 @@
    "requires": [
     "brico.rechaud"
    ],
-   "objectives": [
+   "proves": [
     "competences.feu"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "brico.couture",
@@ -18477,6 +19130,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18496,9 +19150,10 @@
    "requires": [
     "brico.coupures"
    ],
-   "objectives": [
+   "proves": [
     "abri.reparations"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "brico.rechaud",
@@ -18515,9 +19170,10 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "competences.rechaud"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "brico.textile",
@@ -18536,9 +19192,10 @@
    "requires": [
     "brico.couture"
    ],
-   "objectives": [
+   "proves": [
     "competences.couture"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "brico.plomberie",
@@ -18557,6 +19214,7 @@
    "requires": [
     "brico.reparations"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18576,6 +19234,7 @@
    "requires": [
     "brico.feu"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18595,6 +19254,7 @@
    "requires": [
     "brico.reparations"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18614,9 +19274,10 @@
    "requires": [
     "brico.plomberie"
    ],
-   "objectives": [
+   "proves": [
     "energie.bilan_wh"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "brico.tronconneuse",
@@ -18634,9 +19295,10 @@
    "requires": [
     "brico.bois"
    ],
-   "objectives": [
+   "proves": [
     "competences.tronconneuse"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "brico.mecanique",
@@ -18655,6 +19317,7 @@
    "requires": [
     "brico.velo"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18676,9 +19339,10 @@
     "brico.tronconneuse",
     "brico.mecanique"
    ],
-   "objectives": [
+   "proves": [
     "competences.echangeable"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "cuisto.sans_cuisson",
@@ -18695,6 +19359,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": [
     "alimentation.sans_cuisson"
    ]
@@ -18714,9 +19379,10 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "alimentation.rotation"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "cuisto.semis",
@@ -18733,6 +19399,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18752,6 +19419,7 @@
    "requires": [
     "cuisto.sans_cuisson"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18771,6 +19439,7 @@
    "requires": [
     "cuisto.rotation"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18790,9 +19459,10 @@
    "requires": [
     "cuisto.semis"
    ],
-   "objectives": [
+   "proves": [
     "alimentation.potager_savoir"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "cuisto.semaine",
@@ -18811,9 +19481,10 @@
    "requires": [
     "cuisto.rechaud"
    ],
-   "objectives": [
+   "proves": [
     "competences.cuisine_stock"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "cuisto.conserves",
@@ -18832,9 +19503,10 @@
    "requires": [
     "cuisto.securite"
    ],
-   "objectives": [
+   "proves": [
     "alimentation.conservation"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "cuisto.semences",
@@ -18852,6 +19524,9 @@
    ],
    "requires": [
     "cuisto.potager"
+   ],
+   "proves": [
+    "alimentation.semences_autoproduites"
    ],
    "objectives": [
     "alimentation.semences"
@@ -18874,9 +19549,10 @@
    "requires": [
     "cuisto.semaine"
    ],
-   "objectives": [
+   "proves": [
     "energie.cuisson_sobre"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "cuisto.conservation_longue",
@@ -18895,6 +19571,7 @@
    "requires": [
     "cuisto.conserves"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -18913,6 +19590,7 @@
    "requires": [
     "cuisto.semences"
    ],
+   "proves": [],
    "objectives": [
     "alimentation.elevage"
    ]
@@ -18936,6 +19614,7 @@
     "cuisto.conservation_longue",
     "cuisto.elevage"
    ],
+   "proves": [],
    "objectives": [
     "alimentation.production_50"
    ]
@@ -18955,9 +19634,10 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "defense.fuir_alerter"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "protecteur.issues",
@@ -18974,10 +19654,11 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "abri.issues",
     "mobilite.depart_rapide"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "protecteur.loi",
@@ -18994,10 +19675,11 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "defense.legitime_defense",
     "defense.violences"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "protecteur.vigilance",
@@ -19016,6 +19698,7 @@
    "requires": [
     "protecteur.fuir"
    ],
+   "proves": [],
    "objectives": [
     "defense.evitement"
    ]
@@ -19037,9 +19720,10 @@
    "requires": [
     "protecteur.issues"
    ],
-   "objectives": [
+   "proves": [
     "securite.discretion"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "protecteur.apres",
@@ -19058,9 +19742,10 @@
    "requires": [
     "protecteur.loi"
    ],
-   "objectives": [
+   "proves": [
     "defense.apres_agression"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "protecteur.desescalade",
@@ -19079,9 +19764,10 @@
    "requires": [
     "protecteur.vigilance"
    ],
-   "objectives": [
+   "proves": [
     "securite.desescalade"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "protecteur.intrusion",
@@ -19100,10 +19786,11 @@
    "requires": [
     "protecteur.discretion"
    ],
-   "objectives": [
+   "proves": [
     "defense.intrusion",
     "defense.exercice_intrusion"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "protecteur.initiation",
@@ -19122,10 +19809,11 @@
    "requires": [
     "protecteur.apres"
    ],
-   "objectives": [
+   "proves": [
     "defense.initiation",
     "defense.initiation_adaptee"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "protecteur.vulnerables",
@@ -19144,9 +19832,10 @@
    "requires": [
     "protecteur.desescalade"
    ],
-   "objectives": [
+   "proves": [
     "defense.enfants"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "protecteur.voisinage",
@@ -19165,8 +19854,10 @@
    "requires": [
     "protecteur.intrusion"
    ],
+   "proves": [
+    "defense.voisinage"
+   ],
    "objectives": [
-    "defense.voisinage",
     "securite.veille"
    ]
   },
@@ -19187,10 +19878,11 @@
    "requires": [
     "protecteur.initiation"
    ],
-   "objectives": [
+   "proves": [
     "defense.pratique",
     "defense.pratique_adaptee"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "protecteur.maitre",
@@ -19211,10 +19903,11 @@
     "protecteur.voisinage",
     "protecteur.pratique"
    ],
-   "objectives": [
+   "proves": [
     "defense.transmission",
     "defense.mise_en_situation"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "rassembleur.voisins",
@@ -19231,9 +19924,10 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "communaute.voisins"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "rassembleur.proche",
@@ -19250,10 +19944,11 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "communaute.proche_joignable",
     "communication.contact_externe"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "rassembleur.service",
@@ -19270,6 +19965,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19289,9 +19985,10 @@
    "requires": [
     "rassembleur.voisins"
    ],
-   "objectives": [
+   "proves": [
     "communaute.fragiles"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "rassembleur.binome",
@@ -19310,9 +20007,10 @@
    "requires": [
     "rassembleur.proche"
    ],
-   "objectives": [
+   "proves": [
     "communaute.binome"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "rassembleur.annuaire",
@@ -19331,9 +20029,10 @@
    "requires": [
     "rassembleur.service"
    ],
-   "objectives": [
+   "proves": [
     "communaute.annuaire"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "rassembleur.tournee",
@@ -19352,6 +20051,7 @@
    "requires": [
     "rassembleur.fragiles"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19371,9 +20071,10 @@
    "requires": [
     "rassembleur.binome"
    ],
-   "objectives": [
+   "proves": [
     "communaute.groupe"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "rassembleur.troc",
@@ -19392,9 +20093,10 @@
    "requires": [
     "rassembleur.annuaire"
    ],
-   "objectives": [
+   "proves": [
     "communaute.troc"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "rassembleur.reunion",
@@ -19413,6 +20115,7 @@
    "requires": [
     "rassembleur.tournee"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19432,9 +20135,10 @@
    "requires": [
     "rassembleur.groupe"
    ],
-   "objectives": [
+   "proves": [
     "communaute.engagement"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "rassembleur.mutualiser",
@@ -19453,9 +20157,10 @@
    "requires": [
     "rassembleur.troc"
    ],
-   "objectives": [
+   "proves": [
     "communaute.mutualisation"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "rassembleur.maitre",
@@ -19476,6 +20181,7 @@
     "rassembleur.engagement",
     "rassembleur.mutualiser"
    ],
+   "proves": [],
    "objectives": [
     "communaute.resilience_locale",
     "communaute.parrainage"
@@ -19496,6 +20202,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19513,9 +20220,10 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "eau.sources_identifiees"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "pisteur.observer",
@@ -19532,6 +20240,7 @@
     "rural"
    ],
    "requires": [],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19551,6 +20260,7 @@
    "requires": [
     "pisteur.noeuds"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19570,9 +20280,10 @@
    "requires": [
     "pisteur.eau"
    ],
-   "objectives": [
+   "proves": [
     "eau.savoir_traiter"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "pisteur.cueillette",
@@ -19591,6 +20302,7 @@
    "requires": [
     "pisteur.observer"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19610,6 +20322,7 @@
    "requires": [
     "pisteur.abri"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19628,6 +20341,9 @@
    ],
    "requires": [
     "pisteur.abri"
+   ],
+   "proves": [
+    "competences.feu"
    ],
    "objectives": []
   },
@@ -19648,6 +20364,7 @@
    "requires": [
     "pisteur.cueillette"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19667,6 +20384,7 @@
    "requires": [
     "pisteur.nuit"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19686,6 +20404,7 @@
    "requires": [
     "pisteur.observer"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19705,6 +20424,7 @@
    "requires": [
     "pisteur.feu"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19726,6 +20446,7 @@
     "pisteur.cap",
     "pisteur.peche"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19743,9 +20464,11 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
-    "communication.radio",
+   "proves": [
     "communication.frequence"
+   ],
+   "objectives": [
+    "communication.radio"
    ]
   },
   {
@@ -19763,9 +20486,10 @@
     "rural"
    ],
    "requires": [],
-   "objectives": [
+   "proves": [
     "communication.contacts_papier"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "transmetteur.sauvegarde",
@@ -19782,8 +20506,10 @@
     "rural"
    ],
    "requires": [],
+   "proves": [
+    "cyber.sauvegarde"
+   ],
    "objectives": [
-    "cyber.sauvegarde",
     "cyber.restauration"
    ]
   },
@@ -19804,6 +20530,7 @@
    "requires": [
     "transmetteur.ecoute"
    ],
+   "proves": [],
    "objectives": [
     "communication.talkies"
    ]
@@ -19825,6 +20552,9 @@
    "requires": [
     "transmetteur.contacts"
    ],
+   "proves": [
+    "communication.reseau_local"
+   ],
    "objectives": []
   },
   {
@@ -19844,6 +20574,7 @@
    "requires": [
     "transmetteur.sauvegarde"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19863,9 +20594,11 @@
    "requires": [
     "transmetteur.talkies"
    ],
-   "objectives": [
-    "communication.radio_emission",
+   "proves": [
     "communication.reseau_local"
+   ],
+   "objectives": [
+    "communication.radio_emission"
    ]
   },
   {
@@ -19885,6 +20618,7 @@
    "requires": [
     "transmetteur.plan"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19904,6 +20638,7 @@
    "requires": [
     "transmetteur.hors_ligne"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19923,9 +20658,10 @@
    "requires": [
     "transmetteur.cb"
    ],
-   "objectives": [
+   "proves": [
     "communication.licence"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "transmetteur.relais",
@@ -19944,10 +20680,11 @@
    "requires": [
     "transmetteur.messages"
    ],
-   "objectives": [
+   "proves": [
     "communication.relais",
     "communication.sources"
-   ]
+   ],
+   "objectives": []
   },
   {
    "id": "transmetteur.energie",
@@ -19966,6 +20703,7 @@
    "requires": [
     "transmetteur.maille"
    ],
+   "proves": [],
    "objectives": []
   },
   {
@@ -19987,9 +20725,10 @@
     "transmetteur.relais",
     "transmetteur.energie"
    ],
-   "objectives": [
+   "proves": [
     "communication.reseau_teste"
-   ]
+   ],
+   "objectives": []
   }
  ]
 }

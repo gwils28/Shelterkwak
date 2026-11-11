@@ -156,7 +156,8 @@ class ItemTier(BaseModel):
     tier: TierId
     contents: str = ""
     min_days: float | None = None
-    objectives: list[str] = Field(default_factory=list)
+    proves: list[str] = Field(default_factory=list)  # objectifs validés par la possession de ce niveau
+    objectives: list[str] = Field(default_factory=list)  # objectifs auxquels ce niveau contribue
     includes: list[str] = Field(default_factory=list)  # contenu minimal ajouté à ce niveau (contenants)
     basket: list[BasketLine] = Field(default_factory=list)  # panier type d'une réserve, pour ce palier
     basket_notes: list[str] = Field(default_factory=list)  # principes du panier, affichés sous la liste
@@ -174,7 +175,8 @@ class Item(BaseModel):
     category: str | None = None  # catégorie d'autonomie, pour une réserve
     description: str = ""
     caution: str = ""  # mise en garde (loi, santé, sécurité), affichée en tête de la fiche
-    objectives: list[str] = Field(default_factory=list)
+    proves: list[str] = Field(default_factory=list)  # objectifs validés par la possession, à tout niveau
+    objectives: list[str] = Field(default_factory=list)  # objectifs auxquels l'objet contribue
     tiers: list[ItemTier] = Field(default_factory=list)
     crisis: bool = False  # à retrouver le jour J : emplacement affiché dans l'écran Crise
     requires_tags: list[str] = Field(default_factory=list)  # carte proposée aux seuls foyers portant ce tag
@@ -248,7 +250,8 @@ class Talent(BaseModel):
     criteria: str  # ce qui prouve qu'on l'a acquis
     contexts: list[ContextId] = Field(default_factory=lambda: list(ALL_CONTEXTS))  # lieux de vie où il s'affiche
     requires: list[str] = Field(default_factory=list)  # talents prérequis, tous exigés
-    objectives: list[str] = Field(default_factory=list)  # objectifs que ce talent aide à valider
+    proves: list[str] = Field(default_factory=list)  # objectifs validés par ce talent
+    objectives: list[str] = Field(default_factory=list)  # objectifs auxquels ce talent contribue
 
 
 class ShowIf(BaseModel):
@@ -394,9 +397,11 @@ def _item_errors(catalog: Catalog, objective_ids: set[str], cat_ids: set[str]) -
             errors.append(f"objet {it.id}: groupe inconnu {it.group}")
         if it.category is not None and it.category not in cat_ids:
             errors.append(f"objet {it.id}: catégorie inconnue {it.category}")
-        for oid in [*it.objectives, *(o for t in it.tiers for o in t.objectives)]:
+        for oid in [*it.proves, *it.objectives, *(o for t in it.tiers for o in [*t.proves, *t.objectives])]:
             if oid not in objective_ids:
                 errors.append(f"objet {it.id}: objectif inconnu {oid}")
+        for owner, links in [(it.id, it), *((f"{it.id}/{t.tier}", t) for t in it.tiers)]:
+            errors.extend(_proof_errors(catalog, f"objet {owner}", links.proves, links.objectives, owner_is_item=True))
         errors.extend(_tier_order_errors(catalog, it))
         if [t.tier for t in it.tiers] != list(rank):
             errors.append(f"objet {it.id}: les cinq niveaux sont attendus, dans l'ordre ({', '.join(rank)})")
@@ -429,18 +434,23 @@ def _tier_order_errors(catalog: Catalog, item: Item) -> list[str]:
 
     Posséder un objet ne prouve pas une compétence : une compétence peut être liée à l'objet
     (`objectives`), pas à un niveau. Et un foyer qui monte les niveaux d'un objet doit rencontrer
-    les objectifs dans l'ordre des paliers.
+    les objectifs dans l'ordre des paliers. Un objectif déjà lié plus bas (à l'objet ou à un niveau
+    inférieur) peut être prouvé par un niveau plus haut : il ne compte pas pour l'ordre.
     """
     by_id = catalog.objectives_by_id
     errors: list[str] = []
     highest = 0
+    seen = {*item.proves, *item.objectives}
     for t in item.tiers:
-        objs = [by_id[o] for o in t.objectives if o in by_id]
+        links = [*t.proves, *t.objectives]
+        objs = [by_id[o] for o in links if o in by_id]
         errors.extend(
             f"objet {item.id}/{t.tier}: {o.id} est une compétence, à lier à l'objet et non à un niveau"
             for o in objs
             if o.kind == "skill"
         )
+        objs = [o for o in objs if o.id not in seen]
+        seen.update(links)
         if objs and min(o.level for o in objs) < highest:
             errors.append(f"objet {item.id}/{t.tier}: objectif de niveau inférieur à celui d'un niveau précédent")
         highest = max([highest, *(o.level for o in objs)])
@@ -475,7 +485,31 @@ def _talent_errors(catalog: Catalog, objective_ids: set[str]) -> list[str]:
                 errors.append(f"talent {t.id}: prérequis inconnu {r}")
             elif req.specialty != t.specialty or req.row >= t.row:
                 errors.append(f"talent {t.id}: le prérequis {r} doit être plus bas dans le même arbre")
-        errors.extend(f"talent {t.id}: objectif inconnu {o}" for o in t.objectives if o not in objective_ids)
+        errors.extend(
+            f"talent {t.id}: objectif inconnu {o}" for o in [*t.proves, *t.objectives] if o not in objective_ids
+        )
+        errors.extend(_proof_errors(catalog, f"talent {t.id}", t.proves, t.objectives, owner_is_item=False))
+    return errors
+
+
+def _proof_errors(
+    catalog: Catalog, owner: str, proves: list[str], objectives: list[str], owner_is_item: bool
+) -> list[str]:
+    """Liens « prouve » : jamais aussi « contribue », jamais un stock (calculé), jamais un savoir-faire pour un objet.
+
+    Posséder prouve un état, jamais un savoir-faire : seul un talent prouve un objectif « skill ».
+    Voir docs/conseil/2026-11-11.md.
+    """
+    by_id = catalog.objectives_by_id
+    errors = [f"{owner}: {o} à la fois dans `proves` et `objectives`" for o in set(proves) & set(objectives)]
+    for oid in proves:
+        obj = by_id.get(oid)
+        if obj is None:
+            continue
+        if obj.kind == "stock":
+            errors.append(f"{owner}: {oid} est un objectif de stock, déjà calculé : il ne se prouve pas")
+        elif obj.kind == "skill" and owner_is_item:
+            errors.append(f"{owner}: {oid} est une compétence, qu'aucune possession ne prouve")
     return errors
 
 

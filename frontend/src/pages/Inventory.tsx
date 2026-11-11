@@ -3,7 +3,7 @@ import { NavLink, Route, Routes, useSearchParams } from "react-router-dom";
 import { AutonomyCards } from "../components/AutonomyCards";
 import { addDays } from "../engine/dates";
 import type { ItemData } from "../engine/replay";
-import type { Catalog, ItemBasis, ItemKind, ItemTier, Market } from "../engine/types";
+import type { Catalog, Item, ItemBasis, ItemKind, ItemTier, Market } from "../engine/types";
 import { type Basket, type BasketRow, type Card, buildCards, DONE_STATUSES, purchaseGuide, reserveBaskets, suggestedExpiry, tierObjectiveIds } from "../lib/inventory";
 import { formatDate, formatDays, formatNumber, STATUS_LABEL, unitLabel } from "../lib/format";
 import type { Objective, StockData } from "../model";
@@ -296,7 +296,7 @@ function ItemDetail({ card, catalog, today, onDone }: { card: Card; catalog: Cat
         <input value={draft.note} placeholder="marque, date de vérification, ce qui manque…" onChange={(e) => setDraft({ ...draft, note: e.target.value })} />
       </label>
 
-      <LinkedObjectives objectives={card.objectives} covered={covered} />
+      <LinkedObjectives objectives={card.objectives} covered={covered} item={card.item} catalog={catalog} />
       <PurchaseGuideSection card={card} catalog={catalog} today={today} />
 
       <div className="actions sheet-actions">
@@ -426,7 +426,14 @@ function PurchaseGuideSection({ card, catalog, today }: { card: Card; catalog: C
   );
 }
 
-function LinkedObjectives({ objectives, covered }: { objectives: Objective[]; covered: Set<string> }) {
+/** Où l'objet prouve l'objectif : « l'objet » (tout niveau), le nom du premier niveau qui le prouve, ou null (il y contribue). */
+function provedAt(item: Item, catalog: Catalog, objectiveId: string): string | null {
+  if (item.proves.includes(objectiveId)) return "tout niveau";
+  const tier = item.tiers.find((t) => t.proves.includes(objectiveId));
+  return tier ? (catalog.item_tiers.find((x) => x.id === tier.tier)?.name ?? tier.tier) : null;
+}
+
+function LinkedObjectives({ objectives, covered, item, catalog }: { objectives: Objective[]; covered: Set<string>; item: Item; catalog: Catalog }) {
   if (!objectives.length) return null;
   return (
     <section className="linked">
@@ -434,13 +441,23 @@ function LinkedObjectives({ objectives, covered }: { objectives: Objective[]; co
       <ul>
         {objectives.map((o) => {
           const done = DONE_STATUSES.includes(o.status);
+          const at = provedAt(item, catalog, o.id);
           return (
             <li key={o.id} className={covered.has(o.id) && !done ? "covered" : ""}>
               <span className={`badge status-${o.status}`}>{STATUS_LABEL[o.status]}</span>
               <span className="linked-title">
                 {o.title} <span className="hint">· niveau {o.level}</span>
               </span>
-              {!done && o.kind === "check" && covered.has(o.id) && (
+              {at ? (
+                <span className="badge proof" title="Posséder l'objet à ce niveau valide l'objectif, sans autre action">
+                  ✓ auto · {at}
+                </span>
+              ) : (
+                <span className="badge soft" title="L'objet y contribue : l'objectif se valide à part">
+                  Contribue
+                </span>
+              )}
+              {!done && !at && o.kind === "check" && covered.has(o.id) && (
                 <button className="link" onClick={() => void actions.validate(o.id)}>
                   Valider
                 </button>
@@ -449,9 +466,10 @@ function LinkedObjectives({ objectives, covered }: { objectives: Objective[]; co
           );
         })}
       </ul>
-      {[...covered].some((id) => objectives.some((o) => o.id === id && !DONE_STATUSES.includes(o.status) && o.kind === "check")) && (
-        <p className="hint">Les objectifs surlignés correspondent à ce niveau : valide-les quand c'est vérifié.</p>
-      )}
+      <p className="hint">
+        « ✓ auto » : posséder l'objet au niveau indiqué valide l'objectif, et le retirer le fait retomber. « Contribue » : l'objet aide, mais
+        l'objectif se valide à part{[...covered].some((id) => objectives.some((o) => o.id === id && !DONE_STATUSES.includes(o.status) && o.kind === "check")) ? " (ceux surlignés correspondent à ce niveau : valide-les quand c'est vérifié)" : ""}.
+      </p>
     </section>
   );
 }
@@ -512,7 +530,7 @@ function ReserveDetail({ card, catalog, today, soon }: { card: Card; catalog: Ca
       {baskets.map((b) => (
         <BasketSection key={b.tier.tier} basket={b} catalog={catalog} unit={category.unit} child={tags.has("enfants") || tags.has("bebe")} onAdd={addFromBasket} />
       ))}
-      <LinkedObjectives objectives={card.objectives} covered={new Set()} />
+      <LinkedObjectives objectives={card.objectives} covered={new Set()} item={card.item} catalog={catalog} />
 
       <section>
         <h3>Articles ({articles.length})</h3>

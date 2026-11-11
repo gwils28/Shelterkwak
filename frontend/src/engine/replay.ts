@@ -90,10 +90,12 @@ export interface State {
   items: Map<string, ItemData>; // cartes possédées, par id d'objet
   talents: Map<string, TalentData>; // talents acquis, par id de talent
   onboarded_at: string | null;
+  /** Date (AAAA-MM-JJ) de la dernière déclaration : « item:<id> », « talent:<id> », « stock:<id> ». */
+  declared: Map<string, IsoDate>;
 }
 
 export function emptyState(): State {
-  return { household: null, validations: new Map(), stock: new Map(), custom: new Map(), notes: new Map(), items: new Map(), talents: new Map(), onboarded_at: null };
+  return { household: null, validations: new Map(), stock: new Map(), custom: new Map(), notes: new Map(), items: new Map(), talents: new Map(), onboarded_at: null, declared: new Map() };
 }
 
 export function compareOps(a: Op, b: Op): number {
@@ -141,6 +143,7 @@ export function apply(catalog: Catalog, state: State, op: Op): [string, string] 
       state.notes.clear();
       state.items.clear();
       state.talents.clear();
+      state.declared.clear();
       return ["Remise à zéro du foyer", "remise à zéro"];
     case "onboarding": {
       state.household = { ...p.household };
@@ -148,7 +151,10 @@ export function apply(catalog: Catalog, state: State, op: Op): [string, string] 
       const vals: ValidationData[] = p.validations ?? [];
       const stock: StockData[] = p.stock ?? [];
       for (const v of vals) state.validations.set(v.objective_id, { ...v });
-      for (const s of stock) state.stock.set(s.id, { ...s });
+      for (const s of stock) {
+        state.stock.set(s.id, { ...s });
+        state.declared.set(`stock:${s.id}`, op.at.slice(0, 10));
+      }
       return [
         `Interview terminée : ${vals.length} objectif(s) déjà acquis, ${stock.length} stock(s) estimé(s)`,
         "interview initiale",
@@ -185,12 +191,14 @@ export function apply(catalog: Catalog, state: State, op: Op): [string, string] 
     case "stock.upsert": {
       const existed = state.stock.has(p.id);
       state.stock.set(p.id, { ...(p as StockData) });
+      state.declared.set(`stock:${p.id}`, op.at.slice(0, 10));
       if (existed) return [`Stock modifié : ${p.name}`, `modification du stock « ${p.name} »`];
       return [`Stock ajouté : ${fmtQty(Number(p.quantity))} × ${p.name}`, `ajout de stock « ${p.name} »`];
     }
     case "stock.delete": {
       const item = state.stock.get(p.id);
       state.stock.delete(p.id);
+      state.declared.delete(`stock:${p.id}`);
       const name = item ? item.name : p.id;
       return [`Stock retiré : ${name}`, `retrait du stock « ${name} »`];
     }
@@ -214,22 +222,26 @@ export function apply(catalog: Catalog, state: State, op: Op): [string, string] 
     case "item.set": {
       const prefix = state.items.has(p.item_id) ? "Inventaire mis à jour" : "Ajouté à l'inventaire";
       state.items.set(p.item_id, { ...(p as ItemData) });
+      state.declared.set(`item:${p.item_id}`, op.at.slice(0, 10));
       const label = itemLabel(catalog, p.item_id, p.tier ?? null);
       return [`${prefix} : ${label}`, `inventaire « ${label} »`];
     }
     case "item.delete": {
       state.items.delete(p.item_id);
+      state.declared.delete(`item:${p.item_id}`);
       const label = itemLabel(catalog, p.item_id);
       return [`Retiré de l'inventaire : ${label}`, `inventaire « ${label} » retiré`];
     }
     case "talent.set": {
       const prefix = state.talents.has(p.talent_id) ? "Talent mis à jour" : "Talent acquis";
       state.talents.set(p.talent_id, { ...(p as TalentData) });
+      state.declared.set(`talent:${p.talent_id}`, op.at.slice(0, 10));
       const name = talentName(catalog, p.talent_id);
       return [`${prefix} : ${name}`, `talent « ${name} »`];
     }
     case "talent.delete": {
       state.talents.delete(p.talent_id);
+      state.declared.delete(`talent:${p.talent_id}`);
       const name = talentName(catalog, p.talent_id);
       return [`Talent retiré : ${name}`, `talent « ${name} » retiré`];
     }
@@ -242,6 +254,69 @@ export function replay(catalog: Catalog, ops: Op[]): State {
   const state = emptyState();
   for (const op of [...ops].sort(compareOps)) apply(catalog, state, op);
   return state;
+}
+
+/** Objectif validé par un objet possédé ou un talent acquis (lien `proves` du catalogue). */
+export interface Proof {
+  objective_id: string;
+  kind: "item" | "talent";
+  source_id: string;
+  tier: string | null; // niveau de l'objet qui porte le lien (null : l'objet à tout niveau, ou un talent)
+  on: IsoDate; // date de la preuve, qui tient lieu de date de validation
+}
+
+/**
+ * Preuves tirées de l'inventaire et des talents, dans l'ordre du catalogue (voir `proofs` en Python).
+ * Un objet prouve les objectifs de son niveau et des niveaux inférieurs, à la date de sa dernière
+ * déclaration, antidatée si sa « prochaine vérification » tombe avant la revalidation de l'objectif.
+ */
+export function proofs(catalog: Catalog, state: State): Proof[] {
+  const byId = new Map(catalog.objectives.map((o) => [o.id, o]));
+  const rank = new Map(catalog.item_tiers.map((t, i) => [t.id, i]));
+  const out: Proof[] = [];
+  for (const item of catalog.items) {
+    if (item.kind === "reserve") {
+      const lines = [...state.stock.values()].filter((s) => s.category === item.category && Number(s.quantity) > 0);
+      if (lines.length && item.proves.length) {
+        const on = lines.map((s) => state.declared.get(`stock:${s.id}`)!).reduce((a, b) => (b > a ? b : a));
+        for (const id of item.proves) out.push({ objective_id: id, kind: "item", source_id: item.id, tier: null, on });
+      }
+      continue;
+    }
+    const data = state.items.get(item.id);
+    if (!data) continue;
+    const declared = state.declared.get(`item:${item.id}`)!;
+    const check = data.expires_on || null;
+    const owned = rank.get(data.tier ?? "") ?? -1;
+    const links: [string, string | null][] = item.proves.map((id) => [id, null]);
+    for (const t of item.tiers) if (rank.get(t.tier)! <= owned) for (const id of t.proves) links.push([id, t.tier]);
+    for (const [id, tier] of links) {
+      const obj = byId.get(id);
+      let on = declared;
+      if (obj?.revalidate_days && check) {
+        const early = addDays(check, -obj.revalidate_days);
+        if (early < on) on = early;
+      }
+      out.push({ objective_id: id, kind: "item", source_id: item.id, tier, on });
+    }
+  }
+  for (const talent of catalog.talents) {
+    const data = state.talents.get(talent.id);
+    if (!data) continue;
+    const on = data.acquired_on || state.declared.get(`talent:${talent.id}`)!;
+    for (const id of talent.proves) out.push({ objective_id: id, kind: "talent", source_id: talent.id, tier: null, on });
+  }
+  return out;
+}
+
+/** Validations manuelles et preuves réunies : la plus récente date l'emporte. */
+export function effectiveValidations(catalog: Catalog, state: State): Map<string, IsoDate> {
+  const out = new Map([...state.validations].map(([id, v]) => [id, v.validated_at]));
+  for (const p of proofs(catalog, state)) {
+    const cur = out.get(p.objective_id);
+    if (cur === undefined || p.on > cur) out.set(p.objective_id, p.on);
+  }
+  return out;
 }
 
 export interface Inputs {
@@ -264,10 +339,7 @@ export function inputs(catalog: Catalog, state: State): Inputs | null {
       priority_axes: [...(h.priority_axes ?? [])],
       goal_level: h.goal_level ?? null,
     },
-    validations: [...state.validations.values()].map((v) => ({
-      objective_id: v.objective_id,
-      validated_at: v.validated_at,
-    })),
+    validations: [...effectiveValidations(catalog, state)].map(([objective_id, validated_at]) => ({ objective_id, validated_at })),
     stock: [...state.stock.values()].map((s) => ({
       id: s.id,
       name: s.name,
@@ -288,9 +360,9 @@ function expirations(catalog: Catalog, state: State, after: IsoDate, until: IsoD
   const byId = new Map(full.objectives.map((o) => [o.id, o]));
   const found = new Map<IsoDate, string[]>();
   const add = (d: IsoDate, cause: string) => found.set(d, [...(found.get(d) ?? []), cause]);
-  for (const [id, v] of state.validations) {
+  for (const [id, on] of effectiveValidations(catalog, state)) {
     const obj = byId.get(id);
-    const expiry = obj ? validationExpiry(obj, v.validated_at) : null;
+    const expiry = obj ? validationExpiry(obj, on) : null;
     if (obj && expiry) {
       const d = addDays(expiry, GRACE_DAYS); // le tambour tombe à la fin du sursis
       if (after < d && d <= until) add(d, `revalidation dépassée « ${obj.title} »`);
