@@ -3152,3 +3152,131 @@ a.phone {
     color: var(--gold-light);
   }
 }
+
+/* Panier type d'une réserve (fiche du garde-manger) */
+.basket {
+  border-top: 1px solid var(--line);
+  padding-top: 0.7rem;
+}
+.basket summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.6rem;
+  cursor: pointer;
+  list-style: none;
+}
+.basket summary::-webkit-details-marker {
+  display: none;
+}
+.basket summary::before {
+  content: "▸";
+  color: var(--muted);
+  transition: transform 0.15s;
+}
+.basket[open] summary::before {
+  transform: rotate(90deg);
+}
+.basket-bar {
+  flex: 1 0 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted) 22%, transparent);
+  overflow: hidden;
+}
+.basket-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ok);
+  transition: width 0.3s;
+}
+.basket-intro {
+  margin: 0.6rem 0 0.5rem;
+}
+.basket-rows {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.basket-row {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  align-items: start;
+  gap: 10px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.basket-mark {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--stone-dark);
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+.basket-row.is-partial .basket-mark {
+  border-color: var(--warn);
+  color: var(--warn);
+}
+.basket-row.is-full {
+  background: color-mix(in srgb, var(--ok) 8%, var(--panel));
+  border-color: color-mix(in srgb, var(--ok) 40%, var(--line));
+}
+.basket-row.is-full .basket-mark {
+  border-color: var(--ok);
+  background: var(--ok);
+  color: #fff;
+}
+.basket-main {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.basket-name {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.basket-row.is-full .basket-name {
+  color: var(--muted);
+}
+.basket-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+.basket-child {
+  color: var(--ink);
+}
+.basket-side {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+}
+.basket-count {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.basket-row.is-full .basket-count {
+  color: var(--ok);
+}
+.basket-notes {
+  margin: 0.7rem 0 0.3rem;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+@media (prefers-color-scheme: dark) {
+  .basket-row.is-full .basket-mark {
+    color: #1b1916;
+  }
+}

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { CATALOG } from "../engine/catalog";
 import type { ItemData, StockData } from "../engine/replay";
 import type { Autonomy, Objective } from "../model";
-import { autonomyProjection, buildCards, byLocation, datedEntries, expiriesByMonth, nextDue, nextSteps, purchaseGuide, reserveTier, tierObjectiveIds } from "./inventory";
+import { autonomyProjection, buildCards, byLocation, datedEntries, expiriesByMonth, nextDue, nextSteps, purchaseGuide, reserveBaskets, reserveTier, suggestedExpiry, tierObjectiveIds } from "./inventory";
 
 const item = (id: string) => CATALOG.items.find((i) => i.id === id)!;
 const objective = (id: string, status: Objective["status"]): Objective =>
@@ -136,5 +136,27 @@ describe("inventaire", () => {
     expect(after.some((g) => g.stale)).toBe(false);
     expect(purchaseGuide(CATALOG, filtre, null, "2030-01-01").every((g) => g.stale)).toBe(true);
     expect(purchaseGuide(CATALOG, item("chocolat"), null, "2026-11-09")).toEqual([]);
+  });
+
+  it("adapte le panier type au foyer et coche les lignes remplies par des articles non périmés", () => {
+    const vivres = item("reserve_vivres");
+    // 2 adultes et un bébé : 5 300 kcal par jour, 15 900 kcal pour les 3 jours du palier commun.
+    const auto = { category: "alimentation", need_per_day: 5300 } as Autonomy;
+    const art = (basket: string, quantity: number, expires_on: string | null = null): StockData =>
+      ({ id: `${basket}-${quantity}`, name: basket, category: "alimentation", quantity, unit_label: "", amount_per_unit: 1, expires_on, basket });
+    const [basket] = reserveBaskets(vivres, [art("sardines", 6), art("biscottes", 1), art("chocolat", 2, "2026-01-01")], auto, "2026-11-11");
+    expect(basket.tier.tier).toBe("commun");
+    expect(basket.need).toBe(15900);
+    const row = (id: string) => basket.rows.find((r) => r.line.id === id)!;
+    expect(row("sardines")).toMatchObject({ target: 6, have: 6, status: "full" });
+    expect(row("biscottes")).toMatchObject({ target: 2, have: 1, status: "partial" });
+    expect(row("chocolat")).toMatchObject({ have: 0, status: "empty" }); // périmé : ne compte plus
+    expect(row("compotes").target).toBe(12);
+    expect(basket.full).toBe(1);
+    // Sans membre, au moins une unité par ligne.
+    expect(reserveBaskets(vivres, [], null, "2026-11-11")[0].rows.every((r) => r.target === 1)).toBe(true);
+    expect(suggestedExpiry(row("sardines").line, "2026-11-11")).toBe("2030-11-11");
+    expect(suggestedExpiry({ ...row("lait_uht").line, keeps_months: 1 }, "2027-01-31")).toBe("2027-02-28");
+    expect(suggestedExpiry(row("lyophilises").line, "2026-11-11")).toBeNull();
   });
 });

@@ -160,7 +160,32 @@ items:
     objectives: [alimentation.rotation, alimentation.sans_cuisson, alimentation.inventaire]
     tiers:
       - {tier: rustique, min_days: 1, contents: "24 heures pour tout le foyer", objectives: [alimentation.stock_24h]}
-      - {tier: commun, min_days: 3, contents: "Le kit d'urgence officiel", objectives: [alimentation.stock_3j]}
+      - tier: commun
+        min_days: 3
+        contents: "Trois jours sans cuisson : le panier type ci-dessous"
+        objectives: [alimentation.stock_3j]
+        # Panier type proposé par le conseil et le Fourrier (session du 10 novembre 2026).
+        # `share` = part des kcal du palier ; l'app en déduit les unités pour le foyer.
+        # Un id de ligne est stocké dans les articles (`basket`) : il ne se renomme pas.
+        basket:
+          - {id: biscottes, name: "Biscottes ou crackers peu salés", unit: "paquet de 300 g", amount_per_unit: 1200, share: 15, keeps: "9 à 12 mois", keeps_months: 9}
+          - {id: puree_cacahuete, name: "Purée de cacahuète lisse", unit: "pot de 350 g", amount_per_unit: 2100, share: 12, keeps: "12 à 18 mois", keeps_months: 12, child: "En couche fine, seulement si l'arachide est déjà introduite."}
+          - {id: flocons, name: "Flocons d'avoine ou céréales peu sucrées", unit: "paquet de 500 g", amount_per_unit: 1850, share: 11, keeps: "12 mois", keeps_months: 12, note: "Avec le lait UHT, sans cuisson."}
+          - {id: sardines, name: "Sardines à l'huile", unit: "boîte de 135 g", amount_per_unit: 250, share: 9, keeps: "4 à 5 ans", keeps_months: 48, child: "Arêtes molles : on les écrase."}
+          - {id: fruits_secs, name: "Fruits secs", unit: "sachet de 250 g", amount_per_unit: 700, share: 8, keeps: "12 mois", keeps_months: 12, child: "Coupés ou trempés (risque d'étouffement)."}
+          - {id: lait_uht, name: "Lait UHT entier", unit: "brique de 1 L", amount_per_unit: 650, share: 8, keeps: "3 à 6 mois", keeps_months: 3, note: "À renouveler souvent."}
+          - {id: lyophilises, name: "Repas lyophilisés", unit: "sachet", amount_per_unit: 550, share: 7, keeps: "selon la date du sachet", note: "Vrai repas salé. Demande de l'eau (sortie du stock d'eau) ; à l'eau froide, 30 à 60 min.", child: "Souvent salés : à faire goûter avant une crise, ou pour les adultes."}
+          - {id: chocolat, name: "Chocolat noir", unit: "tablette de 100 g", amount_per_unit: 550, share: 6, keeps: "12 à 18 mois", keeps_months: 12, note: "Pour le moral."}
+          - {id: legumineuses, name: "Légumineuses en conserve", unit: "boîte de 400 g", amount_per_unit: 325, share: 6, keeps: "2 à 3 ans", keeps_months: 24, note: "Se mangent froides.", child: "Écrasées."}
+          - {id: biscuits, name: "Biscuits secs", unit: "paquet de 200 g", amount_per_unit: 900, share: 5, keeps: "12 mois", keeps_months: 12, note: "Réconfort."}
+          - {id: huile_olive, name: "Huile d'olive", unit: "bouteille de 25 cl", amount_per_unit: 2050, share: 5, keeps: "12 à 18 mois", keeps_months: 12}
+          - {id: compotes, name: "Compotes sans sucre ajouté", unit: "gourde de 90 g", amount_per_unit: 70, share: 5, keeps: "9 à 12 mois", keeps_months: 9, child: "Aliment familier, apporte aussi de l'eau."}
+          - {id: legumes, name: "Légumes en conserve", unit: "boîte de 400 g", amount_per_unit: 175, share: 3, keeps: "2 à 3 ans", keeps_months: 24}
+        basket_notes:
+          - "Tout se mange sans cuisson, sauf les repas lyophilisés qui demandent de l'eau."
+          - "On stocke ce qu'on mange déjà, pour que la rotation se fasse avec les courses."
+          - "Petits formats : sans frigo, une boîte ouverte se finit dans le repas."
+          - "Le sel des conserves donne soif : la réserve d'eau ne compte pas sur l'eau des aliments."
       - {tier: confirme, min_days: 14, contents: "Deux semaines sans courses", objectives: [alimentation.stock_14j]}
       - {tier: epique, min_days: 90, contents: "Un trimestre", objectives: [alimentation.stock_90j]}
       - {tier: legendaire, min_days: 180, contents: "Six mois et plus", objectives: [alimentation.stock_180j]}

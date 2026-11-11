@@ -133,6 +133,23 @@ class ItemGroup(BaseModel):
     icon: str = ""
 
 
+class BasketLine(BaseModel):
+    """Ligne du panier type d'un palier de réserve. Son id est stocké dans le journal (`basket` d'un article).
+
+    `share` : part des besoins du palier (en %), convertie par l'app en unités pour le foyer.
+    """
+
+    id: str
+    name: str
+    unit: str  # « paquet de 300 g », « boîte de 400 g »
+    amount_per_unit: float = Field(gt=0)  # dans l'unité de la catégorie (kcal pour l'alimentation)
+    share: int = Field(gt=0, le=100)
+    keeps: str = ""  # conservation fermé, ordre de grandeur
+    keeps_months: int | None = None  # pour proposer une date de péremption, à corriger avec l'emballage
+    note: str = ""
+    child: str = ""  # précaution affichée si le foyer compte un enfant ou un bébé
+
+
 class ItemTier(BaseModel):
     """Palier de qualité ou de contenu d'un objet ; `min_days` pour une réserve (jours d'autonomie)."""
 
@@ -141,6 +158,8 @@ class ItemTier(BaseModel):
     min_days: float | None = None
     objectives: list[str] = Field(default_factory=list)
     includes: list[str] = Field(default_factory=list)  # contenu minimal ajouté à ce niveau (contenants)
+    basket: list[BasketLine] = Field(default_factory=list)  # panier type d'une réserve, pour ce palier
+    basket_notes: list[str] = Field(default_factory=list)  # principes du panier, affichés sous la liste
 
 
 class Item(BaseModel):
@@ -171,6 +190,14 @@ class Item(BaseModel):
             raise ValueError(f"{self.id}: `basis: autonomie` est réservé aux réserves, et obligatoire pour elles")
         if (self.basis == "contenu") != all(t.includes for t in self.tiers):
             raise ValueError(f"{self.id}: un contenant liste `includes` à chaque niveau, et lui seul")
+        if self.kind != "reserve" and any(t.basket for t in self.tiers):
+            raise ValueError(f"{self.id}: un panier type (`basket`) est réservé aux réserves")
+        ids = [line.id for t in self.tiers for line in t.basket]
+        if len(ids) != len(set(ids)):
+            raise ValueError(f"{self.id}: id de ligne de panier en double")
+        for t in self.tiers:
+            if t.basket and sum(line.share for line in t.basket) != 100:
+                raise ValueError(f"{self.id}/{t.tier}: les parts du panier type doivent faire 100 %")
         return self
 
 

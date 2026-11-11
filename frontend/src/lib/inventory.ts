@@ -3,7 +3,7 @@
 
 import { addDays } from "../engine/dates";
 import type { ItemData, StockData } from "../engine/replay";
-import type { Catalog, Item, ItemReference, ItemTier, Status } from "../engine/types";
+import type { BasketLine, Catalog, Item, ItemReference, ItemTier, Status } from "../engine/types";
 import type { Autonomy, Objective } from "../model";
 import { formatNumber } from "./format";
 
@@ -266,4 +266,63 @@ export function purchaseGuide(catalog: Catalog, item: Item, ownedTier: string | 
     .sort((a, b) => rank.get(a.tier)! - rank.get(b.tier)!);
   const next = refs.find((r) => rank.get(r.tier)! > owned);
   return refs.map((r) => ({ ...r, next: r === next, stale: addDays(r.checked, REFERENCE_STALE_DAYS) < today }));
+}
+
+// ---------- Panier type d'une réserve ----------
+
+export type BasketStatus = "full" | "partial" | "empty";
+
+export interface BasketRow {
+  line: BasketLine;
+  /** Unités à viser pour le foyer (au moins une). */
+  target: number;
+  /** Unités non périmées des articles reliés à la ligne. */
+  have: number;
+  status: BasketStatus;
+}
+
+export interface Basket {
+  tier: ItemTier;
+  days: number;
+  /** Besoin du palier pour le foyer, dans l'unité de la catégorie. */
+  need: number;
+  rows: BasketRow[];
+  full: number;
+}
+
+/**
+ * Paniers types d'une réserve, un par palier qui en a un. Les quantités suivent les besoins du foyer :
+ * part de la ligne × besoin quotidien × jours du palier, arrondi à l'unité supérieure.
+ * Une ligne est remplie par les articles non périmés qui la citent (`basket`).
+ */
+export function reserveBaskets(item: Item, articles: StockData[], autonomy: Autonomy | null, today: string): Basket[] {
+  const perDay = autonomy?.need_per_day ?? 0;
+  const have = new Map<string, number>();
+  for (const s of articles) {
+    if (!s.basket || (s.expires_on && s.expires_on < today)) continue;
+    have.set(s.basket, (have.get(s.basket) ?? 0) + s.quantity);
+  }
+  return item.tiers
+    .filter((t) => t.basket.length && t.min_days)
+    .map((tier) => {
+      const days = tier.min_days!;
+      const need = perDay * days;
+      const rows = tier.basket.map((line): BasketRow => {
+        const target = Math.max(1, Math.ceil((need * line.share) / 100 / line.amount_per_unit - 1e-9));
+        const h = have.get(line.id) ?? 0;
+        return { line, target, have: h, status: h >= target ? "full" : h > 0 ? "partial" : "empty" };
+      });
+      return { tier, days, need, rows, full: rows.filter((r) => r.status === "full").length };
+    });
+}
+
+/** Date de péremption proposée pour un article ajouté depuis le panier (à corriger avec l'emballage). */
+export function suggestedExpiry(line: BasketLine, today: string): string | null {
+  if (!line.keeps_months) return null;
+  const [y, m, d] = today.split("-").map(Number);
+  const months = m - 1 + line.keeps_months;
+  const year = y + Math.floor(months / 12);
+  const month = months % 12;
+  const last = new Date(Date.UTC(year, month + 1, 0)).getUTCDate(); // 31 janvier + 1 mois → 28 ou 29 février
+  return `${year}-${String(month + 1).padStart(2, "0")}-${String(Math.min(d, last)).padStart(2, "0")}`;
 }
