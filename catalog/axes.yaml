@@ -28,6 +28,9 @@ member_types:
   - {id: animal_grand, name: Grand chien}
   - {id: animal, name: Autre animal}
 
+# Types comptés comme adultes pour les objectifs « tous les adultes » (every_adult)
+adult_member_types: [adulte, senior]
+
 # Tags déduits automatiquement des membres du foyer
 member_tags:
   enfant: enfants

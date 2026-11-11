@@ -1,7 +1,8 @@
 // Arbres de talents de l'onglet Compétences : états des nœuds, rang atteint, chaînes de prérequis.
 // Rien n'est stocké ici : tout se déduit du catalogue et des talents acquis (journal rejoué).
 
-import type { TalentData } from "../engine/replay";
+import { addDays } from "../engine/dates";
+import { holders, type TalentData } from "../engine/replay";
 import type { Catalog, Specialty, Talent } from "../engine/types";
 
 /** acquis : coché ; disponible : tous ses prérequis sont acquis ; verrouillé : il en manque. */
@@ -16,7 +17,9 @@ export interface TalentNode {
 
 export interface Tree {
   specialty: Specialty;
-  nodes: TalentNode[];
+  nodes: TalentNode[]; // talents de la grille
+  retired: TalentNode[]; // talents retirés de la grille mais encore cochés
+
   acquired: number;
   total: number;
   available: number;
@@ -42,19 +45,21 @@ export function talentState(talent: Talent, acquired: ReadonlyMap<string, Talent
 
 export function buildTree(catalog: Catalog, specialty: Specialty, acquired: ReadonlyMap<string, TalentData>): Tree {
   const byId = new Map(catalog.talents.map((t) => [t.id, t]));
-  const nodes = catalog.talents
-    .filter((t) => t.specialty === specialty.id)
+  const all = catalog.talents
+    .filter((t) => t.specialty === specialty.id && (!t.retired || acquired.has(t.id)))
     .map((talent) => ({
       talent,
       state: talentState(talent, acquired),
       data: acquired.get(talent.id) ?? null,
       missing: talent.requires.filter((r) => !acquired.has(r)).map((r) => byId.get(r)!),
     }));
+  const nodes = all.filter((n) => !n.talent.retired);
   const owned = nodes.filter((n) => n.state === "acquired");
   const rank = Math.max(0, ...owned.map((n) => n.talent.row));
   return {
     specialty,
     nodes,
+    retired: all.filter((n) => n.talent.retired),
     acquired: owned.length,
     total: nodes.length,
     available: nodes.filter((n) => n.state === "available").length,
@@ -101,4 +106,17 @@ export function dependentChain(catalog: Catalog, talentId: string, acquired: Rea
 /** Talents directement débloqués par celui-ci (ceux qui le citent en prérequis). */
 export function unlocks(catalog: Catalog, talentId: string): Talent[] {
   return catalog.talents.filter((t) => t.requires.includes(talentId));
+}
+
+/** Date à partir de laquelle un talent à `refresh_days` est « à entretenir » (null : pas de durée). */
+export function refreshDate(talent: Talent, data: TalentData, declared: string | undefined): string | null {
+  const from = data.acquired_on || declared;
+  return talent.refresh_days && from ? addDays(from, talent.refresh_days) : null;
+}
+
+/** Talents critiques acquis, et ceux qu'au moins deux personnes du foyer maîtrisent (un remplaçant). */
+export function criticalCover(catalog: Catalog, acquired: ReadonlyMap<string, TalentData>): { total: number; backed: number; alone: Talent[] } {
+  const critical = catalog.talents.filter((t) => t.critical && acquired.has(t.id));
+  const alone = critical.filter((t) => holders(acquired.get(t.id)!) < 2);
+  return { total: critical.length, backed: critical.length - alone.length, alone };
 }

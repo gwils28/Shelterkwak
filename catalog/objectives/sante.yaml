@@ -191,6 +191,7 @@ objectives:
     level: 2
     requires_tags: [allergie_severe]
     title: Tous les adultes du foyer savent reconnaître une anaphylaxie et utiliser le stylo d'adrénaline
+    every_adult: true
   - id: sante.inhalateur
     level: 1
     requires_tags: [respiratoire]

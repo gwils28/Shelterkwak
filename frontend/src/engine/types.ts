@@ -44,6 +44,8 @@ export interface Objective {
   due_month: number | null;
   stock: { category: string; min_days: number } | null;
   custom: boolean;
+  every_adult?: boolean; // « tous les adultes » : un talent ne le prouve que si holders ≥ nombre d'adultes
+  redundancy?: boolean; // prouvé quand chaque talent critique acquis est maîtrisé par deux personnes
 }
 export interface Option {
   value: string;
@@ -193,6 +195,10 @@ export interface Talent {
   requires: string[]; // talents prérequis, tous exigés
   proves: string[]; // objectifs validés par ce talent
   objectives: string[]; // objectifs auxquels ce talent contribue
+  scope: "personne" | "foyer"; // personne : le foyer déclare combien le maîtrisent ; foyer : un bien commun
+  critical: boolean; // geste vital, à maîtriser par au moins deux personnes
+  refresh_days: number | null; // « à entretenir » passé ce délai depuis l'acquisition
+  retired: boolean; // sorti de la grille, lisible s'il est coché
 }
 /** Tous les objectifs liés à un niveau, un objet ou un talent : ceux qu'il prouve, puis ceux auxquels il contribue. */
 export function linksOf(x: { proves: string[]; objectives: string[] }): string[] {
@@ -206,6 +212,7 @@ export interface Catalog {
   member_types: NamedId[];
   member_tags: Record<string, string>;
   member_conditions: MemberCondition[];
+  adult_member_types: string[]; // types comptés comme adultes (« tous les adultes »)
   categories: Category[];
   objectives: Objective[];
   questions: Question[];

@@ -38,8 +38,8 @@ objectives:
     title: Temps de parole et de soutien mutuel organisé avec le groupe d'entraide
   - id: moral.debriefing
     level: 9
-    title: Après chaque exercice ou incident, un débriefing émotionnel avec tout le foyer
-    why: On ressort plus fort d'un choc qu'on a mis en mots, pas d'un choc qu'on a enfoui.
+    title: "Après chaque exercice ou incident, un temps de retour avec le foyer : sécurité, besoins, écoute sans forcer à raconter, orientation de qui va mal"
+    why: "Faire raconter le choc à chaud n'aide pas et peut aggraver (NICE NG116) ; ce qui protège, c'est la sécurité, le lien et une aide repérée tôt."
     revalidate_days: 365
   - id: moral.reperer
     level: 5

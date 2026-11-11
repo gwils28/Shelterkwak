@@ -199,3 +199,32 @@ Voir `docs/conseil/2026-11-11.md` pour les principes et l'audit des liens.
 - Validation manuelle et preuve : la plus récente compte. Retirer l'objet fait retomber
   l'objectif, sauf validation manuelle. Les objets déjà déclarés valident leurs objectifs dès la
   mise à jour, historique compris.
+
+## Qui sait faire quoi, recyclage, contenu du Soigneur (2026-11-11)
+
+Voir `docs/conseil/2026-11-11-competences.md`.
+
+- **`holders` dans `talent.set`** : nombre de personnes du foyer qui maîtrisent le talent (1 si
+  absent : les anciennes opérations restent valides). Un compteur, pas d'identité : les membres
+  n'ont ni id ni prénom. Le réseau proche ne compte pas (reporté).
+- **Catalogue des talents** : `scope` (`personne` par défaut, `foyer` pour un bien commun : plans,
+  contacts, réseau ; le compteur ne s'affiche que pour `personne`), `critical` (geste vital, talent
+  de personne), `refresh_days`, `retired`.
+- **`every_adult` sur un objectif** (amende le principe 4 du 11/11) : un talent ne le prouve que si
+  `holders` ≥ nombre d'adultes (`adult_member_types` dans `axes.yaml` : adulte, senior). Un adulte
+  de plus fait retomber la preuve. Un objet ne prouve jamais un tel objectif. Seul
+  `sante.adrenaline_formation` le porte : l'ajouter aux objectifs « chaque adulte » déjà prouvés
+  (légitime défense, critères de départ) ferait retomber des preuves existantes.
+- **`redundancy` sur un objectif** (`competences.redondance`) : prouvé quand au moins un talent
+  critique du lieu de vie est acquis et que tous le sont avec `holders` ≥ 2. Une preuve par talent
+  critique, datée de sa dernière déclaration (celle qui fixe le compteur), pas d'`acquired_on`.
+  Ne se met dans aucun `proves`.
+- **`refresh_days`** : badge « à entretenir » quand `acquired_on` (sinon la déclaration) + délai est
+  passé ; affichage seulement, ni retrait ni effet sur les preuves. Refusé au chargement si un
+  objectif prouvé porte déjà `revalidate_days` ou `due_month`. « Recyclé aujourd'hui » émet un
+  `talent.set` daté du jour, ce qui redate aussi les preuves.
+- **`retired`** : le talent n'occupe plus de case et sort des compteurs de l'arbre ; coché, il
+  s'affiche sous « Hors de la grille » et prouve toujours. Un talent actif ne peut pas en dépendre.
+- **Quatre branches** : le Soigneur a une branche « Accidents et climat ». Sur téléphone, les
+  titres de branche passent sur deux lignes.
+

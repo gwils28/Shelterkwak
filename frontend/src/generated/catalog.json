@@ -273,6 +273,10 @@
    ]
   }
  ],
+ "adult_member_types": [
+  "adulte",
+  "senior"
+ ],
  "categories": [
   {
    "id": "eau",
@@ -352,7 +356,9 @@
     "category": "eau",
     "min_days": 1.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.stock_24h",
@@ -376,7 +382,9 @@
     "category": "alimentation",
     "min_days": 1.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.lumiere",
@@ -397,7 +405,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.numeros_urgence",
@@ -418,7 +428,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.pharmacie_base",
@@ -439,7 +451,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.phrv",
@@ -462,7 +476,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.hypo",
@@ -485,7 +501,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.adrenaline",
@@ -508,7 +526,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.inhalateur",
@@ -531,7 +551,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.identification",
@@ -554,7 +576,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.issues",
@@ -575,7 +599,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.reflexes",
@@ -596,7 +622,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.frequence",
@@ -617,7 +645,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.depart_rapide",
@@ -638,7 +668,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.guide",
@@ -659,7 +691,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.papiers_ranges",
@@ -680,7 +714,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.proche_joignable",
@@ -701,7 +737,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.fuir_alerter",
@@ -722,7 +760,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.robinet_arret",
@@ -743,7 +783,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.pastilles",
@@ -764,7 +806,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.immeuble",
@@ -785,7 +829,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.inventaire",
@@ -806,7 +852,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.lampes",
@@ -827,7 +875,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.ramonage",
@@ -850,7 +900,9 @@
    "revalidate_days": null,
    "due_month": 10,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.trousse",
@@ -871,7 +923,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.fiches",
@@ -892,7 +946,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.lunettes_secours",
@@ -915,7 +971,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.ordonnance_vue",
@@ -938,7 +996,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.registre_vulnerables",
@@ -963,7 +1023,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.adrenaline_formation",
@@ -986,7 +1048,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": true,
+   "redundancy": false
   },
   {
    "id": "sante.grossesse",
@@ -1009,7 +1073,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.coupures",
@@ -1027,10 +1093,12 @@
    ],
    "requires_tags": [],
    "excludes_tags": [],
-   "revalidate_days": null,
+   "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.plan_canicule",
@@ -1055,7 +1123,9 @@
    "revalidate_days": null,
    "due_month": 6,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.risques",
@@ -1076,7 +1146,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.alertes",
@@ -1097,7 +1169,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.cles",
@@ -1118,7 +1192,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.iode",
@@ -1141,7 +1217,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.ecole",
@@ -1164,7 +1242,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.pcs",
@@ -1185,7 +1265,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.contacts_papier",
@@ -1206,7 +1288,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.itineraires",
@@ -1227,7 +1311,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.evacuation_pmr",
@@ -1250,7 +1336,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.bilan",
@@ -1271,7 +1359,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.papiers",
@@ -1292,7 +1382,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.assurances",
@@ -1313,7 +1405,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.animaux_papiers",
@@ -1336,7 +1430,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.voisins",
@@ -1357,7 +1453,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.ecoute",
@@ -1378,7 +1476,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.stress",
@@ -1399,7 +1499,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.legitime_defense",
@@ -1420,7 +1522,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.apres_agression",
@@ -1441,7 +1545,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.armes_regle",
@@ -1464,7 +1570,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.violences",
@@ -1485,7 +1593,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.verrouillage",
@@ -1506,7 +1616,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.arnaques",
@@ -1527,7 +1639,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.stock_3j",
@@ -1551,7 +1665,9 @@
     "category": "eau",
     "min_days": 3.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.contenants",
@@ -1572,7 +1688,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.portage",
@@ -1593,7 +1711,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.analyse",
@@ -1615,7 +1735,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.stock_3j",
@@ -1639,7 +1761,9 @@
     "category": "alimentation",
     "min_days": 3.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.sans_cuisson",
@@ -1660,7 +1784,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.ouvre_boite",
@@ -1681,7 +1807,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.bebe_3j",
@@ -1704,7 +1832,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.cuisson_3j",
@@ -1728,7 +1858,9 @@
     "category": "cuisson",
     "min_days": 3.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.batterie",
@@ -1749,7 +1881,9 @@
    "revalidate_days": 90,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.hygiene_3j",
@@ -1770,7 +1904,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.traitements_7j",
@@ -1796,7 +1932,9 @@
     "category": "traitements",
     "min_days": 7.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.toilettes",
@@ -1817,7 +1955,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.lunettes_sac",
@@ -1840,7 +1980,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.auditif_piles",
@@ -1863,7 +2005,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.auditif_alerte",
@@ -1886,7 +2030,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.appareil_batterie",
@@ -1909,7 +2055,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.insuline_froid",
@@ -1932,7 +2080,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.plan_asthme",
@@ -1955,7 +2105,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.sac_maternite",
@@ -1978,7 +2130,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.reassurance",
@@ -2001,7 +2155,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.medicaments_chaleur",
@@ -2024,7 +2180,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.masques_pandemie",
@@ -2047,7 +2205,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.gestes_qui_sauvent",
@@ -2068,7 +2228,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.chaleur",
@@ -2089,7 +2251,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.detecteurs",
@@ -2110,7 +2274,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.extincteur",
@@ -2131,7 +2297,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.piece_fraiche",
@@ -2156,7 +2324,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.seisme",
@@ -2179,7 +2349,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.calfeutrage_industriel",
@@ -2202,7 +2374,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.plan_familial",
@@ -2223,7 +2397,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.crue",
@@ -2246,7 +2422,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.radio",
@@ -2267,7 +2445,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.contact_externe",
@@ -2288,7 +2468,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.sac",
@@ -2309,7 +2491,9 @@
    "revalidate_days": 180,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.aide_technique",
@@ -2332,7 +2516,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.animaux_transport",
@@ -2355,7 +2541,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.feu",
@@ -2375,7 +2563,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.rechaud",
@@ -2394,7 +2584,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.especes",
@@ -2415,7 +2607,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.kit_enfant",
@@ -2439,7 +2633,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.double_auth",
@@ -2460,7 +2656,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.sauvegarde",
@@ -2481,7 +2679,9 @@
    "revalidate_days": 180,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.stock_14j",
@@ -2505,7 +2705,9 @@
     "category": "eau",
     "min_days": 14.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.filtre",
@@ -2526,7 +2728,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.savoir_traiter",
@@ -2547,7 +2751,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.plan_appro",
@@ -2566,7 +2772,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.secheresse",
@@ -2588,7 +2796,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.rotation",
@@ -2609,7 +2819,9 @@
    "revalidate_days": 180,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.stock_14j",
@@ -2633,7 +2845,9 @@
     "category": "alimentation",
     "min_days": 14.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.rotation",
@@ -2654,7 +2868,9 @@
    "revalidate_days": 180,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.bebe",
@@ -2677,7 +2893,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.animaux",
@@ -2700,7 +2918,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.regimes",
@@ -2725,7 +2945,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.potager_savoir",
@@ -2746,7 +2968,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.circuit_court",
@@ -2767,7 +2991,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.cuisson_14j",
@@ -2791,7 +3017,9 @@
     "category": "cuisson",
     "min_days": 14.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.solaire_portable",
@@ -2812,7 +3040,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.bilan_wh",
@@ -2833,7 +3063,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.cuisson_sobre",
@@ -2854,7 +3086,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.bois_hiver",
@@ -2877,7 +3111,9 @@
    "revalidate_days": null,
    "due_month": 11,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.psc1",
@@ -2898,7 +3134,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.traitements_30j",
@@ -2924,7 +3162,9 @@
     "category": "traitements",
     "min_days": 30.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.masques",
@@ -2945,7 +3185,9 @@
    "revalidate_days": 1825,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.appareil_prestataire",
@@ -2968,7 +3210,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.diabete_materiel",
@@ -2991,7 +3235,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.calfeutrage",
@@ -3012,7 +3258,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.chauffage_appoint",
@@ -3033,7 +3281,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.rafraichir_sans_reseau",
@@ -3056,7 +3306,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.neige",
@@ -3079,7 +3331,9 @@
    "revalidate_days": null,
    "due_month": 11,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.exercice",
@@ -3102,7 +3356,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.discretion",
@@ -3123,7 +3379,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.exercice_24h",
@@ -3144,7 +3402,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.dechets",
@@ -3165,7 +3425,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.cartes",
@@ -3186,7 +3448,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.talkies",
@@ -3207,7 +3471,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.vehicule",
@@ -3230,7 +3496,9 @@
    "revalidate_days": 180,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.velo",
@@ -3251,7 +3519,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.accueil",
@@ -3272,7 +3542,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.criteres_depart",
@@ -3293,7 +3565,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.evacuation_pmr_testee",
@@ -3316,7 +3590,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.cuisine_stock",
@@ -3337,7 +3613,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.epargne_1m",
@@ -3358,7 +3636,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.fragiles",
@@ -3379,7 +3659,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.binome",
@@ -3400,7 +3682,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.kit_occupation",
@@ -3421,7 +3705,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.routine",
@@ -3442,7 +3728,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.explication_enfants",
@@ -3465,7 +3753,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.evitement",
@@ -3486,7 +3776,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.intrusion",
@@ -3507,7 +3799,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.enfants",
@@ -3530,7 +3824,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.mises_a_jour",
@@ -3551,7 +3847,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.recuperation",
@@ -3572,7 +3870,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.enfants",
@@ -3595,7 +3895,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.stock_30j",
@@ -3618,7 +3920,9 @@
     "category": "eau",
     "min_days": 30.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.sources_identifiees",
@@ -3639,7 +3943,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.filtre_gravitaire",
@@ -3660,7 +3966,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.relais_ville",
@@ -3679,7 +3987,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.stock_90j",
@@ -3703,7 +4013,9 @@
     "category": "alimentation",
     "min_days": 90.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.conservation",
@@ -3724,7 +4036,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.intrants",
@@ -3745,7 +4059,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.station",
@@ -3766,7 +4082,9 @@
    "revalidate_days": 180,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.cuisson_90j",
@@ -3789,7 +4107,9 @@
     "category": "cuisson",
     "min_days": 90.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.cuisson_30j",
@@ -3811,7 +4131,9 @@
     "category": "cuisson",
     "min_days": 30.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.traitements_90j",
@@ -3839,7 +4161,9 @@
     "category": "traitements",
     "min_days": 90.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.pharmacie",
@@ -3860,7 +4184,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.natation",
@@ -3884,7 +4210,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.natation_enfants",
@@ -3907,7 +4235,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.force_fonctionnelle",
@@ -3933,7 +4263,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.activite_reguliere",
@@ -3954,7 +4286,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.lunettes_reserve",
@@ -3977,7 +4311,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.auditif_reserve",
@@ -4000,7 +4336,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.traitements_plan",
@@ -4023,7 +4361,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.reparations",
@@ -4044,7 +4384,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.inondation",
@@ -4067,7 +4409,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.isolement_7j",
@@ -4086,7 +4430,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.logement",
@@ -4107,7 +4453,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.incendie_ext",
@@ -4129,7 +4477,9 @@
    "revalidate_days": null,
    "due_month": 6,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.sources",
@@ -4150,7 +4500,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.velo_pratique",
@@ -4174,7 +4526,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.carburant",
@@ -4196,7 +4550,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.animaux_repli",
@@ -4219,7 +4575,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.bibliotheque",
@@ -4240,7 +4598,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.couture",
@@ -4261,7 +4621,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.epargne_3m",
@@ -4282,7 +4644,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.sans_credit_conso",
@@ -4303,7 +4667,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.projet",
@@ -4324,7 +4690,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.annuaire",
@@ -4345,7 +4713,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.engagement",
@@ -4366,7 +4736,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.reperer",
@@ -4387,7 +4759,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.initiation",
@@ -4411,7 +4785,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.initiation_adaptee",
@@ -4435,7 +4811,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.aerosol",
@@ -4456,7 +4834,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.exercice_intrusion",
@@ -4477,7 +4857,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.gestionnaire",
@@ -4498,7 +4880,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.box",
@@ -4519,7 +4903,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.restauration",
@@ -4540,7 +4926,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.plan_incident",
@@ -4561,7 +4949,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.recuperateur",
@@ -4581,7 +4971,9 @@
    "revalidate_days": null,
    "due_month": 5,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.stock_60j",
@@ -4605,7 +4997,9 @@
     "category": "eau",
     "min_days": 60.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.stock_180j",
@@ -4629,7 +5023,9 @@
     "category": "alimentation",
     "min_days": 180.0
    },
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.semences",
@@ -4650,7 +5046,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.secours",
@@ -4670,7 +5068,9 @@
    "revalidate_days": 180,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.condition",
@@ -4696,7 +5096,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.secourisme_avance",
@@ -4717,7 +5119,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.plantes",
@@ -4738,7 +5142,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.appareil_autonome",
@@ -4761,7 +5167,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.condition_adaptee",
@@ -4787,7 +5195,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.fosse_relevage",
@@ -4807,7 +5217,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.piece_refuge",
@@ -4828,7 +5240,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.desescalade",
@@ -4849,7 +5263,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.porte_blindee",
@@ -4870,7 +5286,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.radio_emission",
@@ -4891,7 +5309,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.licence",
@@ -4912,7 +5332,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.orientation",
@@ -4933,7 +5355,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.pratique",
@@ -4954,7 +5378,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.tronconneuse",
@@ -4973,7 +5399,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.epargne_6m",
@@ -4994,7 +5422,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.charges",
@@ -5015,7 +5445,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.groupe",
@@ -5036,7 +5468,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.pssm",
@@ -5057,7 +5491,9 @@
    "revalidate_days": 1095,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.pratique",
@@ -5081,7 +5517,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.pratique_adaptee",
@@ -5105,7 +5543,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.chiffrement",
@@ -5126,7 +5566,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.discretion",
@@ -5147,7 +5589,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.source_autonome",
@@ -5167,7 +5611,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.pompe_manuelle",
@@ -5187,7 +5633,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.balcon",
@@ -5206,7 +5654,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.potager",
@@ -5226,7 +5676,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.semences_autoproduites",
@@ -5246,7 +5698,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.kit_balcon",
@@ -5265,7 +5719,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.solaire_fixe",
@@ -5285,7 +5741,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.bois",
@@ -5305,7 +5763,9 @@
    "revalidate_days": null,
    "due_month": 11,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.assainissement",
@@ -5325,7 +5785,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.isolation",
@@ -5345,7 +5807,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.veille",
@@ -5366,7 +5830,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.reseau_local",
@@ -5387,7 +5853,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.repli",
@@ -5407,7 +5875,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.echangeable",
@@ -5428,7 +5898,9 @@
    "revalidate_days": 730,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.revenus",
@@ -5449,7 +5921,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.mutualisation",
@@ -5470,7 +5944,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.troc",
@@ -5491,7 +5967,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.rituels",
@@ -5512,7 +5990,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.tir_sportif",
@@ -5533,7 +6013,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.voisinage",
@@ -5554,7 +6036,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.regle_321",
@@ -5575,7 +6059,9 @@
    "revalidate_days": 180,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.autonomie_annuelle",
@@ -5595,7 +6081,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.acces_hors_reseau",
@@ -5614,7 +6102,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.production_50",
@@ -5634,7 +6124,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.elevage",
@@ -5653,7 +6145,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.circuit_25",
@@ -5672,7 +6166,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.autonomie",
@@ -5692,7 +6188,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.station_1kwh",
@@ -5711,7 +6209,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.soignant",
@@ -5732,7 +6232,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.resilient",
@@ -5752,7 +6254,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.hiver_sans_chauffage",
@@ -5771,7 +6275,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.plan_commun",
@@ -5792,7 +6298,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.relais",
@@ -5813,7 +6321,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.sans_fossile",
@@ -5834,7 +6344,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.repli_sans_voiture",
@@ -5855,7 +6367,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.transmettre",
@@ -5876,7 +6390,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "finances.actifs",
@@ -5897,7 +6413,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.resilience_locale",
@@ -5918,7 +6436,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.soutien_reseau",
@@ -5939,7 +6459,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.transmission",
@@ -5960,7 +6482,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.independance",
@@ -5981,7 +6505,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.heritage",
@@ -6002,7 +6528,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "eau.epreuve_7j",
@@ -6023,7 +6551,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "alimentation.epreuve_mois",
@@ -6044,7 +6574,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "energie.blackout",
@@ -6065,7 +6597,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "sante.mise_en_situation",
@@ -6086,7 +6620,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "abri.accueil",
@@ -6107,7 +6643,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "securite.retex",
@@ -6128,7 +6666,9 @@
    "revalidate_days": 180,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communication.reseau_teste",
@@ -6149,7 +6689,9 @@
    "revalidate_days": 180,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.evacuation_reelle",
@@ -6173,7 +6715,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "mobilite.evacuation_reelle_adaptee",
@@ -6197,13 +6741,15 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "competences.redondance",
    "axis": "competences",
    "level": 9,
-   "title": "Chaque compétence critique maîtrisée par au moins deux personnes (foyer ou réseau)",
+   "title": "Chaque talent critique acquis (alerter, secourir, couper l'essentiel, feu, fumée, monoxyde, eau) maîtrisé par au moins deux personnes du foyer",
    "description": "",
    "why": "Aucun savoir ne doit reposer sur une seule tête - la perte d'une personne ne doit pas être une perte de capacité.",
    "kind": "check",
@@ -6218,7 +6764,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": true
   },
   {
    "id": "finances.optionalite",
@@ -6239,7 +6787,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.exercice_inopine",
@@ -6260,7 +6810,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "communaute.parrainage",
@@ -6281,15 +6833,17 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "moral.debriefing",
    "axis": "moral",
    "level": 9,
-   "title": "Après chaque exercice ou incident, un débriefing émotionnel avec tout le foyer",
+   "title": "Après chaque exercice ou incident, un temps de retour avec le foyer : sécurité, besoins, écoute sans forcer à raconter, orientation de qui va mal",
    "description": "",
-   "why": "On ressort plus fort d'un choc qu'on a mis en mots, pas d'un choc qu'on a enfoui.",
+   "why": "Faire raconter le choc à chaud n'aide pas et peut aggraver (NICE NG116) ; ce qui protège, c'est la sécurité, le lien et une aide repérée tôt.",
    "kind": "check",
    "required": true,
    "contexts": [
@@ -6302,7 +6856,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.mise_en_situation",
@@ -6326,7 +6882,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "defense.mise_en_situation_adaptee",
@@ -6350,7 +6908,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.exercice",
@@ -6371,7 +6931,9 @@
    "revalidate_days": 365,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   },
   {
    "id": "cyber.transmettre",
@@ -6392,7 +6954,9 @@
    "revalidate_days": null,
    "due_month": null,
    "stock": null,
-   "custom": false
+   "custom": false,
+   "every_adult": false,
+   "redundancy": false
   }
  ],
  "questions": [
@@ -18117,7 +18681,8 @@
    "branches": [
     "Urgence",
     "Soins et hygiène",
-    "Soutien psychologique"
+    "Soutien psychologique",
+    "Accidents et climat"
    ],
    "titles": [
     "Témoin utile",
@@ -18255,7 +18820,11 @@
    "proves": [],
    "objectives": [
     "sante.activite_reguliere"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.renfo",
@@ -18275,7 +18844,11 @@
    "proves": [],
    "objectives": [
     "sante.activite_reguliere"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.mobilite",
@@ -18293,7 +18866,11 @@
    ],
    "requires": [],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.endurance",
@@ -18313,7 +18890,11 @@
     "physique.marche"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.porteur",
@@ -18336,7 +18917,11 @@
    "proves": [],
    "objectives": [
     "sante.force_fonctionnelle"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.terrain",
@@ -18356,7 +18941,11 @@
     "physique.mobilite"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.cycliste",
@@ -18378,7 +18967,11 @@
    "proves": [
     "mobilite.velo_pratique"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.randonneur",
@@ -18401,7 +18994,11 @@
    "proves": [],
    "objectives": [
     "sante.condition"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.nageur",
@@ -18423,7 +19020,11 @@
    "proves": [],
    "objectives": [
     "sante.natation"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.longue_distance",
@@ -18444,7 +19045,11 @@
     "physique.randonneur"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.brancardier",
@@ -18464,7 +19069,11 @@
     "physique.randonneur"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.climat",
@@ -18474,7 +19083,7 @@
    "row": 3,
    "col": 3,
    "description": "En canicule comme en grand froid, l'effort mal géré devient dangereux.",
-   "criteria": "Savoir s'hydrater, ralentir et s'arrêter à temps ; reconnaître un coup de chaleur et une hypothermie, chez soi et chez les autres.",
+   "criteria": "Savoir s'hydrater, adapter son rythme et s'arrêter à temps par forte chaleur comme par grand froid ; s'habiller en couches et rester au sec.",
    "contexts": [
     "appartement",
     "periurbain",
@@ -18484,7 +19093,11 @@
     "physique.endurance"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "physique.maitre",
@@ -18506,7 +19119,11 @@
     "physique.nageur"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": 365,
+   "retired": false
   },
   {
    "id": "stratege.risques",
@@ -18526,7 +19143,11 @@
    "proves": [
     "securite.risques"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.carte",
@@ -18546,7 +19167,11 @@
    "proves": [
     "mobilite.itineraires"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.guide",
@@ -18566,7 +19191,11 @@
    "proves": [
     "competences.guide"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.veille",
@@ -18591,7 +19220,11 @@
    "objectives": [
     "securite.alertes",
     "securite.pcs"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.boussole",
@@ -18613,7 +19246,11 @@
    "proves": [
     "mobilite.orientation"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.plan_familial",
@@ -18635,7 +19272,11 @@
    "proves": [
     "securite.plan_familial"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.scenarios",
@@ -18656,7 +19297,11 @@
     "stratege.plan_familial"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.itineraires",
@@ -18678,7 +19323,11 @@
    "proves": [
     "mobilite.repli_sans_voiture"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.bibliotheque",
@@ -18700,7 +19349,11 @@
    "proves": [
     "competences.bibliotheque"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.decision",
@@ -18722,7 +19375,11 @@
    "proves": [
     "mobilite.criteres_depart"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.exercice",
@@ -18747,7 +19404,11 @@
    ],
    "objectives": [
     "securite.retex"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.transmettre",
@@ -18769,7 +19430,11 @@
    "proves": [
     "competences.transmettre"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "stratege.maitre",
@@ -18793,7 +19458,11 @@
    "proves": [],
    "objectives": [
     "securite.plan_commun"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.alerter",
@@ -18813,7 +19482,11 @@
    "proves": [],
    "objectives": [
     "sante.numeros_urgence"
-   ]
+   ],
+   "scope": "personne",
+   "critical": true,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.petits_soins",
@@ -18831,7 +19504,11 @@
    ],
    "requires": [],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.respiration",
@@ -18851,7 +19528,11 @@
    "proves": [
     "moral.stress"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.gqs",
@@ -18873,7 +19554,11 @@
    "proves": [
     "sante.gestes_qui_sauvent"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": true,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.hygiene",
@@ -18895,7 +19580,11 @@
    "proves": [
     "eau.savoir_traiter"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.ecoute",
@@ -18917,7 +19606,11 @@
    "proves": [],
    "objectives": [
     "moral.ecoute"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.psc1",
@@ -18939,7 +19632,11 @@
    "proves": [
     "sante.psc1"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": true,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.pharmacie",
@@ -18959,7 +19656,11 @@
     "soin.hygiene"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": 365,
+   "retired": false
   },
   {
    "id": "soin.pssm",
@@ -18981,7 +19682,11 @@
    "proves": [
     "moral.pssm"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.isole",
@@ -19003,7 +19708,11 @@
    "proves": [
     "sante.secourisme_avance"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.plantes",
@@ -19025,7 +19734,11 @@
    "proves": [
     "sante.plantes"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": true
   },
   {
    "id": "soin.debriefing",
@@ -19034,8 +19747,8 @@
    "icon": "🗣️",
    "row": 4,
    "col": 3,
-   "description": "Après un événement, repérer ceux qui vont mal et organiser la parole.",
-   "criteria": "Savoir organiser un temps de parole après un événement et repérer qui a besoin d'une aide professionnelle.",
+   "description": "Après un événement, protéger, écouter et orienter ceux qui vont mal, sans forcer personne à raconter.",
+   "criteria": "Savoir appliquer les premiers secours psychologiques (OMS) : mettre en sécurité, répondre aux besoins concrets, écouter sans faire raconter, repérer qui a besoin d'une aide professionnelle et orienter (médecin, 3114, cellule d'urgence médico-psychologique par le 15).",
    "contexts": [
     "appartement",
     "periurbain",
@@ -19049,7 +19762,138 @@
    ],
    "objectives": [
     "moral.debriefing"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
+  },
+  {
+   "id": "soin.traitements",
+   "specialty": "soin",
+   "name": "Traitements d'urgence",
+   "icon": "💉",
+   "row": 4,
+   "col": 2,
+   "description": "Les gestes que les besoins de santé du foyer rendent vitaux, avant l'arrivée des secours.",
+   "criteria": "Pour chaque besoin du foyer : stylo d'adrénaline (reconnaître l'anaphylaxie, piquer dans la cuisse, appeler le 15), inhalateur avec chambre d'inhalation, resucrage d'une hypoglycémie, crise d'épilepsie (protéger, chronométrer, appeler le 15 au-delà de 5 minutes). Chaque adulte qui le maîtrise compte.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires": [
+    "soin.pharmacie"
+   ],
+   "proves": [
+    "sante.adrenaline_formation"
+   ],
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
+  },
+  {
+   "id": "soin.feu",
+   "specialty": "soin",
+   "name": "Feu qui démarre",
+   "icon": "🧯",
+   "row": 1,
+   "col": 4,
+   "description": "Le feu domestique est le premier risque réel d'un foyer : il se joue dans la première minute.",
+   "criteria": "Feu de casserole ou de friteuse : couper la source, couvrir (couvercle, couverture anti-feu), jamais d'eau. Extincteur : dégoupiller, à 2 ou 3 m, viser la base des flammes, dos à la sortie. Si le feu dépasse sa taille : sortir, fermer la porte, appeler le 18.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires": [],
+   "proves": [],
+   "objectives": [
+    "abri.extincteur"
+   ],
+   "scope": "personne",
+   "critical": true,
+   "refresh_days": 365,
+   "retired": false
+  },
+  {
+   "id": "soin.fumee",
+   "specialty": "soin",
+   "name": "Sortir de la fumée",
+   "icon": "🚪",
+   "row": 2,
+   "col": 4,
+   "description": "La fumée tue avant les flammes : savoir quand sortir et quand rester.",
+   "criteria": "Plan à deux sorties exercé de nuit. Se baisser sous la fumée, toucher la porte avant de l'ouvrir, pas d'ascenseur. Si la sortie est enfumée : rester, fermer, calfeutrer avec un linge mouillé, se signaler à la fenêtre, appeler le 18.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires": [
+    "soin.feu"
+   ],
+   "proves": [],
+   "objectives": [
+    "securite.exercice"
+   ],
+   "scope": "personne",
+   "critical": true,
+   "refresh_days": 365,
+   "retired": false
+  },
+  {
+   "id": "soin.urgences_climat",
+   "specialty": "soin",
+   "name": "Chaleur, froid, CO",
+   "icon": "🌡️",
+   "row": 3,
+   "col": 4,
+   "description": "Coup de chaleur, hypothermie, intoxication au monoxyde de carbone : trois urgences du logement en crise.",
+   "criteria": "Coup de chaleur : appeler le 15, mettre au frais, déshabiller, mouiller et ventiler, faire boire seulement si la personne est consciente. Hypothermie : retirer les vêtements mouillés, isoler du sol, couvrir tête comprise, boisson chaude sucrée si elle avale bien, ni alcool ni frictions ; 15 si elle est confuse ou si les frissons s'arrêtent. Monoxyde : maux de tête ou nausées chez plusieurs personnes, aérer, arrêter les appareils, sortir, appeler le 18 ou le 112, ne pas rentrer avant les secours.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires": [
+    "soin.gqs"
+   ],
+   "proves": [],
+   "objectives": [
+    "abri.plan_canicule",
+    "abri.chauffage_appoint"
+   ],
+   "scope": "personne",
+   "critical": true,
+   "refresh_days": 365,
+   "retired": false
+  },
+  {
+   "id": "soin.maison_sure",
+   "specialty": "soin",
+   "name": "Logement sûr",
+   "icon": "🏠",
+   "row": 4,
+   "col": 4,
+   "description": "Chutes, intoxications, brûlures : les accidents de la vie courante tuent bien plus que les crises.",
+   "criteria": "Audit du logement fait : éclairage de nuit, tapis fixés, barres d'appui où il faut, produits et médicaments hors de portée, numéro du centre antipoison affiché. Après une chute : ne pas relever une personne qui a mal, la couvrir et appeler le 15.",
+   "contexts": [
+    "appartement",
+    "periurbain",
+    "rural"
+   ],
+   "requires": [
+    "soin.urgences_climat"
+   ],
+   "proves": [],
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "soin.maitre",
@@ -19070,7 +19914,11 @@
     "soin.debriefing"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": 365,
+   "retired": false
   },
   {
    "id": "brico.coupures",
@@ -19091,7 +19939,11 @@
     "abri.coupures",
     "eau.robinet_arret"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": true,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.feu",
@@ -19113,7 +19965,11 @@
    "proves": [
     "competences.feu"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.couture",
@@ -19131,7 +19987,11 @@
    ],
    "requires": [],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.reparations",
@@ -19153,7 +20013,11 @@
    "proves": [
     "abri.reparations"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.rechaud",
@@ -19173,7 +20037,11 @@
    "proves": [
     "competences.rechaud"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": true,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.textile",
@@ -19195,7 +20063,11 @@
    "proves": [
     "competences.couture"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.plomberie",
@@ -19215,7 +20087,11 @@
     "brico.reparations"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.bois",
@@ -19235,7 +20111,11 @@
     "brico.feu"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.velo",
@@ -19255,7 +20135,11 @@
     "brico.reparations"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.installations",
@@ -19277,7 +20161,11 @@
    "proves": [
     "energie.bilan_wh"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.tronconneuse",
@@ -19298,7 +20186,11 @@
    "proves": [
     "competences.tronconneuse"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.mecanique",
@@ -19318,7 +20210,11 @@
     "brico.velo"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "brico.maitre",
@@ -19342,7 +20238,11 @@
    "proves": [
     "competences.echangeable"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.sans_cuisson",
@@ -19362,7 +20262,11 @@
    "proves": [],
    "objectives": [
     "alimentation.sans_cuisson"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.rotation",
@@ -19382,7 +20286,11 @@
    "proves": [
     "alimentation.rotation"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.semis",
@@ -19400,7 +20308,11 @@
    ],
    "requires": [],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.rechaud",
@@ -19420,7 +20332,11 @@
     "cuisto.sans_cuisson"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.securite",
@@ -19440,7 +20356,11 @@
     "cuisto.rotation"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.potager",
@@ -19462,7 +20382,11 @@
    "proves": [
     "alimentation.potager_savoir"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.semaine",
@@ -19484,7 +20408,11 @@
    "proves": [
     "competences.cuisine_stock"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.conserves",
@@ -19506,7 +20434,11 @@
    "proves": [
     "alimentation.conservation"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.semences",
@@ -19530,7 +20462,11 @@
    ],
    "objectives": [
     "alimentation.semences"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.sobre",
@@ -19552,7 +20488,11 @@
    "proves": [
     "energie.cuisson_sobre"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.conservation_longue",
@@ -19572,7 +20512,11 @@
     "cuisto.conserves"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.elevage",
@@ -19593,7 +20537,11 @@
    "proves": [],
    "objectives": [
     "alimentation.elevage"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "cuisto.maitre",
@@ -19617,7 +20565,11 @@
    "proves": [],
    "objectives": [
     "alimentation.production_50"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.fuir",
@@ -19637,7 +20589,11 @@
    "proves": [
     "defense.fuir_alerter"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.issues",
@@ -19658,7 +20614,11 @@
     "abri.issues",
     "mobilite.depart_rapide"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.loi",
@@ -19679,7 +20639,11 @@
     "defense.legitime_defense",
     "defense.violences"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.vigilance",
@@ -19701,7 +20665,11 @@
    "proves": [],
    "objectives": [
     "defense.evitement"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.discretion",
@@ -19723,7 +20691,11 @@
    "proves": [
     "securite.discretion"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.apres",
@@ -19745,7 +20717,11 @@
    "proves": [
     "defense.apres_agression"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.desescalade",
@@ -19767,7 +20743,11 @@
    "proves": [
     "securite.desescalade"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.intrusion",
@@ -19790,7 +20770,11 @@
     "defense.intrusion",
     "defense.exercice_intrusion"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.initiation",
@@ -19813,7 +20797,11 @@
     "defense.initiation",
     "defense.initiation_adaptee"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.vulnerables",
@@ -19835,7 +20823,11 @@
    "proves": [
     "defense.enfants"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.voisinage",
@@ -19859,7 +20851,11 @@
    ],
    "objectives": [
     "securite.veille"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.pratique",
@@ -19882,7 +20878,11 @@
     "defense.pratique",
     "defense.pratique_adaptee"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "protecteur.maitre",
@@ -19907,7 +20907,11 @@
     "defense.transmission",
     "defense.mise_en_situation"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.voisins",
@@ -19927,7 +20931,11 @@
    "proves": [
     "communaute.voisins"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.proche",
@@ -19948,7 +20956,11 @@
     "communaute.proche_joignable",
     "communication.contact_externe"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.service",
@@ -19966,7 +20978,11 @@
    ],
    "requires": [],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.fragiles",
@@ -19988,7 +21004,11 @@
    "proves": [
     "communaute.fragiles"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.binome",
@@ -20010,7 +21030,11 @@
    "proves": [
     "communaute.binome"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.annuaire",
@@ -20032,7 +21056,11 @@
    "proves": [
     "communaute.annuaire"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.tournee",
@@ -20052,7 +21080,11 @@
     "rassembleur.fragiles"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.groupe",
@@ -20074,7 +21106,11 @@
    "proves": [
     "communaute.groupe"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.troc",
@@ -20096,7 +21132,11 @@
    "proves": [
     "communaute.troc"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.reunion",
@@ -20116,7 +21156,11 @@
     "rassembleur.tournee"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.engagement",
@@ -20138,7 +21182,11 @@
    "proves": [
     "communaute.engagement"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.mutualiser",
@@ -20160,7 +21208,11 @@
    "proves": [
     "communaute.mutualisation"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "rassembleur.maitre",
@@ -20185,7 +21237,11 @@
    "objectives": [
     "communaute.resilience_locale",
     "communaute.parrainage"
-   ]
+   ],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.noeuds",
@@ -20203,7 +21259,11 @@
    ],
    "requires": [],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.eau",
@@ -20223,7 +21283,11 @@
    "proves": [
     "eau.sources_identifiees"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.observer",
@@ -20241,7 +21305,11 @@
    ],
    "requires": [],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.abri",
@@ -20261,7 +21329,11 @@
     "pisteur.noeuds"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.traiter",
@@ -20283,7 +21355,11 @@
    "proves": [
     "eau.savoir_traiter"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": true,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.cueillette",
@@ -20303,7 +21379,11 @@
     "pisteur.observer"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.nuit",
@@ -20323,7 +21403,11 @@
     "pisteur.abri"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.feu",
@@ -20345,7 +21429,11 @@
    "proves": [
     "competences.feu"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.champignons",
@@ -20365,7 +21453,11 @@
     "pisteur.cueillette"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": 365,
+   "retired": false
   },
   {
    "id": "pisteur.bivouac",
@@ -20385,7 +21477,11 @@
     "pisteur.nuit"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.cap",
@@ -20405,7 +21501,11 @@
     "pisteur.observer"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.peche",
@@ -20425,7 +21525,11 @@
     "pisteur.feu"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "pisteur.maitre",
@@ -20447,7 +21551,11 @@
     "pisteur.peche"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.ecoute",
@@ -20469,7 +21577,11 @@
    ],
    "objectives": [
     "communication.radio"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.contacts",
@@ -20489,7 +21601,11 @@
    "proves": [
     "communication.contacts_papier"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.sauvegarde",
@@ -20511,7 +21627,11 @@
    ],
    "objectives": [
     "cyber.restauration"
-   ]
+   ],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.talkies",
@@ -20533,7 +21653,11 @@
    "proves": [],
    "objectives": [
     "communication.talkies"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.plan",
@@ -20555,7 +21679,11 @@
    "proves": [
     "communication.reseau_local"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "foyer",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.hors_ligne",
@@ -20575,7 +21703,11 @@
     "transmetteur.sauvegarde"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.cb",
@@ -20599,7 +21731,11 @@
    ],
    "objectives": [
     "communication.radio_emission"
-   ]
+   ],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.messages",
@@ -20619,7 +21755,11 @@
     "transmetteur.plan"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.maille",
@@ -20639,7 +21779,11 @@
     "transmetteur.hors_ligne"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.licence",
@@ -20661,7 +21805,11 @@
    "proves": [
     "communication.licence"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.relais",
@@ -20684,7 +21832,11 @@
     "communication.relais",
     "communication.sources"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.energie",
@@ -20704,7 +21856,11 @@
     "transmetteur.maille"
    ],
    "proves": [],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   },
   {
    "id": "transmetteur.maitre",
@@ -20728,7 +21884,11 @@
    "proves": [
     "communication.reseau_teste"
    ],
-   "objectives": []
+   "objectives": [],
+   "scope": "personne",
+   "critical": false,
+   "refresh_days": null,
+   "retired": false
   }
  ]
 }

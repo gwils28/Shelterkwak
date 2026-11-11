@@ -39,9 +39,10 @@ objectives:
     revalidate_days: 365
   - id: competences.redondance
     level: 9
-    title: Chaque compétence critique maîtrisée par au moins deux personnes (foyer ou réseau)
+    title: Chaque talent critique acquis (alerter, secourir, couper l'essentiel, feu, fumée, monoxyde, eau) maîtrisé par au moins deux personnes du foyer
     why: Aucun savoir ne doit reposer sur une seule tête - la perte d'une personne ne doit pas être une perte de capacité.
     revalidate_days: 365
+    redundancy: true
   - id: competences.guide
     level: 1
     title: Avoir lu un guide officiel de préparation aux situations d'urgence (gouvernement, Croix-Rouge)

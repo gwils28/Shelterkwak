@@ -3,6 +3,7 @@ objectives:
   - id: abri.coupures
     level: 2
     title: Savoir couper le gaz et l'électricité (vanne, tableau électrique)
+    revalidate_days: 365
   - id: abri.chaleur
     level: 3
     title: Couvertures de survie, sacs de couchage ou vêtements chauds pour chacun

@@ -79,6 +79,7 @@ export interface TalentData {
   talent_id: string;
   acquired_on: IsoDate | null; // date d'acquisition, facultative
   note: string;
+  holders?: number; // personnes du foyer qui le maîtrisent (1 si absent)
 }
 
 export interface State {
@@ -300,13 +301,35 @@ export function proofs(catalog: Catalog, state: State): Proof[] {
       out.push({ objective_id: id, kind: "item", source_id: item.id, tier, on });
     }
   }
+  const members = state.household?.members ?? [];
+  const adults = Math.max(1, members.filter((m) => catalog.adult_member_types.includes(m.type)).length);
   for (const talent of catalog.talents) {
     const data = state.talents.get(talent.id);
     if (!data) continue;
     const on = data.acquired_on || state.declared.get(`talent:${talent.id}`)!;
-    for (const id of talent.proves) out.push({ objective_id: id, kind: "talent", source_id: talent.id, tier: null, on });
+    for (const id of talent.proves) {
+      if (byId.get(id)?.every_adult && holders(data) < adults) continue;
+      out.push({ objective_id: id, kind: "talent", source_id: talent.id, tier: null, on });
+    }
   }
+  out.push(...redundancyProofs(catalog, state));
   return out;
+}
+
+/** Personnes du foyer qui maîtrisent le talent (`holders` de talent.set, 1 par défaut). */
+export function holders(data: TalentData): number {
+  return Math.max(1, Math.trunc(Number(data.holders) || 1));
+}
+
+/** Objectifs `redundancy` : chaque talent critique acquis (du lieu de vie) est maîtrisé par deux personnes. */
+function redundancyProofs(catalog: Catalog, state: State): Proof[] {
+  const targets = catalog.objectives.filter((o) => o.redundancy).map((o) => o.id);
+  const context = state.household?.context;
+  const critical = catalog.talents.filter((t) => t.critical && state.talents.has(t.id) && (!context || t.contexts.includes(context)));
+  if (!targets.length || !critical.length || critical.some((t) => holders(state.talents.get(t.id)!) < 2)) return [];
+  return targets.flatMap((id) =>
+    critical.map((t) => ({ objective_id: id, kind: "talent" as const, source_id: t.id, tier: null, on: state.declared.get(`talent:${t.id}`)! })),
+  );
 }
 
 /** Validations manuelles et preuves réunies : la plus récente date l'emporte. */

@@ -245,13 +245,45 @@ def proofs(catalog: Catalog, state: State) -> list[Proof]:
             if obj and obj.revalidate_days and check:
                 on = min(on, check - timedelta(days=obj.revalidate_days))
             out.append(Proof(oid, "item", item.id, tier, on))
+    members = (state.household or {}).get("members", [])
+    adults = max(1, sum(1 for m in members if m.get("type") in catalog.adult_member_types))
     for talent in catalog.talents:
         tdata = state.talents.get(talent.id)
         if tdata is None:
             continue
         on = date.fromisoformat(tdata.get("acquired_on") or state.declared[f"talent:{talent.id}"])
-        out.extend(Proof(oid, "talent", talent.id, None, on) for oid in talent.proves)
+        for oid in talent.proves:
+            obj = by_id.get(oid)
+            if obj and obj.every_adult and holders(tdata) < adults:
+                continue
+            out.append(Proof(oid, "talent", talent.id, None, on))
+    out.extend(_redundancy_proofs(catalog, state))
     return out
+
+
+def holders(tdata: dict[str, Any]) -> int:
+    """Personnes du foyer qui maîtrisent le talent (`holders` de talent.set, 1 par défaut)."""
+    return max(1, int(tdata.get("holders") or 1))
+
+
+def _redundancy_proofs(catalog: Catalog, state: State) -> list[Proof]:
+    """Objectifs `redundancy` : chaque talent critique acquis (du lieu de vie) est maîtrisé par deux personnes.
+
+    Une preuve par talent critique, datée de sa dernière déclaration (celle qui a fixé le compteur) :
+    la plus récente l'emporte.
+    """
+    targets = [o.id for o in catalog.objectives if o.redundancy]
+    context = (state.household or {}).get("context")
+    critical = [
+        t for t in catalog.talents if t.critical and t.id in state.talents and (not context or context in t.contexts)
+    ]
+    if not targets or not critical or any(holders(state.talents[t.id]) < 2 for t in critical):
+        return []
+    return [
+        Proof(oid, "talent", t.id, None, date.fromisoformat(state.declared[f"talent:{t.id}"]))
+        for oid in targets
+        for t in critical
+    ]
 
 
 def effective_validations(catalog: Catalog, state: State) -> dict[str, date]:
