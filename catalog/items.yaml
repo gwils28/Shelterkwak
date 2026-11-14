@@ -1144,6 +1144,21 @@ items:
       - {tier: epique, contents: "Bâche légère pour le sac en plus des grandes, montage d'un abri déjà essayé"}
       - {tier: legendaire, contents: "Bâches lourdes de couverture de toit, liteaux et clous pour les fixer, tarp de bivouac dans chaque sac"}
 
+  - id: corde
+    group: abri
+    kind: equipement
+    basis: options
+    name: Corde
+    icon: 🪢
+    description: "Tendre une bâche, arrimer un chargement, attacher, tirer ou suspendre : la cordelette sert tous les jours, la corde épaisse dans les coups durs."
+    caution: "Une corde d'usage courant n'est pas un matériel d'escalade : ne jamais s'en servir pour descendre par une fenêtre ou s'assurer sur un toit. En cas d'incendie ou d'inondation, on attend les secours (18)."
+    tiers:
+      - {tier: rustique, contents: "20 m de ficelle solide ou de cordelette"}
+      - {tier: commun, contents: "30 m de cordelette tressée (type paracorde, 3 à 4 mm) et un couteau pour la couper"}
+      - {tier: confirme, contents: "Une cordelette à la maison et une dans le sac, une corde de 10 mm sur 15 m pour tirer et arrimer"}
+      - {tier: epique, contents: "Cordes et cordelettes rangées par longueur, sangles à cliquet pour arrimer un chargement, fiche des nœuds utiles rangée avec"}
+      - {tier: legendaire, contents: "Corde statique de 10 mm sur 30 m, cordelette et sangle dans chaque sac, tire-fort ou palan pour dégager une charge"}
+
   - id: couverture_survie
     group: abri
     kind: consommable
