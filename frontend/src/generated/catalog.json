@@ -15696,6 +15696,77 @@
    "opt_in": false
   },
   {
+   "id": "biens_echange",
+   "group": "papiers",
+   "name": "Biens d'échange",
+   "icon": "🤝",
+   "kind": "consommable",
+   "basis": "quantite",
+   "category": null,
+   "description": "Quand l'argent ne circule plus, on troque ce qui manque à tous : briquets, piles, savon, sel, sucre, café, chocolat, mignonettes. Des petits formats qui se gardent longtemps, à part des réserves du foyer pour ne pas puiser dans les siennes.",
+   "caution": "Ne jamais montrer toute sa réserve : on sort un objet à la fois. Le troc entre particuliers reste légal, pas la revente : le tabac est réservé aux buralistes, les médicaments aux pharmacies. L'alcool ne se donne jamais à un mineur.",
+   "proves": [],
+   "objectives": [
+    "communaute.troc",
+    "finances.actifs"
+   ],
+   "tiers": [
+    {
+     "tier": "rustique",
+     "contents": "Quelques briquets et boîtes d'allumettes en plus des siens",
+     "min_days": null,
+     "proves": [],
+     "objectives": [],
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
+    },
+    {
+     "tier": "commun",
+     "contents": "Un petit carton : briquets, piles AA, savons, sel, sucre en morceaux",
+     "min_days": null,
+     "proves": [],
+     "objectives": [],
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
+    },
+    {
+     "tier": "confirme",
+     "contents": "Une caisse en petits formats : café, chocolat, mignonettes, bougies, piles, savons, rangée à part des réserves",
+     "min_days": null,
+     "proves": [],
+     "objectives": [],
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
+    },
+    {
+     "tier": "epique",
+     "contents": "Plusieurs caisses en rotation avec les courses, dates notées, outils simples (couteaux, ficelle, aiguilles et fil)",
+     "min_days": null,
+     "proves": [],
+     "objectives": [],
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
+    },
+    {
+     "tier": "legendaire",
+     "contents": "Réserve d'échange tenue à jour, répartie entre deux lieux, liée à un réseau de troc local",
+     "min_days": null,
+     "proves": [],
+     "objectives": [],
+     "includes": [],
+     "basket": [],
+     "basket_notes": []
+    }
+   ],
+   "crisis": false,
+   "requires_tags": [],
+   "opt_in": false
+  },
+  {
    "id": "repertoire",
    "group": "papiers",
    "name": "Répertoire papier",
