@@ -46,4 +46,7 @@ def run() -> None:
 
     host = os.environ.get("SHELTERKWAK_HOST", "127.0.0.1")
     port = int(os.environ.get("SHELTERKWAK_PORT", "8000"))
+    # 0.0.0.0 / :: écoutent partout mais ne s'ouvrent pas dans un navigateur.
+    local_host = "127.0.0.1" if host in {"0.0.0.0", "::", ""} else host
+    print(f"Shelterkwak : ouvrir http://{local_host}:{port} dans le navigateur", flush=True)
     uvicorn.run("shelterkwak.main:app", host=host, port=port)
