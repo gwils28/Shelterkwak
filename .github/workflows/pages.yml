@@ -28,14 +28,19 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-      - name: Installer, tester et compiler
+      - name: Installer et tester
+        working-directory: frontend
+        run: |
+          npm ci
+          npm test
+      # Les variables de la version Pages ne valent que pour le build : les tests gardent le
+      # comportement par défaut (serveur qui sert l'app).
+      - name: Compiler pour GitHub Pages
         working-directory: frontend
         env:
           VITE_BASE: /Shelterkwak/
           VITE_STANDALONE: "1"
         run: |
-          npm ci
-          npm test
           npm run build
           # Pages ne connaît pas les routes de l'app : une adresse profonde retombe sur l'app.
           cp dist/index.html dist/404.html
