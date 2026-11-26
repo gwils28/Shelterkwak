@@ -26,6 +26,8 @@ représenté par une **colonne romaine de 9 tambours**, du socle (débutant) au 
 Tout tourne en local, sans service tiers. Chaque appareil garde son journal d'opérations
 (IndexedDB) ; le serveur en garde la copie partagée dans `data/shelterkwak.db`.
 Installation sur Android : [docs/telephone.md](docs/telephone.md).
+Version publiée sans serveur sur GitHub Pages, et synchronisation avec le PC du foyer :
+[docs/hebergement.md](docs/hebergement.md).
 
 ## Démarrer
 

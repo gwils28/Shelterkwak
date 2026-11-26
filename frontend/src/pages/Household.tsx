@@ -1,14 +1,13 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { MonumentPicker } from "../components/MonumentPicker";
 import { monumentOf } from "../lib/monument";
 import { useAnimationsPref } from "../lib/prefs";
 import { MembersEditor } from "../components/MembersEditor";
-import { syncLabel } from "../components/SyncBadge";
+import { BackupActions, ServerSettings } from "../components/SyncSettings";
 import { memberConditions } from "../engine/engine";
 import { isAnimal } from "../engine/types";
 import type { ContextId, HouseholdData } from "../model";
 import { actions, useFoyer } from "../store/hooks";
-import { store } from "../store/store";
 
 // Tags déclarables à la main (les autres sont déduits des membres).
 const DECLARABLE_TAGS: { id: string; label: string }[] = [
@@ -28,14 +27,11 @@ const DECLARABLE_TAGS: { id: string; label: string }[] = [
 ];
 
 export function HouseholdPage() {
-  const { catalog, dashboard, sync, ops } = useFoyer();
+  const { catalog, dashboard, ops } = useFoyer();
   const [form, setForm] = useState<HouseholdData | null>(dashboard ? structuredClone(dashboard.household) : null);
   const [animations, setAnimations] = useAnimationsPref();
   const [saved, setSaved] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
-  const [backupMsg, setBackupMsg] = useState<string | null>(null);
-  const [exportUrl, setExportUrl] = useState<string | null>(null);
-  const fileInput = useRef<HTMLInputElement>(null);
 
   if (!form || !dashboard) return null;
   const set = (patch: Partial<HouseholdData>) => {
@@ -50,19 +46,6 @@ export function HouseholdPage() {
     for (const c of memberConditions(m)) for (const t of catalog.member_conditions.find((x) => x.id === c)?.tags ?? []) derived.add(t);
   }
 
-  const exportJournal = () => {
-    if (exportUrl) URL.revokeObjectURL(exportUrl);
-    setExportUrl(URL.createObjectURL(new Blob([store.exportJson()], { type: "application/json" })));
-  };
-  const importJournal = async (file: File) => {
-    try {
-      const added = await store.importJson(await file.text());
-      setBackupMsg(`${added} opération(s) importée(s).`);
-    } catch (e) {
-      setBackupMsg((e as Error).message);
-    }
-  };
-  const { text: syncText } = syncLabel(sync);
 
   return (
     <div className="page">
@@ -189,36 +172,12 @@ export function HouseholdPage() {
 
       <section className="panel">
         <h2>Synchronisation et sauvegarde</h2>
-        <p>
-          <strong>{syncText}</strong>
-          {sync.message && <span className="hint"> — {sync.message}</span>}
-        </p>
         <p className="hint">
-          Les données vivent sur cet appareil ({ops.length} opération(s) dans le journal). Quand le serveur du PC est joignable
-          (Tailscale), les modifications sont échangées automatiquement ; sinon elles attendent.
+          Les données vivent sur cet appareil ({ops.length} opération(s) dans le journal). Avec un serveur joignable (par exemple
+          ton PC via Tailscale), les modifications sont échangées automatiquement ; sinon elles attendent.
         </p>
-        <div className="actions start">
-          <button onClick={() => void store.sync()}>Synchroniser maintenant</button>
-          <button onClick={exportJournal}>Préparer une sauvegarde</button>
-          {exportUrl && (
-            <a className="button-link" href={exportUrl} download={`shelterkwak-${new Date().toISOString().slice(0, 10)}.json`}>
-              Télécharger la sauvegarde
-            </a>
-          )}
-          <button onClick={() => fileInput.current?.click()}>Importer une sauvegarde</button>
-          <input
-            ref={fileInput}
-            type="file"
-            accept="application/json,.json"
-            hidden
-            onChange={(e) => {
-              const f = e.target.files?.[0];
-              if (f) void importJournal(f);
-              e.target.value = "";
-            }}
-          />
-        </div>
-        {backupMsg && <p className="hint">{backupMsg}</p>}
+        <ServerSettings />
+        <BackupActions />
       </section>
 
       <section className="panel danger-zone">

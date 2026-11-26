@@ -47,7 +47,7 @@ export function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <img className="brand-mark" src="/icon.svg" alt="" width={28} height={28} />
+          <img className="brand-mark" src={`${import.meta.env.BASE_URL}icon.svg`} alt="" width={28} height={28} />
           <span className="brand-name">
             Shelter<span className="brand-kwak">kwak</span>
           </span>

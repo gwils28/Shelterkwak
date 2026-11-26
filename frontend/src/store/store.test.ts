@@ -78,6 +78,78 @@ describe("store et synchronisation", () => {
     expect(s.getSnapshot().sync.status).toBe("no-server");
   });
 
+  it("n'appelle aucun serveur quand il n'y en a pas, et garde le réglage", async () => {
+    const calls: string[] = [];
+    const name = `local-${n++}`;
+    const s = new Store(name, "/api/sync", (async (url: unknown) => {
+      calls.push(String(url));
+      return new Response("", { status: 500 });
+    }) as typeof fetch);
+    await s.init();
+    await s.configureServer({ url: null, token: "" });
+    await s.append("reset", {});
+    await s.sync();
+    expect(calls).toEqual([]);
+    expect(s.getSnapshot().sync).toMatchObject({ status: "no-server", pending: 1 });
+    const again = new Store(name, "/api/sync", (async () => new Response("", { status: 500 })) as typeof fetch);
+    await again.init();
+    expect(again.getSnapshot().server).toEqual({ url: null, token: "" });
+  });
+
+  it("envoie le jeton au serveur configuré et renvoie tout le journal en changeant de serveur", async () => {
+    const first = fakeServer();
+    const second = fakeServer();
+    const seen: { url: string; auth: string | null }[] = [];
+    const s = new Store(`remote-${n++}`, "/api/sync", (async (url: unknown, init?: RequestInit) => {
+      const auth = new Headers(init?.headers).get("Authorization");
+      seen.push({ url: String(url), auth });
+      return (String(url).startsWith("https://deux") ? second : first).handler(url as string, init);
+    }) as typeof fetch);
+    await s.init();
+    await s.append("reset", {});
+    await s.configureServer({ url: "https://un.example.ts.net/", token: " secret " });
+    expect(seen.at(-1)).toEqual({ url: "https://un.example.ts.net/api/sync", auth: "Bearer secret" });
+    expect(first.log).toHaveLength(1);
+    await s.configureServer({ url: "https://deux.example.ts.net", token: "" });
+    expect(seen.at(-1)).toEqual({ url: "https://deux.example.ts.net/api/sync", auth: null });
+    expect(second.log).toHaveLength(1); // le journal déjà envoyé au premier serveur part aussi au second
+    expect(s.getSnapshot().sync).toMatchObject({ status: "synced", pending: 0 });
+  });
+
+  it("signale un jeton refusé", async () => {
+    const s = new Store(`token-${n++}`, "/api/sync", (async () => new Response("", { status: 401 })) as typeof fetch);
+    await s.init();
+    await s.sync();
+    expect(s.getSnapshot().sync).toMatchObject({ status: "error", message: expect.stringContaining("Jeton") });
+  });
+
+  it("envoie un gros journal en plusieurs fois", async () => {
+    const server = fakeServer();
+    let requests = 0;
+    const s = new Store(`big-${n++}`, "/api/sync", (async (url: unknown, init?: RequestInit) => {
+      requests++;
+      return server.handler(url as string, init);
+    }) as typeof fetch);
+    await s.init();
+    const ops = Array.from({ length: 2500 }, (_, i) => ({ id: `op-${i}`, device: "autre", at: "2026-11-02T10:00:00.000Z", type: "reset" as const, payload: {} }));
+    await s.merge(ops, false);
+    for (let i = 0; i < 3; i++) await s.sync();
+    expect(requests).toBe(3);
+    expect(server.log).toHaveLength(2500);
+    expect(s.getSnapshot().sync.pending).toBe(0);
+  });
+
+  it("retient la date de la dernière sauvegarde", async () => {
+    const name = `export-${n++}`;
+    const s = new Store(name, "/api/sync", fakeServer().handler);
+    await s.init();
+    expect(s.getSnapshot().lastExportAt).toBeNull();
+    await s.markExported("2026-11-26T10:00:00.000Z");
+    const again = new Store(name, "/api/sync", fakeServer().handler);
+    await again.init();
+    expect(again.getSnapshot().lastExportAt).toBe("2026-11-26T10:00:00.000Z");
+  });
+
   it("exporte et réimporte le journal sans doublon", async () => {
     const server = fakeServer();
     const a = await device(server);

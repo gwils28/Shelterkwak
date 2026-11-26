@@ -3835,3 +3835,35 @@ a.phone {
     margin-bottom: 4px;
   }
 }
+
+/* Réglages de synchronisation (onglet Foyer et accueil) */
+.sync-settings,
+.backup-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.backup-actions {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.sync-modes {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sync-modes legend {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.join-household summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.join-household[open] summary {
+  margin-bottom: 10px;
+}

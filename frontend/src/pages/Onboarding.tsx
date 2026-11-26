@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Column, romanNumeral } from "../components/Column";
 import { LevelInfo } from "../components/LevelInfo";
+import { BackupActions, ServerSettings } from "../components/SyncSettings";
 import { MembersEditor } from "../components/MembersEditor";
 import { MonumentPicker } from "../components/MonumentPicker";
 import type { MonumentStyle } from "../lib/monument";
@@ -83,6 +84,18 @@ export function OnboardingPage() {
           ))}
         </ol>
       </header>
+
+      {step === "foyer" && (
+        <details className="panel join-household">
+          <summary>Ton foyer existe déjà sur un autre appareil ?</summary>
+          <p className="hint">
+            Indique le serveur du foyer (par exemple ton PC via Tailscale) ou importe une sauvegarde : le foyer s'ouvre dès que son
+            journal arrive, sans refaire l'interview.
+          </p>
+          <ServerSettings />
+          <BackupActions />
+        </details>
+      )}
 
       {step === "foyer" && (
         <section className="panel">
