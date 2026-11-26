@@ -9,12 +9,13 @@ import { useSnapshot } from "../store/hooks";
 /** Version publique, sans serveur : celle qu'on envoie à un autre foyer. */
 export const PUBLIC_URL = "https://gwils28.github.io/Shelterkwak/";
 
-const INVITATION = `Je te fais essayer Shelterkwak, une app pour préparer son foyer aux crises (coupures, intempéries, évacuation...). Elle marche hors ligne et tes données restent sur ton téléphone.
+const INVITATION = `Je te fais essayer Shelterkwak, une app pour préparer son foyer aux crises (coupures, intempéries, évacuation...). Elle marche hors ligne et tes données restent sur ton appareil.
 
-1. Ouvre ${PUBLIC_URL}
-2. Installe-la : sur Android, menu ⋮ puis « Installer l'application » ; sur iPhone, bouton Partager puis « Sur l'écran d'accueil ».
-3. Ouvre-la depuis l'icône et fais l'interview (ne touche pas à « Ton foyer existe déjà »).
-4. Une fois par mois : onglet Foyer, « Préparer une sauvegarde », puis garde le fichier. C'est la seule copie de tes données hors du téléphone.`;
+1. Choisis l'appareil où tu la suivras (téléphone ou PC) : chacun garde ses propres données.
+2. Ouvre ${PUBLIC_URL}
+3. Installe-la : sur Android, menu ⋮ puis « Installer l'application » ; sur iPhone, bouton Partager puis « Sur l'écran d'accueil » ; sur PC (Chrome ou Edge), icône d'installation dans la barre d'adresse. Pas de navigation privée : tout serait effacé.
+4. Ouvre-la depuis l'icône et fais l'interview (ne touche pas à « Ton foyer existe déjà »).
+5. Une fois par mois : onglet Foyer, « Préparer une sauvegarde », puis garde le fichier. C'est la seule copie de tes données hors de l'appareil. Elle sert aussi à passer du PC au téléphone (« Importer une sauvegarde »).`;
 
 function isLocal(url: string): boolean {
   return /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?/.test(url);
@@ -105,14 +106,19 @@ export function ShareGuide() {
       <details>
         <summary>🏡 Faire essayer l'application à un autre foyer</summary>
         <p className="hint">
-          Il utilise la version publique, sans serveur : ses données restent sur son téléphone, rien ne passe par ton serveur.
+          Il utilise la version publique, sans serveur : ses données restent sur son appareil (téléphone ou PC), rien ne passe
+          par ton serveur.
           Ne lui donne ni ton adresse de serveur ni ton jeton.
         </p>
         <ol>
           <li>
             Envoie-lui le lien <a href={PUBLIC_URL}>{PUBLIC_URL}</a> et les étapes, déjà rédigées ci-dessous.
           </li>
-          <li>Il installe l'app (Android : menu ⋮, « Installer l'application » ; iPhone : Partager, « Sur l'écran d'accueil »).</li>
+          <li>
+            Il installe l'app sur l'appareil où il la suivra : Android, menu ⋮, « Installer l'application » ; iPhone, Partager,
+            « Sur l'écran d'accueil » ; PC (Chrome ou Edge), icône d'installation dans la barre d'adresse ; Safari sur Mac,
+            Fichier, « Ajouter au Dock ». Jamais en navigation privée.
+          </li>
           <li>Il fait l'interview depuis l'icône, sans toucher à « Ton foyer existe déjà ».</li>
           <li>Il fait une sauvegarde par mois depuis son onglet Foyer (l'app le lui rappelle au bout de 30 jours).</li>
         </ol>
@@ -125,8 +131,8 @@ export function ShareGuide() {
           <CopyButton text={INVITATION} label="Copier le message" />
         </div>
         <p className="hint">
-          Plusieurs téléphones dans son foyer : il passe d'un téléphone à l'autre par une sauvegarde (export puis import), ou
-          héberge son propre serveur (docs/hebergement.md). L'app n'a pas encore été essayée sur iPhone.
+          PC et téléphone, ou plusieurs téléphones : chaque appareil a ses propres données. Il passe de l'un à l'autre par une
+          sauvegarde (export puis import), ou héberge son propre serveur (docs/hebergement.md). L'app n'a pas encore été essayée sur iPhone.
         </p>
       </details>
     </div>
