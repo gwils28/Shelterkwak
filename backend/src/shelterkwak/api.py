@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+import os
 import re
+import secrets
 from dataclasses import asdict
 from datetime import datetime
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import BaseModel, Field, field_validator
 from sqlmodel import Session, col, func, select
 
@@ -17,7 +19,22 @@ from .db import get_session
 from .engine import Evaluation
 from .models import StoredOp
 
-router = APIRouter(prefix="/api")
+
+def require_token(authorization: Annotated[str | None, Header()] = None) -> None:
+    """Jeton partagé facultatif : si SHELTERKWAK_TOKEN est défini, chaque appel /api doit le présenter.
+
+    Pas de comptes : le serveur ne garde qu'un foyer, et Tailscale filtre déjà les appareils.
+    Le jeton protège le journal si le serveur devient joignable autrement.
+    """
+    expected = os.environ.get("SHELTERKWAK_TOKEN", "")
+    if not expected:
+        return
+    given = (authorization or "").removeprefix("Bearer ").strip()
+    if not secrets.compare_digest(given.encode(), expected.encode()):
+        raise HTTPException(401, "Jeton de synchronisation manquant ou incorrect.", {"WWW-Authenticate": "Bearer"})
+
+
+router = APIRouter(prefix="/api", dependencies=[Depends(require_token)])
 
 ISO_UTC = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,6})?Z$")
 MAX_OPS_PER_SYNC = 5000

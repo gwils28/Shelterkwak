@@ -48,6 +48,11 @@ ses données (stockage persistant).
 - **Sauvegarde sans PC** : onglet Foyer → « Préparer une sauvegarde » télécharge le journal en
   JSON ; « Importer une sauvegarde » le fusionne sur un autre appareil, sans doublon.
 
+## Sans PC allumé : la version GitHub Pages
+
+L'application est aussi publiée sur https://gwils28.github.io/Shelterkwak/, sans serveur. Elle
+peut se synchroniser avec le PC (onglet Foyer) : voir [hebergement.md](hebergement.md).
+
 ## Mises à jour
 
 Après un `git pull`, relancer `make run` : le téléphone récupère la nouvelle version à la

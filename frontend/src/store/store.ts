@@ -1,7 +1,9 @@
-// Journal d'opérations local (IndexedDB) et synchronisation avec le serveur du PC.
+// Journal d'opérations local (IndexedDB) et synchronisation avec le serveur du foyer.
 //
 // Chaque modification est ajoutée au journal sur l'appareil, immédiatement visible, puis
 // envoyée au serveur dès que possible. Le serveur renvoie les opérations des autres appareils.
+// Le serveur est facultatif : celui qui sert l'app, un autre (front sur GitHub Pages, serveur
+// derrière Tailscale), ou aucun (les données restent sur l'appareil).
 
 import { type DBSchema, type IDBPDatabase, openDB } from "idb";
 import type { Op, OpType } from "../engine/replay";
@@ -24,11 +26,27 @@ export interface SyncInfo {
   message: string | null;
 }
 
+/**
+ * Serveur de synchronisation. `url` : "" pour celui qui sert l'app (même origine), une adresse
+ * https pour un autre serveur, null pour aucun. `token` : jeton partagé (SHELTERKWAK_TOKEN), facultatif.
+ */
+export interface ServerConfig {
+  url: string | null;
+  token: string;
+}
+
+/** Version publiée sans serveur (GitHub Pages) : aucun serveur tant que l'utilisateur n'en indique pas. */
+export const STANDALONE = import.meta.env.VITE_STANDALONE === "1";
+const DEFAULT_SERVER: ServerConfig = { url: STANDALONE ? null : "", token: "" };
+const MAX_OPS_PER_REQUEST = 1000; // le serveur en accepte 5000 : un gros import part en plusieurs fois
+
 export interface Snapshot {
   ready: boolean;
   ops: Op[];
   version: number;
   sync: SyncInfo;
+  server: ServerConfig;
+  lastExportAt: string | null; // dernière sauvegarde préparée sur cet appareil
 }
 
 const SYNC_DELAY_MS = 2000;
@@ -51,13 +69,15 @@ export class Store {
   private timer: ReturnType<typeof setTimeout> | null = null;
   private syncing: Promise<void> | null = null;
   private info: SyncInfo = { status: "idle", pending: 0, lastSyncAt: null, message: null };
+  private server: ServerConfig = DEFAULT_SERVER;
+  private lastExportAt: string | null = null;
 
   constructor(
     private readonly dbName = "shelterkwak",
     private readonly endpoint = "/api/sync",
     private readonly fetchImpl: typeof fetch = (...args) => fetch(...args),
   ) {
-    this.snapshot = { ready: false, ops: [], version: 0, sync: this.info };
+    this.snapshot = { ready: false, ops: [], version: 0, sync: this.info, server: this.server, lastExportAt: null };
   }
 
   async init(): Promise<void> {
@@ -76,6 +96,9 @@ export class Store {
     this.device = device;
     this.cursor = Number((await this.db.get("meta", "cursor")) ?? 0);
     this.info = { ...this.info, lastSyncAt: ((await this.db.get("meta", "lastSyncAt")) as string) ?? null };
+    const saved = (await this.db.get("meta", "server")) as string | undefined;
+    if (saved) this.server = { ...DEFAULT_SERVER, ...(JSON.parse(saved) as Partial<ServerConfig>) };
+    this.lastExportAt = ((await this.db.get("meta", "lastExportAt")) as string) ?? null;
     this.emit(true);
   }
 
@@ -94,7 +117,7 @@ export class Store {
     const pending = [...this.ops.values()].filter((o) => !o.synced).length;
     this.info = { ...this.info, pending };
     const ops = [...this.ops.values()].map(({ synced: _synced, ...op }) => op);
-    this.snapshot = { ready, ops, version: this.snapshot.version + 1, sync: this.info };
+    this.snapshot = { ready, ops, version: this.snapshot.version + 1, sync: this.info, server: this.server, lastExportAt: this.lastExportAt };
     this.listeners.forEach((fn) => fn());
   }
 
@@ -128,6 +151,36 @@ export class Store {
     await tx?.done;
     if (added) this.emit();
     return added;
+  }
+
+  /**
+   * Change de serveur. Vers un autre serveur, le curseur repart de zéro et tout le journal est
+   * renvoyé : le nouveau serveur ignore les opérations qu'il connaît déjà.
+   */
+  async configureServer(next: ServerConfig): Promise<void> {
+    const url = next.url === null ? null : next.url.trim().replace(/\/+$/, "");
+    const changed = url !== this.server.url;
+    this.server = { url, token: next.token.trim() };
+    await this.db?.put("meta", JSON.stringify(this.server), "server");
+    if (changed) {
+      this.cursor = 0;
+      await this.db?.put("meta", 0, "cursor");
+      const tx = this.db?.transaction("ops", "readwrite");
+      for (const op of this.ops.values()) {
+        op.synced = 0;
+        await tx?.store.put(op);
+      }
+      await tx?.done;
+    }
+    this.emit();
+    await this.sync();
+  }
+
+  /** Date de la sauvegarde préparée : rappel dans l'onglet Foyer, surtout sans serveur. */
+  async markExported(at = new Date().toISOString()): Promise<void> {
+    this.lastExportAt = at;
+    await this.db?.put("meta", at, "lastExportAt");
+    this.emit();
   }
 
   exportJson(): string {
@@ -176,13 +229,20 @@ export class Store {
       this.setSync({ status: "offline", message: null });
       return;
     }
-    const outgoing = [...this.ops.values()].filter((o) => !o.synced);
+    if (this.server.url === null) {
+      this.setSync({ status: "no-server", message: "Aucun serveur configuré : les données restent sur cet appareil." });
+      return;
+    }
+    const unsynced = [...this.ops.values()].filter((o) => !o.synced);
+    const outgoing = unsynced.slice(0, MAX_OPS_PER_REQUEST);
     this.setSync({ status: "syncing" });
+    const headers: Record<string, string> = { "Content-Type": "application/json" };
+    if (this.server.token) headers.Authorization = `Bearer ${this.server.token}`;
     let res: Response;
     try {
-      res = await this.fetchImpl(this.endpoint, {
+      res = await this.fetchImpl(this.server.url ? `${this.server.url}/api/sync` : this.endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({
           device: this.device,
           cursor: this.cursor,
@@ -195,6 +255,10 @@ export class Store {
     }
     if (res.status === 404 || res.status === 405) {
       this.setSync({ status: "no-server", message: "Aucun serveur de synchronisation à cette adresse." });
+      return;
+    }
+    if (res.status === 401) {
+      this.setSync({ status: "error", message: "Jeton refusé par le serveur : vérifie-le dans l'onglet Foyer." });
       return;
     }
     if (!res.ok) {
@@ -218,6 +282,7 @@ export class Store {
     await this.db?.put("meta", now, "lastSyncAt");
     this.emit();
     this.setSync({ status: "synced", lastSyncAt: now, message: null });
+    if (unsynced.length > outgoing.length) this.scheduleSync(0); // la suite du journal
   }
 }
 

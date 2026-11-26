@@ -2,7 +2,13 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
+declare const process: { env: Record<string, string | undefined> }; // sans @types/node
+
+// Chemin de publication : "/" servi par le backend, "/Shelterkwak/" sur GitHub Pages (VITE_BASE).
+const base = process.env.VITE_BASE ?? "/";
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     VitePWA({
@@ -13,8 +19,8 @@ export default defineConfig({
         short_name: "Shelterkwak",
         description: "La colonne de résilience de ton foyer : préparation, stocks et autonomie, même hors ligne.",
         lang: "fr",
-        start_url: "/",
-        scope: "/",
+        start_url: base,
+        scope: base,
         display: "standalone",
         orientation: "portrait",
         background_color: "#2b2620",

@@ -1,0 +1,54 @@
+# Publie la PWA sur GitHub Pages (https://gwils28.github.io/Shelterkwak/), sans serveur :
+# chaque appareil garde ses données, et peut se synchroniser avec un serveur qu'on lui indique
+# (onglet Foyer). Voir docs/hebergement.md.
+name: GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["frontend/**", "catalog/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Installer, tester et compiler
+        working-directory: frontend
+        env:
+          VITE_BASE: /Shelterkwak/
+          VITE_STANDALONE: "1"
+        run: |
+          npm ci
+          npm test
+          npm run build
+          # Pages ne connaît pas les routes de l'app : une adresse profonde retombe sur l'app.
+          cp dist/index.html dist/404.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

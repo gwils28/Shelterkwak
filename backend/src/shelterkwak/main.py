@@ -6,6 +6,7 @@ import mimetypes
 import os
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 
 from .api import router
@@ -22,6 +23,18 @@ def create_app() -> FastAPI:
     get_catalog()  # échoue au démarrage si le catalogue est invalide
     app = FastAPI(title="Shelterkwak", version="0.2.0")
     app.include_router(router)
+    # Front hébergé ailleurs (GitHub Pages) qui se synchronise avec ce serveur : origines autorisées,
+    # séparées par des virgules, ex. https://gwils28.github.io. Vide : même origine seulement.
+    if origins := [
+        o.strip().rstrip("/") for o in os.environ.get("SHELTERKWAK_CORS_ORIGINS", "").split(",") if o.strip()
+    ]:
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=origins,
+            allow_methods=["GET", "POST"],
+            allow_headers=["Authorization", "Content-Type"],
+            allow_private_network=True,  # page publique vers une adresse privée (Tailscale)
+        )
 
     if DIST.is_dir():
 

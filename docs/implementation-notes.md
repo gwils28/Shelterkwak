@@ -238,3 +238,20 @@ Voir `docs/conseil/2026-11-11-competences.md`.
 - **Quatre branches** : le Soigneur a une branche « Accidents et climat ». Sur téléphone, les
   titres de branche passent sur deux lignes.
 
+## Front sur GitHub Pages, serveur facultatif (2026-11-26)
+- **Serveur configurable** (`ServerConfig` dans `store.ts`, gardé dans IndexedDB `meta.server`) :
+  `url` vaut `""` (celui qui sert l'app), une adresse https, ou `null` (aucun : pas d'appel réseau,
+  statut « Sans serveur »). La version GitHub Pages (`VITE_STANDALONE=1`) démarre à `null`.
+- **Changer de serveur** remet le curseur à zéro et marque tout le journal à renvoyer ; le serveur
+  dédoublonne par id. Envoi par lots de 1000 opérations (le serveur en accepte 5000).
+- **Jeton** : `SHELTERKWAK_TOKEN` côté serveur protège toutes les routes `/api`
+  (`Authorization: Bearer`, comparaison à temps constant) ; 401 affiché « Jeton refusé ». Pas de
+  comptes : un serveur, un foyer, et Tailscale filtre déjà les appareils.
+- **CORS** : `SHELTERKWAK_CORS_ORIGINS` (origines séparées par des virgules), avec
+  `Access-Control-Allow-Private-Network` pour une page publique qui appelle une adresse Tailscale.
+- **Chemin de base** : `VITE_BASE` (Vite, manifeste, `BrowserRouter basename`) ; `404.html` copie
+  `index.html` pour les adresses profondes sur Pages.
+- **Sauvegarde** : date de la dernière sauvegarde préparée (`meta.lastExportAt`) ; rappel après
+  30 jours quand il n'y a pas de serveur. Réglages et import aussi sur le premier écran de
+  l'accueil, pour rejoindre un foyer existant sans refaire l'interview.
+

@@ -51,3 +51,38 @@ def test_dashboard_and_history_from_journal(client: TestClient) -> None:
     hist = client.get("/api/history").json()
     assert hist["snapshots"][0]["level"] == 2
     assert hist["journal"][0]["type"] == "onboarding"
+
+
+# ---------- Jeton et CORS (front hébergé sur GitHub Pages) ----------
+
+
+def test_token_is_required_when_configured(client: TestClient, monkeypatch) -> None:
+    monkeypatch.setenv("SHELTERKWAK_TOKEN", "secret-du-foyer")
+    body = {"device": "phone", "cursor": 0, "ops": []}
+    assert client.post("/api/sync", json=body).status_code == 401
+    assert client.post("/api/sync", json=body, headers={"Authorization": "Bearer faux"}).status_code == 401
+    assert client.get("/api/ops").status_code == 401
+    assert client.post("/api/sync", json=body, headers={"Authorization": "Bearer secret-du-foyer"}).status_code == 200
+
+
+def test_no_token_configured_keeps_api_open(client: TestClient, monkeypatch) -> None:
+    monkeypatch.delenv("SHELTERKWAK_TOKEN", raising=False)
+    assert client.post("/api/sync", json={"device": "phone", "cursor": 0, "ops": []}).status_code == 200
+
+
+def test_cors_allows_only_configured_origins(monkeypatch) -> None:
+    from shelterkwak.main import create_app
+
+    monkeypatch.setenv("SHELTERKWAK_CORS_ORIGINS", "https://gwils28.github.io/")
+    app = TestClient(create_app())
+    preflight = {
+        "Access-Control-Request-Method": "POST",
+        "Access-Control-Request-Headers": "authorization,content-type",
+        "Access-Control-Request-Private-Network": "true",
+    }
+    ok = app.options("/api/sync", headers={"Origin": "https://gwils28.github.io", **preflight})
+    assert ok.status_code == 200
+    assert ok.headers["access-control-allow-origin"] == "https://gwils28.github.io"
+    assert ok.headers["access-control-allow-private-network"] == "true"
+    other = app.options("/api/sync", headers={"Origin": "https://exemple.org", **preflight})
+    assert "access-control-allow-origin" not in other.headers
