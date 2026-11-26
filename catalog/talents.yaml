@@ -24,6 +24,29 @@
 
 ranks: [Novice, Apprenti, Compagnon, Expert, Maître]
 
+# domains : les onglets de l'onglet Compétences, trois spécialités chacun, dans l'ordre d'affichage.
+#   Un domaine ne fait que regrouper : arbres, rangs, titres et prérequis restent ceux des spécialités.
+#   Le premier domaine s'ouvre par défaut. Pas de titre de domaine : il pousserait à cocher les cases
+#   faciles avant les gestes vitaux. Voir docs/conseil/2026-11-26-domaines.md.
+domains:
+  - id: proteger
+    name: Protéger
+    icon: ⛑️
+    description: "Garder les gens en vie : les gestes qui sauvent, le corps qui tient l'effort, se mettre à l'abri du danger."
+    specialties: [soin, physique, protecteur]
+
+  - id: tenir
+    name: Tenir
+    icon: 🏠
+    description: "Faire tenir le foyer : l'eau, le feu, la nourriture, l'énergie et les réparations, chez soi comme dehors."
+    specialties: [cuisto, brico, pisteur]
+
+  - id: organiser
+    name: S'organiser
+    icon: 🧭
+    description: "Anticiper, s'informer, joindre les siens et s'entraider : le plan et le lien avec les autres."
+    specialties: [stratege, rassembleur, transmetteur]
+
 specialties:
   - id: physique
     name: Condition physique

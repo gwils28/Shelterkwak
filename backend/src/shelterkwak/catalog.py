@@ -244,6 +244,18 @@ class Specialty(BaseModel):
     titles: list[str] = Field(min_length=5, max_length=5)  # titre obtenu au rang le plus haut atteint
 
 
+class Domain(BaseModel):
+    """Domaine de l'onglet Compétences : regroupe des spécialités sous un même onglet, sans rien changer à leurs arbres."""
+
+    id: str
+    name: str
+    icon: str = ""
+    description: str = ""
+    specialties: list[str] = Field(
+        min_length=1
+    )  # dans l'ordre d'affichage ; chaque spécialité est dans un seul domaine
+
+
 class Talent(BaseModel):
     """Talent d'un arbre. Son id est stocké dans le journal (opération talent.set) : il ne se renomme pas."""
 
@@ -321,6 +333,7 @@ class Catalog(BaseModel):
     references: list[ItemReference] = Field(default_factory=list)  # repères d'achat par carte et palier
     talent_ranks: list[str] = Field(default_factory=list)  # noms des cinq rangs des arbres
     specialties: list[Specialty] = Field(default_factory=list)
+    domains: list[Domain] = Field(default_factory=list)  # regroupement des spécialités en onglets
     talents: list[Talent] = Field(default_factory=list)
 
     def is_animal(self, member_type: str) -> bool:
@@ -482,6 +495,13 @@ def _talent_errors(catalog: Catalog, objective_ids: set[str]) -> list[str]:
         errors.append("compétences : cinq rangs attendus (`ranks`)")
     specs = {s.id: s for s in catalog.specialties}
     talents = {t.id: t for t in catalog.talents}
+    grouped = [sid for d in catalog.domains for sid in d.specialties]
+    errors.extend(f"domaine : spécialité inconnue {sid}" for sid in grouped if sid not in specs)
+    errors.extend(
+        f"domaine : spécialité {sid} dans plusieurs domaines" for sid in sorted(set(grouped)) if grouped.count(sid) > 1
+    )
+    if catalog.domains:
+        errors.extend(f"domaine : spécialité {sid} sans domaine" for sid in specs if sid not in grouped)
     if len(talents) != len(catalog.talents):
         errors.append("talent en double")
     by_obj = catalog.objectives_by_id
@@ -589,6 +609,7 @@ def load_catalog(directory: Path | None = None) -> Catalog:
         references=refs.get("references", []),
         talent_ranks=skills.get("ranks", []),
         specialties=skills.get("specialties", []),
+        domains=skills.get("domains", []),
         talents=skills.get("talents", []),
     )
 

@@ -182,6 +182,14 @@ export interface Specialty {
   branches: string[]; // nom de chaque colonne de l'arbre
   titles: string[]; // titre obtenu au rang le plus haut atteint (5)
 }
+/** Domaine de l'onglet Compétences : un onglet qui regroupe des spécialités, sans toucher à leurs arbres. */
+export interface Domain {
+  id: string;
+  name: string;
+  icon: string;
+  description: string;
+  specialties: string[]; // dans l'ordre d'affichage
+}
 export interface Talent {
   id: string;
   specialty: string;
@@ -224,6 +232,7 @@ export interface Catalog {
   references: ItemReference[]; // repères d'achat par carte et palier
   talent_ranks: string[]; // noms des cinq rangs des arbres
   specialties: Specialty[];
+  domains: Domain[];
   talents: Talent[];
 }
 

@@ -3,7 +3,7 @@
 
 import { addDays } from "../engine/dates";
 import { holders, type TalentData } from "../engine/replay";
-import type { Catalog, Specialty, Talent } from "../engine/types";
+import type { Catalog, Domain, Specialty, Talent } from "../engine/types";
 
 /** acquis : coché ; disponible : tous ses prérequis sont acquis ; verrouillé : il en manque. */
 export type TalentState = "acquired" | "available" | "locked";
@@ -70,6 +70,36 @@ export function buildTree(catalog: Catalog, specialty: Specialty, acquired: Read
 
 export function buildTrees(catalog: Catalog, acquired: ReadonlyMap<string, TalentData>): Tree[] {
   return catalog.specialties.map((s) => buildTree(catalog, s, acquired));
+}
+
+export interface DomainView {
+  domain: Domain;
+  trees: Tree[]; // ses arbres, dans l'ordre du domaine
+  acquired: number;
+  total: number;
+  available: number;
+  ready: TalentNode[]; // talents disponibles de ses arbres : critiques d'abord, puis du rang le plus bas
+}
+
+/** Les domaines de l'onglet, chacun avec ses arbres déjà construits et les talents à sa portée. */
+export function buildDomains(catalog: Catalog, trees: Tree[]): DomainView[] {
+  const byId = new Map(trees.map((t) => [t.specialty.id, t]));
+  return catalog.domains
+    .map((domain) => {
+      const own = domain.specialties.map((id) => byId.get(id)).filter((t): t is Tree => !!t);
+      const ready = own
+        .flatMap((t) => t.nodes.filter((n) => n.state === "available"))
+        .sort((a, b) => Number(b.talent.critical) - Number(a.talent.critical) || a.talent.row - b.talent.row);
+      return {
+        domain,
+        trees: own,
+        acquired: own.reduce((n, t) => n + t.acquired, 0),
+        total: own.reduce((n, t) => n + t.total, 0),
+        available: ready.length,
+        ready,
+      };
+    })
+    .filter((d) => d.trees.length > 0);
 }
 
 /** Le talent et tous ses ancêtres non acquis, du plus bas au plus haut : l'ordre où les cocher. */
