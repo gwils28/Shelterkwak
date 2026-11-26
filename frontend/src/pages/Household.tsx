@@ -3,6 +3,7 @@ import { MonumentPicker } from "../components/MonumentPicker";
 import { monumentOf } from "../lib/monument";
 import { useAnimationsPref } from "../lib/prefs";
 import { MembersEditor } from "../components/MembersEditor";
+import { ShareGuide } from "../components/ShareGuide";
 import { BackupActions, ServerSettings } from "../components/SyncSettings";
 import { memberConditions } from "../engine/engine";
 import { isAnimal } from "../engine/types";
@@ -178,6 +179,12 @@ export function HouseholdPage() {
         </p>
         <ServerSettings />
         <BackupActions />
+      </section>
+
+      <section className="panel" id="partager">
+        <h2>Partager l'application</h2>
+        <p className="hint">Les deux modes opératoires, à garder sous la main.</p>
+        <ShareGuide />
       </section>
 
       <section className="panel danger-zone">

@@ -255,3 +255,7 @@ Voir `docs/conseil/2026-11-11-competences.md`.
   30 jours quand il n'y a pas de serveur. Réglages et import aussi sur le premier écran de
   l'accueil, pour rejoindre un foyer existant sans refaire l'interview.
 
+- **Partager l'application** (onglet Foyer, `ShareGuide.tsx`) : modes opératoires « ajouter un membre
+  du foyer » (adresse du serveur lue sur l'appareil, avertissement si elle est locale ; sans serveur,
+  passage par une sauvegarde) et « faire essayer à un autre foyer » (message d'invitation partagé ou
+  copié, lien GitHub Pages). Ni adresse de serveur ni jeton dans le code : l'app est publique.

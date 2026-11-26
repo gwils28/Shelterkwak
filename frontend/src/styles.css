@@ -3867,3 +3867,39 @@ a.phone {
 .join-household[open] summary {
   margin-bottom: 10px;
 }
+
+/* Partager l'application (onglet Foyer) */
+.share-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.share-guide details {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.share-guide summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.share-guide details[open] summary {
+  margin-bottom: 8px;
+}
+.share-guide ol {
+  margin: 8px 0;
+  padding-left: 1.3em;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.share-address {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.share-address code {
+  word-break: break-all;
+}
