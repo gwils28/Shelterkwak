@@ -1,11 +1,30 @@
 import { describe, expect, it } from "vitest";
 import { CATALOG } from "../engine/catalog";
 import type { TalentData } from "../engine/replay";
-import { buildTree, criticalCover, dependentChain, forContext, missingChain, refreshDate, talentState, unlocks } from "./talents";
+import { buildDomains, buildTree, buildTrees, criticalCover, dependentChain, forContext, missingChain, refreshDate, talentState, unlocks } from "./talents";
 
 const owned = (...ids: string[]) => new Map<string, TalentData>(ids.map((id) => [id, { talent_id: id, acquired_on: null, note: "" }]));
 const talent = (id: string) => CATALOG.talents.find((t) => t.id === id)!;
 const soin = CATALOG.specialties.find((s) => s.id === "soin")!;
+
+describe("domaines", () => {
+  it("regroupe les neuf arbres en trois domaines, Protéger en premier", () => {
+    const domains = buildDomains(CATALOG, buildTrees(CATALOG, owned()));
+    expect(domains.map((d) => d.domain.id)).toEqual(["proteger", "tenir", "organiser"]);
+    expect(domains.flatMap((d) => d.trees.map((t) => t.specialty.id)).sort()).toEqual(CATALOG.specialties.map((s) => s.id).sort());
+    expect(domains.reduce((n, d) => n + d.total, 0)).toBe(CATALOG.talents.filter((t) => !t.retired).length);
+  });
+
+  it("met les talents critiques disponibles en tête de « à ta portée »", () => {
+    const [proteger] = buildDomains(CATALOG, buildTrees(CATALOG, owned("soin.alerter")));
+    const critical = proteger.ready.map((n) => n.talent.critical);
+    expect(critical[0]).toBe(true);
+    expect(critical.indexOf(false)).toBeGreaterThan(critical.lastIndexOf(true)); // aucun critique après un non-critique
+    expect(proteger.ready.map((n) => n.talent.id)).toContain("soin.gqs");
+    expect(proteger.ready.every((n) => n.state === "available")).toBe(true);
+    expect(proteger.available).toBe(proteger.ready.length);
+  });
+});
 
 describe("arbres de talents", () => {
   it("rend disponibles les talents dont tous les prérequis sont acquis", () => {

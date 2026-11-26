@@ -233,9 +233,11 @@ haut de page.
      prochains achats utiles (réserves comprises, avec ce qui manque), équipement par catégorie et
      par niveau, saison (objectifs à échéance annuelle), échéances mois par mois (articles et
      objets datés), emplacements.
-5. **Compétences** (`/competences`) : neuf spécialités (condition physique, stratège de survie,
-   soigneur, bricoleur, cuisto, protecteur, rassembleur, pisteur, transmetteur), toutes visibles
-   dans une grille de trois colonnes, chacune un arbre de talents (`catalog/talents.yaml`) en cinq rangs
+5. **Compétences** (`/competences`) : trois domaines, chacun regroupant trois spécialités :
+   **Protéger** (soigneur, condition physique, protecteur, ouvert par défaut), **Tenir** (cuisto,
+   bricoleur, pisteur) et **S'organiser** (stratège de survie, rassembleur, transmetteur). Un domaine
+   affiche sa progression, sa description et « À ta portée » (six talents disponibles au plus, gestes
+   vitaux d'abord) ; il n'a pas de titre. Chaque spécialité est un arbre de talents (`catalog/talents.yaml`) en cinq rangs
    (novice → maître) et trois ou quatre branches. Un talent se coche quand ses prérequis sont acquis ; un
    talent verrouillé peut être coché avec ses prérequis manquants, et retirer un talent retire
    ceux qui en dépendent. La fiche d'un talent donne ce qui prouve qu'on l'a acquis, la date, une

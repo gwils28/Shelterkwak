@@ -5,8 +5,10 @@ import { type Catalog, linksOf, type Talent } from "../engine/types";
 import { formatDate, STATUS_LABEL } from "../lib/format";
 import { DONE_STATUSES } from "../lib/inventory";
 import {
+  buildDomains,
   buildTrees,
   criticalCover,
+  type DomainView,
   dependentChain,
   forContext,
   missingChain,
@@ -34,7 +36,10 @@ function rememberedSpecialty(): string | null {
   }
 }
 
-/** Onglet Compétences : une spécialité choisie à la fois, son arbre de talents et la fiche d'un talent. */
+/**
+ * Onglet Compétences : trois domaines, chacun avec ses trois spécialités ; une spécialité choisie à la fois,
+ * son arbre de talents et la fiche d'un talent. Le domaine se déduit de la spécialité (`?spe=`).
+ */
 export function SkillsPage() {
   const { catalog: fullCatalog, state, objectives, today, context } = useFoyer();
   const [params, setParams] = useSearchParams();
@@ -56,7 +61,9 @@ export function SkillsPage() {
   }, [catalog, objectives, state.talents, state.declared, today]);
   const cover = useMemo(() => criticalCover(catalog, state.talents), [catalog, state.talents]);
   const wanted = params.get("spe") ?? rememberedSpecialty();
-  const tree = trees.find((t) => t.specialty.id === wanted) ?? trees[0];
+  const domains = useMemo(() => buildDomains(catalog, trees), [catalog, trees]);
+  const tree = trees.find((t) => t.specialty.id === wanted) ?? domains[0]?.trees[0] ?? trees[0];
+  const domain = domains.find((d) => d.trees.includes(tree)) ?? null;
   const openId = params.get("talent");
   const open = tree ? ([...tree.nodes, ...tree.retired].find((n) => n.talent.id === openId) ?? null) : null;
 
@@ -73,7 +80,7 @@ export function SkillsPage() {
     }
     setParams({ spe: id }, { replace: true });
   };
-  const openTalent = (id: string | null) => setParams(id ? { spe: tree.specialty.id, talent: id } : { spe: tree.specialty.id }, { replace: !id });
+  const openTalent = (id: string | null, spe = tree.specialty.id) => setParams(id ? { spe, talent: id } : { spe }, { replace: !id });
 
   return (
     <div className="page skills">
@@ -96,8 +103,18 @@ export function SkillsPage() {
         )}
       </header>
 
-      <div className="spec-picker" role="tablist" aria-label="Spécialités">
-        {trees.map((t) => (
+      {domains.length > 0 && (
+        <div className="domain-picker" role="tablist" aria-label="Domaines">
+          {domains.map((d) => (
+            <DomainTab key={d.domain.id} view={d} selected={d === domain} onSelect={() => select(d.trees[0].specialty.id)} />
+          ))}
+        </div>
+      )}
+
+      {domain && <DomainReady view={domain} onOpen={(t) => openTalent(t.id, t.specialty)} />}
+
+      <div className="spec-picker" role="tablist" aria-label={domain ? `Spécialités du domaine ${domain.domain.name}` : "Spécialités"}>
+        {(domain?.trees ?? trees).map((t) => (
           <SpecTab key={t.specialty.id} tree={t} selected={t === tree} onSelect={() => select(t.specialty.id)} />
         ))}
       </div>
@@ -164,6 +181,70 @@ export function SkillsPage() {
         />
       )}
     </div>
+  );
+}
+
+function DomainTab({ view, selected, onSelect }: { view: DomainView; selected: boolean; onSelect: () => void }) {
+  const { domain, acquired, total, available } = view;
+  const pct = total ? Math.round((acquired / total) * 100) : 0;
+  return (
+    <button role="tab" aria-selected={selected} className={`domain-tab domain-${domain.id}${selected ? " selected" : ""}`} onClick={onSelect}>
+      <span className="domain-icon" aria-hidden>
+        {domain.icon}
+      </span>
+      <span className="domain-tab-text">
+        <span className="domain-tab-name">{domain.name}</span>
+        <span className="domain-tab-ready">{available > 0 ? `${available} à ta portée` : "Domaine complet"}</span>
+      </span>
+      <span className="spec-meter" aria-label={`${acquired} talents sur ${total}`}>
+        <span className="spec-meter-bar">
+          <i style={{ width: `${pct}%` }} />
+        </span>
+        <span className="spec-meter-count">
+          {acquired}/{total}
+        </span>
+      </span>
+    </button>
+  );
+}
+
+const READY_MAX = 6; // talents montrés dans « À ta portée », le reste est dans les arbres
+
+/** Par où commencer : les talents disponibles des arbres du domaine, gestes vitaux d'abord. */
+function DomainReady({ view, onOpen }: { view: DomainView; onOpen: (t: Talent) => void }) {
+  const { domain, ready } = view;
+  const shown = ready.slice(0, READY_MAX);
+  const icons = new Map(view.trees.map((t) => [t.specialty.id, t.specialty.icon]));
+  return (
+    <section className="domain-ready" aria-label={`À ta portée dans ${domain.name}`}>
+      <p className="domain-desc">{domain.description}</p>
+      {shown.length > 0 ? (
+        <>
+          <h3>À ta portée</h3>
+          <ul>
+            {shown.map((n) => (
+              <li key={n.talent.id}>
+                <button
+                  className={`talent-chip available spec-${n.talent.specialty}${n.talent.critical ? " critical" : ""}`}
+                  onClick={() => onOpen(n.talent)}
+                  aria-label={`${n.talent.name}, disponible${n.talent.critical ? ", geste vital" : ""}`}
+                >
+                  <span aria-hidden>{icons.get(n.talent.specialty)}</span> {n.talent.name}
+                  {n.talent.critical && <span className="ready-vital">vital</span>}
+                </button>
+              </li>
+            ))}
+          </ul>
+          {ready.length > shown.length && (
+            <p className="domain-more">
+              et {ready.length - shown.length} autre{ready.length - shown.length > 1 ? "s" : ""} dans les arbres ci-dessous
+            </p>
+          )}
+        </>
+      ) : (
+        <p className="domain-more">Domaine complet : tous ses talents sont acquis 🏆</p>
+      )}
+    </section>
   );
 }
 

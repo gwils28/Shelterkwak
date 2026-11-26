@@ -69,6 +69,27 @@ def test_talent_trees_are_complete(catalog: Catalog) -> None:
         assert {t.col for t in talents} == set(range(1, len(spec.branches) + 1)), spec.id  # aucune branche vide
 
 
+def test_every_specialty_belongs_to_one_domain(catalog: Catalog) -> None:
+    grouped = [sid for d in catalog.domains for sid in d.specialties]
+    assert sorted(grouped) == sorted(s.id for s in catalog.specialties)
+    assert [d.id for d in catalog.domains] == ["proteger", "tenir", "organiser"]  # Protéger s'ouvre par défaut
+
+
+@pytest.mark.parametrize(
+    ("change", "message"),
+    [
+        (lambda d: d[0]["specialties"].append("inexistante"), "spécialité inconnue"),
+        (lambda d: d[0]["specialties"].append("cuisto"), "dans plusieurs domaines"),
+        (lambda d: d[2]["specialties"].remove("transmetteur"), "transmetteur sans domaine"),
+    ],
+)
+def test_invalid_domain_is_rejected(catalog: Catalog, change, message: str) -> None:
+    data = catalog.model_dump()
+    change(data["domains"])
+    with pytest.raises(ValueError, match=message):
+        Catalog.model_validate(data)
+
+
 @pytest.mark.parametrize(
     ("talent_id", "change", "message"),
     [

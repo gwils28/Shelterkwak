@@ -137,6 +137,16 @@ déploiement sur Raspberry Pi.
 - **Navigation** : six onglets ; la spécialité choisie est gardée dans l'adresse (`?spe=`) et sur
   l'appareil, la fiche ouverte dans `?talent=`.
 
+## Domaines de l'onglet Compétences (conseil du 26 novembre)
+- **Catalogue** : `domains` dans `catalog/talents.yaml` (id, nom, icône, description, spécialités dans
+  l'ordre d'affichage). Vérifié au chargement : chaque spécialité est dans un seul domaine.
+- **Rien d'autre ne change** : ni id, ni `specialty`, ni rang, ni titre, ni prérequis ; aucun effet
+  sur les moteurs ni sur le journal. Le domaine se déduit de la spécialité : `?spe=` et la valeur
+  gardée sur l'appareil restent valables. Sans spécialité connue, le premier domaine s'ouvre.
+- **« À ta portée »** (`buildDomains`, `lib/talents.ts`) : talents disponibles des arbres du domaine,
+  critiques d'abord puis du rang le plus bas, six au plus. Un clic ouvre la fiche dans son arbre.
+- Une fusion réelle en trois arbres était impossible : 3 × 20 cases pour 121 talents.
+
 ## Conseil du 9 novembre
 - **Cartes à tag et cartes sur demande** : `requires_tags` sur un objet le réserve aux foyers qui
   portent l'un de ces tags (armes, risque industriel) ; `opt_in: true` le cache tant que le foyer

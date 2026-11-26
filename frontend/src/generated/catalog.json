@@ -18940,6 +18940,41 @@
    ]
   }
  ],
+ "domains": [
+  {
+   "id": "proteger",
+   "name": "Protéger",
+   "icon": "⛑️",
+   "description": "Garder les gens en vie : les gestes qui sauvent, le corps qui tient l'effort, se mettre à l'abri du danger.",
+   "specialties": [
+    "soin",
+    "physique",
+    "protecteur"
+   ]
+  },
+  {
+   "id": "tenir",
+   "name": "Tenir",
+   "icon": "🏠",
+   "description": "Faire tenir le foyer : l'eau, le feu, la nourriture, l'énergie et les réparations, chez soi comme dehors.",
+   "specialties": [
+    "cuisto",
+    "brico",
+    "pisteur"
+   ]
+  },
+  {
+   "id": "organiser",
+   "name": "S'organiser",
+   "icon": "🧭",
+   "description": "Anticiper, s'informer, joindre les siens et s'entraider : le plan et le lien avec les autres.",
+   "specialties": [
+    "stratege",
+    "rassembleur",
+    "transmetteur"
+   ]
+  }
+ ],
  "talents": [
   {
    "id": "physique.marche",

@@ -2448,7 +2448,7 @@ a.phone {
   color: var(--warn);
 }
 
-/* Sélecteur de spécialités : les neuf toujours visibles, en grille de trois colonnes */
+/* Sélecteur de spécialités : les trois du domaine choisi, en grille de trois colonnes */
 .spec-picker {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2543,6 +2543,102 @@ a.phone {
   font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
   color: var(--muted);
+}
+
+/* Domaines : trois onglets au-dessus des spécialités (docs/conseil/2026-11-26-domaines.md) */
+.domain-proteger {
+  --spec: var(--spec-soin);
+}
+.domain-tenir {
+  --spec: var(--spec-brico);
+}
+.domain-organiser {
+  --spec: var(--spec-stratege);
+}
+.domain-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.domain-tab {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px 12px;
+  padding: 14px;
+  text-align: left;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.domain-tab:hover {
+  border-color: var(--spec);
+}
+.domain-tab.selected {
+  border-color: var(--spec);
+  background: color-mix(in srgb, var(--spec) 12%, var(--panel));
+  box-shadow: inset 0 0 0 2px var(--spec), var(--shadow);
+}
+.domain-tab:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--spec) 55%, transparent);
+  outline-offset: 2px;
+}
+.domain-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.domain-tab-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.domain-tab-name {
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+.domain-tab-ready {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.domain-tab.selected .domain-tab-ready {
+  color: var(--ink);
+}
+.domain-ready {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.domain-ready h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.domain-ready ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.domain-desc,
+.domain-more {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.talent-chip.critical {
+  border-color: var(--warn);
+}
+.ready-vital {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--warn);
 }
 
 /* Panneau de la spécialité */
@@ -2989,8 +3085,34 @@ a.phone {
   justify-content: flex-end;
 }
 
-/* Sur téléphone, les neuf spécialités deviennent des tuiles compactes (icône, nom, jauge) */
+/* Sur téléphone, domaines et spécialités deviennent des tuiles compactes (icône, nom, jauge) */
 @media (max-width: 640px) {
+  .domain-picker {
+    gap: 8px;
+  }
+  .domain-tab {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 4px;
+    padding: 10px 6px;
+    border-radius: 14px;
+  }
+  .domain-icon {
+    font-size: 1.5rem;
+  }
+  .domain-tab-text {
+    align-items: center;
+  }
+  .domain-tab-name {
+    font-size: 0.9rem;
+  }
+  .domain-tab-ready {
+    font-size: 0.68rem;
+  }
+  .domain-tab .spec-meter {
+    width: 100%;
+  }
   .spec-picker {
     gap: 8px;
   }
