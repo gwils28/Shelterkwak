@@ -189,6 +189,7 @@ questions:
       - {value: stress, label: "Une technique de gestion du stress connue (respiration, cohérence cardiaque)", validates: [moral.stress]}
       - {value: verrouillage, label: "Téléphones et ordinateurs verrouillés par un code", validates: [cyber.verrouillage]}
       - {value: double_auth, label: "Double authentification sur la messagerie et la banque", validates: [cyber.double_auth]}
+      - {value: arnaques, label: "Réflexes anti-arnaque connus des adultes (on raccroche et on rappelle le numéro officiel)", validates: [cyber.arnaques]}
       - {value: sauvegarde, label: "Sauvegarde récente des fichiers sur un support hors ligne", validates: [cyber.sauvegarde]}
 
   - id: competences

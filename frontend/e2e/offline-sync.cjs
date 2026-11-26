@@ -25,7 +25,7 @@ async function onboarding(page) {
     "réflexes en cas d'alerte", "Fréquence de la radio", "Papiers d'identité rangés", "Clés, papiers et chaussures",
     "guide officiel", "Un proche à moins de 30 min", "Numéros d'écoute notés", "Assurances vérifiées", "Doubles des clés", "Plan communal", "gestion du stress", "violences dans le foyer", "on fuit et on alerte", "conditions de la légitime défense", "On sait quoi faire après", "Coupures d'eau", "Lampes frontales", "Trousse de premiers secours", "Pastilles", "On sait couper",
     "FR-Alert", "Contacts essentiels", "Itinéraires d'évacuation", "Copies des papiers", "Fiches médicales",
-    "Inventaire des placards", "Je connais au moins deux voisins", "Deux semaines", "1 an", "💧 Eau", "Inondation"];
+    "Inventaire des placards", "verrouillés par un code", "Réflexes anti-arnaque", "Je connais au moins deux voisins", "Deux semaines", "1 an", "💧 Eau", "Inondation"];
   for (;;) {
     for (const t of WANT) {
       const loc = page.locator(`label.option:has-text("${t}")`);
@@ -45,6 +45,14 @@ async function onboarding(page) {
   await shot(page, "1-resultat");
   await page.click("text=Voir ma colonne");
   await page.waitForSelector("text=Prochaine étape");
+}
+
+// Les réserves sont des cartes de l'inventaire : la fiche de la carte contient ses articles.
+const ARTICLE = 'dialog[open] ul.articles li:has-text("Bidons d\'eau")';
+async function openWater(page) {
+  await page.click("nav >> text=Inventaire");
+  await page.click('.inv-card:has-text("Réserve d\'eau potable")');
+  await page.waitForSelector("dialog[open] .stock-form");
 }
 
 const levelText = async (page) => (await page.locator(".hero .eyebrow").textContent()).trim();
@@ -83,12 +91,13 @@ const syncText = async (page) => (await page.locator(".sync-badge").innerText())
   await p.reload();
   await p.waitForSelector('.objective:has-text("Croquettes du chien")', { timeout: 15000 });
   check(true, "l'app se recharge en mode avion (service worker)");
-  await p.click('nav >> text=Réserves');
+  await openWater(p);
   await p.fill('input[placeholder^="Packs"]', "Bidons d'eau");
   await p.locator(".stock-form input[type=number]").nth(0).fill("10");
   await p.locator(".stock-form input[type=number]").nth(1).fill("5");
   await p.click('.stock-form button:has-text("Ajouter")');
-  await p.waitForSelector('td:has-text("Bidons d\'eau")');
+  await p.waitForSelector(ARTICLE);
+  await p.click('dialog[open] button[aria-label="Fermer"]');
   await p.locator(".sync-badge").click();
   await p.waitForFunction(() => document.querySelector(".sync-badge")?.textContent?.includes("Hors ligne"));
   check((await syncText(p)).includes("1 modif. en attente"), `badge hors ligne : « ${await syncText(p)} »`);
@@ -101,16 +110,19 @@ const syncText = async (page) => (await page.locator(".sync-badge").innerText())
   await c.goto(BASE);
   await c.waitForSelector("text=Prochaine étape", { timeout: 15000 });
   check((await c.locator(".brand-household").innerText()) === "Mon foyer", "le PC affiche le foyer créé sur le téléphone");
-  await c.click('nav >> text=Réserves');
-  check((await c.locator('td:has-text("Bidons d\'eau")').count()) === 0, "le stock saisi hors ligne n'est pas encore sur le PC");
+  await openWater(c);
+  check((await c.locator(ARTICLE).count()) === 0, "le stock saisi hors ligne n'est pas encore sur le PC");
 
   // 5. Retour du réseau : le téléphone envoie, le PC reçoit
   await phone.setOffline(false);
   await p.locator(".sync-badge").click();
   await p.waitForFunction(() => /Synchronisé/.test(document.querySelector(".sync-badge")?.textContent ?? "") && !/attente/.test(document.querySelector(".sync-badge")?.textContent ?? ""));
   check(true, "le téléphone a envoyé sa modification au retour du réseau");
+  await c.click('dialog[open] button[aria-label="Fermer"]');
   await c.locator(".sync-badge").click();
-  await c.waitForSelector('td:has-text("Bidons d\'eau")', { timeout: 10000 });
+  await openWater(c);
+  await c.waitForSelector(ARTICLE, { timeout: 10000 });
+  await c.click('dialog[open] button[aria-label="Fermer"]');
   check(true, "le PC reçoit le stock saisi hors ligne");
   await c.click('nav >> text=Objectifs');
   await c.waitForSelector('.objective:has-text("Croquettes du chien")', { timeout: 5000 });
