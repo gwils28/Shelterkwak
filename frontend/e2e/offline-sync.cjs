@@ -25,7 +25,7 @@ async function onboarding(page) {
     "réflexes en cas d'alerte", "Fréquence de la radio", "Papiers d'identité rangés", "Clés, papiers et chaussures",
     "guide officiel", "Un proche à moins de 30 min", "Numéros d'écoute notés", "Assurances vérifiées", "Doubles des clés", "Plan communal", "gestion du stress", "violences dans le foyer", "on fuit et on alerte", "conditions de la légitime défense", "On sait quoi faire après", "Coupures d'eau", "Lampes frontales", "Trousse de premiers secours", "Pastilles", "On sait couper",
     "FR-Alert", "Contacts essentiels", "Itinéraires d'évacuation", "Copies des papiers", "Fiches médicales",
-    "Inventaire des placards", "verrouillés par un code", "Je connais au moins deux voisins", "Deux semaines", "1 an", "💧 Eau", "Inondation"];
+    "Inventaire des placards", "verrouillés par un code", "Réflexes anti-arnaque", "Je connais au moins deux voisins", "Deux semaines", "1 an", "💧 Eau", "Inondation"];
   for (;;) {
     for (const t of WANT) {
       const loc = page.locator(`label.option:has-text("${t}")`);
@@ -45,10 +45,6 @@ async function onboarding(page) {
   await shot(page, "1-resultat");
   await page.click("text=Voir ma colonne");
   await page.waitForSelector("text=Prochaine étape");
-  // Aucune réponse de l'interview ne couvre les réflexes anti-arnaque (cyber.arnaques) : on le coche
-  // depuis la checklist du tableau de bord, comme le ferait l'utilisateur.
-  await page.click('.check-group li:has-text("anti-arnaque") button.tick');
-  await page.waitForSelector('.check-group li:has-text("anti-arnaque")', { state: "detached" });
 }
 
 // Les réserves sont des cartes de l'inventaire : la fiche de la carte contient ses articles.

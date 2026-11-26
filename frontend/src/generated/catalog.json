@@ -7953,6 +7953,15 @@
      "sets": {}
     },
     {
+     "value": "arnaques",
+     "label": "Réflexes anti-arnaque connus des adultes (on raccroche et on rappelle le numéro officiel)",
+     "validates": [
+      "cyber.arnaques"
+     ],
+     "tags": [],
+     "sets": {}
+    },
+    {
      "value": "sauvegarde",
      "label": "Sauvegarde récente des fichiers sur un support hors ligne",
      "validates": [
